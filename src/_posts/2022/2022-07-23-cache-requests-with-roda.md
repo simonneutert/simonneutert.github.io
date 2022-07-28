@@ -34,7 +34,7 @@ r.on(param!: 'filter') do |filter|
 end
 ```
 
-In the implementation, a user's gps polylines only change after importing new data. Then, a new leaderboard is being calculated, which touches a user's `updated_at` attribute when finished, resulting in a changed SHA1 hash value. 
+In the implementation, a user's gps polylines only change after importing new data. Then, a new leaderboard is being calculated, which touches a user's `updated_at` attribute when finished, resulting in a changed SHA1 Hashing. 
 
 ```ruby
 def cache_etag(user)
