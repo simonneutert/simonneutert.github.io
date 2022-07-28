@@ -24,4 +24,4 @@
         ——
         Suppress this warning by adding a "data-turbo-suppress-warning" attribute to: %s
       `,s.outerHTML)}})();window.Turbo=gt;Ce();console.info("Bridgetown is loaded!");})();
-//# sourceMappingURL=/simonneutert.github.io/_bridgetown/static/index.LDKTQL4J.js.map
+//# sourceMappingURL=simonneutert.github.io/_bridgetown/static/index.LDKTQL4J.js.map
