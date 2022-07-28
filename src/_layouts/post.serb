@@ -1,0 +1,21 @@
+---
+layout: default
+---
+
+<a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<h1>{{ resource.data.title }}</h1>
+
+{%= yield %}
+
+<hr />
+
+{% if resource.previous %}
+<a href="{{resource.previous.absolute_url}}" style="text-decoration:none;">⬅️ Read previous</a>
+{% end %}
+
+{% if resource.next %}
+<a href="{{resource.next.absolute_url}}" style="float: right; text-decoration:none;">Read next ➡️</a>
+{% end %}
