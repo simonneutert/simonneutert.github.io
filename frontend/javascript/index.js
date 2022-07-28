@@ -1,6 +1,6 @@
-import "index.css"
-import "syntax-highlighting.css"
-import * as Turbo from "@hotwired/turbo"
+import "index.css";
+import "syntax-highlighting.css";
+import * as Turbo from "@hotwired/turbo";
 
 // Uncomment the line below to add transition animations when Turbo navigates.
 // We recommend adding <meta name="turbo-cache-control" content="no-preview" />
@@ -10,6 +10,6 @@ import * as Turbo from "@hotwired/turbo"
 // import "./turbo_transitions.js"
 
 // Import all JavaScript & CSS files from src/_components
-import components from "bridgetownComponents/**/*.{js,jsx,js.rb,css}"
+import components from "bridgetownComponents/**/*.{js,jsx,js.rb,css}";
 
-console.info("Bridgetown is loaded!")
+// console.info("Bridgetown is loaded!")
