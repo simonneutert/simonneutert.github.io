@@ -26,6 +26,8 @@ const outputFolder = "output";
 // ```
 // const esbuildOptions = { publicPath: "/my_subfolder/_bridgetown/static" }
 // ```
-const esbuildOptions = { publicPath: "/simonneutert/_bridgetown/static" };
+const esbuildOptions = {
+  publicPath: "/simonneutert.github.io/_bridgetown/static",
+};
 
 build(outputFolder, esbuildOptions);
