@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>nbb! Not babashka. Node.js babashka!? | Simon Neutert Website</title>
+
+<meta name="description" content="My name is Simon. I really enjoy coding and so far, I just cannot get enough of it. Other than that, I enjoy cycling and nice food 🤤" />
+
+<link rel="stylesheet" href="/simonneutert.github.io/_bridgetown/static/index.CHUQP2TN.css" data-turbo-track="reload" />
+<script src="/simonneutert.github.io/_bridgetown/static/index.LDKTQL4J.js" data-turbo-track="reload" defer></script>
+
+
+  </head>
+  <body class="post ">
+    <header>
+  <!-- 
+  <img src="/simonneutert.github.io/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav>
+  <ul>
+    <li><a href="/simonneutert.github.io/">Home</a></li>
+    <!-- <li><a href="/simonneutert.github.io/about">About</a></li> -->
+    <li><a href="/simonneutert.github.io/posts">Blog</a></li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<h1>nbb! Not babashka. Node.js babashka!?</h1>
+
+<p>babashka and nbb feel like they gain momentum, so I chose nbb and dabbled a little.</p>
+
+<p>What I got, was an easy to use Screenshot Tool I can run from the terminal.</p>
+
+<p>You can find the repo <a href="https://github.com/simonneutert/nbb-screenshot">here, on GitHub</a>.</p>
+
+<p>The project relies on <code class="highlighter-rouge">playwright</code> and Node&#8217;s <code class="highlighter-rouge">ArgumentParser</code> and of course <code class="highlighter-rouge">nbb</code>.</p>
+
+<blockquote>
+  <p>&#8220;Lisp is worth learning for the profound enlightenment experience you will have when you finally get it; that experience will make you a better programmer for the rest of your days, even if you never actually use Lisp itself a lot.&#8221;</p>
+  <ul>
+    <li>Eric Raymond, &#8220;How to Become a Hacker&#8221;</li>
+  </ul>
+</blockquote>
+
+<p><a href="https://clojurescript.org/guides/quick-start">Learn ClojureScript</a></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(ns script
+  (:require
+   ["playwright$default" :as playwright :refer [firefox]]
+   ["argparse" :as argparse :refer [ArgumentParser]]))
+
+(defn- sleep [f ms]
+  (js/setTimeout f ms))
+
+(def parser
+  (ArgumentParser. #js {:prog "main.cljs"
+                        :description "This is a simple screenshot app!"}))
+
+(.add_argument parser ""
+               #js {:help "url of which to take a screenshot"})
+(.add_argument parser "-t" "--timeout"
+               #js {:help "timeout after page visit before taking the screenshot"})
+
+#_(.dir js/console (.parse_args parser (clj-&gt;js (vec *command-line-args*))))
+
+(defn- get-url-command-line-arg
+  "Parses the first string after calling the script
+  `$ nbb main.cljs https://www.simon-neutert.de`"
+  []
+  (.- (.parse_args parser (clj-&gt;js (vec *command-line-args*)))))
+
+(defn- get-timeout-command-line-arg
+  "Parses the argument passed with `-t` or `--timeout` after calling the script
+  `$ nbb main.cljs https://www.simon-neutert.de`"
+  []
+  (js/parseInt
+   (or
+    (.-t (.parse_args parser (clj-&gt;js (vec *command-line-args*))))
+    (.-timeout (.parse_args parser (clj-&gt;js (vec *command-line-args*))))
+    300)))
+
+(defn sleep-promise+
+  "wraps a Promise around a timeout returning the given object"
+  [obj wait]
+  (js/Promise.
+   (fn [resolve _reject]
+     (sleep #(resolve obj) wait))))
+
+(defn screenshot
+  "This is where the magic happens" 
+  []
+  (-&gt;
+   (.launch firefox)
+   (.then (fn [browser]
+            (-&gt;
+             (.newPage browser)
+             (.then (fn [page]
+                      (-&gt; (.goto page (get-url-command-line-arg))
+                          (.then #(sleep-promise+ browser (get-timeout-command-line-arg)))
+                          (.then #(.screenshot page #js{:path "screenshot.png"}))
+                          (.catch #(js/console.log %))
+                          (.then #(.close browser))))))))))
+
+(screenshot)
+</code></pre></div></div>
+
+
+<hr />
+
+<a href="/simonneutert.github.io/server/hosting/2022/02/23/setup-vps/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a href="/simonneutert.github.io/lisp/2021/10/24/clojure-clojurescript-babysteps/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+    </main>
+
+    <footer>
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Südring 311, 55128 Mainz, Germany
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

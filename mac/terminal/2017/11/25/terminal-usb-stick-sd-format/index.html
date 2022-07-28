@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Format USB-Stick from Terminal in Mac OS X | Simon Neutert Website</title>
+
+<meta name="description" content="My name is Simon. I really enjoy coding and so far, I just cannot get enough of it. Other than that, I enjoy cycling and nice food 🤤" />
+
+<link rel="stylesheet" href="/simonneutert.github.io/_bridgetown/static/index.CHUQP2TN.css" data-turbo-track="reload" />
+<script src="/simonneutert.github.io/_bridgetown/static/index.LDKTQL4J.js" data-turbo-track="reload" defer></script>
+
+
+  </head>
+  <body class="post ">
+    <header>
+  <!-- 
+  <img src="/simonneutert.github.io/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav>
+  <ul>
+    <li><a href="/simonneutert.github.io/">Home</a></li>
+    <!-- <li><a href="/simonneutert.github.io/about">About</a></li> -->
+    <li><a href="/simonneutert.github.io/posts">Blog</a></li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<h1>Format USB-Stick from Terminal in Mac OS X</h1>
+
+<p>Fire up a terminal.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>diskutil list
+</code></pre></div></div>
+
+<p>Read the output carefully. You sure will identify the right device <strong>/dev/diskX</strong>, where <strong>X</strong> corresponds to the number of the device on your system. Then format it to FAT32 by typing:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>diskutil eraseDisk FAT32 MYUSBDRIVENAME MBRFormat /dev/diskX
+</code></pre></div></div>
+
+<p>Easy as Pie :-)</p>
+
+
+<hr />
+
+<a href="/simonneutert.github.io/ruby/2017/12/04/exceptions-in-ruby/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a href="/simonneutert.github.io/ruby/sinatra/heroku/2017/11/20/use-heroku-for-rake-tasks/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+    </main>
+
+    <footer>
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Südring 311, 55128 Mainz, Germany
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

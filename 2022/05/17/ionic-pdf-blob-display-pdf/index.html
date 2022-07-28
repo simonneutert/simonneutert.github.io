@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>download a pdf as blob and show it to the user in ionic (vue) | Simon Neutert Website</title>
+
+<meta name="description" content="My name is Simon. I really enjoy coding and so far, I just cannot get enough of it. Other than that, I enjoy cycling and nice food 🤤" />
+
+<link rel="stylesheet" href="/simonneutert.github.io/_bridgetown/static/index.CHUQP2TN.css" data-turbo-track="reload" />
+<script src="/simonneutert.github.io/_bridgetown/static/index.LDKTQL4J.js" data-turbo-track="reload" defer></script>
+
+
+  </head>
+  <body class="post ">
+    <header>
+  <!-- 
+  <img src="/simonneutert.github.io/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav>
+  <ul>
+    <li><a href="/simonneutert.github.io/">Home</a></li>
+    <!-- <li><a href="/simonneutert.github.io/about">About</a></li> -->
+    <li><a href="/simonneutert.github.io/posts">Blog</a></li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<h1>download a pdf as blob and show it to the user in ionic (vue)</h1>
+
+<p>Ionic Vue and Cordova and Capacitor and the framework you ended to pick for the frontend can be pretty overwhelming to google…</p>
+
+<p>Here’s how I managed to download a pdf as a blob and show it to the user.</p>
+
+<h3 id="dependencies">Dependencies</h3>
+
+<p>begin by adding the following dependencies to your ionic project</p>
+
+<ul>
+  <li>https://ionicframework.com/docs/native/file-opener</li>
+  <li>https://capacitorjs.com/docs/apis/filesystem</li>
+</ul>
+
+<h3 id="library-code">Library Code</h3>
+
+<p>here’s what you need as a scaffold to manage blob handling</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// lib file managing blob to write to open</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Filesystem</span><span class="p">,</span> <span class="nx">Directory</span><span class="p">,</span> <span class="nx">Encoding</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@capacitor/filesystem</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">blobToBase64</span> <span class="o">=</span> <span class="p">(</span><span class="nx">entry</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">reader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FileReader</span><span class="p">();</span>
+  <span class="nx">reader</span><span class="p">.</span><span class="nx">readAsDataURL</span><span class="p">(</span><span class="nx">entry</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+  <span class="k">return</span> <span class="nx">reader</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">openPdfFile</span> <span class="o">=</span> <span class="p">(</span><span class="nx">filename</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">Filesystem</span><span class="p">.</span><span class="nx">getUri</span><span class="p">({</span>
+    <span class="na">directory</span><span class="p">:</span> <span class="nx">Directory</span><span class="p">.</span><span class="nx">Cache</span><span class="p">,</span>
+    <span class="na">path</span><span class="p">:</span> <span class="nx">filename</span><span class="p">,</span>
+  <span class="p">}).</span><span class="nx">then</span><span class="p">(</span>
+    <span class="p">(</span><span class="nx">getUriResult</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">getUriResult</span><span class="p">.</span><span class="nx">uri</span><span class="p">;</span>
+      <span class="nb">window</span><span class="p">.</span><span class="nx">cordova</span><span class="p">.</span><span class="nx">plugins</span><span class="p">.</span><span class="nx">fileOpener2</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="nx">path</span><span class="p">);</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`File </span><span class="p">${</span><span class="nx">filename</span><span class="p">}</span><span class="s2"> written to </span><span class="p">${</span><span class="nx">path</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">);</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">writeTempFileThenOpenPdf</span> <span class="o">=</span> <span class="p">(</span><span class="nx">filename</span><span class="p">,</span> <span class="nx">base64data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">Filesystem</span><span class="p">.</span><span class="nx">writeFile</span><span class="p">({</span>
+    <span class="na">path</span><span class="p">:</span> <span class="nx">filename</span><span class="p">,</span>
+    <span class="na">data</span><span class="p">:</span> <span class="nx">base64data</span><span class="p">,</span>
+    <span class="na">directory</span><span class="p">:</span> <span class="nx">Directory</span><span class="p">.</span><span class="nx">Cache</span><span class="p">,</span>
+  <span class="p">})</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">writeFileResult</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">openPdfFile</span><span class="p">(</span><span class="nx">filename</span><span class="p">);</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`File </span><span class="p">${</span><span class="nx">filename</span><span class="p">}</span><span class="s2"> written`</span><span class="p">);</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">};</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">convertBlobThenOpenPdf</span> <span class="o">=</span> <span class="p">(</span><span class="nx">entry</span><span class="p">,</span> <span class="nx">filename</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">filename.pdf</span><span class="dl">"</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">reader</span> <span class="o">=</span> <span class="nx">blobToBase64</span><span class="p">(</span><span class="nx">entry</span><span class="p">);</span>
+  <span class="nx">reader</span><span class="p">.</span><span class="nx">onloadend</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">base64data</span> <span class="o">=</span> <span class="nx">reader</span><span class="p">.</span><span class="nx">result</span><span class="p">;</span>
+    <span class="nx">writeTempFileThenOpenPdf</span><span class="p">(</span><span class="nx">filename</span><span class="p">,</span> <span class="nx">base64data</span><span class="p">);</span>
+  <span class="p">};</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h3 id="use-in-your-components-taken-from-a-vue-composition-api-in-this-case">Use in your Components (taken from a Vue Composition API in this case)</h3>
+
+<p>in your component you should add two methods, covering the platforms web (for debugging) and app platforms</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// for the web platform</span>
+<span class="kd">const</span> <span class="nx">showPDFFile</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ApiV1PDFFileService</span><span class="p">();</span>
+  <span class="nx">api</span><span class="p">.</span><span class="nx">download</span><span class="p">().</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">URL</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="k">new</span> <span class="nx">Blob</span><span class="p">([</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">]));</span>
+    <span class="kd">const</span> <span class="nx">link</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">link</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="nx">url</span><span class="p">;</span>
+    <span class="nx">link</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">download</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">file.pdf</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">link</span><span class="p">);</span>
+    <span class="nx">link</span><span class="p">.</span><span class="nx">click</span><span class="p">();</span>
+  <span class="p">});</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">downloadPDFFile</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">isPlatform</span><span class="p">(</span><span class="dl">"</span><span class="s2">desktop</span><span class="dl">"</span><span class="p">)</span> <span class="o">||</span> <span class="nx">isPlatform</span><span class="p">(</span><span class="dl">"</span><span class="s2">mobileweb</span><span class="dl">"</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nx">showPDFFile</span><span class="p">();</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="cm">/*
+   * // PEAKING INTO ApiV1PDFFileService
+   * //
+   * return this.axios.get("/downloads/pdf/demo", {
+   *    responseType: "blob", // important for download
+   *    headers: {
+   *      Authorization: "Bearer " + token,
+   *     },
+   * });
+   */</span>
+  <span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ApiV1PDFFileService</span><span class="p">();</span>
+  <span class="nx">api</span><span class="p">.</span><span class="nx">download</span><span class="p">().</span><span class="nx">then</span><span class="p">((</span><span class="nx">entry</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">convertBlobThenOpenPdf</span><span class="p">(</span><span class="nx">entry</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>get in touch if you struggle 🍻</p>
+
+
+<hr />
+
+<a href="/simonneutert.github.io/2022/05/18/tiler/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a href="/simonneutert.github.io/bash/2022/05/11/wget-it-all/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+    </main>
+
+    <footer>
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Südring 311, 55128 Mainz, Germany
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Plough Through Large Datasets From a Database with Python&#39;s SQLAlchemy | Simon Neutert Website</title>
+
+<meta name="description" content="My name is Simon. I really enjoy coding and so far, I just cannot get enough of it. Other than that, I enjoy cycling and nice food 🤤" />
+
+<link rel="stylesheet" href="/simonneutert.github.io/_bridgetown/static/index.CHUQP2TN.css" data-turbo-track="reload" />
+<script src="/simonneutert.github.io/_bridgetown/static/index.LDKTQL4J.js" data-turbo-track="reload" defer></script>
+
+
+  </head>
+  <body class="post ">
+    <header>
+  <!-- 
+  <img src="/simonneutert.github.io/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav>
+  <ul>
+    <li><a href="/simonneutert.github.io/">Home</a></li>
+    <!-- <li><a href="/simonneutert.github.io/about">About</a></li> -->
+    <li><a href="/simonneutert.github.io/posts">Blog</a></li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<h1>Plough Through Large Datasets From a Database with Python&#39;s SQLAlchemy</h1>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># assume:
+# more_results = True
+# results_proxy is a predefined call to the database
+</span>
+<span class="c1"># Start a while loop checking for more results
+</span><span class="k">while</span> <span class="n">more_results</span><span class="p">:</span>
+    <span class="c1"># Fetch the first 50 results from the ResultProxy: partial_results
+</span>    <span class="n">partial_results</span> <span class="o">=</span> <span class="n">results_proxy</span><span class="p">.</span><span class="n">fetchmany</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+
+    <span class="c1"># if empty list, set more_results to False
+</span>    <span class="k">if</span> <span class="n">partial_results</span> <span class="o">==</span> <span class="p">[]:</span>
+        <span class="n">more_results</span> <span class="o">=</span> <span class="bp">False</span>
+
+    <span class="c1"># Loop over the fetched records and increment the count for the state
+</span>    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">partial_results</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">row</span><span class="p">.</span><span class="n">state</span> <span class="ow">in</span> <span class="n">state_count</span><span class="p">:</span>
+            <span class="n">state_count</span><span class="p">[</span><span class="n">row</span><span class="p">.</span><span class="n">state</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">state_count</span><span class="p">[</span><span class="n">row</span><span class="p">.</span><span class="n">state</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># Close the ResultProxy, and thus the connection
+</span><span class="n">results_proxy</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="c1"># Print the count by state
+</span><span class="k">print</span><span class="p">(</span><span class="n">state_count</span><span class="p">)</span>
+</code></pre></div></div>
+
+
+<hr />
+
+<a href="/simonneutert.github.io/ruby/sinatra/heroku/2017/11/20/use-heroku-for-rake-tasks/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a href="/simonneutert.github.io/javascript/jquery/2017/11/13/jquery-google-maps-places-reviews/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+    </main>
+
+    <footer>
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Südring 311, 55128 Mainz, Germany
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

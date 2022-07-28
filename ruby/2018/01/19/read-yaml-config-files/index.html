@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Reading Yaml Config Files for Ruby Scripts | Simon Neutert Website</title>
+
+<meta name="description" content="My name is Simon. I really enjoy coding and so far, I just cannot get enough of it. Other than that, I enjoy cycling and nice food 🤤" />
+
+<link rel="stylesheet" href="/simonneutert.github.io/_bridgetown/static/index.CHUQP2TN.css" data-turbo-track="reload" />
+<script src="/simonneutert.github.io/_bridgetown/static/index.LDKTQL4J.js" data-turbo-track="reload" defer></script>
+
+
+  </head>
+  <body class="post ">
+    <header>
+  <!-- 
+  <img src="/simonneutert.github.io/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav>
+  <ul>
+    <li><a href="/simonneutert.github.io/">Home</a></li>
+    <!-- <li><a href="/simonneutert.github.io/about">About</a></li> -->
+    <li><a href="/simonneutert.github.io/posts">Blog</a></li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<h1>Reading Yaml Config Files for Ruby Scripts</h1>
+
+<p>Again, Ruby makes this easy as pie.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># config.yml</span>
+<span class="na">user_data</span><span class="pi">:</span> <span class="s">hello world</span>
+<span class="na">level_one</span><span class="pi">:</span>
+  <span class="na">level_two</span><span class="pi">:</span> <span class="s">level two world</span>
+</code></pre></div></div>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># config.rb</span>
+<span class="nb">require</span> <span class="s1">'yaml'</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="no">YAML</span><span class="p">.</span><span class="nf">load_file</span><span class="p">(</span><span class="s1">'./config.yml'</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">config</span><span class="p">[</span><span class="s1">'user_data'</span><span class="p">]</span>
+<span class="c1"># =&gt; 'hello world'</span>
+<span class="nb">puts</span> <span class="n">config</span><span class="p">[</span><span class="s1">'level_one'</span><span class="p">][</span><span class="s1">'level_two'</span><span class="p">]</span>
+<span class="c1"># =&gt; 'level two world'</span>
+<span class="nb">puts</span> <span class="n">config</span><span class="p">[</span><span class="s1">'level_one'</span><span class="p">]</span>
+<span class="c1"># =&gt; {"level_two" =&gt; "level two world"}</span>
+</code></pre></div></div>
+
+
+<hr />
+
+<a href="/simonneutert.github.io/ruby/python/2018/01/24/reverse-a-string-ruby-vs-python/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a href="/simonneutert.github.io/ruby/2018/01/18/upload-static-files-to-webhoster/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+    </main>
+
+    <footer>
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Südring 311, 55128 Mainz, Germany
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

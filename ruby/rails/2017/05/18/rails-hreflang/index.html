@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Set hreflang for SEO in a globalized Rails App | Simon Neutert Website</title>
+
+<meta name="description" content="My name is Simon. I really enjoy coding and so far, I just cannot get enough of it. Other than that, I enjoy cycling and nice food 🤤" />
+
+<link rel="stylesheet" href="/simonneutert.github.io/_bridgetown/static/index.CHUQP2TN.css" data-turbo-track="reload" />
+<script src="/simonneutert.github.io/_bridgetown/static/index.LDKTQL4J.js" data-turbo-track="reload" defer></script>
+
+
+  </head>
+  <body class="post ">
+    <header>
+  <!-- 
+  <img src="/simonneutert.github.io/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav>
+  <ul>
+    <li><a href="/simonneutert.github.io/">Home</a></li>
+    <!-- <li><a href="/simonneutert.github.io/about">About</a></li> -->
+    <li><a href="/simonneutert.github.io/posts">Blog</a></li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<h1>Set hreflang for SEO in a globalized Rails App</h1>
+
+<p>In your app&#8217;s head (this usually is in <code class="highlighter-rouge">application.html.erb</code>).</p>
+
+<div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"alternate"</span> <span class="na">hreflang=</span><span class="s">"</span><span class="cp">&lt;%=</span> <span class="n">locale</span> <span class="cp">%&gt;</span><span class="s">"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<p>The variable <code class="highlighter-rouge">locale</code> is representing, the requests current value of <a href="http://guides.rubyonrails.org/i18n.html#managing-the-locale-across-requests">I18n in Rails</a>.</p>
+
+
+<hr />
+
+<a href="/simonneutert.github.io/elixir/2017/05/19/implement-permutation-in-elixir/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a href="/simonneutert.github.io/ruby/raspberrypi/2017/05/06/asdf-tool-manager-and-cron/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+    </main>
+
+    <footer>
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Südring 311, 55128 Mainz, Germany
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>
