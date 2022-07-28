@@ -15,7 +15,7 @@ r.on(param!: 'filter') do |filter|
     r.halt # abort early, stops users from fiddling around
   end
 
-  # where the magic happens 🔥, if the cache hits
+  # where the magic happens 🔥 and the cache is set/matched
   r.etag cache_etag(user)
 
   polylines = nil
