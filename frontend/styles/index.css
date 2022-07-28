@@ -8,10 +8,6 @@
   --action-color: #137393;
 }
 
-.rotate {
-  transform: rotate(-1.2deg);
-}
-
 body {
   background: var(--body-background);
   color: var(--body-color);
@@ -126,6 +122,15 @@ blockquote span{
   font-style: normal;
   font-weight: bold;
   margin-top:1em;
+}
+
+li {
+  line-height: 1.5em;
+  margin-bottom: 1em;
+}
+
+.rotate {
+  transform: rotate(-1.2deg);
 }
 
 /* WORD CLOUD */
