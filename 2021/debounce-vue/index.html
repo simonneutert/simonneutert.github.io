@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Debounce in Vue2 | Simon Neutert Website</title>
+
+<meta name="description" content="My name is Simon. I really enjoy coding and so far, I just cannot get enough of it. Other than that, I enjoy cycling and nice food 🤤" />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.ENWRMPWR.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.TW3DMD3D.js" data-turbo-track="reload" defer></script>
+
+
+  </head>
+  <body class="post ">
+    <header>
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <!-- <li><a href="/about">About</a></li> -->
+    <li><a href="/posts">Blog</a></li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<h1>Debounce in Vue2</h1>
+
+<p>I found this very easy and indenpendent solution on <a href="https://stackoverflow.com/a/55617228">StackOverflow (here)</a>.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// in your component</span>
+<span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">timeoutScroll</span><span class="p">:</span> <span class="kc">undefined</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nl">methods</span><span class="p">:</span> <span class="p">{</span>
+  <span class="na">handleScroll</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">timeoutScroll</span><span class="p">)</span> 
+      <span class="nx">clearTimeout</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">timeoutScroll</span><span class="p">);</span> 
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">timeoutScroll</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="c1">// your action here</span>
+    <span class="p">},</span> <span class="mi">200</span><span class="p">);</span> <span class="c1">// delay</span>
+  <span class="p">}</span>
+<span class="p">},</span>
+
+<span class="nx">destroyed</span><span class="p">()</span> <span class="p">{</span> 
+  <span class="nx">clearInterval</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">timeout</span><span class="p">)</span> 
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>No dependencies and easy to keep in mind - but I know I will get back here once every few weeks 🤫</p>
+
+
+<hr />
+
+<a href="/2021/chess-oop/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a href="/2021/ruby-on-rodas/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+    </main>
+
+    <footer>
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Südring 311, 55128 Mainz, Germany
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

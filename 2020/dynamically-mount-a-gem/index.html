@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Dynamically mount a Ruby gem in a Rails Docker Project | Simon Neutert Website</title>
+
+<meta name="description" content="My name is Simon. I really enjoy coding and so far, I just cannot get enough of it. Other than that, I enjoy cycling and nice food 🤤" />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.ENWRMPWR.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.TW3DMD3D.js" data-turbo-track="reload" defer></script>
+
+
+  </head>
+  <body class="post ">
+    <header>
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <!-- <li><a href="/about">About</a></li> -->
+    <li><a href="/posts">Blog</a></li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<h1>Dynamically mount a Ruby gem in a Rails Docker Project</h1>
+
+<p>in order to work from local, do the following steps:
+start docker with the gem from git, or skip it alltogether.</p>
+
+<p>THEN change the gems and run <code class="highlighter-rouge">bundle install</code> in the container make sure your path&#8217;s of the mount match with the docker-compose!</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem <span class="s1">'my_dirty_little_gem'</span>, path: <span class="s1">'/path_to_gem'</span> <span class="c"># when mounted as volume in docker</span>
+</code></pre></div></div>
+
+
+<hr />
+
+<a href="/2021/rss-telegram/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a href="/2020/corona-telegram-bot/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+    </main>
+
+    <footer>
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Südring 311, 55128 Mainz, Germany
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>
