@@ -171,3 +171,7 @@ end
 ```
 
 Wow, that was easy and somehow just as mindblowing as finishing this ⚗️ [Elixir tutorial](https://howistart.org/posts/elixir/1/)!
+
+### But ... you know, Clojure ... like ... Rich said:
+
+> It reduces your flexibility in modeling - this is a world in which everyone sits in a windowless room and communicates only by mail. Programs are decomposed as piles of blocking switch statements. You can only handle messages you anticipated receiving. Coordinating activities involving multiple actors is very difficult. You can’t observe anything without its cooperation/coordination - making ad-hoc reporting or analysis impossible, instead forcing every actor to participate in each protocol.<br /><span>Rich Hickey - https://clojure.org/about/state#actors</span>
