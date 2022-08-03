@@ -22,7 +22,7 @@ Let' have a nice and clean job queue over two terminals 💻⚡️💻
 
 - You need Docker
 - run RabbitMQ in Docker:  
-`$ docker run -d --hostname my-rabbit --name some-rabbit -p15672:15672 -p5672:5672 rabbitmq:3-management`
+  `$ docker run -d --hostname my-rabbit --name some-rabbit -p15672:15672 -p5672:5672 rabbitmq:3-management`
 - open your browser at `localhost:15672` and login with `guest:guest`
 - `$ gem install sneakers bunny pry`
 
@@ -72,7 +72,7 @@ run `$ ruby easy_consumer.rb`
 
 The producer is just as simple:
 
-```ruby 
+```ruby
 # easy_producer.rb
 require 'pry'
 require 'bunny'
@@ -135,12 +135,12 @@ class Processor
 end
 ```
 
-run it according to the *sneakers docs*  
+run it according to the _sneakers docs_  
 `$ sneakers work Processor --require bunny_sneaker_worker.rb`
 
 THEN fire up a producer!
 
-```ruby 
+```ruby
 require 'pry'
 require 'bunny'
 require 'json'
@@ -172,6 +172,6 @@ end
 
 Wow, that was easy and somehow just as mindblowing as finishing this ⚗️ [Elixir tutorial](https://howistart.org/posts/elixir/1/)!
 
-### But ... you know, Clojure ... like ... Rich said:
+### But ... you know, Clojure ... like ... Rich said ([Source](https://clojure.org/about/state#actors)):
 
-> It reduces your flexibility in modeling - this is a world in which everyone sits in a windowless room and communicates only by mail. Programs are decomposed as piles of blocking switch statements. You can only handle messages you anticipated receiving. Coordinating activities involving multiple actors is very difficult. You can’t observe anything without its cooperation/coordination - making ad-hoc reporting or analysis impossible, instead forcing every actor to participate in each protocol.<br /><span>Rich Hickey - https://clojure.org/about/state#actors</span>
+> It reduces your flexibility in modeling - this is a world in which everyone sits in a windowless room and communicates only by mail. Programs are decomposed as piles of blocking switch statements. You can only handle messages you anticipated receiving. Coordinating activities involving multiple actors is very difficult. You can’t observe anything without its cooperation/coordination - making ad-hoc reporting or analysis impossible, instead forcing every actor to participate in each protocol.<br /><span>Rich Hickey</span>
