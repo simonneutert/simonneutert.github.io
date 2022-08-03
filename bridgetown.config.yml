@@ -31,3 +31,7 @@ template_engine: serbea
 # timezone: America/Los_Angeles
 # pagination:
 #   enabled: true
+
+collections:
+  posts:
+    permalink: /:year/:slug/
