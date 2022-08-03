@@ -31,7 +31,7 @@ Get in touch with me via [Linkedin](https://www.linkedin.com/in/simon-neutert/)!
 
 <div class="cloud-wrap">
 <ul class="cloud" role="navigation" aria-label="Webdev tag cloud">
-  <li><span data-weight="6">Postres</span></li>
+  <li><span data-weight="6">Postgres</span></li>
   <li><span data-weight="9">Ruby</span></li>
   <li><span data-weight="3">CSS</span></li>
   <li><span data-weight="6">HTTP</span></li>
