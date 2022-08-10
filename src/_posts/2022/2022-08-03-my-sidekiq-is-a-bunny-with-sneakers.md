@@ -141,6 +141,7 @@ run it according to the _sneakers docs_
 THEN fire up a producer!
 
 ```ruby
+# bunny_sneaker_producer.rb
 require 'pry'
 require 'bunny'
 require 'json'
