@@ -1,0 +1,606 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.1.0">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-08-22T17:26:05+00:00</updated><id>/feed.xml</id><title type="html">Simon Neutert Website</title><subtitle>My name is Simon. I really enjoy coding and so far, I just cannot get enough of it. Other than that, I enjoy cycling and nice food 🤤</subtitle><entry><title type="html">TruffleRuby goes brrrr 🥳</title><link href="/2022/truffleruby-goes-brrrr/" rel="alternate" type="text/html" title="TruffleRuby goes brrrr 🥳" /><published>2022-08-22T00:00:00+00:00</published><updated>2022-08-22T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-08-22-truffleruby-goes-brrrr.md</id><content type="html" xml:base="/2022/truffleruby-goes-brrrr/">&lt;p&gt;My super unscientific lab has fresh results in …&lt;/p&gt;
+
+&lt;p&gt;After releasing &lt;a href=&quot;https://github.com/simonneutert/Joda&quot;&gt;Joda 🖖&lt;/a&gt; (Roda + JRuby), I dabbled a little more …&lt;/p&gt;
+
+&lt;p&gt;And tada 🥁&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;threads&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+
+&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;times&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;threads&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Thread&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;mi&quot;&gt;10_000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;times&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1_000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;map&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;threads&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;each&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;shooting &lt;code class=&quot;highlighter-rouge&quot;&gt;$ ruby main.rb&lt;/code&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Version&lt;/th&gt;
+      &lt;th&gt;Measurement&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;MRI&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;4,26s user 0,17s system 99% cpu 4,436 total&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;JRuby 9.3.6.0 (cold start)&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;7,43s user 0,87s system 463% cpu 1,794 total&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Truffleruby 22.2.0&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;0,97s user 0,11s system 431% cpu 0,250 total&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name></name></author></entry><entry><title type="html">My Sidekiq may be a bunny with sneakers</title><link href="/2022/my-sidekiq-is-a-bunny-with-sneakers/" rel="alternate" type="text/html" title="My Sidekiq may be a bunny with sneakers" /><published>2022-08-03T00:00:00+00:00</published><updated>2022-08-03T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-08-03-my-sidekiq-is-a-bunny-with-sneakers.md</id><content type="html" xml:base="/2022/my-sidekiq-is-a-bunny-with-sneakers/">&lt;p&gt;I overheard a conversation at the station:&lt;br /&gt;
+“&lt;a href=&quot;https://rubyonrails.org&quot;&gt;Rails&lt;/a&gt;, Redis and &lt;a href=&quot;https://sidekiq.org&quot;&gt;Sidekiq&lt;/a&gt; - every kid knows: they mean business! 😎”&lt;br /&gt;
+“Yeah, but I’ll go with the &lt;em&gt;Magic &lt;a href=&quot;http://rubybunny.info&quot;&gt;Bunny&lt;/a&gt; with &lt;a href=&quot;https://github.com/jondot/sneakers&quot;&gt;Sneakers&lt;/a&gt;&lt;/em&gt;, cheers!”&lt;/p&gt;
+
+&lt;p&gt;Just kidding 😅 What got me thinking and in an experimental mood was &lt;a href=&quot;https://stanko.io/rabbitmq-is-more-than-a-sidekiq-replacement-b730d8176fb&quot;&gt;Stanko.io - RabbitMQ is more than a Sidekiq Replacement&lt;/a&gt;. And I highly encourage you to at least look at the nice gifs the author made to clear things up.&lt;/p&gt;
+
+&lt;p&gt;Let’s build on this quote:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The biggest difference between the two implementations is the ack! on line 10. That line enables Sneakers and RabbitMQ to guarantee that a job has been processed. This is a feature of RabbitMQ’s communication protocol — AMQP. In AMQP a message can be popped from a queue in two modes — ack mode and no-ack mode.&lt;/p&gt;
+
+  &lt;p&gt;In ack mode the consumer must specify the maximum amount of time for it to process the message. When the consumer pops a message from the queue it’s virtually removed from it, but RabbitMQ still keeps a copy of it. If the consumer fails to send an “ack” signal in the specified time period the message is put back at the front of the queue so that another consumer can process it. If the consumer sends an “ack” signal in the specified time period the message is fully removed from RabbitMQ. In no-ack mode no guarantees are given, no time window has to be specified, and no “ack” signal has to be sent.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;ack---work-done-job-done-free-the-queue&quot;&gt;ACK! - Work done! Job done! FREE THE QUEUE!&lt;/h3&gt;
+
+&lt;p&gt;Let’ have a nice and clean job queue over two terminals 💻⚡️💻&lt;/p&gt;
+
+&lt;h4 id=&quot;prerequisities&quot;&gt;Prerequisities&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;You need Docker&lt;/li&gt;
+  &lt;li&gt;run RabbitMQ in Docker:&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;$ docker run -d --hostname my-rabbit --name some-rabbit -p15672:15672 -p5672:5672 rabbitmq:3-management&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;open your browser at &lt;code class=&quot;highlighter-rouge&quot;&gt;localhost:15672&lt;/code&gt; and login with &lt;code class=&quot;highlighter-rouge&quot;&gt;guest:guest&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ gem install sneakers bunny pry&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We will now put two simple ruby scripts to use.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;‼️ If you get weird errors from RabbitMQ, try deleting all queues first&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;First the consumer:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# easy_consumer.rb&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;pry&apos;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;bunny&apos;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;prettyprint&apos;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;begin&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# Start a communication session with RabbitMQ&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Bunny&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;start&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;# open a channel&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;ch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;create_channel&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;confirm_select&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;# declare a queue&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;queue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;test1&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;manual_ack: &lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;delivery_info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_metadata&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;This is the message: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# acknowledge the delivery so that RabbitMQ can mark it for deletion&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;delivery_info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;delivery_tag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# yo&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;# binding.pry&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;rescue&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;SignalException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;pp&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;Closing ...&apos;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;close&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# close the connection&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;close&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;run &lt;code class=&quot;highlighter-rouge&quot;&gt;$ ruby easy_consumer.rb&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The producer is just as simple:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# easy_producer.rb&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;pry&apos;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;bunny&apos;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;json&apos;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;prettyprint&apos;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;begin&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# Start a communication session with RabbitMQ&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Bunny&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;start&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;# open a channel&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;ch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;create_channel&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;confirm_select&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;# declare a queue&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;queue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;test1&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;# publish a message to the default exchange which then gets routed to this queue&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;publish&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;type: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;error&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;message: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;HALP!&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;error: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;CODE001&apos;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;to_json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;# publish to your heart&apos;s content&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;binding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;pry&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ensure&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;Closing ...&apos;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;close&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# close the connection&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;close&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now in a second terminal run: &lt;code class=&quot;highlighter-rouge&quot;&gt;$ ruby easy_producer&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;and use pry to send messages - good times 👏&lt;/p&gt;
+
+&lt;h2 id=&quot;whats-with-the-sneakers&quot;&gt;What’s with the sneakers?&lt;/h2&gt;
+
+&lt;p&gt;Time to put the worker to work 🤓&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# bunny_sneaker_worker.rb&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;pry&apos;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;bunny&apos;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;sneakers&apos;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;prettyprint&apos;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;json&apos;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Processor&lt;/span&gt;
+  &lt;span class=&quot;kp&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Sneakers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Worker&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;from_queue&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:testsneaker&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;work&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;pp&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;OUTPUT:&apos;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;pp&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ack!&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;run it according to the &lt;em&gt;sneakers docs&lt;/em&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;$ sneakers work Processor --require bunny_sneaker_worker.rb&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;THEN fire up a producer!&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# bunny_sneaker_producer.rb&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;pry&apos;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;bunny&apos;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;json&apos;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;quick_publish&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;HALP!&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;json_message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;type: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;error&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                   &lt;span class=&quot;ss&quot;&gt;message: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                   &lt;span class=&quot;ss&quot;&gt;error: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;CODE001&apos;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;to_json&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;default_exchange&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;publish&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;json_message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;routing_key: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;testsneaker&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;begin&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# Start a communication session with RabbitMQ&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Bunny&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;start&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;ch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;create_channel&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;default_exchange&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;publish&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;type: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;error&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;message: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;HALP!&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;error: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;CODE001&apos;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;to_json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;routing_key: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;testsneaker&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;# publish to your heart&apos;s content&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;binding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;pry&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# quick_publish(ch, &quot;What&apos;s going on here?&quot;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ensure&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;close&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# close the connection&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;close&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now I need to do a little more digging what RabbitMQ really is and how the Admin UI can help me wrap my head around.&lt;/p&gt;
+
+&lt;h2&gt;🚀&lt;/h2&gt;</content><author><name></name></author></entry><entry><title type="html">Caching requests in Roda using etags</title><link href="/2022/cache-requests-with-roda/" rel="alternate" type="text/html" title="Caching requests in Roda using etags" /><published>2022-07-23T00:00:00+00:00</published><updated>2022-07-23T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-07-23-cache-requests-with-roda.md</id><content type="html" xml:base="/2022/cache-requests-with-roda/">&lt;p&gt;This short post describes how using SHA1 Hashing for etags can be used.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Both last_modified or etag will immediately halt processing if there have been no modifications since the last time the client requested the resource, assuming the client uses the appropriate HTTP 1.1 request headers.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://roda.jeremyevans.net/rdoc/classes/Roda/RodaPlugins/Caching.html&quot;&gt;Roda Plugin: Caching Documentation&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;param!: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;filter&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;unless&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;nil?&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;startedhome&apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;finishedhome&apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;startedandfinishedhome&apos;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;halt&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# abort early, stops users from fiddling around&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;# where the magic happens 🔥 and the cache is set/matched&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;etag&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cache_etag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;polylines&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;nil&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;user_db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:user_strava_activities&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ds&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;filter_query&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 
+      &lt;span class=&quot;no&quot;&gt;ApiV1Filters&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;HomeTileFilterPolyline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;apply_home_tile_filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ds&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;activity_types&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 
+      &lt;span class=&quot;no&quot;&gt;ApiV1Filters&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;ActivityType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;identify_activity_type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;activity_type&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;filter_query&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;get_with_activity_type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;ds: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filter_query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;activity_types&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;polylines&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;filter_query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;all&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;polylines&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In the implementation, a user’s gps polylines only change after importing new data. Then, a new leaderboard is being calculated, which touches a user’s &lt;code class=&quot;highlighter-rouge&quot;&gt;updated_at&lt;/code&gt; attribute when finished, resulting in a changed SHA1 Hashing.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;cache_etag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;minified_user_data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;user_id: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                          &lt;span class=&quot;ss&quot;&gt;strava_user_id: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;strava_user_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                          &lt;span class=&quot;ss&quot;&gt;updated_at: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;updated_at&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  
+  &lt;span class=&quot;no&quot;&gt;Digest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;SHA1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;hexdigest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Oj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;dump&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;minified_user_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author></entry><entry><title type="html">Pascal Triangles in Ruby with Enumerator</title><link href="/2022/pascal-triangles-ruby/" rel="alternate" type="text/html" title="Pascal Triangles in Ruby with Enumerator" /><published>2022-07-08T00:00:00+00:00</published><updated>2022-07-08T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-07-08-pascal-triangles-ruby.md</id><content type="html" xml:base="/2022/pascal-triangles-ruby/">&lt;p&gt;Stumbled across &lt;a href=&quot;https://ruby-doc.org/core-3.1.2/Enumerator.html&quot;&gt;Enumerator&lt;/a&gt; and somebody had an example of &lt;a href=&quot;http://rosettacode.org/wiki/Pascal%27s_triangle&quot;&gt;Pascal Triangles&lt;/a&gt; …&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.everythingisaremix.info/&quot;&gt;Everything is a remix 🤷‍♂️&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;pascal&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;Enumerator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coll&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;kp&quot;&gt;loop&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coll&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;coll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;zip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;coll&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;triangles&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pascal&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;triangles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;take&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author></entry><entry><title type="html">Clojure kondo config for keyword overrides like promesa’s let macro</title><link href="/2022/clojure-kondo-lint-as/" rel="alternate" type="text/html" title="Clojure kondo config for keyword overrides like promesa&apos;s let macro" /><published>2022-07-05T00:00:00+00:00</published><updated>2022-07-05T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-07-05-clojure-kondo-lint-as.md</id><content type="html" xml:base="/2022/clojure-kondo-lint-as/">&lt;p&gt;I keep forgetting it, but once I blog it…&lt;/p&gt;
+
+&lt;p&gt;What is clj-kondo, you ask? It is:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A linter for Clojure code that sparks joy.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This is how you make kondo shut up about faulty &lt;code class=&quot;highlighter-rouge&quot;&gt;let&lt;/code&gt; declarations, in specific &lt;a href=&quot;https://github.com/babashka/nbb&quot;&gt;nbb&lt;/a&gt; and &lt;a href=&quot;https://github.com/funcool/promesa&quot;&gt;promesa&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;What is &lt;a href=&quot;https://github.com/funcool/promesa&quot;&gt;promesa&lt;/a&gt;? Glad you ask:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A lightweight promise/future library for Clojure &amp;amp; ClojureScript built on top of native primitives (js/Promise on JS, and &lt;code class=&quot;highlighter-rouge&quot;&gt;CompletableFuture&lt;/code&gt; on JVM).&lt;span&gt;https://github.com/funcool/promesa&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/clj-kondo/clj-kondo/blob/master/doc/config.md#lint-a-custom-macro-like-a-built-in-macro&quot;&gt;clj-kondo documentation&lt;/a&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;create a &lt;code class=&quot;highlighter-rouge&quot;&gt;config.edn&lt;/code&gt; in your projects &lt;code class=&quot;highlighter-rouge&quot;&gt;.clj-kondo&lt;/code&gt; directory&lt;/li&gt;
+  &lt;li&gt;set for key &lt;code class=&quot;highlighter-rouge&quot;&gt;:lint-as&lt;/code&gt; the following: &lt;code class=&quot;highlighter-rouge&quot;&gt;{promesa.core/let clojure.core/let}&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-clojure highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;;; ./clj-kondo/config.edn&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:lint-as&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+ &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;promesa.core/let&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;clojure.core/let&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;no more red squirly lines in your code 👏&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">track fellow developers using GitHub’s API and Clojure / babashka</title><link href="/2022/clojure-babashka/" rel="alternate" type="text/html" title="track fellow developers using GitHub&apos;s API and Clojure / babashka" /><published>2022-07-04T00:00:00+00:00</published><updated>2022-07-04T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-07-04-clojure-babashka.md</id><content type="html" xml:base="/2022/clojure-babashka/">&lt;p&gt;Let’s have parentheses for breakfast! Ever wondered who is coding what in your city and how to keep track of it, maybe grep projects by keyword? This is your tool!&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/simonneutert/git-hire&quot;&gt;git-hire 🔥 on GitHub&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;git-hire&quot;&gt;git-hire?&lt;/h3&gt;
+
+&lt;p&gt;git-hire is a &lt;a href=&quot;https://babashka.org&quot;&gt;babashka&lt;/a&gt; program, that downloads profiles from GitHub.&lt;/p&gt;
+
+&lt;p&gt;If you wonder what you can do with it, then check the examples for some inspiration and cool operations on the data 🚀&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">clojurescript for the brave! omg 😳</title><link href="/2022/clojurescript-madness/" rel="alternate" type="text/html" title="clojurescript for the brave! omg 😳" /><published>2022-06-03T00:00:00+00:00</published><updated>2022-06-03T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-06-03-clojurescript-madness.md</id><content type="html" xml:base="/2022/clojurescript-madness/">&lt;p&gt;tldr: &lt;a href=&quot;https://github.com/simonneutert/clojurescript-web-app-demo&quot;&gt;Code on GitHub&lt;/a&gt;&lt;br /&gt;
+I WANT MORE BRACKETS!&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;my-friends-say-i-went-mad&quot;&gt;My friends say, I went mad.&lt;/h4&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A JVM based LISP, that compiles JavaScript for the browser? 🤯&lt;br /&gt;
+You sure you’re alright?&lt;br /&gt;
+- the whole world except a few brave men and women out there&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;First and foremost, I am feeling fine, thank you very much.&lt;/p&gt;
+
+&lt;p&gt;To most JavaScript is nothing they would envy one for.&lt;br /&gt;
+Having the brackets surrounding code 🤯&lt;br /&gt;
+whoa, this needs to stop!&lt;/p&gt;
+
+&lt;h4 id=&quot;lisp&quot;&gt;LISP&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://imgs.xkcd.com/comics/lisp_cycles.png&quot; max-width=&quot;100%&quot; /&gt;&lt;br /&gt;
+&lt;a&gt;https://xkcd.com/297/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;javascript&quot;&gt;JavaScript&lt;/h4&gt;
+
+&lt;p&gt;And, as the whole web knows, you gotta know your way round types in JavaScript.&lt;br /&gt;
+The elephant in the room:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://imgs.xkcd.com/comics/types.png&quot; max-width=&quot;100%&quot; /&gt;&lt;br /&gt;
+&lt;a&gt;https://xkcd.com/1537&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;so-here-we-are-for-an-experiment-i-went-brackets-all-the-way-which-are-then-compiled-to-js-&quot;&gt;So here we are. For an experiment I went brackets all the way. Which are then compiled to JS 🥹&lt;/h4&gt;
+
+&lt;p&gt;Who would have guessed, it was both delightful and tough to do.&lt;/p&gt;
+
+&lt;p&gt;Clojure excels when it comes to logic, data mangling and ease of development. So this was true for most of what I did.&lt;/p&gt;
+
+&lt;p&gt;But what did I do exactly? Well, I wanted to see if I could setup an ugly one-page-app that would show events and lets me filter them.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;firing and receiving a http json request
+    &lt;ul&gt;
+      &lt;li&gt;json extraction&lt;/li&gt;
+      &lt;li&gt;process data, extract information&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;dynamic data binding / state management&lt;/li&gt;
+  &lt;li&gt;DOM creation/manipulation&lt;/li&gt;
+  &lt;li&gt;state management&lt;/li&gt;
+  &lt;li&gt;very basic Browser Event Management
+    &lt;ul&gt;
+      &lt;li&gt;user interaction&lt;/li&gt;
+      &lt;li&gt;filtering&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;parameterized build for dev/prod scenarios&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Was it worth it? Absolutely. The data is a real big chunk, so speed was crucial and well, without any optimization (memoization or a lookup table) it turned out usable.&lt;/p&gt;
+
+&lt;p&gt;Being all functional, a implemented a basic state engine utilizing clojure’s &lt;a href=&quot;https://clojuredocs.org/clojure.core/atom&quot;&gt;atom&lt;/a&gt;. This was nice. What wasn’t nice was the interactive JS part, but it gave me a nice little practise around event based programming and async promises. I skipped building a more sophisticated bus, it had hurt a little first, but it was absolutely worth it.&lt;/p&gt;
+
+&lt;p&gt;I made this little project the most simple way, with the least dependencies possible. Yet, almost everybody else in bracket-land seems to use &lt;a href=&quot;https://github.com/thheller/shadow-cljs&quot;&gt;shadow-cljs&lt;/a&gt; (&lt;a href=&quot;https://clojure.org/news/2022/06/02/state-of-clojure-2022&quot;&gt;Source&lt;/a&gt;)&lt;/p&gt;
+
+&lt;h3 id=&quot;code&quot;&gt;Code&lt;/h3&gt;
+
+&lt;p&gt;Go, check out the code. Yes there are brackets, you can grow past that fact, can’t you?&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/simonneutert/clojurescript-web-app-demo&quot;&gt;clojurescript-web-app-demo on GitHub&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Really simple low dependency telegram first aid tutor bot</title><link href="/2022/first-aid-guide/" rel="alternate" type="text/html" title="Really simple low dependency telegram first aid tutor bot" /><published>2022-05-28T00:00:00+00:00</published><updated>2022-05-28T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-05-28-first-aid-guide.md</id><content type="html" xml:base="/2022/first-aid-guide/">&lt;p&gt;My last first aid course was almost 20 years ago. It was about time to refresh how things roll 😅&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/simonneutert/first-aid-helper-telegram-bot&quot;&gt;Code is on GitHub&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;easy and clean yaml dict for multi language support&lt;/li&gt;
+  &lt;li&gt;low dependencies&lt;/li&gt;
+  &lt;li&gt;all in one file 🦆&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author></entry><entry><title type="html">I built a cycling heatmap webapp</title><link href="/2022/tiler/" rel="alternate" type="text/html" title="I built a cycling heatmap webapp" /><published>2022-05-18T00:00:00+00:00</published><updated>2022-05-18T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-05-18-tiler.md</id><content type="html" xml:base="/2022/tiler/">&lt;style&gt;
+figure {
+    border-top: 1px solid green;
+}
+figcaption {
+    padding-left: 1em;
+	margin-bottom: 3.5em;
+	border-bottom: 1px solid green;
+}
+&lt;/style&gt;
+
+&lt;p&gt;A friend and me are passionate cyclists and of course you can find us on &lt;a href=&quot;https://www.strava.com&quot;&gt;strava&lt;/a&gt;. But even better, both of us are passionate developers in our spare time. We decided to give stravas api a spin just for fun.&lt;/p&gt;
+
+&lt;p&gt;Having used VeloViewer to crunch our performance data even more, we thought we might be able to enhance our planning in VeloViewers “ride every tile” feature.&lt;/p&gt;
+
+&lt;p&gt;Alpha Prototype was done in Python. Which was then ported to JavaScript.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Extracting GPS Points into (Map)Tiles of different sizes&lt;/li&gt;
+  &lt;li&gt;Calculating the different scores, like clusters, max square and totals&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And soon after:&lt;/p&gt;
+
+&lt;figure&gt;
+&lt;img src=&quot;/assets/images/2022/tiler/1.png&quot; /&gt;
+&lt;figcaption&gt;☝️ Users can sign in with their Strava Account&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;A bit of tinkering here and there, we thought it was good enough to have the evening efforts wrapped in a product and share it with our friends.&lt;/p&gt;
+
+&lt;p&gt;So in the end, all code was poured into a NuxtJS frontend, backed by Ruby, namely Roda, Sequel, Rodauth and a Postgres Database.&lt;/p&gt;
+
+&lt;h2 id=&quot;feature-interactive-ride-map--ridden-tiles&quot;&gt;Feature: Interactive Ride Map / Ridden Tiles&lt;/h2&gt;
+
+&lt;figure&gt;
+&lt;img src=&quot;/assets/images/2022/tiler/2.png&quot; /&gt;
+&lt;figcaption&gt;
+  ☝️ &lt;i&gt;Displaying all rides as clickable paths on an interactive map (&lt;a&gt;leaflet.js&lt;/a&gt;)&lt;/i&gt;
+&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&quot;feature-time-component&quot;&gt;Feature: Time component&lt;/h2&gt;
+
+&lt;p&gt;we put a little more work in, giving us features like:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;have the data sliced by year&lt;/li&gt;
+  &lt;li&gt;nicer import from strava&lt;/li&gt;
+  &lt;li&gt;more api mappings&lt;/li&gt;
+  &lt;li&gt;nicer background jobs (though, I never was really proud of it 😬)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure&gt;
+&lt;img src=&quot;/assets/images/2022/tiler/3.png&quot; /&gt;
+&lt;figcaption&gt;
+   ☝️  &lt;i&gt;Renders the rides either of all time or per year&lt;/i&gt;
+&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&quot;feature-leaderboard&quot;&gt;Feature: Leaderboard&lt;/h2&gt;
+
+&lt;p&gt;of course our friends wanted to know, who got around the most 🚀&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;friends could permit to show their score&lt;/li&gt;
+  &lt;li&gt;friends could permit to let others view their tiles (without paths, to hide where they live)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure&gt;
+&lt;img src=&quot;/assets/images/2022/tiler/4.png&quot; /&gt;
+&lt;figcaption&gt;
+    ☝️ &lt;i&gt;Leaderboard&lt;/i&gt;
+&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&quot;feature-planner&quot;&gt;Feature: Planner&lt;/h2&gt;
+
+&lt;p&gt;In order to plan where you haven’t been, user were enabled to set points on a map. User were then able to export the .gpx file, allowing them to create a routing file (by mostly using komoot) - which would then be automagically synced to their gps bike computer (Wahoo/Garmin). This really is a thing, everybody owns one 😎&lt;/p&gt;
+
+&lt;figure&gt;
+&lt;img src=&quot;/assets/images/2022/tiler/5.png&quot; /&gt;
+&lt;figcaption&gt;
+    ☝️ &lt;i&gt;GPS Planner&lt;/i&gt;
+&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&quot;feature-check-your-current-position&quot;&gt;Feature: Check your current position&lt;/h2&gt;
+
+&lt;p&gt;At times there were tiles, which would be rather demanding. The Frankfurt Airport for example. So users wanted to make sure, their gps is picking signal and they would later have the tile being counted as visited.&lt;/p&gt;
+
+&lt;figure&gt;
+&lt;img src=&quot;/assets/images/2022/tiler/6_mobile.png&quot; width=&quot;40%&quot; /&gt;
+&lt;figcaption&gt;
+    ☝️ &lt;i&gt;tiler is &quot;mobile first&quot; where it needs to be, supporting gps locations&lt;/i&gt;
+&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&quot;technical-setup-may-2022&quot;&gt;Technical Setup May 2022&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Postgres&lt;/strong&gt; runs on bare metal, being limited to localhost.&lt;/p&gt;
+
+&lt;p&gt;All other &lt;strong&gt;web related apps&lt;/strong&gt; were dockered (easy scaling) and their &lt;em&gt;traffic was proxied through&lt;/em&gt; &lt;strong&gt;traefik&lt;/strong&gt;, enabling SSL encryption by &lt;strong&gt;letsencrypt&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Additional &lt;strong&gt;services and background jobs&lt;/strong&gt; were setup using &lt;strong&gt;Rake&lt;/strong&gt; and would be restarted by docker policy &lt;em&gt;restart unless-stopped&lt;/em&gt; once they finished/terminated.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Logging via docker 😅&lt;/strong&gt; was enough to debug what was coming.&lt;/p&gt;
+
+&lt;p&gt;A staging environment on &lt;strong&gt;netcup&lt;/strong&gt;s cheapest VPS was good enough for debugging what didn’t reveal itself in development.&lt;/p&gt;
+
+&lt;p&gt;Calculating tile scores and leaderboard scores is done in a NodeJS &lt;strong&gt;fastify&lt;/strong&gt; api backend, which isn’t exposed to the web, just the ruby backend.&lt;/p&gt;
+
+&lt;figure&gt;
+&lt;img src=&quot;/assets/images/2022/tiler/tiler_architecture.png&quot; width=&quot;100%&quot; /&gt;
+&lt;figcaption&gt;
+    ☝️ &lt;i&gt;simplified architecture overview&lt;/i&gt;
+&lt;/figcaption&gt;
+&lt;/figure&gt;</content><author><name></name></author></entry><entry><title type="html">download a pdf as blob and show it to the user in ionic (vue)</title><link href="/2022/ionic-pdf-blob-display-pdf/" rel="alternate" type="text/html" title="download a pdf as blob and show it to the user in ionic (vue)" /><published>2022-05-17T00:00:00+00:00</published><updated>2022-05-17T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-05-17-ionic-pdf-blob-display-pdf.md</id><content type="html" xml:base="/2022/ionic-pdf-blob-display-pdf/">&lt;p&gt;Ionic Vue and Cordova and Capacitor and the framework you ended to pick for the frontend can be pretty overwhelming to google…&lt;/p&gt;
+
+&lt;p&gt;Here’s how I managed to download a pdf as a blob and show it to the user.&lt;/p&gt;
+
+&lt;h3 id=&quot;dependencies&quot;&gt;Dependencies&lt;/h3&gt;
+
+&lt;p&gt;begin by adding the following dependencies to your ionic project&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;https://ionicframework.com/docs/native/file-opener&lt;/li&gt;
+  &lt;li&gt;https://capacitorjs.com/docs/apis/filesystem&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;library-code&quot;&gt;Library Code&lt;/h3&gt;
+
+&lt;p&gt;here’s what you need as a scaffold to manage blob handling&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// lib file managing blob to write to open&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Filesystem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Directory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Encoding&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;@capacitor/filesystem&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;blobToBase64&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;entry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;reader&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;FileReader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;reader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;readAsDataURL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;entry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;reader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;openPdfFile&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;Filesystem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getUri&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;directory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Directory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Cache&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getUriResult&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getUriResult&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;uri&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cordova&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;plugins&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fileOpener2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`File &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; written to &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;writeTempFileThenOpenPdf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;base64data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;Filesystem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;writeFile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;base64data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;directory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Directory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Cache&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;writeFileResult&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;openPdfFile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;`File &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; written`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;convertBlobThenOpenPdf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;entry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;filename&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;filename.pdf&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;reader&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;blobToBase64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;entry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;reader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onloadend&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;base64data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;reader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;writeTempFileThenOpenPdf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;base64data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;use-in-your-components-taken-from-a-vue-composition-api-in-this-case&quot;&gt;Use in your Components (taken from a Vue Composition API in this case)&lt;/h3&gt;
+
+&lt;p&gt;in your component you should add two methods, covering the platforms web (for debugging) and app platforms&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// for the web platform&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;showPDFFile&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;api&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ApiV1PDFFileService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;api&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;download&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createObjectURL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Blob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]));&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;link&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;link&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;href&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;link&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setAttribute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;download&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;file.pdf&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;appendChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;link&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;link&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;downloadPDFFile&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isPlatform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;desktop&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;isPlatform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;mobileweb&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;showPDFFile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;cm&quot;&gt;/*
+   * // PEAKING INTO ApiV1PDFFileService
+   * //
+   * return this.axios.get(&quot;/downloads/pdf/demo&quot;, {
+   *    responseType: &quot;blob&quot;, // important for download
+   *    headers: {
+   *      Authorization: &quot;Bearer &quot; + token,
+   *     },
+   * });
+   */&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;api&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ApiV1PDFFileService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;api&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;download&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;entry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;convertBlobThenOpenPdf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;entry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;get in touch if you struggle 🍻&lt;/p&gt;</content><author><name></name></author></entry></feed>
