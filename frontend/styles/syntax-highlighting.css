@@ -15,6 +15,7 @@
 pre.highlight {
   padding: 16px;
   background-color: #F6F8FA;
+  overflow-x: scroll;
 }
 
 .highlight .hll { background-color: #ffffcc }

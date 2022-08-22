@@ -1,4 +1,10 @@
 <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
   <h6>Imprint</h6>
   <p>
     <strong>Simon Neutert</strong><br />
