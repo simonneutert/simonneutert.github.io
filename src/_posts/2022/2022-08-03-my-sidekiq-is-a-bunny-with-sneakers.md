@@ -3,10 +3,12 @@ title: My Sidekiq may be a bunny with sneakers
 layout: post
 ---
 
-[Ruby-on-Rails](https://rubyonrails.org) and [Sidekiq](https://sidekiq.org).  
-[Roda](https://roda.jeremyevans.net) and a "[Bunny](http://rubybunny.info) with [Sneakers](https://github.com/jondot/sneakers)"?
+I overheard a conversation at the station:  
+"[Rails](https://rubyonrails.org), Redis and [Sidekiq](https://sidekiq.org) - every kid knows: they mean business! 😎"  
+"Yeah, but I'll go with the _Magic [Bunny](http://rubybunny.info) with [Sneakers](https://github.com/jondot/sneakers)_, cheers!"
 
-What got me thinking and in an experimental mood was [Stanko.io - RabbitMQ is more than a Sidekiq Replacement](https://stanko.io/rabbitmq-is-more-than-a-sidekiq-replacement-b730d8176fb). And I highly encourage you to at least look at the nice gifs the author made to clear things up.
+
+Just kidding 😅 What got me thinking and in an experimental mood was [Stanko.io - RabbitMQ is more than a Sidekiq Replacement](https://stanko.io/rabbitmq-is-more-than-a-sidekiq-replacement-b730d8176fb). And I highly encourage you to at least look at the nice gifs the author made to clear things up.
 
 Let's build on this quote:
 
@@ -171,8 +173,6 @@ ensure
 end
 ```
 
-Wow, that was easy and somehow just as mindblowing as finishing this ⚗️ [Elixir tutorial](https://howistart.org/posts/elixir/1/)!
+Now I need to do a little more digging what RabbitMQ really is and how the Admin UI can help me wrap my head around.
 
-### But ... you know, Clojure ... like ... Rich said ([Source](https://clojure.org/about/state#actors)):
-
-> It reduces your flexibility in modeling - this is a world in which everyone sits in a windowless room and communicates only by mail. Programs are decomposed as piles of blocking switch statements. You can only handle messages you anticipated receiving. Coordinating activities involving multiple actors is very difficult. You can’t observe anything without its cooperation/coordination - making ad-hoc reporting or analysis impossible, instead forcing every actor to participate in each protocol.<br /><span>Rich Hickey</span>
+## 🚀
