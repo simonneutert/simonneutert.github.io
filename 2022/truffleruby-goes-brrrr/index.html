@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>TruffleRuby goes brrrr 🥳 | Simon Neutert Website</title>
+
+<meta name="description" content="My name is Simon. I really enjoy coding and so far, I just cannot get enough of it. Other than that, I enjoy cycling and nice food 🤤" />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.6W5VAN3D.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.TW3DMD3D.js" data-turbo-track="reload" defer></script>
+
+
+  </head>
+  <body class="post ">
+    <header>
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <!-- <li><a href="/about">About</a></li> -->
+    <li><a href="/posts">Blog</a></li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<h1>TruffleRuby goes brrrr 🥳</h1>
+
+<p>My super unscientific lab has fresh results in …</p>
+
+<p>After releasing <a href="https://github.com/simonneutert/Joda">Joda 🖖</a> (Roda + JRuby), I dabbled a little more …</p>
+
+<p>And tada 🥁</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">threads</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="mi">10</span><span class="p">.</span><span class="nf">times</span> <span class="k">do</span>
+  <span class="n">threads</span> <span class="o">&lt;&lt;</span> <span class="no">Thread</span><span class="p">.</span><span class="nf">new</span> <span class="k">do</span>
+    <span class="mi">10_000</span><span class="p">.</span><span class="nf">times</span> <span class="k">do</span>
+      <span class="p">(</span><span class="mi">1</span><span class="o">..</span><span class="mi">1_000</span><span class="p">).</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">10</span> <span class="p">}</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="nb">p</span> <span class="n">threads</span><span class="p">.</span><span class="nf">each</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:join</span><span class="p">).</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:value</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">$ ruby main.rb</code></p>
+
+<ul>
+  <li>MRI</li>
+</ul>
+
+<p><code class="highlighter-rouge">4,26s user 0,17s system 99% cpu 4,436 total</code></p>
+
+<ul>
+  <li>JRuby 9.3.6.0 (cold start)</li>
+</ul>
+
+<p><code class="highlighter-rouge">7,43s user 0,87s system 463% cpu 1,794 total</code></p>
+
+<ul>
+  <li>Truffleruby 22.2.0</li>
+</ul>
+
+<p><code class="highlighter-rouge">0,97s user 0,11s system 431% cpu 0,250 total</code></p>
+
+
+<hr />
+
+
+<a href="/2022/my-sidekiq-is-a-bunny-with-sneakers/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+    </main>
+
+    <footer>
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Südring 311, 55128 Mainz, Germany
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>
