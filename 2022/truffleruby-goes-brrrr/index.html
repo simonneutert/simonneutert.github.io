@@ -56,25 +56,30 @@
 <span class="nb">p</span> <span class="n">threads</span><span class="p">.</span><span class="nf">each</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:join</span><span class="p">).</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:value</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">$ ruby main.rb</code></p>
+<p>shooting <code class="highlighter-rouge">$ ruby main.rb</code></p>
 
-<ul>
-  <li>MRI</li>
-</ul>
-
-<p><code class="highlighter-rouge">4,26s user 0,17s system 99% cpu 4,436 total</code></p>
-
-<ul>
-  <li>JRuby 9.3.6.0 (cold start)</li>
-</ul>
-
-<p><code class="highlighter-rouge">7,43s user 0,87s system 463% cpu 1,794 total</code></p>
-
-<ul>
-  <li>Truffleruby 22.2.0</li>
-</ul>
-
-<p><code class="highlighter-rouge">0,97s user 0,11s system 431% cpu 0,250 total</code></p>
+<table>
+  <thead>
+    <tr>
+      <th>Version</th>
+      <th>Measurement</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>MRI</td>
+      <td><code class="highlighter-rouge">4,26s user 0,17s system 99% cpu 4,436 total</code></td>
+    </tr>
+    <tr>
+      <td>JRuby 9.3.6.0 (cold start)</td>
+      <td><code class="highlighter-rouge">7,43s user 0,87s system 463% cpu 1,794 total</code></td>
+    </tr>
+    <tr>
+      <td>Truffleruby 22.2.0</td>
+      <td><code class="highlighter-rouge">0,97s user 0,11s system 431% cpu 0,250 total</code></td>
+    </tr>
+  </tbody>
+</table>
 
 
 <hr />
