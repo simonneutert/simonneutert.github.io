@@ -13,7 +13,7 @@ Ever wondered how to send multiple http requests using multiple processes with E
 
 ``` elixir
 defmodule Looter do
-  def grabber(urls \\ ["http://www.simon-neutert.de", "http://www.trojanischeresel.de", "http://www.trojanischeresel.de/blog"]) do
+  def grabber(urls \\ ["http://www.simon-neutert.de", "http://www.simon-neutert.de/posts"]) do
     Enum.map(urls, fn(url) -> Task.async(fn -> Looter.digger(url) end) end)
     |> Enum.map(fn(task) -> Task.await(task, 145000) end) # 145000 == Timeout in milliseconds
   end
