@@ -54,6 +54,7 @@
 <span class="no">DB</span> <span class="o">=</span> <span class="no">Sequel</span><span class="p">.</span><span class="nf">connect</span><span class="p">(</span><span class="n">db_connection</span><span class="p">)</span>
 
 <span class="k">begin</span>
+  <span class="c1"># doing it once is enough 🤭</span>
   <span class="no">DB</span><span class="p">.</span><span class="nf">create_table</span> <span class="ss">:items</span> <span class="k">do</span>
     <span class="n">primary_key</span> <span class="ss">:id</span>
     <span class="no">String</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">unique: </span><span class="kp">true</span><span class="p">,</span> <span class="ss">null: </span><span class="kp">false</span>
