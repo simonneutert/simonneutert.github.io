@@ -1,20 +1,16 @@
 ---
-published: false
 title: Manage Postgres Materialized Views with sequel 🚀
 layout: post
 ---
 
 Rails/ActiveRecord needs something like [Scenic](https://github.com/scenic-views/scenic).
 
-Save the following files, then `bundle install` and
-
-`$ pry -I . -r main.rb`
-
-and try with what you have 🥳  
-(it's `DB`, the Sequel Docs, the methods around `..._materialized_view`)
+Save the following code to files in a directory:
 
 ```ruby
+# filename:
 # main.rb
+
 require 'rubygems'
 require 'bundler'
 Bundler.require
@@ -33,13 +29,16 @@ begin
     index [:active]
   end
 rescue StandardError => e
+  puts "READ THIS ☟"
   puts e
 end
 
 class Item < Sequel::Model
+  # more on models in sequel:
   # https://sequel.jeremyevans.net/rdoc/files/doc/object_model_rdoc.html#label-Sequel-3A-3AModel
 end
 
+# uses timestamps plugin
 # http://sequel.jeremyevans.net/rdoc-plugins/classes/Sequel/Plugins/Timestamps.html
 Item.plugin :timestamps, update_on_create: true
 
@@ -67,7 +66,9 @@ end
 Here's your `Gemfile`:
 
 ```ruby
+# filename:
 # Gemfile
+
 source 'https://rubygems.org'
 
 gem 'sequel_pg', '~> 1.15', require: 'sequel'
@@ -80,6 +81,18 @@ group :development do
 end
 ```
 
+## Howto
+
+Save the given files, then `bundle install` and
+
+`$ pry -I . -r main.rb`
+
+and try with what you have 🥳  
+(it's `DB`, the Sequel Docs, the methods around `..._materialized_view`)
+
+🤫 you need to have Postgres running!  
+With a Database called `mat_view_local_test` 🤫
+
 ### Problems installing pg related stuff on a Mac?
 
 Use [Postgres.app](https://postgresapp.com) and then:
@@ -88,4 +101,5 @@ Use [Postgres.app](https://postgresapp.com) and then:
 
 `$ gem install sequel_pg -v '1.15.0' -- --with-pg-dir=/Applications/Postgres.app/Contents/Versions/latest/`
 
-Replace the versions with what you need. `$ bundle install` AGAIN!
+‼️ Edit the path with something that makes sense on your machine, then:  
+`$ bundle install` AGAIN!
