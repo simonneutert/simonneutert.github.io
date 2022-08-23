@@ -19,6 +19,7 @@ db_connection = 'postgres://postgres:postgres@localhost/mat_view_local_test'
 DB = Sequel.connect(db_connection)
 
 begin
+  # doing it once is enough 🤭
   DB.create_table :items do
     primary_key :id
     String :name, unique: true, null: false
