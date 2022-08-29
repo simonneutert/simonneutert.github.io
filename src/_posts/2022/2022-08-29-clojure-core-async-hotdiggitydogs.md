@@ -5,7 +5,7 @@ title: Clojures core.async Hot Diggity Dogs
 
 read [Clojure for the Brave and True - Chapter about "core.async"](https://www.braveclojure.com/core-async/) with detailed behind the scenes content, or ...
 
-fire up a repl and experminent with the given Clojure code yourself - but then read the article
+fire up a repl and experiment with the given Clojure code pieces yourself - but then read the article!
 
 ```clojure
 (ns example.core
