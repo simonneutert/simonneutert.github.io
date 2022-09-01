@@ -39,10 +39,10 @@ Get in touch with me via [Linkedin](https://www.linkedin.com/in/simon-neutert/)!
   <li><span data-weight="6">HTML</span></li>
   <li><span data-weight="5">Sass</span></li>
   <li><span data-weight="7">Rails</span></li>
-  <li><span data-weight="4">Interactive Maps</span></li>
   <li><span data-weight="6">Clojure</span></li>
   <li><span data-weight="7">JavaScript</span></li>
   <li><span data-weight="9">API</span></li>
+  <li><span data-weight="4">Interactive Maps</span></li>
   <li><span data-weight="7">Docker</span></li>
   <li><span data-weight="3">SSH</span></li>
   <li><span data-weight="1">Python</span></li>
