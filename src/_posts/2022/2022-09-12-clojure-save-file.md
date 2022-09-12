@@ -1,5 +1,5 @@
 ---
-title: Save a file from web using clojure/babashka
+title: Save a file from web using clojure / babashka
 layout: post
 ---
 
@@ -24,6 +24,7 @@ do it in plain Clojure:
             (str "airquality-" date-str ".png"))))
 ```
 
-> use pmap to leech concurrently 🤓
+#### use pmap to leech concurrently 🤓
 
-for more web-hackiness you can pipe/chain: httpie, jq, htmlq, bb, awk
+> for more web-hackiness you can pipe/chain:  
+> httpie, jq, htmlq, bb, awk
