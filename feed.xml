@@ -1,4 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.1.0">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-08-30T18:59:18+00:00</updated><id>/feed.xml</id><title type="html">Simon Neutert Website</title><subtitle>My name is Simon. I really enjoy coding and so far, I just cannot get enough of it. Other than that, I enjoy cycling and nice food 🤤</subtitle><entry><title type="html">Draw a grid on your leaflet map</title><link href="/2022/leaflet-draw-grid/" rel="alternate" type="text/html" title="Draw a grid on your leaflet map" /><published>2022-08-30T00:00:00+00:00</published><updated>2022-08-30T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-08-30-leaflet-draw-grid.md</id><content type="html" xml:base="/2022/leaflet-draw-grid/">&lt;p&gt;What3Words didn&amp;#8217;t invent the wheel, but they sure put in the computation power and infrastructure to build a unique product.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.1.0">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-09-12T17:43:13+00:00</updated><id>/feed.xml</id><title type="html">Simon Neutert Website</title><subtitle>My name is Simon. I really enjoy coding and so far, I just cannot get enough of it. Other than that, I enjoy cycling and nice food 🤤</subtitle><entry><title type="html">Save a file from web using clojure/babashka</title><link href="/2022/clojure-save-file/" rel="alternate" type="text/html" title="Save a file from web using clojure/babashka" /><published>2022-09-12T00:00:00+00:00</published><updated>2022-09-12T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-09-12-clojure-save-file.md</id><content type="html" xml:base="/2022/clojure-save-file/">&lt;p&gt;babashka scripting is the way to go:&lt;/p&gt;
+
+&lt;div class=&quot;language-clojure highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;io/copy&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:body&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;curl/get&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://your-URL.test&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:as&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:stream&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;io/file&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;icon.png&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;do it in plain Clojure:&lt;/p&gt;
+
+&lt;div class=&quot;language-clojure highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;import&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;java.time.format&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DateTimeFormatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;java.time&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LocalDateTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;date-str&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.format&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;DateTimeFormatter/ofPattern&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;yyyy-MM-dd&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;LocalDateTime/now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;io/copy&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:body&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;curl/get&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;*input*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:as&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:bytes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;io/file&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+            &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;airquality-&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;date-str&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;.png&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;use pmap to leech concurrently 🤓&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;for more web-hackiness you can pipe/chain: httpie, jq, htmlq, bb, awk&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Draw a grid on your leaflet map</title><link href="/2022/leaflet-draw-grid/" rel="alternate" type="text/html" title="Draw a grid on your leaflet map" /><published>2022-08-30T00:00:00+00:00</published><updated>2022-08-30T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-08-30-leaflet-draw-grid.md</id><content type="html" xml:base="/2022/leaflet-draw-grid/">&lt;p&gt;What3Words didn&amp;#8217;t invent the wheel, but they sure put in the computation power and infrastructure to build a unique product.&lt;/p&gt;
 
 &lt;p&gt;The magic words google needs to hear, are: &lt;a href=&quot;https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames&quot;&gt;slippy map tilenames&lt;/a&gt;.&lt;/p&gt;
 
@@ -544,73 +567,4 @@ With a Database called &lt;code class=&quot;highlighter-rouge&quot;&gt;mat_view_
 
 &lt;p&gt;git-hire is a &lt;a href=&quot;https://babashka.org&quot;&gt;babashka&lt;/a&gt; program, that downloads profiles from GitHub.&lt;/p&gt;
 
-&lt;p&gt;If you wonder what you can do with it, then check the examples for some inspiration and cool operations on the data 🚀&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">clojurescript for the brave! omg 😳</title><link href="/2022/clojurescript-madness/" rel="alternate" type="text/html" title="clojurescript for the brave! omg 😳" /><published>2022-06-03T00:00:00+00:00</published><updated>2022-06-03T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-06-03-clojurescript-madness.md</id><content type="html" xml:base="/2022/clojurescript-madness/">&lt;p&gt;tldr: &lt;a href=&quot;https://github.com/simonneutert/clojurescript-web-app-demo&quot;&gt;Code on GitHub&lt;/a&gt;&lt;br /&gt;
-I WANT MORE BRACKETS!&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h4 id=&quot;my-friends-say-i-went-mad&quot;&gt;My friends say, I went mad.&lt;/h4&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;A JVM based LISP, that compiles JavaScript for the browser? 🤯&lt;br /&gt;
-You sure you’re alright?&lt;br /&gt;
-- the whole world except a few brave men and women out there&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;First and foremost, I am feeling fine, thank you very much.&lt;/p&gt;
-
-&lt;p&gt;To most JavaScript is nothing they would envy one for.&lt;br /&gt;
-Having the brackets surrounding code 🤯&lt;br /&gt;
-whoa, this needs to stop!&lt;/p&gt;
-
-&lt;h4 id=&quot;lisp&quot;&gt;LISP&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://imgs.xkcd.com/comics/lisp_cycles.png&quot; max-width=&quot;100%&quot; /&gt;&lt;br /&gt;
-&lt;a&gt;https://xkcd.com/297/&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;javascript&quot;&gt;JavaScript&lt;/h4&gt;
-
-&lt;p&gt;And, as the whole web knows, you gotta know your way round types in JavaScript.&lt;br /&gt;
-The elephant in the room:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://imgs.xkcd.com/comics/types.png&quot; max-width=&quot;100%&quot; /&gt;&lt;br /&gt;
-&lt;a&gt;https://xkcd.com/1537&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;so-here-we-are-for-an-experiment-i-went-brackets-all-the-way-which-are-then-compiled-to-js-&quot;&gt;So here we are. For an experiment I went brackets all the way. Which are then compiled to JS 🥹&lt;/h4&gt;
-
-&lt;p&gt;Who would have guessed, it was both delightful and tough to do.&lt;/p&gt;
-
-&lt;p&gt;Clojure excels when it comes to logic, data mangling and ease of development. So this was true for most of what I did.&lt;/p&gt;
-
-&lt;p&gt;But what did I do exactly? Well, I wanted to see if I could setup an ugly one-page-app that would show events and lets me filter them.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;firing and receiving a http json request
-    &lt;ul&gt;
-      &lt;li&gt;json extraction&lt;/li&gt;
-      &lt;li&gt;process data, extract information&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;dynamic data binding / state management&lt;/li&gt;
-  &lt;li&gt;DOM creation/manipulation&lt;/li&gt;
-  &lt;li&gt;state management&lt;/li&gt;
-  &lt;li&gt;very basic Browser Event Management
-    &lt;ul&gt;
-      &lt;li&gt;user interaction&lt;/li&gt;
-      &lt;li&gt;filtering&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;parameterized build for dev/prod scenarios&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Was it worth it? Absolutely. The data is a real big chunk, so speed was crucial and well, without any optimization (memoization or a lookup table) it turned out usable.&lt;/p&gt;
-
-&lt;p&gt;Being all functional, a implemented a basic state engine utilizing clojure’s &lt;a href=&quot;https://clojuredocs.org/clojure.core/atom&quot;&gt;atom&lt;/a&gt;. This was nice. What wasn’t nice was the interactive JS part, but it gave me a nice little practise around event based programming and async promises. I skipped building a more sophisticated bus, it had hurt a little first, but it was absolutely worth it.&lt;/p&gt;
-
-&lt;p&gt;I made this little project the most simple way, with the least dependencies possible. Yet, almost everybody else in bracket-land seems to use &lt;a href=&quot;https://github.com/thheller/shadow-cljs&quot;&gt;shadow-cljs&lt;/a&gt; (&lt;a href=&quot;https://clojure.org/news/2022/06/02/state-of-clojure-2022&quot;&gt;Source&lt;/a&gt;)&lt;/p&gt;
-
-&lt;h3 id=&quot;code&quot;&gt;Code&lt;/h3&gt;
-
-&lt;p&gt;Go, check out the code. Yes there are brackets, you can grow past that fact, can’t you?&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/simonneutert/clojurescript-web-app-demo&quot;&gt;clojurescript-web-app-demo on GitHub&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author></entry></feed>
+&lt;p&gt;If you wonder what you can do with it, then check the examples for some inspiration and cool operations on the data 🚀&lt;/p&gt;</content><author><name></name></author></entry></feed>
