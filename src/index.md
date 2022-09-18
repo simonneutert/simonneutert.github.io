@@ -49,7 +49,11 @@ Get in touch with me via [Linkedin](https://www.linkedin.com/in/simon-neutert/)!
 </ul>
 </div>
 
-## Latest posts
+## I blog from time to time
+
+mostly about code I created, or things that should never slow me down no more  
+(I am pointing at you, pg gem on mac!)
+#### Latest posts
 
 <ul>
   {% collections.posts.resources.take(10).each do |post| %}
