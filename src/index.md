@@ -23,6 +23,22 @@ On [flickr](https://www.flickr.com/photos/simonneutert/) you will find my photo 
 Get in touch with me via [Linkedin](https://www.linkedin.com/in/simon-neutert/)! 🍻
 {:style="text-align:center"}
 
+## I blog from time to time
+
+mostly about code I wrote, sometimes pet projects or about things that should never slow me down no more. That's right, I am pointing at you, pg gem on Mac!
+
+#### Latest posts
+
+<ul>
+  {% collections.posts.resources.take(10).each do |post| %}
+    <li>
+      <span style="font-family: monospace">{{post.data.date.to_date}}</span> <a href="{{ post.relative_url }}">
+        {{ post.data.title }}
+      </a>
+    </li>
+  {% end %}
+</ul>
+
 ---
 
 ## WORDCLOUD! Buzzwords!
@@ -48,19 +64,3 @@ Get in touch with me via [Linkedin](https://www.linkedin.com/in/simon-neutert/)!
   <li><span data-weight="1">Python</span></li>
 </ul>
 </div>
-
-## I blog from time to time
-
-mostly about code I created, or things that should never slow me down no more  
-(I am pointing at you, pg gem on mac!)
-#### Latest posts
-
-<ul>
-  {% collections.posts.resources.take(10).each do |post| %}
-    <li>
-      <span style="font-family: monospace">{{post.data.date.to_date}}</span> <a href="{{ post.relative_url }}">
-        {{ post.data.title }}
-      </a>
-    </li>
-  {% end %}
-</ul>

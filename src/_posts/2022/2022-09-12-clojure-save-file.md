@@ -1,5 +1,5 @@
 ---
-title: Save a file from web using clojure / babashka
+title: Save a file (like png or jpg) from web using clojure / babashka
 layout: post
 ---
 
@@ -12,7 +12,7 @@ babashka scripting is the way to go:
   (io/file "icon.png"))
 ```
 
-do it in plain Clojure:
+or do it in Clojure, named with current date:
 
 ```clojure
 (import '(java.time.format DateTimeFormatter) '(java.time LocalDateTime)) 
@@ -21,7 +21,7 @@ do it in plain Clojure:
     (io/copy
         (:body (curl/get (str *input*) {:as :bytes}))
         (io/file 
-            (str "airquality-" date-str ".png"))))
+            (str "date-" date-str ".png"))))
 ```
 
 #### use pmap to leech concurrently 🤓
