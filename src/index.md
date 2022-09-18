@@ -12,6 +12,7 @@ What I'm currenty coding on is uploaded on [GitHub](https://github.com/simonneut
 sometimes [blog](/posts) about what made me smile/stumble/humble/moan.
 {:style="text-align:center"}
 
+My passion is Ruby, yet I enjoy exploring what other languages bring to the table.  
 I (con(j))currently explore the [land of LISP/parentheses](https://www.youtube.com/watch?v=HM1Zb3xmvMc&t=64s) 🥰
 {:style="text-align:center"}
 
