@@ -6,8 +6,6 @@ layout: default
 
 <h1 class="rotate">👋 Hi, I'm Simon! <img src="https://www.gravatar.com/avatar/9ee19244c2d149385a7f1ca3a4844b6c?s=100" style="border-radius:5px" /></h1>
 
-
-
 What I'm currenty coding on is uploaded on [GitHub](https://github.com/simonneutert) and  
 sometimes [blog](/posts) about what made me smile/stumble/humble/moan.
 {:style="text-align:center"}
@@ -28,6 +26,7 @@ Get in touch with me via [Linkedin](https://www.linkedin.com/in/simon-neutert/)!
 ---
 
 ## WORDCLOUD! Buzzwords!
+
 {:style="text-align:center; transform: rotate(2.5deg)"}
 
 <div class="cloud-wrap">
