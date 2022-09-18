@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 
-<title>Save a file from web using clojure / babashka | Simon Neutert Website</title>
+<title>Save a file (like png or jpg) from web using clojure / babashka | Simon Neutert Website</title>
 
 <meta name="description" content="My name is Simon. I really enjoy coding and so far, I just cannot get enough of it. Other than that, I enjoy cycling and nice food 🤤" />
 
@@ -37,7 +37,7 @@
 
 <hr />
 
-<h1>Save a file from web using clojure / babashka</h1>
+<h1>Save a file (like png or jpg) from web using clojure / babashka</h1>
 
 <p>babashka scripting is the way to go:</p>
 
@@ -47,7 +47,7 @@
   </span><span class="p">(</span><span class="nf">io/file</span><span class="w"> </span><span class="s">"icon.png"</span><span class="p">))</span><span class="w">
 </span></code></pre></div></div>
 
-<p>do it in plain Clojure:</p>
+<p>or do it in Clojure, named with current date:</p>
 
 <div class="language-clojure highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nb">import</span><span class="w"> </span><span class="o">'</span><span class="p">(</span><span class="nf">java.time.format</span><span class="w"> </span><span class="n">DateTimeFormatter</span><span class="p">)</span><span class="w"> </span><span class="o">'</span><span class="p">(</span><span class="nf">java.time</span><span class="w"> </span><span class="n">LocalDateTime</span><span class="p">))</span><span class="w"> 
 
@@ -55,7 +55,7 @@
     </span><span class="p">(</span><span class="nf">io/copy</span><span class="w">
         </span><span class="p">(</span><span class="no">:body</span><span class="w"> </span><span class="p">(</span><span class="nf">curl/get</span><span class="w"> </span><span class="p">(</span><span class="nb">str</span><span class="w"> </span><span class="n">*input*</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="no">:as</span><span class="w"> </span><span class="no">:bytes</span><span class="p">}))</span><span class="w">
         </span><span class="p">(</span><span class="nf">io/file</span><span class="w"> 
-            </span><span class="p">(</span><span class="nb">str</span><span class="w"> </span><span class="s">"airquality-"</span><span class="w"> </span><span class="n">date-str</span><span class="w"> </span><span class="s">".png"</span><span class="p">))))</span><span class="w">
+            </span><span class="p">(</span><span class="nb">str</span><span class="w"> </span><span class="s">"date-"</span><span class="w"> </span><span class="n">date-str</span><span class="w"> </span><span class="s">".png"</span><span class="p">))))</span><span class="w">
 </span></code></pre></div></div>
 
 <h4 id="use-pmap-to-leech-concurrently-">use pmap to leech concurrently 🤓</h4>
