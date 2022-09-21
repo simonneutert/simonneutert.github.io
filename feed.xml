@@ -1,4 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.1.0">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-09-18T09:17:43+00:00</updated><id>/feed.xml</id><title type="html">Simon Neutert Website</title><subtitle>My name is Simon. I really enjoy coding and so far, I just cannot get enough of it. Other than that, I enjoy cycling and nice food 🤤</subtitle><entry><title type="html">Save a file (like png or jpg) from web using clojure / babashka</title><link href="/2022/clojure-save-file/" rel="alternate" type="text/html" title="Save a file (like png or jpg) from web using clojure / babashka" /><published>2022-09-12T00:00:00+00:00</published><updated>2022-09-12T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-09-12-clojure-save-file.md</id><content type="html" xml:base="/2022/clojure-save-file/">&lt;p&gt;babashka scripting is the way to go:&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.1.0">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-09-21T07:30:40+00:00</updated><id>/feed.xml</id><title type="html">Simon Neutert Website</title><subtitle>My name is Simon. I really enjoy coding and so far, I just cannot get enough of it. Other than that, I enjoy cycling and nice food 🤤</subtitle><entry><title type="html">Clojure Error on REPL start: Failed to load class “org.slf4j.impl.StaticLoggerBinder”</title><link href="/2022/clojure-neo4j-error/" rel="alternate" type="text/html" title="Clojure Error on REPL start: Failed to load class &quot;org.slf4j.impl.StaticLoggerBinder&quot;" /><published>2022-09-21T00:00:00+00:00</published><updated>2022-09-21T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-09-21-clojure-neo4j-error.md</id><content type="html" xml:base="/2022/clojure-neo4j-error/">&lt;p&gt;Here are the bits, as I am very tired of regoogling it all the time 😅&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Failed to load class “org.slf4j.impl.StaticLoggerBinder”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;What brought me to what exactly to add on Slack:&lt;br /&gt;
+https://clojurians-log.clojureverse.org/clojure/2016-10-23&lt;/p&gt;
+
+&lt;p&gt;On Maven:&lt;br /&gt;
+https://mvnrepository.com/artifact/org.slf4j/slf4j-simple&lt;/p&gt;
+
+&lt;p&gt;This is what your &lt;code class=&quot;highlighter-rouge&quot;&gt;deps.edn&lt;/code&gt; could look like, making the error disappear!&lt;/p&gt;
+
+&lt;div class=&quot;language-clojure highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:deps&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;org.slf4j/slf4j-simple&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:mvn/version&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1.7.36&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author></entry><entry><title type="html">Save a file (like png or jpg) from web using clojure / babashka</title><link href="/2022/clojure-save-file/" rel="alternate" type="text/html" title="Save a file (like png or jpg) from web using clojure / babashka" /><published>2022-09-12T00:00:00+00:00</published><updated>2022-09-12T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-09-12-clojure-save-file.md</id><content type="html" xml:base="/2022/clojure-save-file/">&lt;p&gt;babashka scripting is the way to go:&lt;/p&gt;
 
 &lt;div class=&quot;language-clojure highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;io/copy&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
   &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:body&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;curl/get&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://your-URL.test&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
@@ -560,12 +575,4 @@ With a Database called &lt;code class=&quot;highlighter-rouge&quot;&gt;mat_view_
  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;promesa.core/let&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;clojure.core/let&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;no more red squirly lines in your code 👏&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">track fellow developers using GitHub’s API and Clojure / babashka</title><link href="/2022/clojure-babashka/" rel="alternate" type="text/html" title="track fellow developers using GitHub&apos;s API and Clojure / babashka" /><published>2022-07-04T00:00:00+00:00</published><updated>2022-07-04T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-07-04-clojure-babashka.md</id><content type="html" xml:base="/2022/clojure-babashka/">&lt;p&gt;Let’s have parentheses for breakfast! Ever wondered who is coding what in your city and how to keep track of it, maybe grep projects by keyword? This is your tool!&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/simonneutert/git-hire&quot;&gt;git-hire 🔥 on GitHub&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;git-hire&quot;&gt;git-hire?&lt;/h3&gt;
-
-&lt;p&gt;git-hire is a &lt;a href=&quot;https://babashka.org&quot;&gt;babashka&lt;/a&gt; program, that downloads profiles from GitHub.&lt;/p&gt;
-
-&lt;p&gt;If you wonder what you can do with it, then check the examples for some inspiration and cool operations on the data 🚀&lt;/p&gt;</content><author><name></name></author></entry></feed>
+&lt;p&gt;no more red squirly lines in your code 👏&lt;/p&gt;</content><author><name></name></author></entry></feed>
