@@ -58,7 +58,6 @@ Adjust your `shadow-cljs.edn` to your taste.
            :output-to "out/node-tests.js"
            :ns-regexp "-test$"
            :autorun   true}}}
-
 ```
 
 For more inspiration checkout my demo project on GitHub [pizza-dough-calculator](https://github.com/simonneutert/pizza-dough-calculator).
