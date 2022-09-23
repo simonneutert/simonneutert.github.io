@@ -3,7 +3,7 @@ layout: post
 title: "Podcast notes: Engineering Managers"
 ---
 
-I hadn't really heard the job title before, but what they had to say was really cool. Here's what I wanted to take notes of.
+I hadn't really heard of *Engineering Manager* before, but what they had to say, was really cool. Here's what I wanted to take notes of.
 
 ## Ufuk from Spotify
 
