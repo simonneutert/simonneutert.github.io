@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.1.0">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-09-23T12:32:51+00:00</updated><id>/feed.xml</id><title type="html">Simon Neutert Website</title><subtitle>My name is Simon. I really enjoy coding and so far, I just cannot get enough of it. Other than that, I enjoy cycling and nice food 🤤</subtitle><entry><title type="html">Podcast notes: Engineering Managers</title><link href="/2022/engineering-manager/" rel="alternate" type="text/html" title="Podcast notes: Engineering Managers" /><published>2022-09-23T00:00:00+00:00</published><updated>2022-09-23T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-09-23-engineering-manager.md</id><content type="html" xml:base="/2022/engineering-manager/">&lt;p&gt;I hadn’t really heard of &lt;em&gt;Engineering Manager&lt;/em&gt; before, but what they had to say, was really cool. Here’s what I wanted to take notes of.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.1.0">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-09-23T12:46:08+00:00</updated><id>/feed.xml</id><title type="html">Simon Neutert Website</title><subtitle>My name is Simon. I really enjoy coding and so far, I just cannot get enough of it. Other than that, I enjoy cycling and nice food 🤤</subtitle><entry><title type="html">Podcast notes: Engineering Managers</title><link href="/2022/engineering-manager/" rel="alternate" type="text/html" title="Podcast notes: Engineering Managers" /><published>2022-09-23T00:00:00+00:00</published><updated>2022-09-23T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-09-23-engineering-manager.md</id><content type="html" xml:base="/2022/engineering-manager/">&lt;p&gt;I hadn’t really heard of &lt;em&gt;Engineering Manager&lt;/em&gt; before, but what they had to say, was really cool. Here’s what I wanted to take notes of.&lt;/p&gt;
 
 &lt;h2 id=&quot;ufuk-from-spotify&quot;&gt;Ufuk from Spotify&lt;/h2&gt;
 
@@ -75,11 +75,13 @@ Hearing other roles perspective can help developers bridge the gap, better commu
 
 &lt;p&gt;I prefer installing Java and Clojure.&lt;/p&gt;
 
+&lt;p&gt;Here&amp;#8217;s a very minimal two staged example:&lt;/p&gt;
+
 &lt;div class=&quot;language-Dockerfile highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;node:16-buster&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;AS&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;build&lt;/span&gt;
 
 &lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;apt-get update &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get &lt;span class=&quot;nt&quot;&gt;-q&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\
 &lt;/span&gt;    openjdk-11-jre-headless &lt;span class=&quot;se&quot;&gt;\
-&lt;/span&gt;    curl
+&lt;/span&gt;    curl 
 
 &lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;curl &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; https://download.clojure.org/install/linux-install-1.11.1.1165.sh | bash &lt;span class=&quot;se&quot;&gt;\
 &lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-rf&lt;/span&gt; /var/lib/apt/lists/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
@@ -89,12 +91,14 @@ Hearing other roles perspective can help developers bridge the gap, better commu
 &lt;span class=&quot;k&quot;&gt;WORKDIR&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; /app&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;COPY&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; shadow-cljs.edn /app/&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;COPY&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; src /app/src&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;COPY&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; public /app/public&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;COPY&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; public/index.html /app/public/index.html&lt;/span&gt;
+
 &lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;npx shadow-cljs release frontend
 
 &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; nginx:1-alpine&lt;/span&gt;
 
-&lt;span class=&quot;k&quot;&gt;COPY&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; --from=build /app/public/ /usr/share/nginx/html&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;COPY&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; --from=build /app/public/index.html /usr/share/nginx/html/index.html&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;COPY&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; --from=build /app/public/js/main.js /usr/share/nginx/html/js/main.js&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Make sure you have your release pipeline ready to roll!&lt;/p&gt;
