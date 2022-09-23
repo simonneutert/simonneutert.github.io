@@ -1,4 +1,77 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.1.0">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-09-21T07:30:40+00:00</updated><id>/feed.xml</id><title type="html">Simon Neutert Website</title><subtitle>My name is Simon. I really enjoy coding and so far, I just cannot get enough of it. Other than that, I enjoy cycling and nice food 🤤</subtitle><entry><title type="html">Clojure Error on REPL start: Failed to load class “org.slf4j.impl.StaticLoggerBinder”</title><link href="/2022/clojure-neo4j-error/" rel="alternate" type="text/html" title="Clojure Error on REPL start: Failed to load class &quot;org.slf4j.impl.StaticLoggerBinder&quot;" /><published>2022-09-21T00:00:00+00:00</published><updated>2022-09-21T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-09-21-clojure-neo4j-error.md</id><content type="html" xml:base="/2022/clojure-neo4j-error/">&lt;p&gt;Here are the bits, as I am very tired of regoogling it all the time 😅&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.1.0">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-09-23T12:23:11+00:00</updated><id>/feed.xml</id><title type="html">Simon Neutert Website</title><subtitle>My name is Simon. I really enjoy coding and so far, I just cannot get enough of it. Other than that, I enjoy cycling and nice food 🤤</subtitle><entry><title type="html">Podcast notes: Engineering Managers</title><link href="/2022/engineering-manager/" rel="alternate" type="text/html" title="Podcast notes: Engineering Managers" /><published>2022-09-23T00:00:00+00:00</published><updated>2022-09-23T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-09-23-engineering-manager.md</id><content type="html" xml:base="/2022/engineering-manager/">&lt;p&gt;I hadn’t really heard of &lt;em&gt;Engineering Manager&lt;/em&gt; before, but what they had to say, was really cool. Here’s what I wanted to take notes of.&lt;/p&gt;
+
+&lt;h2 id=&quot;ufuk-from-spotify&quot;&gt;Ufuk from Spotify&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;https://twitter.com/paracycle&quot;&gt;Ufuk Kayserilioglu&lt;/a&gt; is the Engineering Manager of the Ruby Infrastructure team (Jemma’s team!) at &lt;a href=&quot;https://www.shopify.com/&quot;&gt;Shopify&lt;/a&gt;. After transitioning his career from physics to software development, Ufuk has had the fortune of working with lots of interesting technologies at various levels of the stack. He, Jemma and Brittany chat about management philosophies, why he remains excited about Ruby and what is the ideal role for Shopify in the larger Ruby ecosystem.&lt;span&gt;Show Notes: &lt;a href=&quot;https://www.therubyonrailspodcast.com/410&quot;&gt;The Ruby on Rails Podcast #410&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Ufuk is aked what his Management philosophy is. Here’s what I (meta-)heard him say, regarding the team and the individuals in it:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Team Level&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;the team should be able to cover all the aspects of the work that has to be done
+        &lt;ul&gt;
+          &lt;li&gt;one should help the team becoming skilled enough and/or being trained to solve the problems themselves&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;he tries to push as much information to the team as he can, targeted to empower the team to find the best solution on its own&lt;/li&gt;
+      &lt;li&gt;he tries to enable the team to take code ownership as much as possible
+        &lt;ul&gt;
+          &lt;li&gt;but he still shares his (very specific and detailed) domain knowledge, when possible, so it doesn’t go to waste&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Individual Level&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;make the colleagues own their path of growth&lt;/li&gt;
+      &lt;li&gt;if whenever possible create opportunities helping colleagues grow (like he was guided towards his position in management)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;success--philosophy&quot;&gt;Success / Philosophy&lt;/h3&gt;
+
+&lt;p&gt;Ufuk states that valuing management on technical artifacts isn’t possible on the management level. Engineering can be measured via PR, issues completed, code quality and such. When asked how he measures his success, he states that this is a tough question to answer. He himself considers this more a thing of hidden “counter-“facts, rephrasing it to: “how successful would the team be, if I wasn’t here”.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;brittany-from-textus&quot;&gt;Brittany from Textus&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;https://brittanymartin.dev&quot;&gt;Brittany&lt;/a&gt; is an Engineering Manager of the Frontend Team at &lt;a href=&quot;https://textus.com&quot;&gt;Textus&lt;/a&gt;.&lt;span&gt;Show Notes: &lt;a href=&quot;https://www.therubyonrailspodcast.com/436&quot;&gt;The Ruby on Rails Podcast #436&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Brittany, too, wants to make sure that her Engineers are empowered to grow in their best personal track, whether it be Individual Contributor (IC) or on the Management Track.&lt;/p&gt;
+
+&lt;p&gt;What I heard her say between the lines is, she describes her job as sort of being the task gatekeeper for the developers. At one point in the show, she says this is crucial, as every engineer when asked:&lt;br /&gt;
+“Hey! Can you do feature XYZ?”,&lt;br /&gt;
+then the engineer will almost always say yes, because:&lt;br /&gt;
+“Engineers love to build things”.&lt;br /&gt;
+Brittany totally nails it with this one and I am very happy to hear that she adapted her way of management due to this expectation.&lt;/p&gt;
+
+&lt;p&gt;Knowing how developers tick, enables Brittany to protect her developers from overzealous feature demands coming from either customers, sales or else. To her it is super important to minimalize the footprint of a planned release as much as possible. It’s her job to identify the minimal, true minimal MVP 😉&lt;br /&gt;
+She won me completely over, when she said, that she targets small releases. Of course she understands why Marketing/PR wants the BigBang® release, but to the developers the pressure of delivering it right from gun is massive. A big release can cause cracks and will most definitely scramble the time schedule as the work after a release often takes more time than everybody thinks.&lt;/p&gt;
+
+&lt;p&gt;When asked where potential conflicts lie, speaker identify one in Product Manager vs Engineering Manager.&lt;br /&gt;
+It’s natural as the Product Manager wants the customers as satisfied as possible, while the Engineering Manager tries to have the developers productive and delivering and protect them from burning out.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;my-personal-closing-thoughts&quot;&gt;My personal closing thoughts&lt;/h3&gt;
+
+&lt;p&gt;I highly recommend both episodes, because their scope is not developing itself. The podcasts shed light on what’s going on around our developers’ desks.&lt;br /&gt;
+Hearing other roles perspective can help developers bridge the gap, better communicate in and out. Enabling a rewarding collaboration across roles and positions in a company/team.&lt;/p&gt;
+
+&lt;p&gt;There are some hints given regarding how to enhance the communication between developers and customers or managers.&lt;/p&gt;
+
+&lt;p&gt;And from the vibe, I felt that a strong and clear company culture. They call it “build a tribe” at one point, reminding of how important it is to stay open for outsiders. Culture is very hard to measure or explain in detail, but may be the most underrated factor of success on the long run.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Clojure Error on REPL start: Failed to load class “org.slf4j.impl.StaticLoggerBinder”</title><link href="/2022/clojure-neo4j-error/" rel="alternate" type="text/html" title="Clojure Error on REPL start: Failed to load class &quot;org.slf4j.impl.StaticLoggerBinder&quot;" /><published>2022-09-21T00:00:00+00:00</published><updated>2022-09-21T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-09-21-clojure-neo4j-error.md</id><content type="html" xml:base="/2022/clojure-neo4j-error/">&lt;p&gt;Here are the bits, as I am very tired of regoogling it all the time 😅&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Failed to load class “org.slf4j.impl.StaticLoggerBinder”&lt;/p&gt;
@@ -547,32 +620,4 @@ With a Database called &lt;code class=&quot;highlighter-rouge&quot;&gt;mat_view_
 
 &lt;span class=&quot;n&quot;&gt;triangles&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pascal&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;triangles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;take&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author></entry><entry><title type="html">Clojure kondo config for keyword overrides like promesa’s let macro</title><link href="/2022/clojure-kondo-lint-as/" rel="alternate" type="text/html" title="Clojure kondo config for keyword overrides like promesa&apos;s let macro" /><published>2022-07-05T00:00:00+00:00</published><updated>2022-07-05T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-07-05-clojure-kondo-lint-as.md</id><content type="html" xml:base="/2022/clojure-kondo-lint-as/">&lt;p&gt;I keep forgetting it, but once I blog it…&lt;/p&gt;
-
-&lt;p&gt;What is clj-kondo, you ask? It is:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;A linter for Clojure code that sparks joy.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;This is how you make kondo shut up about faulty &lt;code class=&quot;highlighter-rouge&quot;&gt;let&lt;/code&gt; declarations, in specific &lt;a href=&quot;https://github.com/babashka/nbb&quot;&gt;nbb&lt;/a&gt; and &lt;a href=&quot;https://github.com/funcool/promesa&quot;&gt;promesa&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;What is &lt;a href=&quot;https://github.com/funcool/promesa&quot;&gt;promesa&lt;/a&gt;? Glad you ask:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;A lightweight promise/future library for Clojure &amp;amp; ClojureScript built on top of native primitives (js/Promise on JS, and &lt;code class=&quot;highlighter-rouge&quot;&gt;CompletableFuture&lt;/code&gt; on JVM).&lt;span&gt;https://github.com/funcool/promesa&lt;/span&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/clj-kondo/clj-kondo/blob/master/doc/config.md#lint-a-custom-macro-like-a-built-in-macro&quot;&gt;clj-kondo documentation&lt;/a&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;create a &lt;code class=&quot;highlighter-rouge&quot;&gt;config.edn&lt;/code&gt; in your projects &lt;code class=&quot;highlighter-rouge&quot;&gt;.clj-kondo&lt;/code&gt; directory&lt;/li&gt;
-  &lt;li&gt;set for key &lt;code class=&quot;highlighter-rouge&quot;&gt;:lint-as&lt;/code&gt; the following: &lt;code class=&quot;highlighter-rouge&quot;&gt;{promesa.core/let clojure.core/let}&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;language-clojure highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;;; ./clj-kondo/config.edn&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:lint-as&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
- &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;promesa.core/let&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;clojure.core/let&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;no more red squirly lines in your code 👏&lt;/p&gt;</content><author><name></name></author></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author></entry></feed>
