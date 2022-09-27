@@ -1,4 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.1.0">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-09-23T12:46:31+00:00</updated><id>/feed.xml</id><title type="html">Simon Neutert Website</title><subtitle>My name is Simon. I really enjoy coding and so far, I just cannot get enough of it. Other than that, I enjoy cycling and nice food 🤤</subtitle><entry><title type="html">Dockering a shadow-cljs app</title><link href="/2022/docker-shadow-cljs/" rel="alternate" type="text/html" title="Dockering a shadow-cljs app" /><published>2022-09-23T00:00:00+00:00</published><updated>2022-09-23T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-09-23-docker-shadow-cljs.md</id><content type="html" xml:base="/2022/docker-shadow-cljs/">&lt;p&gt;I&amp;#8217;d say there are two ways of doing it, either install Java or install Node.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.1.0">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-09-27T08:04:56+00:00</updated><id>/feed.xml</id><title type="html">Simon Neutert Website</title><subtitle>My name is Simon. I really enjoy coding and so far, I just cannot get enough of it. Other than that, I enjoy cycling and nice food 🤤</subtitle><entry><title type="html">Bake Pizzas at home! - a little shadow-cljs app</title><link href="/2022/pizza-dough-shadow-cljs/" rel="alternate" type="text/html" title="Bake Pizzas at home! - a little shadow-cljs app" /><published>2022-09-27T00:00:00+00:00</published><updated>2022-09-27T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-09-27-pizza-dough-shadow-cljs.md</id><content type="html" xml:base="/2022/pizza-dough-shadow-cljs/">&lt;p&gt;Making Pizza is a huge deal! At least to me! And boy, am I spoiled 😬&lt;br /&gt;
+The guys from &lt;a href=&quot;https://www.stadlermade.com/&quot;&gt;Städler Made&lt;/a&gt; provide excellent recipes AND OVENS!&lt;/p&gt;
+
+&lt;p&gt;So much so, that I was scared they change something and I am lost in the search for the recipe I got to love so much!&lt;/p&gt;
+
+&lt;p&gt;Having permission to have the code public from Sanne and Pieter, I am very proud to show my Clojurescript take on the recipe we ever since love so much 🥰&lt;/p&gt;
+
+&lt;p&gt;Project on GitHub: &lt;a href=&quot;https://github.com/simonneutert/pizza-dough-calculator&quot;&gt;pizza-dough-calculator&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The scope of the app is both showing of how nice developing with Clojurescript can be.&lt;/p&gt;
+
+&lt;p&gt;Checking out the project can teach you:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Clojurescript namespacing (require files and dependencies)&lt;/li&gt;
+  &lt;li&gt;Clojurescript for the Browser&lt;/li&gt;
+  &lt;li&gt;Clojures data first approach&lt;/li&gt;
+  &lt;li&gt;separation of actions and computation (immutable data)&lt;/li&gt;
+  &lt;li&gt;functional programming&lt;/li&gt;
+  &lt;li&gt;Clojurescript and testing (it’s not E2E, but one could setup Jest or else)&lt;/li&gt;
+  &lt;li&gt;DOM represented as data and functions&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2022/pizza.jpeg&quot; width=&quot;50%&quot; style=&quot; display: block; margin-left: auto; margin-right: auto; width: 50%;&quot; /&gt;&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Dockering a shadow-cljs app</title><link href="/2022/docker-shadow-cljs/" rel="alternate" type="text/html" title="Dockering a shadow-cljs app" /><published>2022-09-23T00:00:00+00:00</published><updated>2022-09-23T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-09-23-docker-shadow-cljs.md</id><content type="html" xml:base="/2022/docker-shadow-cljs/">&lt;p&gt;I&amp;#8217;d say there are two ways of doing it, either install Java or install Node.&lt;/p&gt;
 
 &lt;p&gt;I prefer installing Java and Clojure.&lt;/p&gt;
 
@@ -8,7 +31,7 @@
 
 &lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;apt-get update &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get &lt;span class=&quot;nt&quot;&gt;-q&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\
 &lt;/span&gt;    openjdk-11-jre-headless &lt;span class=&quot;se&quot;&gt;\
-&lt;/span&gt;    curl 
+&lt;/span&gt;    curl
 
 &lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;curl &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; https://download.clojure.org/install/linux-install-1.11.1.1165.sh | bash &lt;span class=&quot;se&quot;&gt;\
 &lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-rf&lt;/span&gt; /var/lib/apt/lists/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
@@ -620,45 +643,4 @@ With a Database called &lt;code class=&quot;highlighter-rouge&quot;&gt;mat_view_
 
 &lt;p&gt;Now I need to do a little more digging what RabbitMQ really is and how the Admin UI can help me wrap my head around.&lt;/p&gt;
 
-&lt;h2&gt;🚀&lt;/h2&gt;</content><author><name></name></author></entry><entry><title type="html">Caching requests in Roda using etags</title><link href="/2022/cache-requests-with-roda/" rel="alternate" type="text/html" title="Caching requests in Roda using etags" /><published>2022-07-23T00:00:00+00:00</published><updated>2022-07-23T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-07-23-cache-requests-with-roda.md</id><content type="html" xml:base="/2022/cache-requests-with-roda/">&lt;p&gt;This short post describes how using SHA1 Hashing for etags can be used.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Both last_modified or etag will immediately halt processing if there have been no modifications since the last time the client requested the resource, assuming the client uses the appropriate HTTP 1.1 request headers.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://roda.jeremyevans.net/rdoc/classes/Roda/RodaPlugins/Caching.html&quot;&gt;Roda Plugin: Caching Documentation&lt;/a&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;param!: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;filter&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;unless&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;nil?&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;startedhome&apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;finishedhome&apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;startedandfinishedhome&apos;&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;halt&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# abort early, stops users from fiddling around&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-  &lt;span class=&quot;c1&quot;&gt;# where the magic happens 🔥 and the cache is set/matched&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;etag&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cache_etag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-  &lt;span class=&quot;n&quot;&gt;polylines&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;nil&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;user_db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:user_strava_activities&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ds&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;filter_query&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 
-      &lt;span class=&quot;no&quot;&gt;ApiV1Filters&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;HomeTileFilterPolyline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;apply_home_tile_filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ds&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-    &lt;span class=&quot;n&quot;&gt;activity_types&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 
-      &lt;span class=&quot;no&quot;&gt;ApiV1Filters&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;ActivityType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;identify_activity_type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;activity_type&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-
-    &lt;span class=&quot;n&quot;&gt;filter_query&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;get_with_activity_type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;ds: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filter_query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;activity_types&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;polylines&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;filter_query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;all&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;polylines&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;In the implementation, a user’s gps polylines only change after importing new data. Then, a new leaderboard is being calculated, which touches a user’s &lt;code class=&quot;highlighter-rouge&quot;&gt;updated_at&lt;/code&gt; attribute when finished, resulting in a changed SHA1 Hashing.&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;cache_etag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;minified_user_data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;user_id: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                          &lt;span class=&quot;ss&quot;&gt;strava_user_id: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;strava_user_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                          &lt;span class=&quot;ss&quot;&gt;updated_at: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;updated_at&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  
-  &lt;span class=&quot;no&quot;&gt;Digest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;SHA1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;hexdigest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Oj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;dump&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;minified_user_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author></entry></feed>
+&lt;h2&gt;🚀&lt;/h2&gt;</content><author><name></name></author></entry></feed>
