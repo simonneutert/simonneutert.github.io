@@ -24,4 +24,4 @@ Checking out the project can teach you:
 - Clojurescript and testing (it's not E2E, but one could setup Jest or else)
 - DOM represented as data and functions
 
-<img src="/images/2022/pizza.jpeg" width="50%" style=" display: block; margin-left: auto; margin-right: auto; width: 50%;" />
+<img src="/images/2022/pizza.jpg" width="50%" style=" display: block; margin-left: auto; margin-right: auto; width: 50%;" />
