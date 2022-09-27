@@ -14,7 +14,7 @@ FROM node:16-buster AS build
 
 RUN apt-get update && apt-get -q -y install \
     openjdk-11-jre-headless \
-    curl 
+    curl
 
 RUN curl -s https://download.clojure.org/install/linux-install-1.11.1.1165.sh | bash \
     && rm -rf /var/lib/apt/lists/*
@@ -34,7 +34,7 @@ COPY --from=build /app/public/index.html /usr/share/nginx/html/index.html
 COPY --from=build /app/public/js/main.js /usr/share/nginx/html/js/main.js
 ```
 
-Make sure you have your release pipeline ready to roll! 
+Make sure you have your release pipeline ready to roll!
 
 From the shadow-cljs [documentation](https://shadow-cljs.github.io/docs/UsersGuide.html#release):
 
