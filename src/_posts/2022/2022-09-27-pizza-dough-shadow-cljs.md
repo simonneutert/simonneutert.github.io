@@ -1,5 +1,5 @@
 ---
-title: Bake Pizzas at home! - a little shadow-cljs app
+title: Bake Pizzas at home! 🍕 - a sample shadow-cljs app
 layout: post
 ---
 
