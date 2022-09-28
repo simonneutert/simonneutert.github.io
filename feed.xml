@@ -1,4 +1,50 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.1.0">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-09-27T08:09:50+00:00</updated><id>/feed.xml</id><title type="html">Simon Neutert Website</title><subtitle>My name is Simon. I really enjoy coding and so far, I just cannot get enough of it. Other than that, I enjoy cycling and nice food 🤤</subtitle><entry><title type="html">Bake Pizzas at home! 🍕 - a sample shadow-cljs app</title><link href="/2022/pizza-dough-shadow-cljs/" rel="alternate" type="text/html" title="Bake Pizzas at home! 🍕 - a sample shadow-cljs app" /><published>2022-09-27T00:00:00+00:00</published><updated>2022-09-27T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-09-27-pizza-dough-shadow-cljs.md</id><content type="html" xml:base="/2022/pizza-dough-shadow-cljs/">&lt;p&gt;Making Pizza is a huge deal! At least to me! And boy, am I spoiled 😬&lt;br /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.1.0">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-09-28T08:23:57+00:00</updated><id>/feed.xml</id><title type="html">Simon Neutert Website</title><subtitle>My name is Simon. I really enjoy coding and so far, I just cannot get enough of it. Other than that, I enjoy cycling and nice food 🤤</subtitle><entry><title type="html">TruffleRuby homelab worker pool experiment</title><link href="/2022/truffle-pig/" rel="alternate" type="text/html" title="TruffleRuby homelab worker pool experiment" /><published>2022-09-28T00:00:00+00:00</published><updated>2022-09-28T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-09-28-truffle-pig.md</id><content type="html" xml:base="/2022/truffle-pig/">&lt;p&gt;TruffleRuby, the mythical beast. I never dared to lay hands upon. Yet, ASDF-VM ploughed through the else tedious installation.&lt;/p&gt;
+
+&lt;p&gt;What&amp;#8217;s better than having code snip you can run on MRI and on Truffle and get a feel for it yourself?
+Right?!&lt;/p&gt;
+
+&lt;p&gt;Clone https://github.com/simonneutert/truffle_pig from GitHub&lt;br /&gt;
+add a &lt;code class=&quot;highlighter-rouge&quot;&gt;main.rb&lt;/code&gt; at project root and run &lt;code class=&quot;highlighter-rouge&quot;&gt;$ time ruby main.rb&lt;/code&gt; using MRI, then run again with Truffle22&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# frozen_string_literal: true&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;pry&apos;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;prettyprint&apos;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;etc&apos;&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;require_relative&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;lib/truffle_pig&apos;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;cpu_processors&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Etc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;nprocessors&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cpu_processors&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; Number of (virtual) CPU Processors&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;piggy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;TrufflePig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;workers: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cpu_processors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;piggy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;add_job&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;piggy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;add_job&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;sleep&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;mi&quot;&gt;10_000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;times&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;job_id #&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;, result: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;job_id: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;result: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;piggy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;queue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; jobs added&quot;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;piggy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;perform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;reject_errors: &lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;custom_logger: &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pp&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n\n\n\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;The results are in:&apos;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n\n\n\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;pp&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;results&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author></entry><entry><title type="html">Bake Pizzas at home! 🍕 - a sample shadow-cljs app</title><link href="/2022/pizza-dough-shadow-cljs/" rel="alternate" type="text/html" title="Bake Pizzas at home! 🍕 - a sample shadow-cljs app" /><published>2022-09-27T00:00:00+00:00</published><updated>2022-09-27T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-09-27-pizza-dough-shadow-cljs.md</id><content type="html" xml:base="/2022/pizza-dough-shadow-cljs/">&lt;p&gt;Making Pizza is a huge deal! At least to me! And boy, am I spoiled 😬&lt;br /&gt;
 The guys from &lt;a href=&quot;https://www.stadlermade.com/&quot;&gt;Städler Made&lt;/a&gt; provide excellent recipes AND OVENS!&lt;/p&gt;
 
 &lt;p&gt;So much so, that I was scared they change something and I am lost in the search for the recipe I got to love so much!&lt;/p&gt;
@@ -74,7 +120,6 @@ The guys from &lt;a href=&quot;https://www.stadlermade.com/&quot;&gt;Städler Ma
            &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:output-to&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;out/node-tests.js&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
            &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:ns-regexp&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;-test$&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
            &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:autorun&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;   &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;For more inspiration checkout my demo project on GitHub &lt;a href=&quot;https://github.com/simonneutert/pizza-dough-calculator&quot;&gt;pizza-dough-calculator&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Podcast notes: Engineering Managers</title><link href="/2022/engineering-manager/" rel="alternate" type="text/html" title="Podcast notes: Engineering Managers" /><published>2022-09-22T00:00:00+00:00</published><updated>2022-09-22T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-09-22-engineering-manager.md</id><content type="html" xml:base="/2022/engineering-manager/">&lt;p&gt;I hadn’t really heard of &lt;em&gt;Engineering Manager&lt;/em&gt; before, but what they had to say, was really cool. Here’s what I wanted to take notes of.&lt;/p&gt;
@@ -472,175 +517,4 @@ With a Database called &lt;code class=&quot;highlighter-rouge&quot;&gt;mat_view_
       &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;0,97s user 0,11s system 431% cpu 0,250 total&lt;/code&gt;&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name></name></author></entry><entry><title type="html">My Sidekiq may be a bunny with sneakers</title><link href="/2022/my-sidekiq-is-a-bunny-with-sneakers/" rel="alternate" type="text/html" title="My Sidekiq may be a bunny with sneakers" /><published>2022-08-03T00:00:00+00:00</published><updated>2022-08-03T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-08-03-my-sidekiq-is-a-bunny-with-sneakers.md</id><content type="html" xml:base="/2022/my-sidekiq-is-a-bunny-with-sneakers/">&lt;p&gt;I overheard a conversation at the station:&lt;br /&gt;
-“&lt;a href=&quot;https://rubyonrails.org&quot;&gt;Rails&lt;/a&gt;, Redis and &lt;a href=&quot;https://sidekiq.org&quot;&gt;Sidekiq&lt;/a&gt; - every kid knows: they mean business! 😎”&lt;br /&gt;
-“Yeah, but I’ll go with the &lt;em&gt;Magic &lt;a href=&quot;http://rubybunny.info&quot;&gt;Bunny&lt;/a&gt; with &lt;a href=&quot;https://github.com/jondot/sneakers&quot;&gt;Sneakers&lt;/a&gt;&lt;/em&gt;, cheers!”&lt;/p&gt;
-
-&lt;p&gt;Just kidding 😅 What got me thinking and in an experimental mood was &lt;a href=&quot;https://stanko.io/rabbitmq-is-more-than-a-sidekiq-replacement-b730d8176fb&quot;&gt;Stanko.io - RabbitMQ is more than a Sidekiq Replacement&lt;/a&gt;. And I highly encourage you to at least look at the nice gifs the author made to clear things up.&lt;/p&gt;
-
-&lt;p&gt;Let’s build on this quote:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;The biggest difference between the two implementations is the ack! on line 10. That line enables Sneakers and RabbitMQ to guarantee that a job has been processed. This is a feature of RabbitMQ’s communication protocol — AMQP. In AMQP a message can be popped from a queue in two modes — ack mode and no-ack mode.&lt;/p&gt;
-
-  &lt;p&gt;In ack mode the consumer must specify the maximum amount of time for it to process the message. When the consumer pops a message from the queue it’s virtually removed from it, but RabbitMQ still keeps a copy of it. If the consumer fails to send an “ack” signal in the specified time period the message is put back at the front of the queue so that another consumer can process it. If the consumer sends an “ack” signal in the specified time period the message is fully removed from RabbitMQ. In no-ack mode no guarantees are given, no time window has to be specified, and no “ack” signal has to be sent.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;ack---work-done-job-done-free-the-queue&quot;&gt;ACK! - Work done! Job done! FREE THE QUEUE!&lt;/h3&gt;
-
-&lt;p&gt;Let’ have a nice and clean job queue over two terminals 💻⚡️💻&lt;/p&gt;
-
-&lt;h4 id=&quot;prerequisities&quot;&gt;Prerequisities&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;You need Docker&lt;/li&gt;
-  &lt;li&gt;run RabbitMQ in Docker:&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;$ docker run -d --hostname my-rabbit --name some-rabbit -p15672:15672 -p5672:5672 rabbitmq:3-management&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;open your browser at &lt;code class=&quot;highlighter-rouge&quot;&gt;localhost:15672&lt;/code&gt; and login with &lt;code class=&quot;highlighter-rouge&quot;&gt;guest:guest&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ gem install sneakers bunny pry&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;We will now put two simple ruby scripts to use.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;‼️ If you get weird errors from RabbitMQ, try deleting all queues first&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;First the consumer:&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# easy_consumer.rb&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;pry&apos;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;bunny&apos;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;prettyprint&apos;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;begin&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;# Start a communication session with RabbitMQ&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Bunny&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;start&lt;/span&gt;
-
-  &lt;span class=&quot;c1&quot;&gt;# open a channel&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;ch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;create_channel&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;confirm_select&lt;/span&gt;
-
-  &lt;span class=&quot;c1&quot;&gt;# declare a queue&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;queue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;test1&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;subscribe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;manual_ack: &lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;delivery_info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_metadata&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;This is the message: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-
-    &lt;span class=&quot;c1&quot;&gt;# acknowledge the delivery so that RabbitMQ can mark it for deletion&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;delivery_info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;delivery_tag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;# yo&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-  &lt;span class=&quot;c1&quot;&gt;# binding.pry&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;rescue&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;SignalException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;pp&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;Closing ...&apos;&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;close&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;# close the connection&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;close&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;run &lt;code class=&quot;highlighter-rouge&quot;&gt;$ ruby easy_consumer.rb&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;The producer is just as simple:&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# easy_producer.rb&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;pry&apos;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;bunny&apos;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;json&apos;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;prettyprint&apos;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;begin&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;# Start a communication session with RabbitMQ&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Bunny&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;start&lt;/span&gt;
-
-  &lt;span class=&quot;c1&quot;&gt;# open a channel&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;ch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;create_channel&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;confirm_select&lt;/span&gt;
-
-  &lt;span class=&quot;c1&quot;&gt;# declare a queue&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;queue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;test1&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-  &lt;span class=&quot;c1&quot;&gt;# publish a message to the default exchange which then gets routed to this queue&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;publish&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;type: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;error&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;message: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;HALP!&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;error: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;CODE001&apos;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;to_json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-  &lt;span class=&quot;c1&quot;&gt;# publish to your heart&apos;s content&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;binding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;pry&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;ensure&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;Closing ...&apos;&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;close&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;# close the connection&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;close&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Now in a second terminal run: &lt;code class=&quot;highlighter-rouge&quot;&gt;$ ruby easy_producer&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;and use pry to send messages - good times 👏&lt;/p&gt;
-
-&lt;h2 id=&quot;whats-with-the-sneakers&quot;&gt;What’s with the sneakers?&lt;/h2&gt;
-
-&lt;p&gt;Time to put the worker to work 🤓&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# bunny_sneaker_worker.rb&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;pry&apos;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;bunny&apos;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;sneakers&apos;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;prettyprint&apos;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;json&apos;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Processor&lt;/span&gt;
-  &lt;span class=&quot;kp&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Sneakers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Worker&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;from_queue&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:testsneaker&lt;/span&gt;
-
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;work&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-    &lt;span class=&quot;n&quot;&gt;pp&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;OUTPUT:&apos;&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;pp&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;ack!&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;run it according to the &lt;em&gt;sneakers docs&lt;/em&gt;&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;$ sneakers work Processor --require bunny_sneaker_worker.rb&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;THEN fire up a producer!&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# bunny_sneaker_producer.rb&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;pry&apos;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;bunny&apos;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;json&apos;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;quick_publish&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;HALP!&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;json_message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;type: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;error&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                   &lt;span class=&quot;ss&quot;&gt;message: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                   &lt;span class=&quot;ss&quot;&gt;error: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;CODE001&apos;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;to_json&lt;/span&gt;
-
-  &lt;span class=&quot;n&quot;&gt;ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;default_exchange&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;publish&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;json_message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;routing_key: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;testsneaker&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;begin&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;# Start a communication session with RabbitMQ&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Bunny&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;start&lt;/span&gt;
-
-  &lt;span class=&quot;n&quot;&gt;ch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;create_channel&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;default_exchange&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;publish&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;type: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;error&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;message: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;HALP!&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;error: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;CODE001&apos;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;to_json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;routing_key: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;testsneaker&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-  &lt;span class=&quot;c1&quot;&gt;# publish to your heart&apos;s content&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;binding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;pry&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# quick_publish(ch, &quot;What&apos;s going on here?&quot;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;ensure&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;close&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;# close the connection&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;close&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Now I need to do a little more digging what RabbitMQ really is and how the Admin UI can help me wrap my head around.&lt;/p&gt;
-
-&lt;h2&gt;🚀&lt;/h2&gt;</content><author><name></name></author></entry></feed>
+&lt;/table&gt;</content><author><name></name></author></entry></feed>
