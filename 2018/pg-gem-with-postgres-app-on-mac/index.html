@@ -39,9 +39,24 @@
 
 <h1>Install pg gem on Mac with Postgres.app</h1>
 
-<p>pg gem and Postgres.App on Mac can be a bit picky when running bundler. Well, this gets you going on High Sierra:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># .bashrc or .zshrc</span>
+<span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/Applications/Postgres.app/Contents/Versions/latest/bin
+</code></pre></div></div>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gem install pg -v '0.21.0' -- --with-pg-config=/Applications/Postgres.app/Contents/Versions/latest/bin/pg_config 
+<p>pg gem and Postgres.App on Mac can be a bit picky when running bundler. Well, this gets you going on Monterey:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code># replace version to taste
+$ gem install pg -v '1.4.3' -- --with-pg-config=/Applications/Postgres.app/Contents/Versions/latest/bin/pg_config 
+</code></pre></div></div>
+
+<p><em>OPTIONAL</em></p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code># replace version to taste
+$ gem install sequel_pg -v '1.16.0'
+
+# or
+
+$ gem install sequel_pg -v '1.16.0' -- --with-pg-dir=/Applications/Postgres.app/Contents/Versions/latest/
 </code></pre></div></div>
 
 
