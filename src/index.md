@@ -25,7 +25,7 @@ Get in touch with me via [Linkedin](https://www.linkedin.com/in/simon-neutert/)!
 
 ## I blog from time to time
 
-mostly about code I wrote, sometimes pet projects or about things that should never slow me down no more. That's right, I am pointing at you, pg gem on Mac!
+mostly about code I wrote, sometimes pet projects or about things that should never slow me down no more. That's right, [I am pointing at you, pg gem on Mac!](/2018/pg-gem-with-postgres-app-on-mac/)
 
 #### Latest posts
 
