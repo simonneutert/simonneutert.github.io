@@ -6,7 +6,7 @@ layout: default
 
 <h1 class="rotate">👋 Hi, I'm Simon! <img src="https://www.gravatar.com/avatar/9ee19244c2d149385a7f1ca3a4844b6c?s=100" style="border-radius:5px" /></h1>
 
-What I'm currenty coding on is uploaded on [GitHub](https://github.com/simonneutert) and  
+I share my code on [GitHub](https://github.com/simonneutert) and I 
 sometimes [blog](/posts) about what made me smile/stumble/humble/moan.
 {:style="text-align:center"}
 
