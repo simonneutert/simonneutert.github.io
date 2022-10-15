@@ -1,4 +1,5 @@
 ---
+
 # Feel free to add content and custom Front Matter to this file.
 
 layout: default
@@ -31,13 +32,19 @@ mostly about code I wrote, sometimes pet projects or about things that should ne
 
 <ul>
   {% collections.posts.resources.take(10).each do |post| %}
+
     <li>
       <span style="font-family: monospace">{{post.data.date.to_date}}</span> <a href="{{ post.relative_url }}">
         {{ post.data.title }}
       </a>
     </li>
+
   {% end %}
 </ul>
+
+<div class="d-grid gap-2">
+  <a href="/posts" class="myButton">read more ...</a>
+</div>
 
 ---
 

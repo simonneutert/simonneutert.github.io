@@ -251,3 +251,30 @@ footer {
 footer a {
   color: var(--nice-pink);
 }
+
+.myButton {
+  box-shadow: inset 0px 1px 0px 0px #fbafe3;
+  background: linear-gradient(to bottom, #ff5bb0 5%, #ef027d 100%);
+  background-color: #ff5bb0;
+  border-radius: 6px;
+  border: 1px solid #ee1eb5;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 12px 76px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #c70067;
+}
+
+.myButton:hover {
+  background: linear-gradient(to bottom, #ef027d 5%, #ff5bb0 100%);
+  background-color: #ef027d;
+}
+
+.myButton:active {
+  position: relative;
+  top: 1px;
+}
