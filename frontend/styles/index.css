@@ -253,23 +253,28 @@ footer a {
 }
 
 .myButton {
-  font-size: 15px;
-  font-family: Arial;
-  width: 140px;
-  height: 44px;
-  border-width: 1px;
-  color: #ffffff;
-  border-color: rgba(253, 53, 93, 0.95);
-  font-weight: bold;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
   box-shadow: inset 0px 1px 0px 0px #fbafe3;
-  text-shadow: inset 0px 1px 0px #c70067;
-  background: linear-gradient(rgba(253, 53, 93, 0.98), rgba(253, 53, 93, 1));
+  background: linear-gradient(to bottom, #fd355d 5%, #fd355d 100%);
+  background-color: #fd355d;
+  border-radius: 6px;
+  border: 1px solid #fd355d;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 6px 24px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #c70067;
 }
 
 .myButton:hover {
-  background: linear-gradient(rgba(253, 53, 93, 1), rgba(253, 53, 93, 0.98));
+  background: linear-gradient(to bottom, #fd355d 5%, #fd355d 100%);
+  background-color: #fd355d;
+}
+
+.myButton:active {
+  position: relative;
+  top: 1px;
 }
