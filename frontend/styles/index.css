@@ -34,17 +34,17 @@ h1 {
   line-height: 1.2;
 }
 
-body > header {
+body>header {
   margin: 1rem;
   text-align: center;
 }
 
-body > header img {
+body>header img {
   display: inline-block;
   max-height: 20vh;
 }
 
-body > nav ul {
+body>nav ul {
   margin: 2rem 0;
   padding: 0;
   list-style-type: none;
@@ -55,7 +55,7 @@ body > nav ul {
   font-weight: bold;
 }
 
-body > nav a {
+body>nav a {
   text-decoration: none;
   color: var(--nav-color-a)
 }
@@ -74,6 +74,11 @@ main {
   }
 }
 
+
+main img {
+  max-width: 100%;
+}
+
 footer {
   text-align: center;
   margin-bottom: 4rem;
@@ -88,40 +93,41 @@ hr {
 
 /* BLOCKQUOTES */
 
-blockquote{
+blockquote {
   font-size: 1.2em;
-  width:60%;
-  margin:50px auto;
-  font-family:Open Sans;
-  font-style:italic;
+  width: 60%;
+  margin: 50px auto;
+  font-family: Open Sans;
+  font-style: italic;
   color: #555555;
-  padding:1.2em 30px 1.2em 75px;
-  border-left:8px solid rgb(253, 53, 93);
-  line-height:1.6;
+  padding: 1.2em 30px 1.2em 75px;
+  border-left: 8px solid rgb(253, 53, 93);
+  line-height: 1.6;
   position: relative;
-  background:#EDEDED;
+  background: #EDEDED;
 }
 
-blockquote::before{
-  font-family:Arial;
+blockquote::before {
+  font-family: Arial;
   content: "\201C";
-  color:rgb(253, 53, 93);;
-  font-size:4em;
+  color: rgb(253, 53, 93);
+  ;
+  font-size: 4em;
   position: absolute;
   left: 10px;
-  top:-10px;
+  top: -10px;
 }
 
-blockquote::after{
+blockquote::after {
   content: '';
 }
 
-blockquote span{
-  display:block;
-  color:#333333;
+blockquote span {
+  display: block;
+  color: #333333;
   font-style: normal;
   font-weight: bold;
-  margin-top:1em;
+  margin-top: 1em;
 }
 
 li {
@@ -160,15 +166,41 @@ ul.cloud span {
   position: relative;
 }
 
-ul.cloud span[data-weight="1"] { --size: 1; }
-ul.cloud span[data-weight="2"] { --size: 2; }
-ul.cloud span[data-weight="3"] { --size: 3; }
-ul.cloud span[data-weight="4"] { --size: 4; }
-ul.cloud span[data-weight="5"] { --size: 5; }
-ul.cloud span[data-weight="6"] { --size: 6; }
-ul.cloud span[data-weight="7"] { --size: 7; }
-ul.cloud span[data-weight="8"] { --size: 8; }
-ul.cloud span[data-weight="9"] { --size: 9; }
+ul.cloud span[data-weight="1"] {
+  --size: 1;
+}
+
+ul.cloud span[data-weight="2"] {
+  --size: 2;
+}
+
+ul.cloud span[data-weight="3"] {
+  --size: 3;
+}
+
+ul.cloud span[data-weight="4"] {
+  --size: 4;
+}
+
+ul.cloud span[data-weight="5"] {
+  --size: 5;
+}
+
+ul.cloud span[data-weight="6"] {
+  --size: 6;
+}
+
+ul.cloud span[data-weight="7"] {
+  --size: 7;
+}
+
+ul.cloud span[data-weight="8"] {
+  --size: 8;
+}
+
+ul.cloud span[data-weight="9"] {
+  --size: 9;
+}
 
 ul.cloud[data-show-value] span::after {
   content: " (" attr(data-weight) ")";
@@ -179,7 +211,7 @@ ul.cloud span {
   --size: 4;
   font-size: calc(var(--size) * 0.25rem + 0.5rem);
   /* ... */
-  opacity: calc((15 - (9 - var(--size))) / 15); 
+  opacity: calc((15 - (9 - var(--size))) / 15);
 
 }
 
