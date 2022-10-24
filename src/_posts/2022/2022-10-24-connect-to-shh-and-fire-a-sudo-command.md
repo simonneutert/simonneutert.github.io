@@ -5,11 +5,15 @@ layout: post
 
 You need the t option. That's all there is. Nothing else. [Source on StackOverflow](https://stackoverflow.com/a/10312700)
 
-`ssh -t user@server "sudo script"`
+```bash
+$ ssh -t user@server "sudo script"
+```
 
 OR
 
-`ssh -At user@server "sudo script"`
+```bash
+$ ssh -At user@server "sudo script"
+```
 
 from [man ssh](http://linuxcommand.org/lc3_man_pages/ssh1.html)
 
