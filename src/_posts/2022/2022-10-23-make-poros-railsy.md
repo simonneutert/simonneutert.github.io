@@ -1,5 +1,5 @@
 ---
-title: "Activate" POROs 
+title: '"Activate" POROs (in a Rails app)'
 layout: post
 ---
 
