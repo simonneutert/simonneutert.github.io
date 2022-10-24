@@ -1,0 +1,39 @@
+<p>Basic example on <a href="https://api.rubyonrails.org/classes/ActiveModel/Model.html">including ActiveModel</a></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Person</span>
+  <span class="kp">include</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Model</span>
+  <span class="nb">attr_accessor</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:age</span>
+<span class="k">end</span>
+
+<span class="n">person</span> <span class="o">=</span> <span class="no">Person</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">name: </span><span class="s1">'bob'</span><span class="p">,</span> <span class="ss">age: </span><span class="s1">'18'</span><span class="p">)</span>
+<span class="n">person</span><span class="p">.</span><span class="nf">name</span> <span class="c1"># =&gt; "bob"</span>
+<span class="n">person</span><span class="p">.</span><span class="nf">age</span>  <span class="c1"># =&gt; "18"</span>
+</code></pre></div></div>
+
+<p>And in order to make use of the magical serializers with <a href="https://api.rubyonrails.org/classes/ActiveModel/Serialization.html">ActiveModel::Serialization</a>:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Person</span>
+  <span class="kp">include</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Serialization</span>
+
+  <span class="nb">attr_accessor</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:age</span>
+
+  <span class="k">def</span> <span class="nf">attributes</span>
+    <span class="p">{</span><span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="kp">nil</span><span class="p">,</span> <span class="s1">'age'</span> <span class="o">=&gt;</span> <span class="kp">nil</span><span class="p">}</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">capitalized_name</span>
+    <span class="nb">name</span><span class="p">.</span><span class="nf">capitalize</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">person</span> <span class="o">=</span> <span class="no">Person</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">person</span><span class="p">.</span><span class="nf">name</span> <span class="o">=</span> <span class="s1">'bob'</span>
+<span class="n">person</span><span class="p">.</span><span class="nf">age</span>  <span class="o">=</span> <span class="mi">22</span>
+<span class="n">person</span><span class="p">.</span><span class="nf">serializable_hash</span>                <span class="c1"># =&gt; {"name"=&gt;"bob", "age"=&gt;22}</span>
+<span class="n">person</span><span class="p">.</span><span class="nf">serializable_hash</span><span class="p">(</span><span class="ss">only: :name</span><span class="p">)</span>   <span class="c1"># =&gt; {"name"=&gt;"bob"}</span>
+<span class="n">person</span><span class="p">.</span><span class="nf">serializable_hash</span><span class="p">(</span><span class="ss">except: :name</span><span class="p">)</span> <span class="c1"># =&gt; {"age"=&gt;22}</span>
+<span class="n">person</span><span class="p">.</span><span class="nf">serializable_hash</span><span class="p">(</span><span class="ss">methods: :capitalized_name</span><span class="p">)</span>
+<span class="c1"># =&gt; {"name"=&gt;"bob", "age"=&gt;22, "capitalized_name"=&gt;"Bob"}</span>
+</code></pre></div></div>
+
+<p>Easy peasy pumping out the the good ol’ railsy stuff 🛤</p>
