@@ -3,7 +3,7 @@ title: Connect with ssh and fire a sudo command 🚀
 layout: post
 ---
 
-You need the t option. That's all there is. Nothing else.
+You need the t option. That's all there is. Nothing else. [Source on StackOverflow](https://stackoverflow.com/a/10312700)
 
 `ssh -t user@server "sudo script"`
 
