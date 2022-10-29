@@ -21,7 +21,7 @@ layout: default
 
 ## Public Bots:
 
-- [t.me/SimonModBot](https://t.me/SimonModBot) 🇩🇪 (Doorkeeper, Weather)
+- [t.me/SimonModBot](https://t.me/SimonModBot) 🇩🇪 (I use the bot as a Doorkeeper in my public cycling group and for the weather 🙈)
 - [t.me/ErsteHilfe_Bot](https://t.me/ErsteHilfe_Bot) (multilang support) ([on Github](https://github.com/simonneutert/first-aid-helper-telegram-bot))
 - [t.me/RobotCityGuideBot](https://t.me/RobotCityGuideBot) 🇩🇪 (never really finished... Get in touch, if you want to contribute 🤓)
 - [t.me/velominati_bot](https://t.me/velominati_bot) 🇬🇧
