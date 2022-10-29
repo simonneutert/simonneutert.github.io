@@ -5,6 +5,8 @@ layout: post
 
 Most Notetaking apps do either too much (Notion), too less (Apple Notes) or locked me in (Evernote).
 
+<img src="/images/2022/labradorite.jpg" width="50%" style=" display: block; margin-left: auto; margin-right: auto; width: 50%;" />
+
 I wanted something that does **just-enough**™, in the spirit of a *flat file cms*. Let me try and wrap it up in a few bullets:
 
 * **ownership** of the notes (flat files)  
