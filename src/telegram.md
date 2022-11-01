@@ -6,8 +6,8 @@ layout: default
 
 ## Channels / Groups
 
-- [t.me/stuffaboutcoding](https://t.me/stuffaboutcoding) (Channel)
-- [t.me/rennrad_rheinhessen](https://t.me/rennrad_rheinhessen) (Group)
+- [t.me/stuffaboutcoding](https://t.me/stuffaboutcoding) (Channel) 🇬🇧
+- [t.me/rennrad_rheinhessen](https://t.me/rennrad_rheinhessen) (Group) 🇩🇪
 
 ## RSS Feeds
 
