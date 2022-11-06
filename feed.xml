@@ -1,4 +1,42 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.1.0">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-11-06T09:58:05+00:00</updated><id>/feed.xml</id><title type="html">Simon Neutert Website</title><subtitle>My name is Simon. I really enjoy coding and so far, I just cannot get enough of it. Other than that, I enjoy cycling and nice food 🤤</subtitle><entry><title type="html">I made my own little selfhostable flat-file notebook</title><link href="/2022/labradorite/" rel="alternate" type="text/html" title="I made my own little selfhostable flat-file notebook" /><published>2022-10-29T00:00:00+00:00</published><updated>2022-10-29T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-10-29-labradorite.md</id><content type="html" xml:base="/2022/labradorite/">&lt;p&gt;Most Notetaking apps do either too much (Notion), too less (Apple Notes) or locked me in (Evernote).&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.1.0">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-11-06T17:42:25+00:00</updated><id>/feed.xml</id><title type="html">Simon Neutert Website</title><subtitle>My name is Simon. I really enjoy coding and so far, I just cannot get enough of it. Other than that, I enjoy cycling and nice food 🤤</subtitle><entry><title type="html">Crawl MediaMarkts Fundgrube using Babashka (and telegram bots)</title><link href="/2022/fundgrube/" rel="alternate" type="text/html" title="Crawl MediaMarkts Fundgrube using Babashka (and telegram bots)" /><published>2022-11-06T00:00:00+00:00</published><updated>2022-11-06T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-11-06-fundgrube.md</id><content type="html" xml:base="/2022/fundgrube/">&lt;p&gt;While browsing through my GitHub Feed, I stumbled across &lt;a href=&quot;https://github.com/RomanNess/fundgrube-crawler&quot;&gt;Roman Ness’ fundgrube-crawler&lt;/a&gt; and thought this to be a nice little code exercise.&lt;/p&gt;
+
+&lt;p&gt;My &lt;a href=&quot;https://github.com/simonneutert/fundgrube&quot;&gt;fundgrube code on GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-mediamarktsaturn-fundgube-and-what-is-the-problem-with-it&quot;&gt;What is MediaMarkt/Saturn Fundgube and what is the problem with it?&lt;/h2&gt;
+
+&lt;p&gt;The Fundgrube is a collection of products in a sub-webshop you can visit in MediaMarkt/Saturn’s main webshop. The products listed there usually are reduced in price, reduced drastically. These products were maybe used for displaying in the shop or may have some cosmetic issues, like scratches. Here’s the twist: customers need to collect the product from the store, shipping is not an option and another customer might be quicker than you.&lt;/p&gt;
+
+&lt;p&gt;The “problem” with how the Fundgrube is offered as a webshop is the lack of filters or proper search tools. Just as they want you to come to the store to pick the product up, they want you to check the Fundgrube regularly (I guess).&lt;/p&gt;
+
+&lt;p&gt;The data/products API is public and when opening the dev tools in your browser, you will find a custom header, wanting you to send in your resume and apply for a job. Fair play, MediaMarkt and Saturn.&lt;/p&gt;
+
+&lt;h2 id=&quot;my-script-my-babashka&quot;&gt;My script, my babashka&lt;/h2&gt;
+
+&lt;p&gt;What I’ve come up with in an adrenalin rush, is not (yet) a script i would show my mother-in-law and brag about it…, but …, well …, it does the job 😅&lt;/p&gt;
+
+&lt;p&gt;My script crawls through MediaMarkts public &lt;a href=&quot;https://www.mediamarkt.de/de/data/fundgrube&quot;&gt;Fundgrube&lt;/a&gt; API and posts new products on offer via a &lt;a href=&quot;https://core.telegram.org/bots/faq#how-do-i-create-a-bot&quot;&gt;telegram bot&lt;/a&gt; in a secret channel for me and some friends.&lt;/p&gt;
+
+&lt;h4 id=&quot;technicals&quot;&gt;Technicals&lt;/h4&gt;
+
+&lt;p&gt;The tool is parameterised using ENV Vars, to iterate over the local product postings, then collecting unique items, aggregating the results. Before storing the data to disk, the last time created file is being copied and renamed, allowing the tool to detect changes. I decided to use Clojure’s &lt;a href=&quot;https://github.com/edn-format/edn&quot;&gt;edn data notation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Here’s an example what a post to telegram of a detected product entry would look like:&lt;/p&gt;
+
+&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Markt: Wiesbaden-Hasengarten
+Produkt: PHILIPS 58PUS8546/12 LED TV (Flat, 58 Zoll / 146 cm, UHD 4K, SMART TV, Ambilight, Android TV™ 10 (Q))
+
+Preis: 700.00 €
+
+Artikel 2734789
+-
+LED TV / 146cm/58Zoll / UHD 4K,
+Ultra Resolution, Dolby Vision, HDR10+, Micro Dimming Pro, ISF-Farbmanagement,
+2 x 10 W Full-Range-Lautsprecher,
+Ausschalt-Timer, Lichtsensor, Bildabschaltung (bei Radiobetrieb), Eco-Modus
+https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/29336490249241a3925bcb97e235b830
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;What started as a quick experiment using httpie and jq, escalated quickly to an exercise in Clojure 🥰&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">I made my own little selfhostable flat-file notebook</title><link href="/2022/labradorite/" rel="alternate" type="text/html" title="I made my own little selfhostable flat-file notebook" /><published>2022-10-29T00:00:00+00:00</published><updated>2022-10-29T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-10-29-labradorite.md</id><content type="html" xml:base="/2022/labradorite/">&lt;p&gt;Most Notetaking apps do either too much (Notion), too less (Apple Notes) or locked me in (Evernote).&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/2022/labradorite.jpg&quot; width=&quot;50%&quot; style=&quot; display: block; margin-left: auto; margin-right: auto; width: 50%;&quot; /&gt;&lt;/p&gt;
 
@@ -333,19 +371,4 @@ Hearing other roles perspective can help developers bridge the gap, better commu
 
 &lt;p&gt;There are some hints given regarding how to enhance the communication between developers and customers or managers.&lt;/p&gt;
 
-&lt;p&gt;And from the vibe, I felt that a strong and clear company culture. They call it “build a tribe” at one point, reminding of how important it is to stay open for outsiders. Culture is very hard to measure or explain in detail, but may be the most underrated factor of success on the long run.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Clojure Error on REPL start: Failed to load class “org.slf4j.impl.StaticLoggerBinder”</title><link href="/2022/clojure-neo4j-error/" rel="alternate" type="text/html" title="Clojure Error on REPL start: Failed to load class &quot;org.slf4j.impl.StaticLoggerBinder&quot;" /><published>2022-09-21T00:00:00+00:00</published><updated>2022-09-21T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-09-21-clojure-neo4j-error.md</id><content type="html" xml:base="/2022/clojure-neo4j-error/">&lt;p&gt;Here are the bits, as I am very tired of regoogling it all the time 😅&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Failed to load class “org.slf4j.impl.StaticLoggerBinder”&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;What brought me to what exactly to add on Slack:&lt;br /&gt;
-https://clojurians-log.clojureverse.org/clojure/2016-10-23&lt;/p&gt;
-
-&lt;p&gt;On Maven:&lt;br /&gt;
-https://mvnrepository.com/artifact/org.slf4j/slf4j-simple&lt;/p&gt;
-
-&lt;p&gt;This is what your &lt;code class=&quot;highlighter-rouge&quot;&gt;deps.edn&lt;/code&gt; could look like, making the error disappear!&lt;/p&gt;
-
-&lt;div class=&quot;language-clojure highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:deps&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;org.slf4j/slf4j-simple&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:mvn/version&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1.7.36&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author></entry></feed>
+&lt;p&gt;And from the vibe, I felt that a strong and clear company culture. They call it “build a tribe” at one point, reminding of how important it is to stay open for outsiders. Culture is very hard to measure or explain in detail, but may be the most underrated factor of success on the long run.&lt;/p&gt;</content><author><name></name></author></entry></feed>
