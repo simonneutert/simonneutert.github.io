@@ -21,7 +21,7 @@ Other than that, I really do enjoy spending time on my bike in [Rheinhessen](htt
 On [flickr](https://www.flickr.com/photos/simonneutert/) you will find my photo gallery.
 {:style="text-align:center"}
 
-Get in touch with me via [Linkedin](https://www.linkedin.com/in/simon-neutert/)! 🍻
+Get in touch with me on [Telegram](https://t.me/simonneutert) or via [Linkedin](https://www.linkedin.com/in/simon-neutert/)! 🍻
 {:style="text-align:center"}
 
 ## I blog from time to time
