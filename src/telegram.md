@@ -12,7 +12,6 @@ layout: default
 ## RSS Feeds
 
 - [t.me/mb_io_blog_unofficial](https://t.me/mb_io_blog_unofficial) 🇬🇧
-- [t.me/ruby_weekly_rss](https://t.me/ruby_weekly_rss) 🇬🇧
 - [t.me/MainzUnd_inoffiziell](https://t.me/MainzUnd_inoffiziell) 🇩🇪
 - [t.me/sensormainz_inoffiziell](https://t.me/sensormainz_inoffiziell) 🇩🇪
 - [t.me/sensorwiesbaden_inoffiziell](https://t.me/sensorwiesbaden_inoffiziell) 🇩🇪
