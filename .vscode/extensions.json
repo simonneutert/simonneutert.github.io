@@ -1,0 +1,16 @@
+{
+  "recommendations": [
+    "whitefusion.serbea",
+    "aliariff.auto-add-brackets",
+    "kaiwood.endwise",
+    "eamodio.gitlens",
+    "yzhang.markdown-all-in-one",
+    "rebornix.ruby",
+    "lorankloeze.ruby-rubocop-revived",
+    "castwide.solargraph",
+    "wingrunr21.vscode-ruby",
+    "bung87.vscode-gemfile",
+    "pavlitsky.yard",
+    "redhat.vscode-yaml"
+  ]
+}
