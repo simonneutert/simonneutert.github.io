@@ -11,7 +11,7 @@ SSH is turned off by default, so I `touch ssh` in the boot directory of the SD a
 
 I then `sudo apt update && sudo apt upgrade` before running this line by line:
 
-``` bash
+```bash
 sudo apt-get install libssl-dev
 wget https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tgz
 tar xzvf Python-3.6.4.tgz
