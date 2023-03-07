@@ -16,6 +16,6 @@
     "postcss-preset-env": "^7.4.3"
   },
   "dependencies": {
-    "@hotwired/turbo": "^7.1.0"
+    "@hotwired/turbo": "^7.3.0"
   }
 }
