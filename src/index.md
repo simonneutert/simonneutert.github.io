@@ -1,4 +1,5 @@
 ---
+
 # Feel free to add content and custom Front Matter to this file.
 
 layout: default
@@ -6,12 +7,11 @@ layout: default
 
 <h1 class="rotate">👋 Hi, I'm Simon! <img src="https://www.gravatar.com/avatar/9ee19244c2d149385a7f1ca3a4844b6c?s=100" style="border-radius:5px" /></h1>
 
-
-
-What I'm currenty coding on is uploaded on [GitHub](https://github.com/simonneutert) and  
+I share my code on [GitHub](https://github.com/simonneutert) and I 
 sometimes [blog](/posts) about what made me smile/stumble/humble/moan.
 {:style="text-align:center"}
 
+My passion is Ruby, yet I enjoy exploring what other languages bring to the table.  
 I (con(j))currently explore the [land of LISP/parentheses](https://www.youtube.com/watch?v=HM1Zb3xmvMc&t=64s) 🥰
 {:style="text-align:center"}
 
@@ -21,12 +21,34 @@ Other than that, I really do enjoy spending time on my bike in [Rheinhessen](htt
 On [flickr](https://www.flickr.com/photos/simonneutert/) you will find my photo gallery.
 {:style="text-align:center"}
 
-Get in touch with me via [Linkedin](https://www.linkedin.com/in/simon-neutert/)! 🍻
+Get in touch with me on [Telegram](https://t.me/simonneutert) or via [Linkedin](https://www.linkedin.com/in/simon-neutert/)! 🍻
 {:style="text-align:center"}
+
+## I blog from time to time
+
+Mostly about code I wrote, sometimes pet projects or about things that should never slow me down no more.  
+That's right, I am pointing at you, [pg gem on Mac](/2018/pg-gem-with-postgres-app-on-mac/)!
+
+#### Latest posts
+
+<ul>
+  {% collections.posts.resources.take(10).each do |post| %}
+    <li>
+      <span style="font-family: monospace">{{post.data.date.to_date}}</span> <a href="{{ post.relative_url }}">
+        {{ post.data.title }}
+      </a>
+    </li>
+  {% end %}
+</ul>
+
+<div class="d-grid gap-2">
+  <a href="/posts" class="myButton">read more ...</a>
+</div>
 
 ---
 
 ## WORDCLOUD! Buzzwords!
+
 {:style="text-align:center; transform: rotate(2.5deg)"}
 
 <div class="cloud-wrap">
@@ -48,15 +70,3 @@ Get in touch with me via [Linkedin](https://www.linkedin.com/in/simon-neutert/)!
   <li><span data-weight="1">Python</span></li>
 </ul>
 </div>
-
-## Latest posts
-
-<ul>
-  {% collections.posts.resources.take(10).each do |post| %}
-    <li>
-      <span style="font-family: monospace">{{post.data.date.to_date}}</span> <a href="{{ post.relative_url }}">
-        {{ post.data.title }}
-      </a>
-    </li>
-  {% end %}
-</ul>
