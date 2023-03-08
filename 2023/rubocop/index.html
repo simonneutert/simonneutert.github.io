@@ -40,7 +40,7 @@
 
 <h1>RuboCop ships with a server</h1>
 
-<p>For everybody running the standard MRI/C Ruby implementation, did you know, you can speed up your rubocopping by quite a bit?</p>
+<p>For everybody running the standard MRI/C Ruby implementation, did you know that you can speed up your Rubocop checks by quite a bit?</p>
 
 <blockquote>
   <p>You can reduce the RuboCop boot time significantly (something like 850x faster) by using the –server command-line option.</p>
@@ -52,11 +52,9 @@
   <p>Source: https://docs.rubocop.org/rubocop/usage/server.html</p>
 </blockquote>
 
-<p>I recommend you to read the docs.</p>
+<p>I recommend that you read the documentation. Please do not make the same mistake I did!</p>
 
-<p>Please, do not make the same mistake as I did!</p>
-
-<p>Add a <code class="highlighter-rouge">.rubocop</code> file to your project. <strong>This time there’s no <code class="highlighter-rouge">.yml</code> ending!</strong></p>
+<p>Make sure to add a <code class="highlighter-rouge">.rubocop</code> file to your project, but this time <strong>without the <code class="highlighter-rouge">.yml</code></strong> ending!</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># content of .rubocop</span>
 <span class="nt">--server</span>
