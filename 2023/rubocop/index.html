@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>RuboCop ships with a server | Simon Neutert Website</title>
+
+<meta name="description" content="My name is Simon. I really enjoy coding and so far, I just cannot get enough of it. Other than that, I enjoy cycling and nice food 🤤" />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.3ZWCUJTV.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.JHPX6XYL.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert Website" />
+  </head>
+  <body class="post ">
+    <header>
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/telegram">Bot Army</a></li>
+    <!-- <li><a href="/about">About</a></li> -->
+    <li><a href="/posts">Blog</a></li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<h1>RuboCop ships with a server</h1>
+
+<p>For everybody running the standard MRI/C Ruby implementation, did you know, you can speed up your rubocopping by quite a bit?</p>
+
+<blockquote>
+  <p>You can reduce the RuboCop boot time significantly (something like 850x faster) by using the –server command-line option.</p>
+
+  <p>The –server option speeds up the launch of the rubocop command by utilizing a standalone server process that loads the RuboCop runtime production files (i.e. require ‘rubocop’).</p>
+
+  <p>Normally RuboCop starts somewhat slowly because it needs to require a ton of files and that’s fairly slow. With the RuboCop server we sidestep this nasty issue and make it much more pleasant to interact with RuboCop from text editors and IDEs.</p>
+
+  <p>Source: https://docs.rubocop.org/rubocop/usage/server.html</p>
+</blockquote>
+
+<p>I recommend you to read the docs.</p>
+
+<p>Please, do not make the same mistake as I did!</p>
+
+<p>Add a <code class="highlighter-rouge">.rubocop</code> file to your project. <strong>This time there’s no <code class="highlighter-rouge">.yml</code> ending!</strong></p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># content of .rubocop</span>
+<span class="nt">--server</span>
+</code></pre></div></div>
+
+
+<hr />
+
+
+<a href="/2022/fundgrube/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Wackernheimer Straße 13, 55262 Ingelheim, Germany
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>
