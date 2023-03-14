@@ -1,5 +1,4 @@
 ---
-
 # Feel free to add content and custom Front Matter to this file.
 
 layout: default
@@ -7,7 +6,7 @@ layout: default
 
 <h1 class="rotate">👋 Hi, I'm Simon! <img src="https://www.gravatar.com/avatar/9ee19244c2d149385a7f1ca3a4844b6c?s=100" style="border-radius:5px" /></h1>
 
-I share my code on [GitHub](https://github.com/simonneutert) and I 
+I share my code on [GitHub](https://github.com/simonneutert) and I
 sometimes [blog](/posts) about what made me smile/stumble/humble/moan.
 {:style="text-align:center"}
 
@@ -44,6 +43,12 @@ That's right, I am pointing at you, [pg gem on Mac](/2018/pg-gem-with-postgres-a
 <div class="d-grid gap-2">
   <a href="/posts" class="myButton">read more ...</a>
 </div>
+
+---
+
+> The difference between masters and beginners is that masters have failed more times than beginners have even tried"
+>
+> \- Stephen McCranie
 
 ---
 
