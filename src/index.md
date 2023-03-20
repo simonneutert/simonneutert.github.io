@@ -26,7 +26,7 @@ Get in touch with me on [Telegram](https://t.me/simonneutert) or via [Linkedin](
 ## I blog from time to time
 
 Mostly about code I wrote, sometimes pet projects or about things that should never slow me down no more.  
-That's right, I am pointing at you, [pg gem on Mac](/2018/pg-gem-with-postgres-app-on-mac/)!
+That's right, I am pointing at you, [pg gem on Mac](/2018/pg-gem-with-postgres-app-on-mac/) (but it seems to be a thing of the past 🙌)!
 
 #### Latest posts
 
