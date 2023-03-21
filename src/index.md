@@ -46,7 +46,7 @@ That's right, I am pointing at you, [pg gem on Mac](/2018/pg-gem-with-postgres-a
 
 ---
 
-> The difference between masters and beginners is that masters have failed more times than beginners have even tried."
+> The difference between masters and beginners is that masters have failed more times than beginners have even tried.
 >
 > \- Stephen McCranie
 
