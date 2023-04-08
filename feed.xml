@@ -1,4 +1,51 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.2.0">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-04-04T08:26:53+00:00</updated><id>/feed.xml</id><title type="html">Simon Neutert Website</title><subtitle>My name is Simon. I really enjoy coding and so far, I just cannot get enough of it. Other than that, I enjoy cycling and nice food 🤤</subtitle><entry><title type="html">RuboCop ships with a server</title><link href="/2023/rubocop/" rel="alternate" type="text/html" title="RuboCop ships with a server" /><published>2023-03-08T00:00:00+00:00</published><updated>2023-03-08T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2023/2023-03-08-rubocop.md</id><content type="html" xml:base="/2023/rubocop/">&lt;p&gt;For everybody running the standard MRI/C Ruby implementation, did you know that you can speed up your Rubocop checks by quite a bit?&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.2.0">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-04-08T18:55:45+00:00</updated><id>/feed.xml</id><title type="html">Simon Neutert Website</title><subtitle>My name is Simon. I really enjoy coding and so far, I just cannot get enough of it. Other than that, I enjoy cycling and nice food 🤤</subtitle><entry><title type="html">Ruby: Sequel and Dates BC (Before Christ) - Cheesus Chwist, I nearly went mad 🤪</title><link href="/2023/before-christ-postgres-sequel/" rel="alternate" type="text/html" title="Ruby: Sequel and Dates BC (Before Christ) - Cheesus Chwist, I nearly went mad 🤪" /><published>2023-04-08T00:00:00+00:00</published><updated>2023-04-08T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2023/2023-04-08-before-christ-postgres-sequel.md</id><content type="html" xml:base="/2023/before-christ-postgres-sequel/">&lt;p&gt;When fiddling with date ranges, I stumbled about an error which caused my application to break.&lt;/p&gt;
+
+&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PG::DatetimeFieldOverflow: ERROR:  date/time field value out of range: &quot;0000-12-31 23:00:00.000000+0000&quot;
+LINE 1: ...&quot; WHERE ((&quot;action&quot; = &apos;deposit&apos;) AND (&quot;realized&quot; &amp;gt; &apos;0000-12-3...
+                                                             ^: SELECT sum(cast(amount_cents as int)) as saldo  FROM &quot;bookings&quot; WHERE ((&quot;action&quot; = &apos;deposit&apos;) AND (&quot;realized&quot; &amp;gt; &apos;0000-12-31 23:00:00.000000+0000&apos;)) LIMIT 1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;I configured Sequel (and the database) to use UTC all the way down, causing my testsuite to brake 🥲&lt;br /&gt;
+https://sequel.jeremyevans.net/rdoc/classes/Sequel/Timezones.html&lt;/p&gt;
+
+&lt;h2 id=&quot;enhancing-postgresql-date-support-with-pg_extended_date_support-sequel-extension&quot;&gt;Enhancing PostgreSQL Date Support with &lt;code class=&quot;highlighter-rouge&quot;&gt;pg_extended_date_support&lt;/code&gt; Sequel extension&lt;/h2&gt;
+
+&lt;p&gt;PostgreSQL is a powerful and versatile open-source relational database management system. Its robust feature set has made it a popular choice for developers and businesses worldwide. One area where PostgreSQL has some limitations is in handling dates and timestamps, specifically infinite and BC dates/timestamps. I&lt;/p&gt;
+
+&lt;p&gt;What is Sequel’s &lt;code class=&quot;highlighter-rouge&quot;&gt;pg_extended_date_support&lt;/code&gt; extension?&lt;/p&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;pg_extended_date_support&lt;/code&gt; extension adds support for infinite and BC dates/timestamps in PostgreSQL. While the postgres adapter already had a convert_infinite_timestamps setting, it wasn’t supported in the jdbc/postgresql adapter, and it didn’t handle BC dates/timestamps. This new extension resolves these issues and ensures better compatibility with various adapters.&lt;/p&gt;
+
+&lt;p&gt;How to Use the &lt;code class=&quot;highlighter-rouge&quot;&gt;pg_extended_date_support&lt;/code&gt; Extension:&lt;/p&gt;
+
+&lt;p&gt;To use the pg_extended_date_support extension, you will need to load it into your application and configure it according to your needs. By default, the extension only fixes the handling of BC dates/timestamps. To enable it to handle infinite timestamps, you need to choose the appropriate setting for your application. Here’s how to do it:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Load the extension for your database:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;DB&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;extension&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:pg_extended_date_support&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Configure the convert_infinite_timestamps setting:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;DB&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;convert_infinite_timestamps&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:string&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# or :float or :nil&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Choose the appropriate setting based on your application’s requirements. The available options are:&lt;/p&gt;
+
+&lt;p&gt;:string - Infinite timestamps will be converted to strings.
+:float - Infinite timestamps will be converted to floating-point numbers.
+:nil - Infinite timestamps will not be converted and will be returned as nil.
+Additional Benefits of the pg_extended_date_support Extension:&lt;/p&gt;
+
+&lt;h3 id=&quot;bonus--conclusion&quot;&gt;Bonus / Conclusion&lt;/h3&gt;
+
+&lt;p&gt;Apart from handling infinite and BC dates/timestamps, the pg_extended_date_support extension also enables the handling of timezone offsets with seconds. This feature is not natively supported by Ruby’s Time class in versions earlier than 2.5. By using this extension, you can now work with timezones that have a non-minute offset, making your application more flexible and adaptable to various timezones.&lt;/p&gt;
+
+&lt;p&gt;The pg_extended_date_support extension is a valuable addition to PostgreSQL, as it improves the handling of dates and timestamps, particularly infinite and BC dates/timestamps. Additionally, it enables support for timezone offsets with seconds, further enhancing PostgreSQL’s capabilities. If you’re working with PostgreSQL, consider integrating this extension into your application to make the most of its robust date and timestamp handling features.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">RuboCop ships with a server</title><link href="/2023/rubocop/" rel="alternate" type="text/html" title="RuboCop ships with a server" /><published>2023-03-08T00:00:00+00:00</published><updated>2023-03-08T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2023/2023-03-08-rubocop.md</id><content type="html" xml:base="/2023/rubocop/">&lt;p&gt;For everybody running the standard MRI/C Ruby implementation, did you know that you can speed up your Rubocop checks by quite a bit?&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;You can reduce the RuboCop boot time significantly (something like 850x faster) by using the –server command-line option.&lt;/p&gt;
@@ -261,59 +308,4 @@ The guys from &lt;a href=&quot;https://www.stadlermade.com/&quot;&gt;Städler Ma
   &lt;li&gt;DOM represented as data and functions&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/2022/pizza.jpg&quot; width=&quot;50%&quot; style=&quot; display: block; margin-left: auto; margin-right: auto; width: 50%;&quot; /&gt;&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Dockering a shadow-cljs app</title><link href="/2022/docker-shadow-cljs/" rel="alternate" type="text/html" title="Dockering a shadow-cljs app" /><published>2022-09-23T00:00:00+00:00</published><updated>2022-09-23T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-09-23-docker-shadow-cljs.md</id><content type="html" xml:base="/2022/docker-shadow-cljs/">&lt;p&gt;I&amp;#8217;d say there are two ways of doing it, either install Java or install Node.&lt;/p&gt;
-
-&lt;p&gt;I prefer installing Java and Clojure.&lt;/p&gt;
-
-&lt;p&gt;Here&amp;#8217;s a very minimal two staged example:&lt;/p&gt;
-
-&lt;div class=&quot;language-Dockerfile highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;node:16-buster&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;AS&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;build&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;apt-get update &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get &lt;span class=&quot;nt&quot;&gt;-q&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\
-&lt;/span&gt;    openjdk-11-jre-headless &lt;span class=&quot;se&quot;&gt;\
-&lt;/span&gt;    curl
-
-&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;curl &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; https://download.clojure.org/install/linux-install-1.11.1.1165.sh | bash &lt;span class=&quot;se&quot;&gt;\
-&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-rf&lt;/span&gt; /var/lib/apt/lists/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;npm i &lt;span class=&quot;nt&quot;&gt;-g&lt;/span&gt; shadow-cljs
-
-&lt;span class=&quot;k&quot;&gt;WORKDIR&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; /app&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;COPY&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; shadow-cljs.edn /app/&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;COPY&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; src /app/src&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;COPY&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; public/index.html /app/public/index.html&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;npx shadow-cljs release frontend
-
-&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; nginx:1-alpine&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;COPY&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; --from=build /app/public/index.html /usr/share/nginx/html/index.html&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;COPY&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; --from=build /app/public/js/main.js /usr/share/nginx/html/js/main.js&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Make sure you have your release pipeline ready to roll!&lt;/p&gt;
-
-&lt;p&gt;From the shadow-cljs &lt;a href=&quot;https://shadow-cljs.github.io/docs/UsersGuide.html#release&quot;&gt;documentation&lt;/a&gt;:&lt;/p&gt;
-
-&lt;p&gt;Adjust your &lt;code class=&quot;highlighter-rouge&quot;&gt;shadow-cljs.edn&lt;/code&gt; to your taste.&lt;/p&gt;
-
-&lt;div class=&quot;language-clojure highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;;; shadow-cljs configuration&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:source-paths&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
- &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;src/dev&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;src/main&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;src/test&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-
- &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:dependencies&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hiccups/hiccups&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0.3.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
- &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:dev-http&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8080&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;public&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
- &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:builds&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:frontend&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-          &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:target&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:browser&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-           &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:modules&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:main&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:init-fn&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;app.core/init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;;; adjust here&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-           &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:release&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:compiler-options&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:optimizations&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:advanced&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-          &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:test&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-          &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:target&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:node-test&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-           &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:output-to&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;out/node-tests.js&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-           &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:ns-regexp&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;-test$&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-           &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:autorun&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;   &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;For more inspiration checkout my demo project on GitHub &lt;a href=&quot;https://github.com/simonneutert/pizza-dough-calculator&quot;&gt;pizza-dough-calculator&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author></entry></feed>
+&lt;p&gt;&lt;img src=&quot;/images/2022/pizza.jpg&quot; width=&quot;50%&quot; style=&quot; display: block; margin-left: auto; margin-right: auto; width: 50%;&quot; /&gt;&lt;/p&gt;</content><author><name></name></author></entry></feed>
