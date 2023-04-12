@@ -1,4 +1,99 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.2.0">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-04-08T18:55:45+00:00</updated><id>/feed.xml</id><title type="html">Simon Neutert Website</title><subtitle>My name is Simon. I really enjoy coding and so far, I just cannot get enough of it. Other than that, I enjoy cycling and nice food 🤤</subtitle><entry><title type="html">Ruby: Sequel and Dates BC (Before Christ) - Cheesus Chwist, I nearly went mad 🤪</title><link href="/2023/before-christ-postgres-sequel/" rel="alternate" type="text/html" title="Ruby: Sequel and Dates BC (Before Christ) - Cheesus Chwist, I nearly went mad 🤪" /><published>2023-04-08T00:00:00+00:00</published><updated>2023-04-08T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2023/2023-04-08-before-christ-postgres-sequel.md</id><content type="html" xml:base="/2023/before-christ-postgres-sequel/">&lt;p&gt;When fiddling with date ranges, I stumbled about an error which caused my application to break.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.2.0">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-04-12T20:03:36+00:00</updated><id>/feed.xml</id><title type="html">Simon Neutert Website</title><subtitle>My name is Simon. I really enjoy coding and so far, I just cannot get enough of it. Other than that, I enjoy cycling and nice food 🤤</subtitle><entry><title type="html">Ruby REST API client for Papierkram.de</title><link href="/2023/pkapi/" rel="alternate" type="text/html" title="Ruby REST API client for Papierkram.de" /><published>2023-04-12T00:00:00+00:00</published><updated>2023-04-12T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2023/2023-04-12-pkapi.md</id><content type="html" xml:base="/2023/pkapi/">&lt;p&gt;I have written a small REST API client for the Papierkram.de API, which is a simple wrapper around the Faraday gem. Although it’s not perfect, it works well. For the HTTP client library, I chose &lt;a href=&quot;https://github.com/HoneyryderChuck/httpx&quot;&gt;httpx&lt;/a&gt;, which promises to be the future with blazing-fast performance, and it’s free too!&lt;/p&gt;
+
+&lt;p&gt;tldr; &lt;a href=&quot;https://rubygems.org/gems/papierkram_api_client&quot;&gt;here’s the gem&lt;/a&gt; and &lt;a href=&quot;https://github.com/simonneutert/papierkram_api_client&quot;&gt;here’s the code&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;In this post, I would like to share some of the things I have learned while writing this gem.&lt;/p&gt;
+
+&lt;p&gt;Yet, there’s still some more documentation and testing to do. 😅&lt;/p&gt;
+
+&lt;h2 id=&quot;testing-with-vcr-and-minitest&quot;&gt;Testing with VCR and Minitest&lt;/h2&gt;
+
+&lt;p&gt;I chose to use Minitest for testing, as I am a big fan of its simplicity and think it is a great choice for testing. One of the things I like about it is that it is just plain Ruby, with no DSL, magic, or weird syntax. While I’m not certain whether it is actually faster than RSpec, it certainly feels that way.&lt;/p&gt;
+
+&lt;p&gt;Minitest pairs very well with &lt;a href=&quot;https://github.com/vcr/vcr&quot;&gt;VCR&lt;/a&gt; for testing the API. Personally, I am not a big fan of mocking, so I prefer to record the API responses and replay them during testing. However, it is important to keep an eye on your recorded data to ensure that it is still valid.&lt;/p&gt;
+
+&lt;p&gt;Setting up Minitest and VCR is straightforward using &lt;a href=&quot;https://github.com/mfpiccolo/minitest-vcr&quot;&gt;minitest-vcr&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Here’s an example setup of Minitest’s &lt;code class=&quot;highlighter-rouge&quot;&gt;test_helper.rb&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# $ cat app_name/test/test_helper.rb&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;minitest/autorun&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;minispec-metadata&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;vcr&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;minitest-vcr&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;faraday&quot;&lt;/span&gt;
+
+&lt;span class=&quot;no&quot;&gt;VCR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;configure&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;cassette_library_dir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;test/cassettes&apos;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;hook_into&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:faraday&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;no&quot;&gt;MinitestVcr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Spec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;configure!&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;It will record the request and the response. But it will also record the request headers. And if you don’t pay attention,
+you might end up with a recorded response that leaks personal or credential data.&lt;/p&gt;
+
+&lt;p&gt;So make sure to filter out any sensitive data from the request headers.&lt;/p&gt;
+
+&lt;p&gt;VCR brings some features that will help &lt;a href=&quot;https://benoittgt.github.io/vcr/#/configuration/filter_sensitive_data&quot;&gt;you with that&lt;/a&gt;.
+You can filter out parts of the request headers, like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;interaction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;headers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;set-cookie&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;=&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;last&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;OR you can filter out the whole request headers:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;VCR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;configure&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# ...&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;filter_sensitive_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;&amp;lt;API_KEY&amp;gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;interaction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;interaction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;headers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;X-Http-Username&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# ...&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Filter out a secret value coming from the environment:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;VCR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;configure&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# ...&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;filter_sensitive_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;&amp;lt;API_KEY&amp;gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;PAPIERKRAM_API_KEY&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# ...&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This will help you avoid leaking sensitive data that you are aware of and can pin down exactly.&lt;/p&gt;
+
+&lt;p&gt;Filtering emails is a bit more tricky. You can filter out the whole email address in most cases something like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# tests ...&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;VCR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;configure&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# ...&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;before_record&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;interaction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;interaction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;scan&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}\b/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;interaction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;gsub!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;&amp;lt;EMAIL&amp;gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;clean-your-cassette-files-once-in-a-while&quot;&gt;Clean your cassette files once in a while&lt;/h2&gt;
+
+&lt;p&gt;I know there are auto-clean options in VCR, but in most cases, I can manage it myself. APIs usually don’t change that often or change gradually enough.&lt;/p&gt;
+
+&lt;p&gt;Deleting the cassettes a few times a year or after API changes have been communicated should be sufficient.&lt;/p&gt;
+
+&lt;h2 id=&quot;check-out-the-code-of-the-gem&quot;&gt;Check out the code of the gem&lt;/h2&gt;
+
+&lt;p&gt;If you want to see how I implemented the gem, you can check out the code on &lt;a href=&quot;https://github.com/simonneutert/papierkram_api_client&quot;&gt;GitHub&lt;/a&gt;.
+Please, provide feedback if you have any. I am always happy to learn something new. And if you have any questions, feel free to ask.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;It’s always fun to put something together that you can use in your own projects. Working on this gem was a great learning experience for me.
+Implementing Minitest, VCR, configuring Faraday and Rubocop, direnv and setting up GitHub Actions was a great way to learn more about Ruby and its ecosystem.
+I want to maintain a Changelog.md file for this gem, so I (you) can keep track of the changes and document them.
+I will also add some more tests and documentation in the future.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Ruby: Sequel and Dates BC (Before Christ) - Cheesus Chwist, I nearly went mad 🤪</title><link href="/2023/before-christ-postgres-sequel/" rel="alternate" type="text/html" title="Ruby: Sequel and Dates BC (Before Christ) - Cheesus Chwist, I nearly went mad 🤪" /><published>2023-04-08T00:00:00+00:00</published><updated>2023-04-08T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2023/2023-04-08-before-christ-postgres-sequel.md</id><content type="html" xml:base="/2023/before-christ-postgres-sequel/">&lt;p&gt;When fiddling with date ranges, I stumbled about an error which caused my application to break.&lt;/p&gt;
 
 &lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PG::DatetimeFieldOverflow: ERROR:  date/time field value out of range: &quot;0000-12-31 23:00:00.000000+0000&quot;
 LINE 1: ...&quot; WHERE ((&quot;action&quot; = &apos;deposit&apos;) AND (&quot;realized&quot; &amp;gt; &apos;0000-12-3...
@@ -285,27 +380,4 @@ add a &lt;code class=&quot;highlighter-rouge&quot;&gt;main.rb&lt;/code&gt; at pr
 &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n\n\n\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
 
 &lt;span class=&quot;n&quot;&gt;pp&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;results&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author></entry><entry><title type="html">Bake Pizzas at home! 🍕 - a sample shadow-cljs app</title><link href="/2022/pizza-dough-shadow-cljs/" rel="alternate" type="text/html" title="Bake Pizzas at home! 🍕 - a sample shadow-cljs app" /><published>2022-09-27T00:00:00+00:00</published><updated>2022-09-27T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-09-27-pizza-dough-shadow-cljs.md</id><content type="html" xml:base="/2022/pizza-dough-shadow-cljs/">&lt;p&gt;Making Pizza is a huge deal! At least to me! And boy, am I spoiled 😬&lt;br /&gt;
-The guys from &lt;a href=&quot;https://www.stadlermade.com/&quot;&gt;Städler Made&lt;/a&gt; provide excellent recipes AND OVENS!&lt;/p&gt;
-
-&lt;p&gt;So much so, that I was scared they change something and I am lost in the search for the recipe I got to love so much!&lt;/p&gt;
-
-&lt;p&gt;Having permission to have the code public from Sanne and Pieter, I am very proud to show my Clojurescript take on the recipe we ever since love so much 🥰&lt;/p&gt;
-
-&lt;p&gt;Project on GitHub: &lt;a href=&quot;https://github.com/simonneutert/pizza-dough-calculator&quot;&gt;pizza-dough-calculator&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;The scope of the app is both showing of how nice developing with Clojurescript can be.&lt;/p&gt;
-
-&lt;p&gt;Checking out the project can teach you:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Clojurescript namespacing (require files and dependencies)&lt;/li&gt;
-  &lt;li&gt;Clojurescript for the Browser&lt;/li&gt;
-  &lt;li&gt;Clojures data first approach&lt;/li&gt;
-  &lt;li&gt;separation of actions and computation (immutable data)&lt;/li&gt;
-  &lt;li&gt;functional programming&lt;/li&gt;
-  &lt;li&gt;Clojurescript and testing (it’s not E2E, but one could setup Jest or else)&lt;/li&gt;
-  &lt;li&gt;DOM represented as data and functions&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/2022/pizza.jpg&quot; width=&quot;50%&quot; style=&quot; display: block; margin-left: auto; margin-right: auto; width: 50%;&quot; /&gt;&lt;/p&gt;</content><author><name></name></author></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author></entry></feed>
