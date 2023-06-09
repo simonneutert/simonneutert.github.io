@@ -11,13 +11,13 @@ layout: default
 
 ## RSS Feeds
 
-- 🇬🇧 [t.me/mb_io_blog_unofficial](https://t.me/mb_io_blog_unofficial)
 - 🇩🇪 [t.me/MainzUnd_inoffiziell](https://t.me/MainzUnd_inoffiziell)
 - 🇩🇪 [t.me/sensormainz_inoffiziell](https://t.me/sensormainz_inoffiziell)
 - 🇩🇪 [t.me/sensorwiesbaden_inoffiziell](https://t.me/sensorwiesbaden_inoffiziell)
 - 🇩🇪 [t.me/lokalezeitung_de_inoffiziell](https://t.me/lokalezeitung_de_inoffiziell)
 - 🇩🇪 [t.me/ProduktWarnungEu_inoffiziell](https://t.me/ProduktWarnungEu_inoffiziell)
-- 🇩🇪 [t.me/corona_rlp_de_heatmap](https://t.me/corona_rlp_de_heatmap) 🦠
+- 🇩🇪 PAUSED // [t.me/corona_rlp_de_heatmap](https://t.me/corona_rlp_de_heatmap) 🦠
+- 🇬🇧 [t.me/mb_io_blog_unofficial](https://t.me/mb_io_blog_unofficial)
 
 ## Public Bots:
 
