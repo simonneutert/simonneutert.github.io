@@ -1,4 +1,122 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.2.0">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-06-26T05:10:56+00:00</updated><id>/feed.xml</id><title type="html">Simon Neutert Website</title><subtitle>My name is Simon. I really enjoy coding and so far, I just cannot get enough of it. Other than that, I enjoy cycling and nice food 🤤</subtitle><entry><title type="html">Ruby REST API client for Papierkram.de</title><link href="/2023/pkapi/" rel="alternate" type="text/html" title="Ruby REST API client for Papierkram.de" /><published>2023-04-12T00:00:00+00:00</published><updated>2023-04-12T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2023/2023-04-12-pkapi.md</id><content type="html" xml:base="/2023/pkapi/">&lt;p&gt;I have written a small REST API client for the Papierkram.de API, which is a simple wrapper around the Faraday gem. Although it’s not perfect, it works well. For the HTTP client library, I chose &lt;a href=&quot;https://github.com/HoneyryderChuck/httpx&quot;&gt;httpx&lt;/a&gt;, which promises to be the future with blazing-fast performance, and it’s free too!&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.2.0">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-06-26T10:18:40+00:00</updated><id>/feed.xml</id><title type="html">Simon Neutert Website</title><subtitle>My name is Simon. I really enjoy coding and so far, I just cannot get enough of it. Other than that, I enjoy cycling and nice food 🤤</subtitle><entry><title type="html">I coded a cash register backend in Ruby and the power of Postgres</title><link href="/2023/cash-ka-ching/" rel="alternate" type="text/html" title="I coded a cash register backend in Ruby and the power of Postgres" /><published>2023-05-14T00:00:00+00:00</published><updated>2023-05-14T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2023/2023-05-14-cash-ka-ching.md</id><content type="html" xml:base="/2023/cash-ka-ching/">&lt;p&gt;I’ve been working on a cash register backend in Ruby for the past few months after work and sometimes on weekends. It’s been a fun project and I’ve learned a lot about Ruby, Postgres, and how to keep calm and trash the hell out of ideas.&lt;/p&gt;
+
+&lt;p&gt;Again, as readers of my blog will guess, I bet my horses on Roda and Sequel. I’ve been using them for a while now and I’m very happy with them. I’ve also been using Postgres for a while now and I’m very happy with it too. I’m not sure if I’ll ever use MySQL again 🤭&lt;/p&gt;
+
+&lt;p&gt;My main idea was to play with Postgres’ locking mechanisms and see if I could build a cash register backend that could handle multiple concurrent requests. I wanted to eliminate the ever so slight chance of concurrent requests messing up the cash register’s state. I also wanted to see if this would slim down the logic part in the backend code.&lt;/p&gt;
+
+&lt;h4 id=&quot;tldr&quot;&gt;TLDR&lt;/h4&gt;
+
+&lt;p&gt;I think I’ve succeeded in building a cash register backend that can handle multiple concurrent requests. I’ve also managed to slim down the logic part in the backend code. I’m not sure if someone will ever use this in production, but it’s been a fun project and I’ve learned a lot.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/simonneutert/ka-ching-backend&quot;&gt;ka-ching-backend&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/simonneutert/ka-ching-client&quot;&gt;ka-ching-client&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There is also a demo to showcase the API and the client in conjunction. It’s a simple Roda app with &lt;a href=&quot;https://htmx.org/&quot;&gt;htmx&lt;/a&gt; for the frontend. It’s not pretty, but it works.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/simonneutert/ka-ching-demo&quot;&gt;Check out the demo repository on GitHub&lt;/a&gt;!&lt;/p&gt;
+
+&lt;h2 id=&quot;table-of-contents&quot;&gt;Table of contents&lt;!-- omit in toc --&gt;&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#the-cash-register&quot;&gt;The cash register&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#what-this-this-system-is-not-intended-to-bedo&quot;&gt;What this this system is not intended to be/do&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#its-architecture-a-micro-monolith&quot;&gt;It’s Architecture? A Micro-Monolith!&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#implementing-the-backend-with-roda-and-sequel&quot;&gt;Implementing the backend with Roda and Sequel&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#my-goals-for-the-backend&quot;&gt;My goals for the backend&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#database-lockings-with-sequel&quot;&gt;Database Lockings with Sequel&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#learning-more-about-roda-and-sequel&quot;&gt;Learning more about Roda and Sequel&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;the-cash-register&quot;&gt;The cash register&lt;/h2&gt;
+
+&lt;p&gt;The cash register is a simple machine that can handle the following operations:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Wrap transactions of the cash register for a certain period of time&lt;/li&gt;
+  &lt;li&gt;Add money to the cash register (deposit)&lt;/li&gt;
+  &lt;li&gt;Remove money from the cash register (withdraw)&lt;/li&gt;
+  &lt;li&gt;Get the current state of the cash register (saldo)&lt;/li&gt;
+  &lt;li&gt;Get the history of the cash register (list of transactions)&lt;/li&gt;
+  &lt;li&gt;Track certain events in an audit log (e.g. when the cash register was reopened, after it was closed)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;what-this-this-system-is-not-intended-to-bedo&quot;&gt;What this this system is not intended to be/do&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The cash register is not a point of sale (POS) system.&lt;/li&gt;
+  &lt;li&gt;It’s not meant to be used by a cashier to scan items and print receipts.&lt;/li&gt;
+  &lt;li&gt;It’s not meant to be used by a customer to pay for their groceries.&lt;/li&gt;
+  &lt;li&gt;It’s not meant to be used by a manager to get reports on the sales of the day.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;its-architecture-a-micro-monolith&quot;&gt;It’s Architecture? A Micro-Monolith!&lt;/h2&gt;
+
+&lt;p&gt;I’ve been using the term “micro-monolith” for a while now. I’m not sure if it’s a thing, but I like it. It’s a monolith, but it’s a small one. It’s a monolith that can easily serve as a base of something bigger oder act as a standalone system. Being a micro-monolith it cannot be split into smaller parts. It’s a monolith, but it’s a small one.&lt;/p&gt;
+
+&lt;p&gt;The main reason I struggle with calling it a microservice is, that I want it to be understood as a product and not as a service. It does not do a generic single thing. It does a specific set of things that together represent my interpretation of a cash register system. Maybe I am just too happy with &lt;a href=&quot;https://world.hey.com/dhh/we-stand-to-save-7m-over-five-years-from-our-cloud-exit-53996caa&quot;&gt;DHH leaving the cloud&lt;/a&gt; and &lt;a href=&quot;https://www.reddit.com/r/aws/comments/137lyno/amazon_prime_microservices_to_monolith/&quot;&gt;Amazon reverting to a monolith&lt;/a&gt; for their “Prime Video”. I don’t know.&lt;/p&gt;
+
+&lt;h2 id=&quot;implementing-the-backend-with-roda-and-sequel&quot;&gt;Implementing the backend with Roda and Sequel&lt;/h2&gt;
+
+&lt;p&gt;It’s been a breeze! By coincidence Jeremy Evans, the maintainer of Roda and Sequel (and many more) had been the guest in &lt;a href=&quot;https://www.youtube.com/watch?v=Hh_lqARFGcg&quot;&gt;The Rubber Duck Dev Show&lt;/a&gt; sharing his ideas first hand with the audience.&lt;/p&gt;
+
+&lt;h3 id=&quot;my-goals-for-the-backend&quot;&gt;My goals for the backend&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;multi-tenant database architecture&lt;/li&gt;
+  &lt;li&gt;relies on database locks for critical operations&lt;/li&gt;
+  &lt;li&gt;json columns in most tables, to pass your own context&lt;/li&gt;
+  &lt;li&gt;fast, cheap, and reliable&lt;/li&gt;
+  &lt;li&gt;short and concise codebase&lt;/li&gt;
+  &lt;li&gt;lean on dependencies&lt;/li&gt;
+  &lt;li&gt;with containerization in mind&lt;/li&gt;
+  &lt;li&gt;have a client ready to use the API as a ruby gem&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;database-lockings-with-sequel&quot;&gt;Database Lockings with Sequel&lt;/h3&gt;
+
+&lt;p&gt;In order to lock a table in Postgres you can use the &lt;code class=&quot;highlighter-rouge&quot;&gt;LOCK&lt;/code&gt; statement. It’s a very powerful tool and can be used to lock a table in different ways. I’ve been using the &lt;code class=&quot;highlighter-rouge&quot;&gt;ACCESS EXCLUSIVE&lt;/code&gt; mode to lock the tables &lt;code class=&quot;highlighter-rouge&quot;&gt;lockings&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;bookings&lt;/code&gt; in order to prevent concurrent requests from messing up the cash register’s state.&lt;/p&gt;
+
+&lt;p&gt;Looking at the code below you can see that I’m using Sequel’s &lt;code class=&quot;highlighter-rouge&quot;&gt;transaction&lt;/code&gt; method to wrap the two &lt;code class=&quot;highlighter-rouge&quot;&gt;LOCK&lt;/code&gt; statements and the &lt;code class=&quot;highlighter-rouge&quot;&gt;INSERT&lt;/code&gt; statement into a single transaction. This way I can be sure that the two &lt;code class=&quot;highlighter-rouge&quot;&gt;LOCK&lt;/code&gt; statements and the &lt;code class=&quot;highlighter-rouge&quot;&gt;INSERT&lt;/code&gt; statement are executed in a single transaction. If one of the statements fails, the whole transaction is rolled back.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;vi&quot;&gt;@conn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;transaction&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;vi&quot;&gt;@conn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;LOCK TABLE lockings IN ACCESS EXCLUSIVE MODE&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;vi&quot;&gt;@conn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;LOCK TABLE bookings IN ACCESS EXCLUSIVE MODE&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;new_booking_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@conn_bookings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;id: &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;SecureRandom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;uuid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                          &lt;span class=&quot;ss&quot;&gt;amount_cents: &lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@booker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;amount_cents&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                          &lt;span class=&quot;ss&quot;&gt;action: &lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@booker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                          &lt;span class=&quot;ss&quot;&gt;realized: &lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@booker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;realized&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                          &lt;span class=&quot;ss&quot;&gt;context: &lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@booker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;to_json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;query_bookings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@conn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;find_by&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;id: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new_booking_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you want to dig into what locking a table in Postgres means, I recommend reading &lt;a href=&quot;https://www.postgresql.org/docs/current/explicit-locking.html&quot;&gt;the Postgres Documentation on Explicit Locking&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;learning-more-about-roda-and-sequel&quot;&gt;Learning more about Roda and Sequel&lt;/h3&gt;
+
+&lt;p&gt;As the two projects play well together I learned a lot about both of them. Roda’s idea of the routing tree was a great opportunity to come up with a way of using and reusing database connections depending on where your requests are routed to. Sequel keeps things easy and straight by mostly acting as a wrapper around SQL, without applying custom object-relational mapping (ORM) logic. Hashes are the way to go and I really dig that.&lt;/p&gt;
+
+&lt;p&gt;Connecting to one of the tenant database’s looks like this currenyly:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;db_connection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;database&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;Sequel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;postgres://&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;DATABASE_URL&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;DATABASE_PORT&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;database&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;?user=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;DATABASE_USER&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;amp;password=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;DATABASE_PASSWORD&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;logger: &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;DB&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;LOGGER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;block&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Utilizing the &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;amp;block&lt;/code&gt; parameter of the &lt;code class=&quot;highlighter-rouge&quot;&gt;Sequel.connect&lt;/code&gt; method allows me to pass a block to the method. This way I can make sure that the connection is closed after the block has been executed. This is a great way to make sure that the connection is closed after the request has been processed.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Ruby REST API client for Papierkram.de</title><link href="/2023/pkapi/" rel="alternate" type="text/html" title="Ruby REST API client for Papierkram.de" /><published>2023-04-12T00:00:00+00:00</published><updated>2023-04-12T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2023/2023-04-12-pkapi.md</id><content type="html" xml:base="/2023/pkapi/">&lt;p&gt;I have written a small REST API client for the Papierkram.de API, which is a simple wrapper around the Faraday gem. Although it’s not perfect, it works well. For the HTTP client library, I chose &lt;a href=&quot;https://github.com/HoneyryderChuck/httpx&quot;&gt;httpx&lt;/a&gt;, which promises to be the future with blazing-fast performance, and it’s free too!&lt;/p&gt;
 
 &lt;p&gt;tldr; &lt;a href=&quot;https://rubygems.org/gems/papierkram_api_client&quot;&gt;here’s the gem&lt;/a&gt; and &lt;a href=&quot;https://github.com/simonneutert/papierkram_api_client&quot;&gt;here’s the code&lt;/a&gt;.&lt;/p&gt;
 
@@ -334,50 +452,4 @@ Force pseudo-tty allocation. This can be used to execute arbitrary screen-based 
   &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;neighbours-vals&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
   &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;;;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
   &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author></entry><entry><title type="html">TruffleRuby homelab worker pool experiment</title><link href="/2022/truffle-pig/" rel="alternate" type="text/html" title="TruffleRuby homelab worker pool experiment" /><published>2022-09-28T00:00:00+00:00</published><updated>2022-09-28T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-09-28-truffle-pig.md</id><content type="html" xml:base="/2022/truffle-pig/">&lt;p&gt;TruffleRuby, the mythical beast. I never dared to lay hands upon. Yet, ASDF-VM ploughed through the else tedious installation.&lt;/p&gt;
-
-&lt;p&gt;What&amp;#8217;s better than having code snip you can run on MRI and on Truffle and get a feel for it yourself?
-Right?!&lt;/p&gt;
-
-&lt;p&gt;Clone https://github.com/simonneutert/truffle_pig from GitHub&lt;br /&gt;
-add a &lt;code class=&quot;highlighter-rouge&quot;&gt;main.rb&lt;/code&gt; at project root and run &lt;code class=&quot;highlighter-rouge&quot;&gt;$ time ruby main.rb&lt;/code&gt; using MRI, then run again with Truffle22&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# frozen_string_literal: true&lt;/span&gt;
-
-&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;pry&apos;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;prettyprint&apos;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;etc&apos;&lt;/span&gt;
-
-&lt;span class=&quot;nb&quot;&gt;require_relative&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;lib/truffle_pig&apos;&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;cpu_processors&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Etc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;nprocessors&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cpu_processors&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; Number of (virtual) CPU Processors&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;piggy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;TrufflePig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;workers: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cpu_processors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;piggy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;add_job&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-  &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;piggy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;add_job&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;sleep&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-
-    &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-    &lt;span class=&quot;mi&quot;&gt;10_000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;times&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;job_id #&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;, result: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;job_id: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;result: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;piggy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;queue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; jobs added&quot;&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;piggy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;perform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;reject_errors: &lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;custom_logger: &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pp&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n\n\n\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;The results are in:&apos;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n\n\n\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;pp&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;results&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author></entry></feed>
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author></entry></feed>
