@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "I coded a cash register backend in Ruby 🫠 (with Postgres)"
+title: "I coded a cash register backend in Ruby and the power of Postgres"
 ---
 
 I've been working on a cash register backend in Ruby for the past few months after work and sometimes on weekends. It's been a fun project and I've learned a lot about Ruby, Postgres, and how to keep calm and trash the hell out of ideas.
@@ -12,6 +12,13 @@ My main idea was to play with Postgres' locking mechanisms and see if I could bu
 #### TLDR
 
 I think I've succeeded in building a cash register backend that can handle multiple concurrent requests. I've also managed to slim down the logic part in the backend code. I'm not sure if someone will ever use this in production, but it's been a fun project and I've learned a lot.
+
+- [ka-ching-backend](https://github.com/simonneutert/ka-ching-backend)
+- [ka-ching-client](https://github.com/simonneutert/ka-ching-client)
+
+There is also a demo to showcase the API and the client in conjunction. It's a simple Roda app with [htmx](https://htmx.org/) for the frontend. It's not pretty, but it works.
+
+[Check out the demo repository on GitHub](https://github.com/simonneutert/ka-ching-demo)!
 
 ## Table of contents<!-- omit in toc -->
 
