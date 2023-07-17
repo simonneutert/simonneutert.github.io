@@ -10,14 +10,17 @@ I share my code on [GitHub](https://github.com/simonneutert) and I
 sometimes [blog](/posts) about what made me smile/stumble/humble/moan.
 {:style="text-align:center"}
 
+And you can follow my [telegram channel](https://t.me/stuffaboutcoding), where I share what I find interesting in the tech world.
+{:style="text-align:center"}
+
 My passion is Ruby, yet I enjoy exploring what other languages bring to the table.  
 I (con(j))currently explore the [land of LISP/parentheses](https://www.youtube.com/watch?v=HM1Zb3xmvMc&t=64s) 🥰
 {:style="text-align:center"}
 
-Other than that, I really do enjoy spending time on my bike in [Rheinhessen](https://www.rennrad-rheinhessen.de).
+Proud founder of [Rennrad Rheinhessen](https://www.rennrad-rheinhessen.de).
 {:style="text-align:center"}
 
-On [flickr](https://www.flickr.com/photos/simonneutert/) you will find my photo gallery.
+View the photos I share on [flickr](https://www.flickr.com/photos/simonneutert/).
 {:style="text-align:center"}
 
 Get in touch with me on [Telegram](https://t.me/simonneutert) or via [Linkedin](https://www.linkedin.com/in/simon-neutert/)! 🍻
