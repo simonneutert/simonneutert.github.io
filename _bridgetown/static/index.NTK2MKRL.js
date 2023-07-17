@@ -24,4 +24,4 @@
         ——
         Suppress this warning by adding a "data-turbo-suppress-warning" attribute to: %s
       `,s.outerHTML);s=s.parentElement}})();window.Turbo=jt;Oe();})();
-//# sourceMappingURL=/_bridgetown/static/index.JHPX6XYL.js.map
+//# sourceMappingURL=/_bridgetown/static/index.NTK2MKRL.js.map
