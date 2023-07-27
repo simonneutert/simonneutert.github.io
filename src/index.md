@@ -17,9 +17,6 @@ My passion is Ruby, yet I enjoy exploring what other languages bring to the tabl
 I (con(j))currently explore the [land of LISP/parentheses](https://www.youtube.com/watch?v=HM1Zb3xmvMc&t=64s) 🥰
 {:style="text-align:center"}
 
-Proud founder of [Rennrad Rheinhessen](https://www.rennrad-rheinhessen.de).
-{:style="text-align:center"}
-
 View the photos I share on [flickr](https://www.flickr.com/photos/simonneutert/).
 {:style="text-align:center"}
 
