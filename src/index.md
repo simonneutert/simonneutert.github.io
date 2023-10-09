@@ -14,10 +14,10 @@ And you can follow my [telegram channel](https://t.me/stuffaboutcoding), where I
 {:style="text-align:center"}
 
 My passion is Ruby, yet I enjoy exploring what other languages bring to the table.  
-I (con(j))currently explore the [land of LISP/parentheses](https://www.youtube.com/watch?v=HM1Zb3xmvMc&t=64s) 🥰
+I am currently learning Clojure and explore the [land of LISP/parentheses](https://www.youtube.com/watch?v=HM1Zb3xmvMc&t=64s) when I find the time 🥰
 {:style="text-align:center"}
 
-View the photos I share on [flickr](https://www.flickr.com/photos/simonneutert/).
+I share my photos on [flickr](https://www.flickr.com/photos/simonneutert/).
 {:style="text-align:center"}
 
 Get in touch with me on [Telegram](https://t.me/simonneutert) or via [Linkedin](https://www.linkedin.com/in/simon-neutert/)! 🍻
