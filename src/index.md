@@ -10,6 +10,9 @@ I share my code on [GitHub](https://github.com/simonneutert) and I
 sometimes [blog](/posts) about what made me smile/stumble/humble/moan.
 {:style="text-align:center"}
 
+Here's my telegram channel I run to collect interesting links: [t.me/stuffaboutcoding](https://t.me/stuffaboutcoding).
+{:style="text-align:center"}
+
 And you can follow my [telegram channel](https://t.me/stuffaboutcoding), where I share what I find interesting in the tech world.
 {:style="text-align:center"}
 

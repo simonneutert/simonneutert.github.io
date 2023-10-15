@@ -2,13 +2,13 @@
 layout: default
 ---
 
-# I run some stuff on telegram 🤳 
+# I run some stuff on telegram 🤳
 
-*here's what should be online now*
+_here's what should be online ..._ 😬
 
 ## Channels
 
-- 🇬🇧 [t.me/stuffaboutcoding](https://t.me/stuffaboutcoding) 
+- 🇬🇧 [t.me/stuffaboutcoding](https://t.me/stuffaboutcoding)
 
 ## RSS Feeds
 
