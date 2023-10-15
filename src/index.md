@@ -10,10 +10,7 @@ I share my code on [GitHub](https://github.com/simonneutert) and I
 sometimes [blog](/posts) about what made me smile/stumble/humble/moan.
 {:style="text-align:center"}
 
-Here's my telegram channel I run to collect interesting links: [t.me/stuffaboutcoding](https://t.me/stuffaboutcoding).
-{:style="text-align:center"}
-
-And you can follow my [telegram channel](https://t.me/stuffaboutcoding), where I share what I find interesting in the tech world.
+Check out my telegram channel [t.me/stuffaboutcoding](https://t.me/stuffaboutcoding) where I collect and share interesting links to software related content.
 {:style="text-align:center"}
 
 My passion is Ruby, yet I enjoy exploring what other languages bring to the table.  
