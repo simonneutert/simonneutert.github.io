@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "I coded a cash register backend in Ruby and the power of Postgres"
+title: "I coded a cash register backend in Ruby backed by Postgres"
 ---
 
 I've been working on a cash register backend in Ruby for the past few months after work and sometimes on weekends. It's been a fun project and I've learned a lot about Ruby, Postgres, and how to keep calm and trash the hell out of ideas.
