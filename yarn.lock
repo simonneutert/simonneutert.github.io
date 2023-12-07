@@ -703,9 +703,9 @@ postcss-lab-function@^6.0.7:
     "@csstools/css-tokenizer" "^2.2.1"
     "@csstools/postcss-progressive-custom-properties" "^3.0.2"
 
-postcss-load-config@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/postcss-load-config/-/postcss-load-config-5.0.0.tgz#51cea9e062343692014443f0f7ec0e88a6cb2de6"
+postcss-load-config@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/postcss-load-config/-/postcss-load-config-5.0.2.tgz#3d4261d616428e3d6e41c8236c3e456c0f49266f"
   dependencies:
     lilconfig "^3.0.0"
     yaml "^2.3.4"
