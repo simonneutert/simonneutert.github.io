@@ -3,8 +3,6 @@ layout: post
 title: "Elevate Your Podcast Experience: Using Apple Shortcuts to Play Random Episodes (and NGINX)"
 ---
 
-# Enhancing Podcast Experience with Nginx and Shortcuts
-
 Podcasts have become an integral part of my daily routine, and accessing them seamlessly is crucial for a smooth listening experience. In this guide, I'll explore how you can leverage Nginx to offer a JSON file containing links to podcast episodes.
 
 Additionally, I'll demonstrate how iPhone users can use the Shortcuts app to load the JSON file, extract a random entry, and open the URL for their preferred podcast service.
