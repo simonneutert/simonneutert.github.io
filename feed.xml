@@ -1,4 +1,81 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.3.1">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-12-16T10:21:50+00:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">I coded a cash register backend in Ruby backed by Postgres</title><link href="/2023/cash-ka-ching/" rel="alternate" type="text/html" title="I coded a cash register backend in Ruby backed by Postgres" /><published>2023-06-26T00:00:00+00:00</published><updated>2023-06-26T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2023/2023-06-26-cash-ka-ching.md</id><content type="html" xml:base="/2023/cash-ka-ching/">&lt;p&gt;I’ve been working on a cash register backend in Ruby for the past few months after work and sometimes on weekends. It’s been a fun project and I’ve learned a lot about Ruby, Postgres, and how to keep calm and trash the hell out of ideas.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.3.1">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-12-18T16:32:03+00:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Elevate Your Podcast Experience: Using Apple Shortcuts to Play Random Episodes (and NGINX)</title><link href="/2023/random-podcast-episodes/" rel="alternate" type="text/html" title="Elevate Your Podcast Experience: Using Apple Shortcuts to Play Random Episodes (and NGINX)" /><published>2023-12-18T00:00:00+00:00</published><updated>2023-12-18T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2023/2023-12-18-random-podcast-episodes.md</id><content type="html" xml:base="/2023/random-podcast-episodes/">&lt;h1 id=&quot;enhancing-podcast-experience-with-nginx-and-shortcuts&quot;&gt;Enhancing Podcast Experience with Nginx and Shortcuts&lt;/h1&gt;
+
+&lt;p&gt;Podcasts have become an integral part of my daily routine, and accessing them seamlessly is crucial for a smooth listening experience. In this guide, I’ll explore how you can leverage Nginx to offer a JSON file containing links to podcast episodes.&lt;/p&gt;
+
+&lt;p&gt;Additionally, I’ll demonstrate how iPhone users can use the Shortcuts app to load the JSON file, extract a random entry, and open the URL for their preferred podcast service.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-following-is-one-of-many-ways--tldr&quot;&gt;The following is one of many ways / tldr&lt;/h2&gt;
+
+&lt;p&gt;It’s up to you as a user or the podcaster to host your episodes in a way that allows you to access them via a JSON file. Then load this via the &lt;strong&gt;Shortcut&lt;/strong&gt; app and use the &lt;strong&gt;Get Dictionary Value&lt;/strong&gt; action to extract a random entry from the JSON file. Finally, use the &lt;strong&gt;Open URLs&lt;/strong&gt; action to open the URL in your preferred podcast app.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The following code will be pseudo code and just guide you a little.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;setting-up-nginx-to-serve-json&quot;&gt;Setting Up Nginx to Serve JSON&lt;/h3&gt;
+
+&lt;p&gt;Nginx is a powerful web server that can be used to serve static files, including JSON. Here’s a quick example of an Nginx configuration to serve a podcast.json file:&lt;/p&gt;
+
+&lt;div class=&quot;language-nginx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;server&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kn&quot;&gt;listen&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;80&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kn&quot;&gt;server_name&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;yourdomain.com&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;kn&quot;&gt;location&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;/podcasts&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kn&quot;&gt;alias&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;/path/to/your/json/files&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;kn&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;podcast.json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Replace yourdomain.com with your actual domain and adjust the path accordingly. Make sure the JSON file contains an array of podcast entries, each with a title and url pointing to the podcast episode.&lt;/p&gt;
+
+&lt;h3 id=&quot;creating-the-podcast-json-file&quot;&gt;Creating the Podcast JSON File&lt;/h3&gt;
+
+&lt;p&gt;Here’s an example of how your podcast.json file might look:&lt;/p&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;title&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Podcast Episode 1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;url&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://spotify.com/episode1&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;title&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Podcast Episode 2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;url&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://applepodcasts.com/episode2&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;more&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;entries&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;as&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;needed&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;An Array of objects.&lt;/p&gt;
+
+&lt;h4 id=&quot;using-shortcuts-on-iphone&quot;&gt;Using Shortcuts on iPhone&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Get the &lt;a href=&quot;https://apps.apple.com/us/app/shortcuts/id915249334&quot;&gt;Shortcuts app&lt;/a&gt; from the App Store.&lt;/li&gt;
+  &lt;li&gt;Setup a new shortcut&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Then, add the following actions to your shortcut:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Get contents of &lt;code class=&quot;highlighter-rouge&quot;&gt;https://yourdomain.com/podcasts/podcast.json&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Get &lt;code class=&quot;highlighter-rouge&quot;&gt;Random Item&lt;/code&gt; from &lt;code class=&quot;highlighter-rouge&quot;&gt;Get Contents of URL&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Get &lt;code class=&quot;highlighter-rouge&quot;&gt;Dictionary&lt;/code&gt; from &lt;code class=&quot;highlighter-rouge&quot;&gt;Item from List&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Get &lt;code class=&quot;highlighter-rouge&quot;&gt;Random Item&lt;/code&gt; from &lt;code class=&quot;highlighter-rouge&quot;&gt;Dictionary&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Get &lt;code class=&quot;highlighter-rouge&quot;&gt;Value&lt;/code&gt; for &lt;code class=&quot;highlighter-rouge&quot;&gt;your-key-in-the-json&lt;/code&gt; from &lt;code class=&quot;highlighter-rouge&quot;&gt;Dictionary&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Open &lt;code class=&quot;highlighter-rouge&quot;&gt;Dictionary Value&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+&lt;style&gt;
+#shuffle-gag-screenshot {
+    max-width: 90%;
+    height: auto;
+    max-height: 480px;
+}
+&lt;/style&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2023/shuffle-gag.jpeg&quot; id=&quot;shuffle-gag-screenshot&quot; alt=&quot;Shortcuts App showing an example workflow to load and extract a sample podcast from an array of dictionaries&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Tada 🥳🪄✨&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">I coded a cash register backend in Ruby backed by Postgres</title><link href="/2023/cash-ka-ching/" rel="alternate" type="text/html" title="I coded a cash register backend in Ruby backed by Postgres" /><published>2023-06-26T00:00:00+00:00</published><updated>2023-06-26T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2023/2023-06-26-cash-ka-ching.md</id><content type="html" xml:base="/2023/cash-ka-ching/">&lt;p&gt;I’ve been working on a cash register backend in Ruby for the past few months after work and sometimes on weekends. It’s been a fun project and I’ve learned a lot about Ruby, Postgres, and how to keep calm and trash the hell out of ideas.&lt;/p&gt;
 
 &lt;p&gt;Again, as readers of my blog will guess, I bet my horses on Roda and Sequel. I’ve been using them for a while now and I’m very happy with them. I’ve also been using Postgres for a while now and I’m very happy with it too. I’m not sure if I’ll ever use MySQL again 🤭&lt;/p&gt;
 
@@ -417,33 +494,4 @@ Force pseudo-tty allocation. This can be used to execute arbitrary screen-based 
 &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; {&quot;name&quot;=&amp;gt;&quot;bob&quot;, &quot;age&quot;=&amp;gt;22, &quot;capitalized_name&quot;=&amp;gt;&quot;Bob&quot;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Easy peasy pumping out the the good ol’ railsy stuff 🛤&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">JavaScript’s Fetch API is good enough for you 🤓</title><link href="/2022/vanilla-js/" rel="alternate" type="text/html" title="JavaScript&apos;s Fetch API is good enough for you 🤓" /><published>2022-10-15T00:00:00+00:00</published><updated>2022-10-15T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-10-15-vanilla-js.md</id><content type="html" xml:base="/2022/vanilla-js/">&lt;p&gt;Axios reached V1.0 few weeks ago.&lt;/p&gt;
-
-&lt;p&gt;Time to celebrate? I guess not.&lt;/p&gt;
-
-&lt;p&gt;https://youmightnotneedjquery.com was my “go to” ever since. Modern JavaScript doesn’t get the Spotlight like the npm projects that abstract what’s mostly already present.&lt;/p&gt;
-
-&lt;p&gt;Check out this super simple example of a form submission 🥹 🥰&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;submitInBackground&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buttonId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;formId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;buttonId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;preventDefault&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-        &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;form&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;formId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;FormData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;fetch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;c1&quot;&gt;// signal: searchAbortController.signal,&lt;/span&gt;
-                &lt;span class=&quot;na&quot;&gt;method&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;POST&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                &lt;span class=&quot;na&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;no-cache&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                &lt;span class=&quot;na&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;FormData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API&quot;&gt;Fetch API on MDN&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author></entry></feed>
+&lt;p&gt;Easy peasy pumping out the the good ol’ railsy stuff 🛤&lt;/p&gt;</content><author><name></name></author></entry></feed>
