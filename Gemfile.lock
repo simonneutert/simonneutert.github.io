@@ -105,6 +105,7 @@ GEM
 PLATFORMS
   arm64-darwin-21
   arm64-darwin-22
+  arm64-darwin-23
   x86_64-linux
 
 DEPENDENCIES
@@ -113,4 +114,4 @@ DEPENDENCIES
   puma (~> 6.4)
 
 BUNDLED WITH
-   2.4.20
+   2.5.4
