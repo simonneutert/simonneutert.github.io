@@ -1,4 +1,63 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.3.2">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-01-08T16:43:33+00:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Setup FiraCode Nerd Font Mono with ligatures in VSCode for MacOS</title><link href="/2024/vscode-fira/" rel="alternate" type="text/html" title="Setup FiraCode Nerd Font Mono with ligatures in VSCode for MacOS" /><published>2024-01-07T00:00:00+00:00</published><updated>2024-01-07T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2024/2024-01-07-vscode-fira.md</id><content type="html" xml:base="/2024/vscode-fira/">&lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;settings.json&lt;/code&gt; have the following values:&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.3.2">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-01-13T17:57:12+00:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">The sass gem is dead, long live: sass-embedded-host-ruby</title><link href="/2024/sass-embedded/" rel="alternate" type="text/html" title="The sass gem is dead, long live: sass-embedded-host-ruby" /><published>2024-01-13T00:00:00+00:00</published><updated>2024-01-13T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2024/2024-01-13-sass-embedded.md</id><content type="html" xml:base="/2024/sass-embedded/">&lt;p&gt;I had this deprecation warning in my template sinatra project on GitHub for a while now.&lt;/p&gt;
+
+&lt;p&gt;The project should have ActiveRecord and Sass support, with sprockets and a few other things.&lt;/p&gt;
+
+&lt;p&gt;And man was this sass topic a rabbit hole in one way or another. Because the hint in the deprecation warning didn’t work out of the box.&lt;/p&gt;
+
+&lt;p&gt;And with most people being on Rails, or when on Sinatra not very interested in Sass, or they know how to fix it, I had mostly trial and error to go on.&lt;/p&gt;
+
+&lt;p&gt;Here is how I setup my project’s/app’s environment from day one:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyApp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Sinatra&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# initialize new sprockets environment&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:environment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Sprockets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Environment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# append assets paths&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;append_path&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;assets/stylesheets&apos;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;append_path&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;assets/javascripts&apos;&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# compress assets&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;js_compressor&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:uglify&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;css_compressor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:scss&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# &amp;lt;&amp;lt; here&apos;s the problem&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# get assets&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;get&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;/assets/*&apos;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;PATH_INFO&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;sub!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;/assets&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;settings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;I highlighted the problem line. It’s the &lt;code class=&quot;highlighter-rouge&quot;&gt;:scss&lt;/code&gt; compressor. This simply doesn’t work anymore. And all the deprecation warning says is:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;switch to the sassc ruby gem&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;well, I did that, and it is part of the solution, but the glue was missing.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ bundle add sass-embedded sassc&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Then require both gems, remove &lt;code class=&quot;highlighter-rouge&quot;&gt;sass&lt;/code&gt; from the Gemfile, and remove the &lt;code class=&quot;highlighter-rouge&quot;&gt;:scss&lt;/code&gt; compressor line.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyApp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Sinatra&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# initialize new sprockets environment&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:environment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Sprockets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Environment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# append assets paths&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;append_path&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;assets/stylesheets&apos;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;append_path&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;assets/javascripts&apos;&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# compress assets&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;js_compressor&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:uglify&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;# 👇 remove any css compressor settings you might stumble upon, be it sinatra, roda or rails&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# environment.css_compressor = :scss # &amp;lt;&amp;lt; here&apos;s the problem&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;# get assets&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;get&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;/assets/*&apos;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;PATH_INFO&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;sub!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;/assets&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;settings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Checkout the pull request for the full diff:&lt;br /&gt;
+https://github.com/simonneutert/sinatras-skeleton/pull/84/files&lt;/p&gt;
+
+&lt;p&gt;And that’s it. I hope this helps someone else out there.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Setup FiraCode Nerd Font Mono with ligatures in VSCode for MacOS</title><link href="/2024/vscode-fira/" rel="alternate" type="text/html" title="Setup FiraCode Nerd Font Mono with ligatures in VSCode for MacOS" /><published>2024-01-07T00:00:00+00:00</published><updated>2024-01-07T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2024/2024-01-07-vscode-fira.md</id><content type="html" xml:base="/2024/vscode-fira/">&lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;settings.json&lt;/code&gt; have the following values:&lt;/p&gt;
 
 &lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;shortened&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;brevity&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
@@ -451,19 +510,4 @@ keeping the originals side by side with notes&lt;/li&gt;
 
 &lt;p&gt;I like to keep things simple, so I once again fell for &lt;a href=&quot;https://roda.jeremyevans.net&quot;&gt;Roda&lt;/a&gt; as the Web Layer. &lt;a href=&quot;https://github.com/baygeldin/tantiny&quot;&gt;Tantiny&lt;/a&gt; is the kicker for this project. I was curious, if I could come up with something useful quickly, not having to deal with a complicated setup or Postgres as a requirement.&lt;/p&gt;
 
-&lt;p&gt;You can find the &lt;a href=&quot;https://github.com/simonneutert/labradorite-notebook&quot;&gt;source code on GitHub&lt;/a&gt;. Give it a spin and contribute if you are missing something.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Connect with ssh and fire a sudo command 🚀</title><link href="/2022/connect-to-shh-and-fire-a-sudo-command/" rel="alternate" type="text/html" title="Connect with ssh and fire a sudo command 🚀" /><published>2022-10-24T00:00:00+00:00</published><updated>2022-10-24T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-10-24-connect-to-shh-and-fire-a-sudo-command.md</id><content type="html" xml:base="/2022/connect-to-shh-and-fire-a-sudo-command/">&lt;p&gt;You need the t option. That&amp;#8217;s all there is. Nothing else. &lt;a href=&quot;https://stackoverflow.com/a/10312700&quot;&gt;Source on StackOverflow&lt;/a&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ssh &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; user@server &lt;span class=&quot;s2&quot;&gt;&quot;sudo script&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;OR&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ssh &lt;span class=&quot;nt&quot;&gt;-At&lt;/span&gt; user@server &lt;span class=&quot;s2&quot;&gt;&quot;sudo script&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;from &lt;a href=&quot;http://linuxcommand.org/lc3_man_pages/ssh1.html&quot;&gt;man ssh&lt;/a&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;-t&lt;br /&gt;
-Force pseudo-tty allocation. This can be used to execute arbitrary screen-based programs on a remote machine, which can be very useful, e.g., when implementing menu services.  Multiple -t options force tty allocation, even if ssh has no local tty.&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name></name></author></entry></feed>
+&lt;p&gt;You can find the &lt;a href=&quot;https://github.com/simonneutert/labradorite-notebook&quot;&gt;source code on GitHub&lt;/a&gt;. Give it a spin and contribute if you are missing something.&lt;/p&gt;</content><author><name></name></author></entry></feed>
