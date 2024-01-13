@@ -39,6 +39,8 @@ well, I did that, and it is part of the solution, but the glue was missing.
 
 `$ bundle add sass-embedded sassc`
 
+https://github.com/sass-contrib/sass-embedded-host-ruby
+
 Then require both gems, remove `sass` from the Gemfile, and remove the `:scss` compressor line.
 
 ```ruby
