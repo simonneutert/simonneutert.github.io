@@ -1,0 +1,3 @@
+*.config.js linguist-detectable=false
+frontend/**/*.js linguist-detectable=false
+frontend/**/*.css linguist-detectable=false
