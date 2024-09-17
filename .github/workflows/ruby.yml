@@ -32,5 +32,11 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby-version }}
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      - uses: actions/setup-node@v4
+        with:
+          # Version Spec of the version to use in SemVer notation.
+          # It also admits such aliases as lts, latest, nightly and canary builds
+          # Examples: 12.x, 10.15.1, >=10.15.0, lts/Hydrogen, 16-nightly, latest, node
+          node-version: '22'
       - name: Run tests
         run: bundle install && yarn install && bin/bridgetown deploy
