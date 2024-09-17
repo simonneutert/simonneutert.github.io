@@ -45,11 +45,11 @@
 <p>This is the content of a demo file call <strong>fib.py</strong>:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># fib.py
-</span><span class="kn">import</span> <span class="nn">argparse</span>
-<span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="p">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
-<span class="n">parser</span><span class="p">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">'-n'</span><span class="p">,</span> <span class="s">'--n'</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s">'calc the nth fib number'</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="p">.</span><span class="n">parse_args</span><span class="p">()</span>
-<span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="n">n</span><span class="p">)</span>
+</span><span class="kn">import</span> <span class="n">argparse</span>
+<span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="p">.</span><span class="nc">ArgumentParser</span><span class="p">()</span>
+<span class="n">parser</span><span class="p">.</span><span class="nf">add_argument</span><span class="p">(</span><span class="sh">'</span><span class="s">-n</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">--n</span><span class="sh">'</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="sh">'</span><span class="s">calc the nth fib number</span><span class="sh">'</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="p">.</span><span class="nf">parse_args</span><span class="p">()</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="n">n</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">naive_fib</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">x</span><span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
@@ -66,7 +66,7 @@
 
     <span class="k">return</span> <span class="n">b</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">naive_fib</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">naive_fib</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </code></pre></div></div>
 
 <p>Navigate to the file&#8217;s directory and run: <code class="highlighter-rouge">$ python fib.py -n 5</code></p>

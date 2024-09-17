@@ -77,12 +77,12 @@
 <p><a href="https://developers.google.com/places/place-id">Grab your place’s ID (https://developers.google.com/places/place-id) and call it as <strong><em>placeId</em></strong> parameter, when calling the plugin. </a></p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
-<span class="nx">jQuery</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#google-reviews</span><span class="dl">"</span><span class="p">).</span><span class="nx">length</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+<span class="nf">jQuery</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nf">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if </span><span class="p">(</span><span class="nf">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#google-reviews</span><span class="dl">"</span><span class="p">).</span><span class="nx">length</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span>
   <span class="p">}</span>
   <span class="c1">// Find a placeID via https://developers.google.com/places/place-id</span>
-  <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#google-reviews</span><span class="dl">"</span><span class="p">).</span><span class="nx">googlePlaces</span><span class="p">({</span>
+  <span class="nf">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#google-reviews</span><span class="dl">"</span><span class="p">).</span><span class="nf">googlePlaces</span><span class="p">({</span>
     <span class="na">placeId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">ChIJZa6ezJa8j4AR1p1nTSaRtuQ</span><span class="dl">'</span><span class="p">,</span>
     <span class="c1">// the following params are optional (default values)</span>
     <span class="na">header</span><span class="p">:</span> <span class="dl">"</span><span class="s2">&lt;h3&gt;Google Reviews&lt;/h3&gt;</span><span class="dl">"</span><span class="p">,</span> <span class="c1">// html/text over Reviews</span>

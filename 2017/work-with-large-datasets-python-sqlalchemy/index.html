@@ -47,7 +47,7 @@
 <span class="c1"># Start a while loop checking for more results
 </span><span class="k">while</span> <span class="n">more_results</span><span class="p">:</span>
     <span class="c1"># Fetch the first 50 results from the ResultProxy: partial_results
-</span>    <span class="n">partial_results</span> <span class="o">=</span> <span class="n">results_proxy</span><span class="p">.</span><span class="n">fetchmany</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+</span>    <span class="n">partial_results</span> <span class="o">=</span> <span class="n">results_proxy</span><span class="p">.</span><span class="nf">fetchmany</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
 
     <span class="c1"># if empty list, set more_results to False
 </span>    <span class="k">if</span> <span class="n">partial_results</span> <span class="o">==</span> <span class="p">[]:</span>
@@ -61,10 +61,10 @@
             <span class="n">state_count</span><span class="p">[</span><span class="n">row</span><span class="p">.</span><span class="n">state</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 
 <span class="c1"># Close the ResultProxy, and thus the connection
-</span><span class="n">results_proxy</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+</span><span class="n">results_proxy</span><span class="p">.</span><span class="nf">close</span><span class="p">()</span>
 
 <span class="c1"># Print the count by state
-</span><span class="k">print</span><span class="p">(</span><span class="n">state_count</span><span class="p">)</span>
+</span><span class="nf">print</span><span class="p">(</span><span class="n">state_count</span><span class="p">)</span>
 </code></pre></div></div>
 
 

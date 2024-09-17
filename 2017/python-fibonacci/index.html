@@ -64,7 +64,7 @@ first 10 fib =&gt; 0, 1, 1, 2, 3, 5, 8, 13, 21, 34</p>
 
     <span class="k">return</span> <span class="n">b</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">naive_fib</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="c1">#=&gt; 3
+<span class="nf">print</span><span class="p">(</span><span class="nf">naive_fib</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="c1">#=&gt; 3
 </span></code></pre></div></div>
 
 <p>You need a list of the results? No Problem, but watch out for a explosion of memory:</p>
@@ -78,33 +78,33 @@ first 10 fib =&gt; 0, 1, 1, 2, 3, 5, 8, 13, 21, 34</p>
         <span class="k">return</span> <span class="n">fibs</span>
 
     <span class="k">while</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="n">fibs</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">fibs</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">fibs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">fibs</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">fibs</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">fibs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
         <span class="n">x</span> <span class="o">-=</span> <span class="mi">1</span>
 
     <span class="k">return</span> <span class="n">fibs</span>
 
 
-<span class="k">print</span><span class="p">(</span><span class="n">list_fib</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="c1">#=&gt; [0, 1, 1, 2, 3]
+<span class="nf">print</span><span class="p">(</span><span class="nf">list_fib</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="c1">#=&gt; [0, 1, 1, 2, 3]
 </span></code></pre></div></div>
 
 <p>Iterating over the results is made easy by Python&#8217;s built-in Generators. This goes easy on your memory and should run quite fast :-)</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">yield_fib</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
         <span class="k">return</span> <span class="mi">0</span>
 
     <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">return</span> <span class="mi">1</span>
 
     <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
         <span class="k">yield</span> <span class="n">a</span>
         <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
 
 
-<span class="p">[</span><span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">yield_fib</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>
+<span class="p">[</span><span class="nf">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">yield_fib</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>
 <span class="c1">#=&gt; 0
 #=&gt; 1
 #=&gt; 1

@@ -61,8 +61,8 @@
         <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">num</span>
 
-<span class="k">assert</span> <span class="n">while_factorial</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="mi">24</span>
-<span class="k">assert</span> <span class="n">while_factorial</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="mi">120</span>
+<span class="k">assert</span> <span class="nf">while_factorial</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="mi">24</span>
+<span class="k">assert</span> <span class="nf">while_factorial</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="mi">120</span>
 
 
 <span class="c1"># for-loop
@@ -72,12 +72,12 @@
   <span class="k">elif</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
     <span class="k">return</span> <span class="mi">0</span>
   <span class="k">else</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
       <span class="n">x</span> <span class="o">*=</span> <span class="n">i</span>
     <span class="k">return</span> <span class="n">x</span>
 
-<span class="k">assert</span> <span class="n">for_factorial</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="mi">24</span>
-<span class="k">assert</span> <span class="n">for_factorial</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="mi">120</span>
+<span class="k">assert</span> <span class="nf">for_factorial</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="mi">24</span>
+<span class="k">assert</span> <span class="nf">for_factorial</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="mi">120</span>
 </code></pre></div></div>
 
 <ul>
@@ -89,11 +89,11 @@
   <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="mi">1</span><span class="p">:</span>
     <span class="k">return</span> <span class="mi">1</span>
   <span class="k">else</span><span class="p">:</span>
-    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">rec_factorial</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="nf">rec_factorial</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
 
 
-<span class="k">assert</span> <span class="n">rec_factorial</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="mi">24</span>
-<span class="k">assert</span> <span class="n">rec_factorial</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="mi">120</span>
+<span class="k">assert</span> <span class="nf">rec_factorial</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="mi">24</span>
+<span class="k">assert</span> <span class="nf">rec_factorial</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="mi">120</span>
 </code></pre></div></div>
 
 <ul>
@@ -101,31 +101,31 @@
 </ul>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># lambda implementation
-</span><span class="n">lambda_factorial</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">x</span> <span class="o">*</span> <span class="n">lambda_factorial</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</span><span class="n">lambda_factorial</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">x</span> <span class="o">*</span> <span class="nf">lambda_factorial</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 <span class="c1"># pay attention to how a if-else-guard is implemented
 </span>
 
-<span class="k">assert</span> <span class="n">lambda_factorial</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="mi">24</span>
-<span class="k">assert</span> <span class="n">lambda_factorial</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="mi">120</span>
+<span class="k">assert</span> <span class="nf">lambda_factorial</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="mi">24</span>
+<span class="k">assert</span> <span class="nf">lambda_factorial</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="mi">120</span>
 </code></pre></div></div>
 
 <p>Functional Programming means a function may return a function. To get an idea of what is going on behind the curtains - visualizing functions helps me.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">lambda_factorial</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">==</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">lambda_factorial</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">==</span>
 <span class="c1"># lambda_factorial(4) =&gt; 4 * lambda_factorial(4-1)
 </span>
-  <span class="mi">4</span> <span class="o">*</span> <span class="n">lambda_factorial</span><span class="p">(</span><span class="mi">4</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span>
+  <span class="mi">4</span> <span class="o">*</span> <span class="nf">lambda_factorial</span><span class="p">(</span><span class="mi">4</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span>
 
-    <span class="mi">4</span> <span class="o">*</span> <span class="n">lambda_factorial</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span>
+    <span class="mi">4</span> <span class="o">*</span> <span class="nf">lambda_factorial</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span>
     <span class="c1"># lambda_factorial(3) =&gt; 3 * lambda_factorial(3-1)
 </span>
-      <span class="mi">4</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">lambda_factorial</span><span class="p">(</span><span class="mi">3</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span>
+      <span class="mi">4</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">*</span> <span class="nf">lambda_factorial</span><span class="p">(</span><span class="mi">3</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span>
 
-        <span class="mi">4</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">lambda_factorial</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span>
+        <span class="mi">4</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">*</span> <span class="nf">lambda_factorial</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span>
 
-          <span class="mi">4</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">lambda_factorial</span><span class="p">(</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span>
+          <span class="mi">4</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="nf">lambda_factorial</span><span class="p">(</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span>
 
-            <span class="mi">4</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">lambda_factorial</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="c1">#(lambda_factorial(1) returns 1)
+            <span class="mi">4</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="nf">lambda_factorial</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="c1">#(lambda_factorial(1) returns 1)
 </span>
               <span class="mi">4</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">1</span>
               <span class="c1"># =&gt; 24
