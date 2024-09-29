@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "use minimagick convert pdf frontpage to png"
+title: "Use minimagick convert a pdf's frontpage to png"
 ---
 
 Use your majestic brain waves to figure out how where to get the pdf content from. Then refactor the code to your needs. This is just a snippet.
