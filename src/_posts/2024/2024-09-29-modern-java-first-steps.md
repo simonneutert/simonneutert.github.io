@@ -15,10 +15,7 @@ In Uni Java felt super alien and the introduction to coding was a bit rough. So 
 
 ## The Build Tool Dilemma: Maven vs Ant vs Gradle
 
-Here's where things got interesting. In a previous project, I had used Maven with simple commands like:
-
-- `mvn clean install`
-- `mvn spring-boot:run`
+Here's where things got interesting. In a previous project, I had used Maven with simple commands like: `mvn clean install` and `mvn spring-boot:run` - that's about it.
 
 This time, after some research, I decided to try Gradle, which seemed to be the most modern option.
 
