@@ -1,4 +1,54 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.3.4">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-09-23T11:25:30+00:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">The sass gem is dead, long live: sass-embedded-host-ruby</title><link href="/2024/sass-embedded/" rel="alternate" type="text/html" title="The sass gem is dead, long live: sass-embedded-host-ruby" /><published>2024-01-13T00:00:00+00:00</published><updated>2024-01-13T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2024/2024-01-13-sass-embedded.md</id><content type="html" xml:base="/2024/sass-embedded/">&lt;p&gt;I had this deprecation warning in my template sinatra project on GitHub for a while now.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.3.4">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-09-29T14:34:15+00:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Getting my feet wet with modern Java.</title><link href="/2024/modern-java-first-steps/" rel="alternate" type="text/html" title="Getting my feet wet with modern Java." /><published>2024-09-29T00:00:00+00:00</published><updated>2024-09-29T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2024/2024-09-29-modern-java-first-steps.md</id><content type="html" xml:base="/2024/modern-java-first-steps/">&lt;p&gt;Java has been getting a lot of positive attention lately, and I wanted to see what all the excitement was about. As a long-time Rubyist, I&amp;#8217;ve been spoiled by Ruby&amp;#8217;s vibrant community and user-friendly ecosystem. So, how would modern Java measure up?&lt;/p&gt;
+
+&lt;p&gt;In Uni Java felt super alien and the introduction to coding was a bit rough. So in a sense Java was the reason why I didn&amp;#8217;t pursue becoming a software engineer. But now, with a few years of coding experience under my belt, I wanted to give it another shot.&lt;/p&gt;
+
+&lt;h2 id=&quot;getting-started&quot;&gt;Getting Started&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Installation was a breeze using ASDF.&lt;/li&gt;
+  &lt;li&gt;Startup time is no issue (to me).&lt;/li&gt;
+  &lt;li&gt;The classic &amp;#8220;Hello World&amp;#8221; program? Done in no time!&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;the-build-tool-dilemma-maven-vs-ant-vs-gradle&quot;&gt;The Build Tool Dilemma: Maven vs Ant vs Gradle&lt;/h2&gt;
+
+&lt;p&gt;Here&amp;#8217;s where things got interesting. In a previous project, I had used Maven with simple commands like: &lt;code class=&quot;highlighter-rouge&quot;&gt;mvn clean install&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;mvn spring-boot:run&lt;/code&gt; - that&amp;#8217;s about it.&lt;/p&gt;
+
+&lt;p&gt;This time, after some research, I decided to try Gradle, which seemed to be the most modern option.&lt;/p&gt;
+
+&lt;h2 id=&quot;diving-in-a-simple-algorithm-implementation&quot;&gt;Diving In: A Simple Algorithm Implementation&lt;/h2&gt;
+
+&lt;p&gt;I started with &lt;code class=&quot;highlighter-rouge&quot;&gt;gradle init&lt;/code&gt; and chose the Java library option. To help me along, I used GitHub Copilot as a tutor, asking questions like:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&amp;#8220;When would I use static, public?&amp;#8221;&lt;/li&gt;
+  &lt;li&gt;&amp;#8220;What is a bean and is this class a bean?&amp;#8221;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(#JuniorForever, am I right?)&lt;/p&gt;
+
+&lt;h2 id=&quot;the-java-experience&quot;&gt;The Java Experience&lt;/h2&gt;
+
+&lt;p&gt;Despite some initial hurdles, I found the experience quite pleasant:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;With Copilot as my rubber duck / passive colleague, I got the code to compile and run.&lt;/li&gt;
+  &lt;li&gt;Types were challenging at first, but I adapted quickly.&lt;/li&gt;
+  &lt;li&gt;I really enjoyed working with the Stream API.&lt;/li&gt;
+  &lt;li&gt;Using HashSets and HashMaps instead of creating classes for everything felt lightweight and modern.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;While the keywords, syntax and types took (and will take) some getting used to, I eventually got everything working smoothly.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-result&quot;&gt;The Result&lt;/h2&gt;
+
+&lt;p&gt;You can check out my first two Java projects here:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/simonneutert/java-map-tile-metrics&quot;&gt;Map Tile Metrics Library&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/simonneutert/java-map-tile-metrics-cli&quot;&gt;Map Tile Metrics CLI&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Overall, my journey into Java was a nice experience. While it has its own learning curve, I can see why it&amp;#8217;s receiving good press. Have you tried stepping out of your programming comfort zone lately?&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">The sass gem is dead, long live: sass-embedded-host-ruby</title><link href="/2024/sass-embedded/" rel="alternate" type="text/html" title="The sass gem is dead, long live: sass-embedded-host-ruby" /><published>2024-01-13T00:00:00+00:00</published><updated>2024-01-13T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2024/2024-01-13-sass-embedded.md</id><content type="html" xml:base="/2024/sass-embedded/">&lt;p&gt;I had this deprecation warning in my template sinatra project on GitHub for a while now.&lt;/p&gt;
 
 &lt;p&gt;The project should have ActiveRecord and Sass support, with sprockets and a few other things.&lt;/p&gt;
 
@@ -492,24 +542,4 @@ Ausschalt-Timer, Lichtsensor, Bildabschaltung (bei Radiobetrieb), Eco-Modus
 https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/29336490249241a3925bcb97e235b830
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;What started as a quick experiment using httpie and jq, escalated quickly to an exercise in Clojure 🥰&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">I made my own little selfhostable flat-file notebook</title><link href="/2022/labradorite/" rel="alternate" type="text/html" title="I made my own little selfhostable flat-file notebook" /><published>2022-10-29T00:00:00+00:00</published><updated>2022-10-29T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-10-29-labradorite.md</id><content type="html" xml:base="/2022/labradorite/">&lt;p&gt;Most Notetaking apps do either too much (Notion), too less (Apple Notes) or locked me in (Evernote).&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/2022/labradorite.jpg&quot; width=&quot;50%&quot; style=&quot; display: block; margin-left: auto; margin-right: auto; width: 50%;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;I wanted something that does &lt;strong&gt;just-enough&lt;/strong&gt;™, in the spirit of a &lt;em&gt;flat file cms&lt;/em&gt;. Let me try and wrap it up in a few bullets:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;ownership&lt;/strong&gt; of the notes (flat files)&lt;br /&gt;
-markdown, yaml, attachments all in one place in directories&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;easy&lt;/strong&gt; on the eyes/mind&lt;br /&gt;
-I don’t want to see all the old stuff I may not need anymore&lt;/li&gt;
-  &lt;li&gt;a search that shows me &lt;strong&gt;snips&lt;/strong&gt; in the notes&lt;br /&gt;
-not just the notes in a sidebar&lt;/li&gt;
-  &lt;li&gt;a very simple &lt;strong&gt;tagging&lt;/strong&gt; support&lt;/li&gt;
-  &lt;li&gt;basic &lt;strong&gt;file uploads&lt;/strong&gt;&lt;br /&gt;
-keeping the originals side by side with notes&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;I like to keep things simple, so I once again fell for &lt;a href=&quot;https://roda.jeremyevans.net&quot;&gt;Roda&lt;/a&gt; as the Web Layer. &lt;a href=&quot;https://github.com/baygeldin/tantiny&quot;&gt;Tantiny&lt;/a&gt; is the kicker for this project. I was curious, if I could come up with something useful quickly, not having to deal with a complicated setup or Postgres as a requirement.&lt;/p&gt;
-
-&lt;p&gt;You can find the &lt;a href=&quot;https://github.com/simonneutert/labradorite-notebook&quot;&gt;source code on GitHub&lt;/a&gt;. Give it a spin and contribute if you are missing something.&lt;/p&gt;</content><author><name></name></author></entry></feed>
+&lt;p&gt;What started as a quick experiment using httpie and jq, escalated quickly to an exercise in Clojure 🥰&lt;/p&gt;</content><author><name></name></author></entry></feed>
