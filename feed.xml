@@ -1,4 +1,90 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.3.4">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-10-07T07:38:36+00:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Getting my feet wet with modern Java.</title><link href="/2024/modern-java-first-steps/" rel="alternate" type="text/html" title="Getting my feet wet with modern Java." /><published>2024-09-29T00:00:00+00:00</published><updated>2024-09-29T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2024/2024-09-29-modern-java-first-steps.md</id><content type="html" xml:base="/2024/modern-java-first-steps/">&lt;p&gt;Java has been getting a lot of positive attention lately, and I wanted to see what all the excitement was about. As a long-time Rubyist, I&amp;#8217;ve been spoiled by Ruby&amp;#8217;s vibrant community and user-friendly ecosystem. So, how would modern Java measure up?&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.3.4">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-10-07T07:42:14+00:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">The 10 Commandments of Code Review: A Developer’s Guide</title><link href="/2024/code-review/" rel="alternate" type="text/html" title="The 10 Commandments of Code Review: A Developer&apos;s Guide" /><published>2024-10-07T00:00:00+00:00</published><updated>2024-10-07T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2024/2024-10-07-code-review.md</id><content type="html" xml:base="/2024/code-review/">&lt;p&gt;The algorithm washed in a great YouTube video on code reviews. Here’s a summary of the video’s key points, with a touch of humor and a sprinkle of wisdom.\&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=ScWFHOOPPC4&quot;&gt;Source on YouTube&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;a-note-on-code-reviews&quot;&gt;A Note on Code Reviews&lt;/h2&gt;
+
+&lt;p&gt;Let’s be honest: we’ve all written code that made us cringe months later. Whether you’re a junior developer or a seasoned architect, nobody writes perfect code all the time. That’s exactly why code reviews exist – not as a platform for showing off or criticizing others, but as a collaborative tool for improvement. When reviewing code, remember to be direct but polite; we’re all in this together, trying to build better software.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-10-commandments-of-code-review&quot;&gt;The 10 Commandments of Code Review&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Thou shalt ensure readability&lt;/strong&gt;, for confusing code is the Devil’s Playground.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Thou shalt consider performance and scalability&lt;/strong&gt;, for slow code is an Abomination.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Thou shalt stay within scope&lt;/strong&gt;, and not add unnecessary complexity.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Thou shalt check for edge cases&lt;/strong&gt;, for the unexpected shall smite thee in production.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Thou shalt not forget test coverage&lt;/strong&gt;, for untested code is a sin in the eyes of QA.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Thou shalt seek out repetitive code&lt;/strong&gt; and banish it from the codebase.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Thou shalt not nitpick&lt;/strong&gt;, lest you be smited by thine own pet peeves.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Thou shalt provide constructive feedback&lt;/strong&gt; and sing praises of good code.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Thou shalt encourage discussion&lt;/strong&gt;, for two minds are mightier than one.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Thou shalt not block changes over minor issues&lt;/strong&gt;, for Perfection is a false idol.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;1-ensure-readability&quot;&gt;1. Ensure Readability&lt;/h3&gt;
+
+&lt;p&gt;Code should be easily understood by others. Look for clear naming conventions, appropriate comments, and well-structured functions. If you need to read the same code multiple times to understand it, suggest improvements in organization or clarity.&lt;/p&gt;
+
+&lt;h3 id=&quot;2-consider-performance&quot;&gt;2. Consider Performance&lt;/h3&gt;
+
+&lt;p&gt;Watch for potential bottlenecks and inefficient code. Look for opportunities to optimize, such as early returns and proper algorithmic complexity. Remember: what works on your computer might not scale well on servers.&lt;/p&gt;
+
+&lt;h3 id=&quot;3-stay-within-scope&quot;&gt;3. Stay Within Scope&lt;/h3&gt;
+
+&lt;p&gt;Understand the problem being solved and avoid suggesting changes that don’t align with the ticket’s purpose. Save broader improvements for separate tickets and discussions.&lt;/p&gt;
+
+&lt;h3 id=&quot;4-check-edge-cases&quot;&gt;4. Check Edge Cases&lt;/h3&gt;
+
+&lt;p&gt;Review how the code handles unexpected scenarios, including empty arrays, null values, and missing data. Border cases often cause the most problems in production.&lt;/p&gt;
+
+&lt;h3 id=&quot;5-verify-test-coverage&quot;&gt;5. Verify Test Coverage&lt;/h3&gt;
+
+&lt;p&gt;Ensure adequate testing, especially for critical functionality. Tests should be comprehensive, well-structured, and actually useful – not redundant. Don’t demand tests for trivial changes.&lt;/p&gt;
+
+&lt;h3 id=&quot;6-eliminate-code-duplication&quot;&gt;6. Eliminate Code Duplication&lt;/h3&gt;
+
+&lt;p&gt;Look for repeated code blocks and suggest abstractions to improve maintainability. If the same intensive operation happens multiple times, consider caching results when appropriate.&lt;/p&gt;
+
+&lt;h3 id=&quot;7-avoid-nitpicking&quot;&gt;7. Avoid Nitpicking&lt;/h3&gt;
+
+&lt;p&gt;Don’t get hung up on trivial formatting preferences or subjective matters. You’re not a linter – focus on what truly matters.&lt;/p&gt;
+
+&lt;h3 id=&quot;8-provide-constructive-feedback&quot;&gt;8. Provide Constructive Feedback&lt;/h3&gt;
+
+&lt;p&gt;Frame suggestions positively and acknowledge good work. Instead of “this is poorly written,” try “consider refactoring this for clarity 😊”&lt;/p&gt;
+
+&lt;h3 id=&quot;9-encourage-discussion&quot;&gt;9. Encourage Discussion&lt;/h3&gt;
+
+&lt;p&gt;Foster collaboration and open dialogue. For complex issues, take the discussion offline to voice or chat channels where ideas can flow more naturally.&lt;/p&gt;
+
+&lt;h3 id=&quot;10-dont-block-on-minor-issues&quot;&gt;10. Don’t Block on Minor Issues&lt;/h3&gt;
+
+&lt;p&gt;Differentiate between essential fixes and nice-to-haves. Not every suggestion needs to be implemented before merging.&lt;/p&gt;
+
+&lt;p&gt;Remember: Perfect is the enemy of good. Sometimes “good enough” is exactly what the project needs at that moment.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Getting my feet wet with modern Java.</title><link href="/2024/modern-java-first-steps/" rel="alternate" type="text/html" title="Getting my feet wet with modern Java." /><published>2024-09-29T00:00:00+00:00</published><updated>2024-09-29T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2024/2024-09-29-modern-java-first-steps.md</id><content type="html" xml:base="/2024/modern-java-first-steps/">&lt;p&gt;Java has been getting a lot of positive attention lately, and I wanted to see what all the excitement was about. As a long-time Rubyist, I&amp;#8217;ve been spoiled by Ruby&amp;#8217;s vibrant community and user-friendly ecosystem. So, how would modern Java measure up?&lt;/p&gt;
 
 &lt;p&gt;In Uni Java felt super alien and the introduction to coding was a bit rough. So in a sense Java was the reason why I didn&amp;#8217;t pursue becoming a software engineer. But now, with a few years of coding experience under my belt, I wanted to give it another shot.&lt;/p&gt;
 
@@ -504,42 +590,4 @@ Additional Benefits of the pg_extended_date_support Extension:&lt;/p&gt;
 
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# content of .rubocop&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;--server&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author></entry><entry><title type="html">Crawl MediaMarkts Fundgrube using Babashka (and telegram bots)</title><link href="/2022/fundgrube/" rel="alternate" type="text/html" title="Crawl MediaMarkts Fundgrube using Babashka (and telegram bots)" /><published>2022-11-06T00:00:00+00:00</published><updated>2022-11-06T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2022/2022-11-06-fundgrube.md</id><content type="html" xml:base="/2022/fundgrube/">&lt;p&gt;While browsing through my GitHub Feed, I stumbled across &lt;a href=&quot;https://github.com/RomanNess/fundgrube-crawler&quot;&gt;Roman Ness’ fundgrube-crawler&lt;/a&gt; and thought this to be a nice little code exercise.&lt;/p&gt;
-
-&lt;p&gt;My &lt;a href=&quot;https://github.com/simonneutert/fundgrube&quot;&gt;fundgrube code on GitHub&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;what-is-mediamarktsaturn-fundgube-and-what-is-the-problem-with-it&quot;&gt;What is MediaMarkt/Saturn Fundgube and what is the problem with it?&lt;/h2&gt;
-
-&lt;p&gt;The Fundgrube is a collection of products in a sub-webshop you can visit in MediaMarkt/Saturn’s main webshop. The products listed there usually are reduced in price, reduced drastically. These products were maybe used for displaying in the shop or may have some cosmetic issues, like scratches. Here’s the twist: customers need to collect the product from the store, shipping is not an option and another customer might be quicker than you.&lt;/p&gt;
-
-&lt;p&gt;The “problem” with how the Fundgrube is offered as a webshop is the lack of filters or proper search tools. Just as they want you to come to the store to pick the product up, they want you to check the Fundgrube regularly (I guess).&lt;/p&gt;
-
-&lt;p&gt;The data/products API is public and when opening the dev tools in your browser, you will find a custom header, wanting you to send in your resume and apply for a job. Fair play, MediaMarkt and Saturn.&lt;/p&gt;
-
-&lt;h2 id=&quot;my-script-my-babashka&quot;&gt;My script, my babashka&lt;/h2&gt;
-
-&lt;p&gt;What I’ve come up with in an adrenalin rush, is not (yet) a script i would show my mother-in-law and brag about it…, but …, well …, it does the job 😅&lt;/p&gt;
-
-&lt;p&gt;My script crawls through MediaMarkts public &lt;a href=&quot;https://www.mediamarkt.de/de/data/fundgrube&quot;&gt;Fundgrube&lt;/a&gt; API and posts new products on offer via a &lt;a href=&quot;https://core.telegram.org/bots/faq#how-do-i-create-a-bot&quot;&gt;telegram bot&lt;/a&gt; in a secret channel for me and some friends.&lt;/p&gt;
-
-&lt;h4 id=&quot;technicals&quot;&gt;Technicals&lt;/h4&gt;
-
-&lt;p&gt;The tool is parameterised using ENV Vars, to iterate over the local product postings, then collecting unique items, aggregating the results. Before storing the data to disk, the last time created file is being copied and renamed, allowing the tool to detect changes. I decided to use Clojure’s &lt;a href=&quot;https://github.com/edn-format/edn&quot;&gt;edn data notation&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Here’s an example what a post to telegram of a detected product entry would look like:&lt;/p&gt;
-
-&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Markt: Wiesbaden-Hasengarten
-Produkt: PHILIPS 58PUS8546/12 LED TV (Flat, 58 Zoll / 146 cm, UHD 4K, SMART TV, Ambilight, Android TV™ 10 (Q))
-
-Preis: 700.00 €
-
-Artikel 2734789
--
-LED TV / 146cm/58Zoll / UHD 4K,
-Ultra Resolution, Dolby Vision, HDR10+, Micro Dimming Pro, ISF-Farbmanagement,
-2 x 10 W Full-Range-Lautsprecher,
-Ausschalt-Timer, Lichtsensor, Bildabschaltung (bei Radiobetrieb), Eco-Modus
-https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/29336490249241a3925bcb97e235b830
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;What started as a quick experiment using httpie and jq, escalated quickly to an exercise in Clojure 🥰&lt;/p&gt;</content><author><name></name></author></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author></entry></feed>
