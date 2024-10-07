@@ -3,7 +3,7 @@ title: "Adventures in Golang: Organizing My Strava Data 🚴‍♂️"
 layout: post
 ---
 
-I recently dove into an interesting project where I exported my Strava data to do some GPS visualization. I thought I'd share my experience, especially for those who might be new to Go (like me!).
+I recently dove into an interesting project where I exported my Strava data to do some GPS visualization. I thought I'd share my experience, especially for those who might be new to Go.
 
 ## tldr; just show me the product 🚀
 
@@ -38,12 +38,12 @@ Here's where things got interesting. If you're coming from other programming lan
 
 You could think of this as Go's "zero date" - the reference point for parsing and formatting dates. Each part of the string corresponds to a specific date component:
 
-2006 = YYYY
-01 = MM
-02 = DD
-15 = hh (24-hour)
-04 = mm
-05 = ss
+2006 = YYYY\
+01 = MM\
+02 = DD\
+15 = hh (24-hour)\
+04 = mm\
+05 = ss\
 
 ## A Real-World Example 💡
 Here's how I parsed a date like 2022-03-23T07:00:00+01:00:
