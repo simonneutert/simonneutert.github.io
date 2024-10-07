@@ -1,4 +1,71 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.3.4">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-10-07T22:37:20+00:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">The 10 Commandments of Code Review: A Developer’s Guide</title><link href="/2024/code-review/" rel="alternate" type="text/html" title="The 10 Commandments of Code Review: A Developer&apos;s Guide" /><published>2024-10-07T00:00:00+00:00</published><updated>2024-10-07T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2024/2024-10-07-code-review.md</id><content type="html" xml:base="/2024/code-review/">&lt;p&gt;The algorithm washed in a great YouTube video on code reviews. Here’s a summary of the video’s key points, with a touch of humor and a sprinkle of wisdom.\&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.3.4">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-10-08T01:03:43+02:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Adventures in Golang: Organizing My Strava Data 🚴‍♂️</title><link href="/2024/strava-export-experiment/" rel="alternate" type="text/html" title="Adventures in Golang: Organizing My Strava Data 🚴‍♂️" /><published>2024-10-08T00:00:00+02:00</published><updated>2024-10-08T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2024/2024-10-08-strava-export-experiment.md</id><content type="html" xml:base="/2024/strava-export-experiment/">&lt;p&gt;I recently dove into an interesting project where I exported my Strava data to do some GPS visualization. I thought I’d share my experience, especially for those who might be new to Go.&lt;/p&gt;
+
+&lt;h2 id=&quot;tldr-just-show-me-the-product-&quot;&gt;tldr; just show me the product 🚀&lt;/h2&gt;
+
+&lt;p&gt;https://github.com/simonneutert/strava-export-organizer/&lt;/p&gt;
+
+&lt;h2 id=&quot;the-challenge-&quot;&gt;The Challenge 🎯&lt;/h2&gt;
+
+&lt;p&gt;I had a directory full of activity files from Strava - mostly &lt;code class=&quot;highlighter-rouge&quot;&gt;.fit&lt;/code&gt; files with some &lt;code class=&quot;highlighter-rouge&quot;&gt;.gpx&lt;/code&gt; mixed in. My goal? Organize these files into a clean directory structure based on activity type (running, cycling, etc.) and year. The activity metadata was tucked away in an &lt;code class=&quot;highlighter-rouge&quot;&gt;activities.csv&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;p&gt;This is a part of the export strava.com provides. You can download your data in a zip file.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-game-plan-&quot;&gt;The Game Plan 📋&lt;/h2&gt;
+
+&lt;p&gt;Being a Golang newbie, I thought this would be a straightforward project:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Parse the &lt;code class=&quot;highlighter-rouge&quot;&gt;activities.csv&lt;/code&gt; file&lt;/li&gt;
+  &lt;li&gt;Create a fresh directory for the organized files&lt;/li&gt;
+  &lt;li&gt;Make subdirectories for each activity type&lt;/li&gt;
+  &lt;li&gt;Within those, create year-based subdirectories (prefixed with activity type)&lt;/li&gt;
+  &lt;li&gt;Move files to their new homes&lt;/li&gt;
+  &lt;li&gt;Optional: &lt;code class=&quot;highlighter-rouge&quot;&gt;gunzip&lt;/code&gt; gzipped files&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Simple enough, right? Well… 😅&lt;/p&gt;
+
+&lt;h2 id=&quot;the-plot-twist-gos-date-parsing-&quot;&gt;The Plot Twist: Go’s Date Parsing 🤔&lt;/h2&gt;
+
+&lt;p&gt;Here’s where things got interesting. If you’re coming from other programming languages, Go’s approach to date parsing might surprise you. Instead of using traditional format strings like &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD&lt;/code&gt;, Go uses what I like to call “the magic reference date”:&lt;/p&gt;
+
+&lt;div class=&quot;language-go highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;&quot;2006-01-02T15:04:05Z07:00&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You could think of this as Go’s “zero date” - the reference point for parsing and formatting dates. Each part of the string corresponds to a specific date component:&lt;/p&gt;
+
+&lt;p&gt;2006 = YYYY&lt;br /&gt;
+01 = MM&lt;br /&gt;
+02 = DD&lt;br /&gt;
+15 = hh (24-hour)&lt;br /&gt;
+04 = mm&lt;br /&gt;
+05 = ss\&lt;/p&gt;
+
+&lt;h2 id=&quot;a-real-world-example-&quot;&gt;A Real-World Example 💡&lt;/h2&gt;
+&lt;p&gt;Here’s how I parsed a date like 2022-03-23T07:00:00+01:00:&lt;/p&gt;
+
+&lt;div class=&quot;language-go highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;2022-03-23T07:00:00+01:00&quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;loc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LoadLocation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Europe/Berlin&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ParseInLocation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RFC3339&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;loc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;nil&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Fatal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Println&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Pro tip&lt;/strong&gt;: While this format might seem quirky at first, Go provides several predefined formats like time.RFC3339 that can save you some headaches!&lt;/p&gt;
+
+&lt;h2 id=&quot;wrapping-up-&quot;&gt;Wrapping Up 🎉&lt;/h2&gt;
+
+&lt;p&gt;Despite the initial learning curve, this project turned out to be a fun way to dabble with Go. The date parsing might seem unusual at first, but it’s just one of those Go quirks that makes the language unique.&lt;/p&gt;
+
+&lt;h2 id=&quot;links--resources-&quot;&gt;Links &amp;amp; Resources 📚&lt;/h2&gt;
+
+&lt;p&gt;Want to dive deeper into Go’s date formatting? Check out this super helpful cheat sheet: https://gosamples.dev/date-time-format-cheatsheet/&lt;/p&gt;
+
+&lt;p&gt;More on Stack Overflow: https://stackoverflow.com/a/20234207&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">The 10 Commandments of Code Review: A Developer’s Guide</title><link href="/2024/code-review/" rel="alternate" type="text/html" title="The 10 Commandments of Code Review: A Developer&apos;s Guide" /><published>2024-10-07T00:00:00+02:00</published><updated>2024-10-07T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2024/2024-10-07-code-review.md</id><content type="html" xml:base="/2024/code-review/">&lt;p&gt;The algorithm washed in a great YouTube video on code reviews. Here’s a summary of the video’s key points, with a touch of humor and a sprinkle of wisdom.\&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=ScWFHOOPPC4&quot;&gt;Source on YouTube&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -84,7 +151,7 @@
 
 &lt;p&gt;Differentiate between essential fixes and nice-to-haves. Not every suggestion needs to be implemented before merging.&lt;/p&gt;
 
-&lt;p&gt;Remember: Perfect is the enemy of good. Sometimes “good enough” is exactly what the project needs at that moment.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Getting my feet wet with modern Java.</title><link href="/2024/modern-java-first-steps/" rel="alternate" type="text/html" title="Getting my feet wet with modern Java." /><published>2024-09-29T00:00:00+00:00</published><updated>2024-09-29T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2024/2024-09-29-modern-java-first-steps.md</id><content type="html" xml:base="/2024/modern-java-first-steps/">&lt;p&gt;Java has been getting a lot of positive attention lately, and I wanted to see what all the excitement was about. As a long-time Rubyist, I&amp;#8217;ve been spoiled by Ruby&amp;#8217;s vibrant community and user-friendly ecosystem. So, how would modern Java measure up?&lt;/p&gt;
+&lt;p&gt;Remember: Perfect is the enemy of good. Sometimes “good enough” is exactly what the project needs at that moment.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Getting my feet wet with modern Java.</title><link href="/2024/modern-java-first-steps/" rel="alternate" type="text/html" title="Getting my feet wet with modern Java." /><published>2024-09-29T00:00:00+02:00</published><updated>2024-09-29T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2024/2024-09-29-modern-java-first-steps.md</id><content type="html" xml:base="/2024/modern-java-first-steps/">&lt;p&gt;Java has been getting a lot of positive attention lately, and I wanted to see what all the excitement was about. As a long-time Rubyist, I&amp;#8217;ve been spoiled by Ruby&amp;#8217;s vibrant community and user-friendly ecosystem. So, how would modern Java measure up?&lt;/p&gt;
 
 &lt;p&gt;In Uni Java felt super alien and the introduction to coding was a bit rough. So in a sense Java was the reason why I didn&amp;#8217;t pursue becoming a software engineer. But now, with a few years of coding experience under my belt, I wanted to give it another shot.&lt;/p&gt;
 
@@ -134,7 +201,7 @@
   &lt;li&gt;&lt;a href=&quot;https://github.com/simonneutert/java-map-tile-metrics-cli&quot;&gt;Map Tile Metrics CLI&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Overall, my journey into Java was a nice experience. While it has its own learning curve, I can see why it&amp;#8217;s receiving good press. Have you tried stepping out of your programming comfort zone lately?&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">The sass gem is dead, long live: sass-embedded-host-ruby</title><link href="/2024/sass-embedded/" rel="alternate" type="text/html" title="The sass gem is dead, long live: sass-embedded-host-ruby" /><published>2024-01-13T00:00:00+00:00</published><updated>2024-01-13T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2024/2024-01-13-sass-embedded.md</id><content type="html" xml:base="/2024/sass-embedded/">&lt;p&gt;I had this deprecation warning in my template sinatra project on GitHub for a while now.&lt;/p&gt;
+&lt;p&gt;Overall, my journey into Java was a nice experience. While it has its own learning curve, I can see why it&amp;#8217;s receiving good press. Have you tried stepping out of your programming comfort zone lately?&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">The sass gem is dead, long live: sass-embedded-host-ruby</title><link href="/2024/sass-embedded/" rel="alternate" type="text/html" title="The sass gem is dead, long live: sass-embedded-host-ruby" /><published>2024-01-13T00:00:00+01:00</published><updated>2024-01-13T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2024/2024-01-13-sass-embedded.md</id><content type="html" xml:base="/2024/sass-embedded/">&lt;p&gt;I had this deprecation warning in my template sinatra project on GitHub for a while now.&lt;/p&gt;
 
 &lt;p&gt;The project should have ActiveRecord and Sass support, with sprockets and a few other things.&lt;/p&gt;
 
@@ -195,7 +262,7 @@
 &lt;p&gt;Checkout the pull request for the full diff:&lt;br /&gt;
 https://github.com/simonneutert/sinatras-skeleton/pull/84/files&lt;/p&gt;
 
-&lt;p&gt;And that’s it. I hope this helps someone else out there.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Setup FiraCode Nerd Font Mono with ligatures in VSCode for MacOS</title><link href="/2024/vscode-fira/" rel="alternate" type="text/html" title="Setup FiraCode Nerd Font Mono with ligatures in VSCode for MacOS" /><published>2024-01-07T00:00:00+00:00</published><updated>2024-01-07T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2024/2024-01-07-vscode-fira.md</id><content type="html" xml:base="/2024/vscode-fira/">&lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;settings.json&lt;/code&gt; have the following values:&lt;/p&gt;
+&lt;p&gt;And that’s it. I hope this helps someone else out there.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Setup FiraCode Nerd Font Mono with ligatures in VSCode for MacOS</title><link href="/2024/vscode-fira/" rel="alternate" type="text/html" title="Setup FiraCode Nerd Font Mono with ligatures in VSCode for MacOS" /><published>2024-01-07T00:00:00+01:00</published><updated>2024-01-07T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2024/2024-01-07-vscode-fira.md</id><content type="html" xml:base="/2024/vscode-fira/">&lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;settings.json&lt;/code&gt; have the following values:&lt;/p&gt;
 
 &lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;shortened&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;brevity&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
@@ -207,7 +274,7 @@ https://github.com/simonneutert/sinatras-skeleton/pull/84/files&lt;/p&gt;
 
 &lt;p&gt;I used the builtin Font Manager to install my nerdy fonts beforehand.&lt;/p&gt;
 
-&lt;p&gt;Get them here: https://github.com/ryanoasis/nerd-fonts&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Elevate Your Podcast Experience: Using Apple Shortcuts to Play Random Episodes (and NGINX)</title><link href="/2023/random-podcast-episodes/" rel="alternate" type="text/html" title="Elevate Your Podcast Experience: Using Apple Shortcuts to Play Random Episodes (and NGINX)" /><published>2023-12-18T00:00:00+00:00</published><updated>2023-12-18T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2023/2023-12-18-random-podcast-episodes.md</id><content type="html" xml:base="/2023/random-podcast-episodes/">&lt;p&gt;Podcasts have become an integral part of my daily routine, and accessing them seamlessly is crucial for a smooth listening experience. In this guide, I’ll explore how you can leverage Nginx to offer a JSON file containing links to podcast episodes.&lt;/p&gt;
+&lt;p&gt;Get them here: https://github.com/ryanoasis/nerd-fonts&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Elevate Your Podcast Experience: Using Apple Shortcuts to Play Random Episodes (and NGINX)</title><link href="/2023/random-podcast-episodes/" rel="alternate" type="text/html" title="Elevate Your Podcast Experience: Using Apple Shortcuts to Play Random Episodes (and NGINX)" /><published>2023-12-18T00:00:00+01:00</published><updated>2023-12-18T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2023/2023-12-18-random-podcast-episodes.md</id><content type="html" xml:base="/2023/random-podcast-episodes/">&lt;p&gt;Podcasts have become an integral part of my daily routine, and accessing them seamlessly is crucial for a smooth listening experience. In this guide, I’ll explore how you can leverage Nginx to offer a JSON file containing links to podcast episodes.&lt;/p&gt;
 
 &lt;p&gt;Additionally, I’ll demonstrate how iPhone users can use the Shortcuts app to load the JSON file, extract a random entry, and open the URL for their preferred podcast service.&lt;/p&gt;
 
@@ -282,7 +349,7 @@ https://github.com/simonneutert/sinatras-skeleton/pull/84/files&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/2023/shuffle-gag.jpeg&quot; id=&quot;shuffle-gag-screenshot&quot; alt=&quot;Shortcuts App showing an example workflow to load and extract a sample podcast from an array of dictionaries&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Tada 🥳🪄✨&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">I coded a cash register backend in Ruby backed by Postgres</title><link href="/2023/cash-ka-ching/" rel="alternate" type="text/html" title="I coded a cash register backend in Ruby backed by Postgres" /><published>2023-06-26T00:00:00+00:00</published><updated>2023-06-26T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2023/2023-06-26-cash-ka-ching.md</id><content type="html" xml:base="/2023/cash-ka-ching/">&lt;p&gt;I’ve been working on a cash register backend in Ruby for the past few months after work and sometimes on weekends. It’s been a fun project and I’ve learned a lot about Ruby, Postgres, and how to keep calm and trash the hell out of ideas.&lt;/p&gt;
+&lt;p&gt;Tada 🥳🪄✨&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">I coded a cash register backend in Ruby backed by Postgres</title><link href="/2023/cash-ka-ching/" rel="alternate" type="text/html" title="I coded a cash register backend in Ruby backed by Postgres" /><published>2023-06-26T00:00:00+02:00</published><updated>2023-06-26T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2023/2023-06-26-cash-ka-ching.md</id><content type="html" xml:base="/2023/cash-ka-ching/">&lt;p&gt;I’ve been working on a cash register backend in Ruby for the past few months after work and sometimes on weekends. It’s been a fun project and I’ve learned a lot about Ruby, Postgres, and how to keep calm and trash the hell out of ideas.&lt;/p&gt;
 
 &lt;p&gt;Again, as readers of my blog will guess, I bet my horses on Roda and Sequel. I’ve been using them for a while now and I’m very happy with them. I’ve also been using Postgres for a while now and I’m very happy with it too. I’m not sure if I’ll ever use MySQL again 🤭&lt;/p&gt;
 
@@ -400,7 +467,7 @@ https://github.com/simonneutert/sinatras-skeleton/pull/84/files&lt;/p&gt;
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Utilizing the &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;amp;block&lt;/code&gt; parameter of the &lt;code class=&quot;highlighter-rouge&quot;&gt;Sequel.connect&lt;/code&gt; method allows me to pass a block to the method. This way I can make sure that the connection is closed after the block has been executed. This is a great way to make sure that the connection is closed after the request has been processed.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Use minimagick convert a pdf’s frontpage to png</title><link href="/2023/pdf-png-preview/" rel="alternate" type="text/html" title="Use minimagick convert a pdf&apos;s frontpage to png" /><published>2023-06-25T00:00:00+00:00</published><updated>2023-06-25T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2023/2023-06-25-pdf-png-preview.md</id><content type="html" xml:base="/2023/pdf-png-preview/">&lt;p&gt;Use your majestic brain waves to figure out how where to get the pdf content from. Then refactor the code to your needs. This is just a snippet.&lt;/p&gt;
+&lt;p&gt;Utilizing the &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;amp;block&lt;/code&gt; parameter of the &lt;code class=&quot;highlighter-rouge&quot;&gt;Sequel.connect&lt;/code&gt; method allows me to pass a block to the method. This way I can make sure that the connection is closed after the block has been executed. This is a great way to make sure that the connection is closed after the request has been processed.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Use minimagick convert a pdf’s frontpage to png</title><link href="/2023/pdf-png-preview/" rel="alternate" type="text/html" title="Use minimagick convert a pdf&apos;s frontpage to png" /><published>2023-06-25T00:00:00+02:00</published><updated>2023-06-25T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2023/2023-06-25-pdf-png-preview.md</id><content type="html" xml:base="/2023/pdf-png-preview/">&lt;p&gt;Use your majestic brain waves to figure out how where to get the pdf content from. Then refactor the code to your needs. This is just a snippet.&lt;/p&gt;
 
 &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;to_pdf_preview_png_base64&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;begin&lt;/span&gt;
@@ -430,7 +497,7 @@ https://github.com/simonneutert/sinatras-skeleton/pull/84/files&lt;/p&gt;
     &lt;span class=&quot;s2&quot;&gt;&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg== &quot;&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author></entry><entry><title type="html">Ruby REST API client for Papierkram.de</title><link href="/2023/pkapi/" rel="alternate" type="text/html" title="Ruby REST API client for Papierkram.de" /><published>2023-04-12T00:00:00+00:00</published><updated>2023-04-12T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2023/2023-04-12-pkapi.md</id><content type="html" xml:base="/2023/pkapi/">&lt;p&gt;I have written a small REST API client for the Papierkram.de API, which is a simple wrapper around the Faraday gem. Although it’s not perfect, it works well. For the HTTP client library, I chose &lt;a href=&quot;https://github.com/HoneyryderChuck/httpx&quot;&gt;httpx&lt;/a&gt;, which promises to be the future with blazing-fast performance, and it’s free too!&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author></entry><entry><title type="html">Ruby REST API client for Papierkram.de</title><link href="/2023/pkapi/" rel="alternate" type="text/html" title="Ruby REST API client for Papierkram.de" /><published>2023-04-12T00:00:00+02:00</published><updated>2023-04-12T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2023/2023-04-12-pkapi.md</id><content type="html" xml:base="/2023/pkapi/">&lt;p&gt;I have written a small REST API client for the Papierkram.de API, which is a simple wrapper around the Faraday gem. Although it’s not perfect, it works well. For the HTTP client library, I chose &lt;a href=&quot;https://github.com/HoneyryderChuck/httpx&quot;&gt;httpx&lt;/a&gt;, which promises to be the future with blazing-fast performance, and it’s free too!&lt;/p&gt;
 
 &lt;p&gt;tldr; &lt;a href=&quot;https://rubygems.org/gems/papierkram_api_client&quot;&gt;here’s the gem&lt;/a&gt; and &lt;a href=&quot;https://github.com/simonneutert/papierkram_api_client&quot;&gt;here’s the code&lt;/a&gt;.&lt;/p&gt;
 
@@ -525,7 +592,7 @@ Please, provide feedback if you have any. I am always happy to learn something n
 &lt;p&gt;It’s always fun to put something together that you can use in your own projects. Working on this gem was a great learning experience for me.
 Implementing Minitest, VCR, configuring Faraday and Rubocop, direnv and setting up GitHub Actions was a great way to learn more about Ruby and its ecosystem.
 I want to maintain a Changelog.md file for this gem, so I (you) can keep track of the changes and document them.
-I will also add some more tests and documentation in the future.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Ruby: Sequel and Dates BC (Before Christ) - Cheesus Chwist, I nearly went mad 🤪</title><link href="/2023/before-christ-postgres-sequel/" rel="alternate" type="text/html" title="Ruby: Sequel and Dates BC (Before Christ) - Cheesus Chwist, I nearly went mad 🤪" /><published>2023-04-08T00:00:00+00:00</published><updated>2023-04-08T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2023/2023-04-08-before-christ-postgres-sequel.md</id><content type="html" xml:base="/2023/before-christ-postgres-sequel/">&lt;p&gt;When fiddling with date ranges, I stumbled about an error which caused my application to break.&lt;/p&gt;
+I will also add some more tests and documentation in the future.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Ruby: Sequel and Dates BC (Before Christ) - Cheesus Chwist, I nearly went mad 🤪</title><link href="/2023/before-christ-postgres-sequel/" rel="alternate" type="text/html" title="Ruby: Sequel and Dates BC (Before Christ) - Cheesus Chwist, I nearly went mad 🤪" /><published>2023-04-08T00:00:00+02:00</published><updated>2023-04-08T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2023/2023-04-08-before-christ-postgres-sequel.md</id><content type="html" xml:base="/2023/before-christ-postgres-sequel/">&lt;p&gt;When fiddling with date ranges, I stumbled about an error which caused my application to break.&lt;/p&gt;
 
 &lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PG::DatetimeFieldOverflow: ERROR:  date/time field value out of range: &quot;0000-12-31 23:00:00.000000+0000&quot;
 LINE 1: ...&quot; WHERE ((&quot;action&quot; = &apos;deposit&apos;) AND (&quot;realized&quot; &amp;gt; &apos;0000-12-3...
@@ -572,22 +639,4 @@ Additional Benefits of the pg_extended_date_support Extension:&lt;/p&gt;
 
 &lt;p&gt;Apart from handling infinite and BC dates/timestamps, the pg_extended_date_support extension also enables the handling of timezone offsets with seconds. This feature is not natively supported by Ruby’s Time class in versions earlier than 2.5. By using this extension, you can now work with timezones that have a non-minute offset, making your application more flexible and adaptable to various timezones.&lt;/p&gt;
 
-&lt;p&gt;The pg_extended_date_support extension is a valuable addition to PostgreSQL, as it improves the handling of dates and timestamps, particularly infinite and BC dates/timestamps. Additionally, it enables support for timezone offsets with seconds, further enhancing PostgreSQL’s capabilities. If you’re working with PostgreSQL, consider integrating this extension into your application to make the most of its robust date and timestamp handling features.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">RuboCop ships with a server</title><link href="/2023/rubocop/" rel="alternate" type="text/html" title="RuboCop ships with a server" /><published>2023-03-08T00:00:00+00:00</published><updated>2023-03-08T00:00:00+00:00</updated><id>repo://posts.collection/_posts/2023/2023-03-08-rubocop.md</id><content type="html" xml:base="/2023/rubocop/">&lt;p&gt;For everybody running the standard MRI/C Ruby implementation, did you know that you can speed up your Rubocop checks by quite a bit?&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;You can reduce the RuboCop boot time significantly (something like 850x faster) by using the –server command-line option.&lt;/p&gt;
-
-  &lt;p&gt;The –server option speeds up the launch of the rubocop command by utilizing a standalone server process that loads the RuboCop runtime production files (i.e. require ‘rubocop’).&lt;/p&gt;
-
-  &lt;p&gt;Normally RuboCop starts somewhat slowly because it needs to require a ton of files and that’s fairly slow. With the RuboCop server we sidestep this nasty issue and make it much more pleasant to interact with RuboCop from text editors and IDEs.&lt;/p&gt;
-
-  &lt;p&gt;Source: https://docs.rubocop.org/rubocop/usage/server.html&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;I recommend that you read the documentation. Please do not make the same mistake I did!&lt;/p&gt;
-
-&lt;p&gt;Make sure to add a &lt;code class=&quot;highlighter-rouge&quot;&gt;.rubocop&lt;/code&gt; file to your project, but this time &lt;strong&gt;without the &lt;code class=&quot;highlighter-rouge&quot;&gt;.yml&lt;/code&gt;&lt;/strong&gt; ending!&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# content of .rubocop&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;--server&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author></entry></feed>
+&lt;p&gt;The pg_extended_date_support extension is a valuable addition to PostgreSQL, as it improves the handling of dates and timestamps, particularly infinite and BC dates/timestamps. Additionally, it enables support for timezone offsets with seconds, further enhancing PostgreSQL’s capabilities. If you’re working with PostgreSQL, consider integrating this extension into your application to make the most of its robust date and timestamp handling features.&lt;/p&gt;</content><author><name></name></author></entry></feed>
