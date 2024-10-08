@@ -7,7 +7,11 @@ I overheard a conversation at the station:
 "[Rails](https://rubyonrails.org), Redis and [Sidekiq](https://sidekiq.org) - every kid knows: they mean business! 😎"  
 "Yeah, but I'll go with the _Magic [Bunny](http://rubybunny.info) with [Sneakers](https://github.com/jondot/sneakers)_, cheers!"
 
+---
+
 🚨 sneakers was forked and the project is now maintained under the name [kicks](https://github.com/ruby-amqp/kicks)!
+
+---
 
 Just kidding 😅 What got me thinking and in an experimental mood was [Stanko.io - RabbitMQ is more than a Sidekiq Replacement](https://stanko.io/rabbitmq-is-more-than-a-sidekiq-replacement-b730d8176fb). And I highly encourage you to at least look at the nice gifs the author made to clear things up.
 
