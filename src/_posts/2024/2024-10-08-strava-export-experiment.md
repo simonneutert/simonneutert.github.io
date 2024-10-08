@@ -7,7 +7,7 @@ I recently dove into an interesting project where I exported my Strava data to d
 
 ## tldr; just show me the product 🚀
 
-[strava-export-organizer](https://github.com/simonneutert/strava-export-organizer/)
+[strava-export-organizer](https://github.com/simonneutert/strava-export-organizer/) on GitHub
 
 ## The Challenge 🎯
 
