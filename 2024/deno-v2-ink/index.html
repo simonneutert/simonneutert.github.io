@@ -47,9 +47,10 @@
 
 <p>No wonder, I immediately wanted to try out Deno’s new support for npm packages. I decided to create a simple counter component using Ink, a React-like library for building CLI apps.</p>
 
-<p>Here’s the code:</p>
+<p>Here’s the code (main.<strong>.jsx</strong>):</p>
 
-<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span><span class="nx">useState</span><span class="p">,</span> <span class="nx">useEffect</span><span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">npm:react</span><span class="dl">'</span><span class="p">;</span>
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// main.jsx</span>
+<span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span><span class="nx">useState</span><span class="p">,</span> <span class="nx">useEffect</span><span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">npm:react</span><span class="dl">'</span><span class="p">;</span>
 <span class="k">import</span> <span class="p">{</span><span class="nx">render</span><span class="p">,</span> <span class="nx">Text</span><span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">npm:ink</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">Counter</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
