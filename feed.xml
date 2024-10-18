@@ -1,4 +1,75 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.3.4">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-10-18T08:33:16+02:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Building a Simple interactive CLI Counter with Deno v2 and Ink</title><link href="/2024/deno-v2-ink/" rel="alternate" type="text/html" title="Building a Simple interactive CLI Counter with Deno v2 and Ink" /><published>2024-10-10T00:00:00+02:00</published><updated>2024-10-10T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2024/2024-10-10-deno-v2-ink.md</id><content type="html" xml:base="/2024/deno-v2-ink/">&lt;p&gt;Deno v2 has been released! 🎉&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.3.4">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-10-18T13:51:31+02:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">NoBuild Javascript for a Deno on Roda experiment</title><link href="/2024/deno-v2/" rel="alternate" type="text/html" title="NoBuild Javascript for a Deno on Roda experiment" /><published>2024-10-18T00:00:00+02:00</published><updated>2024-10-18T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2024/2024-10-18-deno-v2.md</id><content type="html" xml:base="/2024/deno-v2/">&lt;p&gt;Deno has my interest. 🦕🛼&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ deno compile&lt;/code&gt; - what’s not to love?&lt;/p&gt;
+
+&lt;p&gt;Since the release of Deno v2 and having fiddled around with bun in a pet project, I can’t help but think: Can I use Deno’s tool in some helpful ways?&lt;/p&gt;
+
+&lt;p&gt;Following my GitHub you could see, that I enjoy working with &lt;a href=&quot;https://roda.jeremyevans.net/&quot;&gt;Roda&lt;/a&gt;. My current undercover side project became one of the biggest codebases, I’ve ever written for myself. And JS is lacking tests. 🤙 #yolo #e2elifeguard&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://roda.jeremyevans.net/&quot;&gt;Roda&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://rodauth.jeremyevans.net/&quot;&gt;Rodauth&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Vanilla JS&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://htmx.org/&quot;&gt;HTMX&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;MapboxJS&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;What parts of Deno could be useful in this context? &lt;br /&gt;
+The pieces that somehow spoke to me were:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;deno fmt&lt;/li&gt;
+  &lt;li&gt;deno lint&lt;/li&gt;
+  &lt;li&gt;deno test&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Could Deno remove the need for setting up and keeping up to date with eslint and prettier? &lt;br /&gt;
+Maybe I wouldn’t have to setup and maintain jest or mocha even.&lt;/p&gt;
+
+&lt;h2 id=&quot;path-to-nobuild&quot;&gt;Path to NoBuild&lt;/h2&gt;
+
+&lt;p&gt;Linting and formatting is straightforward. I’ve added a &lt;code class=&quot;highlighter-rouge&quot;&gt;deno fmt&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;deno lint&lt;/code&gt; to my justfile.&lt;/p&gt;
+
+&lt;div class=&quot;language-make highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nl&quot;&gt;test-js&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;err&quot;&gt;deno&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;test&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;spec_js&lt;/span&gt;
+
+&lt;span class=&quot;nl&quot;&gt;test-js-watch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+	deno &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--watch&lt;/span&gt; spec_js
+
+&lt;span class=&quot;nl&quot;&gt;lint-js&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+	deno lint public/js
+	deno lint &lt;span class=&quot;nt&quot;&gt;--rules-exclude&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;no-window,no-window-prefix,no-global-assign assets/js
+
+&lt;span class=&quot;nl&quot;&gt;test-js&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+	deno &lt;span class=&quot;nb&quot;&gt;test &lt;/span&gt;spec_js/&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;test.&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;js,ts,jsx,tsx&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This rules-excude will prevent Deno from complaining about global variables like &lt;code class=&quot;highlighter-rouge&quot;&gt;window&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;document&lt;/code&gt;. This needs to be good enough for now.&lt;/p&gt;
+
+&lt;p&gt;Roda already ships with an asset bundling plugin. It’s a simple plugin that takes all your assets and bundles them into a single file. Yet some parts of the Javascript parts are becoming more business logic heavy and will benefit from unit testing. Here’s how Deno steps in.&lt;/p&gt;
+
+&lt;p&gt;I’ve created a &lt;code class=&quot;highlighter-rouge&quot;&gt;spec_js&lt;/code&gt; folder in the root of my project. This is where I’ll put all my JS tests.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;assertEquals&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;jsr:@std/assert&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Elvis&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;../public/js/rock-and-roll-superstar.js&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;Deno&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;assert Elvis is in the house&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;elvis&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Elvis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;nf&quot;&gt;assertEquals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;elvis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;pelvis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Elvis is in the house!&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;I know this is a bit unusual. &lt;br /&gt;
+But so is using Roda. &lt;br /&gt;
+Deno v2 won’t change its APIs for quite some time (🤞). And if it will … I mean it’ll break just the tests… right?&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Rewriting the js test suite is easy. &lt;br /&gt;
+It’s a system rewrite that fails. &lt;br /&gt;
+And why haven’t you used Rust in the first place?&lt;/p&gt;
+
+  &lt;p&gt;- Charles Ponzi&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name></name></author></entry><entry><title type="html">Building a Simple interactive CLI Counter with Deno v2 and Ink</title><link href="/2024/deno-v2-ink/" rel="alternate" type="text/html" title="Building a Simple interactive CLI Counter with Deno v2 and Ink" /><published>2024-10-10T00:00:00+02:00</published><updated>2024-10-10T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2024/2024-10-10-deno-v2-ink.md</id><content type="html" xml:base="/2024/deno-v2-ink/">&lt;p&gt;Deno v2 has been released! 🎉&lt;/p&gt;
 
 &lt;p&gt;The promo video is a must-watch: &lt;a href=&quot;https://www.youtube.com/watch?v=swXWUfufu2w&quot;&gt;“Deno - Programming should be simple”
  on Youtube&lt;/a&gt;&lt;/p&gt;
@@ -542,99 +613,4 @@ https://github.com/simonneutert/sinatras-skeleton/pull/84/files&lt;/p&gt;
     &lt;span class=&quot;s2&quot;&gt;&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg== &quot;&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author></entry><entry><title type="html">Ruby REST API client for Papierkram.de</title><link href="/2023/pkapi/" rel="alternate" type="text/html" title="Ruby REST API client for Papierkram.de" /><published>2023-04-12T00:00:00+02:00</published><updated>2023-04-12T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2023/2023-04-12-pkapi.md</id><content type="html" xml:base="/2023/pkapi/">&lt;p&gt;I have written a small REST API client for the Papierkram.de API, which is a simple wrapper around the Faraday gem. Although it’s not perfect, it works well. For the HTTP client library, I chose &lt;a href=&quot;https://github.com/HoneyryderChuck/httpx&quot;&gt;httpx&lt;/a&gt;, which promises to be the future with blazing-fast performance, and it’s free too!&lt;/p&gt;
-
-&lt;p&gt;tldr; &lt;a href=&quot;https://rubygems.org/gems/papierkram_api_client&quot;&gt;here’s the gem&lt;/a&gt; and &lt;a href=&quot;https://github.com/simonneutert/papierkram_api_client&quot;&gt;here’s the code&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;In this post, I would like to share some of the things I have learned while writing this gem.&lt;/p&gt;
-
-&lt;p&gt;Yet, there’s still some more documentation and testing to do. 😅&lt;/p&gt;
-
-&lt;h2 id=&quot;testing-with-vcr-and-minitest&quot;&gt;Testing with VCR and Minitest&lt;/h2&gt;
-
-&lt;p&gt;I chose to use Minitest for testing, as I am a big fan of its simplicity and think it is a great choice for testing. One of the things I like about it is that it is just plain Ruby, with no DSL, magic, or weird syntax. While I’m not certain whether it is actually faster than RSpec, it certainly feels that way.&lt;/p&gt;
-
-&lt;p&gt;Minitest pairs very well with &lt;a href=&quot;https://github.com/vcr/vcr&quot;&gt;VCR&lt;/a&gt; for testing the API. Personally, I am not a big fan of mocking, so I prefer to record the API responses and replay them during testing. However, it is important to keep an eye on your recorded data to ensure that it is still valid.&lt;/p&gt;
-
-&lt;p&gt;Setting up Minitest and VCR is straightforward using &lt;a href=&quot;https://github.com/mfpiccolo/minitest-vcr&quot;&gt;minitest-vcr&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Here’s an example setup of Minitest’s &lt;code class=&quot;highlighter-rouge&quot;&gt;test_helper.rb&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# $ cat app_name/test/test_helper.rb&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;minitest/autorun&quot;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;minispec-metadata&quot;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;vcr&quot;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;minitest-vcr&quot;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;faraday&quot;&lt;/span&gt;
-
-&lt;span class=&quot;no&quot;&gt;VCR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;configure&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;cassette_library_dir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;test/cassettes&apos;&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;hook_into&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:faraday&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-&lt;span class=&quot;no&quot;&gt;MinitestVcr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Spec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;configure!&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;It will record the request and the response. But it will also record the request headers. And if you don’t pay attention,
-you might end up with a recorded response that leaks personal or credential data.&lt;/p&gt;
-
-&lt;p&gt;So make sure to filter out any sensitive data from the request headers.&lt;/p&gt;
-
-&lt;p&gt;VCR brings some features that will help &lt;a href=&quot;https://benoittgt.github.io/vcr/#/configuration/filter_sensitive_data&quot;&gt;you with that&lt;/a&gt;.
-You can filter out parts of the request headers, like this:&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;interaction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;headers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;set-cookie&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;=&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;last&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;OR you can filter out the whole request headers:&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;VCR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;configure&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;# ...&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;filter_sensitive_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;&amp;lt;API_KEY&amp;gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;interaction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
-   &lt;span class=&quot;n&quot;&gt;interaction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;headers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;X-Http-Username&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;# ...&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Filter out a secret value coming from the environment:&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;VCR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;configure&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;# ...&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;filter_sensitive_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;&amp;lt;API_KEY&amp;gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;PAPIERKRAM_API_KEY&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;# ...&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This will help you avoid leaking sensitive data that you are aware of and can pin down exactly.&lt;/p&gt;
-
-&lt;p&gt;Filtering emails is a bit more tricky. You can filter out the whole email address in most cases something like this:&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# tests ...&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;VCR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;configure&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;# ...&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;before_record&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;interaction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;interaction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;scan&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}\b/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;interaction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;gsub!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;&amp;lt;EMAIL&amp;gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;clean-your-cassette-files-once-in-a-while&quot;&gt;Clean your cassette files once in a while&lt;/h2&gt;
-
-&lt;p&gt;I know there are auto-clean options in VCR, but in most cases, I can manage it myself. APIs usually don’t change that often or change gradually enough.&lt;/p&gt;
-
-&lt;p&gt;Deleting the cassettes a few times a year or after API changes have been communicated should be sufficient.&lt;/p&gt;
-
-&lt;h2 id=&quot;check-out-the-code-of-the-gem&quot;&gt;Check out the code of the gem&lt;/h2&gt;
-
-&lt;p&gt;If you want to see how I implemented the gem, you can check out the code on &lt;a href=&quot;https://github.com/simonneutert/papierkram_api_client&quot;&gt;GitHub&lt;/a&gt;.
-Please, provide feedback if you have any. I am always happy to learn something new. And if you have any questions, feel free to ask.&lt;/p&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;It’s always fun to put something together that you can use in your own projects. Working on this gem was a great learning experience for me.
-Implementing Minitest, VCR, configuring Faraday and Rubocop, direnv and setting up GitHub Actions was a great way to learn more about Ruby and its ecosystem.
-I want to maintain a Changelog.md file for this gem, so I (you) can keep track of the changes and document them.
-I will also add some more tests and documentation in the future.&lt;/p&gt;</content><author><name></name></author></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author></entry></feed>
