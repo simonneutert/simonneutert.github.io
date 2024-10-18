@@ -43,7 +43,7 @@ You could think of this as Go's "zero date" - the reference point for parsing an
 02 = DD\
 15 = hh (24-hour)\
 04 = mm\
-05 = ss\
+05 = ss
 
 ## A Real-World Example 💡
 Here's how I parsed a date like 2022-03-23T07:00:00+01:00:
