@@ -1,4 +1,57 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.3.4">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-10-18T19:17:48+02:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">NoBuild Javascript for a Deno on Roda experiment</title><link href="/2024/deno-v2/" rel="alternate" type="text/html" title="NoBuild Javascript for a Deno on Roda experiment" /><published>2024-10-18T00:00:00+02:00</published><updated>2024-10-18T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2024/2024-10-18-deno-v2.md</id><content type="html" xml:base="/2024/deno-v2/">&lt;p&gt;Deno has my interest. 🦕🛼&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.3.4">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-10-26T11:25:21+02:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Stream Database Rows with sequel_pg</title><link href="/2024/stream-db-rows/" rel="alternate" type="text/html" title="Stream Database Rows with sequel_pg" /><published>2024-10-26T00:00:00+02:00</published><updated>2024-10-26T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2024/2024-10-26-stream-db-rows.md</id><content type="html" xml:base="/2024/stream-db-rows/">&lt;p&gt;Reading the docs (thoroughly, maybe twice) can be a good thing.&lt;/p&gt;
+
+&lt;p&gt;As the haiku goes:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Pages filled with light,&lt;br /&gt;
+Guiding hands through code’s maze,&lt;br /&gt;
+Errors fade away.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;til&quot;&gt;TIL&lt;/h2&gt;
+
+&lt;p&gt;I’ve been using Sequel for a while now. But up until today, I didn’t know that I could stream database rows with &lt;code class=&quot;highlighter-rouge&quot;&gt;sequel_pg&lt;/code&gt;. This will reduce memory usage when working with large datasets and if I understand correctly, it will also speed up the processing of the data.&lt;/p&gt;
+
+&lt;p&gt;If your database is postgres, &lt;a href=&quot;https://github.com/jeremyevans/sequel_pg&quot;&gt;sequel_pg&lt;/a&gt; should be already your go-to gem.&lt;br /&gt;
+Yet, you might not know that you can stream database rows with it.&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;== Streaming
+
+If you are using PostgreSQL 9.2+ on the client, then sequel_pg
+should enable streaming support.  This allows you to stream returned
+rows one at a time, instead of collecting the entire result set in
+memory (which is how PostgreSQL works by default).  You can check
+if streaming is supported by:
+
+  Sequel::Postgres.supports_streaming?
+
+If streaming is supported, you can load the streaming support into the
+database:
+
+  DB.extension(:pg_streaming)
+
+Then you can call the Dataset#stream method to have the dataset use
+the streaming support:
+
+  DB[:table].stream.each{|row| ...}
+
+If you want to enable streaming for all of a database&apos;s datasets, you
+can do the following:
+
+  DB.stream_all_queries = true
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In my project, I set up the streaming like this (the most basic way, I guess):&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;DB&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;extension&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:pg_streaming&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;DB&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;stream_all_queries&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;And voilà, free speed and memory savings. 🚀&lt;/p&gt;
+
+&lt;h2 id=&quot;side-note&quot;&gt;Side Note&lt;/h2&gt;
+
+&lt;p&gt;If you were using &lt;code class=&quot;highlighter-rouge&quot;&gt;use_cursor&lt;/code&gt; in your project, make sure to benchmark it against the streaming feature. It can be faster than using a cursor (in a rare circumstance). In my case, streaming was the clear winner.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">NoBuild Javascript for a Deno on Roda experiment</title><link href="/2024/deno-v2/" rel="alternate" type="text/html" title="NoBuild Javascript for a Deno on Roda experiment" /><published>2024-10-18T00:00:00+02:00</published><updated>2024-10-18T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2024/2024-10-18-deno-v2.md</id><content type="html" xml:base="/2024/deno-v2/">&lt;p&gt;Deno has my interest. 🦕🛼&lt;/p&gt;
 
 &lt;p&gt;I fiddled with bun, too, but the feel was a bit different.&lt;/p&gt;
 
@@ -585,34 +638,4 @@ https://github.com/simonneutert/sinatras-skeleton/pull/84/files&lt;/p&gt;
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Utilizing the &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;amp;block&lt;/code&gt; parameter of the &lt;code class=&quot;highlighter-rouge&quot;&gt;Sequel.connect&lt;/code&gt; method allows me to pass a block to the method. This way I can make sure that the connection is closed after the block has been executed. This is a great way to make sure that the connection is closed after the request has been processed.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Use minimagick convert a pdf’s frontpage to png</title><link href="/2023/pdf-png-preview/" rel="alternate" type="text/html" title="Use minimagick convert a pdf&apos;s frontpage to png" /><published>2023-06-25T00:00:00+02:00</published><updated>2023-06-25T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2023/2023-06-25-pdf-png-preview.md</id><content type="html" xml:base="/2023/pdf-png-preview/">&lt;p&gt;Use your majestic brain waves to figure out how where to get the pdf content from. Then refactor the code to your needs. This is just a snippet.&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;to_pdf_preview_png_base64&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;begin&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;base64string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;
-    &lt;span class=&quot;no&quot;&gt;Tempfile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;filename_randomized&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;.png&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;binmode: &lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;temp_png_file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
-      &lt;span class=&quot;no&quot;&gt;Tempfile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;filename_randomized&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;.pdf&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;binmode: &lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;temp_pdf_file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;temp_pdf_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pdf_content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# &amp;lt;&amp;lt; you know where to get this from&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;pdf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MiniMagick&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;temp_pdf_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-        &lt;span class=&quot;n&quot;&gt;png_file&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MiniMagick&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Tool&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Convert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;convert&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
-          &lt;span class=&quot;n&quot;&gt;convert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;background&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;white&quot;&lt;/span&gt;
-          &lt;span class=&quot;n&quot;&gt;convert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;flatten&lt;/span&gt;
-          &lt;span class=&quot;n&quot;&gt;convert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;density&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;150&lt;/span&gt;
-          &lt;span class=&quot;n&quot;&gt;convert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;quality&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;
-          &lt;span class=&quot;n&quot;&gt;convert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;format&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;png&quot;&lt;/span&gt;
-          &lt;span class=&quot;n&quot;&gt;convert&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pdf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;pages&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;path&lt;/span&gt;
-          &lt;span class=&quot;n&quot;&gt;convert&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;temp_png_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;path&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;png_contents&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;binread&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;temp_png_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;base64string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;data:image/png;base64,&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;encode64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;png_contents&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;base64string&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;rescue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;# empty pixel https://png-pixel.com/&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg== &quot;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author></entry></feed>
+&lt;p&gt;Utilizing the &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;amp;block&lt;/code&gt; parameter of the &lt;code class=&quot;highlighter-rouge&quot;&gt;Sequel.connect&lt;/code&gt; method allows me to pass a block to the method. This way I can make sure that the connection is closed after the block has been executed. This is a great way to make sure that the connection is closed after the request has been processed.&lt;/p&gt;</content><author><name></name></author></entry></feed>
