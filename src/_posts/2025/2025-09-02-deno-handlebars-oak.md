@@ -19,7 +19,7 @@ For this project, I decided to use [Oak](https://oakserver.org) as the web frame
 }
 </style>
 
-<img src="/images/2025/utme.png" id="screenshot" alt="Screenshot of the app"/>
+<img src="/images/2025/utme.webp" id="screenshot" alt="Screenshot of the app"/>
 
 - Screenshot of the app
 
