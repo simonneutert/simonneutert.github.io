@@ -1,4 +1,147 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.3.4">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-11-08T14:35:39+01:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Wilson - CLI for OpenAI’s multistepped assistants</title><link href="/2024/wilson-on-deno/" rel="alternate" type="text/html" title="Wilson - CLI for OpenAI&apos;s multistepped assistants" /><published>2024-11-08T00:00:00+01:00</published><updated>2024-11-08T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2024/2024-11-08-wilson-on-deno.md</id><content type="html" xml:base="/2024/wilson-on-deno/">&lt;p&gt;Wilson is a prototype CLI for OpenAI’s multisteps assistants.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.3.4">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-11-09T21:47:30+01:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Deno 2 - what you might have missed</title><link href="/2024/deno2-sidekicks/" rel="alternate" type="text/html" title="Deno 2 - what you might have missed" /><published>2024-11-09T00:00:00+01:00</published><updated>2024-11-09T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2024/2024-11-09-deno2-sidekicks.md</id><content type="html" xml:base="/2024/deno2-sidekicks/">&lt;p&gt;Deno 2 was released exactly one month ago (on 2024-10-09). So it’s still super fresh. But, if you haven’t been following the Deno news, you might have missed some of the new features. Here’s a quick overview of what’s new in Deno 2.&lt;/p&gt;
+
+&lt;p&gt;Their YouTube channel has super interesting content. I highly recommend checking it out. They have a lot of great tutorials about Deno. 🦕&lt;/p&gt;
+
+&lt;h2 id=&quot;til&quot;&gt;TIL&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://www.youtube.com/watch?v=H8VLifMOBHU&quot; alt=&quot;All about Deno 2&quot; /&gt; on YouTube.&lt;/p&gt;
+
+&lt;p&gt;A ~33 minutes long video from the creator of Deno, Ryan Dahl, where he goes through some of the new features in Deno 2.&lt;/p&gt;
+
+&lt;h2 id=&quot;importmeta&quot;&gt;import.meta.*&lt;/h2&gt;
+
+&lt;p&gt;You can check if a script is being run as the main program or if it’s being imported as a module. Those familiar with python might recognize the pattern.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://docs.deno.com/runtime/tutorials/module_metadata/&quot;&gt;Docs&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;example&quot;&gt;Example&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;import.meta.main&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;In Python you can do this by checking the &lt;code class=&quot;highlighter-rouge&quot;&gt;__name__&lt;/code&gt; attribute.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;sh&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;__main__&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Hello, Python!&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;meta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Hello, Deno 2!&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;jupyter-notebook-support&quot;&gt;Jupyter notebook support&lt;/h2&gt;
+
+&lt;p&gt;Deno 2 now supports Jupyter notebooks. You can run a Deno script in a Jupyter notebook cell. This is a great way to experiment with Deno and share your code with others.&lt;/p&gt;
+
+&lt;p&gt;Switch the kernel to Deno and you can run Deno code in a Jupyter notebook cell.&lt;/p&gt;
+
+&lt;h2 id=&quot;stdfmt&quot;&gt;@std/fmt&lt;/h2&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// there&apos;s a change you can drop chalk and use Deno&apos;s fmt module&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// to use css in the console 😱&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;log &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;%c&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;This is a string!&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;background-color: red&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;standard-library&quot;&gt;Standard library&lt;/h2&gt;
+
+&lt;p&gt;Deno 2 comes with a standard library that includes modules for working with files, networking, and more. This makes it easier to get started with Deno and build powerful applications.&lt;/p&gt;
+
+&lt;p&gt;Here’s a comparison of some of the modules in the Deno standard library and their (one of possibly many) Node.js equivalents:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Deno&lt;/th&gt;
+      &lt;th&gt;Node&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://jsr.io/@std/testing&quot;&gt;@std/testing&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;jest&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://jsr.io/@std/expect&quot;&gt;@std/expect&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;chai&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://jsr.io/@std/cli&quot;&gt;@std/cli&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;minimist&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://jsr.io/@std/collections&quot;&gt;@std/collections&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;lodash&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://jsr.io/@std/fmt&quot;&gt;@std/fmt&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;chalk&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://jsr.io/@std/encoding&quot;&gt;@std/encoding&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;rfc4648&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://jsr.io/@std/toml&quot;&gt;@std/toml&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;toml&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://jsr.io/@std/uuid&quot;&gt;@std/uuid&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;uuid&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://jsr.io/@std/yaml&quot;&gt;@std/yaml&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;yaml&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://jsr.io/@std/json&quot;&gt;@std/json&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;json&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://jsr.io/@std/net&quot;&gt;@std/net&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;get-port&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://jsr.io/@std/media-types&quot;&gt;@std/media-types&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;mime-types&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://jsr.io/@std/front-matter&quot;&gt;@std/font-matter&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;front-matter&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://jsr.io/@std/csv&quot;&gt;@std/csv&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;csv&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://jsr.io/@std/bytes&quot;&gt;@std/bytes&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;bytes&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://jsr.io/@std/msgpack&quot;&gt;@std/msgpack&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;msgpack&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://jsr.io/@std/ulid&quot;&gt;@std/ulid&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;ulid&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://jsr.io/@std/html&quot;&gt;@std/html&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;escape-html&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://jsr.io/@std/semver&quot;&gt;@std/semver&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;semver&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://jsr.io/@std/streams&quot;&gt;@std/stream&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;stream&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;I’ve been really enjoying Deno 2 so far. The new ecosystem plays out great. If you haven’t tried Deno yet, I highly recommend giving it a shot. It’s a great alternative to Node.js and I think you’ll love it. 🥰&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Wilson - CLI for OpenAI’s multistepped assistants</title><link href="/2024/wilson-on-deno/" rel="alternate" type="text/html" title="Wilson - CLI for OpenAI&apos;s multistepped assistants" /><published>2024-11-08T00:00:00+01:00</published><updated>2024-11-08T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2024/2024-11-08-wilson-on-deno.md</id><content type="html" xml:base="/2024/wilson-on-deno/">&lt;p&gt;Wilson is a prototype CLI for OpenAI’s multisteps assistants.&lt;/p&gt;
 
 &lt;p&gt;It is a simple CLI that is built with &lt;a href=&quot;https://www.deno.com&quot;&gt;Deno&lt;/a&gt; and uses &lt;a href=&quot;https://github.com/vadimdemedes/ink&quot;&gt;ink&lt;/a&gt; for the CLI.&lt;/p&gt;
 
@@ -525,79 +668,4 @@ https://github.com/simonneutert/sinatras-skeleton/pull/84/files&lt;/p&gt;
 
 &lt;p&gt;I used the builtin Font Manager to install my nerdy fonts beforehand.&lt;/p&gt;
 
-&lt;p&gt;Get them here: https://github.com/ryanoasis/nerd-fonts&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Elevate Your Podcast Experience: Using Apple Shortcuts to Play Random Episodes (and NGINX)</title><link href="/2023/random-podcast-episodes/" rel="alternate" type="text/html" title="Elevate Your Podcast Experience: Using Apple Shortcuts to Play Random Episodes (and NGINX)" /><published>2023-12-18T00:00:00+01:00</published><updated>2023-12-18T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2023/2023-12-18-random-podcast-episodes.md</id><content type="html" xml:base="/2023/random-podcast-episodes/">&lt;p&gt;Podcasts have become an integral part of my daily routine, and accessing them seamlessly is crucial for a smooth listening experience. In this guide, I’ll explore how you can leverage Nginx to offer a JSON file containing links to podcast episodes.&lt;/p&gt;
-
-&lt;p&gt;Additionally, I’ll demonstrate how iPhone users can use the Shortcuts app to load the JSON file, extract a random entry, and open the URL for their preferred podcast service.&lt;/p&gt;
-
-&lt;h2 id=&quot;the-following-is-one-of-many-ways--tldr&quot;&gt;The following is one of many ways / tldr&lt;/h2&gt;
-
-&lt;p&gt;It’s up to you as a user or the podcaster to host your episodes in a way that allows you to access them via a JSON file. Then load this via the &lt;strong&gt;Shortcut&lt;/strong&gt; app and use the &lt;strong&gt;Get Dictionary Value&lt;/strong&gt; action to extract a random entry from the JSON file. Finally, use the &lt;strong&gt;Open URLs&lt;/strong&gt; action to open the URL in your preferred podcast app.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;The following code will be pseudo code and just guide you a little.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;setting-up-nginx-to-serve-json&quot;&gt;Setting Up Nginx to Serve JSON&lt;/h3&gt;
-
-&lt;p&gt;Nginx is a powerful web server that can be used to serve static files, including JSON. Here’s a quick example of an Nginx configuration to serve a podcast.json file:&lt;/p&gt;
-
-&lt;div class=&quot;language-nginx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;server&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kn&quot;&gt;listen&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;80&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;kn&quot;&gt;server_name&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;yourdomain.com&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-    &lt;span class=&quot;kn&quot;&gt;location&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;/podcasts&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;kn&quot;&gt;alias&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;/path/to/your/json/files&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;kn&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;podcast.json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Replace yourdomain.com with your actual domain and adjust the path accordingly. Make sure the JSON file contains an array of podcast entries, each with a title and url pointing to the podcast episode.&lt;/p&gt;
-
-&lt;h3 id=&quot;creating-the-podcast-json-file&quot;&gt;Creating the Podcast JSON File&lt;/h3&gt;
-
-&lt;p&gt;Here’s an example of how your podcast.json file might look:&lt;/p&gt;
-
-&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;title&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Podcast Episode 1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;url&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://spotify.com/episode1&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;title&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Podcast Episode 2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;url&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://applepodcasts.com/episode2&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;more&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;entries&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;as&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;needed&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;An Array of objects.&lt;/p&gt;
-
-&lt;h4 id=&quot;using-shortcuts-on-iphone&quot;&gt;Using Shortcuts on iPhone&lt;/h4&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Get the &lt;a href=&quot;https://apps.apple.com/us/app/shortcuts/id915249334&quot;&gt;Shortcuts app&lt;/a&gt; from the App Store.&lt;/li&gt;
-  &lt;li&gt;Setup a new shortcut&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Then, add the following actions to your shortcut:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Get contents of &lt;code class=&quot;highlighter-rouge&quot;&gt;https://yourdomain.com/podcasts/podcast.json&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Get &lt;code class=&quot;highlighter-rouge&quot;&gt;Random Item&lt;/code&gt; from &lt;code class=&quot;highlighter-rouge&quot;&gt;Get Contents of URL&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Get &lt;code class=&quot;highlighter-rouge&quot;&gt;Dictionary&lt;/code&gt; from &lt;code class=&quot;highlighter-rouge&quot;&gt;Item from List&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Get &lt;code class=&quot;highlighter-rouge&quot;&gt;Random Item&lt;/code&gt; from &lt;code class=&quot;highlighter-rouge&quot;&gt;Dictionary&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Get &lt;code class=&quot;highlighter-rouge&quot;&gt;Value&lt;/code&gt; for &lt;code class=&quot;highlighter-rouge&quot;&gt;your-key-in-the-json&lt;/code&gt; from &lt;code class=&quot;highlighter-rouge&quot;&gt;Dictionary&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Open &lt;code class=&quot;highlighter-rouge&quot;&gt;Dictionary Value&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;hr /&gt;
-&lt;style&gt;
-#shuffle-gag-screenshot {
-    max-width: 90%;
-    height: auto;
-    max-height: 480px;
-}
-&lt;/style&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/2023/shuffle-gag.jpeg&quot; id=&quot;shuffle-gag-screenshot&quot; alt=&quot;Shortcuts App showing an example workflow to load and extract a sample podcast from an array of dictionaries&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Tada 🥳🪄✨&lt;/p&gt;</content><author><name></name></author></entry></feed>
+&lt;p&gt;Get them here: https://github.com/ryanoasis/nerd-fonts&lt;/p&gt;</content><author><name></name></author></entry></feed>
