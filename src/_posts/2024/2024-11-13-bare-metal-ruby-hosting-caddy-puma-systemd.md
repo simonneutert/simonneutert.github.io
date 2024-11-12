@@ -3,11 +3,11 @@ title: "Hosting a Ruby/Roda app on bare metal with Caddy, Puma and systemd"
 layout: post
 ---
 
-For the past years I've been using [traefik](https://traefik.io) as a reverse proxy. It was configured tapping the docker socket and routing requests to the appropriate container using docker labels.
+For years, I've been using [traefik](https://traefik.io) as a reverse proxy. It was configured to tap into the docker socket and route requests to appropriate containers using docker labels.
 
-It's been working great, but I've been wanting to try something new. 
+While this setup has served me well, I was ready to explore something new. 
 
-I've been reading a lot of good things about [Caddy](https://caddyserver.com) and I wanted to give it a try. DHH left the cloud loudly, so I thought, why not use Caddy and Puma to host my Roda app on a "bare metal server" (a VPS with ARM)?
+I'd been hearing great things about [Caddy](https://caddyserver.com) and wanted to give it a try. Inspired by DHH's notable departure from cloud services, I decided to host my Roda app on "bare metal" (specifically, a VPS with ARM) using Caddy and Puma.
 
 ## Preparing debian for ruby
 
@@ -45,15 +45,15 @@ sudo apt install -y \
 
 ## Securing the server
 
-More on this [here](https://www.simon-neutert.de/2022/setup-vps/).
+For more detailed information, check out [this guide](https://www.simon-neutert.de/2022/setup-vps/).
 
 ### 1. SSH login with keys only
 
-Please, please, please, don't use password authentication. Use SSH keys. 
+Security best practice: Always use SSH keys instead of password authentication.
 
 ### 2. Fail2ban on Debian
 
-fail2ban needs a little help to work on debian. 
+Fail2ban requires a simple setup step on Debian:
 
 ```sh
 $ sudo touch /var/log/auth.log`
@@ -71,34 +71,37 @@ sudo ufw show added
 sudo ufw enable
 ```
 
-### 4. wrap it up
+### 4. Setting up a comfortable environment
 
-Reboot the server now, before you proceed.
+Before proceeding further, reboot your server.
 
-I took the time to make the server a happy place.
+I took some time to make the server environment more developer-friendly by installing:
 
-- `zsh` instead of `bash`
-  - in .zshrc: `setopt autocd` (..)
-  - `setopt share_history`
-  - `setopt HIST_IGNORE_ALL_DUPS` # save only one command if 2 common are same and consistent
-- zoxide
-- `eza` instead of `ls`
-- [starship](https://starship.rs)
-- atuin
-- neovim
-- zsh-autocomplete
-- zsh-autosuggestions
-- zsh-syntax-highlighting
-- [just](https://github.com/casey/just)
-- [asdf](https://asdf-vm.com)
-- direnv
-- httpie
+- `zsh` as the default shell instead of `bash`, with useful configurations:
+  - `setopt autocd` for easier directory navigation
+  - `setopt share_history` for shared command history
+  - `setopt HIST_IGNORE_ALL_DUPS` to maintain a clean command history
+- Modern CLI tools:
+  - `zoxide` for smarter directory navigation
+  - `eza` as a modern replacement for `ls`
+  - [starship](https://starship.rs) for an enhanced prompt
+  - `atuin` for shell history management
+  - `neovim` as the text editor
+- ZSH enhancements:
+  - zsh-autocomplete
+  - zsh-autosuggestions
+  - zsh-syntax-highlighting
+- Development tools:
+  - [just](https://github.com/casey/just) for command running
+  - [asdf](https://asdf-vm.com) for version management
+  - `direnv` for environment management
+  - `httpie` for API testing
 
 ## Caddy
 
-Installing caddy was straightforward and won't be covered here.
+The Caddy installation process is straightforward and won't be covered here.
 
-The Caddyfile is where the magic happens. To serve assets, static files and vendor files, I wrote the following configuration:
+Here's the Caddyfile configuration for serving assets, static files, and vendor files:
 
 ```Caddyfile
 this-is.myapp.com {
@@ -118,12 +121,12 @@ this-is.myapp.com {
 
 ## ASDF
 
-Here's how I initiated asdf with all plugins I needed:
+Initialize asdf with the necessary plugins (ymmv):
 
 ```bash
 asdf plugin-add ruby
 asdf plugin-add rust
-asdf plugin-add bun
+asdf plugin-add deno
 asdf plugin-add just
 asdf install rust 1.72.1 && asdf global rust 1.72.1
 export RUBY_CONFIGURE_OPTS=--enable-yjit # you WANT yjit!!!
@@ -132,17 +135,17 @@ cd /var/www/myapp/code && asdf install
 
 ## Systemd
 
-Here's an inspiration for environment variables in systemd (in a file called `puma.conf` below):
+Here's a template for environment variables in systemd (save as `puma.conf` - it is referenced in the systemd service file):
 
 ```env
 RUBY_YJIT_ENABLE=1
-RUBY_CONFIGURE_OPTS="--enable-yjit --with-jemalloc --yjit-mem-size=256"
+RUBY_CONFIGURE_OPTS="--enable-yjit --with-jemalloc --yjit-mem-size=256 --yjit-code-gc"
 ```
 
-☝️ Google yourself smart for the `--yjit-mem-size` value or if you want jemalloc or not.
+[YJIT docs](https://docs.ruby-lang.org/en/master/yjit/yjit_md.html#label-Examples)
+☝️ For the `--yjit-mem-size` value and jemalloc configuration, consult the documentation and your specific needs.
 
-By running `which bundler` you can find the path to the bundler executable.\
-Adjust the paths and the user to your needs in your systemd service file.:
+Use `which bundler` to locate the bundler executable path. Adjust the following systemd service file according to your paths and user:
 
 ```systemd
 [Unit]    
@@ -181,6 +184,8 @@ WantedBy=multi-user.target
 ```
 
 ## systemctl
+
+Finally, enable and start the service:
 
 ```bash
 sudo systemctl enable puma.service
