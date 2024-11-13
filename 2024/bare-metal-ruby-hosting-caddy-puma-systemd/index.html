@@ -50,7 +50,7 @@
 
 <p>APT packages:</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get update
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get update
 <span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> <span class="se">\</span>
   build-essential <span class="se">\</span>
   direnv <span class="se">\</span>
@@ -91,7 +91,7 @@
 
 <p>Fail2ban requires a simple setup step on Debian:</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo touch</span> /var/log/auth.log<span class="sb">`</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo touch</span> /var/log/auth.log<span class="sb">`</span>
 </code></pre></div></div>
 
 <h3 id="3-ufw">3. UFW</h3>
@@ -151,20 +151,20 @@
 
 <p>Here’s the Caddyfile configuration for serving assets, static files, and vendor files:</p>
 
-<pre><code class="language-Caddyfile">this-is.myapp.com {
-	handle /assets/* {
-    root * /home/deploy/myapp/public/assets
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>this-is.myapp.com <span class="o">{</span>
+	handle /assets/<span class="k">*</span> <span class="o">{</span>
+    root <span class="k">*</span> /home/deploy/myapp/public/assets
     file_server
-  }
-  handle /vendor/* {
-    root * /home/deploy/myapp/public/vendor
+  <span class="o">}</span>
+  handle /vendor/<span class="k">*</span> <span class="o">{</span>
+    root <span class="k">*</span> /home/deploy/myapp/public/vendor
     file_server
-  }
-	handle {
+  <span class="o">}</span>
+	handle <span class="o">{</span>
 		reverse_proxy :9292
-	}
-}
-</code></pre>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
 <h2 id="asdf">ASDF</h2>
 
@@ -183,48 +183,48 @@ asdf <span class="nb">install </span>rust 1.72.1 <span class="o">&amp;&amp;</spa
 
 <p>Here’s a template for environment variables in systemd (save as <code class="highlighter-rouge">puma.conf</code> - it is referenced in the systemd service file):</p>
 
-<pre><code class="language-env">RUBY_YJIT_ENABLE=1
-RUBY_CONFIGURE_OPTS="--enable-yjit --with-jemalloc --yjit-mem-size=256 --yjit-code-gc"
-</code></pre>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">RUBY_YJIT_ENABLE</span><span class="o">=</span>1
+<span class="nv">RUBY_CONFIGURE_OPTS</span><span class="o">=</span><span class="s2">"--enable-yjit --with-jemalloc --yjit-mem-size=256 --yjit-code-gc"</span>
+</code></pre></div></div>
 
 <p><a href="https://docs.ruby-lang.org/en/master/yjit/yjit_md.html#label-Examples">YJIT docs</a>
 ☝️ For the <code class="highlighter-rouge">--yjit-mem-size</code> value and jemalloc configuration, consult the documentation and your specific needs.</p>
 
 <p>Use <code class="highlighter-rouge">which bundler</code> to locate the bundler executable path. Adjust the following systemd service file according to your paths and user:</p>
 
-<div class="language-systemd highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">[Unit]</span>    
-<span class="nt">Description</span><span class="p">=</span>My angry little Puma HTTP Server    
-<span class="nt">After</span><span class="p">=</span>network.target
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>Unit]    
+<span class="nv">Description</span><span class="o">=</span>My angry little Puma HTTP Server    
+<span class="nv">After</span><span class="o">=</span>network.target
 
-<span class="k">[Service]</span>
+<span class="o">[</span>Service]
 <span class="c"># Puma supports systemd's `Type=notify` and watchdog service</span>
 <span class="c"># monitoring, as of Puma 5.1 or later.</span>
 <span class="c"># On earlier versions of Puma or JRuby, change this to `Type=simple` and remove</span>
 <span class="c"># the `WatchdogSec` line.</span>
-<span class="nt">Type</span><span class="p">=</span>notify
+<span class="nv">Type</span><span class="o">=</span>notify
 
 <span class="c"># If your Puma process locks up, systemd's watchdog will restart it within seconds.</span>
-<span class="nt">WatchdogSec</span><span class="p">=</span>10
+<span class="nv">WatchdogSec</span><span class="o">=</span>10
 
 <span class="c"># Preferably configure a non-privileged user</span>
 <span class="c"># User=mynonsudouser</span>
 
 <span class="c"># The path to your application code root directory.</span>
 <span class="c"># Also replace the "&lt;YOUR_APP_PATH&gt;" placeholders below with this path.</span>
-<span class="nt">WorkingDirectory</span><span class="p">=</span>/var/www/myapp/code
+<span class="nv">WorkingDirectory</span><span class="o">=</span>/var/www/myapp/code
 
 <span class="c"># Helpful for debugging socket activation, etc.</span>
 <span class="c"># Environment=PUMA_DEBUG=1</span>
-<span class="nt">EnvironmentFile</span><span class="p">=</span>/home/mynonsudouser/puma.conf
+<span class="nv">EnvironmentFile</span><span class="o">=</span>/home/mynonsudouser/puma.conf
 
 <span class="c"># SystemD will not run puma even if it is in your path. You must specify</span>
 <span class="c"># an absolute URL to puma. For example /usr/local/bin/puma</span>
-<span class="nt">ExecStart</span><span class="p">=</span>/home/mynonsudouser/.asdf/shims/bundler exec puma -C /var/www/mynonsudouser/code/config/puma/production.rb -p9292
+<span class="nv">ExecStart</span><span class="o">=</span>/home/mynonsudouser/.asdf/shims/bundler <span class="nb">exec </span>puma <span class="nt">-C</span> /var/www/mynonsudouser/code/config/puma/production.rb <span class="nt">-p9292</span>
     
-<span class="nt">Restart</span><span class="p">=</span>always    
+<span class="nv">Restart</span><span class="o">=</span>always    
     
-<span class="err">[Install]</span>    
-<span class="nt">WantedBy</span><span class="p">=</span>multi-user.target
+<span class="o">[</span>Install]    
+<span class="nv">WantedBy</span><span class="o">=</span>multi-user.target
 </code></pre></div></div>
 
 <h2 id="systemctl">systemctl</h2>

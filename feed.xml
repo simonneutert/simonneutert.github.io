@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.3.4">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-11-13T09:15:43+01:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Hosting a Ruby/Roda app on bare metal with Caddy, Puma and systemd</title><link href="/2024/bare-metal-ruby-hosting-caddy-puma-systemd/" rel="alternate" type="text/html" title="Hosting a Ruby/Roda app on bare metal with Caddy, Puma and systemd" /><published>2024-11-13T00:00:00+01:00</published><updated>2024-11-13T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2024/2024-11-13-bare-metal-ruby-hosting-caddy-puma-systemd.md</id><content type="html" xml:base="/2024/bare-metal-ruby-hosting-caddy-puma-systemd/">&lt;p&gt;For years, I’ve been using &lt;a href=&quot;https://traefik.io&quot;&gt;traefik&lt;/a&gt; as a reverse proxy. It was configured to tap into the docker socket and route requests to appropriate containers using docker labels.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.3.4">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-11-13T14:36:59+01:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Hosting a Ruby/Roda app on bare metal with Caddy, Puma and systemd</title><link href="/2024/bare-metal-ruby-hosting-caddy-puma-systemd/" rel="alternate" type="text/html" title="Hosting a Ruby/Roda app on bare metal with Caddy, Puma and systemd" /><published>2024-11-13T00:00:00+01:00</published><updated>2024-11-13T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2024/2024-11-13-bare-metal-ruby-hosting-caddy-puma-systemd.md</id><content type="html" xml:base="/2024/bare-metal-ruby-hosting-caddy-puma-systemd/">&lt;p&gt;For years, I’ve been using &lt;a href=&quot;https://traefik.io&quot;&gt;traefik&lt;/a&gt; as a reverse proxy. It was configured to tap into the docker socket and route requests to appropriate containers using docker labels.&lt;/p&gt;
 
 &lt;p&gt;While this setup has served me well, I was ready to explore something new.&lt;/p&gt;
 
@@ -8,7 +8,7 @@
 
 &lt;p&gt;APT packages:&lt;/p&gt;
 
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get update
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get update
 &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
   build-essential &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
   direnv &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
@@ -49,7 +49,7 @@
 
 &lt;p&gt;Fail2ban requires a simple setup step on Debian:&lt;/p&gt;
 
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo touch&lt;/span&gt; /var/log/auth.log&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo touch&lt;/span&gt; /var/log/auth.log&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;3-ufw&quot;&gt;3. UFW&lt;/h3&gt;
@@ -109,20 +109,20 @@
 
 &lt;p&gt;Here’s the Caddyfile configuration for serving assets, static files, and vendor files:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-Caddyfile&quot;&gt;this-is.myapp.com {
-	handle /assets/* {
-    root * /home/deploy/myapp/public/assets
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;this-is.myapp.com &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	handle /assets/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    root &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; /home/deploy/myapp/public/assets
     file_server
-  }
-  handle /vendor/* {
-    root * /home/deploy/myapp/public/vendor
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  handle /vendor/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    root &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; /home/deploy/myapp/public/vendor
     file_server
-  }
-	handle {
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+	handle &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
 		reverse_proxy :9292
-	}
-}
-&lt;/code&gt;&lt;/pre&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;asdf&quot;&gt;ASDF&lt;/h2&gt;
 
@@ -141,48 +141,48 @@ asdf &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;rust 1.72.1 &lt;span 
 
 &lt;p&gt;Here’s a template for environment variables in systemd (save as &lt;code class=&quot;highlighter-rouge&quot;&gt;puma.conf&lt;/code&gt; - it is referenced in the systemd service file):&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-env&quot;&gt;RUBY_YJIT_ENABLE=1
-RUBY_CONFIGURE_OPTS=&quot;--enable-yjit --with-jemalloc --yjit-mem-size=256 --yjit-code-gc&quot;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;RUBY_YJIT_ENABLE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1
+&lt;span class=&quot;nv&quot;&gt;RUBY_CONFIGURE_OPTS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;--enable-yjit --with-jemalloc --yjit-mem-size=256 --yjit-code-gc&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://docs.ruby-lang.org/en/master/yjit/yjit_md.html#label-Examples&quot;&gt;YJIT docs&lt;/a&gt;
 ☝️ For the &lt;code class=&quot;highlighter-rouge&quot;&gt;--yjit-mem-size&lt;/code&gt; value and jemalloc configuration, consult the documentation and your specific needs.&lt;/p&gt;
 
 &lt;p&gt;Use &lt;code class=&quot;highlighter-rouge&quot;&gt;which bundler&lt;/code&gt; to locate the bundler executable path. Adjust the following systemd service file according to your paths and user:&lt;/p&gt;
 
-&lt;div class=&quot;language-systemd highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;err&quot;&gt;[Unit]&lt;/span&gt;    
-&lt;span class=&quot;nt&quot;&gt;Description&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;My angry little Puma HTTP Server    
-&lt;span class=&quot;nt&quot;&gt;After&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;network.target
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Unit]    
+&lt;span class=&quot;nv&quot;&gt;Description&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;My angry little Puma HTTP Server    
+&lt;span class=&quot;nv&quot;&gt;After&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;network.target
 
-&lt;span class=&quot;k&quot;&gt;[Service]&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Service]
 &lt;span class=&quot;c&quot;&gt;# Puma supports systemd&apos;s `Type=notify` and watchdog service&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# monitoring, as of Puma 5.1 or later.&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# On earlier versions of Puma or JRuby, change this to `Type=simple` and remove&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# the `WatchdogSec` line.&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;Type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;notify
+&lt;span class=&quot;nv&quot;&gt;Type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;notify
 
 &lt;span class=&quot;c&quot;&gt;# If your Puma process locks up, systemd&apos;s watchdog will restart it within seconds.&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;WatchdogSec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;10
+&lt;span class=&quot;nv&quot;&gt;WatchdogSec&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;10
 
 &lt;span class=&quot;c&quot;&gt;# Preferably configure a non-privileged user&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# User=mynonsudouser&lt;/span&gt;
 
 &lt;span class=&quot;c&quot;&gt;# The path to your application code root directory.&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# Also replace the &quot;&amp;lt;YOUR_APP_PATH&amp;gt;&quot; placeholders below with this path.&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;WorkingDirectory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;/var/www/myapp/code
+&lt;span class=&quot;nv&quot;&gt;WorkingDirectory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/var/www/myapp/code
 
 &lt;span class=&quot;c&quot;&gt;# Helpful for debugging socket activation, etc.&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# Environment=PUMA_DEBUG=1&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;EnvironmentFile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;/home/mynonsudouser/puma.conf
+&lt;span class=&quot;nv&quot;&gt;EnvironmentFile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/home/mynonsudouser/puma.conf
 
 &lt;span class=&quot;c&quot;&gt;# SystemD will not run puma even if it is in your path. You must specify&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# an absolute URL to puma. For example /usr/local/bin/puma&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;ExecStart&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;/home/mynonsudouser/.asdf/shims/bundler exec puma -C /var/www/mynonsudouser/code/config/puma/production.rb -p9292
+&lt;span class=&quot;nv&quot;&gt;ExecStart&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/home/mynonsudouser/.asdf/shims/bundler &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;puma &lt;span class=&quot;nt&quot;&gt;-C&lt;/span&gt; /var/www/mynonsudouser/code/config/puma/production.rb &lt;span class=&quot;nt&quot;&gt;-p9292&lt;/span&gt;
     
-&lt;span class=&quot;nt&quot;&gt;Restart&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;always    
+&lt;span class=&quot;nv&quot;&gt;Restart&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;always    
     
-&lt;span class=&quot;err&quot;&gt;[Install]&lt;/span&gt;    
-&lt;span class=&quot;nt&quot;&gt;WantedBy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;multi-user.target
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Install]    
+&lt;span class=&quot;nv&quot;&gt;WantedBy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;multi-user.target
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;systemctl&quot;&gt;systemctl&lt;/h2&gt;
