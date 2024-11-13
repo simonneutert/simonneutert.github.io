@@ -13,7 +13,7 @@ I'd been hearing great things about [Caddy](https://caddyserver.com) and wanted 
 
 APT packages:
 
-```sh
+```bash
 sudo apt-get update
 sudo apt install -y \
   build-essential \
@@ -55,7 +55,7 @@ Security best practice: Always use SSH keys instead of password authentication.
 
 Fail2ban requires a simple setup step on Debian:
 
-```sh
+```bash
 $ sudo touch /var/log/auth.log`
 ```
 
@@ -103,7 +103,7 @@ The Caddy installation process is straightforward and won't be covered here.
 
 Here's the Caddyfile configuration for serving assets, static files, and vendor files:
 
-```Caddyfile
+```bash
 this-is.myapp.com {
 	handle /assets/* {
     root * /home/deploy/myapp/public/assets
@@ -137,7 +137,7 @@ cd /var/www/myapp/code && asdf install
 
 Here's a template for environment variables in systemd (save as `puma.conf` - it is referenced in the systemd service file):
 
-```env
+```bash
 RUBY_YJIT_ENABLE=1
 RUBY_CONFIGURE_OPTS="--enable-yjit --with-jemalloc --yjit-mem-size=256 --yjit-code-gc"
 ```
@@ -147,7 +147,7 @@ RUBY_CONFIGURE_OPTS="--enable-yjit --with-jemalloc --yjit-mem-size=256 --yjit-co
 
 Use `which bundler` to locate the bundler executable path. Adjust the following systemd service file according to your paths and user:
 
-```systemd
+```bash
 [Unit]    
 Description=My angry little Puma HTTP Server    
 After=network.target
