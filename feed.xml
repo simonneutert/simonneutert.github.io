@@ -1,4 +1,199 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.3.4">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-11-12T19:28:22+01:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Today I learned about postgres with clause</title><link href="/2024/with-postgres/" rel="alternate" type="text/html" title="Today I learned about postgres with clause" /><published>2024-11-12T00:00:00+01:00</published><updated>2024-11-12T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2024/2024-11-12-with-postgres.md</id><content type="html" xml:base="/2024/with-postgres/">&lt;p&gt;A &lt;code class=&quot;highlighter-rouge&quot;&gt;with&lt;/code&gt; clause can be used to create a temporary table that can be used in the query. This is useful when you want to use the same subquery multiple times in the main query.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.3.4">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-11-13T09:15:43+01:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Hosting a Ruby/Roda app on bare metal with Caddy, Puma and systemd</title><link href="/2024/bare-metal-ruby-hosting-caddy-puma-systemd/" rel="alternate" type="text/html" title="Hosting a Ruby/Roda app on bare metal with Caddy, Puma and systemd" /><published>2024-11-13T00:00:00+01:00</published><updated>2024-11-13T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2024/2024-11-13-bare-metal-ruby-hosting-caddy-puma-systemd.md</id><content type="html" xml:base="/2024/bare-metal-ruby-hosting-caddy-puma-systemd/">&lt;p&gt;For years, I’ve been using &lt;a href=&quot;https://traefik.io&quot;&gt;traefik&lt;/a&gt; as a reverse proxy. It was configured to tap into the docker socket and route requests to appropriate containers using docker labels.&lt;/p&gt;
+
+&lt;p&gt;While this setup has served me well, I was ready to explore something new.&lt;/p&gt;
+
+&lt;p&gt;I’d been hearing great things about &lt;a href=&quot;https://caddyserver.com&quot;&gt;Caddy&lt;/a&gt; and wanted to give it a try. Inspired by DHH’s notable departure from cloud services, I decided to host my Roda app on “bare metal” (specifically, a VPS with ARM) using Caddy and Puma.&lt;/p&gt;
+
+&lt;h2 id=&quot;preparing-debian-for-ruby&quot;&gt;Preparing debian for ruby&lt;/h2&gt;
+
+&lt;p&gt;APT packages:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get update
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  build-essential &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  direnv &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  fail2ban &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  fonts-firacode &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  git &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  libcurl4-openssl-dev &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  libffi-dev &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  libjemalloc2 &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  libpq-dev &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  libreadline-dev &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  libsqlite3-dev &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  libssl-dev &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  libxml2-dev &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  libxslt1-dev &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  libyaml-dev &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  neovim &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  postgresql-common &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  postgresql-16 &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  slirp4netns &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  software-properties-common &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  sqlite3 &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  ufw &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  uidmap &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  zlib1g-dev &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  zsh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;securing-the-server&quot;&gt;Securing the server&lt;/h2&gt;
+
+&lt;p&gt;For more detailed information, check out &lt;a href=&quot;https://www.simon-neutert.de/2022/setup-vps/&quot;&gt;this guide&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;1-ssh-login-with-keys-only&quot;&gt;1. SSH login with keys only&lt;/h3&gt;
+
+&lt;p&gt;Security best practice: Always use SSH keys instead of password authentication.&lt;/p&gt;
+
+&lt;h3 id=&quot;2-fail2ban-on-debian&quot;&gt;2. Fail2ban on Debian&lt;/h3&gt;
+
+&lt;p&gt;Fail2ban requires a simple setup step on Debian:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo touch&lt;/span&gt; /var/log/auth.log&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;3-ufw&quot;&gt;3. UFW&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;ufw default deny incoming
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;ufw default allow outgoing
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;ufw allow 22/tcp
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;ufw allow 80/tcp
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;ufw allow 443/tcp
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;ufw show added
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;ufw &lt;span class=&quot;nb&quot;&gt;enable&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;4-setting-up-a-comfortable-environment&quot;&gt;4. Setting up a comfortable environment&lt;/h3&gt;
+
+&lt;p&gt;Before proceeding further, reboot your server.&lt;/p&gt;
+
+&lt;p&gt;I took some time to make the server environment more developer-friendly by installing:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;zsh&lt;/code&gt; as the default shell instead of &lt;code class=&quot;highlighter-rouge&quot;&gt;bash&lt;/code&gt;, with useful configurations:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;setopt autocd&lt;/code&gt; for easier directory navigation&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;setopt share_history&lt;/code&gt; for shared command history&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;setopt HIST_IGNORE_ALL_DUPS&lt;/code&gt; to maintain a clean command history&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Modern CLI tools:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;zoxide&lt;/code&gt; for smarter directory navigation&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;eza&lt;/code&gt; as a modern replacement for &lt;code class=&quot;highlighter-rouge&quot;&gt;ls&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://starship.rs&quot;&gt;starship&lt;/a&gt; for an enhanced prompt&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;atuin&lt;/code&gt; for shell history management&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;neovim&lt;/code&gt; as the text editor&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;ZSH enhancements:
+    &lt;ul&gt;
+      &lt;li&gt;zsh-autocomplete&lt;/li&gt;
+      &lt;li&gt;zsh-autosuggestions&lt;/li&gt;
+      &lt;li&gt;zsh-syntax-highlighting&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Development tools:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/casey/just&quot;&gt;just&lt;/a&gt; for command running&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://asdf-vm.com&quot;&gt;asdf&lt;/a&gt; for version management&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;direnv&lt;/code&gt; for environment management&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;httpie&lt;/code&gt; for API testing&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;caddy&quot;&gt;Caddy&lt;/h2&gt;
+
+&lt;p&gt;The Caddy installation process is straightforward and won’t be covered here.&lt;/p&gt;
+
+&lt;p&gt;Here’s the Caddyfile configuration for serving assets, static files, and vendor files:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-Caddyfile&quot;&gt;this-is.myapp.com {
+	handle /assets/* {
+    root * /home/deploy/myapp/public/assets
+    file_server
+  }
+  handle /vendor/* {
+    root * /home/deploy/myapp/public/vendor
+    file_server
+  }
+	handle {
+		reverse_proxy :9292
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;asdf&quot;&gt;ASDF&lt;/h2&gt;
+
+&lt;p&gt;Initialize asdf with the necessary plugins (ymmv):&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;asdf plugin-add ruby
+asdf plugin-add rust
+asdf plugin-add deno
+asdf plugin-add just
+asdf &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;rust 1.72.1 &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; asdf global rust 1.72.1
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;RUBY_CONFIGURE_OPTS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;--enable-yjit&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# you WANT yjit!!!&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /var/www/myapp/code &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; asdf &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;systemd&quot;&gt;Systemd&lt;/h2&gt;
+
+&lt;p&gt;Here’s a template for environment variables in systemd (save as &lt;code class=&quot;highlighter-rouge&quot;&gt;puma.conf&lt;/code&gt; - it is referenced in the systemd service file):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-env&quot;&gt;RUBY_YJIT_ENABLE=1
+RUBY_CONFIGURE_OPTS=&quot;--enable-yjit --with-jemalloc --yjit-mem-size=256 --yjit-code-gc&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://docs.ruby-lang.org/en/master/yjit/yjit_md.html#label-Examples&quot;&gt;YJIT docs&lt;/a&gt;
+☝️ For the &lt;code class=&quot;highlighter-rouge&quot;&gt;--yjit-mem-size&lt;/code&gt; value and jemalloc configuration, consult the documentation and your specific needs.&lt;/p&gt;
+
+&lt;p&gt;Use &lt;code class=&quot;highlighter-rouge&quot;&gt;which bundler&lt;/code&gt; to locate the bundler executable path. Adjust the following systemd service file according to your paths and user:&lt;/p&gt;
+
+&lt;div class=&quot;language-systemd highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;err&quot;&gt;[Unit]&lt;/span&gt;    
+&lt;span class=&quot;nt&quot;&gt;Description&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;My angry little Puma HTTP Server    
+&lt;span class=&quot;nt&quot;&gt;After&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;network.target
+
+&lt;span class=&quot;k&quot;&gt;[Service]&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Puma supports systemd&apos;s `Type=notify` and watchdog service&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# monitoring, as of Puma 5.1 or later.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# On earlier versions of Puma or JRuby, change this to `Type=simple` and remove&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# the `WatchdogSec` line.&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;Type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;notify
+
+&lt;span class=&quot;c&quot;&gt;# If your Puma process locks up, systemd&apos;s watchdog will restart it within seconds.&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;WatchdogSec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;10
+
+&lt;span class=&quot;c&quot;&gt;# Preferably configure a non-privileged user&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# User=mynonsudouser&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# The path to your application code root directory.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Also replace the &quot;&amp;lt;YOUR_APP_PATH&amp;gt;&quot; placeholders below with this path.&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;WorkingDirectory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;/var/www/myapp/code
+
+&lt;span class=&quot;c&quot;&gt;# Helpful for debugging socket activation, etc.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Environment=PUMA_DEBUG=1&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;EnvironmentFile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;/home/mynonsudouser/puma.conf
+
+&lt;span class=&quot;c&quot;&gt;# SystemD will not run puma even if it is in your path. You must specify&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# an absolute URL to puma. For example /usr/local/bin/puma&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;ExecStart&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;/home/mynonsudouser/.asdf/shims/bundler exec puma -C /var/www/mynonsudouser/code/config/puma/production.rb -p9292
+    
+&lt;span class=&quot;nt&quot;&gt;Restart&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;always    
+    
+&lt;span class=&quot;err&quot;&gt;[Install]&lt;/span&gt;    
+&lt;span class=&quot;nt&quot;&gt;WantedBy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;multi-user.target
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;systemctl&quot;&gt;systemctl&lt;/h2&gt;
+
+&lt;p&gt;Finally, enable and start the service:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl &lt;span class=&quot;nb&quot;&gt;enable &lt;/span&gt;puma.service
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl start puma.service
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;🚀&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Today I learned about postgres with clause</title><link href="/2024/with-postgres/" rel="alternate" type="text/html" title="Today I learned about postgres with clause" /><published>2024-11-12T00:00:00+01:00</published><updated>2024-11-12T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2024/2024-11-12-with-postgres.md</id><content type="html" xml:base="/2024/with-postgres/">&lt;p&gt;A &lt;code class=&quot;highlighter-rouge&quot;&gt;with&lt;/code&gt; clause can be used to create a temporary table that can be used in the query. This is useful when you want to use the same subquery multiple times in the main query.&lt;/p&gt;
 
 &lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;WITH&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;total_activities&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;profile_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;activity_count&lt;/span&gt; 
@@ -608,65 +803,4 @@ And why haven’t you used Rust in the first place?&lt;/p&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/simonneutert/java-map-tile-metrics-cli&quot;&gt;Map Tile Metrics CLI&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Overall, my journey into Java was a nice experience. While it has its own learning curve, I can see why it&amp;#8217;s receiving good press. Have you tried stepping out of your programming comfort zone lately?&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">The sass gem is dead, long live: sass-embedded-host-ruby</title><link href="/2024/sass-embedded/" rel="alternate" type="text/html" title="The sass gem is dead, long live: sass-embedded-host-ruby" /><published>2024-01-13T00:00:00+01:00</published><updated>2024-01-13T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2024/2024-01-13-sass-embedded.md</id><content type="html" xml:base="/2024/sass-embedded/">&lt;p&gt;I had this deprecation warning in my template sinatra project on GitHub for a while now.&lt;/p&gt;
-
-&lt;p&gt;The project should have ActiveRecord and Sass support, with sprockets and a few other things.&lt;/p&gt;
-
-&lt;p&gt;And man was this sass topic a rabbit hole in one way or another. Because the hint in the deprecation warning didn’t work out of the box.&lt;/p&gt;
-
-&lt;p&gt;And with most people being on Rails, or when on Sinatra not very interested in Sass, or they know how to fix it, I had mostly trial and error to go on.&lt;/p&gt;
-
-&lt;p&gt;Here is how I setup my project’s/app’s environment from day one:&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyApp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Sinatra&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;# initialize new sprockets environment&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:environment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Sprockets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Environment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;# append assets paths&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;append_path&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;assets/stylesheets&apos;&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;append_path&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;assets/javascripts&apos;&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;# compress assets&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;js_compressor&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:uglify&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;css_compressor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:scss&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# &amp;lt;&amp;lt; here&apos;s the problem&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;# get assets&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;get&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;/assets/*&apos;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;PATH_INFO&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;sub!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;/assets&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;settings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;I highlighted the problem line. It’s the &lt;code class=&quot;highlighter-rouge&quot;&gt;:scss&lt;/code&gt; compressor. This simply doesn’t work anymore. And all the deprecation warning says is:&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;switch to the sassc ruby gem&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;well, I did that, and it is part of the solution, but the glue was missing.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ bundle add sass-embedded sassc&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;https://github.com/sass-contrib/sass-embedded-host-ruby&lt;/p&gt;
-
-&lt;p&gt;Then require both gems, remove &lt;code class=&quot;highlighter-rouge&quot;&gt;sass&lt;/code&gt; from the Gemfile, and remove the &lt;code class=&quot;highlighter-rouge&quot;&gt;:scss&lt;/code&gt; compressor line.&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyApp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Sinatra&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;# initialize new sprockets environment&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:environment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Sprockets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Environment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;# append assets paths&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;append_path&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;assets/stylesheets&apos;&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;append_path&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;assets/javascripts&apos;&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;# compress assets&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;js_compressor&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:uglify&lt;/span&gt;
-
-  &lt;span class=&quot;c1&quot;&gt;# 👇 remove any css compressor settings you might stumble upon, be it sinatra, roda or rails&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;# environment.css_compressor = :scss # &amp;lt;&amp;lt; here&apos;s the problem&lt;/span&gt;
-
-  &lt;span class=&quot;c1&quot;&gt;# get assets&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;get&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;/assets/*&apos;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;PATH_INFO&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;sub!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;/assets&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;settings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Checkout the pull request for the full diff:&lt;br /&gt;
-https://github.com/simonneutert/sinatras-skeleton/pull/84/files&lt;/p&gt;
-
-&lt;p&gt;And that’s it. I hope this helps someone else out there.&lt;/p&gt;</content><author><name></name></author></entry></feed>
+&lt;p&gt;Overall, my journey into Java was a nice experience. While it has its own learning curve, I can see why it&amp;#8217;s receiving good press. Have you tried stepping out of your programming comfort zone lately?&lt;/p&gt;</content><author><name></name></author></entry></feed>
