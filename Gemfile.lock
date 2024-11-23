@@ -85,9 +85,9 @@ GEM
     minitest (5.25.1)
     net-http (0.4.1)
       uri
-    nio4r (2.7.3)
+    nio4r (2.7.4)
     public_suffix (6.0.1)
-    puma (6.4.3)
+    puma (6.5.0)
       nio4r (~> 2.0)
     rack (3.1.7)
     rake (13.2.1)
@@ -119,7 +119,7 @@ PLATFORMS
 DEPENDENCIES
   bridgetown (~> 1.3.2)
   bridgetown-feed (~> 3.1)
-  puma (~> 6.4)
+  puma (~> 6.5)
 
 BUNDLED WITH
    2.5.21
