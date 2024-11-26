@@ -82,6 +82,23 @@
   <span class="n">x</span><span class="p">.</span><span class="nf">report</span><span class="p">(</span><span class="s1">'nil?'</span><span class="p">)</span> <span class="p">{</span> <span class="n">n</span><span class="p">.</span><span class="nf">times</span> <span class="p">{</span> <span class="n">h</span><span class="p">.</span><span class="nf">dig</span><span class="p">(</span><span class="ss">:b</span><span class="p">,</span> <span class="ss">:d</span><span class="p">).</span><span class="nf">nil?</span> <span class="p">}</span> <span class="p">}</span>
   <span class="n">x</span><span class="p">.</span><span class="nf">report</span><span class="p">(</span><span class="s1">'=='</span><span class="p">)</span> <span class="p">{</span> <span class="n">n</span><span class="p">.</span><span class="nf">times</span> <span class="p">{</span> <span class="n">h</span><span class="p">.</span><span class="nf">dig</span><span class="p">(</span><span class="ss">:b</span><span class="p">,</span> <span class="ss">:d</span><span class="p">)</span> <span class="o">==</span> <span class="kp">nil</span> <span class="p">}</span> <span class="p">}</span>
 <span class="k">end</span>
+
+<span class="p">[</span><span class="c1">#&lt;Benchmark::Tms:0x0000000122c0aaa8</span>
+  <span class="vi">@cstime</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+  <span class="vi">@cutime</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+  <span class="vi">@label</span><span class="o">=</span><span class="s2">"nil?"</span><span class="p">,</span>
+  <span class="vi">@real</span><span class="o">=</span><span class="mf">0.09058699999877717</span><span class="p">,</span>
+  <span class="vi">@stime</span><span class="o">=</span><span class="mf">0.0007450000000000095</span><span class="p">,</span>
+  <span class="vi">@total</span><span class="o">=</span><span class="mf">0.09056200000000002</span><span class="p">,</span>
+  <span class="vi">@utime</span><span class="o">=</span><span class="mf">0.08981700000000001</span><span class="o">&gt;</span><span class="p">,</span>
+ <span class="c1">#&lt;Benchmark::Tms:0x0000000122c0a968</span>
+  <span class="vi">@cstime</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+  <span class="vi">@cutime</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+  <span class="vi">@label</span><span class="o">=</span><span class="s2">"=="</span><span class="p">,</span>
+  <span class="vi">@real</span><span class="o">=</span><span class="mf">0.07575299999734852</span><span class="p">,</span>
+  <span class="vi">@stime</span><span class="o">=</span><span class="mf">0.0001769999999999966</span><span class="p">,</span>
+  <span class="vi">@total</span><span class="o">=</span><span class="mf">0.075752</span><span class="p">,</span> <span class="err">👑👑👑</span>
+  <span class="vi">@utime</span><span class="o">=</span><span class="mf">0.075575</span><span class="o">&gt;</span><span class="p">]</span> 
 </code></pre></div></div>
 
 <h2 id="rubys-set-class-performance">Ruby’s <code class="highlighter-rouge">Set</code> class performance</h2>
