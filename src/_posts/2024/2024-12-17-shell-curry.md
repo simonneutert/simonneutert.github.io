@@ -1,7 +1,9 @@
 ---
-title: "Launched 🚀 \"Shell Curry - A collection of shell tools.\""
+title: "Project Launched 🚀 - \"Shell Curry\""
 layout: post
 ---
+
+### A curated list of shell tools and configurations.
 
 Together with a couple of developer friends, we launched a new project called [shell-curry](https://shell-curry.simon-neutert.de/) on GitHub. \
 The repository will be made public soon.
