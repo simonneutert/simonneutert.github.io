@@ -1,5 +1,5 @@
 ---
-title: "New project launched 🚀 \"Shell Curry - A collection of shell tools.\""
+title: "Launched 🚀 \"Shell Curry - A collection of shell tools.\""
 layout: post
 ---
 
