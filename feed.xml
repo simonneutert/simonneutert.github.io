@@ -1,4 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.3.4">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-12-14T17:05:52+01:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Today I learned in Rubyland</title><link href="/2024/ruby-til/" rel="alternate" type="text/html" title="Today I learned in Rubyland" /><published>2024-11-26T00:00:00+01:00</published><updated>2024-11-26T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2024/2024-11-26-ruby-TIL.md</id><content type="html" xml:base="/2024/ruby-til/">&lt;p&gt;Benchmarking my Ruby code shed light on a few things I didn’t know before about &lt;code class=&quot;highlighter-rouge&quot;&gt;.nil?&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;Set#include?&lt;/code&gt;.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.3.4">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-12-17T21:16:39+01:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">New project launched 🚀 “Shell Curry - A collection of shell tools.”</title><link href="/2024/shell-curry/" rel="alternate" type="text/html" title="New project launched 🚀 &quot;Shell Curry - A collection of shell tools.&quot;" /><published>2024-12-17T00:00:00+01:00</published><updated>2024-12-17T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2024/2024-12-17-shell-curry.md</id><content type="html" xml:base="/2024/shell-curry/">&lt;p&gt;Together with a couple of developer friends, we launched a new project called &lt;a href=&quot;https://shell-curry.simonneutert.de/&quot;&gt;shell-curry&lt;/a&gt; on GitHub. &lt;br /&gt;
+The repository will be made public soon.&lt;/p&gt;
+
+&lt;p&gt;The main goal is to provide a curated list of shell tools and configurations that we use in our daily work.&lt;/p&gt;
+
+&lt;p&gt;If someone new to enhancing their shell environment can benefit from it, our mission is accomplished.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;README.md&lt;/code&gt; file states:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Having the best developer setup is a never-ending crusade for some. &lt;br /&gt;
+To others, it’s not even a side quest. &lt;br /&gt;
+In HR, they label it as one of the dark arts. &lt;br /&gt;
+To us, it’s nothing we lose hours on, but something we always come back to.&lt;/p&gt;
+
+  &lt;p&gt;We want to share our findings with you, with practicality in mind. We are a group of developers who love to tinker—always with a purpose. Each of our setups differs here and there, but there are huge overlaps in the tools we use.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;If you’re the curious type, you might want to get your hands dirty with a Dockerized project setup. &lt;br /&gt;
+Check out &lt;a href=&quot;https://github.com/simonneutert/shell-curry-debian-12-example&quot;&gt;simonneutert/shell-curry-debian-12-example&lt;/a&gt; on GitHub.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Today I learned in Rubyland</title><link href="/2024/ruby-til/" rel="alternate" type="text/html" title="Today I learned in Rubyland" /><published>2024-11-26T00:00:00+01:00</published><updated>2024-11-26T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2024/2024-11-26-ruby-TIL.md</id><content type="html" xml:base="/2024/ruby-til/">&lt;p&gt;Benchmarking my Ruby code shed light on a few things I didn’t know before about &lt;code class=&quot;highlighter-rouge&quot;&gt;.nil?&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;Set#include?&lt;/code&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;boolean-operations-nil-vs-&quot;&gt;Boolean operations &lt;code class=&quot;highlighter-rouge&quot;&gt;nil?&lt;/code&gt; vs &lt;code class=&quot;highlighter-rouge&quot;&gt;==&lt;/code&gt;&lt;/h2&gt;
 
@@ -783,90 +802,4 @@ And why haven’t you used Rust in the first place?&lt;/p&gt;
 
 &lt;p&gt;Want to dive deeper into Go’s date formatting? Check out this super helpful cheat sheet: https://gosamples.dev/date-time-format-cheatsheet/&lt;/p&gt;
 
-&lt;p&gt;More on Stack Overflow: https://stackoverflow.com/a/20234207&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">The 10 Commandments of Code Review: A Developer’s Guide</title><link href="/2024/code-review/" rel="alternate" type="text/html" title="The 10 Commandments of Code Review: A Developer&apos;s Guide" /><published>2024-10-07T00:00:00+02:00</published><updated>2024-10-07T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2024/2024-10-07-code-review.md</id><content type="html" xml:base="/2024/code-review/">&lt;p&gt;The algorithm washed in a great YouTube video on code reviews. Here’s a summary of the video’s key points, with a touch of humor and a sprinkle of wisdom.\&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=ScWFHOOPPC4&quot;&gt;Source on YouTube&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;a-note-on-code-reviews&quot;&gt;A Note on Code Reviews&lt;/h2&gt;
-
-&lt;p&gt;Let’s be honest: we’ve all written code that made us cringe months later. Whether you’re a junior developer or a seasoned architect, nobody writes perfect code all the time. That’s exactly why code reviews exist – not as a platform for showing off or criticizing others, but as a collaborative tool for improvement. When reviewing code, remember to be direct but polite; we’re all in this together, trying to build better software.&lt;/p&gt;
-
-&lt;h2 id=&quot;the-10-commandments-of-code-review&quot;&gt;The 10 Commandments of Code Review&lt;/h2&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Thou shalt ensure readability&lt;/strong&gt;, for confusing code is the Devil’s Playground.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Thou shalt consider performance and scalability&lt;/strong&gt;, for slow code is an Abomination.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Thou shalt stay within scope&lt;/strong&gt;, and not add unnecessary complexity.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Thou shalt check for edge cases&lt;/strong&gt;, for the unexpected shall smite thee in production.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Thou shalt not forget test coverage&lt;/strong&gt;, for untested code is a sin in the eyes of QA.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Thou shalt seek out repetitive code&lt;/strong&gt; and banish it from the codebase.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Thou shalt not nitpick&lt;/strong&gt;, lest you be smited by thine own pet peeves.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Thou shalt provide constructive feedback&lt;/strong&gt; and sing praises of good code.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Thou shalt encourage discussion&lt;/strong&gt;, for two minds are mightier than one.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Thou shalt not block changes over minor issues&lt;/strong&gt;, for Perfection is a false idol.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;1-ensure-readability&quot;&gt;1. Ensure Readability&lt;/h3&gt;
-
-&lt;p&gt;Code should be easily understood by others. Look for clear naming conventions, appropriate comments, and well-structured functions. If you need to read the same code multiple times to understand it, suggest improvements in organization or clarity.&lt;/p&gt;
-
-&lt;h3 id=&quot;2-consider-performance&quot;&gt;2. Consider Performance&lt;/h3&gt;
-
-&lt;p&gt;Watch for potential bottlenecks and inefficient code. Look for opportunities to optimize, such as early returns and proper algorithmic complexity. Remember: what works on your computer might not scale well on servers.&lt;/p&gt;
-
-&lt;h3 id=&quot;3-stay-within-scope&quot;&gt;3. Stay Within Scope&lt;/h3&gt;
-
-&lt;p&gt;Understand the problem being solved and avoid suggesting changes that don’t align with the ticket’s purpose. Save broader improvements for separate tickets and discussions.&lt;/p&gt;
-
-&lt;h3 id=&quot;4-check-edge-cases&quot;&gt;4. Check Edge Cases&lt;/h3&gt;
-
-&lt;p&gt;Review how the code handles unexpected scenarios, including empty arrays, null values, and missing data. Border cases often cause the most problems in production.&lt;/p&gt;
-
-&lt;h3 id=&quot;5-verify-test-coverage&quot;&gt;5. Verify Test Coverage&lt;/h3&gt;
-
-&lt;p&gt;Ensure adequate testing, especially for critical functionality. Tests should be comprehensive, well-structured, and actually useful – not redundant. Don’t demand tests for trivial changes.&lt;/p&gt;
-
-&lt;h3 id=&quot;6-eliminate-code-duplication&quot;&gt;6. Eliminate Code Duplication&lt;/h3&gt;
-
-&lt;p&gt;Look for repeated code blocks and suggest abstractions to improve maintainability. If the same intensive operation happens multiple times, consider caching results when appropriate.&lt;/p&gt;
-
-&lt;h3 id=&quot;7-avoid-nitpicking&quot;&gt;7. Avoid Nitpicking&lt;/h3&gt;
-
-&lt;p&gt;Don’t get hung up on trivial formatting preferences or subjective matters. You’re not a linter – focus on what truly matters.&lt;/p&gt;
-
-&lt;h3 id=&quot;8-provide-constructive-feedback&quot;&gt;8. Provide Constructive Feedback&lt;/h3&gt;
-
-&lt;p&gt;Frame suggestions positively and acknowledge good work. Instead of “this is poorly written,” try “consider refactoring this for clarity 😊”&lt;/p&gt;
-
-&lt;h3 id=&quot;9-encourage-discussion&quot;&gt;9. Encourage Discussion&lt;/h3&gt;
-
-&lt;p&gt;Foster collaboration and open dialogue. For complex issues, take the discussion offline to voice or chat channels where ideas can flow more naturally.&lt;/p&gt;
-
-&lt;h3 id=&quot;10-dont-block-on-minor-issues&quot;&gt;10. Don’t Block on Minor Issues&lt;/h3&gt;
-
-&lt;p&gt;Differentiate between essential fixes and nice-to-haves. Not every suggestion needs to be implemented before merging.&lt;/p&gt;
-
-&lt;p&gt;Remember: Perfect is the enemy of good. Sometimes “good enough” is exactly what the project needs at that moment.&lt;/p&gt;</content><author><name></name></author></entry></feed>
+&lt;p&gt;More on Stack Overflow: https://stackoverflow.com/a/20234207&lt;/p&gt;</content><author><name></name></author></entry></feed>
