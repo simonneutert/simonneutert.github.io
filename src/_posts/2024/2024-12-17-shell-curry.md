@@ -3,7 +3,7 @@ title: "New project launched 🚀 \"Shell Curry - A collection of shell tools.\"
 layout: post
 ---
 
-Together with a couple of developer friends, we launched a new project called [shell-curry](https://shell-curry.simonneutert.de/) on GitHub. \
+Together with a couple of developer friends, we launched a new project called [shell-curry](https://shell-curry.simon-neutert.de/) on GitHub. \
 The repository will be made public soon.
 
 The main goal is to provide a curated list of shell tools and configurations that we use in our daily work.
