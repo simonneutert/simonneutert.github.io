@@ -1,4 +1,140 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.3.4">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-12-17T21:26:18+01:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Project Launched 🚀 - “Shell Curry”</title><link href="/2024/shell-curry/" rel="alternate" type="text/html" title="Project Launched 🚀 - &quot;Shell Curry&quot;" /><published>2024-12-17T00:00:00+01:00</published><updated>2024-12-17T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2024/2024-12-17-shell-curry.md</id><content type="html" xml:base="/2024/shell-curry/">&lt;h3 id=&quot;a-curated-list-of-shell-tools-and-configurations&quot;&gt;A curated list of shell tools and configurations.&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.3.4">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-01-01T16:52:30+01:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">2024 - just the good parts</title><link href="/2025/recap/" rel="alternate" type="text/html" title="2024 - just the good parts" /><published>2025-01-01T00:00:00+01:00</published><updated>2025-01-01T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2025-01-01-recap.md</id><content type="html" xml:base="/2025/recap/">&lt;p&gt;2024 had its ups and downs. I’ve been working on a lot of different projects, some of them are public, some of them are private. I’ve learned a lot about different technologies and programming languages. I’ve been experimenting with different runtimes and I’ve been contributing to open source projects.&lt;/p&gt;
+
+&lt;p&gt;Overall I’m happy with the progress I made. I’ve made some new friends along the way and I’ve been able to help out in a few projects.&lt;/p&gt;
+
+&lt;h2 id=&quot;programming-languages&quot;&gt;Programming Languages&lt;/h2&gt;
+
+&lt;p&gt;Languages used:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Ruby&lt;/li&gt;
+  &lt;li&gt;JavaScript&lt;/li&gt;
+  &lt;li&gt;Clojure / Babashka&lt;/li&gt;
+  &lt;li&gt;TypeScript (new)&lt;/li&gt;
+  &lt;li&gt;Java (new)&lt;/li&gt;
+  &lt;li&gt;Go (new)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;JavaScript Bonus:&lt;/em&gt; experimenting with JavaScript runtimes played a huge part this year:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Deno (is what we’ve all been waiting for)&lt;/li&gt;
+  &lt;li&gt;Bun (is really cool, too)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;public-projects&quot;&gt;Public Projects&lt;/h2&gt;
+
+&lt;p&gt;Here are the projects I’ve shoved into existence this year:&lt;/p&gt;
+
+&lt;h3 id=&quot;shell-curry-ruby--jekyll&quot;&gt;Shell-Curry (Ruby &amp;amp; Jekyll)&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://shell-curry.simon-neutert.de/&quot;&gt;shell-curry&lt;/a&gt; is a curated list of shell tools and configurations. The main goal is to provide a curated list of shell tools and configurations that we use in our daily work.&lt;/p&gt;
+
+&lt;h3 id=&quot;picnic-auth-typescriptdeno&quot;&gt;Picnic-Auth (TypeScript@Deno)&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/simonneutert/picnic-auth&quot;&gt;picnic-auth&lt;/a&gt; is a simple authentication service that uses JWTs and BCrypt to authenticate users from an env file.&lt;/p&gt;
+
+&lt;h3 id=&quot;wilson-typescriptdeno&quot;&gt;Wilson (TypeScript@Deno)&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/simonneutert/wilson&quot;&gt;wilson&lt;/a&gt; is a glorified OpenAI Client, that works with recipe/form files to interact with threaded/multistep OpenAI Assistants. User Input via CLI.&lt;/p&gt;
+
+&lt;h3 id=&quot;unreachable-tiles-map-editor-javascriptdeno&quot;&gt;Unreachable Tiles Map Editor (JavaScript@Deno)&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/simonneutert/unreachable_tiles_map_editor&quot;&gt;unreachable_tiles_map_editor&lt;/a&gt; is a simple web interface to interact with a map, in order to mark tiles as unreachable.&lt;/p&gt;
+
+&lt;h3 id=&quot;deno-garmin-js-sdk-to-json-deno-in-docker&quot;&gt;Deno Garmin JS SDK to JSON (Deno in Docker)&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/simonneutert/deno-garmin-js-sdk-to-json&quot;&gt;deno-garmin-js-sdk-to-json&lt;/a&gt; is a compilable Deno wrapper around the Garmin JS SDK to extract JSON data from .fit files.&lt;/p&gt;
+
+&lt;h3 id=&quot;strava-export-organizer-web-w-cli-ruby--go&quot;&gt;Strava Export Organizer Web w/ CLI (Ruby &amp;amp; Go)&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/simonneutert/strava-export-organizer-web&quot;&gt;strava-export-organizer-web&lt;/a&gt; is a web interface for the Strava Export Organizer. The project pulls in &lt;a href=&quot;https://github.com/simonneutert/strava-export-organizer&quot;&gt;strava-export-organizer&lt;/a&gt;, a CLI tool written in Go to organize Strava Exports into a structured folder hierarchy.&lt;/p&gt;
+
+&lt;h3 id=&quot;java-map-tile-metrics-w-cli-java&quot;&gt;Java Map Tile Metrics w/ CLI (Java)&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/simonneutert/java-map-tile-metrics&quot;&gt;java-map-tile-metrics&lt;/a&gt; and &lt;a href=&quot;https://github.com/simonneutert/java-map-tile-metrics-cli&quot;&gt;java-map-tile-metrics-cli&lt;/a&gt; are Java implementations of the map tile metrics calculation. A score of a user’s visited places on a map.&lt;/p&gt;
+
+&lt;h3 id=&quot;bb-map-tile-metrics-w-cli-babashka&quot;&gt;BB Map Tile Metrics w/ CLI (babashka)&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/simonneutert/bb-map-tile-metrics&quot;&gt;bb-map-tile-metrics&lt;/a&gt; a Babashka (Clojure/Lisp) implementation of the map tile metrics calculation.&lt;/p&gt;
+
+&lt;h2 id=&quot;revisited-public-projects&quot;&gt;Revisited Public Projects&lt;/h2&gt;
+
+&lt;p&gt;Some projects have been revisited and improved:&lt;/p&gt;
+
+&lt;h3 id=&quot;shuffle-gag-babashka&quot;&gt;Shuffle-GAG (babashka)&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/simonneutert/shuffle-gag&quot;&gt;shuffle-gag&lt;/a&gt; is a github action based podcast scraper written in Babashka.&lt;/p&gt;
+
+&lt;h3 id=&quot;git-hire-hire-on-fire--babashka&quot;&gt;Git-Hire, hire on fire 🔥 (babashka)&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/simonneutert/git-hire&quot;&gt;git-hire&lt;/a&gt; a Babashka (Clojure/Lisp) to API scrape GitHub for users with a certain skillset in a certain location.&lt;/p&gt;
+
+&lt;h3 id=&quot;ruby-telegram-login-web-stub-tutorial-ruby&quot;&gt;Ruby Telegram Login Web Stub Tutorial (Ruby)&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/simonneutert/ruby-telegram-login-web-stub-tutorial&quot;&gt;ruby-telegram-login-web-stub-tutorial&lt;/a&gt; a ruby implementation of the Telegram Web-Login.&lt;/p&gt;
+
+&lt;h3 id=&quot;pizza-dough-calculator-clojurescript&quot;&gt;Pizza Dough Calculator (ClojureScript)&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/simonneutert/pizza-dough-calculator&quot;&gt;Pizza Dough Calculator&lt;/a&gt; a ClojureScript implementation of a pizza dough calculator.&lt;/p&gt;
+
+&lt;h2 id=&quot;topics-and-learnings-in-private-and-public-projects&quot;&gt;Topics and Learnings in Private and Public Projects&lt;/h2&gt;
+
+&lt;p&gt;Every project I’ve worked on this year has taught me something new. Here are some of the topics I’ve been dealing with:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;VPS Server Setup&lt;/li&gt;
+  &lt;li&gt;Caddy&lt;/li&gt;
+  &lt;li&gt;intensive use of justfiles&lt;/li&gt;
+  &lt;li&gt;document my ideas, urls, decisions, and thoughts in &lt;em&gt;readme.&lt;strong&gt;topic&lt;/strong&gt;.md&lt;/em&gt; files&lt;/li&gt;
+  &lt;li&gt;Prompt Engineering
+    &lt;ul&gt;
+      &lt;li&gt;side effect: dealing/interacting with AIs had an impact on my documentation/communication for sure&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;a glimpse into MongoDB (with Go)&lt;/li&gt;
+  &lt;li&gt;Git Submodules (no conclusions yet)&lt;/li&gt;
+  &lt;li&gt;Systemd&lt;/li&gt;
+  &lt;li&gt;Ruby stuff:
+    &lt;ul&gt;
+      &lt;li&gt;a medium sized app with Roda, Rodauth, htmx and Postgres via Sequel
+        &lt;ul&gt;
+          &lt;li&gt;Sequel: Postgres can stream results 🚀&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Passenger vs Puma (Ruby Webservers)&lt;/li&gt;
+      &lt;li&gt;Honeybadger vs Sentry (Ruby Webservers)&lt;/li&gt;
+      &lt;li&gt;YJIT config for production&lt;/li&gt;
+      &lt;li&gt;jemalloc2 and ruby&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Much higher performance when the web server is setup using a socket NOT TCP&lt;/li&gt;
+  &lt;li&gt;GHCR (GitHub Container Registry)&lt;/li&gt;
+  &lt;li&gt;Traefik and cron jobbed deploys from GHCR.io&lt;/li&gt;
+  &lt;li&gt;(p)React.js&lt;/li&gt;
+  &lt;li&gt;Deno compile&lt;/li&gt;
+  &lt;li&gt;Deno test&lt;/li&gt;
+  &lt;li&gt;e2e with playwright using github workflows&lt;/li&gt;
+  &lt;li&gt;some bugs can be fixed by upcasing the first letter of a string (roda-i18n) 😅&lt;/li&gt;
+  &lt;li&gt;Github Workflows&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;open-source-contributions&quot;&gt;Open Source Contributions&lt;/h2&gt;
+
+&lt;p&gt;I contributed to the following projects (hope I didn’t forget any):&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/dblock/strava-ruby-client&quot;&gt;strava-ruby-client&lt;/a&gt; (co-mainainer) by &lt;a href=&quot;https://github.com/dblock&quot;&gt;@dblock&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/kematzy/roda-i18n&quot;&gt;roda-i18n&lt;/a&gt; (co-mainainer) by &lt;a href=&quot;https://github.com/kematzy&quot;&gt;@kematzy&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/strzibny/invoice_printer/pulls&quot;&gt;strzibny/invoice_printer&lt;/a&gt; by &lt;a href=&quot;https://github.com/strzibny&quot;&gt;@strzibny&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/wieczo/wieczos-virus-scanner&quot;&gt;wieczos-virus-scanner&lt;/a&gt; by &lt;a href=&quot;https://github.com/wieczo&quot;&gt;@wieczo&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/chr15m/scittle-tiny-slides&quot;&gt;scittle-tiny-slides&lt;/a&gt; by &lt;a href=&quot;https://github.com/chr15m&quot;&gt;@chr15m&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/r18n/r18n-core&quot;&gt;r18n-core&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;anything-else&quot;&gt;Anything else?&lt;/h2&gt;
+
+&lt;p&gt;Year, I learnt &lt;a href=&quot;https://www.youtube.com/watch?v=fsKKf-WNtdI&quot;&gt;How Drum and Bass is made…&lt;/a&gt; on YouTube.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Project Launched 🚀 - “Shell Curry”</title><link href="/2024/shell-curry/" rel="alternate" type="text/html" title="Project Launched 🚀 - &quot;Shell Curry&quot;" /><published>2024-12-17T00:00:00+01:00</published><updated>2024-12-17T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2024/2024-12-17-shell-curry.md</id><content type="html" xml:base="/2024/shell-curry/">&lt;h3 id=&quot;a-curated-list-of-shell-tools-and-configurations&quot;&gt;A curated list of shell tools and configurations.&lt;/h3&gt;
 
 &lt;p&gt;Together with a couple of developer friends, we launched a new project called &lt;a href=&quot;https://shell-curry.simon-neutert.de/&quot;&gt;shell-curry&lt;/a&gt; on GitHub. &lt;br /&gt;
 The repository will be made public soon.&lt;/p&gt;
@@ -737,71 +873,4 @@ And why haven’t you used Rust in the first place?&lt;/p&gt;
 &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;deno compile &lt;span class=&quot;nt&quot;&gt;--allow-read&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--allow-env&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--allow-run&lt;/span&gt; main.jsx
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Super sweet! 🍬🦕&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Adventures in Golang: Organizing My Strava Data 🚴‍♂️</title><link href="/2024/strava-export-experiment/" rel="alternate" type="text/html" title="Adventures in Golang: Organizing My Strava Data 🚴‍♂️" /><published>2024-10-08T00:00:00+02:00</published><updated>2024-10-08T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2024/2024-10-08-strava-export-experiment.md</id><content type="html" xml:base="/2024/strava-export-experiment/">&lt;p&gt;I recently dove into an interesting project where I exported my Strava data to do some GPS visualization. I thought I’d share my experience, especially for those who might be new to Go.&lt;/p&gt;
-
-&lt;h2 id=&quot;tldr-just-show-me-the-product-&quot;&gt;tldr; just show me the product 🚀&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/simonneutert/strava-export-organizer/&quot;&gt;strava-export-organizer&lt;/a&gt; on GitHub&lt;/p&gt;
-
-&lt;h2 id=&quot;the-challenge-&quot;&gt;The Challenge 🎯&lt;/h2&gt;
-
-&lt;p&gt;I had a directory full of activity files from Strava - mostly &lt;code class=&quot;highlighter-rouge&quot;&gt;.fit&lt;/code&gt; files with some &lt;code class=&quot;highlighter-rouge&quot;&gt;.gpx&lt;/code&gt; mixed in. My goal? Organize these files into a clean directory structure based on activity type (running, cycling, etc.) and year. The activity metadata was tucked away in an &lt;code class=&quot;highlighter-rouge&quot;&gt;activities.csv&lt;/code&gt; file.&lt;/p&gt;
-
-&lt;p&gt;This is a part of the export strava.com provides. You can download your data in a zip file.&lt;/p&gt;
-
-&lt;h2 id=&quot;the-game-plan-&quot;&gt;The Game Plan 📋&lt;/h2&gt;
-
-&lt;p&gt;Being a Golang newbie, I thought this would be a straightforward project:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Parse the &lt;code class=&quot;highlighter-rouge&quot;&gt;activities.csv&lt;/code&gt; file&lt;/li&gt;
-  &lt;li&gt;Create a fresh directory for the organized files&lt;/li&gt;
-  &lt;li&gt;Make subdirectories for each activity type&lt;/li&gt;
-  &lt;li&gt;Within those, create year-based subdirectories (prefixed with activity type)&lt;/li&gt;
-  &lt;li&gt;Move files to their new homes&lt;/li&gt;
-  &lt;li&gt;Optional: &lt;code class=&quot;highlighter-rouge&quot;&gt;gunzip&lt;/code&gt; gzipped files&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Simple enough, right? Well… 😅&lt;/p&gt;
-
-&lt;h2 id=&quot;the-plot-twist-gos-date-parsing-&quot;&gt;The Plot Twist: Go’s Date Parsing 🤔&lt;/h2&gt;
-
-&lt;p&gt;Here’s where things got interesting. If you’re coming from other programming languages, Go’s approach to date parsing might surprise you. Instead of using traditional format strings like &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD&lt;/code&gt;, Go uses what I like to call “the magic reference date”:&lt;/p&gt;
-
-&lt;div class=&quot;language-go highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;&quot;2006-01-02T15:04:05Z07:00&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;You could think of this as Go’s “zero date” - the reference point for parsing and formatting dates. Each part of the string corresponds to a specific date component:&lt;/p&gt;
-
-&lt;p&gt;2006 = YYYY&lt;br /&gt;
-01 = MM&lt;br /&gt;
-02 = DD&lt;br /&gt;
-15 = hh (24-hour)&lt;br /&gt;
-04 = mm&lt;br /&gt;
-05 = ss&lt;/p&gt;
-
-&lt;h2 id=&quot;a-real-world-example-&quot;&gt;A Real-World Example 💡&lt;/h2&gt;
-&lt;p&gt;Here’s how I parsed a date like 2022-03-23T07:00:00+01:00:&lt;/p&gt;
-
-&lt;div class=&quot;language-go highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;2022-03-23T07:00:00+01:00&quot;&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;loc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LoadLocation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Europe/Berlin&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ParseInLocation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RFC3339&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;loc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;nil&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Fatal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Println&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;Pro tip&lt;/strong&gt;: While this format might seem quirky at first, Go provides several predefined formats like time.RFC3339 that can save you some headaches!&lt;/p&gt;
-
-&lt;h2 id=&quot;wrapping-up-&quot;&gt;Wrapping Up 🎉&lt;/h2&gt;
-
-&lt;p&gt;Despite the initial learning curve, this project turned out to be a fun way to dabble with Go. The date parsing might seem unusual at first, but it’s just one of those Go quirks that makes the language unique.&lt;/p&gt;
-
-&lt;h2 id=&quot;links--resources-&quot;&gt;Links &amp;amp; Resources 📚&lt;/h2&gt;
-
-&lt;p&gt;Want to dive deeper into Go’s date formatting? Check out this super helpful cheat sheet: https://gosamples.dev/date-time-format-cheatsheet/&lt;/p&gt;
-
-&lt;p&gt;More on Stack Overflow: https://stackoverflow.com/a/20234207&lt;/p&gt;</content><author><name></name></author></entry></feed>
+&lt;p&gt;Super sweet! 🍬🦕&lt;/p&gt;</content><author><name></name></author></entry></feed>
