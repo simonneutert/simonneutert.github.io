@@ -23,8 +23,35 @@ For added convenience, you can set up a helpful alias in your shell environment 
 $ git log && git log --shortstat | rg "Author:" | bb -i -o '(map #(clojure.string/replace % #"Author: " "") (set *input*)))'
 ```
 
+## Explanation of the clojure code
 
-Running git log first ensures you avoid system errors when executing the command.
+
+Let's break down the babashka command `bb -i -o '(map #(clojure.string/replace % #"Author: " "") (set *input*)))'`:
+
+1. `bb` - This is the babashka CLI command
+2. `-i` - Flag that tells babashka to read from standard input
+3. `-o` - Flag that tells babashka to write to standard output
+4. The main expression consists of several nested operations:
+   - `(set *input*)` - Converts the input lines into a set, removing duplicates
+   - `(map ...)` - Applies a function to each element in the set
+   - The function `#(clojure.string/replace % #"Author: " "")` does the following:
+     - Uses `clojure.string/replace` to perform string replacement
+     - `%` is a placeholder for each input item
+     - `#"Author: "` is a regex pattern matching "Author: "
+     - `""` replaces the matched pattern with an empty string
+
+In plain English: This command reads lines from standard input, removes duplicates, and then removes the text "Author: " from the beginning of each remaining line.
+
+Example usage:
+```txt
+$ echo -e "Author: John\nAuthor: Jane\nAuthor: John" | bb -i -o '(map #(clojure.string/replace % #"Author: " "") (set *input*)))'
+# Output:
+# John
+# Jane
+
+## Wrapping the script up
+
+Running `git log` first ensures you avoid system errors when executing the command.
 
 To make sure you have the necessary tools, install them using Homebrew or Linuxbrew with the following command:
 
@@ -32,7 +59,7 @@ To make sure you have the necessary tools, install them using Homebrew or Linuxb
 $ brew install babashka ripgrep
 ```
 
-Want to learn more about the tools? Check out their official documentation:
+Find ways to install or simply want to learn more about the tools? Check out their official documentation:
 
 [babshka](https://babashka.org) \
 [ripgrep on Github](https://github.com/BurntSushi/ripgrep)
