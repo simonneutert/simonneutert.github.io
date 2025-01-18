@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Find your possible co-authors for your next commit using ripgrep and babashka | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.POPT2NFP.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.DZY5FQOF.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header>
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <!-- <li><a href="/telegram">On Telegram</a></li> -->
+    <!-- <li><a href="/about">About</a></li> -->
+    <li><a href="/posts">Blog</a></li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<h1>Find your possible co-authors for your next commit using ripgrep and babashka</h1>
+
+<p>When it comes to fairness, acknowledging the help or time your colleagues contribute is crucial. One simple way to ensure proper attribution is by adding co-authors to your commits.</p>
+
+<p>To add co-authors, include one or more <code class="highlighter-rouge">Co-authored-by</code> trailers at the end of your commit message, like this:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Commit message
+
+Co-authored-by: Joel Califa &lt;602352+califa@users.noreply.github.com&gt;
+Co-authored-by: Matt Clark &lt;44023+mclark@users.noreply.github.com&gt;
+</code></pre></div></div>
+
+<p>Make sure to include these trailers after at least one blank line at the end of your commit message.</p>
+
+<p>For added convenience, you can set up a helpful alias in your shell environment (e.g., .bash_aliases, .zsh_aliases, or similar). Here’s a quick example:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git log <span class="o">&amp;&amp;</span> git log <span class="nt">--shortstat</span> | rg <span class="s2">"Author:"</span> | bb <span class="nt">-i</span> <span class="nt">-o</span> <span class="s1">'(map #(clojure.string/replace % #"Author: " "") (set *input*)))'</span>
+</code></pre></div></div>
+
+<p>Running git log first ensures you avoid system errors when executing the command.</p>
+
+<p>To make sure you have the necessary tools, install them using Homebrew or Linuxbrew with the following command:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>brew <span class="nb">install </span>babashka ripgrep
+</code></pre></div></div>
+
+<p>Want to learn more about the tools? Check out their official documentation:</p>
+
+<p><a href="https://babashka.org">babshka</a> <br />
+<a href="https://github.com/BurntSushi/ripgrep">ripgrep on Github</a></p>
+
+
+<hr />
+
+
+<a href="/2025/recap/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>
