@@ -44,10 +44,10 @@ In plain English: This command reads lines from standard input, removes duplicat
 
 Example usage:
 ```txt
-$ echo -e "Author: John\nAuthor: Jane\nAuthor: John" | bb -i -o '(map #(clojure.string/replace % #"Author: " "") (set *input*)))'
+$ echo -e "Author: John\nAuthor: Jane\nAuthor: John" | bb -i -o '(map #(clojure.string/replace % #"Author: " "Co-authored-by: ") (set *input*)))'
 # Output:
-# John
-# Jane
+# Co-authored-by: John
+# Co-authored-by: Jane
 
 ## Wrapping the script up
 
