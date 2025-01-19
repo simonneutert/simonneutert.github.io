@@ -84,10 +84,10 @@ Co-authored-by: Matt Clark &lt;44023+mclark@users.noreply.github.com&gt;
 <p>In plain English: This command reads lines from standard input, removes duplicates, and then removes the text “Author: “ from the beginning of each remaining line.</p>
 
 <p>Example usage:</p>
-<pre><code class="language-txt">$ echo -e "Author: John\nAuthor: Jane\nAuthor: John" | bb -i -o '(map #(clojure.string/replace % #"Author: " "") (set *input*)))'
+<pre><code class="language-txt">$ echo -e "Author: John\nAuthor: Jane\nAuthor: John" | bb -i -o '(map #(clojure.string/replace % #"Author: " "Co-authored-by: ") (set *input*)))'
 # Output:
-# John
-# Jane
+# Co-authored-by: John
+# Co-authored-by: Jane
 
 ## Wrapping the script up
 
