@@ -20,13 +20,13 @@ Co-authored-by: Matt Clark <44023+mclark@users.noreply.github.com>
 For added convenience, you can set up a helpful alias in your shell environment (e.g., .bash_aliases, .zsh_aliases, or similar). Here’s a quick example:
 
 ```bash
-$ git log &> /dev/null && git log --shortstat | rg "Author:" | bb -i -o '(map #(clojure.string/replace % #"Author: " "") (set *input*))'
+$ git log &> /dev/null && git log --shortstat | rg "Author:" | bb -i -o '(map #(clojure.string/replace % #"Author: " "Co-authored-by: ") (set *input*))'
 ```
 
 ## Explanation of the clojure code
 
 
-Let's break down the babashka command `bb -i -o '(map #(clojure.string/replace % #"Author: " "") (set *input*))'`:
+Let's break down the babashka command `bb -i -o '(map #(clojure.string/replace % #"Author: " "Co-authored-by: ") (set *input*))'`:
 
 1. `bb` - This is the babashka CLI command
 2. `-i` - Flag that tells babashka to read from standard input
@@ -34,11 +34,11 @@ Let's break down the babashka command `bb -i -o '(map #(clojure.string/replace %
 4. The main expression consists of several nested operations:
    - `(set *input*)` - Converts the input lines into a set, removing duplicates
    - `(map ...)` - Applies a function to each element in the set
-   - The function `#(clojure.string/replace % #"Author: " "")` does the following:
+   - The function `#(clojure.string/replace % #"Author: " "Co-authored-by: ")` does the following:
      - Uses `clojure.string/replace` to perform string replacement
      - `%` is a placeholder for each input item
      - `#"Author: "` is a regex pattern matching "Author: "
-     - `""` replaces the matched pattern with an empty string
+     - `"Co-authored-by: "` replaces for the matched pattern
 
 In plain English: This command reads lines from standard input, removes duplicates, and then removes the text "Author: " from the beginning of each remaining line.
 
