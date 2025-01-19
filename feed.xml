@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.3.4">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-01-19T21:04:23+01:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Find your possible co-authors for your next commit using ripgrep and babashka</title><link href="/2025/git-co-authoring/" rel="alternate" type="text/html" title="Find your possible co-authors for your next commit using ripgrep and babashka" /><published>2025-01-18T00:00:00+01:00</published><updated>2025-01-18T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2025-01-18-git-co-authoring.md</id><content type="html" xml:base="/2025/git-co-authoring/">&lt;p&gt;When it comes to fairness, acknowledging the help or time your colleagues contribute is crucial. One simple way to ensure proper attribution is by adding co-authors to your commits.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.3.4">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-01-19T21:05:34+01:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Find your possible co-authors for your next commit using ripgrep and babashka</title><link href="/2025/git-co-authoring/" rel="alternate" type="text/html" title="Find your possible co-authors for your next commit using ripgrep and babashka" /><published>2025-01-18T00:00:00+01:00</published><updated>2025-01-18T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2025-01-18-git-co-authoring.md</id><content type="html" xml:base="/2025/git-co-authoring/">&lt;p&gt;When it comes to fairness, acknowledging the help or time your colleagues contribute is crucial. One simple way to ensure proper attribution is by adding co-authors to your commits.&lt;/p&gt;
 
 &lt;p&gt;To add co-authors, include one or more &lt;code class=&quot;highlighter-rouge&quot;&gt;Co-authored-by&lt;/code&gt; trailers at the end of your commit message, like this:&lt;/p&gt;
 
@@ -49,20 +49,24 @@ Co-authored-by: Matt Clark &amp;lt;44023+mclark@users.noreply.github.com&amp;gt;
 &lt;p&gt;In plain English: This command reads lines from standard input, removes duplicates, and then removes the text “Author: “ from the beginning of each remaining line.&lt;/p&gt;
 
 &lt;p&gt;Example usage:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-txt&quot;&gt;$ echo -e &quot;Author: John\nAuthor: Jane\nAuthor: John&quot; | bb -i -o &apos;(map #(clojure.string/replace % #&quot;Author: &quot; &quot;Co-authored-by: &quot;) (set *input*)))&apos;
-# Output:
-# Co-authored-by: John
-# Co-authored-by: Jane
 
-## Wrapping the script up
+&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ echo -e &quot;Author: John\nAuthor: Jane\nAuthor: John&quot; | bb -i -o &apos;(map #(clojure.string/replace % #&quot;Author: &quot; &quot;Co-authored-by: &quot;) (set *input*)))&apos;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-Running `git log &amp;amp;&amp;gt; /dev/null` first ensures you avoid system errors when executing the command.
+&lt;p&gt;Output:&lt;/p&gt;
 
-To make sure you have the necessary tools, install them using Homebrew or Linuxbrew with the following command:
+&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Co-authored-by: John
+Co-authored-by: Jane
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-```bash
-$ brew install babashka ripgrep
-&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&quot;wrapping-the-script-up&quot;&gt;Wrapping the script up&lt;/h2&gt;
+
+&lt;p&gt;Running &lt;code class=&quot;highlighter-rouge&quot;&gt;git log &amp;amp;&amp;gt; /dev/null&lt;/code&gt; first ensures you avoid system errors when executing the command.&lt;/p&gt;
+
+&lt;p&gt;To make sure you have the necessary tools, install them using Homebrew or Linuxbrew with the following command:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;babashka ripgrep
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Happy Pair-Programming!&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">2024 - Code Recap</title><link href="/2025/recap/" rel="alternate" type="text/html" title="2024 - Code Recap" /><published>2025-01-01T00:00:00+01:00</published><updated>2025-01-01T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2025-01-01-recap.md</id><content type="html" xml:base="/2025/recap/">&lt;p&gt;2024 had its ups and downs. I’ve been working on a lot of different projects, some of them are public, some of them are private. I’ve learned a lot about different technologies and programming languages. I’ve been experimenting with different runtimes and I’ve been contributing to open source projects.&lt;/p&gt;
 

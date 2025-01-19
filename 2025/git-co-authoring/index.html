@@ -91,20 +91,24 @@ Co-authored-by: Matt Clark &lt;44023+mclark@users.noreply.github.com&gt;
 <p>In plain English: This command reads lines from standard input, removes duplicates, and then removes the text “Author: “ from the beginning of each remaining line.</p>
 
 <p>Example usage:</p>
-<pre><code class="language-txt">$ echo -e "Author: John\nAuthor: Jane\nAuthor: John" | bb -i -o '(map #(clojure.string/replace % #"Author: " "Co-authored-by: ") (set *input*)))'
-# Output:
-# Co-authored-by: John
-# Co-authored-by: Jane
 
-## Wrapping the script up
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ echo -e "Author: John\nAuthor: Jane\nAuthor: John" | bb -i -o '(map #(clojure.string/replace % #"Author: " "Co-authored-by: ") (set *input*)))'
+</code></pre></div></div>
 
-Running `git log &amp;&gt; /dev/null` first ensures you avoid system errors when executing the command.
+<p>Output:</p>
 
-To make sure you have the necessary tools, install them using Homebrew or Linuxbrew with the following command:
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Co-authored-by: John
+Co-authored-by: Jane
+</code></pre></div></div>
 
-```bash
-$ brew install babashka ripgrep
-</code></pre>
+<h2 id="wrapping-the-script-up">Wrapping the script up</h2>
+
+<p>Running <code class="highlighter-rouge">git log &amp;&gt; /dev/null</code> first ensures you avoid system errors when executing the command.</p>
+
+<p>To make sure you have the necessary tools, install them using Homebrew or Linuxbrew with the following command:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>brew <span class="nb">install </span>babashka ripgrep
+</code></pre></div></div>
 
 <p>Happy Pair-Programming!</p>
 
