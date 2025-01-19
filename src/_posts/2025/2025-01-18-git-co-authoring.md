@@ -51,7 +51,7 @@ In plain English: This command reads lines from standard input, removes duplicat
 
 Example usage:
 
-```text
+```bash
 $ echo -e "Author: John\nAuthor: Jane\nAuthor: John" | bb -i -o '(map #(clojure.string/replace % #"Author: " "Co-authored-by: ") (set *input*)))'
 ```
   
