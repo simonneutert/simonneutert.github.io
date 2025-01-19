@@ -15,13 +15,20 @@ Co-authored-by: Joel Califa <602352+califa@users.noreply.github.com>
 Co-authored-by: Matt Clark <44023+mclark@users.noreply.github.com>
 ```
 
- Make sure to include these trailers after at least one blank line at the end of your commit message.
+Make sure to include these trailers after at least one blank line at the end of your commit message.
 
 For added convenience, you can set up a helpful alias in your shell environment (e.g., .bash_aliases, .zsh_aliases, or similar). Here’s a quick example:
 
 ```bash
 $ git log &> /dev/null && git log --shortstat | rg "Author:" | bb -i -o '(map #(clojure.string/replace % #"Author: " "Co-authored-by: ") (set *input*))'
 ```
+
+## Requirements
+
+Here are the two tools you need to have installed, check out their official documentation:
+
+[babshka](https://babashka.org) \
+[ripgrep on Github](https://github.com/BurntSushi/ripgrep)
 
 ## Explanation of the clojure code
 
@@ -59,7 +66,4 @@ To make sure you have the necessary tools, install them using Homebrew or Linuxb
 $ brew install babashka ripgrep
 ```
 
-Find ways to install or simply want to learn more about the tools? Check out their official documentation:
-
-[babshka](https://babashka.org) \
-[ripgrep on Github](https://github.com/BurntSushi/ripgrep)
+Happy Pair-Programming!
