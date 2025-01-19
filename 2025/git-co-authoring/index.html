@@ -92,7 +92,7 @@ Co-authored-by: Matt Clark &lt;44023+mclark@users.noreply.github.com&gt;
 
 <p>Example usage:</p>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ echo -e "Author: John\nAuthor: Jane\nAuthor: John" | bb -i -o '(map #(clojure.string/replace % #"Author: " "Co-authored-by: ") (set *input*)))'
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">echo</span> <span class="nt">-e</span> <span class="s2">"Author: John</span><span class="se">\n</span><span class="s2">Author: Jane</span><span class="se">\n</span><span class="s2">Author: John"</span> | bb <span class="nt">-i</span> <span class="nt">-o</span> <span class="s1">'(map #(clojure.string/replace % #"Author: " "Co-authored-by: ") (set *input*)))'</span>
 </code></pre></div></div>
 
 <p>Output:</p>
