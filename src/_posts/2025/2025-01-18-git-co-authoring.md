@@ -50,11 +50,17 @@ Let's break down the babashka command `bb -i -o '(map #(clojure.string/replace %
 In plain English: This command reads lines from standard input, removes duplicates, and then removes the text "Author: " from the beginning of each remaining line.
 
 Example usage:
-```txt
+
+```text
 $ echo -e "Author: John\nAuthor: Jane\nAuthor: John" | bb -i -o '(map #(clojure.string/replace % #"Author: " "Co-authored-by: ") (set *input*)))'
-# Output:
-# Co-authored-by: John
-# Co-authored-by: Jane
+```
+  
+Output:
+
+```text
+Co-authored-by: John
+Co-authored-by: Jane
+````
 
 ## Wrapping the script up
 
