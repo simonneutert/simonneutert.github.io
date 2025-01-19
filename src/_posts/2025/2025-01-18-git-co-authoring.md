@@ -20,13 +20,13 @@ Co-authored-by: Matt Clark <44023+mclark@users.noreply.github.com>
 For added convenience, you can set up a helpful alias in your shell environment (e.g., .bash_aliases, .zsh_aliases, or similar). Here’s a quick example:
 
 ```bash
-$ git log && git log --shortstat | rg "Author:" | bb -i -o '(map #(clojure.string/replace % #"Author: " "") (set *input*)))'
+$ git log &> /dev/null && git log --shortstat | rg "Author:" | bb -i -o '(map #(clojure.string/replace % #"Author: " "") (set *input*))'
 ```
 
 ## Explanation of the clojure code
 
 
-Let's break down the babashka command `bb -i -o '(map #(clojure.string/replace % #"Author: " "") (set *input*)))'`:
+Let's break down the babashka command `bb -i -o '(map #(clojure.string/replace % #"Author: " "") (set *input*))'`:
 
 1. `bb` - This is the babashka CLI command
 2. `-i` - Flag that tells babashka to read from standard input
@@ -51,7 +51,7 @@ $ echo -e "Author: John\nAuthor: Jane\nAuthor: John" | bb -i -o '(map #(clojure.
 
 ## Wrapping the script up
 
-Running `git log` first ensures you avoid system errors when executing the command.
+Running `git log &> /dev/null` first ensures you avoid system errors when executing the command.
 
 To make sure you have the necessary tools, install them using Homebrew or Linuxbrew with the following command:
 
