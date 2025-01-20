@@ -69,7 +69,7 @@ Running `git log &> /dev/null` first ensures you avoid system errors when execut
 To make sure you have the necessary tools, install them using Homebrew or Linuxbrew with the following command:
 
 ```bash
-$ brew install babashka ripgrep
+$ brew install borkdude/brew/babashka ripgrep
 ```
 
 Happy Pair-Programming!
