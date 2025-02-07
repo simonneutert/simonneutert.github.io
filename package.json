@@ -7,9 +7,9 @@
     "esbuild-dev": "node esbuild.config.js --watch"
   },
   "devDependencies": {
-    "esbuild": "^0.19.10",
-    "glob": "^11.0.0",
-    "postcss": "^8.4.32",
+    "esbuild": "^0.24.2",
+    "glob": "^11.0.1",
+    "postcss": "^8.5.1",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-import": "^15.1.0",
     "postcss-load-config": "^5.0.2",
