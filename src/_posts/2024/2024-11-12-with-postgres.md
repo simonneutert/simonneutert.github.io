@@ -1,5 +1,5 @@
 ---
-title: "Today I learned about postgres with clause"
+title: "Today I learned about postgres' `with` clause"
 layout: post
 ---
 
