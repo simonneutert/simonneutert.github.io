@@ -17,6 +17,7 @@ updates:
       timezone: "Europe/Berlin"
     assignees:
       - "simonneutert"
+
   - package-ecosystem: "npm" # See documentation for possible values
     directory: "/" # Location of package manifests
     groups:
