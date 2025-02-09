@@ -43,7 +43,7 @@
 <p>Before anything else, you need to edit the rights, do this as your sudo/admin
 user:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span><span class="nv">EDITOR</span><span class="o">=</span>vim visudo
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span><span class="nv">EDITOR</span><span class="o">=</span>vim visudo
 </code></pre></div></div>
 
 <p>Adapt the line to your needs, first is the user, you want to give the
@@ -57,7 +57,7 @@ deployuser ALL=(ALL) NOPASSWD: /bin/systemctl restart myapponsystemd.service
 
 <p>Then log into your VPS/Server as your deployuser and try the restart.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>systemctl restart myapponsystemd.service
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>systemctl restart myapponsystemd.service
 </code></pre></div></div>
 
 <p>Source on YouTube <a href="https://www.youtube.com/watch?v=DmbBgXK8M5M">@Dreams of Code</a></p>
