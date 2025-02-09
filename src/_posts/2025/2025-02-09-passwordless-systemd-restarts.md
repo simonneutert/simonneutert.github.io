@@ -7,7 +7,7 @@ Before anything else, you need to edit the rights, do this as your sudo/admin
 user:
 
 ```bash
-sudo EDITOR=vim visudo
+$ sudo EDITOR=vim visudo
 ```
 
 Adapt the line to your needs, first is the user, you want to give the
@@ -23,7 +23,7 @@ deployuser ALL=(ALL) NOPASSWD: /bin/systemctl restart myapponsystemd.service
 Then log into your VPS/Server as your deployuser and try the restart.
 
 ```bash
-sudo systemctl restart myapponsystemd.service
+$ sudo systemctl restart myapponsystemd.service
 ```
 
 Source on YouTube [@Dreams of Code](https://www.youtube.com/watch?v=DmbBgXK8M5M)
