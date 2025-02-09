@@ -1,4 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.3.4">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-02-07T23:03:44+01:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Find your possible co-authors for your next commit using ripgrep and babashka</title><link href="/2025/git-co-authoring/" rel="alternate" type="text/html" title="Find your possible co-authors for your next commit using ripgrep and babashka" /><published>2025-01-18T00:00:00+01:00</published><updated>2025-01-18T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2025-01-18-git-co-authoring.md</id><content type="html" xml:base="/2025/git-co-authoring/">&lt;p&gt;When it comes to fairness, acknowledging the help or time your colleagues
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.3.4">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-02-09T17:48:03+01:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Passwordless restart of systemd services</title><link href="/2025/passwordless-systemd-restarts/" rel="alternate" type="text/html" title="Passwordless restart of systemd services" /><published>2025-02-09T00:00:00+01:00</published><updated>2025-02-09T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2025-02-09-passwordless-systemd-restarts.md</id><content type="html" xml:base="/2025/passwordless-systemd-restarts/">&lt;p&gt;Before anything else, you need to edit the rights, do this as your sudo/admin
+user:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;EDITOR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;vim visudo
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Adapt the line to your needs, first is the user, you want to give the
+passwordless permission to restart the service, last entry of the line is the
+name of the service.&lt;/p&gt;
+
+&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# allow deployuser to restart the web services without needing a password
+deployuser ALL=(ALL) NOPASSWD: /bin/systemctl restart myapponsystemd-worker.service
+deployuser ALL=(ALL) NOPASSWD: /bin/systemctl restart myapponsystemd.service
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then log into your VPS/Server as your deployuser and try the restart.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl restart myapponsystemd.service
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Source on YouTube &lt;a href=&quot;https://www.youtube.com/watch?v=DmbBgXK8M5M&quot;&gt;@Dreams of Code&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Find your possible co-authors for your next commit using ripgrep and babashka</title><link href="/2025/git-co-authoring/" rel="alternate" type="text/html" title="Find your possible co-authors for your next commit using ripgrep and babashka" /><published>2025-01-18T00:00:00+01:00</published><updated>2025-01-18T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2025-01-18-git-co-authoring.md</id><content type="html" xml:base="/2025/git-co-authoring/">&lt;p&gt;When it comes to fairness, acknowledging the help or time your colleagues
 contribute is crucial. One simple way to ensure proper attribution is by adding
 co-authors to your commits.&lt;/p&gt;
 
@@ -846,77 +866,4 @@ can do the following:
 
 &lt;h2 id=&quot;side-note&quot;&gt;Side Note&lt;/h2&gt;
 
-&lt;p&gt;If you were using &lt;code class=&quot;highlighter-rouge&quot;&gt;use_cursor&lt;/code&gt; in your project, make sure to benchmark it against the streaming feature. It can be faster than using a cursor (in a rare circumstance). In my case, streaming was the clear winner.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">NoBuild Javascript for a Deno on Roda experiment</title><link href="/2024/deno-v2/" rel="alternate" type="text/html" title="NoBuild Javascript for a Deno on Roda experiment" /><published>2024-10-18T00:00:00+02:00</published><updated>2024-10-18T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2024/2024-10-18-deno-v2.md</id><content type="html" xml:base="/2024/deno-v2/">&lt;p&gt;Deno has my interest. 🦕🛼&lt;/p&gt;
-
-&lt;p&gt;I fiddled with bun, too, but the feel was a bit different.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ deno compile&lt;/code&gt; - what’s not to love?&lt;/p&gt;
-
-&lt;p&gt;Since the release of Deno v2, I can’t help but think: Can’t I use Deno’s tools in some helpful ways?&lt;/p&gt;
-
-&lt;p&gt;Following my GitHub you could see, that I enjoy working with &lt;a href=&quot;https://roda.jeremyevans.net/&quot;&gt;Roda&lt;/a&gt;. My current undercover side project became one of the biggest codebases, I’ve ever written for myself. And JS is lacking tests. 🤙 #yolo #e2elifeguard&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://roda.jeremyevans.net/&quot;&gt;Roda&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://rodauth.jeremyevans.net/&quot;&gt;Rodauth&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Vanilla JS&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://htmx.org/&quot;&gt;HTMX&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;MapboxJS&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;What parts of Deno could be useful in this context? &lt;br /&gt;
-The pieces that somehow spoke to me were:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;deno fmt&lt;/li&gt;
-  &lt;li&gt;deno lint&lt;/li&gt;
-  &lt;li&gt;deno test&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Could Deno remove the need for setting up and keeping up to date with eslint and prettier? &lt;br /&gt;
-Maybe I wouldn’t have to setup and maintain jest or mocha even.&lt;/p&gt;
-
-&lt;h2 id=&quot;path-to-nobuild&quot;&gt;Path to NoBuild&lt;/h2&gt;
-
-&lt;p&gt;Linting and formatting is straightforward. I’ve added a &lt;code class=&quot;highlighter-rouge&quot;&gt;deno fmt&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;deno lint&lt;/code&gt; to my justfile.&lt;/p&gt;
-
-&lt;div class=&quot;language-make highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nl&quot;&gt;test-js&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;err&quot;&gt;deno&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;test&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;spec_js&lt;/span&gt;
-
-&lt;span class=&quot;nl&quot;&gt;test-js-watch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
-	deno &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--watch&lt;/span&gt; spec_js
-
-&lt;span class=&quot;nl&quot;&gt;lint-js&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
-	deno lint public/js
-	deno lint &lt;span class=&quot;nt&quot;&gt;--rules-exclude&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;no-window,no-window-prefix,no-global-assign assets/js
-
-&lt;span class=&quot;nl&quot;&gt;test-js&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
-	deno &lt;span class=&quot;nb&quot;&gt;test &lt;/span&gt;spec_js/&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;test.&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;js,ts,jsx,tsx&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This rules-excude will prevent Deno from complaining about global variables like &lt;code class=&quot;highlighter-rouge&quot;&gt;window&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;document&lt;/code&gt;. This needs to be good enough for now.&lt;/p&gt;
-
-&lt;p&gt;Roda already ships with an asset bundling plugin. It’s a simple plugin that takes all your assets and bundles them into a single file. Yet some parts of the Javascript parts are becoming more business logic heavy and will benefit from unit testing. Here’s how Deno steps in.&lt;/p&gt;
-
-&lt;p&gt;I’ve created a &lt;code class=&quot;highlighter-rouge&quot;&gt;spec_js&lt;/code&gt; folder in the root of my project. This is where I’ll put all my JS tests.&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;assertEquals&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;jsr:@std/assert&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Elvis&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;../public/js/rock-and-roll-superstar.js&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;Deno&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;assert Elvis is in the house&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;elvis&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Elvis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-  &lt;span class=&quot;nf&quot;&gt;assertEquals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;elvis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;pelvis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Elvis is in the house!&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;I know this is a bit unusual. &lt;br /&gt;
-But so is using Roda. &lt;br /&gt;
-Deno v2 won’t change its APIs for quite some time (🤞). And if it will … I mean it’ll break just the tests… right?&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Rewriting the js test suite is easy. &lt;br /&gt;
-It’s a system rewrite that fails. &lt;br /&gt;
-And why haven’t you used Rust in the first place?&lt;/p&gt;
-
-  &lt;p&gt;- Charles Ponzi&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name></name></author></entry></feed>
+&lt;p&gt;If you were using &lt;code class=&quot;highlighter-rouge&quot;&gt;use_cursor&lt;/code&gt; in your project, make sure to benchmark it against the streaming feature. It can be faster than using a cursor (in a rare circumstance). In my case, streaming was the clear winner.&lt;/p&gt;</content><author><name></name></author></entry></feed>
