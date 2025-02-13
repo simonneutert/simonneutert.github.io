@@ -48,7 +48,7 @@ The cash register is a simple machine that can handle the following operations:
 - It's not meant to be used by a customer to pay for their groceries.
 - It's not meant to be used by a manager to get reports on the sales of the day.
 
-## It's Architecture? A Micro-Monolith!
+## Its Architecture? A Micro-Monolith!
 
 I've been using the term "micro-monolith" for a while now. I'm not sure if it's a thing, but I like it. It's a monolith, but it's a small one. It's a monolith that can easily serve as a base of something bigger oder act as a standalone system. Being a micro-monolith it cannot be split into smaller parts. It's a monolith, but it's a small one.
 
