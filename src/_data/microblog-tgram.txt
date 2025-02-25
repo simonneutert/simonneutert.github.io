@@ -253,3 +253,4 @@ link_collection:
   - https://deno.com/blog/v2.2
   - https://docs.projectdiscovery.io/home
   - https://github.com/citusdata/pg_cron
+  - https://github.com/filipesilva/datomic-pro-sqlite
