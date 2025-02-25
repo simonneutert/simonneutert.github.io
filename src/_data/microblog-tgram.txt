@@ -252,3 +252,4 @@ link_collection:
   - https://youtu.be/qnlkr3mCqW8
   - https://deno.com/blog/v2.2
   - https://docs.projectdiscovery.io/home
+  - https://github.com/citusdata/pg_cron
