@@ -255,3 +255,4 @@ link_collection:
   - https://github.com/citusdata/pg_cron
   - https://github.com/filipesilva/datomic-pro-sqlite
   - https://github.com/renanlecaro/nanosheets
+  - https://github.com/eKoopmans/html2pdf.js
