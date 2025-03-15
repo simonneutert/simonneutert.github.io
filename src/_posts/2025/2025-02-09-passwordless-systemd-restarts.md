@@ -20,7 +20,7 @@ deployuser ALL=(ALL) NOPASSWD: /bin/systemctl restart myapponsystemd-worker.serv
 deployuser ALL=(ALL) NOPASSWD: /bin/systemctl restart myapponsystemd.service
 ```
 
-Then log into your VPS/Server as your deployuser and try the restart.
+Then log into your VPS/Server as your deployuser and restart your app 🚀
 
 ```bash
 $ sudo systemctl restart myapponsystemd.service
