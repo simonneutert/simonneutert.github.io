@@ -259,3 +259,4 @@ link_collection:
   - https://github.com/kern/filepizza
   - https://github.com/sinclairtarget/git-who
   - https://mccue.dev/pages/3-11-25-life-altering-postgresql-patterns
+  - https://github.com/puffinsoft/jscanify
