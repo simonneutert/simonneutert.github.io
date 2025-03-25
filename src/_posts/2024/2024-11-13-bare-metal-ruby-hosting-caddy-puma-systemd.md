@@ -56,7 +56,7 @@ Security best practice: Always use SSH keys instead of password authentication.
 Fail2ban requires a simple setup step on Debian:
 
 ```bash
-$ sudo touch /var/log/auth.log`
+$ sudo touch /var/log/auth.log
 ```
 
 ### 3. UFW
