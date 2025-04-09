@@ -261,3 +261,4 @@ link_collection:
   - https://github.com/sinclairtarget/git-who
   - https://mccue.dev/pages/3-11-25-life-altering-postgresql-patterns
   - https://www.pgrs.net/2025/03/24/pgledger-ledger-implementation-in-postgresql/
+  - https://github.com/formbricks/formbricks
