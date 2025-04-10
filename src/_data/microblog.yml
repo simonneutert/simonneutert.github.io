@@ -278,3 +278,7 @@
   content: "pgLedger: Ledger implementation in PostgreSQL"
 - url: https://github.com/formbricks/formbricks
   content: Open Source Survey Platform
+- url: https://github.com/langgenius/dify
+  content: |
+    Dify is an open-source LLM app development platform. 
+    Dify's intuitive interface combines AI workflow, RAG pipeline, agent capabilities, model management, observability features and more, letting you quickly go from prototype to production.
