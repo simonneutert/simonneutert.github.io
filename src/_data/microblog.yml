@@ -282,3 +282,5 @@
   content: |
     Dify is an open-source LLM app development platform. 
     Dify's intuitive interface combines AI workflow, RAG pipeline, agent capabilities, model management, observability features and more, letting you quickly go from prototype to production.
+- url: https://github.com/Freika/dawarich
+  content: Visualize your location history, track your movements, and analyze your travel patterns with complete privacy and control.
