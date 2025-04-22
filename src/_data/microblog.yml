@@ -286,3 +286,5 @@
   content: Visualize your location history, track your movements, and analyze your travel patterns with complete privacy and control.
 - url: https://github.com/bobschrag/clolog
   content: Full-featured logic programming (AKA "Prolog") embedded in/callable from and supporting calls to Clojure. In the spirit of LogLisp, Lisp Machine Prolog, and Franz Inc.'s Allegro Prolog, with some extra goodies.
+- url: https://www.youtube.com/watch?v=EpUfIrQBJ9E
+  content: Single-file executable Node project
