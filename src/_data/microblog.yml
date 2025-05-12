@@ -292,3 +292,5 @@
   content: Detect if a device is mouseOnly, touchOnly, or hybrid, and if the primary input is mouse or touch.
 - url: https://blog.headius.com/2025/04/beautiful-charts-with-jruby-and-jfreechart.html
   content: Creating Beautiful Charts with JRuby and JFreeChart
+- url: https://steveklabnik.github.io/jujutsu-tutorial/introduction/introduction.html
+  content: Steve's guide to JJ
