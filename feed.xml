@@ -1,4 +1,29 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.3.4">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-07-02T17:17:52+02:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Passwordless restart of systemd services</title><link href="/2025/passwordless-systemd-restarts/" rel="alternate" type="text/html" title="Passwordless restart of systemd services" /><published>2025-02-09T00:00:00+01:00</published><updated>2025-02-09T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2025-02-09-passwordless-systemd-restarts.md</id><content type="html" xml:base="/2025/passwordless-systemd-restarts/">&lt;p&gt;Before anything else, you need to edit the rights, do this as your sudo/admin
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.3.4">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-07-02T17:26:46+02:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">The Ten Commandments of Egoless Programming</title><link href="/2025/senior-engineers/" rel="alternate" type="text/html" title="The Ten Commandments of Egoless Programming" /><published>2025-07-02T00:00:00+02:00</published><updated>2025-07-02T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2025/2025-07-02-senior-engineers.md</id><content type="html" xml:base="/2025/senior-engineers/">&lt;p&gt;The following is a copy of &lt;a href=&quot;https://www.kitchensoap.com/2012/10/25/on-being-a-senior-engineer/&quot;&gt;On Being A Senior Engineer&lt;/a&gt; by John Allspaw aka KitchenSoap&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Appropriate, even if old…&lt;br /&gt;
+I’ve seen it referenced as coming from &lt;a href=&quot;http://www.amazon.com/exec/obidos/ASIN/0932633420&quot;&gt;The Psychology of Computer Programming&lt;/a&gt;, written in 1971, but I don’t actually see it in the text. Regardless, here are The Ten Commandments of Egoless Programming, found on &lt;a href=&quot;https://twitter.com/wyattdanger&quot;&gt;@wyattdanger&lt;/a&gt;‘s blog &lt;a href=&quot;http://blog.stephenwyattbush.com/2012/04/07/dad-and-the-ten-commandments-of-egoless-programming&quot;&gt;post&lt;/a&gt; on receiving advice from his dad:&lt;/p&gt;
+
+  &lt;p&gt;&lt;strong&gt;1. Understand and accept that you will make mistakes.&lt;/strong&gt; The point is to find them early before they make it into production. Fortunately, except for the few of us developing rocket guidance software at JPL, mistakes are rarely fatal in our industry. We can, and should, learn, laugh, and move on.&lt;/p&gt;
+
+  &lt;p&gt;&lt;strong&gt;2. You are not your code.&lt;/strong&gt; Remember that the entire point of a review is to find problems, and problems will be found. Don’t take it personally when one is uncovered. (Allspaw note – related: see below, number #10, and the points Theo made above.)&lt;/p&gt;
+
+  &lt;p&gt;&lt;strong&gt;3. No matter how much “karate” you know, someone else will always know more.&lt;/strong&gt; Such an individual can teach you some new moves if you ask. Seek and accept input from others, especially when you think it’s not needed.&lt;/p&gt;
+
+  &lt;p&gt;&lt;strong&gt;4. Don’t rewrite code without consultation.&lt;/strong&gt; There’s a fine line between “fixing code” and “rewriting code.” Know the difference, and pursue stylistic changes within the framework of a code review, not as a lone enforcer.&lt;/p&gt;
+
+  &lt;p&gt;&lt;strong&gt;5. Treat people who know less than you with respect, deference, and patience.&lt;/strong&gt; Non-technical people who deal with developers on a regular basis almost universally hold the opinion that we are prima donnas at best and crybabies at worst. Don’t reinforce this stereotype with anger and impatience.&lt;/p&gt;
+
+  &lt;p&gt;&lt;strong&gt;6. The only constant in the world is change.&lt;/strong&gt; Be open to it and accept it with a smile. Look at each change to your requirements, platform, or tool as a new challenge, rather than some serious inconvenience to be fought.&lt;/p&gt;
+
+  &lt;p&gt;&lt;strong&gt;7. The only true authority stems from knowledge, not from position.&lt;/strong&gt; Knowledge engenders authority, and authority engenders respect — so if you want respect in an egoless environment, cultivate knowledge.&lt;/p&gt;
+
+  &lt;p&gt;&lt;strong&gt;8. Fight for what you believe, but gracefully accept defeat.&lt;/strong&gt; Understand that sometimes your ideas will be overruled. Even if you are right, don’t take revenge or say “I told you so.” Never make your dearly departed idea a martyr or rallying cry.&lt;/p&gt;
+
+  &lt;p&gt;&lt;strong&gt;9. Don’t be &quot;the coder in the corner.&quot;&lt;/strong&gt; Don’t be the person in the dark office emerging only for soda. The coder in the corner is out of sight, out of touch, and out of control. This person has no voice in an open, collaborative environment. Get involved in conversations, and be a participant in your office community.&lt;/p&gt;
+
+  &lt;p&gt;&lt;strong&gt;10. Critique code instead of people — be kind to the coder, not to the code.&lt;/strong&gt; As much as possible, make all of your comments positive and oriented to improving the code. Relate comments to local standards, program specs, increased performance, etc.&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name></name></author></entry><entry><title type="html">Passwordless restart of systemd services</title><link href="/2025/passwordless-systemd-restarts/" rel="alternate" type="text/html" title="Passwordless restart of systemd services" /><published>2025-02-09T00:00:00+01:00</published><updated>2025-02-09T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2025-02-09-passwordless-systemd-restarts.md</id><content type="html" xml:base="/2025/passwordless-systemd-restarts/">&lt;p&gt;Before anything else, you need to edit the rights, do this as your sudo/admin
 user:&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;EDITOR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;vim visudo
@@ -813,57 +838,4 @@ Store processes as recipes and never forget a question again.&lt;/p&gt;
 
 &lt;h2 id=&quot;source-code-on-github&quot;&gt;Source Code on GitHub&lt;/h2&gt;
 
-&lt;p&gt;The source code is available on GitHub: &lt;a href=&quot;https://github.com/simonneutert/wilson&quot;&gt;wilson&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Stream Database Rows with sequel_pg</title><link href="/2024/stream-db-rows/" rel="alternate" type="text/html" title="Stream Database Rows with sequel_pg" /><published>2024-10-26T00:00:00+02:00</published><updated>2024-10-26T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2024/2024-10-26-stream-db-rows.md</id><content type="html" xml:base="/2024/stream-db-rows/">&lt;p&gt;Reading the docs (thoroughly, maybe twice) can be a good thing.&lt;/p&gt;
-
-&lt;p&gt;As the haiku goes:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Pages filled with light,&lt;br /&gt;
-Guiding hands through code’s maze,&lt;br /&gt;
-Errors fade away.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;til&quot;&gt;TIL&lt;/h2&gt;
-
-&lt;p&gt;I’ve been using Sequel for a while now. But up until today, I didn’t know that I could stream database rows with &lt;code class=&quot;highlighter-rouge&quot;&gt;sequel_pg&lt;/code&gt;. This will reduce memory usage when working with large datasets and if I understand correctly, it will also speed up the processing of the data.&lt;/p&gt;
-
-&lt;p&gt;If your database is postgres, &lt;a href=&quot;https://github.com/jeremyevans/sequel_pg&quot;&gt;sequel_pg&lt;/a&gt; should be already your go-to gem.&lt;br /&gt;
-Yet, you might not know that you can stream database rows with it.&lt;/p&gt;
-
-&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;== Streaming
-
-If you are using PostgreSQL 9.2+ on the client, then sequel_pg
-should enable streaming support.  This allows you to stream returned
-rows one at a time, instead of collecting the entire result set in
-memory (which is how PostgreSQL works by default).  You can check
-if streaming is supported by:
-
-  Sequel::Postgres.supports_streaming?
-
-If streaming is supported, you can load the streaming support into the
-database:
-
-  DB.extension(:pg_streaming)
-
-Then you can call the Dataset#stream method to have the dataset use
-the streaming support:
-
-  DB[:table].stream.each{|row| ...}
-
-If you want to enable streaming for all of a database&apos;s datasets, you
-can do the following:
-
-  DB.stream_all_queries = true
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;In my project, I set up the streaming like this (the most basic way, I guess):&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;DB&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;extension&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:pg_streaming&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;no&quot;&gt;DB&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;stream_all_queries&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;And voilà, free speed and memory savings. 🚀&lt;/p&gt;
-
-&lt;h2 id=&quot;side-note&quot;&gt;Side Note&lt;/h2&gt;
-
-&lt;p&gt;If you were using &lt;code class=&quot;highlighter-rouge&quot;&gt;use_cursor&lt;/code&gt; in your project, make sure to benchmark it against the streaming feature. It can be faster than using a cursor (in a rare circumstance). In my case, streaming was the clear winner.&lt;/p&gt;</content><author><name></name></author></entry></feed>
+&lt;p&gt;The source code is available on GitHub: &lt;a href=&quot;https://github.com/simonneutert/wilson&quot;&gt;wilson&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author></entry></feed>
