@@ -303,3 +303,7 @@
     Vibe Coding Isn’t Just a Vibe
 - url: https://github.com/babashka/babashka/wiki/Bash-and-Babashka-equivalents#run-local-script-on-remote-server-bb-installed
   content: "This page translates common operations in bash with the equivalent in babashka. Examples below use shell which executes a subprocess synchronously. shell is available as a top-level fn for tasks. For bb scripts, refer it in with (require '[babashka.process :refer [shell]])."
+- url: https://paolino.me/async-ruby-is-the-future/
+  content: Async Ruby is the future of AI apps
+
+
