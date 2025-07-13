@@ -305,5 +305,6 @@
   content: "This page translates common operations in bash with the equivalent in babashka. Examples below use shell which executes a subprocess synchronously. shell is available as a top-level fn for tasks. For bb scripts, refer it in with (require '[babashka.process :refer [shell]])."
 - url: https://paolino.me/async-ruby-is-the-future/
   content: Async Ruby is the future of AI apps
-
+- url: https://deno.com/blog/v2.4#deno-bundle
+  content: Deno 2.4 is making the DenoVerse even better!
 
