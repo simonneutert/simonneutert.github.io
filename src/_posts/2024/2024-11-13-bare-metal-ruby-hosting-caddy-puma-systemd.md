@@ -1,5 +1,5 @@
 ---
-title: "Hosting a Ruby/Roda app on bare metal with Caddy, Puma and systemd"
+title: "Hosting a Ruby/Roda app on bare metal with Caddy, Puma and systemd (VPS setup)"
 layout: post
 ---
 
