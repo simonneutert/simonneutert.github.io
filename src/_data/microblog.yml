@@ -307,4 +307,5 @@
   content: Async Ruby is the future of AI apps
 - url: https://deno.com/blog/v2.4#deno-bundle
   content: Deno 2.4 is making the DenoVerse even better!
-
+- url: https://github.com/stathissideris/dali
+  content: dali is a Clojure library for representing, exporting and manipulating the SVG graphics format.
