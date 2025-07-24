@@ -1,4 +1,87 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.3.4">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-07-24T15:29:06+02:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">The Ten Commandments of Egoless Programming</title><link href="/2025/senior-engineers/" rel="alternate" type="text/html" title="The Ten Commandments of Egoless Programming" /><published>2025-07-02T00:00:00+02:00</published><updated>2025-07-02T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2025/2025-07-02-senior-engineers.md</id><content type="html" xml:base="/2025/senior-engineers/">&lt;p&gt;The following is a copy of &lt;a href=&quot;https://www.kitchensoap.com/2012/10/25/on-being-a-senior-engineer/&quot;&gt;On Being A Senior Engineer&lt;/a&gt; by John Allspaw aka KitchenSoap&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.3.4">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-07-24T15:30:18+02:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">I Built a Meeting Notes App That Actually Makes Sense</title><link href="/2025/neetings/" rel="alternate" type="text/html" title="I Built a Meeting Notes App That Actually Makes Sense" /><published>2025-07-24T00:00:00+02:00</published><updated>2025-07-24T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2025/2025-07-24-neetings.md</id><content type="html" xml:base="/2025/neetings/">&lt;p&gt;Be warned, this project was 100 % vibe-coded, using mostly Claude Code. It was a fun, yet demanding experience, and I learned a lot about building a web app that actually helps with meeting organization.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: This project isn’t open sourced yet, but I’m planning to release the code soon! In the meantime, you can try the live app and see what I’ve been working on.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;tldr&quot;&gt;TL;DR&lt;/h2&gt;
+&lt;p&gt;I created &lt;strong&gt;&lt;a href=&quot;https://www.neetings.com&quot;&gt;Neetings&lt;/a&gt;&lt;/strong&gt;, a web app that transforms chaotic meeting notes into organized, actionable content using smart block types and Kanban-style organization. It runs 100% in your browser (no backend!), supports 11 different content types, and exports to multiple formats. Perfect for anyone tired of messy meeting notes that go nowhere.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;Fun facts:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;After 2-3 months of evenings and weekends tinkering away, the project is finally at a point where I can show it off and actually use it myself. 🎉&lt;/li&gt;
+  &lt;li&gt;I wouldn’t have been able to tackle this without the help of AI tools like Claude Code - to be honest. Or it would have taken me at least four times as long.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Hey there! 👋&lt;/p&gt;
+
+&lt;p&gt;So, I had this problem. You know the one – sitting in meetings, frantically scribbling notes, trying to capture everything, and then later staring at a wall of text wondering “what did we actually decide?” and “who’s supposed to do what?”&lt;/p&gt;
+
+&lt;p&gt;After one too many meetings where important decisions got lost in my messy notes, I decided to build something better. Enter &lt;strong&gt;Neetings&lt;/strong&gt; – a meeting management app that actually helps you stay organized.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-makes-it-different&quot;&gt;What Makes It Different&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2025/neetings/neetings_overview.png&quot; alt=&quot;Main overview showing organized meetings&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Instead of throwing everything into a generic text box, Neetings gives you &lt;strong&gt;11 specialized block types&lt;/strong&gt; for different kinds of content. Need to capture a decision? There’s a Decision block. Got an action item? TODO block. Random idea someone threw out? Idea block. You get the picture.&lt;/p&gt;
+
+&lt;p&gt;The magic happens when you switch to Kanban view – suddenly your linear meeting notes transform into organized columns by topic. It’s like having superpowers for meeting organization! ✨&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2025/neetings/neetings_meeting_view.png&quot; alt=&quot;Meeting view with organized blocks&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;the-features-that-actually-matter&quot;&gt;The Features That Actually Matter&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Smart Block Types&lt;/strong&gt;: Instead of fighting with one-size-fits-all text boxes, you get purpose-built blocks for Notes, TODOs, Decisions, Issues, Ideas, and more. Each type has its own color and behavior.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Kanban Organization&lt;/strong&gt;: Switch from boring linear notes to visual topic columns. Drag and drop blocks between topics as conversations evolve – because meetings never follow the agenda anyway! 😅&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2025/neetings/neetings_meeting_block_picker_modal.png&quot; alt=&quot;Block type selection modal&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Attendee Management&lt;/strong&gt;: Keep track of who’s in which meetings with a smart autocomplete system. No more “wait, who said they’d handle that?”&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2025/neetings/neetings_attendee_management_view.png&quot; alt=&quot;Attendee management interface&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Powerful Search &amp;amp; Filtering&lt;/strong&gt;: Find that decision from three meetings ago in seconds. Filter by content type, completion status, or date ranges.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2025/neetings/neetings_meeting_filter_view.png&quot; alt=&quot;Advanced filtering options&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;privacy-first-because-your-data-matters&quot;&gt;Privacy First (Because Your Data Matters)&lt;/h2&gt;
+
+&lt;p&gt;Here’s the best part – &lt;strong&gt;everything runs in your browser&lt;/strong&gt;. No servers, no accounts, no “we promise we won’t look at your data” nonsense. Your meeting notes stay on your device, period.&lt;/p&gt;
+
+&lt;p&gt;Want to move your data around? Export to Markdown, RTF, DOCX, or HTML. Want to share with your team? Copy the clean, organized output. Want to back up everything? Full JSON export has you covered.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2025/neetings/neetings_download_meeting_as_markdown_modal.png&quot; alt=&quot;Export options modal&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;built-for-real-developers&quot;&gt;Built for Real Developers&lt;/h2&gt;
+
+&lt;p&gt;As someone who lives in the terminal and gets annoyed by bloated apps, I made sure Neetings is fast and lightweight. It’s built with:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Preact&lt;/strong&gt; (because 3KB is better than 45KB)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;TypeScript&lt;/strong&gt; (because bugs are annoying)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;196+ tests&lt;/strong&gt; (because I actually use this app)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Drag &amp;amp; drop&lt;/strong&gt; with proper sortKey algorithms (no jank!)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2025/neetings/neetings_darkmode.png&quot; alt=&quot;Dark mode support&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The whole thing started as a side project to solve my own problem, but I’ve been using it for months now and it’s genuinely changed how I handle meetings. No more post-meeting panic about whether I captured everything important.&lt;/p&gt;
+
+&lt;h2 id=&quot;try-it-yourself&quot;&gt;Try It Yourself&lt;/h2&gt;
+
+&lt;p&gt;The app is live at &lt;a href=&quot;https://www.neetings.com&quot;&gt;neetings.com&lt;/a&gt; – no installation, no signup, just start organizing your first meeting. Or if you’re the “I want to see the code first” type (respect! 🫡), I’ll be open sourcing it soon so you can dive into the implementation.&lt;/p&gt;
+
+&lt;p&gt;I built this because I was tired of meeting chaos, and honestly? It’s been a game-changer for staying on top of what actually matters. Give it a shot next time you’re in a meeting that could have been an email (but wasn’t) – you might be surprised how much clearer everything becomes when it’s properly organized.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;em&gt;P.S. – Yes, it has dark mode. Of course it has dark mode and yes, it was tedious to implement.&lt;/em&gt;&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">The Ten Commandments of Egoless Programming</title><link href="/2025/senior-engineers/" rel="alternate" type="text/html" title="The Ten Commandments of Egoless Programming" /><published>2025-07-02T00:00:00+02:00</published><updated>2025-07-02T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2025/2025-07-02-senior-engineers.md</id><content type="html" xml:base="/2025/senior-engineers/">&lt;p&gt;The following is a copy of &lt;a href=&quot;https://www.kitchensoap.com/2012/10/25/on-being-a-senior-engineer/&quot;&gt;On Being A Senior Engineer&lt;/a&gt; by John Allspaw aka KitchenSoap&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Appropriate, even if old…&lt;br /&gt;
@@ -758,84 +841,4 @@ asdf &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;rust 1.72.1 &lt;span 
 
 &lt;hr /&gt;
 
-&lt;p&gt;I’ve been really enjoying Deno 2 so far. The new ecosystem plays out great. If you haven’t tried Deno yet, I highly recommend giving it a shot. It’s a great alternative to Node.js and I think you’ll love it. 🥰&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Wilson - CLI for OpenAI’s multistepped assistants</title><link href="/2024/wilson-on-deno/" rel="alternate" type="text/html" title="Wilson - CLI for OpenAI&apos;s multistepped assistants" /><published>2024-11-08T00:00:00+01:00</published><updated>2024-11-08T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2024/2024-11-08-wilson-on-deno.md</id><content type="html" xml:base="/2024/wilson-on-deno/">&lt;p&gt;Wilson is a prototype CLI for OpenAI’s multisteps assistants.&lt;/p&gt;
-
-&lt;p&gt;It is a simple CLI that is built with &lt;a href=&quot;https://www.deno.com&quot;&gt;Deno&lt;/a&gt; and uses &lt;a href=&quot;https://github.com/vadimdemedes/ink&quot;&gt;ink&lt;/a&gt; for the CLI.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Ink provides the same component-based UI building experience that React offers in the browser, but for command-line apps. It uses Yoga to build Flexbox layouts in the terminal, so most CSS-like props are available in Ink as well. If you are already familiar with React, you already know Ink.&lt;/p&gt;
-
-  &lt;p&gt;Since Ink is a React renderer, it means that all features of React are supported. Head over to React website for documentation on how to use it. Only Ink’s methods will be documented in this readme.
-- &lt;a href=&quot;https://github.com/vadimdemedes/ink&quot;&gt;Docs (2024-11-08)&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;rationale&quot;&gt;Rationale&lt;/h2&gt;
-
-&lt;p&gt;Do you find yourself in a situation, where you ask the AI questions in a thread-like manner?&lt;br /&gt;
-Are you tired of coming up with the same questions over and over again?&lt;br /&gt;
-Or worse, you forget to ask the most important questions?&lt;/p&gt;
-
-&lt;p&gt;Give your thoughts a place to live and breathe.&lt;br /&gt;
-Store processes as recipes and never forget a question again.&lt;/p&gt;
-
-&lt;h2 id=&quot;demo&quot;&gt;Demo&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/2024/wilson-demo.gif&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;data-first-approach&quot;&gt;Data first approach&lt;/h2&gt;
-
-&lt;p&gt;In order to use Wilson, you need to provide a JSON file that contains the recipe for the assistant.&lt;/p&gt;
-
-&lt;p&gt;Here’s the template of a recipe:&lt;/p&gt;
-
-&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;assistant&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Name of the ASSISTANT&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;instruction&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;HERE SHOULD BE THE INSTRUCTION FOR THE ASSISTANT.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;threads&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;REPLACE THIS A LIST OF THREADS THE ASSISTANT SHOULD RUN THROUGH ONE AFTER ANOTHER.&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;recipe&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;attr&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;uniqueAttributeNameForASelectInput&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;inputType&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;select&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;details&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;selectOptions&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-          &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;label&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;a1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;value&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;a1&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-          &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-          &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;label&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;b1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;value&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;b1&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-          &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-          &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;label&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;c1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-            &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;value&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;c1&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-          &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;defaultValue&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;IF A DEFAULT VALUE MAKES SENSE, PUT IT HERE, BUT EMPTY STRING IS ABSOLUTELY FINE.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;PLACE THE COMMAND FOR THE USER INTERACTION HERE.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;summaryText&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;THIS FIELD WILL BE USED TO ADD CONTEXT TO THE USER&apos;S RESPONSE.&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;attr&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;uniqueAttributeNameForAnInput&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;inputType&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;input&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;details&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;defaultValue&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;PLACE THE COMMAND FOR THE USER INTERACTION HERE.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;summaryText&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;THIS FIELD WILL BE USED TO ADD CONTEXT TO THE USER&apos;S RESPONSE.&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;☝️ this recipe is used to create further assistants using AI itself. Inception, right? 😵‍💫&lt;/p&gt;
-
-&lt;h2 id=&quot;source-code-on-github&quot;&gt;Source Code on GitHub&lt;/h2&gt;
-
-&lt;p&gt;The source code is available on GitHub: &lt;a href=&quot;https://github.com/simonneutert/wilson&quot;&gt;wilson&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author></entry></feed>
+&lt;p&gt;I’ve been really enjoying Deno 2 so far. The new ecosystem plays out great. If you haven’t tried Deno yet, I highly recommend giving it a shot. It’s a great alternative to Node.js and I think you’ll love it. 🥰&lt;/p&gt;</content><author><name></name></author></entry></feed>
