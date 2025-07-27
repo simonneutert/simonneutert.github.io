@@ -309,3 +309,5 @@
   content: Deno 2.4 is making the DenoVerse even better!
 - url: https://github.com/stathissideris/dali
   content: dali is a Clojure library for representing, exporting and manipulating the SVG graphics format.
+- url: https://hledger.org/#how-to-get-started
+  content: Robust, friendly, fast, plain text accounting software
