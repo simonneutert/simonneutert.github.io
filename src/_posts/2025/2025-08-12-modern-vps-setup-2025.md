@@ -12,15 +12,26 @@ This guide assumes you've got a fresh Debian 12 instance (though Ubuntu 24.04 LT
 
 ## TL;DR: The Modern VPS Checklist
 
+**Core Security (Essential):**
 - ✅ Secure SSH with keys and modern algorithms
 - ✅ Firewall with fail2ban and rate limiting  
 - ✅ Automatic security updates
-- ✅ Container runtime (Docker/Podman)
-- ✅ Reverse proxy with automatic HTTPS
-- ✅ System monitoring and log management
 - ✅ Remove unnecessary services and packages
+- ✅ Kernel hardening and system tweaks
+
+**Essential Infrastructure:**
+- ✅ Container runtime (Docker)
+- ✅ System monitoring and log management
+
+**Optional Enhancements:**
+- 🎁 Reverse proxy with automatic HTTPS (Caddy)
+- 🎁 Developer quality of life improvements
 
 Let's dive in.
+
+## Part 1: Core Security Hardening
+
+This section covers the absolute essentials - everything you need for a secure VPS foundation.
 
 ## Initial Hardening (Do This First!)
 
@@ -226,6 +237,73 @@ sudo systemctl enable unattended-upgrades
 sudo systemctl start unattended-upgrades
 ```
 
+## Final Security Tweaks
+
+### Disable unused services:
+
+```bash
+# Check what's running
+sudo systemctl list-unit-files --type=service --state=enabled
+
+# Disable what you don't need (examples)
+sudo systemctl disable bluetooth
+sudo systemctl disable cups
+sudo systemctl disable avahi-daemon
+```
+
+### Configure kernel parameters:
+
+**What are kernel parameters?** Think of them as the Linux kernel's "settings file." The kernel is the core of your operating system that manages hardware, networking, and security. These parameters let you tune how the kernel behaves without recompiling it.
+
+**Why does this matter for security?** The default kernel settings are designed for compatibility and functionality, not security. By tweaking these parameters, we can:
+
+- **Block network attacks** like IP spoofing and redirect attacks
+- **Prevent information leakage** that attackers might exploit
+- **Control how your server responds** to suspicious network traffic
+- **Log suspicious activity** for monitoring
+
+Think of it like changing your car's settings - you can adjust how sensitive the alarms are, whether doors auto-lock, and how the engine responds. Same idea, but for your server's network stack.
+
+```bash
+sudo nano /etc/sysctl.d/99-security.conf
+```
+
+```bash
+# IP Spoofing protection
+net.ipv4.conf.all.rp_filter = 1
+net.ipv4.conf.default.rp_filter = 1
+
+# Ignore ICMP redirects
+net.ipv4.conf.all.accept_redirects = 0
+net.ipv6.conf.all.accept_redirects = 0
+
+# Ignore send redirects
+net.ipv4.conf.all.send_redirects = 0
+
+# Disable source packet routing
+net.ipv4.conf.all.accept_source_route = 0
+net.ipv6.conf.all.accept_source_route = 0
+
+# Log Martians
+net.ipv4.conf.all.log_martians = 1
+
+# Ignore ping requests
+net.ipv4.icmp_echo_ignore_all = 1
+
+# Ignore Directed pings
+net.ipv4.icmp_echo_ignore_broadcasts = 1
+```
+
+Apply the changes:
+
+```bash
+sudo sysctl -p /etc/sysctl.d/99-security.conf
+```
+
+## Part 2: Essential Infrastructure
+
+Now that your VPS is properly secured, let's add the infrastructure you'll need to run applications.
+
 ## Modern Container Runtime
 
 Skip Docker's convenience script - install properly:
@@ -273,7 +351,38 @@ sudo systemctl restart docker
 sudo systemctl enable docker
 ```
 
-## Modern Reverse Proxy: Caddy
+## System Monitoring (Know What's Happening)
+
+Install basic monitoring tools:
+
+```bash
+# System monitoring
+sudo apt install -y htop iotop nethogs ncdu
+
+# Log management
+sudo apt install -y logrotate rsyslog
+
+# Configure logrotate for Docker
+sudo nano /etc/logrotate.d/docker
+```
+
+```bash
+/var/lib/docker/containers/*/*.log {
+    rotate 7
+    daily
+    compress
+    size=1M
+    missingok
+    delaycompress
+    copytruncate
+}
+```
+
+## Part 3: Optional Enhancements
+
+These aren't strictly necessary for a secure VPS, but they make your life much easier and your setup more professional.
+
+## Modern Reverse Proxy: Caddy (Optional but Recommended)
 
 Forget Traefik complexity and nginx configuration hell. Caddy handles HTTPS automatically and makes reverse proxying actually pleasant:
 
@@ -364,85 +473,6 @@ For the full developer experience, consider adding:
 
 These aren't security essentials, but they make your VPS much more pleasant to work with day-to-day.
 
-## System Monitoring (Know What's Happening)
-
-Install basic monitoring tools:
-
-```bash
-# System monitoring
-sudo apt install -y htop iotop nethogs ncdu
-
-# Log management
-sudo apt install -y logrotate rsyslog
-
-# Configure logrotate for Docker
-sudo nano /etc/logrotate.d/docker
-```
-
-```bash
-/var/lib/docker/containers/*/*.log {
-    rotate 7
-    daily
-    compress
-    size=1M
-    missingok
-    delaycompress
-    copytruncate
-}
-```
-
-## Final Security Tweaks
-
-### Disable unused services:
-
-```bash
-# Check what's running
-sudo systemctl list-unit-files --type=service --state=enabled
-
-# Disable what you don't need (examples)
-sudo systemctl disable bluetooth
-sudo systemctl disable cups
-sudo systemctl disable avahi-daemon
-```
-
-### Configure kernel parameters:
-
-```bash
-sudo nano /etc/sysctl.d/99-security.conf
-```
-
-```bash
-# IP Spoofing protection
-net.ipv4.conf.all.rp_filter = 1
-net.ipv4.conf.default.rp_filter = 1
-
-# Ignore ICMP redirects
-net.ipv4.conf.all.accept_redirects = 0
-net.ipv6.conf.all.accept_redirects = 0
-
-# Ignore send redirects
-net.ipv4.conf.all.send_redirects = 0
-
-# Disable source packet routing
-net.ipv4.conf.all.accept_source_route = 0
-net.ipv6.conf.all.accept_source_route = 0
-
-# Log Martians
-net.ipv4.conf.all.log_martians = 1
-
-# Ignore ping requests
-net.ipv4.icmp_echo_ignore_all = 1
-
-# Ignore Directed pings
-net.ipv4.icmp_echo_ignore_broadcasts = 1
-```
-
-Apply the changes:
-
-```bash
-sudo sysctl -p /etc/sysctl.d/99-security.conf
-```
-
 ## Example Application Deployment
 
 Here's how to deploy a simple app with your new setup:
@@ -503,16 +533,25 @@ docker logs --tail 50 -f container-name
 
 ## What We Achieved
 
-Your VPS is now:
+Your VPS now has:
 
+**Core Security Foundation:**
 - 🔒 **Properly secured** with modern SSH, firewall, and intrusion detection
-- 🚀 **Lightweight** without unnecessary services
+- �️ **Hardened** against common attack vectors with kernel tweaks
 - 🔄 **Self-maintaining** with automatic security updates
-- 📊 **Observable** with proper logging and monitoring
-- 🐳 **Container-ready** with Docker and automatic HTTPS
-- 🛡️ **Hardened** against common attack vectors
+- � **Lightweight** without unnecessary services
 
-This setup gives you a solid foundation that's both secure and practical. No over-engineering, no cargo cult configurations from 2015 tutorials - just what actually works in 2025.
+**Essential Infrastructure:**
+- 🐳 **Container-ready** with Docker for application deployment
+- 📊 **Observable** with proper logging and monitoring
+
+**Optional Enhancements:**
+- 🌐 **Automatic HTTPS** with Caddy reverse proxy (if you chose to install it)
+- �️ **Developer-friendly** with modern CLI tools and shell improvements
+
+This setup gives you a solid foundation that's both secure and practical. The beauty of this approach is that you can stop after Part 1 and have a perfectly secure VPS, or continue with the infrastructure and optional enhancements as needed.
+
+No over-engineering, no cargo cult configurations from 2015 tutorials - just what actually works in 2025.
 
 The best part? Once it's set up, it mostly runs itself. Focus on building your applications, not babysitting your infrastructure.
 
