@@ -1,9 +1,10 @@
 ---
 layout: post
 title: "VPS Setup and Hardening in 2025: A No-Nonsense Guide"
-categories: [server, security]
-tags: [vps, debian, security, docker]
+# categories: [server, security]
+# tags: [vps, debian, security, docker]
 description: 🔒 Stop following outdated tutorials - here's how to properly secure a VPS in 2025
+published: false
 ---
 
 Your fresh Debian 12 VPS is sitting there, naked and vulnerable. Let's fix that with modern security practices that actually make sense in 2025.
@@ -178,7 +179,11 @@ findtime = 600
 maxretry = 3
 
 # Ignore your own IP (replace with your actual IP)
-ignoreip = 127.0.0.1/8 YOUR.ACTUAL.IP.HERE
+# If you have a dynamic IP, you can either:
+# 1. Just use 127.0.0.1/8 (localhost only) - safest option
+# 2. Add your current IP and update it when it changes
+# 3. Add your ISP's IP range (risky - might whitelist too much)
+ignoreip = 127.0.0.1/8
 
 [sshd]
 enabled = true
@@ -187,19 +192,27 @@ filter = sshd
 logpath = /var/log/auth.log
 maxretry = 3
 bantime = 86400
-
-[nginx-http-auth]
-enabled = true
-filter = nginx-http-auth
-logpath = /var/log/nginx/error.log
-maxretry = 3
-
-[nginx-limit-req]
-enabled = true
-filter = nginx-limit-req
-logpath = /var/log/nginx/error.log
-maxretry = 3
 ```
+
+**For Caddy users**: Caddy has built-in rate limiting and doesn't log failed auth attempts in a way that fail2ban can easily parse, so these traditional web server protections aren't needed.
+
+```json
+example.com {
+    rate_limit 100 10
+}
+```
+
+In this example, 100 is the rate (requests per second), and 10 is the burst size (the number of requests that can exceed the rate for a short period).
+
+---
+
+The safest approach for most people with dynamic IPs is actually to just use 127.0.0.1/8 and rely on proper SSH key authentication. If you do get banned from your home IP, you can always SSH in from another location (like your phone's hotspot) to unban yourself with:
+
+`sudo fail2ban-client set sshd unbanip YOUR.CURRENT.IP.HERE`
+
+This is much better than accidentally whitelisting a huge IP range that could include potential attackers.
+
+---
 
 Start fail2ban:
 
@@ -262,7 +275,7 @@ sudo systemctl disable avahi-daemon
 - **Control how your server responds** to suspicious network traffic
 - **Log suspicious activity** for monitoring
 
-Think of it like changing your car's settings - you can adjust how sensitive the alarms are, whether doors auto-lock, and how the engine responds. Same idea, but for your server's network stack.
+Think of it like configuring your home security system - you can adjust motion sensor sensitivity, decide whether to sound alarms or just log events, control which doors automatically lock, and set up cameras to record suspicious activity. Same concept, but for your server's network defenses.
 
 ```bash
 sudo nano /etc/sysctl.d/99-security.conf
