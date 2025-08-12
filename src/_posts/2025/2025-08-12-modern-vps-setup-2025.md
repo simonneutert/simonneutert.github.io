@@ -150,9 +150,12 @@ sudo ufw enable
 
 ## Fail2Ban Configuration (Actually Useful)
 
-Default fail2ban is too permissive. Let's fix that:
+Default fail2ban is too permissive. Let's fix that, and handle the Debian-specific setup:
 
 ```bash
+# Debian-specific: Create the auth log file if it doesn't exist
+sudo touch /var/log/auth.log
+
 sudo nano /etc/fail2ban/jail.local
 ```
 
@@ -272,7 +275,7 @@ sudo systemctl enable docker
 
 ## Modern Reverse Proxy: Caddy
 
-Forget Traefik complexity and nginx configuration hell. Caddy handles HTTPS automatically:
+Forget Traefik complexity and nginx configuration hell. Caddy handles HTTPS automatically and makes reverse proxying actually pleasant:
 
 ```bash
 sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https
@@ -293,9 +296,23 @@ sudo nano /etc/caddy/Caddyfile
     admin off
 }
 
-# Example site configuration
+# Example site configuration with static asset handling
 your-domain.com {
-    reverse_proxy localhost:3000
+    # Handle static assets directly (faster than proxying)
+    handle /assets/* {
+        root * /var/www/your-app/public/assets
+        file_server
+    }
+    
+    handle /vendor/* {
+        root * /var/www/your-app/public/vendor
+        file_server
+    }
+    
+    # Proxy everything else to your app
+    handle {
+        reverse_proxy localhost:3000
+    }
     
     # Security headers
     header {
@@ -321,6 +338,31 @@ your-domain.com {
 sudo systemctl enable caddy
 sudo systemctl start caddy
 ```
+
+## Developer Quality of Life Improvements
+
+While you're setting up your VPS, make it actually pleasant to work with:
+
+```bash
+# Modern shell and tools
+apt install -y zsh git curl wget neovim htop
+
+# Change to zsh (optional but recommended)
+chsh -s $(which zsh) yourusername
+
+# Install modern CLI tools (optional but very nice)
+# These make server administration much more pleasant
+```
+
+For the full developer experience, consider adding:
+- **Starship prompt** for a modern shell prompt
+- **Zoxide** for smarter `cd` command
+- **Eza** as a modern `ls` replacement  
+- **Just** for running project commands
+- **ASDF** for version management (if you need multiple language versions)
+- **Direnv** for per-directory environment variables
+
+These aren't security essentials, but they make your VPS much more pleasant to work with day-to-day.
 
 ## System Monitoring (Know What's Happening)
 
