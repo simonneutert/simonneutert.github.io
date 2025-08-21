@@ -6,7 +6,7 @@ layout: post
 ### A curated list of shell tools and configurations.
 
 Together with a couple of developer friends, we launched a new project called [shell-curry](https://shell-curry.simon-neutert.de/) on GitHub. \
-The repository will be made public soon.
+~~The repository will be made public soon.~~ Is public (2025-08-21).
 
 The main goal is to provide a curated list of shell tools and configurations that we use in our daily work.
 
