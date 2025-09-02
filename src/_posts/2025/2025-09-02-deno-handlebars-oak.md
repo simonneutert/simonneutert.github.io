@@ -18,9 +18,10 @@ For this project, I decided to use [Oak](https://oakserver.org) as the web frame
     max-height: 480px;
 }
 </style>
-<img src="/images/2024/utme.webp" id="screenshot" alt="Screenshot of the app"/>
 
-> Screenshot of the app upon its initial release.
+<img src="/images/2025/utme.png" id="screenshot" alt="Screenshot of the app"/>
+
+- Screenshot of the app
 
 ## What I Wanted to Achieve
 
