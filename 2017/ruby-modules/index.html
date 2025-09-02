@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Use Modules to boost your OOP | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.POPT2NFP.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.M22FUQKT.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header>
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <!-- <li><a href="/telegram">On Telegram</a></li> -->
+    <!-- <li><a href="/about">About</a></li> -->
+    <li><a href="/posts">Blog</a></li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<h1>Use Modules to boost your OOP</h1>
+
+<p>There are two ways of using <strong>modules</strong>, you can either <em>extend</em> or <em>include</em> them in a class.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">Speed</span>
+  <span class="k">def</span> <span class="nf">accelerate</span>
+    <span class="nb">puts</span> <span class="s2">"I am faster now"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Car</span>
+  <span class="kp">include</span> <span class="no">Speed</span>
+<span class="k">end</span>
+
+<span class="n">car1</span> <span class="o">=</span> <span class="no">Car</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">car1</span><span class="p">.</span><span class="nf">accelerate</span> <span class="c1"># =&gt; I am faster now</span>
+<span class="no">Car</span><span class="p">.</span><span class="nf">accelerate</span> <span class="c1"># NoMethodError: undefined method `accelerate' for Car:Class</span>
+
+<span class="k">class</span> <span class="nc">Ebike</span>
+  <span class="kp">extend</span> <span class="no">Speed</span>
+<span class="k">end</span>
+
+<span class="n">bike1</span> <span class="o">=</span> <span class="no">Ebike</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">bike1</span><span class="p">.</span><span class="nf">accelerate</span> <span class="c1"># NoMethodError: undefined method `accelerate' for Object</span>
+<span class="no">Ebike</span><span class="p">.</span><span class="nf">accelerate</span> <span class="c1"># =&gt; I am faster now</span>
+</code></pre></div></div>
+
+<p><strong>include</strong> makes the module&#8217;s method instance methods, while <strong>extend</strong> really is extending your class with its methods.</p>
+
+
+<hr />
+
+<a href="/2017/bcrypt-ruby/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a href="/2017/rails-standard-value-in-forms/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

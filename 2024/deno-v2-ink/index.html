@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Building a Simple interactive CLI Counter with Deno v2 and Ink | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.POPT2NFP.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.M22FUQKT.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header>
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <!-- <li><a href="/telegram">On Telegram</a></li> -->
+    <!-- <li><a href="/about">About</a></li> -->
+    <li><a href="/posts">Blog</a></li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<h1>Building a Simple interactive CLI Counter with Deno v2 and Ink</h1>
+
+<p>Deno v2 has been released! 🎉</p>
+
+<p>The promo video is a must-watch: <a href="https://www.youtube.com/watch?v=swXWUfufu2w">“Deno - Programming should be simple”
+ on Youtube</a></p>
+
+<p>No wonder, I immediately wanted to try out Deno’s new support for npm packages. I decided to create a simple counter component using Ink, a React-like library for building CLI apps.</p>
+
+<p>Here’s the code (main<strong>.jsx</strong>):</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// main.jsx</span>
+<span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span><span class="nx">useState</span><span class="p">,</span> <span class="nx">useEffect</span><span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">npm:react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span><span class="nx">render</span><span class="p">,</span> <span class="nx">Text</span><span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">npm:ink</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">Counter</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+	<span class="kd">const</span> <span class="p">[</span><span class="nx">counter</span><span class="p">,</span> <span class="nx">setCounter</span><span class="p">]</span> <span class="o">=</span> <span class="nf">useState</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+	<span class="nf">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+		<span class="kd">const</span> <span class="nx">timer</span> <span class="o">=</span> <span class="nf">setInterval</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+			<span class="nf">setCounter</span><span class="p">(</span><span class="nx">previousCounter</span> <span class="o">=&gt;</span> <span class="nx">previousCounter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+		<span class="p">},</span> <span class="mi">100</span><span class="p">);</span>
+
+		<span class="k">return </span><span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+			<span class="nf">clearInterval</span><span class="p">(</span><span class="nx">timer</span><span class="p">);</span>
+		<span class="p">};</span>
+	<span class="p">},</span> <span class="p">[]);</span>
+
+	<span class="k">return</span> <span class="p">&lt;</span><span class="nc">Text</span> <span class="na">color</span><span class="p">=</span><span class="s">"green"</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">counter</span><span class="si">}</span> tests passed<span class="p">&lt;/</span><span class="nc">Text</span><span class="p">&gt;;</span>
+<span class="p">};</span>
+
+<span class="nf">render</span><span class="p">(&lt;</span><span class="nc">Counter</span> <span class="p">/&gt;);</span>
+</code></pre></div></div>
+
+<p>Run the code using deno@v2.x (<code class="highlighter-rouge">Ctrl+C</code> to stop it 😅):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Run the code (the first time to check permissions)</span>
+<span class="nv">$ </span>deno run main.jsx
+
+<span class="c"># if you're fine with the permissions needed, run it again and again</span>
+<span class="nv">$ </span>deno run <span class="nt">--allow-read</span> <span class="nt">--allow-env</span> <span class="nt">--allow-run</span> main.jsx
+
+<span class="c"># or compile it even 🤷‍♂️</span>
+<span class="c"># deno packs its runtime and the dependencies into a single executable</span>
+<span class="nv">$ </span>deno compile <span class="nt">--allow-read</span> <span class="nt">--allow-env</span> <span class="nt">--allow-run</span> main.jsx
+</code></pre></div></div>
+
+<p>Super sweet! 🍬🦕</p>
+
+
+<hr />
+
+<a href="/2024/deno-v2/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a href="/2024/strava-export-experiment/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Do NOT enumerate Enumerators | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.POPT2NFP.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.M22FUQKT.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header>
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <!-- <li><a href="/telegram">On Telegram</a></li> -->
+    <!-- <li><a href="/about">About</a></li> -->
+    <li><a href="/posts">Blog</a></li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<h1>Do NOT enumerate Enumerators</h1>
+
+<p>During a take on a <a href="https://projecteuler.net/problem=10">Euler Problem</a>, I stumbled upon a quirky behaviour:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="mi">3</span><span class="o">..</span><span class="mi">100</span><span class="p">).</span><span class="nf">step</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="c1">#&lt;Enumerator: ...&gt;</span>
+</code></pre></div></div>
+
+<p>so you can do something like this, neglecting <code class="highlighter-rouge">.each</code>:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="mi">3</span><span class="o">..</span><span class="mi">100</span><span class="p">).</span><span class="nf">step</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">e</span><span class="o">|</span> <span class="n">e</span><span class="p">.</span><span class="nf">nil?</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p>which is <strong>a tiny bit</strong> faster than using each for iterating.</p>
+
+
+<hr />
+
+<a href="/2017/programming-idioms/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a href="/2017/conditional-index-with-postgresql-and-rails/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

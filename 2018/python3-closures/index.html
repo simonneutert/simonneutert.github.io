@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Write closures with Python | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.POPT2NFP.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.M22FUQKT.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header>
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <!-- <li><a href="/telegram">On Telegram</a></li> -->
+    <!-- <li><a href="/about">About</a></li> -->
+    <li><a href="/posts">Blog</a></li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<h1>Write closures with Python</h1>
+
+<p>It is not the easiest bit to grasp, but really worth it.</p>
+
+<p>A closure is a function that returns a function.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">multiplier_of</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">multiply</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span>
+
+    <span class="k">return</span> <span class="n">multiply</span>
+
+
+<span class="n">multiplywith5</span> <span class="o">=</span> <span class="nf">multiplier_of</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="c1"># multiplywith5 is equal to:
+#
+# def multiply(y):
+#   return 5 * y
+#
+</span><span class="nf">print</span><span class="p">(</span><span class="nf">multiplywith5</span><span class="p">(</span><span class="mi">9</span><span class="p">))</span> <span class="c1"># =&gt; 45
+</span></code></pre></div></div>
+
+<p>In Rubyland one usually uses blocks (yield) instead of closures.</p>
+
+
+<hr />
+
+<a href="/2018/visualize-algorithms/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a href="/2018/ruby-roman-numerals-excercise/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Finding Anagrams with Elixir | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.POPT2NFP.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.M22FUQKT.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header>
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <!-- <li><a href="/telegram">On Telegram</a></li> -->
+    <!-- <li><a href="/about">About</a></li> -->
+    <li><a href="/posts">Blog</a></li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<h1>Finding Anagrams with Elixir</h1>
+
+<p><a href="http://www.excercism.io">Excercism.io</a> is all meeting test specs.</p>
+
+<p>This is what their test looks like:</p>
+
+<div class="language-elixir highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">defmodule</span> <span class="no">AnagramTest</span> <span class="k">do</span>
+  <span class="kn">use</span> <span class="no">ExUnit</span><span class="o">.</span><span class="no">Case</span>
+  <span class="n">doctest</span> <span class="no">Anagram</span>
+
+  <span class="c1"># @tag :pending</span>
+    <span class="n">test</span> <span class="s2">"no matches"</span> <span class="k">do</span>
+      <span class="n">matches</span> <span class="o">=</span> <span class="no">Anagram</span><span class="o">.</span><span class="n">match</span> <span class="s2">"diaper"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"hello"</span><span class="p">,</span> <span class="s2">"world"</span><span class="p">,</span> <span class="s2">"zombies"</span><span class="p">,</span> <span class="s2">"pants"</span><span class="p">]</span>
+      <span class="n">assert</span> <span class="n">matches</span> <span class="o">==</span> <span class="p">[]</span>
+    <span class="k">end</span>
+
+    <span class="nv">@tag</span> <span class="ss">:pending</span>
+    <span class="n">test</span> <span class="s2">"detect simple anagram"</span> <span class="k">do</span>
+      <span class="n">matches</span> <span class="o">=</span> <span class="no">Anagram</span><span class="o">.</span><span class="n">match</span> <span class="s2">"ant"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"tan"</span><span class="p">,</span> <span class="s2">"stand"</span><span class="p">,</span> <span class="s2">"at"</span><span class="p">]</span>
+      <span class="n">assert</span> <span class="n">matches</span> <span class="o">==</span> <span class="p">[</span><span class="s2">"tan"</span><span class="p">]</span>
+    <span class="k">end</span>
+
+    <span class="nv">@tag</span> <span class="ss">:pending</span>
+    <span class="n">test</span> <span class="s2">"detect multiple anagrams"</span> <span class="k">do</span>
+      <span class="n">matches</span> <span class="o">=</span> <span class="no">Anagram</span><span class="o">.</span><span class="n">match</span> <span class="s2">"master"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"stream"</span><span class="p">,</span> <span class="s2">"pigeon"</span><span class="p">,</span> <span class="s2">"maters"</span><span class="p">]</span>
+      <span class="n">assert</span> <span class="n">matches</span> <span class="o">==</span> <span class="p">[</span><span class="s2">"stream"</span><span class="p">,</span> <span class="s2">"maters"</span><span class="p">]</span>
+    <span class="k">end</span>
+
+    <span class="nv">@tag</span> <span class="ss">:pending</span>
+    <span class="n">test</span> <span class="s2">"do not detect anagram subsets"</span> <span class="k">do</span>
+      <span class="n">matches</span> <span class="o">=</span> <span class="no">Anagram</span><span class="o">.</span><span class="n">match</span> <span class="s2">"good"</span><span class="p">,</span> <span class="sx">~w(dog goody)</span>
+      <span class="n">assert</span> <span class="n">matches</span> <span class="o">==</span> <span class="p">[]</span>
+    <span class="k">end</span>
+
+    <span class="nv">@tag</span> <span class="ss">:pending</span>
+    <span class="n">test</span> <span class="s2">"detect anagram"</span> <span class="k">do</span>
+      <span class="n">matches</span> <span class="o">=</span> <span class="no">Anagram</span><span class="o">.</span><span class="n">match</span> <span class="s2">"listen"</span><span class="p">,</span> <span class="sx">~w(enlists google inlets banana)</span>
+      <span class="n">assert</span> <span class="n">matches</span> <span class="o">==</span> <span class="p">[</span><span class="s2">"inlets"</span><span class="p">]</span>
+    <span class="k">end</span>
+
+    <span class="nv">@tag</span> <span class="ss">:pending</span>
+    <span class="n">test</span> <span class="s2">"multiple anagrams"</span> <span class="k">do</span>
+      <span class="n">matches</span> <span class="o">=</span> <span class="no">Anagram</span><span class="o">.</span><span class="n">match</span> <span class="s2">"allergy"</span><span class="p">,</span> <span class="sx">~w(gallery ballerina regally clergy largely leading)</span>
+      <span class="n">assert</span> <span class="n">matches</span> <span class="o">==</span> <span class="p">[</span><span class="s2">"gallery"</span><span class="p">,</span> <span class="s2">"regally"</span><span class="p">,</span> <span class="s2">"largely"</span><span class="p">]</span>
+    <span class="k">end</span>
+
+    <span class="nv">@tag</span> <span class="ss">:pending</span>
+    <span class="n">test</span> <span class="s2">"anagrams must use all letters exactly once"</span> <span class="k">do</span>
+      <span class="n">matches</span> <span class="o">=</span> <span class="no">Anagram</span><span class="o">.</span><span class="n">match</span> <span class="s2">"patter"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"tapper"</span><span class="p">]</span>
+      <span class="n">assert</span> <span class="n">matches</span> <span class="o">==</span> <span class="p">[]</span>
+    <span class="k">end</span>
+
+    <span class="nv">@tag</span> <span class="ss">:pending</span>
+    <span class="n">test</span> <span class="s2">"detect anagrams with case-insensitive subject"</span> <span class="k">do</span>
+      <span class="n">matches</span> <span class="o">=</span> <span class="no">Anagram</span><span class="o">.</span><span class="n">match</span> <span class="s2">"Orchestra"</span><span class="p">,</span> <span class="sx">~w(cashregister carthorse radishes)</span>
+      <span class="n">assert</span> <span class="n">matches</span> <span class="o">==</span> <span class="p">[</span><span class="s2">"carthorse"</span><span class="p">]</span>
+    <span class="k">end</span>
+
+    <span class="nv">@tag</span> <span class="ss">:pending</span>
+    <span class="n">test</span> <span class="s2">"detect anagrams with case-insensitive candidate"</span> <span class="k">do</span>
+      <span class="n">matches</span> <span class="o">=</span> <span class="no">Anagram</span><span class="o">.</span><span class="n">match</span> <span class="s2">"orchestra"</span><span class="p">,</span> <span class="sx">~w(cashregister Carthorse radishes)</span>
+      <span class="n">assert</span> <span class="n">matches</span> <span class="o">==</span> <span class="p">[</span><span class="s2">"Carthorse"</span><span class="p">]</span>
+    <span class="k">end</span>
+
+    <span class="nv">@tag</span> <span class="ss">:pending</span>
+    <span class="n">test</span> <span class="s2">"anagrams must not be the source word"</span> <span class="k">do</span>
+      <span class="n">matches</span> <span class="o">=</span> <span class="no">Anagram</span><span class="o">.</span><span class="n">match</span> <span class="s2">"corn"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"corn"</span><span class="p">,</span> <span class="s2">"dark"</span><span class="p">,</span> <span class="s2">"Corn"</span><span class="p">,</span> <span class="s2">"rank"</span><span class="p">,</span> <span class="s2">"CORN"</span><span class="p">,</span> <span class="s2">"cron"</span><span class="p">,</span> <span class="s2">"park"</span><span class="p">]</span>
+      <span class="n">assert</span> <span class="n">matches</span> <span class="o">==</span> <span class="p">[</span><span class="s2">"cron"</span><span class="p">]</span>
+    <span class="k">end</span>
+
+    <span class="nv">@tag</span> <span class="ss">:pending</span>
+    <span class="n">test</span> <span class="s2">"do not detect words based on checksum"</span> <span class="k">do</span>
+      <span class="n">matches</span> <span class="o">=</span> <span class="no">Anagram</span><span class="o">.</span><span class="n">match</span> <span class="s2">"mass"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"last"</span><span class="p">]</span>
+      <span class="n">assert</span> <span class="n">matches</span> <span class="o">==</span> <span class="p">[]</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>see what I came up with on my <a href="https://github.com/simonneutert/elixir-anagrams-excercism.io">GitHub</a></p>
+
+
+<hr />
+
+<a href="/2018/simple-jekyll-gallery/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a href="/2018/python3-functional-factorial/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

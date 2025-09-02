@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>The sass gem is dead, long live: sass-embedded-host-ruby | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.POPT2NFP.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.M22FUQKT.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header>
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <!-- <li><a href="/telegram">On Telegram</a></li> -->
+    <!-- <li><a href="/about">About</a></li> -->
+    <li><a href="/posts">Blog</a></li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<h1>The sass gem is dead, long live: sass-embedded-host-ruby</h1>
+
+<p>I had this deprecation warning in my template sinatra project on GitHub for a while now.</p>
+
+<p>The project should have ActiveRecord and Sass support, with sprockets and a few other things.</p>
+
+<p>And man was this sass topic a rabbit hole in one way or another. Because the hint in the deprecation warning didn’t work out of the box.</p>
+
+<p>And with most people being on Rails, or when on Sinatra not very interested in Sass, or they know how to fix it, I had mostly trial and error to go on.</p>
+
+<p>Here is how I setup my project’s/app’s environment from day one:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">MyApp</span> <span class="o">&lt;</span> <span class="no">Sinatra</span><span class="o">::</span><span class="no">Base</span>
+  <span class="c1"># initialize new sprockets environment</span>
+  <span class="n">set</span> <span class="ss">:environment</span><span class="p">,</span> <span class="no">Sprockets</span><span class="o">::</span><span class="no">Environment</span><span class="p">.</span><span class="nf">new</span>
+  <span class="c1"># append assets paths</span>
+  <span class="n">environment</span><span class="p">.</span><span class="nf">append_path</span> <span class="s1">'assets/stylesheets'</span>
+  <span class="n">environment</span><span class="p">.</span><span class="nf">append_path</span> <span class="s1">'assets/javascripts'</span>
+  <span class="c1"># compress assets</span>
+  <span class="n">environment</span><span class="p">.</span><span class="nf">js_compressor</span>  <span class="o">=</span> <span class="ss">:uglify</span>
+  <span class="n">environment</span><span class="p">.</span><span class="nf">css_compressor</span> <span class="o">=</span> <span class="ss">:scss</span> <span class="c1"># &lt;&lt; here's the problem</span>
+  <span class="c1"># get assets</span>
+  <span class="n">get</span> <span class="s1">'/assets/*'</span> <span class="k">do</span>
+    <span class="n">env</span><span class="p">[</span><span class="s1">'PATH_INFO'</span><span class="p">].</span><span class="nf">sub!</span><span class="p">(</span><span class="s1">'/assets'</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
+    <span class="n">settings</span><span class="p">.</span><span class="nf">environment</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>I highlighted the problem line. It’s the <code class="highlighter-rouge">:scss</code> compressor. This simply doesn’t work anymore. And all the deprecation warning says is:</p>
+
+<p><code class="highlighter-rouge">switch to the sassc ruby gem</code></p>
+
+<p>well, I did that, and it is part of the solution, but the glue was missing.</p>
+
+<p><code class="highlighter-rouge">$ bundle add sass-embedded sassc</code></p>
+
+<p>https://github.com/sass-contrib/sass-embedded-host-ruby</p>
+
+<p>Then require both gems, remove <code class="highlighter-rouge">sass</code> from the Gemfile, and remove the <code class="highlighter-rouge">:scss</code> compressor line.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">MyApp</span> <span class="o">&lt;</span> <span class="no">Sinatra</span><span class="o">::</span><span class="no">Base</span>
+  <span class="c1"># initialize new sprockets environment</span>
+  <span class="n">set</span> <span class="ss">:environment</span><span class="p">,</span> <span class="no">Sprockets</span><span class="o">::</span><span class="no">Environment</span><span class="p">.</span><span class="nf">new</span>
+  <span class="c1"># append assets paths</span>
+  <span class="n">environment</span><span class="p">.</span><span class="nf">append_path</span> <span class="s1">'assets/stylesheets'</span>
+  <span class="n">environment</span><span class="p">.</span><span class="nf">append_path</span> <span class="s1">'assets/javascripts'</span>
+  <span class="c1"># compress assets</span>
+  <span class="n">environment</span><span class="p">.</span><span class="nf">js_compressor</span>  <span class="o">=</span> <span class="ss">:uglify</span>
+
+  <span class="c1"># 👇 remove any css compressor settings you might stumble upon, be it sinatra, roda or rails</span>
+  <span class="c1"># environment.css_compressor = :scss # &lt;&lt; here's the problem</span>
+
+  <span class="c1"># get assets</span>
+  <span class="n">get</span> <span class="s1">'/assets/*'</span> <span class="k">do</span>
+    <span class="n">env</span><span class="p">[</span><span class="s1">'PATH_INFO'</span><span class="p">].</span><span class="nf">sub!</span><span class="p">(</span><span class="s1">'/assets'</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
+    <span class="n">settings</span><span class="p">.</span><span class="nf">environment</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+<p>Checkout the pull request for the full diff:<br />
+https://github.com/simonneutert/sinatras-skeleton/pull/84/files</p>
+
+<p>And that’s it. I hope this helps someone else out there.</p>
+
+
+<hr />
+
+<a href="/2024/modern-java-first-steps/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a href="/2024/vscode-fira/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

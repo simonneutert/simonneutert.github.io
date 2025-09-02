@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Use heroku for Automated Tasks | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.POPT2NFP.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.M22FUQKT.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header>
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <!-- <li><a href="/telegram">On Telegram</a></li> -->
+    <!-- <li><a href="/about">About</a></li> -->
+    <li><a href="/posts">Blog</a></li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<h1>Use heroku for Automated Tasks</h1>
+
+<p>I needed to watch a price in an online shop and I wanted to automate it. heroku offers a free scheduler add-on, that lets you run rake tasks periodically.</p>
+
+<p>This is what I came up with :)</p>
+
+<p><a href="https://github.com/simonneutert/price-notifier">Code on GitHub</a></p>
+
+<p>It utilizes a simple Sinatra stub, combined with rake and Ruby&#8217;s built-in smtp module. Simply call the rake task with the product&#8217;s url, it&#8217;s html id that holds the price tag and set your email credentials. Voila!</p>
+
+<p>Gems used:</p>
+
+<ul>
+  <li>gem &#8216;sinatra&#8217;, &#8216;~&gt; 2.0&#8217;</li>
+  <li>gem &#8216;thin&#8217;</li>
+  <li>gem &#8216;haml&#8217;</li>
+  <li>gem &#8216;rake&#8217;</li>
+  <li>gem &#8216;nokogiri&#8217;</li>
+  <li>gem &#8216;watir&#8217;, &#8216;6.8.4&#8217;</li>
+</ul>
+
+<p>and comes with a heroku-ready bin of PhantomJS ;-)</p>
+
+<p>Here&#8217;s the Rakefile:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Rakefile</span>
+<span class="nb">require_relative</span> <span class="s1">'app'</span>
+
+<span class="n">desc</span> <span class="s1">'Check price! rake check_price URL= DOM_ELEMENT= and PRICE_LIMIT='</span>
+<span class="n">task</span> <span class="ss">:check_price</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="p">,</span> <span class="n">args</span><span class="o">|</span>
+  <span class="n">url</span> <span class="o">=</span> <span class="no">ENV</span><span class="p">[</span><span class="s1">'URL'</span><span class="p">]</span>
+  <span class="n">dom_element</span> <span class="o">=</span> <span class="no">ENV</span><span class="p">[</span><span class="s1">'DOM_ELEMENT'</span><span class="p">]</span>
+  <span class="n">upper_price_limit</span> <span class="o">=</span> <span class="no">ENV</span><span class="p">[</span><span class="s1">'PRICE_LIMIT'</span><span class="p">].</span><span class="nf">gsub</span><span class="p">(</span><span class="s2">","</span><span class="p">,</span><span class="s2">"."</span><span class="p">).</span><span class="nf">to_i</span>
+
+  <span class="n">browser</span> <span class="o">=</span> <span class="no">Watir</span><span class="o">::</span><span class="no">Browser</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:phantomjs</span>
+  <span class="n">browser</span><span class="p">.</span><span class="nf">goto</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+  <span class="nb">sleep</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># loads all content/scripts properly</span>
+  <span class="n">html_doc</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">HTML</span><span class="p">(</span><span class="n">browser</span><span class="p">.</span><span class="nf">html</span><span class="p">)</span>
+  <span class="n">browser</span><span class="p">.</span><span class="nf">close</span>
+
+  <span class="k">begin</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="n">html_doc</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="n">dom_element</span><span class="p">).</span><span class="nf">first</span><span class="p">.</span><span class="nf">text</span>
+    <span class="k">if</span> <span class="sr">/\d+[\.,]?\d+[\.,]?\d+/</span><span class="p">.</span><span class="nf">match</span><span class="p">(</span><span class="n">price</span><span class="p">)</span>
+      <span class="n">price</span> <span class="o">=</span> <span class="sr">/\d+[\.,]?\d+[\.,]?\d+/</span><span class="p">.</span><span class="nf">match</span><span class="p">(</span><span class="n">price</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+      <span class="c1"># drop cents (ugly but easy)</span>
+      <span class="n">price</span> <span class="o">=</span> <span class="n">price</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="s2">","</span><span class="p">,</span> <span class="s2">"."</span><span class="p">).</span><span class="nf">to_f</span><span class="p">.</span><span class="nf">to_s</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="s2">"."</span><span class="p">,</span><span class="s2">""</span><span class="p">).</span><span class="nf">to_i</span>
+    <span class="k">end</span>
+    <span class="k">if</span> <span class="n">price</span> <span class="o">&lt;</span> <span class="n">upper_price_limit</span>
+      <span class="nb">puts</span> <span class="s2">"Price dropped to </span><span class="si">#{</span><span class="n">price</span><span class="si">}</span><span class="s2"> for </span><span class="si">#{</span><span class="n">url</span><span class="si">}</span><span class="s2">"</span>
+      <span class="n">send_mail</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">end</span>
+  <span class="k">rescue</span> <span class="no">StandardError</span>
+    <span class="nb">puts</span> <span class="s2">"An Error Occured for </span><span class="si">#{</span><span class="n">url</span><span class="si">}</span><span class="s2">"</span>
+    <span class="n">send_mail</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">:error</span><span class="p">)</span>
+  <span class="k">end</span>
+
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+
+<hr />
+
+<a href="/2017/terminal-usb-stick-sd-format/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a href="/2017/work-with-large-datasets-python-sqlalchemy/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Deno 2 - what you might have missed | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.POPT2NFP.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.M22FUQKT.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header>
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <!-- <li><a href="/telegram">On Telegram</a></li> -->
+    <!-- <li><a href="/about">About</a></li> -->
+    <li><a href="/posts">Blog</a></li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<h1>Deno 2 - what you might have missed</h1>
+
+<p>Deno 2 was released exactly one month ago (on 2024-10-09). So it’s still super fresh. But, if you haven’t been following the Deno news, you might have missed some of the new features. Here’s a quick overview of what’s new in Deno 2.</p>
+
+<p>Their YouTube channel has super interesting content. I highly recommend checking it out. They have a lot of great tutorials about Deno. 🦕</p>
+
+<h2 id="til">TIL</h2>
+
+<p><img src="https://www.youtube.com/watch?v=H8VLifMOBHU" alt="All about Deno 2" /> on YouTube.</p>
+
+<p>A ~33 minutes long video from the creator of Deno, Ryan Dahl, where he goes through some of the new features in Deno 2.</p>
+
+<h2 id="importmeta">import.meta.*</h2>
+
+<p>You can check if a script is being run as the main program or if it’s being imported as a module. Those familiar with python might recognize the pattern.</p>
+
+<p><a href="https://docs.deno.com/runtime/tutorials/module_metadata/">Docs</a></p>
+
+<h3 id="example">Example</h3>
+
+<p><code class="highlighter-rouge">import.meta.main</code></p>
+
+<p>In Python you can do this by checking the <code class="highlighter-rouge">__name__</code> attribute.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">"</span><span class="s">__main__</span><span class="sh">"</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Hello, Python!</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if </span><span class="p">(</span><span class="k">import</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">main</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Hello, Deno 2!</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="jupyter-notebook-support">Jupyter notebook support</h2>
+
+<p>Deno 2 now supports Jupyter notebooks. You can run a Deno script in a Jupyter notebook cell. This is a great way to experiment with Deno and share your code with others.</p>
+
+<p>Switch the kernel to Deno and you can run Deno code in a Jupyter notebook cell.</p>
+
+<h2 id="stdfmt">@std/fmt</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// there's a change you can drop chalk and use Deno's fmt module</span>
+<span class="c1">// to use css in the console 😱</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log </span><span class="p">(</span><span class="dl">"</span><span class="s2">%c</span><span class="dl">"</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">This is a string!</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">background-color: red</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="standard-library">Standard library</h2>
+
+<p>Deno 2 comes with a standard library that includes modules for working with files, networking, and more. This makes it easier to get started with Deno and build powerful applications.</p>
+
+<p>Here’s a comparison of some of the modules in the Deno standard library and their (one of possibly many) Node.js equivalents:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Deno</th>
+      <th>Node</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://jsr.io/@std/testing">@std/testing</a></td>
+      <td>jest</td>
+    </tr>
+    <tr>
+      <td><a href="https://jsr.io/@std/expect">@std/expect</a></td>
+      <td>chai</td>
+    </tr>
+    <tr>
+      <td><a href="https://jsr.io/@std/cli">@std/cli</a></td>
+      <td>minimist</td>
+    </tr>
+    <tr>
+      <td><a href="https://jsr.io/@std/collections">@std/collections</a></td>
+      <td>lodash</td>
+    </tr>
+    <tr>
+      <td><a href="https://jsr.io/@std/fmt">@std/fmt</a></td>
+      <td>chalk</td>
+    </tr>
+    <tr>
+      <td><a href="https://jsr.io/@std/encoding">@std/encoding</a></td>
+      <td>rfc4648</td>
+    </tr>
+    <tr>
+      <td><a href="https://jsr.io/@std/toml">@std/toml</a></td>
+      <td>toml</td>
+    </tr>
+    <tr>
+      <td><a href="https://jsr.io/@std/uuid">@std/uuid</a></td>
+      <td>uuid</td>
+    </tr>
+    <tr>
+      <td><a href="https://jsr.io/@std/yaml">@std/yaml</a></td>
+      <td>yaml</td>
+    </tr>
+    <tr>
+      <td><a href="https://jsr.io/@std/json">@std/json</a></td>
+      <td>json</td>
+    </tr>
+    <tr>
+      <td><a href="https://jsr.io/@std/net">@std/net</a></td>
+      <td>get-port</td>
+    </tr>
+    <tr>
+      <td><a href="https://jsr.io/@std/media-types">@std/media-types</a></td>
+      <td>mime-types</td>
+    </tr>
+    <tr>
+      <td><a href="https://jsr.io/@std/front-matter">@std/font-matter</a></td>
+      <td>front-matter</td>
+    </tr>
+    <tr>
+      <td><a href="https://jsr.io/@std/csv">@std/csv</a></td>
+      <td>csv</td>
+    </tr>
+    <tr>
+      <td><a href="https://jsr.io/@std/bytes">@std/bytes</a></td>
+      <td>bytes</td>
+    </tr>
+    <tr>
+      <td><a href="https://jsr.io/@std/msgpack">@std/msgpack</a></td>
+      <td>msgpack</td>
+    </tr>
+    <tr>
+      <td><a href="https://jsr.io/@std/ulid">@std/ulid</a></td>
+      <td>ulid</td>
+    </tr>
+    <tr>
+      <td><a href="https://jsr.io/@std/html">@std/html</a></td>
+      <td>escape-html</td>
+    </tr>
+    <tr>
+      <td><a href="https://jsr.io/@std/semver">@std/semver</a></td>
+      <td>semver</td>
+    </tr>
+    <tr>
+      <td><a href="https://jsr.io/@std/streams">@std/stream</a></td>
+      <td>stream</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<p>I’ve been really enjoying Deno 2 so far. The new ecosystem plays out great. If you haven’t tried Deno yet, I highly recommend giving it a shot. It’s a great alternative to Node.js and I think you’ll love it. 🥰</p>
+
+
+<hr />
+
+<a href="/2024/with-postgres/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a href="/2024/wilson-on-deno/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

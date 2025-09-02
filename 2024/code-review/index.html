@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>The 10 Commandments of Code Review: A Developer&#39;s Guide | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.POPT2NFP.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.M22FUQKT.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header>
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <!-- <li><a href="/telegram">On Telegram</a></li> -->
+    <!-- <li><a href="/about">About</a></li> -->
+    <li><a href="/posts">Blog</a></li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<h1>The 10 Commandments of Code Review: A Developer&#39;s Guide</h1>
+
+<p>The algorithm washed in a great YouTube video on code reviews. Here’s a summary of the video’s key points, with a touch of humor and a sprinkle of wisdom.\</p>
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=ScWFHOOPPC4">Source on YouTube</a></li>
+</ul>
+
+<h2 id="a-note-on-code-reviews">A Note on Code Reviews</h2>
+
+<p>Let’s be honest: we’ve all written code that made us cringe months later. Whether you’re a junior developer or a seasoned architect, nobody writes perfect code all the time. That’s exactly why code reviews exist – not as a platform for showing off or criticizing others, but as a collaborative tool for improvement. When reviewing code, remember to be direct but polite; we’re all in this together, trying to build better software.</p>
+
+<h2 id="the-10-commandments-of-code-review">The 10 Commandments of Code Review</h2>
+
+<ol>
+  <li>
+    <p><strong>Thou shalt ensure readability</strong>, for confusing code is the Devil’s Playground.</p>
+  </li>
+  <li>
+    <p><strong>Thou shalt consider performance and scalability</strong>, for slow code is an Abomination.</p>
+  </li>
+  <li>
+    <p><strong>Thou shalt stay within scope</strong>, and not add unnecessary complexity.</p>
+  </li>
+  <li>
+    <p><strong>Thou shalt check for edge cases</strong>, for the unexpected shall smite thee in production.</p>
+  </li>
+  <li>
+    <p><strong>Thou shalt not forget test coverage</strong>, for untested code is a sin in the eyes of QA.</p>
+  </li>
+  <li>
+    <p><strong>Thou shalt seek out repetitive code</strong> and banish it from the codebase.</p>
+  </li>
+  <li>
+    <p><strong>Thou shalt not nitpick</strong>, lest you be smited by thine own pet peeves.</p>
+  </li>
+  <li>
+    <p><strong>Thou shalt provide constructive feedback</strong> and sing praises of good code.</p>
+  </li>
+  <li>
+    <p><strong>Thou shalt encourage discussion</strong>, for two minds are mightier than one.</p>
+  </li>
+  <li>
+    <p><strong>Thou shalt not block changes over minor issues</strong>, for Perfection is a false idol.</p>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="1-ensure-readability">1. Ensure Readability</h3>
+
+<p>Code should be easily understood by others. Look for clear naming conventions, appropriate comments, and well-structured functions. If you need to read the same code multiple times to understand it, suggest improvements in organization or clarity.</p>
+
+<h3 id="2-consider-performance">2. Consider Performance</h3>
+
+<p>Watch for potential bottlenecks and inefficient code. Look for opportunities to optimize, such as early returns and proper algorithmic complexity. Remember: what works on your computer might not scale well on servers.</p>
+
+<h3 id="3-stay-within-scope">3. Stay Within Scope</h3>
+
+<p>Understand the problem being solved and avoid suggesting changes that don’t align with the ticket’s purpose. Save broader improvements for separate tickets and discussions.</p>
+
+<h3 id="4-check-edge-cases">4. Check Edge Cases</h3>
+
+<p>Review how the code handles unexpected scenarios, including empty arrays, null values, and missing data. Border cases often cause the most problems in production.</p>
+
+<h3 id="5-verify-test-coverage">5. Verify Test Coverage</h3>
+
+<p>Ensure adequate testing, especially for critical functionality. Tests should be comprehensive, well-structured, and actually useful – not redundant. Don’t demand tests for trivial changes.</p>
+
+<h3 id="6-eliminate-code-duplication">6. Eliminate Code Duplication</h3>
+
+<p>Look for repeated code blocks and suggest abstractions to improve maintainability. If the same intensive operation happens multiple times, consider caching results when appropriate.</p>
+
+<h3 id="7-avoid-nitpicking">7. Avoid Nitpicking</h3>
+
+<p>Don’t get hung up on trivial formatting preferences or subjective matters. You’re not a linter – focus on what truly matters.</p>
+
+<h3 id="8-provide-constructive-feedback">8. Provide Constructive Feedback</h3>
+
+<p>Frame suggestions positively and acknowledge good work. Instead of “this is poorly written,” try “consider refactoring this for clarity 😊”</p>
+
+<h3 id="9-encourage-discussion">9. Encourage Discussion</h3>
+
+<p>Foster collaboration and open dialogue. For complex issues, take the discussion offline to voice or chat channels where ideas can flow more naturally.</p>
+
+<h3 id="10-dont-block-on-minor-issues">10. Don’t Block on Minor Issues</h3>
+
+<p>Differentiate between essential fixes and nice-to-haves. Not every suggestion needs to be implemented before merging.</p>
+
+<p>Remember: Perfect is the enemy of good. Sometimes “good enough” is exactly what the project needs at that moment.</p>
+
+
+<hr />
+
+<a href="/2024/strava-export-experiment/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a href="/2024/modern-java-first-steps/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

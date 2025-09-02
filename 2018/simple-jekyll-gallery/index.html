@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Simple Jekyll Gallery | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.POPT2NFP.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.M22FUQKT.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header>
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <!-- <li><a href="/telegram">On Telegram</a></li> -->
+    <!-- <li><a href="/about">About</a></li> -->
+    <li><a href="/posts">Blog</a></li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<h1>Simple Jekyll Gallery</h1>
+
+<p><a href="https://jekyllrb.com">Jekyllrb.com</a></p>
+
+<p>Please put your images in subfolders under <code class="highlighter-rouge">$jekyllroot/img/</code> e.g.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jekyllroot
+|_ img
+  |_ gallery
+    |_ 2018
+      |_ 01
+        |_ 16
+          |_ origami_festival
+            |_ 01.jpg
+            |_ 02.jpg
+            |_ ...
+            |_ 99.jpg
+</code></pre></div></div>
+
+<p>Jekyll runs <a href="http://shopify.github.io/liquid/">Liquid templates</a> and relies on <a href="https://jekyllrb.com/docs/frontmatter/">Front Matter</a>, which is represented by the first block in between the <code class="highlighter-rouge">---</code>. And this is where the gallery&#8217;s path is set. The <em>if-statement</em> in the loop, looks like it doesn&#8217;t belong, but due to the nature of how Jekyll iterates and builds, we have to live with it.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+---
+layout: post
+title: Origami Festival
+tags: [album, paper]
+gallery_path: "/img/gallery/2018/01/16/origami_festival/"
+---
+
+{% comment %} file: jekyllroot/_posts/2018-01-16-origami-festival.html {% endcomment %}
+{% for image in site.static_files %}
+  {% if image.path contains page.gallery_path %}
+    <span class="nt">&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">"{{ site.url }}{{ site.baseurl }}{{ image.path }}"</span> <span class="na">alt=</span><span class="s">""</span><span class="nt">&gt;&lt;/p&gt;</span>
+  {% endif %}
+{% endfor %}
+
+</code></pre></div></div>
+
+<p>You can of course turn this into an <a href="https://jekyllrb.com/docs/includes/"><strong>include</strong> or <strong>jekyll inclusion module</strong></a>, with a little more work.</p>
+
+<p><strong>Caution!</strong> Please adapt your code according to your settings in <code class="highlighter-rouge">_config.yml</code> of <code class="highlighter-rouge">url</code> and <code class="highlighter-rouge">baseurl</code> settings.</p>
+
+
+<hr />
+
+<a href="/2018/plot-ecdf/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a href="/2018/anagrams-in-elixir/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

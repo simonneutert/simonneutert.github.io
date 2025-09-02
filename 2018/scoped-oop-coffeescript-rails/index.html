@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Scope your OOP Coffeescript in modern Rails Apps | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.POPT2NFP.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.M22FUQKT.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header>
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <!-- <li><a href="/telegram">On Telegram</a></li> -->
+    <!-- <li><a href="/about">About</a></li> -->
+    <li><a href="/posts">Blog</a></li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<h1>Scope your OOP Coffeescript in modern Rails Apps</h1>
+
+<p>This post shows you how to easily integrate and scope your frontend Javascript. Keep your legacy code and rebuild your app step by step.</p>
+
+<p>Let&#8217;s build an async json loaded component (Ajax), without using jQuery at all, which is used to render a chart.</p>
+
+<p><a href="https://github.com/simonneutert/rails-easy-frontend-components">Code on GitHub</a></p>
+
+<h3 id="what-you-will-learn">What you will learn</h3>
+<ol>
+  <li>build reusable components</li>
+  <li>split data, rendering and logic (without using a Framework)</li>
+</ol>
+
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+  <li>I will use Coffeescript, but any other JS will do ;-)</li>
+  <li>the app is called <strong>CoffeeComponent</strong></li>
+  <li>the namespace class in html is <code class="highlighter-rouge">coffeecomponent-component-name</code></li>
+  <li>the rails route path that responds with JSON is <code class="highlighter-rouge">api_names_path</code></li>
+</ul>
+
+<p>Simply think of a namespace and add it as a class to your class, in our case this would be the class <code class="highlighter-rouge">coffeecomponent-component-name</code>. <code class="highlighter-rouge">-component-name</code> building the scope.</p>
+
+<h2 id="add-component-div-wrapper-to-your-html5-view">Add component div-wrapper to your HTML5 view</h2>
+
+<p>In your rails view, where you want to display data, add this div:</p>
+
+<div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- in app/views/welcome/index.html.erb --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"coffeecomponent-nameboard"</span> <span class="na">data-url=</span><span class="s">"</span><span class="cp">&lt;%=</span> <span class="n">api_names_path</span> <span class="cp">%&gt;</span><span class="s">"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- Content gets rendered here --&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h3 id="use-namespaces-in-your-coffeescript">use namespaces in your coffeescript</h3>
+
+<div class="language-coffeescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># wrap classes, group classes</span>
+<span class="nb">window</span><span class="p">.</span><span class="na">CoffeeComponent</span> <span class="o">or=</span> <span class="p">{}</span>
+<span class="c1"># by using `window` in combination with `or= {}`</span>
+<span class="c1"># each object is instantiated only once</span>
+<span class="c1"># further objects can then be added by writing</span>
+<span class="c1"># or adding objects like this:</span>
+<span class="nx">CoffeeComponent</span><span class="p">.</span><span class="na">ThisAbcComponent</span> <span class="o">=</span> <span class="k">class</span> <span class="nx">ThisAbcComponent</span>
+</code></pre></div></div>
+
+<h3 id="implement-a-jquery-independet-documentready">implement a jQuery independet <code class="highlighter-rouge">$(document).ready()</code></h3>
+
+<div class="language-coffeescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">window</span><span class="p">.</span><span class="na">CoffeeComponent</span> <span class="o">or=</span> <span class="p">{}</span>
+<span class="nx">CoffeeComponent</span><span class="p">.</span><span class="na">Document</span> <span class="o">=</span> <span class="k">class</span> <span class="nx">Document</span>
+  <span class="na">ready</span><span class="o">:</span> <span class="p">(</span><span class="nx">fn</span> <span class="o">=</span> <span class="no">null</span><span class="p">)</span> <span class="o">-&gt;</span>
+    <span class="k">if</span> <span class="nb">document</span><span class="p">.</span><span class="na">attachEvent</span><span class="o">?</span>
+      <span class="k">if</span> <span class="nb">document</span><span class="p">.</span><span class="na">readyState</span> <span class="o">is</span> <span class="s">"complete"</span> <span class="o">or</span> <span class="nb">document</span><span class="p">.</span><span class="na">readyState</span> <span class="o">is</span> <span class="o">not</span> <span class="s">"loading"</span>
+        <span class="nx">fn</span><span class="p">()</span> <span class="k">if</span> <span class="nx">fn</span><span class="o">?</span>
+    <span class="k">else</span>
+      <span class="nb">document</span><span class="p">.</span><span class="na">addEventListener</span> <span class="s">'DOMContentLoaded'</span><span class="p">,</span> <span class="o">-&gt;</span>
+        <span class="nx">fn</span><span class="p">()</span> <span class="k">if</span> <span class="nx">fn</span><span class="o">?</span>
+
+</code></pre></div></div>
+
+<h3 id="implement-a-jquery-independet-ajax-json-getter">implement a jQuery independet Ajax Json Getter</h3>
+
+<div class="language-coffeescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">window</span><span class="p">.</span><span class="na">CoffeeComponent</span> <span class="o">or=</span> <span class="p">{}</span>
+<span class="nx">CoffeeComponent</span><span class="p">.</span><span class="na">AsyncJsonGet</span> <span class="o">=</span> <span class="k">class</span> <span class="nx">AsyncJsonGet</span>
+  <span class="na">constructor</span><span class="o">:</span> <span class="p">(</span><span class="vi">@</span><span class="na">url</span><span class="p">,</span> <span class="vi">@</span><span class="na">fn</span> <span class="o">=</span> <span class="no">null</span><span class="p">)</span> <span class="o">-&gt;</span>
+    <span class="vi">@</span><span class="na">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">()</span>
+    <span class="vi">@</span><span class="na">request</span><span class="p">.</span><span class="na">open</span><span class="p">(</span><span class="s">'GET'</span><span class="p">,</span> <span class="vi">@</span><span class="na">url</span><span class="p">,</span> <span class="no">true</span><span class="p">)</span>
+    <span class="vi">@</span><span class="na">request</span><span class="p">.</span><span class="na">onload</span> <span class="o">=</span> <span class="o">=&gt;</span>
+      <span class="k">if</span> <span class="vi">@</span><span class="na">request</span><span class="p">.</span><span class="na">status</span> <span class="o">&gt;=</span> <span class="mi">200</span> <span class="o">and</span> <span class="vi">@</span><span class="na">request</span><span class="p">.</span><span class="na">status</span> <span class="o">&lt;</span> <span class="mi">400</span>
+        <span class="c1"># Success!</span>
+        <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="vi">@</span><span class="na">request</span><span class="p">.</span><span class="na">responseText</span><span class="p">)</span>
+        <span class="k">if</span> <span class="vi">@</span><span class="na">fn</span><span class="o">?</span> <span class="k">then</span> <span class="vi">@</span><span class="na">fn</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="k">else</span> <span class="nx">data</span>
+      <span class="k">else</span>
+        <span class="c1"># reached server, but it returned an error</span>
+    <span class="vi">@</span><span class="na">request</span><span class="p">.</span><span class="na">onerror</span> <span class="o">=</span> <span class="o">-&gt;</span>
+      <span class="c1"># error</span>
+    <span class="vi">@</span><span class="na">request</span><span class="p">.</span><span class="na">send</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="write-the-component-itself">write the component itself</h3>
+
+<div class="language-coffeescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">window</span><span class="p">.</span><span class="na">CoffeeComponent</span> <span class="o">or=</span> <span class="p">{}</span>
+<span class="nx">CoffeeComponent</span><span class="p">.</span><span class="na">Nameboard</span> <span class="o">=</span> <span class="k">class</span> <span class="nx">Nameboard</span>
+  <span class="na">constructor</span><span class="o">:</span> <span class="p">(</span><span class="vi">@</span><span class="na">data</span><span class="p">,</span> <span class="vi">@</span><span class="na">target</span><span class="p">)</span> <span class="o">-&gt;</span>
+    <span class="nx">elem</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="na">querySelector</span><span class="p">(</span><span class="vi">@</span><span class="na">target</span><span class="p">)</span>
+    <span class="nx">elem</span><span class="p">.</span><span class="na">innerHTML</span> <span class="o">=</span> <span class="s">"&lt;ul&gt;"</span>
+    <span class="k">for</span> <span class="nx">name</span> <span class="o">in</span> <span class="vi">@</span><span class="na">data</span>
+      <span class="nx">elem</span><span class="p">.</span><span class="na">innerHTML</span> <span class="o">+=</span> <span class="s">"&lt;li&gt;Hello </span><span class="si">#{</span><span class="nx">name</span><span class="si">}</span><span class="s">!&lt;/li&gt;"</span>
+    <span class="nx">elem</span><span class="p">.</span><span class="na">innerHTML</span> <span class="o">+=</span> <span class="s">"&lt;/ul&gt;"</span>
+</code></pre></div></div>
+
+<h3 id="hook-up-your-component-in-its-controllers-js-asset-file">hook up your component in its controller&#8217;s js asset file</h3>
+
+<div class="language-coffeescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># app/assets/javascript/welcomes.js.coffee</span>
+<span class="k">new</span> <span class="nx">CoffeeComponent</span><span class="p">.</span><span class="na">Document</span><span class="p">().</span><span class="na">ready</span> <span class="o">-&gt;</span>
+  <span class="k">do</span> <span class="o">-&gt;</span> <span class="c1"># each component instantiation in a self executing function</span>
+    <span class="nx">renderNameboard</span> <span class="o">=</span> <span class="s">'.coffeecomponent-nameboard'</span>
+    <span class="nx">element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="na">querySelector</span><span class="p">(</span><span class="nx">renderNameboard</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nx">unless</span> <span class="nx">element</span><span class="o">?</span>
+    <span class="nx">url</span> <span class="o">=</span> <span class="nx">element</span><span class="p">.</span><span class="na">dataset</span><span class="p">.</span><span class="na">url</span>
+    <span class="k">new</span> <span class="nx">CoffeeComponent</span><span class="p">.</span><span class="na">AsyncJsonGet</span> <span class="nx">url</span><span class="p">,</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="o">-&gt;</span>
+      <span class="k">new</span> <span class="nx">CoffeeComponent</span><span class="p">.</span><span class="na">Nameboard</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">renderNameboard</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="homework">Homework</h2>
+
+<ul>
+  <li>scope styles in a similar manner</li>
+  <li>implement a callback for error ajax requests</li>
+  <li>write a useful component :-P</li>
+</ul>
+
+
+<hr />
+
+<a href="/2019/rails-console-sinatra/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a href="/2018/atom-goto-ruby-rails/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

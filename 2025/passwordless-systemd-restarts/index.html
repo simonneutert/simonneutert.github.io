@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Passwordless restart of systemd services | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.POPT2NFP.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.M22FUQKT.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header>
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <!-- <li><a href="/telegram">On Telegram</a></li> -->
+    <!-- <li><a href="/about">About</a></li> -->
+    <li><a href="/posts">Blog</a></li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<h1>Passwordless restart of systemd services</h1>
+
+<p>Before anything else, you need to edit the rights, do this as your sudo/admin
+user:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span><span class="nv">EDITOR</span><span class="o">=</span>vim visudo
+</code></pre></div></div>
+
+<p>Adapt the line to your needs, first is the user, you want to give the
+passwordless permission to restart the service, last entry of the line is the
+name of the service.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code># allow deployuser to restart the web services without needing a password
+deployuser ALL=(ALL) NOPASSWD: /bin/systemctl restart myapponsystemd-worker.service
+deployuser ALL=(ALL) NOPASSWD: /bin/systemctl restart myapponsystemd.service
+</code></pre></div></div>
+
+<p>Then log into your VPS/Server as your deployuser and restart your app 🚀</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>systemctl restart myapponsystemd.service
+</code></pre></div></div>
+
+<p>Source on YouTube <a href="https://www.youtube.com/watch?v=DmbBgXK8M5M">@Dreams of Code</a></p>
+
+
+<hr />
+
+<a href="/2025/senior-engineers/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a href="/2025/git-co-authoring/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

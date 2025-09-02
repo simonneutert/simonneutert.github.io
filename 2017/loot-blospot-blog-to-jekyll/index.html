@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Loot a Blogspot Blog and Save the Contents as Markdown (for a Jekyll backup) | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.POPT2NFP.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.M22FUQKT.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header>
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <!-- <li><a href="/telegram">On Telegram</a></li> -->
+    <!-- <li><a href="/about">About</a></li> -->
+    <li><a href="/posts">Blog</a></li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<h1>Loot a Blogspot Blog and Save the Contents as Markdown (for a Jekyll backup)</h1>
+
+<p>This script is to be taken as an inspiration :)</p>
+
+<p>If you need your content to be parsed in a sophisticated way, try this gem: <a href="https://github.com/conversation/upmark">Upmark</a>. Don’t forget that nokogiri’s <code class="highlighter-rouge">content</code> and <code class="highlighter-rouge">text</code> methods should therefore be changed to <code class="highlighter-rouge">inner_html</code>.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'nokogiri'</span> <span class="c1"># gem install nokogiri</span>
+<span class="nb">require</span> <span class="s1">'open-uri'</span>
+<span class="nb">require</span> <span class="s1">'date'</span>
+
+<span class="n">html</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">HTML</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">'http://any_blog-you-can-think-of3.blogspot.com'</span><span class="p">))</span>
+<span class="n">posts</span> <span class="o">=</span> <span class="n">html</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="s1">'a'</span><span class="p">).</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">l</span><span class="o">|</span> <span class="n">l</span><span class="p">[</span><span class="s2">"href"</span><span class="p">]</span> <span class="p">}</span>
+<span class="c1"># RegEx for links: http://blogname.blogspot.com/year/month/name-of-post</span>
+<span class="n">posts</span> <span class="o">=</span> <span class="n">posts</span><span class="p">.</span><span class="nf">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">e</span><span class="o">|</span> <span class="sr">/http:\/{2}.+\/.+\/.+\/.+/</span> <span class="o">=~</span> <span class="n">e</span><span class="p">}</span>
+
+<span class="c1"># iterate over posts</span>
+<span class="n">posts</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">post</span><span class="o">|</span>
+  <span class="c1"># nokogiri / content</span>
+  <span class="n">content</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">HTML</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">post</span><span class="p">))</span>
+  <span class="n">title</span> <span class="o">=</span> <span class="n">content</span><span class="p">.</span><span class="nf">title</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="s2">"Blog Title: "</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
+  <span class="n">clean_title</span> <span class="o">=</span> <span class="n">title</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/[()-,.:;?$§"'\/\\]/</span><span class="p">,</span> <span class="s1">''</span><span class="p">).</span><span class="nf">strip</span>
+  <span class="n">file_title</span> <span class="o">=</span> <span class="n">clean_title</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="s2">" "</span><span class="p">,</span> <span class="s2">"-"</span><span class="p">)</span>
+  <span class="n">text</span> <span class="o">=</span> <span class="n">content</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="s1">'.post-body'</span><span class="p">).</span><span class="nf">first</span><span class="p">.</span><span class="nf">content</span><span class="p">.</span><span class="nf">strip</span>
+  <span class="n">time_published</span> <span class="o">=</span> <span class="n">content</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="s1">'.published'</span><span class="p">).</span><span class="nf">first</span><span class="p">.</span><span class="nf">text</span>
+
+  <span class="c1"># date related operations</span>
+  <span class="n">date</span> <span class="o">=</span> <span class="s2">"</span><span class="si">#{</span><span class="n">content</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="s1">'.date-header'</span><span class="p">).</span><span class="nf">first</span><span class="p">.</span><span class="nf">content</span><span class="si">}</span><span class="s2"> - </span><span class="si">#{</span><span class="n">time_published</span><span class="si">}</span><span class="s2">"</span><span class="p">.</span><span class="nf">strip</span>
+  <span class="n">content_date_de</span> <span class="o">=</span> <span class="n">date</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s2">","</span><span class="p">).</span><span class="nf">last</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s2">"-"</span><span class="p">).</span><span class="nf">first</span><span class="p">.</span><span class="nf">strip</span>
+  <span class="c1"># dates and translatations :-/</span>
+  <span class="n">months_en</span> <span class="o">=</span> <span class="sx">%w(January February March April May June July August September October November December)</span>
+  <span class="n">months_de</span> <span class="o">=</span> <span class="sx">%w(Januar Februar März April Mai Juni Juli August September Oktober November Dezember)</span>
+  <span class="n">translatations</span> <span class="o">=</span> <span class="no">Hash</span><span class="p">[</span><span class="n">months_de</span><span class="p">.</span><span class="nf">zip</span><span class="p">(</span><span class="n">months_en</span><span class="p">)]</span>
+  <span class="n">months_de</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">m</span><span class="o">|</span> <span class="n">content_date_de</span><span class="p">.</span><span class="nf">gsub!</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">translatations</span><span class="p">[</span><span class="n">m</span><span class="p">])</span> <span class="p">}</span>
+  <span class="n">file_date</span> <span class="o">=</span> <span class="no">DateTime</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">content_date_de</span> <span class="o">&lt;&lt;</span> <span class="s2">" "</span> <span class="o">&lt;&lt;</span> <span class="n">time_published</span><span class="p">)</span>
+  <span class="n">pub_date</span> <span class="o">=</span> <span class="n">file_date</span><span class="p">.</span><span class="nf">strftime</span><span class="p">(</span><span class="s2">"%Y-%m-%d"</span><span class="p">)</span>
+
+  <span class="c1"># IO for Markdown Export</span>
+  <span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="s2">"</span><span class="si">#{</span><span class="n">pub_date</span><span class="si">}</span><span class="s2">-</span><span class="si">#{</span><span class="n">file_title</span><span class="si">}</span><span class="s2">.md"</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="o">&lt;&lt;~</span><span class="no">CONTENT</span><span class="sh">
+    ---
+    layout: post
+    title:  "</span><span class="si">#{</span><span class="n">title</span><span class="si">}</span><span class="sh">"
+    ---
+    __</span><span class="si">#{</span><span class="n">date</span><span class="si">}</span><span class="sh"> Uhr__
+
+    </span><span class="si">#{</span><span class="n">text</span><span class="si">}</span><span class="sh">
+</span><span class="no">    CONTENT</span>
+    <span class="n">file</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+
+<hr />
+
+<a href="/2017/display-notifications-terminal-bash-mac/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a href="/2017/python-fibonacci/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

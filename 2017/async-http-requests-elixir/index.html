@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Parallel Http Requests with HTTPoison in Elixir | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.POPT2NFP.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.M22FUQKT.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header>
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <!-- <li><a href="/telegram">On Telegram</a></li> -->
+    <!-- <li><a href="/about">About</a></li> -->
+    <li><a href="/posts">Blog</a></li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<h1>Parallel Http Requests with HTTPoison in Elixir</h1>
+
+<p>Ever wondered how to send multiple http requests using multiple processes with Elixir? Let&#8217;s use Elixir glorious <a href="https://hexdocs.pm/elixir/Task.html#content">Tasks</a> to map your desired website.</p>
+
+<ul>
+  <li>install <a href="https://github.com/edgurgel/httpoison">HTTPoison</a></li>
+  <li>install <a href="https://github.com/philss/floki">Floki</a> (if you need to parse the content)</li>
+</ul>
+
+<div class="language-elixir highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">defmodule</span> <span class="no">Looter</span> <span class="k">do</span>
+  <span class="k">def</span> <span class="n">grabber</span><span class="p">(</span><span class="n">urls</span> <span class="p">\\</span> <span class="p">[</span><span class="s2">"http://www.simon-neutert.de"</span><span class="p">,</span> <span class="s2">"http://www.simon-neutert.de/posts"</span><span class="p">])</span> <span class="k">do</span>
+    <span class="no">Enum</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">urls</span><span class="p">,</span> <span class="k">fn</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="no">Task</span><span class="o">.</span><span class="n">async</span><span class="p">(</span><span class="k">fn</span> <span class="o">-&gt;</span> <span class="no">Looter</span><span class="o">.</span><span class="n">digger</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">end</span><span class="p">)</span> <span class="k">end</span><span class="p">)</span>
+    <span class="o">|&gt;</span> <span class="no">Enum</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">fn</span><span class="p">(</span><span class="n">task</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="no">Task</span><span class="o">.</span><span class="n">await</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="mi">145000</span><span class="p">)</span> <span class="k">end</span><span class="p">)</span> <span class="c1"># 145000 == Timeout in milliseconds</span>
+  <span class="k">end</span>
+  <span class="k">def</span> <span class="n">digger</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">do</span>
+    <span class="p">%</span><span class="no">HTTPoison</span><span class="o">.</span><span class="no">Response</span><span class="p">{</span><span class="ss">body:</span> <span class="n">body</span><span class="p">,</span> <span class="ss">status_code:</span> <span class="n">status_code</span><span class="p">}</span> <span class="o">=</span> <span class="no">HTTPoison</span><span class="o">.</span><span class="n">get!</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">case</span> <span class="n">status_code</span> <span class="k">do</span>
+      <span class="mi">200</span> <span class="o">-&gt;</span>
+        <span class="p">{</span><span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">title</span><span class="p">}</span> <span class="o">=</span> <span class="no">List</span><span class="o">.</span><span class="n">first</span><span class="p">(</span><span class="no">Floki</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="s2">"title"</span><span class="p">))</span>
+        <span class="no">IO</span><span class="o">.</span><span class="n">puts</span> <span class="n">title</span>
+        <span class="p">{</span><span class="ss">:ok</span><span class="p">,</span> <span class="n">title</span><span class="p">}</span>
+      <span class="n">_</span> <span class="o">-&gt;</span>
+        <span class="no">IO</span><span class="o">.</span><span class="n">puts</span> <span class="s2">"Error </span><span class="si">#{</span><span class="n">status_code</span><span class="si">}</span><span class="s2">"</span>
+        <span class="p">{</span><span class="ss">:error</span><span class="p">,</span> <span class="s2">"Error </span><span class="si">#{</span><span class="n">status_code</span><span class="si">}</span><span class="s2">"</span><span class="p">}</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><strong>Bonus:</strong> Experiment with <code class="highlighter-rouge">Enum.chunk()</code>, so you can setup pools of workers and limit the amount of processes created.</p>
+
+<p>The key of what makes this so efficient is:</p>
+<div class="language-elixir highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Enum</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">urls</span><span class="p">,</span> <span class="k">fn</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="no">Task</span><span class="o">.</span><span class="n">async</span><span class="p">(</span><span class="k">fn</span> <span class="o">-&gt;</span> <span class="no">Looter</span><span class="o">.</span><span class="n">digger</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">end</span><span class="p">)</span> <span class="k">end</span><span class="p">)</span>
+<span class="o">|&gt;</span> <span class="no">Enum</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">fn</span><span class="p">(</span><span class="n">task</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="no">Task</span><span class="o">.</span><span class="n">await</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="mi">145000</span><span class="p">)</span> <span class="k">end</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Read more about parallel maps on <a href="http://elixir-recipes.github.io/concurrency/parallel-map/">elixir-recipies</a> and <a href="http://holyxiaoxin.github.io/async-tasks-benchmark/">holyxiaoxin article</a> is well worth reading, too.</p>
+
+<p><strong>Not fast enough?</strong> <em>Don&#8217;t mind using Ruby?</em> I came up with a solution using <a href="https://github.com/igrigorik/em-synchrony">EM-Synchrony</a> and Nokogiri that is up to 4 times faster using only around 25 concurrent connections.</p>
+
+
+<hr />
+
+<a href="/2017/scrape-js-powered-websites-with-ruby-and-selenium/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a href="/2017/rails-wkhtmltopdf-heroku-tables-break-pring/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

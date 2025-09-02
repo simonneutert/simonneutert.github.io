@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>&quot;Activate&quot; POROs (in a Rails app) | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.POPT2NFP.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.M22FUQKT.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header>
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <!-- <li><a href="/telegram">On Telegram</a></li> -->
+    <!-- <li><a href="/about">About</a></li> -->
+    <li><a href="/posts">Blog</a></li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<h1>&quot;Activate&quot; POROs (in a Rails app)</h1>
+
+<p>Basic example on <a href="https://api.rubyonrails.org/classes/ActiveModel/Model.html">including ActiveModel</a></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Person</span>
+  <span class="kp">include</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Model</span>
+  <span class="nb">attr_accessor</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:age</span>
+<span class="k">end</span>
+
+<span class="n">person</span> <span class="o">=</span> <span class="no">Person</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">name: </span><span class="s1">'bob'</span><span class="p">,</span> <span class="ss">age: </span><span class="s1">'18'</span><span class="p">)</span>
+<span class="n">person</span><span class="p">.</span><span class="nf">name</span> <span class="c1"># =&gt; "bob"</span>
+<span class="n">person</span><span class="p">.</span><span class="nf">age</span>  <span class="c1"># =&gt; "18"</span>
+</code></pre></div></div>
+
+<p>And in order to make use of the magical serializers with <a href="https://api.rubyonrails.org/classes/ActiveModel/Serialization.html">ActiveModel::Serialization</a>:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Person</span>
+  <span class="kp">include</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Serialization</span>
+
+  <span class="nb">attr_accessor</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:age</span>
+
+  <span class="k">def</span> <span class="nf">attributes</span>
+    <span class="p">{</span><span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="kp">nil</span><span class="p">,</span> <span class="s1">'age'</span> <span class="o">=&gt;</span> <span class="kp">nil</span><span class="p">}</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">capitalized_name</span>
+    <span class="nb">name</span><span class="p">.</span><span class="nf">capitalize</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">person</span> <span class="o">=</span> <span class="no">Person</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">person</span><span class="p">.</span><span class="nf">name</span> <span class="o">=</span> <span class="s1">'bob'</span>
+<span class="n">person</span><span class="p">.</span><span class="nf">age</span>  <span class="o">=</span> <span class="mi">22</span>
+<span class="n">person</span><span class="p">.</span><span class="nf">serializable_hash</span>                <span class="c1"># =&gt; {"name"=&gt;"bob", "age"=&gt;22}</span>
+<span class="n">person</span><span class="p">.</span><span class="nf">serializable_hash</span><span class="p">(</span><span class="ss">only: :name</span><span class="p">)</span>   <span class="c1"># =&gt; {"name"=&gt;"bob"}</span>
+<span class="n">person</span><span class="p">.</span><span class="nf">serializable_hash</span><span class="p">(</span><span class="ss">except: :name</span><span class="p">)</span> <span class="c1"># =&gt; {"age"=&gt;22}</span>
+<span class="n">person</span><span class="p">.</span><span class="nf">serializable_hash</span><span class="p">(</span><span class="ss">methods: :capitalized_name</span><span class="p">)</span>
+<span class="c1"># =&gt; {"name"=&gt;"bob", "age"=&gt;22, "capitalized_name"=&gt;"Bob"}</span>
+</code></pre></div></div>
+
+<p>Easy peasy pumping out the the good ol’ railsy stuff 🛤</p>
+
+
+<hr />
+
+<a href="/2022/connect-to-shh-and-fire-a-sudo-command/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a href="/2022/vanilla-js/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

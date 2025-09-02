@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Clojures core.async Hot Diggity Dogs | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.POPT2NFP.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.M22FUQKT.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header>
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <!-- <li><a href="/telegram">On Telegram</a></li> -->
+    <!-- <li><a href="/about">About</a></li> -->
+    <li><a href="/posts">Blog</a></li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<h1>Clojures core.async Hot Diggity Dogs</h1>
+
+<p>read <a href="https://www.braveclojure.com/core-async/">Clojure for the Brave and True - Chapter about &#8220;core.async&#8221;</a> with detailed behind the scenes content, or &#8230;</p>
+
+<p>fire up a repl and experiment with the given Clojure code pieces yourself - but then read the article!</p>
+
+<div class="language-clojure highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">example.core</span><span class="w">
+  </span><span class="p">(</span><span class="no">:require</span><span class="w"> </span><span class="p">[</span><span class="n">clojure.core.async</span><span class="w">
+             </span><span class="no">:as</span><span class="w"> </span><span class="n">a</span><span class="w">
+             </span><span class="no">:refer</span><span class="w"> </span><span class="p">[</span><span class="n">&gt;!</span><span class="w"> </span><span class="n">&lt;!</span><span class="w"> </span><span class="n">&gt;!!</span><span class="w"> </span><span class="n">&lt;!!</span><span class="w"> </span><span class="n">go</span><span class="w"> </span><span class="n">chan</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="n">close!</span><span class="w"> </span><span class="n">thread</span><span class="w">
+                     </span><span class="n">alts!</span><span class="w"> </span><span class="n">alts!!</span><span class="w"> </span><span class="n">timeout</span><span class="p">]]))</span><span class="w">
+
+</span><span class="c1">;; simple example with sleep between channel reads</span><span class="w">
+</span><span class="c1">;; opens a channel</span><span class="w">
+</span><span class="c1">;; send 3 types of ketchup to channel</span><span class="w">
+</span><span class="c1">;; reads 3 times from channel</span><span class="w">
+</span><span class="p">(</span><span class="nf">do</span><span class="w"> </span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">echo-chan</span><span class="w"> </span><span class="p">(</span><span class="nf">chan</span><span class="p">))</span><span class="w">
+    </span><span class="p">(</span><span class="nf">go</span><span class="w"> </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="p">(</span><span class="nf">&lt;!</span><span class="w"> </span><span class="n">echo-chan</span><span class="p">)))</span><span class="w">
+    </span><span class="p">(</span><span class="nf">go</span><span class="w"> </span><span class="p">(</span><span class="nf">&gt;!</span><span class="w"> </span><span class="n">echo-chan</span><span class="w"> </span><span class="s">"ketchup!"</span><span class="p">))</span><span class="w">
+    </span><span class="p">(</span><span class="nf">go</span><span class="w"> </span><span class="p">(</span><span class="nf">&gt;!</span><span class="w"> </span><span class="n">echo-chan</span><span class="w"> </span><span class="s">"ketchup!!"</span><span class="p">))</span><span class="w">
+    </span><span class="p">(</span><span class="nf">go</span><span class="w"> </span><span class="p">(</span><span class="nf">&gt;!</span><span class="w"> </span><span class="n">echo-chan</span><span class="w"> </span><span class="s">"ketchup!!!"</span><span class="p">))</span><span class="w">
+    </span><span class="p">(</span><span class="nf">Thread/sleep</span><span class="w"> </span><span class="mi">1000</span><span class="p">)</span><span class="w">
+    </span><span class="p">(</span><span class="nf">go</span><span class="w"> </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="p">(</span><span class="nf">&lt;!</span><span class="w"> </span><span class="n">echo-chan</span><span class="p">)))</span><span class="w">
+    </span><span class="p">(</span><span class="nf">Thread/sleep</span><span class="w"> </span><span class="mi">2000</span><span class="p">)</span><span class="w">
+    </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="p">(</span><span class="nf">&lt;!!</span><span class="w"> </span><span class="n">echo-chan</span><span class="p">)))</span><span class="w">
+
+</span><span class="c1">;; closed channels allow main process to proceed and not block, waiting</span><span class="w">
+</span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[</span><span class="n">c</span><span class="w"> </span><span class="p">(</span><span class="nf">chan</span><span class="w"> </span><span class="mi">2</span><span class="p">)]</span><span class="w">
+  </span><span class="p">(</span><span class="nf">&gt;!!</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w">
+  </span><span class="p">(</span><span class="nf">&gt;!!</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w">
+  </span><span class="p">(</span><span class="nf">close!</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w">
+  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="p">(</span><span class="nf">&lt;!!</span><span class="w"> </span><span class="n">c</span><span class="p">))</span><span class="w"> </span><span class="c1">; 1</span><span class="w">
+  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="p">(</span><span class="nf">&lt;!!</span><span class="w"> </span><span class="n">c</span><span class="p">))</span><span class="w"> </span><span class="c1">; 2</span><span class="w">
+  </span><span class="c1">;; since we closed the channel this will return false,</span><span class="w">
+  </span><span class="c1">;; we can no longer add values</span><span class="w">
+  </span><span class="p">(</span><span class="nf">&gt;!!</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="c1">; false</span><span class="w">
+  </span><span class="p">(</span><span class="nf">&lt;!!</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="c1">; nil</span><span class="w">
+  </span><span class="p">(</span><span class="nf">&lt;!!</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="c1">; nil</span><span class="w">
+  </span><span class="p">)</span><span class="w">
+
+</span><span class="c1">;; example of a non-blocking hot-dog-machine</span><span class="w">
+</span><span class="c1">;; each step is followed by some preparation time</span><span class="w">
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">hot-dog-machine</span><span class="w">
+  </span><span class="p">[]</span><span class="w">
+  </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[</span><span class="n">in</span><span class="w"> </span><span class="p">(</span><span class="nf">chan</span><span class="p">)</span><span class="w">
+        </span><span class="n">out</span><span class="w"> </span><span class="p">(</span><span class="nf">chan</span><span class="p">)]</span><span class="w">
+    </span><span class="p">(</span><span class="nf">go</span><span class="w"> </span><span class="p">(</span><span class="nb">prn</span><span class="w"> </span><span class="p">(</span><span class="nb">str</span><span class="w"> </span><span class="p">(</span><span class="nf">&lt;!</span><span class="w"> </span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="s">" was thrown in"</span><span class="p">))</span><span class="w">
+        </span><span class="p">(</span><span class="nb">prn</span><span class="w"> </span><span class="p">(</span><span class="nb">str</span><span class="w"> </span><span class="s">"processing: '"</span><span class="w"> </span><span class="p">(</span><span class="nf">&lt;!</span><span class="w"> </span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="s">"'"</span><span class="p">))</span><span class="w">
+        </span><span class="p">(</span><span class="nf">Thread/sleep</span><span class="w"> </span><span class="mi">2000</span><span class="p">)</span><span class="w">
+        </span><span class="p">(</span><span class="nb">prn</span><span class="w"> </span><span class="p">(</span><span class="nb">str</span><span class="w"> </span><span class="s">"preparing hot dog ..."</span><span class="p">))</span><span class="w">
+        </span><span class="p">(</span><span class="nf">Thread/sleep</span><span class="w"> </span><span class="mi">2000</span><span class="p">)</span><span class="w">
+        </span><span class="p">(</span><span class="nb">prn</span><span class="w"> </span><span class="p">(</span><span class="nb">str</span><span class="w"> </span><span class="s">"handing out string: 'hot dog'"</span><span class="p">))</span><span class="w">
+        </span><span class="p">(</span><span class="nf">&gt;!</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="s">"hot dog"</span><span class="p">))</span><span class="w">
+    </span><span class="p">[</span><span class="n">in</span><span class="w"> </span><span class="n">out</span><span class="p">]))</span><span class="w">
+
+</span><span class="c1">;; sleep between paying and ordering ketchup</span><span class="w">
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">make-hot-dog</span><span class="w">
+  </span><span class="p">[</span><span class="n">money</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[[</span><span class="n">in</span><span class="w"> </span><span class="n">out</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="nf">hot-dog-machine</span><span class="p">)]</span><span class="w">
+    </span><span class="p">(</span><span class="nf">&gt;!!</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">money</span><span class="p">)</span><span class="w">
+    </span><span class="p">(</span><span class="nf">Thread/sleep</span><span class="w"> </span><span class="mi">2000</span><span class="p">)</span><span class="w">
+    </span><span class="p">(</span><span class="nf">&gt;!!</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="s">"ketchup, please!"</span><span class="p">)</span><span class="w">
+    </span><span class="p">(</span><span class="nf">&lt;!!</span><span class="w"> </span><span class="n">out</span><span class="p">)))</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">go</span><span class="w"> </span><span class="p">(</span><span class="nb">prn</span><span class="w"> </span><span class="p">(</span><span class="nb">str</span><span class="w"> </span><span class="s">"pocket lint: "</span><span class="w"> </span><span class="p">(</span><span class="nf">make-hot-dog</span><span class="w"> </span><span class="s">"pocket lint"</span><span class="p">))))</span><span class="w">
+</span><span class="p">(</span><span class="nb">prn</span><span class="w"> </span><span class="p">(</span><span class="nb">str</span><span class="w"> </span><span class="s">"result is: "</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">)))</span><span class="w">
+</span><span class="p">(</span><span class="nf">Thread/sleep</span><span class="w"> </span><span class="mi">1000</span><span class="p">)</span><span class="w">
+</span><span class="p">(</span><span class="nb">prn</span><span class="w"> </span><span class="p">(</span><span class="nb">str</span><span class="w"> </span><span class="s">"i received a "</span><span class="w"> </span><span class="p">(</span><span class="nf">make-hot-dog</span><span class="w"> </span><span class="s">"big moneys"</span><span class="p">)</span><span class="w"> </span><span class="s">" for my big moneys"</span><span class="p">))</span><span class="w">
+</span></code></pre></div></div>
+
+
+<hr />
+
+<a href="/2022/leaflet-draw-grid/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a href="/2022/ruby-sequel-postgres-materialized-view/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

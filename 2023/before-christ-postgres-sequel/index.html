@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Ruby: Sequel and Dates BC (Before Christ) - Cheesus Chwist, I nearly went mad 🤪 | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.POPT2NFP.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.M22FUQKT.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header>
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <!-- <li><a href="/telegram">On Telegram</a></li> -->
+    <!-- <li><a href="/about">About</a></li> -->
+    <li><a href="/posts">Blog</a></li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<h1>Ruby: Sequel and Dates BC (Before Christ) - Cheesus Chwist, I nearly went mad 🤪</h1>
+
+<p>When fiddling with date ranges, I stumbled about an error which caused my application to break.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PG::DatetimeFieldOverflow: ERROR:  date/time field value out of range: "0000-12-31 23:00:00.000000+0000"
+LINE 1: ..." WHERE (("action" = 'deposit') AND ("realized" &gt; '0000-12-3...
+                                                             ^: SELECT sum(cast(amount_cents as int)) as saldo  FROM "bookings" WHERE (("action" = 'deposit') AND ("realized" &gt; '0000-12-31 23:00:00.000000+0000')) LIMIT 1
+</code></pre></div></div>
+
+<p>I configured Sequel (and the database) to use UTC all the way down, causing my testsuite to brake 🥲<br />
+https://sequel.jeremyevans.net/rdoc/classes/Sequel/Timezones.html</p>
+
+<h2 id="enhancing-postgresql-date-support-with-pg_extended_date_support-sequel-extension">Enhancing PostgreSQL Date Support with <code class="highlighter-rouge">pg_extended_date_support</code> Sequel extension</h2>
+
+<p>PostgreSQL is a powerful and versatile open-source relational database management system. Its robust feature set has made it a popular choice for developers and businesses worldwide. One area where PostgreSQL has some limitations is in handling dates and timestamps, specifically infinite and BC dates/timestamps. I</p>
+
+<p>What is Sequel’s <code class="highlighter-rouge">pg_extended_date_support</code> extension?</p>
+
+<p>The <code class="highlighter-rouge">pg_extended_date_support</code> extension adds support for infinite and BC dates/timestamps in PostgreSQL. While the postgres adapter already had a convert_infinite_timestamps setting, it wasn’t supported in the jdbc/postgresql adapter, and it didn’t handle BC dates/timestamps. This new extension resolves these issues and ensures better compatibility with various adapters.</p>
+
+<p>How to Use the <code class="highlighter-rouge">pg_extended_date_support</code> Extension:</p>
+
+<p>To use the pg_extended_date_support extension, you will need to load it into your application and configure it according to your needs. By default, the extension only fixes the handling of BC dates/timestamps. To enable it to handle infinite timestamps, you need to choose the appropriate setting for your application. Here’s how to do it:</p>
+
+<ol>
+  <li>Load the extension for your database:</li>
+</ol>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">DB</span><span class="p">.</span><span class="nf">extension</span> <span class="ss">:pg_extended_date_support</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Configure the convert_infinite_timestamps setting:</li>
+</ol>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">DB</span><span class="p">.</span><span class="nf">convert_infinite_timestamps</span> <span class="o">=</span> <span class="ss">:string</span> <span class="c1"># or :float or :nil</span>
+</code></pre></div></div>
+
+<p>Choose the appropriate setting based on your application’s requirements. The available options are:</p>
+
+<p>:string - Infinite timestamps will be converted to strings.
+:float - Infinite timestamps will be converted to floating-point numbers.
+:nil - Infinite timestamps will not be converted and will be returned as nil.
+Additional Benefits of the pg_extended_date_support Extension:</p>
+
+<h3 id="bonus--conclusion">Bonus / Conclusion</h3>
+
+<p>Apart from handling infinite and BC dates/timestamps, the pg_extended_date_support extension also enables the handling of timezone offsets with seconds. This feature is not natively supported by Ruby’s Time class in versions earlier than 2.5. By using this extension, you can now work with timezones that have a non-minute offset, making your application more flexible and adaptable to various timezones.</p>
+
+<p>The pg_extended_date_support extension is a valuable addition to PostgreSQL, as it improves the handling of dates and timestamps, particularly infinite and BC dates/timestamps. Additionally, it enables support for timezone offsets with seconds, further enhancing PostgreSQL’s capabilities. If you’re working with PostgreSQL, consider integrating this extension into your application to make the most of its robust date and timestamp handling features.</p>
+
+
+<hr />
+
+<a href="/2023/pkapi/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a href="/2023/rubocop/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

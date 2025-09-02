@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Ruby&#39;s Safe Navigation Operator | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.POPT2NFP.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.M22FUQKT.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header>
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <!-- <li><a href="/telegram">On Telegram</a></li> -->
+    <!-- <li><a href="/about">About</a></li> -->
+    <li><a href="/posts">Blog</a></li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<h1>Ruby&#39;s Safe Navigation Operator</h1>
+
+<blockquote>
+  <p>Ruby 2.3.0 added a safe navigation operator (&amp;.) that checks for nil before calling a method.</p>
+
+  <p>It will return nil if str is nil, rather than raising a NoMethodError.</p>
+</blockquote>
+
+<p>&#8211; <a href="https://stackoverflow.com/a/34626154">Learned on StackOverflow</a></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">str</span> <span class="o">=</span> <span class="s2">"   Simon   "</span>
+<span class="n">stripper</span> <span class="o">=</span> <span class="n">str</span><span class="o">&amp;</span><span class="p">.</span><span class="nf">strip</span>
+<span class="nb">puts</span> <span class="n">stripper</span>
+<span class="c1"># =&gt; "Simon" </span>
+</code></pre></div></div>
+
+<p>Somehow what ActiveSupport offers with its <code class="highlighter-rouge">try</code> method.</p>
+
+
+<hr />
+
+<a href="/2018/clean-git-story/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a href="/2018/jquery-list-classes-of-element/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

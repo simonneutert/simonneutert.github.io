@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Super Simple Knapsack Ruby | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.POPT2NFP.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.M22FUQKT.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header>
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <!-- <li><a href="/telegram">On Telegram</a></li> -->
+    <!-- <li><a href="/about">About</a></li> -->
+    <li><a href="/posts">Blog</a></li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<h1>Super Simple Knapsack Ruby</h1>
+
+<p>Knapsack? What sack?</p>
+
+<p>Wikipedia says:</p>
+
+<blockquote>
+  <p>The knapsack problem is a problem in combinatorial optimization: Given a set of items, each with a weight and a value, determine the number of each item to include in a collection so that the total weight is less than or equal to a given limit and the total value is as large as possible. It derives its name from the problem faced by someone who is constrained by a fixed-size knapsack and must fill it with the most valuable items. The problem often arises in resource allocation where the decision makers have to choose from a set of non-divisible projects or tasks under a fixed budget or time constraint, respectively.</p>
+</blockquote>
+
+<p><strong>main.rb</strong></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># main.rb</span>
+
+<span class="nb">require_relative</span> <span class="s1">'simple_knapsack'</span>
+
+<span class="n">input_data</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="ss">l: </span><span class="mi">12</span><span class="p">,</span>
+    <span class="ss">v: </span><span class="mi">4</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="ss">l: </span><span class="mi">2</span><span class="p">,</span>
+    <span class="ss">v: </span><span class="mi">2</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="ss">l: </span><span class="mi">1</span><span class="p">,</span>
+    <span class="ss">v: </span><span class="mi">2</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="ss">l: </span><span class="mi">1</span><span class="p">,</span>
+    <span class="ss">v: </span><span class="mi">1</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="ss">l: </span><span class="mi">4</span><span class="p">,</span>
+    <span class="ss">v: </span><span class="mi">10</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+
+<span class="n">limit</span> <span class="o">=</span> <span class="mi">15</span>
+
+<span class="n">ksack</span> <span class="o">=</span> <span class="no">SimpleKnapsack</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">limit</span><span class="p">,</span> <span class="n">input_data</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">ksack</span><span class="p">.</span><span class="nf">calculate</span>
+<span class="nb">puts</span> <span class="n">result</span><span class="p">[</span><span class="ss">:result</span><span class="p">][</span><span class="ss">:score_v</span><span class="p">]</span> <span class="o">==</span> <span class="mi">15</span>
+<span class="nb">puts</span> <span class="n">result</span><span class="p">[</span><span class="ss">:result</span><span class="p">][</span><span class="ss">:score_l</span><span class="p">]</span> <span class="o">==</span> <span class="mi">8</span>
+
+<span class="n">input_data</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="ss">l: </span><span class="mi">75</span><span class="p">,</span>
+    <span class="ss">v: </span><span class="mi">76</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="ss">l: </span><span class="mi">50</span><span class="p">,</span>
+    <span class="ss">v: </span><span class="mi">50</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="ss">l: </span><span class="mi">50</span><span class="p">,</span>
+    <span class="ss">v: </span><span class="mi">50</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+
+<span class="n">limit</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="n">ksack</span> <span class="o">=</span> <span class="no">SimpleKnapsack</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">limit</span><span class="p">,</span> <span class="n">input_data</span><span class="p">,</span> <span class="ss">debug: </span><span class="kp">true</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">ksack</span><span class="p">.</span><span class="nf">calculate</span>
+<span class="nb">puts</span> <span class="n">result</span><span class="p">[</span><span class="ss">:result</span><span class="p">][</span><span class="ss">:score_v</span><span class="p">]</span> <span class="o">==</span> <span class="mi">100</span>
+<span class="nb">puts</span> <span class="n">result</span><span class="p">[</span><span class="ss">:result</span><span class="p">][</span><span class="ss">:score_l</span><span class="p">]</span> <span class="o">==</span> <span class="mi">100</span>
+</code></pre></div></div>
+
+<p><strong>simple_knapsack.rb</strong></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># simple_knapsack.rb</span>
+
+<span class="k">class</span> <span class="nc">SimpleKnapsack</span>
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">limit</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="ss">debug: </span><span class="kp">false</span><span class="p">)</span>
+    <span class="vi">@limit</span> <span class="o">=</span> <span class="n">limit</span>
+    <span class="vi">@data</span> <span class="o">=</span> <span class="n">data</span>
+    <span class="n">validate_data_structure!</span> <span class="k">if</span> <span class="n">debug</span>
+    <span class="vi">@data_with_ratios</span> <span class="o">=</span> <span class="n">calc_ratios</span>
+    <span class="vi">@results</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">validate_data_structure!</span>
+    <span class="nb">puts</span> <span class="s1">'Debug mode: ON!, raising error when receiving malformed data!'</span>
+    <span class="k">raise</span> <span class="no">ArgumentError</span><span class="p">(</span><span class="s1">'Please format your input data!'</span><span class="p">)</span> <span class="k">unless</span> <span class="vi">@data</span><span class="p">.</span><span class="nf">all?</span> <span class="k">do</span> <span class="o">|</span><span class="n">item</span><span class="o">|</span>
+      <span class="no">Integer</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="ss">:v</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="no">Integer</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="ss">:l</span><span class="p">])</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">calculate</span>
+    <span class="k">return</span> <span class="n">calculate_relative_value</span> <span class="k">if</span> <span class="n">in_sacks_limits?</span><span class="p">(</span><span class="n">score_item_key</span><span class="p">(</span><span class="ss">:l</span><span class="p">,</span> <span class="vi">@data</span><span class="p">))</span>
+
+    <span class="n">best_combination_score</span> <span class="o">=</span> <span class="n">calculate_combinations</span>
+    <span class="vi">@results</span><span class="p">.</span><span class="nf">max</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="n">r</span><span class="p">[</span><span class="ss">:result</span><span class="p">][</span><span class="ss">:score_v</span><span class="p">]</span> <span class="p">}</span>
+  <span class="k">end</span>
+
+  <span class="kp">private</span>
+
+  <span class="k">def</span> <span class="nf">track_result</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+    <span class="vi">@results</span><span class="p">.</span><span class="nf">push</span><span class="p">({</span> <span class="ss">method: </span><span class="n">method_name</span><span class="p">.</span><span class="nf">to_sym</span><span class="p">,</span> <span class="ss">result: </span><span class="p">})</span>
+    <span class="n">result</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">calculate_combinations</span>
+    <span class="n">best_results</span> <span class="o">=</span> <span class="kp">nil</span>
+    <span class="n">current_v_score</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">current_l_score</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="p">(</span><span class="mi">1</span><span class="o">..</span><span class="p">(</span><span class="vi">@data_with_ratios</span><span class="p">.</span><span class="nf">count</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)).</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+      <span class="vi">@data_with_ratios</span><span class="p">.</span><span class="nf">combination</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">combination</span><span class="o">|</span>
+        <span class="n">v_score</span> <span class="o">=</span> <span class="n">score_item_key</span><span class="p">(</span><span class="ss">:v</span><span class="p">,</span> <span class="n">combination</span><span class="p">)</span>
+        <span class="n">l_score</span> <span class="o">=</span> <span class="n">score_item_key</span><span class="p">(</span><span class="ss">:l</span><span class="p">,</span> <span class="n">combination</span><span class="p">)</span>
+
+        <span class="k">next</span> <span class="k">unless</span> <span class="n">v_score</span> <span class="o">&gt;</span> <span class="n">current_v_score</span> <span class="o">&amp;&amp;</span> <span class="n">l_score</span> <span class="o">&lt;=</span> <span class="vi">@limit</span>
+
+        <span class="n">current_v_score</span> <span class="o">=</span> <span class="n">v_score</span>
+        <span class="n">current_l_score</span> <span class="o">=</span> <span class="n">l_score</span>
+        <span class="n">best_results</span> <span class="o">=</span> <span class="n">combination</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:dup</span><span class="p">)</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+
+    <span class="n">track_result</span><span class="p">(</span><span class="ss">:calculate_combinations</span><span class="p">,</span> <span class="n">build_result_hash</span><span class="p">(</span><span class="ss">items: </span><span class="n">best_results</span><span class="p">))</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">calculate_relative_value</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">rich_data</span> <span class="o">=</span> <span class="vi">@data_with_ratios</span><span class="p">.</span><span class="nf">sort_by</span> <span class="p">{</span> <span class="o">|</span><span class="n">d</span><span class="o">|</span> <span class="n">d</span><span class="p">[</span><span class="ss">:ratio</span><span class="p">]</span> <span class="p">}.</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:dup</span><span class="p">)</span>
+    <span class="n">result</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="n">rich_data</span><span class="p">.</span><span class="nf">pop</span><span class="p">)</span> <span class="k">while</span> <span class="n">sum_up_while_in_given_limit</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="n">result</span><span class="p">.</span><span class="nf">pop</span> <span class="k">while</span> <span class="n">in_sacks_limits?</span><span class="p">(</span><span class="n">score_item_key</span><span class="p">(</span><span class="ss">:l</span><span class="p">,</span> <span class="n">result</span><span class="p">))</span>
+
+    <span class="n">track_result</span><span class="p">(</span><span class="ss">:calculate_relative_value</span><span class="p">,</span> <span class="n">build_result_hash</span><span class="p">(</span><span class="ss">items: </span><span class="n">result</span><span class="p">))</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">score_item_key</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+    <span class="n">result</span><span class="p">.</span><span class="nf">sum</span> <span class="p">{</span> <span class="o">|</span><span class="n">entry</span><span class="o">|</span> <span class="n">entry</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="p">}</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">calc_ratios</span>
+    <span class="vi">@data</span><span class="p">.</span><span class="nf">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">d</span><span class="o">|</span>
+      <span class="n">ddup</span> <span class="o">=</span> <span class="n">d</span><span class="p">.</span><span class="nf">dup</span>
+      <span class="n">ddup</span><span class="p">[</span><span class="ss">:ratio</span><span class="p">]</span> <span class="o">=</span> <span class="no">Rational</span><span class="p">(</span><span class="n">ddup</span><span class="p">[</span><span class="ss">:v</span><span class="p">],</span> <span class="n">ddup</span><span class="p">[</span><span class="ss">:l</span><span class="p">])</span>
+      <span class="n">ddup</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">build_result_hash</span><span class="p">(</span><span class="n">items</span><span class="p">:)</span>
+    <span class="p">{</span>
+      <span class="n">items</span><span class="p">:,</span>
+      <span class="ss">score_v: </span><span class="n">score_item_key</span><span class="p">(</span><span class="ss">:v</span><span class="p">,</span> <span class="n">items</span><span class="p">),</span>
+      <span class="ss">score_l: </span><span class="n">score_item_key</span><span class="p">(</span><span class="ss">:l</span><span class="p">,</span> <span class="n">items</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">sum_up_while_in_given_limit</span><span class="p">(</span><span class="n">result_data</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kp">true</span> <span class="k">if</span> <span class="n">result_data</span><span class="p">.</span><span class="nf">empty?</span> <span class="o">||</span> <span class="n">in_sacks_limits?</span><span class="p">(</span><span class="n">score_item_key</span><span class="p">(</span><span class="ss">:l</span><span class="p">,</span> <span class="n">result_data</span><span class="p">))</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">in_sacks_limits?</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+    <span class="n">val</span> <span class="o">&lt;</span> <span class="vi">@limit</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+
+<hr />
+
+<a href="/2022/wget-it-all/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a href="/2022/msgpack/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>
