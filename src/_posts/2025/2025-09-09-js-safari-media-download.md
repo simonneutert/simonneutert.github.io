@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Force iOS Safari to download media file
+title: Force iOS Safari (and other browsers) to download media file
 ---
 
 # 💡 How to Force File Downloads in Safari Using JavaScript (JS-Only Solution)
