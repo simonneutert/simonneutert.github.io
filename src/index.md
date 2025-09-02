@@ -11,6 +11,7 @@ sometimes [blog](/posts) about what made me smile, stumble, humble, or moan.
 {:style="text-align:center"}
 
 I help maintain [shell-curry](https://shell-curry.simon-neutert.de/), an opinionated list of terminal tools.
+{:style="text-align:center"}
 
 Check out my [MicroBlog, here on the website](/microblog),  
 where I collect and share links I find interesting.
