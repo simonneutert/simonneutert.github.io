@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Using Rodauth Programmatically | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.POPT2NFP.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.M22FUQKT.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header>
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <!-- <li><a href="/telegram">On Telegram</a></li> -->
+    <!-- <li><a href="/about">About</a></li> -->
+    <li><a href="/posts">Blog</a></li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<h1>Using Rodauth Programmatically</h1>
+
+<h3 id="programmatically-delete-user-accounts-in-rodauth">Programmatically Delete User Accounts in Rodauth</h3>
+
+<p>When working with user accounts, there’s often a need to go beyond what’s exposed in the UI. Maybe you’re debugging a staging environment. Maybe you’re implementing a GDPR “Right to be Forgotten” flow. Or maybe you’re just tired of clicking through modals. Either way, being able to manage Rodauth accounts programmatically is a useful capability to have in your toolbox. See the official <a href="https://rodauth.jeremyevans.net/rdoc/files/README_rdoc.html#label-Using+Rodauth+as+a+Library">Rodauth documentation</a> for more details.</p>
+
+<p>Here’s a practical example: deleting a user account and cleaning up related data from the database—fully programmatically, with Rodauth at the helm.</p>
+
+<h2 id="the-task-delete-an-account">The Task: Delete an Account</h2>
+
+<p>Let’s start with the Rake task:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">desc</span> <span class="s1">'Delete user account and all related data, usage example: rake "delete_account[demo@test.test]"'</span>
+<span class="n">task</span> <span class="ss">:delete_account</span><span class="p">,</span> <span class="p">[</span><span class="ss">:email</span><span class="p">]</span> <span class="k">do</span> <span class="o">|</span><span class="n">_t</span><span class="p">,</span> <span class="n">args</span><span class="o">|</span> <span class="c1"># rubocop:disable Metrics/BlockLength</span>
+  <span class="nb">require</span> <span class="s1">'rodauth'</span>
+  <span class="no">DB</span><span class="p">.</span><span class="nf">transaction</span> <span class="k">do</span> <span class="c1"># rubocop:disable Metrics/BlockLength</span>
+    <span class="n">rodauth</span> <span class="o">=</span> <span class="no">Rodauth</span><span class="p">.</span><span class="nf">lib</span> <span class="k">do</span>
+      <span class="n">enable</span> <span class="ss">:close_account</span>
+      <span class="n">delete_account_on_close?</span> <span class="kp">true</span>
+    <span class="k">end</span>
+
+    <span class="n">account</span> <span class="o">=</span> <span class="no">DB</span><span class="p">[</span><span class="ss">:accounts</span><span class="p">].</span><span class="nf">where</span><span class="p">(</span><span class="ss">email: </span><span class="n">args</span><span class="p">[</span><span class="ss">:email</span><span class="p">]).</span><span class="nf">first</span>
+    <span class="n">account_id</span> <span class="o">=</span> <span class="n">account</span><span class="p">[</span><span class="ss">:id</span><span class="p">]</span>
+    <span class="n">account_status_id</span> <span class="o">=</span> <span class="n">account</span><span class="p">[</span><span class="ss">:status_id</span><span class="p">]</span>
+    <span class="n">account_with_profile</span> <span class="o">=</span> <span class="n">account_status_id</span> <span class="o">&gt;</span> <span class="mi">1</span>
+    <span class="k">raise</span> <span class="s2">"Account with email </span><span class="si">#{</span><span class="n">args</span><span class="p">[</span><span class="ss">:email</span><span class="p">]</span><span class="si">}</span><span class="s2"> not found"</span> <span class="k">unless</span> <span class="n">account_id</span>
+
+    <span class="nb">puts</span> <span class="s2">"Account with id </span><span class="si">#{</span><span class="n">account_id</span><span class="si">}</span><span class="s2"> and status_id </span><span class="si">#{</span><span class="n">account_status_id</span><span class="si">}</span><span class="s2"> found"</span>
+    <span class="n">profile</span> <span class="o">=</span> <span class="no">DB</span><span class="p">[</span><span class="ss">:profiles</span><span class="p">].</span><span class="nf">where</span><span class="p">(</span><span class="ss">account_id: </span><span class="n">account_id</span><span class="p">).</span><span class="nf">first</span>
+
+    <span class="n">profile_id</span> <span class="o">=</span> <span class="kp">nil</span>
+    <span class="k">if</span> <span class="n">account_with_profile</span>
+      <span class="n">profile_id</span> <span class="o">=</span> <span class="n">profile</span><span class="p">[</span><span class="ss">:id</span><span class="p">]</span>
+      <span class="nb">puts</span> <span class="s2">"Deleting profile with id </span><span class="si">#{</span><span class="n">profile_id</span><span class="si">}</span><span class="s2">"</span>
+    <span class="k">else</span>
+      <span class="nb">puts</span> <span class="s2">"No profile found for account with id: </span><span class="si">#{</span><span class="n">account_id</span><span class="si">}</span><span class="s2">, status_id: </span><span class="si">#{</span><span class="n">account_status_id</span><span class="si">}</span><span class="s2">"</span>
+    <span class="k">end</span>
+
+    <span class="nb">puts</span> <span class="s1">'Deleting in 3.. 2.. 1..'</span>
+    <span class="nb">sleep</span> <span class="mi">3</span>
+
+    <span class="n">rodauth_system</span> <span class="o">=</span> <span class="n">rodauth</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">DB</span><span class="p">)</span> <span class="c1"># init with DB connection as scope</span>
+    <span class="n">rodauth_system</span><span class="p">.</span><span class="nf">account_from_id</span><span class="p">(</span><span class="n">account_id</span><span class="p">)</span> <span class="c1"># load account</span>
+    <span class="n">rodauth_system</span><span class="p">.</span><span class="nf">close_account</span> <span class="c1"># close account</span>
+    <span class="no">DB</span><span class="p">[</span><span class="ss">:account_remember_keys</span><span class="p">].</span><span class="nf">where</span><span class="p">(</span><span class="ss">id: </span><span class="n">account_id</span><span class="p">).</span><span class="nf">delete</span> <span class="c1"># delete table: account_remember_keys</span>
+    <span class="no">DB</span><span class="p">[</span><span class="ss">:account_verification_keys</span><span class="p">].</span><span class="nf">where</span><span class="p">(</span><span class="ss">id: </span><span class="n">account_id</span><span class="p">).</span><span class="nf">delete</span> <span class="c1"># delete table: account_verification_keys</span>
+    <span class="n">rodauth_system</span><span class="p">.</span><span class="nf">delete_account</span> <span class="c1"># delete account</span>
+
+    <span class="k">if</span> <span class="n">account_with_profile</span> <span class="c1"># if account has a profile, or some other related data</span>
+      <span class="no">DB</span><span class="p">[</span><span class="ss">:activities</span><span class="p">].</span><span class="nf">where</span><span class="p">(</span><span class="ss">profile_id: </span><span class="n">profile_id</span><span class="p">).</span><span class="nf">delete</span>
+      <span class="no">DB</span><span class="p">[</span><span class="ss">:import_logs</span><span class="p">].</span><span class="nf">where</span><span class="p">(</span><span class="ss">profile_id: </span><span class="n">profile_id</span><span class="p">).</span><span class="nf">delete</span>
+      <span class="no">DB</span><span class="p">[</span><span class="ss">:profiles</span><span class="p">].</span><span class="nf">where</span><span class="p">(</span><span class="ss">account_id: </span><span class="n">account_id</span><span class="p">).</span><span class="nf">delete</span>
+    <span class="k">end</span>
+  <span class="k">rescue</span> <span class="no">StandardError</span> <span class="o">=&gt;</span> <span class="n">e</span>
+    <span class="nb">puts</span> <span class="s2">"Error deleting account: </span><span class="si">#{</span><span class="n">e</span><span class="p">.</span><span class="nf">message</span><span class="si">}</span><span class="s2">"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<h2 id="whats-going-on-here">What’s Going On Here?</h2>
+
+<p>This Rake task does the job of a full account teardown. Here’s a breakdown of the key steps:</p>
+
+<h3 id="1-load-rodauth-in-a-system-context">1. Load Rodauth in a System Context</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rodauth</span> <span class="o">=</span> <span class="no">Rodauth</span><span class="p">.</span><span class="nf">lib</span> <span class="k">do</span>
+  <span class="n">enable</span> <span class="ss">:close_account</span>
+  <span class="n">delete_account_on_close?</span> <span class="kp">true</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>We’re setting up a Rodauth instance outside of a request context. By using <code class="highlighter-rouge">Rodauth.lib</code>, you can configure a system-level Rodauth object to interact with your accounts programmatically—perfect for background jobs or rake tasks like this.</p>
+
+<h3 id="2-look-up-the-account">2. Look Up the Account</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">account</span> <span class="o">=</span> <span class="no">DB</span><span class="p">[</span><span class="ss">:accounts</span><span class="p">].</span><span class="nf">where</span><span class="p">(</span><span class="ss">email: </span><span class="n">args</span><span class="p">[</span><span class="ss">:email</span><span class="p">]).</span><span class="nf">first</span>
+</code></pre></div></div>
+
+<p>We locate the user by email and bail early if no match is found. Bonus points for verifying the account has a “profile” before diving into deletes—useful when your app distinguishes between signed-up and fully onboarded users.</p>
+
+<h3 id="3-close-the-account-via-rodauth">3. Close the Account via Rodauth</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rodauth_system</span> <span class="o">=</span> <span class="n">rodauth</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">DB</span><span class="p">)</span>
+<span class="n">rodauth_system</span><span class="p">.</span><span class="nf">account_from_id</span><span class="p">(</span><span class="n">account_id</span><span class="p">)</span>
+<span class="n">rodauth_system</span><span class="p">.</span><span class="nf">close_account</span>
+</code></pre></div></div>
+
+<p>This is where Rodauth does what it does best. We signal the account should be closed, and then optionally follow up with any cleanup like:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rodauth_system</span><span class="p">.</span><span class="nf">delete_account</span>
+</code></pre></div></div>
+
+<p>The <code class="highlighter-rouge">delete_account</code> method ensures Rodauth’s internal bookkeeping is respected. Think session tokens, remember keys, verification keys—you want these cleared too.</p>
+
+<h3 id="4-clean-up-app-specific-data">4. Clean Up App-Specific Data</h3>
+
+<p>If the account has associated domain-specific records (like a user profile, activities, or import logs), they’re scrubbed here:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">DB</span><span class="p">[</span><span class="ss">:profiles</span><span class="p">].</span><span class="nf">where</span><span class="p">(</span><span class="ss">account_id: </span><span class="n">account_id</span><span class="p">).</span><span class="nf">delete</span>
+<span class="no">DB</span><span class="p">[</span><span class="ss">:activities</span><span class="p">].</span><span class="nf">where</span><span class="p">(</span><span class="ss">profile_id: </span><span class="n">profile_id</span><span class="p">).</span><span class="nf">delete</span>
+</code></pre></div></div>
+
+<p>This is where you plug in your own application logic to go beyond what Rodauth manages by default.</p>
+
+<h2 id="a-note-on-transactions">A Note on Transactions</h2>
+
+<p>The entire operation is wrapped in a <code class="highlighter-rouge">DB.transaction</code> block. That means if something fails midway—say, the Rodauth call throws an exception—your database state stays clean. Nothing’s half-deleted.</p>
+
+<h2 id="add-a-countdown-for-drama-optional">Add a Countdown for Drama (Optional)</h2>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">puts</span> <span class="s1">'Deleting in 3.. 2.. 1..'</span>
+<span class="nb">sleep</span> <span class="mi">3</span>
+</code></pre></div></div>
+
+<p>Totally optional. Totally satisfying.</p>
+
+<h2 id="why-this-matters">Why This Matters</h2>
+
+<p>Rodauth is designed to give you fine-grained control. While its plugins work out of the box in a request/response cycle, it’s also built to scale beyond it. By using <code class="highlighter-rouge">Rodauth.lib</code>, you gain a CLI-friendly, background-job-ready interface that plays well with whatever admin or automation scripts you need.</p>
+
+<p>This pattern isn’t just for deleting users. You can use it to reset passwords, verify accounts, revoke sessions—anything Rodauth supports.</p>
+
+<h2 id="final-thoughts">Final Thoughts</h2>
+
+<p>If you’re building serious Ruby (Rails) applications and need secure, flexible auth, Rodauth is a solid choice. And once you’re ready to automate more of your user management, you’ll be glad it supports this kind of programmatic interface.</p>
+
+
+
+<hr />
+
+<a href="/2025/senior-engineers/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a href="/2025/passwordless-systemd-restarts/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>
