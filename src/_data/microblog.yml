@@ -311,3 +311,7 @@
   content: dali is a Clojure library for representing, exporting and manipulating the SVG graphics format.
 - url: https://hledger.org/#how-to-get-started
   content: Robust, friendly, fast, plain text accounting software
+- url: https://marijkeluttekes.dev/blog/articles/2025/09/03/git-exclude-a-handy-feature-you-might-not-know-about/
+  content: |
+    Exclude is particularly handy when you want to keep personal, non-standard files in a repository that is not yours, and where you cannot update its ignore files willy-nilly.
+
