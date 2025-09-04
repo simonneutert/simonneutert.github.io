@@ -1,4 +1,8 @@
-# Using Rodauth Programmatically  
+---
+title: "Using Rodauth Programmatically"
+layout: post
+---
+
 ### Programmatically Delete User Accounts in Rodauth
 
 When working with user accounts, there's often a need to go beyond what's exposed in the UI. Maybe you're debugging a staging environment. Maybe you're implementing a GDPR "Right to be Forgotten" flow. Or maybe you're just tired of clicking through modals. Either way, being able to manage Rodauth accounts programmatically is a useful capability to have in your toolbox. See the official [Rodauth documentation](https://rodauth.jeremyevans.net/rdoc/files/README_rdoc.html#label-Using+Rodauth+as+a+Library) for more details.
