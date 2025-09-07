@@ -1,4 +1,84 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.3.4">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-09-06T12:41:57+02:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Building a Simple Deno App with Handlebars and Oak</title><link href="/2025/deno-handlebars-oak/" rel="alternate" type="text/html" title="Building a Simple Deno App with Handlebars and Oak" /><published>2025-09-02T00:00:00+02:00</published><updated>2025-09-02T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2025/2025-09-02-deno-handlebars-oak.md</id><content type="html" xml:base="/2025/deno-handlebars-oak/">&lt;p&gt;Deno is all the rage these days — and for good reason!&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.3.4">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-09-07T21:06:39+02:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Fixing Xbox Controller Bluetooth Issues on Fedora 42 KDE Plasma</title><link href="/2025/aurora-xbox-nuc11/" rel="alternate" type="text/html" title="Fixing Xbox Controller Bluetooth Issues on Fedora 42 KDE Plasma" /><published>2025-09-07T00:00:00+02:00</published><updated>2025-09-07T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2025/2025-09-07-aurora-xbox-nuc11.md</id><content type="html" xml:base="/2025/aurora-xbox-nuc11/">&lt;p&gt;&lt;em&gt;Finally got my Xbox controller working properly on Linux - here’s how&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;On a NUC 11 Enthusiast …&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;If you’re running Aurora Linux Fedora 42 with KDE Plasma and struggling with Xbox controller Bluetooth connectivity issues - the endless connect/disconnect loops, blinking LEDs that never stabilize, or controllers that pair but don’t actually work - you’re not alone. &lt;strong&gt;After hours of troubleshooting on my Intel NUC11 Enthusiast&lt;/strong&gt;, I found the solution.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-problem&quot;&gt;The Problem&lt;/h2&gt;
+
+&lt;p&gt;The symptoms were maddening:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Controller would connect, then disconnect OR appear connected in Linux, but blink and is unresponsive&lt;/li&gt;
+  &lt;li&gt;LED kept blinking instead of staying solid&lt;/li&gt;
+  &lt;li&gt;Sometimes it showed as “paired” but wasn’t recognized as an input device&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Turns out this is a perfect storm of Intel AX210 chipset quirks, BlueZ configuration changes, and Xbox controller firmware compatibility issues.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-solution&quot;&gt;The Solution&lt;/h2&gt;
+
+&lt;p&gt;Here’s what actually fixed it for me:&lt;/p&gt;
+
+&lt;h3 id=&quot;1-fix-bluez-main-configuration&quot;&gt;1. Fix BlueZ Main Configuration&lt;/h3&gt;
+
+&lt;p&gt;Edit &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/bluetooth/main.conf&lt;/code&gt; and add these settings:&lt;/p&gt;
+
+&lt;div class=&quot;language-ini highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;[General]&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;ControllerMode&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;dual&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;Privacy&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;device&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;FastConnectable&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;JustWorksRepairing&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;confirm&lt;/span&gt;
+
+&lt;span class=&quot;nn&quot;&gt;[LE]&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;MinConnectionInterval&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;7&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;MaxConnectionInterval&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;9&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;ConnectionLatency&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;0&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;2-critical-input-configuration-change&quot;&gt;2. Critical Input Configuration Change&lt;/h3&gt;
+
+&lt;p&gt;This was the game-changer. In &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/bluetooth/input.conf&lt;/code&gt;, set:&lt;/p&gt;
+
+&lt;div class=&quot;language-ini highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;[General]&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;UserspaceHID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;false&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;ClassicBondedOnly&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;false&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;BlueZ changed the &lt;code class=&quot;highlighter-rouge&quot;&gt;UserspaceHID&lt;/code&gt; default to &lt;code class=&quot;highlighter-rouge&quot;&gt;true&lt;/code&gt; in March 2024, which breaks Xbox controllers completely.&lt;/p&gt;
+
+&lt;h3 id=&quot;3-disable-enhanced-retransmission-mode&quot;&gt;3. Disable Enhanced Retransmission Mode&lt;/h3&gt;
+
+&lt;p&gt;Create &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/modprobe.d/bluetooth.conf&lt;/code&gt; with:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;options bluetooth disable_ertm=1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;ERTM conflicts with Xbox controller Bluetooth implementation and causes most connection issues.&lt;/p&gt;
+
+&lt;h3 id=&quot;4-apply-changes-and-reboot&quot;&gt;4. Apply Changes and Reboot&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl restart bluetooth
+&lt;span class=&quot;c&quot;&gt;# Or better yet, just reboot to ensure all changes take effect&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;reboot
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;the-result&quot;&gt;The Result&lt;/h2&gt;
+
+&lt;p&gt;After implementing these changes and rebooting, my Xbox controller finally:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Connects reliably via Bluetooth&lt;/li&gt;
+  &lt;li&gt;Maintains stable connection during gaming&lt;/li&gt;
+  &lt;li&gt;LED stays solid instead of blinking&lt;/li&gt;
+  &lt;li&gt;Works properly as an input device&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You may need to “forget and reconnect” before a session, but this is nothing that makes me go back to windows.&lt;/p&gt;
+
+&lt;p&gt;Finally, gaming on Linux with an Xbox controller works as it should!&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Building a Simple Deno App with Handlebars and Oak</title><link href="/2025/deno-handlebars-oak/" rel="alternate" type="text/html" title="Building a Simple Deno App with Handlebars and Oak" /><published>2025-09-02T00:00:00+02:00</published><updated>2025-09-02T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2025/2025-09-02-deno-handlebars-oak.md</id><content type="html" xml:base="/2025/deno-handlebars-oak/">&lt;p&gt;Deno is all the rage these days — and for good reason!&lt;/p&gt;
 
 &lt;p&gt;After building a basic interactive CLI app with &lt;a href=&quot;https://deno.com&quot;&gt;Deno&lt;/a&gt;, I wanted to try creating a simple web app.&lt;/p&gt;
 
@@ -633,25 +713,4 @@ Linuxbrew with the following command:&lt;/p&gt;
 
 &lt;h2 id=&quot;anything-else&quot;&gt;Anything else?&lt;/h2&gt;
 
-&lt;p&gt;Yeah, I learned &lt;a href=&quot;https://www.youtube.com/watch?v=fsKKf-WNtdI&quot;&gt;How Drum and Bass is made…&lt;/a&gt; on YouTube.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Project Launched 🚀 - “Shell Curry”</title><link href="/2024/shell-curry/" rel="alternate" type="text/html" title="Project Launched 🚀 - &quot;Shell Curry&quot;" /><published>2024-12-17T00:00:00+01:00</published><updated>2024-12-17T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2024/2024-12-17-shell-curry.md</id><content type="html" xml:base="/2024/shell-curry/">&lt;h3 id=&quot;a-curated-list-of-shell-tools-and-configurations&quot;&gt;A curated list of shell tools and configurations.&lt;/h3&gt;
-
-&lt;p&gt;Together with a couple of developer friends, we launched a new project called &lt;a href=&quot;https://shell-curry.simon-neutert.de/&quot;&gt;shell-curry&lt;/a&gt; on GitHub. &lt;br /&gt;
-&lt;del&gt;The repository will be made public soon.&lt;/del&gt; Is public (2025-08-21).&lt;/p&gt;
-
-&lt;p&gt;The main goal is to provide a curated list of shell tools and configurations that we use in our daily work.&lt;/p&gt;
-
-&lt;p&gt;If someone new to enhancing their shell environment can benefit from it, our mission is accomplished.&lt;/p&gt;
-
-&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;README.md&lt;/code&gt; file states:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Having the best developer setup is a never-ending crusade for some. &lt;br /&gt;
-To others, it’s not even a side quest. &lt;br /&gt;
-In HR, they label it as one of the dark arts. &lt;br /&gt;
-To us, it’s nothing we lose hours on, but something we always come back to.&lt;/p&gt;
-
-  &lt;p&gt;We want to share our findings with you, with practicality in mind. We are a group of developers who love to tinker—always with a purpose. Each of our setups differs here and there, but there are huge overlaps in the tools we use.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;If you’re the curious type, you might want to get your hands dirty with a Dockerized project setup. &lt;br /&gt;
-Check out &lt;a href=&quot;https://github.com/simonneutert/shell-curry-debian-12-example&quot;&gt;simonneutert/shell-curry-debian-12-example&lt;/a&gt; on GitHub.&lt;/p&gt;</content><author><name></name></author></entry></feed>
+&lt;p&gt;Yeah, I learned &lt;a href=&quot;https://www.youtube.com/watch?v=fsKKf-WNtdI&quot;&gt;How Drum and Bass is made…&lt;/a&gt; on YouTube.&lt;/p&gt;</content><author><name></name></author></entry></feed>
