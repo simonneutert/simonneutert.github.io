@@ -3,7 +3,7 @@ layout: post
 title: Force iOS Safari (and other browsers) to download media file
 ---
 
-# 💡 How to Force File Downloads in Safari Using JavaScript (JS-Only Solution)
+**💡 How to Force File Downloads in Safari Using JavaScript (JS-Only Solution)**
 
 Safari has a mind of its own when it comes to downloading media files. Even if your server correctly sets `Content-Disposition: attachment` and `Content-Type: application/octet-stream`, Safari might **still display** files like PDFs, MP4s, or images instead of downloading them.
 
