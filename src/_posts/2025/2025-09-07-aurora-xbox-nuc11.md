@@ -5,8 +5,7 @@ title: Fixing Xbox Controller Bluetooth Issues on Fedora 42 KDE Plasma
 
 *Finally got my Xbox controller working properly on Linux - here’s how*
 
-On a NUC 11 Enthusiast ...
-
+On a NUC 11 Enthusiast ... it works on Arch, too, btw 😅
 ---
 
 If you’re running Aurora Linux Fedora 42 with KDE Plasma and struggling with Xbox controller Bluetooth connectivity issues - the endless connect/disconnect loops, blinking LEDs that never stabilize, or controllers that pair but don’t actually work - you’re not alone. **After hours of troubleshooting on my Intel NUC11 Enthusiast**, I found the solution.
