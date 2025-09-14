@@ -2,6 +2,7 @@
 title: "GitHub API Monitor: Keeping an Eye on Rate Limits"
 date: 2025-09-14
 summary: "A short introduction to my tool for monitoring GitHub API rate limits."
+layout: post
 ---
 
 Recently, I released the project [github-api-monitor](https://github.com/simonneutert/github-api-monitor). I built this tool because, while working with the [GitHub REST API](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api?apiVersion=2022-11-28), I kept running into rate limits (not often, but it happened).
