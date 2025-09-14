@@ -1,4 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.3.4">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-09-13T11:07:04+02:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Fixing Xbox Controller Bluetooth Issues on Fedora 42 KDE Plasma</title><link href="/2025/aurora-xbox-nuc11/" rel="alternate" type="text/html" title="Fixing Xbox Controller Bluetooth Issues on Fedora 42 KDE Plasma" /><published>2025-09-07T00:00:00+02:00</published><updated>2025-09-07T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2025/2025-09-07-aurora-xbox-nuc11.md</id><content type="html" xml:base="/2025/aurora-xbox-nuc11/">&lt;p&gt;&lt;em&gt;Finally got my Xbox controller working properly on Linux - here’s how&lt;/em&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="1.3.4">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-09-14T12:18:33+02:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">GitHub API Monitor: Keeping an Eye on Rate Limits</title><link href="/2025/github-api-monitor/" rel="alternate" type="text/html" title="GitHub API Monitor: Keeping an Eye on Rate Limits" /><published>2025-09-14T00:00:00+02:00</published><updated>2025-09-14T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2025/2025-09-14-github-api-monitor.md</id><content type="html" xml:base="/2025/github-api-monitor/">&lt;p&gt;Recently, I released the project &lt;a href=&quot;https://github.com/simonneutert/github-api-monitor&quot;&gt;github-api-monitor&lt;/a&gt;. I built this tool because, while working with the &lt;a href=&quot;https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api?apiVersion=2022-11-28&quot;&gt;GitHub REST API&lt;/a&gt;, I kept running into rate limits (not often, but it happened).&lt;/p&gt;
+
+&lt;p&gt;With this monitor, you can easily keep track of your current limits and better plan when and how many API requests are possible. The project is open source—feel free to try it out or contribute!&lt;/p&gt;
+
+&lt;h2 id=&quot;my-objective-learning-more-about-shell-scripting&quot;&gt;My Objective: Learning More About Shell Scripting&lt;/h2&gt;
+
+&lt;p&gt;One of my main objectives with this project was to deepen my understanding of shell environments—especially Bash, Zsh, and Fish. I wanted to explore how to solve real-world problems using scripting languages, while staying POSIX compliant where needed. This approach ensures that the scripts remain portable and usable across different systems and shells.&lt;/p&gt;
+
+&lt;p&gt;By working on github-api-monitor, I was able to experiment with various shell features, learn about their differences, and practice writing robust, maintainable scripts. If you’re interested in shell scripting or want to see practical examples, this project might be a good starting point.&lt;/p&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;https://github.com/simonneutert/github-api-monitor&quot;&gt;repository&lt;/a&gt;!&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Fixing Xbox Controller Bluetooth Issues on Fedora 42 KDE Plasma</title><link href="/2025/aurora-xbox-nuc11/" rel="alternate" type="text/html" title="Fixing Xbox Controller Bluetooth Issues on Fedora 42 KDE Plasma" /><published>2025-09-07T00:00:00+02:00</published><updated>2025-09-07T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2025/2025-09-07-aurora-xbox-nuc11.md</id><content type="html" xml:base="/2025/aurora-xbox-nuc11/">&lt;p&gt;&lt;em&gt;Finally got my Xbox controller working properly on Linux - here’s how&lt;/em&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;on-a-nuc-11-enthusiast--it-works-on-arch-too-btw-&quot;&gt;On a NUC 11 Enthusiast … it works on Arch, too, btw 😅&lt;/h2&gt;
 
@@ -538,95 +548,4 @@ deployuser ALL=(ALL) NOPASSWD: /bin/systemctl restart myapponsystemd.service
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl restart myapponsystemd.service
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Source on YouTube &lt;a href=&quot;https://www.youtube.com/watch?v=DmbBgXK8M5M&quot;&gt;@Dreams of Code&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Find your possible co-authors for your next commit using ripgrep and babashka</title><link href="/2025/git-co-authoring/" rel="alternate" type="text/html" title="Find your possible co-authors for your next commit using ripgrep and babashka" /><published>2025-01-18T00:00:00+01:00</published><updated>2025-01-18T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2025-01-18-git-co-authoring.md</id><content type="html" xml:base="/2025/git-co-authoring/">&lt;p&gt;When it comes to fairness, acknowledging the help or time your colleagues
-contribute is crucial. One simple way to ensure proper attribution is by adding
-co-authors to your commits.&lt;/p&gt;
-
-&lt;p&gt;To add co-authors, include one or more &lt;code class=&quot;highlighter-rouge&quot;&gt;Co-authored-by&lt;/code&gt; trailers at the end of
-your commit message, like this:&lt;/p&gt;
-
-&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Commit message
-
-Co-authored-by: Joel Califa &amp;lt;602352+califa@users.noreply.github.com&amp;gt;
-Co-authored-by: Matt Clark &amp;lt;44023+mclark@users.noreply.github.com&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;with-basic-unix-tools&quot;&gt;With basic Unix tools&lt;/h2&gt;
-
-&lt;p&gt;No fire, no flames, just the basic Unix tools you already have on your system:&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;git-co-authored-by&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;git log &amp;amp;&amp;gt; /dev/null &amp;amp;&amp;amp; git log --shortstat | grep &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Author:&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; | sed &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;s/Author: //&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; | sort -u | sed &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;s/^/Co-authored-by: /&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;with-ripgrep-and-babashka-&quot;&gt;With ripgrep and babashka 🚀&lt;/h2&gt;
-
-&lt;p&gt;Make sure to include these trailers after at least one blank line at the end of
-your commit message.&lt;/p&gt;
-
-&lt;p&gt;For added convenience, you can set up a helpful alias in your shell environment
-(e.g., .bash_aliases, .zsh_aliases, or similar). Here’s a quick example:&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git log &amp;amp;&amp;gt; /dev/null &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; git log &lt;span class=&quot;nt&quot;&gt;--shortstat&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;head&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; 10000 | rg &lt;span class=&quot;s2&quot;&gt;&quot;Author:&quot;&lt;/span&gt; | bb &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;(map #(clojure.string/replace % #&quot;Author: &quot; &quot;Co-authored-by: &quot;) (set *input*))&apos;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;requirements&quot;&gt;Requirements&lt;/h2&gt;
-
-&lt;p&gt;Here are the two tools you need to have installed, check out their official
-documentation:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://babashka.org&quot;&gt;babshka&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;https://github.com/BurntSushi/ripgrep&quot;&gt;ripgrep on Github&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;explanation-of-the-clojure-code&quot;&gt;Explanation of the clojure code&lt;/h2&gt;
-
-&lt;p&gt;Let’s break down the babashka command
-&lt;code class=&quot;highlighter-rouge&quot;&gt;bb -i -o &apos;(map #(clojure.string/replace % #&quot;Author: &quot; &quot;Co-authored-by: &quot;) (set *input*))&apos;&lt;/code&gt;:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bb&lt;/code&gt; - This is the babashka CLI command&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-i&lt;/code&gt; - Flag that tells babashka to read from standard input&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-o&lt;/code&gt; - Flag that tells babashka to write to standard output&lt;/li&gt;
-  &lt;li&gt;The main expression consists of several nested operations:
-    &lt;ul&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;(set *input*)&lt;/code&gt; - Converts the input lines into a set, removing duplicates&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;(map ...)&lt;/code&gt; - Applies a function to each element in the set&lt;/li&gt;
-      &lt;li&gt;The function &lt;code class=&quot;highlighter-rouge&quot;&gt;#(clojure.string/replace % #&quot;Author: &quot; &quot;Co-authored-by: &quot;)&lt;/code&gt;
-does the following:
-        &lt;ul&gt;
-          &lt;li&gt;Uses &lt;code class=&quot;highlighter-rouge&quot;&gt;clojure.string/replace&lt;/code&gt; to perform string replacement&lt;/li&gt;
-          &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;%&lt;/code&gt; is a placeholder for each input item&lt;/li&gt;
-          &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;#&quot;Author: &quot;&lt;/code&gt; is a regex pattern matching “Author: “&lt;/li&gt;
-          &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;Co-authored-by: &quot;&lt;/code&gt; replaces for the matched pattern&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;In plain English: This command reads lines from standard input, removes
-duplicates, and then removes the text “Author: “ from the beginning of each
-remaining line.&lt;/p&gt;
-
-&lt;p&gt;Example usage:&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Author: John&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Author: Jane&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Author: John&quot;&lt;/span&gt; | bb &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;(map #(clojure.string/replace % #&quot;Author: &quot; &quot;Co-authored-by: &quot;) (set *input*)))&apos;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Output:&lt;/p&gt;
-
-&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Co-authored-by: John
-Co-authored-by: Jane
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;wrapping-the-script-up&quot;&gt;Wrapping the script up&lt;/h2&gt;
-
-&lt;p&gt;Running &lt;code class=&quot;highlighter-rouge&quot;&gt;git log &amp;amp;&amp;gt; /dev/null&lt;/code&gt; first ensures you avoid system errors when
-executing the command.&lt;/p&gt;
-
-&lt;p&gt;To make sure you have the necessary tools, install them using Homebrew or
-Linuxbrew with the following command:&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;borkdude/brew/babashka ripgrep
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Happy Pair-Programming!&lt;/p&gt;</content><author><name></name></author></entry></feed>
+&lt;p&gt;Source on YouTube &lt;a href=&quot;https://www.youtube.com/watch?v=DmbBgXK8M5M&quot;&gt;@Dreams of Code&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author></entry></feed>
