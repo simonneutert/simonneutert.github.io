@@ -1,4 +1,5 @@
 # Bridgetown
+tmp/
 output
 .bridgetown-cache
 .bridgetown-metadata
