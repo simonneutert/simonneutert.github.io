@@ -4,11 +4,12 @@
 #
 # Learn more at: http://roda.jeremyevans.net
 
-class RodaApp < Bridgetown::Rack::Roda
+class RodaApp < Roda
   # Add additional Roda configuration here if needed
 
   # Uncomment to use Bridgetown SSR:
   # plugin :bridgetown_ssr
+  plugin :bridgetown_server
 
   # Uncomment to use file-based dynamic routing in your project (make sure you
   # uncomment the gem dependency in your `Gemfile` as well):
