@@ -32,4 +32,4 @@ gem 'bridgetown', '~> 1.3.2'
 # (you can optionally limit this to the "development" group)
 gem 'puma', '~> 7.0'
 
-gem 'bridgetown-feed', '~> 3.1', group: :bridgetown_plugins
+gem 'bridgetown-feed', '~> 4.0', group: :bridgetown_plugins
