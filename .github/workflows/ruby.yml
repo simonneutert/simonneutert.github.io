@@ -39,4 +39,4 @@ jobs:
           # Examples: 12.x, 10.15.1, >=10.15.0, lts/Hydrogen, 16-nightly, latest, node
           node-version: "24"
       - name: Run tests
-        run: bundle install && yarn install && bin/bridgetown deploy
+        run: bundle install && npm install && bin/bridgetown deploy
