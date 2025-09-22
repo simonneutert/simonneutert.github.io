@@ -314,4 +314,5 @@
 - url: https://marijkeluttekes.dev/blog/articles/2025/09/03/git-exclude-a-handy-feature-you-might-not-know-about/
   content: |
     Exclude is particularly handy when you want to keep personal, non-standard files in a repository that is not yours, and where you cannot update its ignore files willy-nilly.
-
+- url: https://andre.arko.net/2025/09/11/rails-on-sqlite-exciting-new-ways-to-cause-outages/
+  content: More glory, more SQLite 😍
