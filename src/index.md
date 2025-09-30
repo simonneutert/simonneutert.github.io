@@ -61,7 +61,7 @@ That's right, I'm pointing at you, [pg gem for Mac](/2018/pg-gem-with-postgres-a
 <ul>
   {% site.data.microblog.take(20).each do |post| %}
     <li>
-      <p><a href="{{ post.url }}" rel="noopener">{{ post.url }}</a><br>{{ post.content&.gsub("\n", "<br>")&.html_safe }}</p>
+      <p><a style="word-break: break-all;" href="{{ post.url }}" rel="noopener">{{ post.url }}</a><br>{{ post.content&.gsub("\n", "<br>")&.html_safe }}</p>
     </li>
   {% end %}
 </ul>
