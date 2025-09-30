@@ -4,7 +4,7 @@ title: Micro Blog
 ---
 
 <ul>
-  {% site.data.microblog.reverse_each do |post| %}
+  {% site.data.microblog.each do |post| %}
     <li>
       <p><a href="{{ post.url }}" rel="noopener">{{ post.url }}</a><br>{{ post.content&.gsub("\n", "<br>")&.html_safe }}</p>
     </li>

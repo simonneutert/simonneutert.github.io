@@ -55,3 +55,17 @@ That's right, I'm pointing at you, [pg gem for Mac](/2018/pg-gem-with-postgres-a
 > \- Stephen McCranie
 
 ---
+
+#### Microblog / Link Collection
+
+<ul>
+  {% site.data.microblog.take(20).each do |post| %}
+    <li>
+      <p><a href="{{ post.url }}" rel="noopener">{{ post.url }}</a><br>{{ post.content&.gsub("\n", "<br>")&.html_safe }}</p>
+    </li>
+  {% end %}
+</ul>
+  
+<div class="d-grid gap-2">
+  <a href="/microblog" class="myButton">View all posts on MicroBlog</a>
+</div>
