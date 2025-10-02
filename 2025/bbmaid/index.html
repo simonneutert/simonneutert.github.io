@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>bb-maid Gets a Major UX Upgrade: Install via bbin, Tab Completion and Cleaner Commands | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.POPT2NFP.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.KGKIVIBR.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header>
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <!-- <li><a href="/telegram">On Telegram</a></li> -->
+    <!-- <li><a href="/about">About</a></li> -->
+    <li><a href="/posts">Blog</a></li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<h1>bb-maid Gets a Major UX Upgrade: Install via bbin, Tab Completion and Cleaner Commands</h1>
+
+<p>Tonight was one of those productive coding sessions where small improvements snowball into something really polished. I’ve been working on <a href="https://github.com/simonneutert/bb-maid">bb-maid</a>, a Babashka script that helps keep directories clean by automatically removing expired folders, and we made some significant UX improvements that I’m excited to share.</p>
+
+<h2 id="what-is-bb-maid">What is bb-maid?</h2>
+
+<p>Before diving into the changes, let me quickly introduce bb-maid. It’s a Babashka script that works like a “digital housekeeper” for your filesystem. You create files named <code class="highlighter-rouge">cleanup-maid-YYYY-MM-DD</code> in directories you want to expire, and bb-maid will prompt you to delete those directories once the date passes. Think of it like expiration labels on food containers, but for your code directories.</p>
+
+<h2 id="the-journey-from-working-to-delightful">The Journey: From Working to Delightful</h2>
+
+<h3 id="phase-1-making-it-bbin-compatible">Phase 1: Making it bbin-Compatible</h3>
+
+<p>The next challenge was making bb-maid installable via <a href="https://github.com/babashka/bbin">bbin</a>, Babashka’s script manager. This required some structural changes:</p>
+
+<p><strong>Created proper namespace structure:</strong></p>
+<div class="language-clojure highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">;; src/simonneutert/bb_maid.clj</span><span class="w">
+</span><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">simonneutert.bb-maid</span><span class="w">
+  </span><span class="p">(</span><span class="no">:require</span><span class="w"> </span><span class="p">[</span><span class="n">bling.core</span><span class="w"> </span><span class="no">:refer</span><span class="w"> </span><span class="p">[</span><span class="n">bling</span><span class="w"> </span><span class="n">callout</span><span class="p">]]</span><span class="w">
+            </span><span class="p">[</span><span class="n">babashka.fs</span><span class="w"> </span><span class="no">:as</span><span class="w"> </span><span class="n">fs</span><span class="p">]))</span><span class="w">
+
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">-main</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="w"> </span><span class="n">args</span><span class="p">]</span><span class="w">
+  </span><span class="c1">;; Command handling</span><span class="w">
+  </span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><strong>Added dependency management:</strong></p>
+<div class="language-clojure highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">;; deps.edn</span><span class="w">
+</span><span class="p">{</span><span class="no">:paths</span><span class="w"> </span><span class="p">[</span><span class="s">"src"</span><span class="p">]</span><span class="w">
+ </span><span class="no">:deps</span><span class="w"> </span><span class="p">{</span><span class="n">io.github.paintparty/bling</span><span class="w"> </span><span class="p">{</span><span class="no">:mvn/version</span><span class="w"> </span><span class="s">"0.4.2"</span><span class="p">}}}</span><span class="w">
+</span></code></pre></div></div>
+
+<p><strong>Configured bbin entry point:</strong></p>
+<div class="language-clojure highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">;; bb.edn</span><span class="w">
+</span><span class="p">{</span><span class="no">:bbin/bin</span><span class="w"> </span><span class="p">{</span><span class="n">bb-maid</span><span class="w"> </span><span class="p">{</span><span class="no">:main-opts</span><span class="w"> </span><span class="p">[</span><span class="s">"-m"</span><span class="w"> </span><span class="s">"simonneutert.bb-maid"</span><span class="p">]}}}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Now users can install with a single command:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bbin <span class="nb">install </span>io.github.simonneutert/bb-maid
+</code></pre></div></div>
+
+<h3 id="phase-2-adding-the-clean-in-command">Phase 2: Adding the <code class="highlighter-rouge">clean-in</code> Command</h3>
+
+<p>The first improvement was adding a <code class="highlighter-rouge">clean-in</code> command to make it easier to create cleanup files:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bb-maid clean-in 7d
+</code></pre></div></div>
+
+<p>This parses duration strings (like <code class="highlighter-rouge">7d</code>, <code class="highlighter-rouge">30d</code>, <code class="highlighter-rouge">90d</code>) and creates a <code class="highlighter-rouge">cleanup-maid-YYYY-MM-DD</code> file with the appropriate expiration date. No more manual date calculations!</p>
+
+<p><strong>Key features:</strong></p>
+<ul>
+  <li>Natural duration syntax (<code class="highlighter-rouge">1d</code>, <code class="highlighter-rouge">7d</code>, <code class="highlighter-rouge">30d</code>, etc.)</li>
+  <li>Automatically replaces existing cleanup files (preventing duplicates)</li>
+  <li>Styled terminal output using the <a href="https://github.com/paintparty/bling">bling</a> library</li>
+</ul>
+
+<h3 id="phase-3-adding-professional-tab-completion">Phase 3: Adding Professional Tab Completion</h3>
+
+<p>This was the big one. Modern CLI tools need great tab completion, and we added support for both <strong>zsh</strong> and <strong>bash</strong>.</p>
+
+<h4 id="the-tab-completion-challenge">The Tab Completion Challenge</h4>
+
+<p>The first attempt had the completion file named <code class="highlighter-rouge">bb-maid.zsh</code>, but zsh wasn’t loading it. After some debugging, I discovered that <strong>zsh completion functions must be named with an underscore prefix</strong> (e.g., <code class="highlighter-rouge">_bb-maid</code>). This is a zsh convention that tells the completion system to auto-load the function.</p>
+
+<h4 id="what-gets-completed">What Gets Completed</h4>
+
+<p>The completion system is context-aware:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">bb-maid &lt;TAB&gt;</code> → Shows <code class="highlighter-rouge">clean</code> and <code class="highlighter-rouge">clean-in</code> commands</li>
+  <li><code class="highlighter-rouge">bb-maid clean &lt;TAB&gt;</code> → Shows available directories</li>
+  <li><code class="highlighter-rouge">bb-maid clean-in &lt;TAB&gt;</code> → Suggests common durations (1d, 7d, 14d, 30d, 60d, 90d)</li>
+</ul>
+
+<h3 id="phase-4-cleaning-up-the-command-structure">Phase 4: Cleaning Up the Command Structure</h3>
+
+<p>The final improvement was prompted by a great question: “Wouldn’t <code class="highlighter-rouge">bb-maid clean /path/to/dir</code> be cleaner?”</p>
+
+<p>Absolutely! The original API was:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bb-maid /path/to/dir        <span class="c"># Implicit clean command</span>
+bb-maid clean-in 7d         <span class="c"># Explicit command</span>
+</code></pre></div></div>
+
+<p>This inconsistency was confusing. Now it’s:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bb-maid clean /path/to/dir  <span class="c"># Explicit clean command</span>
+bb-maid clean-in 7d         <span class="c"># Explicit command</span>
+</code></pre></div></div>
+
+<p>Much more intuitive and consistent with modern CLI conventions!</p>
+
+<h2 id="technical-lessons-learned">Technical Lessons Learned</h2>
+
+<h3 id="1-zsh-completion-naming-convention">1. Zsh Completion Naming Convention</h3>
+<p>Completion files <strong>must</strong> start with an underscore (<code class="highlighter-rouge">_bb-maid</code>) for auto-loading to work. This is a zsh convention that’s easy to miss if you’re new to writing completions.</p>
+
+<h3 id="2-glob-qualifiers-for-robust-paths">2. Glob Qualifiers for Robust Paths</h3>
+<p>Using <code class="highlighter-rouge">(N)</code> in zsh glob patterns makes them optional:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">fpath</span><span class="o">=(</span>~/.gitlibs/<span class="k">*</span>/completions<span class="o">(</span>N<span class="o">)</span> <span class="nv">$fpath</span><span class="o">)</span>
+</code></pre></div></div>
+<p>Without <code class="highlighter-rouge">(N)</code>, zsh will error if the path doesn’t exist yet.</p>
+
+<h3 id="3-bbin-requires-proper-structure">3. bbin Requires Proper Structure</h3>
+<p>For bbin compatibility, you need:</p>
+<ul>
+  <li>A <code class="highlighter-rouge">deps.edn</code> with dependencies</li>
+  <li>Proper namespace structure with <code class="highlighter-rouge">-main</code> function</li>
+  <li><code class="highlighter-rouge">:bbin/bin</code> configuration in <code class="highlighter-rouge">bb.edn</code></li>
+  <li>Java/JDK for dependency resolution</li>
+</ul>
+
+<h3 id="4-context-aware-completion-is-delightful">4. Context-Aware Completion is Delightful</h3>
+<p>Taking the time to make completion suggestions contextual (directories after <code class="highlighter-rouge">clean</code>, durations after <code class="highlighter-rouge">clean-in</code>) makes the tool feel polished and professional.</p>
+
+
+<hr />
+
+
+<a href="/2025/github-api-monitor/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

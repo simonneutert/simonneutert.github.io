@@ -1,4 +1,113 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="2.0.0">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-09-30T20:45:14+02:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">GitHub API Monitor: Keeping an Eye on Rate Limits</title><link href="/2025/github-api-monitor/" rel="alternate" type="text/html" title="GitHub API Monitor: Keeping an Eye on Rate Limits" /><published>2025-09-14T00:00:00+02:00</published><updated>2025-09-14T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2025/2025-09-14-github-api-monitor.md</id><content type="html" xml:base="/2025/github-api-monitor/">&lt;p&gt;Recently, I released the project &lt;a href=&quot;https://github.com/simonneutert/github-api-monitor&quot;&gt;github-api-monitor&lt;/a&gt;. I built this tool because, while working with the &lt;a href=&quot;https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api?apiVersion=2022-11-28&quot;&gt;GitHub REST API&lt;/a&gt;, I kept running into rate limits (not often, but it happened).&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="2.0.0">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-10-02T22:59:55+02:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">bb-maid Gets a Major UX Upgrade: Install via bbin, Tab Completion and Cleaner Commands</title><link href="/2025/bbmaid/" rel="alternate" type="text/html" title="bb-maid Gets a Major UX Upgrade: Install via bbin, Tab Completion and Cleaner Commands" /><published>2025-10-02T00:00:00+02:00</published><updated>2025-10-02T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2025/2025-10-02-bbmaid.md</id><content type="html" xml:base="/2025/bbmaid/">&lt;p&gt;Tonight was one of those productive coding sessions where small improvements snowball into something really polished. I’ve been working on &lt;a href=&quot;https://github.com/simonneutert/bb-maid&quot;&gt;bb-maid&lt;/a&gt;, a Babashka script that helps keep directories clean by automatically removing expired folders, and we made some significant UX improvements that I’m excited to share.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-bb-maid&quot;&gt;What is bb-maid?&lt;/h2&gt;
+
+&lt;p&gt;Before diving into the changes, let me quickly introduce bb-maid. It’s a Babashka script that works like a “digital housekeeper” for your filesystem. You create files named &lt;code class=&quot;highlighter-rouge&quot;&gt;cleanup-maid-YYYY-MM-DD&lt;/code&gt; in directories you want to expire, and bb-maid will prompt you to delete those directories once the date passes. Think of it like expiration labels on food containers, but for your code directories.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-journey-from-working-to-delightful&quot;&gt;The Journey: From Working to Delightful&lt;/h2&gt;
+
+&lt;h3 id=&quot;phase-1-making-it-bbin-compatible&quot;&gt;Phase 1: Making it bbin-Compatible&lt;/h3&gt;
+
+&lt;p&gt;The next challenge was making bb-maid installable via &lt;a href=&quot;https://github.com/babashka/bbin&quot;&gt;bbin&lt;/a&gt;, Babashka’s script manager. This required some structural changes:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Created proper namespace structure:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-clojure highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;;; src/simonneutert/bb_maid.clj&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ns&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;simonneutert.bb-maid&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:require&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bling.core&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:refer&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bling&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;callout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;babashka.fs&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:as&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;defn&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;-main&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;;; Command handling&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Added dependency management:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-clojure highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;;; deps.edn&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:paths&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;src&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:deps&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;io.github.paintparty/bling&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:mvn/version&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0.4.2&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Configured bbin entry point:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-clojure highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;;; bb.edn&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:bbin/bin&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bb-maid&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:main-opts&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;-m&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;simonneutert.bb-maid&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]}}}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now users can install with a single command:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bbin &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;io.github.simonneutert/bb-maid
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;phase-2-adding-the-clean-in-command&quot;&gt;Phase 2: Adding the &lt;code class=&quot;highlighter-rouge&quot;&gt;clean-in&lt;/code&gt; Command&lt;/h3&gt;
+
+&lt;p&gt;The first improvement was adding a &lt;code class=&quot;highlighter-rouge&quot;&gt;clean-in&lt;/code&gt; command to make it easier to create cleanup files:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bb-maid clean-in 7d
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This parses duration strings (like &lt;code class=&quot;highlighter-rouge&quot;&gt;7d&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;30d&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;90d&lt;/code&gt;) and creates a &lt;code class=&quot;highlighter-rouge&quot;&gt;cleanup-maid-YYYY-MM-DD&lt;/code&gt; file with the appropriate expiration date. No more manual date calculations!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Key features:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Natural duration syntax (&lt;code class=&quot;highlighter-rouge&quot;&gt;1d&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;7d&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;30d&lt;/code&gt;, etc.)&lt;/li&gt;
+  &lt;li&gt;Automatically replaces existing cleanup files (preventing duplicates)&lt;/li&gt;
+  &lt;li&gt;Styled terminal output using the &lt;a href=&quot;https://github.com/paintparty/bling&quot;&gt;bling&lt;/a&gt; library&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;phase-3-adding-professional-tab-completion&quot;&gt;Phase 3: Adding Professional Tab Completion&lt;/h3&gt;
+
+&lt;p&gt;This was the big one. Modern CLI tools need great tab completion, and we added support for both &lt;strong&gt;zsh&lt;/strong&gt; and &lt;strong&gt;bash&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;the-tab-completion-challenge&quot;&gt;The Tab Completion Challenge&lt;/h4&gt;
+
+&lt;p&gt;The first attempt had the completion file named &lt;code class=&quot;highlighter-rouge&quot;&gt;bb-maid.zsh&lt;/code&gt;, but zsh wasn’t loading it. After some debugging, I discovered that &lt;strong&gt;zsh completion functions must be named with an underscore prefix&lt;/strong&gt; (e.g., &lt;code class=&quot;highlighter-rouge&quot;&gt;_bb-maid&lt;/code&gt;). This is a zsh convention that tells the completion system to auto-load the function.&lt;/p&gt;
+
+&lt;h4 id=&quot;what-gets-completed&quot;&gt;What Gets Completed&lt;/h4&gt;
+
+&lt;p&gt;The completion system is context-aware:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bb-maid &amp;lt;TAB&amp;gt;&lt;/code&gt; → Shows &lt;code class=&quot;highlighter-rouge&quot;&gt;clean&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;clean-in&lt;/code&gt; commands&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bb-maid clean &amp;lt;TAB&amp;gt;&lt;/code&gt; → Shows available directories&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bb-maid clean-in &amp;lt;TAB&amp;gt;&lt;/code&gt; → Suggests common durations (1d, 7d, 14d, 30d, 60d, 90d)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;phase-4-cleaning-up-the-command-structure&quot;&gt;Phase 4: Cleaning Up the Command Structure&lt;/h3&gt;
+
+&lt;p&gt;The final improvement was prompted by a great question: “Wouldn’t &lt;code class=&quot;highlighter-rouge&quot;&gt;bb-maid clean /path/to/dir&lt;/code&gt; be cleaner?”&lt;/p&gt;
+
+&lt;p&gt;Absolutely! The original API was:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bb-maid /path/to/dir        &lt;span class=&quot;c&quot;&gt;# Implicit clean command&lt;/span&gt;
+bb-maid clean-in 7d         &lt;span class=&quot;c&quot;&gt;# Explicit command&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This inconsistency was confusing. Now it’s:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bb-maid clean /path/to/dir  &lt;span class=&quot;c&quot;&gt;# Explicit clean command&lt;/span&gt;
+bb-maid clean-in 7d         &lt;span class=&quot;c&quot;&gt;# Explicit command&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Much more intuitive and consistent with modern CLI conventions!&lt;/p&gt;
+
+&lt;h2 id=&quot;technical-lessons-learned&quot;&gt;Technical Lessons Learned&lt;/h2&gt;
+
+&lt;h3 id=&quot;1-zsh-completion-naming-convention&quot;&gt;1. Zsh Completion Naming Convention&lt;/h3&gt;
+&lt;p&gt;Completion files &lt;strong&gt;must&lt;/strong&gt; start with an underscore (&lt;code class=&quot;highlighter-rouge&quot;&gt;_bb-maid&lt;/code&gt;) for auto-loading to work. This is a zsh convention that’s easy to miss if you’re new to writing completions.&lt;/p&gt;
+
+&lt;h3 id=&quot;2-glob-qualifiers-for-robust-paths&quot;&gt;2. Glob Qualifiers for Robust Paths&lt;/h3&gt;
+&lt;p&gt;Using &lt;code class=&quot;highlighter-rouge&quot;&gt;(N)&lt;/code&gt; in zsh glob patterns makes them optional:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;fpath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;~/.gitlibs/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;/completions&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;N&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$fpath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Without &lt;code class=&quot;highlighter-rouge&quot;&gt;(N)&lt;/code&gt;, zsh will error if the path doesn’t exist yet.&lt;/p&gt;
+
+&lt;h3 id=&quot;3-bbin-requires-proper-structure&quot;&gt;3. bbin Requires Proper Structure&lt;/h3&gt;
+&lt;p&gt;For bbin compatibility, you need:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;A &lt;code class=&quot;highlighter-rouge&quot;&gt;deps.edn&lt;/code&gt; with dependencies&lt;/li&gt;
+  &lt;li&gt;Proper namespace structure with &lt;code class=&quot;highlighter-rouge&quot;&gt;-main&lt;/code&gt; function&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;:bbin/bin&lt;/code&gt; configuration in &lt;code class=&quot;highlighter-rouge&quot;&gt;bb.edn&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Java/JDK for dependency resolution&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;4-context-aware-completion-is-delightful&quot;&gt;4. Context-Aware Completion is Delightful&lt;/h3&gt;
+&lt;p&gt;Taking the time to make completion suggestions contextual (directories after &lt;code class=&quot;highlighter-rouge&quot;&gt;clean&lt;/code&gt;, durations after &lt;code class=&quot;highlighter-rouge&quot;&gt;clean-in&lt;/code&gt;) makes the tool feel polished and professional.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">GitHub API Monitor: Keeping an Eye on Rate Limits</title><link href="/2025/github-api-monitor/" rel="alternate" type="text/html" title="GitHub API Monitor: Keeping an Eye on Rate Limits" /><published>2025-09-14T00:00:00+02:00</published><updated>2025-09-14T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2025/2025-09-14-github-api-monitor.md</id><content type="html" xml:base="/2025/github-api-monitor/">&lt;p&gt;Recently, I released the project &lt;a href=&quot;https://github.com/simonneutert/github-api-monitor&quot;&gt;github-api-monitor&lt;/a&gt;. I built this tool because, while working with the &lt;a href=&quot;https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api?apiVersion=2022-11-28&quot;&gt;GitHub REST API&lt;/a&gt;, I kept running into rate limits (not often, but it happened).&lt;/p&gt;
 
 &lt;p&gt;With this monitor, you can easily keep track of your current limits and better plan when and how many API requests are possible. The project is open source—feel free to try it out or contribute!&lt;/p&gt;
 
@@ -528,24 +637,4 @@ I’ve seen it referenced as coming from &lt;a href=&quot;http://www.amazon.com/
 
 &lt;h2 id=&quot;final-thoughts&quot;&gt;Final Thoughts&lt;/h2&gt;
 
-&lt;p&gt;If you’re building serious Ruby (Rails) applications and need secure, flexible auth, Rodauth is a solid choice. And once you’re ready to automate more of your user management, you’ll be glad it supports this kind of programmatic interface.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Passwordless restart of systemd services</title><link href="/2025/passwordless-systemd-restarts/" rel="alternate" type="text/html" title="Passwordless restart of systemd services" /><published>2025-02-09T00:00:00+01:00</published><updated>2025-02-09T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2025-02-09-passwordless-systemd-restarts.md</id><content type="html" xml:base="/2025/passwordless-systemd-restarts/">&lt;p&gt;Before anything else, you need to edit the rights, do this as your sudo/admin
-user:&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;EDITOR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;vim visudo
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Adapt the line to your needs, first is the user, you want to give the
-passwordless permission to restart the service, last entry of the line is the
-name of the service.&lt;/p&gt;
-
-&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# allow deployuser to restart the web services without needing a password
-deployuser ALL=(ALL) NOPASSWD: /bin/systemctl restart myapponsystemd-worker.service
-deployuser ALL=(ALL) NOPASSWD: /bin/systemctl restart myapponsystemd.service
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Then log into your VPS/Server as your deployuser and restart your app 🚀&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl restart myapponsystemd.service
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Source on YouTube &lt;a href=&quot;https://www.youtube.com/watch?v=DmbBgXK8M5M&quot;&gt;@Dreams of Code&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author></entry></feed>
+&lt;p&gt;If you’re building serious Ruby (Rails) applications and need secure, flexible auth, Rodauth is a solid choice. And once you’re ready to automate more of your user management, you’ll be glad it supports this kind of programmatic interface.&lt;/p&gt;</content><author><name></name></author></entry></feed>
