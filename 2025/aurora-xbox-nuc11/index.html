@@ -66,14 +66,14 @@
 
 <p>Edit <code class="highlighter-rouge">/etc/bluetooth/main.conf</code> and add these settings:</p>
 
-<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[General]</span>
-<span class="py">ControllerMode</span> <span class="p">=</span> <span class="s">dual</span>
-<span class="py">Privacy</span> <span class="p">=</span> <span class="s">device</span>
-<span class="py">FastConnectable</span> <span class="p">=</span> <span class="s">true</span>
-<span class="py">JustWorksRepairing</span> <span class="p">=</span> <span class="s">confirm</span>
-
-<span class="nn">[LE]</span>
-<span class="py">MinConnectionInterval</span><span class="p">=</span><span class="s">7</span>
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[General]</span><span class="w">
+</span><span class="py">ControllerMode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">dual</span>
+<span class="py">Privacy</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">device</span>
+<span class="py">FastConnectable</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">true</span>
+<span class="py">JustWorksRepairing</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">confirm</span>
+<span class="w">
+</span><span class="nn">[LE]</span><span class="w">
+</span><span class="py">MinConnectionInterval</span><span class="p">=</span><span class="s">7</span>
 <span class="py">MaxConnectionInterval</span><span class="p">=</span><span class="s">9</span>
 <span class="py">ConnectionLatency</span><span class="p">=</span><span class="s">0</span>
 </code></pre></div></div>
@@ -82,8 +82,8 @@
 
 <p>This was the game-changer. In <code class="highlighter-rouge">/etc/bluetooth/input.conf</code>, set:</p>
 
-<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[General]</span>
-<span class="py">UserspaceHID</span><span class="p">=</span><span class="s">false</span>
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[General]</span><span class="w">
+</span><span class="py">UserspaceHID</span><span class="p">=</span><span class="s">false</span>
 <span class="py">ClassicBondedOnly</span><span class="p">=</span><span class="s">false</span>
 </code></pre></div></div>
 

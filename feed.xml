@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="2.0.0">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-10-02T22:59:55+02:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">bb-maid Gets a Major UX Upgrade: Install via bbin, Tab Completion and Cleaner Commands</title><link href="/2025/bbmaid/" rel="alternate" type="text/html" title="bb-maid Gets a Major UX Upgrade: Install via bbin, Tab Completion and Cleaner Commands" /><published>2025-10-02T00:00:00+02:00</published><updated>2025-10-02T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2025/2025-10-02-bbmaid.md</id><content type="html" xml:base="/2025/bbmaid/">&lt;p&gt;Tonight was one of those productive coding sessions where small improvements snowball into something really polished. I’ve been working on &lt;a href=&quot;https://github.com/simonneutert/bb-maid&quot;&gt;bb-maid&lt;/a&gt;, a Babashka script that helps keep directories clean by automatically removing expired folders, and we made some significant UX improvements that I’m excited to share.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="2.0.1">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-10-04T12:11:44+02:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">bb-maid Gets a Major UX Upgrade: Install via bbin, Tab Completion and Cleaner Commands</title><link href="/2025/bbmaid/" rel="alternate" type="text/html" title="bb-maid Gets a Major UX Upgrade: Install via bbin, Tab Completion and Cleaner Commands" /><published>2025-10-02T00:00:00+02:00</published><updated>2025-10-02T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2025/2025-10-02-bbmaid.md</id><content type="html" xml:base="/2025/bbmaid/">&lt;p&gt;Tonight was one of those productive coding sessions where small improvements snowball into something really polished. I’ve been working on &lt;a href=&quot;https://github.com/simonneutert/bb-maid&quot;&gt;bb-maid&lt;/a&gt;, a Babashka script that helps keep directories clean by automatically removing expired folders, and we made some significant UX improvements that I’m excited to share.&lt;/p&gt;
 
 &lt;h2 id=&quot;what-is-bb-maid&quot;&gt;What is bb-maid?&lt;/h2&gt;
 
@@ -143,14 +143,14 @@ bb-maid clean-in 7d         &lt;span class=&quot;c&quot;&gt;# Explicit command&l
 
 &lt;p&gt;Edit &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/bluetooth/main.conf&lt;/code&gt; and add these settings:&lt;/p&gt;
 
-&lt;div class=&quot;language-ini highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;[General]&lt;/span&gt;
-&lt;span class=&quot;py&quot;&gt;ControllerMode&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;dual&lt;/span&gt;
-&lt;span class=&quot;py&quot;&gt;Privacy&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;device&lt;/span&gt;
-&lt;span class=&quot;py&quot;&gt;FastConnectable&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;
-&lt;span class=&quot;py&quot;&gt;JustWorksRepairing&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;confirm&lt;/span&gt;
-
-&lt;span class=&quot;nn&quot;&gt;[LE]&lt;/span&gt;
-&lt;span class=&quot;py&quot;&gt;MinConnectionInterval&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;7&lt;/span&gt;
+&lt;div class=&quot;language-ini highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;[General]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;ControllerMode&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;dual&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;Privacy&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;device&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;FastConnectable&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;JustWorksRepairing&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;confirm&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;[LE]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;MinConnectionInterval&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;7&lt;/span&gt;
 &lt;span class=&quot;py&quot;&gt;MaxConnectionInterval&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;9&lt;/span&gt;
 &lt;span class=&quot;py&quot;&gt;ConnectionLatency&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;0&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -159,8 +159,8 @@ bb-maid clean-in 7d         &lt;span class=&quot;c&quot;&gt;# Explicit command&l
 
 &lt;p&gt;This was the game-changer. In &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/bluetooth/input.conf&lt;/code&gt;, set:&lt;/p&gt;
 
-&lt;div class=&quot;language-ini highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;[General]&lt;/span&gt;
-&lt;span class=&quot;py&quot;&gt;UserspaceHID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;false&lt;/span&gt;
+&lt;div class=&quot;language-ini highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;[General]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;UserspaceHID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;false&lt;/span&gt;
 &lt;span class=&quot;py&quot;&gt;ClassicBondedOnly&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;false&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
