@@ -26,24 +26,31 @@
 
 <p>They suggest installing via the installer package, which includes everything you need to get started.</p>
 
-<h2 id="when-things-get-hairy">When things get hairy</h2>
+<h2 id="common-issues-and-solutions">Common Issues and Solutions</h2>
 
 <p>Because I was using Docker/Orbstack for a long time, I had some issues with Podman. Here are some common problems and their solutions:</p>
 
 <ul>
-  <li><strong>Publishing Images</strong>: the <code class="highlighter-rouge">--push</code> flag in <code class="highlighter-rouge">podman build</code> doesn&#8217;t work as expected. Instead, use <code class="highlighter-rouge">podman push</code> after building the image.</li>
+  <li><strong>Publishing Images</strong>: The <code class="highlighter-rouge">--push</code> flag in <code class="highlighter-rouge">podman build</code> doesn&#8217;t work as expected. Instead, use <code class="highlighter-rouge">podman push</code> after building the image.</li>
   <li><strong>Multi-Platform Builds</strong>: Podman supports multi-platform builds. But it&#8217;s up to you to create a <code class="highlighter-rouge">manifest</code> that includes the different architectures you want to support.</li>
 </ul>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># build and push hello-world
 podman manifest create ghcr.io/simonneutert/hello-world:latest
-podman buildx build --manifest ghcr.io/simonneutert/hello-world:latest -f Dockerfile --platform linux/amd64,linux/arm64 .
+
+podman buildx build -f Dockerfile \
+  --manifest ghcr.io/simonneutert/hello-world:latest \
+  --platform linux/amd64,linux/arm64 .
+
 podman manifest push --all ghcr.io/simonneutert/hello-world:latest
 </code></pre></div></div>
 
 <p>while for Docker/Orbstack, you can do it in one command:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker buildx build -f Dockerfile --platform linux/amd64,linux/arm64 -t ghcr.io/simonneutert/hello-world:latest --push .
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker buildx build -f Dockerfile \
+  --platform linux/amd64,linux/arm64 \
+  -t ghcr.io/simonneutert/hello-world:latest \
+  --push .
 </code></pre></div></div>
 
 <h2 id="using-claudechatgpt">Using Claude/ChatGPT</h2>
@@ -52,6 +59,6 @@ podman manifest push --all ghcr.io/simonneutert/hello-world:latest
 
 <h2 id="conclusion">Conclusion</h2>
 
-<p>Switching from Docker Desktop to Podman on macOS mostly a straightforward process. And were it wasn&#8217;t for the few hiccups I had, I learned a lot about containers from a new perspective. Podman offers a robust, open-source alternative that aligns well with the needs of developers looking for flexibility and control over their container environments. With its compatibility with Docker CLI commands and support for rootless containers, Podman is a compelling choice for macOS users seeking an open-source solution.</p>
+<p>Switching from Docker Desktop to Podman on macOS is mostly a straightforward process. Despite a few hiccups, I learned a lot about containers from a new perspective. Podman offers a robust, open-source alternative that aligns well with the needs of developers looking for flexibility and control over their container environments. With its compatibility with Docker CLI commands and support for rootless containers, Podman is a compelling choice for macOS users seeking an open-source solution.</p>
 
 <p>The Podman AI Lab is an exciting addition, just as ollama and Docker AI - but with a focus on isolation and security.</p>

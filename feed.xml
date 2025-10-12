@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="2.0.1">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-10-12T19:47:35+02:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Switching from Docker Desktop to Podman on macOS</title><link href="/2025/to-podman/" rel="alternate" type="text/html" title="Switching from Docker Desktop to Podman on macOS" /><published>2025-10-12T00:00:00+02:00</published><updated>2025-10-12T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2025/2025-10-12-to-podman.md</id><content type="html" xml:base="/2025/to-podman/">&lt;p&gt;If you&amp;#8217;re considering moving away from Docker Desktop on macOS, Podman is a great open-source alternative that offers similar functionality without the licensing restrictions. Here&amp;#8217;s a guide to help you transition smoothly.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="2.0.1">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-10-12T19:50:11+02:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Switching from Docker Desktop to Podman on macOS</title><link href="/2025/to-podman/" rel="alternate" type="text/html" title="Switching from Docker Desktop to Podman on macOS" /><published>2025-10-12T00:00:00+02:00</published><updated>2025-10-12T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2025/2025-10-12-to-podman.md</id><content type="html" xml:base="/2025/to-podman/">&lt;p&gt;If you&amp;#8217;re considering moving away from Docker Desktop on macOS, Podman is a great open-source alternative that offers similar functionality without the licensing restrictions. Here&amp;#8217;s a guide to help you transition smoothly.&lt;/p&gt;
 
 &lt;h2 id=&quot;why-switch-to-podman&quot;&gt;Why Switch to Podman?&lt;/h2&gt;
 
@@ -26,24 +26,31 @@
 
 &lt;p&gt;They suggest installing via the installer package, which includes everything you need to get started.&lt;/p&gt;
 
-&lt;h2 id=&quot;when-things-get-hairy&quot;&gt;When things get hairy&lt;/h2&gt;
+&lt;h2 id=&quot;common-issues-and-solutions&quot;&gt;Common Issues and Solutions&lt;/h2&gt;
 
 &lt;p&gt;Because I was using Docker/Orbstack for a long time, I had some issues with Podman. Here are some common problems and their solutions:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Publishing Images&lt;/strong&gt;: the &lt;code class=&quot;highlighter-rouge&quot;&gt;--push&lt;/code&gt; flag in &lt;code class=&quot;highlighter-rouge&quot;&gt;podman build&lt;/code&gt; doesn&amp;#8217;t work as expected. Instead, use &lt;code class=&quot;highlighter-rouge&quot;&gt;podman push&lt;/code&gt; after building the image.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Publishing Images&lt;/strong&gt;: The &lt;code class=&quot;highlighter-rouge&quot;&gt;--push&lt;/code&gt; flag in &lt;code class=&quot;highlighter-rouge&quot;&gt;podman build&lt;/code&gt; doesn&amp;#8217;t work as expected. Instead, use &lt;code class=&quot;highlighter-rouge&quot;&gt;podman push&lt;/code&gt; after building the image.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Multi-Platform Builds&lt;/strong&gt;: Podman supports multi-platform builds. But it&amp;#8217;s up to you to create a &lt;code class=&quot;highlighter-rouge&quot;&gt;manifest&lt;/code&gt; that includes the different architectures you want to support.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# build and push hello-world
 podman manifest create ghcr.io/simonneutert/hello-world:latest
-podman buildx build --manifest ghcr.io/simonneutert/hello-world:latest -f Dockerfile --platform linux/amd64,linux/arm64 .
+
+podman buildx build -f Dockerfile \
+  --manifest ghcr.io/simonneutert/hello-world:latest \
+  --platform linux/amd64,linux/arm64 .
+
 podman manifest push --all ghcr.io/simonneutert/hello-world:latest
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;while for Docker/Orbstack, you can do it in one command:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker buildx build -f Dockerfile --platform linux/amd64,linux/arm64 -t ghcr.io/simonneutert/hello-world:latest --push .
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker buildx build -f Dockerfile \
+  --platform linux/amd64,linux/arm64 \
+  -t ghcr.io/simonneutert/hello-world:latest \
+  --push .
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;using-claudechatgpt&quot;&gt;Using Claude/ChatGPT&lt;/h2&gt;
@@ -52,7 +59,7 @@ podman manifest push --all ghcr.io/simonneutert/hello-world:latest
 
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 
-&lt;p&gt;Switching from Docker Desktop to Podman on macOS mostly a straightforward process. And were it wasn&amp;#8217;t for the few hiccups I had, I learned a lot about containers from a new perspective. Podman offers a robust, open-source alternative that aligns well with the needs of developers looking for flexibility and control over their container environments. With its compatibility with Docker CLI commands and support for rootless containers, Podman is a compelling choice for macOS users seeking an open-source solution.&lt;/p&gt;
+&lt;p&gt;Switching from Docker Desktop to Podman on macOS is mostly a straightforward process. Despite a few hiccups, I learned a lot about containers from a new perspective. Podman offers a robust, open-source alternative that aligns well with the needs of developers looking for flexibility and control over their container environments. With its compatibility with Docker CLI commands and support for rootless containers, Podman is a compelling choice for macOS users seeking an open-source solution.&lt;/p&gt;
 
 &lt;p&gt;The Podman AI Lab is an exciting addition, just as ollama and Docker AI - but with a focus on isolation and security.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Enabling Multi-Platform Docker Builds with OrbStack</title><link href="/2025/orbstack-multi-platform-builds/" rel="alternate" type="text/html" title="Enabling Multi-Platform Docker Builds with OrbStack" /><published>2025-10-09T00:00:00+02:00</published><updated>2025-10-09T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2025/2025-10-09-orbstack-multi-platform-builds.md</id><content type="html" xml:base="/2025/orbstack-multi-platform-builds/">&lt;p&gt;OrbStack is a fast, lightweight alternative to Docker Desktop for macOS. One of its powerful features is the ability to build Docker images for multiple architectures (like ARM64 and AMD64) using Docker Buildx. This is essential when you’re developing on Apple Silicon but need to deploy to x86_64 servers or support multiple platforms.&lt;/p&gt;
 
