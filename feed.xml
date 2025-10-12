@@ -1,4 +1,60 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="2.0.1">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-10-10T20:04:15+02:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Enabling Multi-Platform Docker Builds with OrbStack</title><link href="/2025/orbstack-multi-platform-builds/" rel="alternate" type="text/html" title="Enabling Multi-Platform Docker Builds with OrbStack" /><published>2025-10-09T00:00:00+02:00</published><updated>2025-10-09T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2025/2025-10-09-orbstack-multi-platform-builds.md</id><content type="html" xml:base="/2025/orbstack-multi-platform-builds/">&lt;p&gt;OrbStack is a fast, lightweight alternative to Docker Desktop for macOS. One of its powerful features is the ability to build Docker images for multiple architectures (like ARM64 and AMD64) using Docker Buildx. This is essential when you’re developing on Apple Silicon but need to deploy to x86_64 servers or support multiple platforms.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="2.0.1">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-10-12T19:47:35+02:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Switching from Docker Desktop to Podman on macOS</title><link href="/2025/to-podman/" rel="alternate" type="text/html" title="Switching from Docker Desktop to Podman on macOS" /><published>2025-10-12T00:00:00+02:00</published><updated>2025-10-12T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2025/2025-10-12-to-podman.md</id><content type="html" xml:base="/2025/to-podman/">&lt;p&gt;If you&amp;#8217;re considering moving away from Docker Desktop on macOS, Podman is a great open-source alternative that offers similar functionality without the licensing restrictions. Here&amp;#8217;s a guide to help you transition smoothly.&lt;/p&gt;
+
+&lt;h2 id=&quot;why-switch-to-podman&quot;&gt;Why Switch to Podman?&lt;/h2&gt;
+
+&lt;p&gt;Docker Desktop has become a paid product for many users, which has led to increased interest in open-source alternatives. Podman is a daemonless container engine that is compatible with Docker CLI commands, making it easier to switch without changing your workflow significantly.&lt;/p&gt;
+
+&lt;h3 id=&quot;rootless-containers&quot;&gt;Rootless Containers&lt;/h3&gt;
+
+&lt;p&gt;Podman allows you to run containers as a non-root user, enhancing security and reducing the risk of privilege escalation.&lt;/p&gt;
+
+&lt;h3 id=&quot;compatibility-with-docker-cli&quot;&gt;Compatibility with Docker CLI&lt;/h3&gt;
+
+&lt;p&gt;Podman supports many Docker CLI commands, so you can use familiar commands like &lt;code class=&quot;highlighter-rouge&quot;&gt;podman run&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;podman build&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;podman push&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;podman-compose&quot;&gt;Podman Compose&lt;/h3&gt;
+
+&lt;p&gt;Podman Compose is a tool that allows you to use Docker Compose files with Podman, making it easier to manage multi-container applications. Or you can use &lt;code class=&quot;highlighter-rouge&quot;&gt;docker compose&lt;/code&gt; directly with Podman, as a drop-in replacement.&lt;/p&gt;
+
+&lt;h3 id=&quot;podman-ai-lab&quot;&gt;Podman AI Lab&lt;/h3&gt;
+
+&lt;p&gt;Podman AI Lab is an exciting new feature that provides containerized AI tools and models, making it easier to experiment with AI in a containerized environment.&lt;/p&gt;
+
+&lt;h2 id=&quot;installing-podman-on-macos&quot;&gt;Installing Podman on macOS&lt;/h2&gt;
+
+&lt;p&gt;You can install Podman on macOS using Homebrew. Or download it from the &lt;a href=&quot;https://podman.io/&quot;&gt;Podman Desktop website&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;They suggest installing via the installer package, which includes everything you need to get started.&lt;/p&gt;
+
+&lt;h2 id=&quot;when-things-get-hairy&quot;&gt;When things get hairy&lt;/h2&gt;
+
+&lt;p&gt;Because I was using Docker/Orbstack for a long time, I had some issues with Podman. Here are some common problems and their solutions:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Publishing Images&lt;/strong&gt;: the &lt;code class=&quot;highlighter-rouge&quot;&gt;--push&lt;/code&gt; flag in &lt;code class=&quot;highlighter-rouge&quot;&gt;podman build&lt;/code&gt; doesn&amp;#8217;t work as expected. Instead, use &lt;code class=&quot;highlighter-rouge&quot;&gt;podman push&lt;/code&gt; after building the image.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Multi-Platform Builds&lt;/strong&gt;: Podman supports multi-platform builds. But it&amp;#8217;s up to you to create a &lt;code class=&quot;highlighter-rouge&quot;&gt;manifest&lt;/code&gt; that includes the different architectures you want to support.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# build and push hello-world
+podman manifest create ghcr.io/simonneutert/hello-world:latest
+podman buildx build --manifest ghcr.io/simonneutert/hello-world:latest -f Dockerfile --platform linux/amd64,linux/arm64 .
+podman manifest push --all ghcr.io/simonneutert/hello-world:latest
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;while for Docker/Orbstack, you can do it in one command:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker buildx build -f Dockerfile --platform linux/amd64,linux/arm64 -t ghcr.io/simonneutert/hello-world:latest --push .
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;using-claudechatgpt&quot;&gt;Using Claude/ChatGPT&lt;/h2&gt;
+
+&lt;p&gt;Claude and ChatGPT can be valuable tools in your transition to Podman. They can help you troubleshoot issues, generate configuration files, and even automate parts of your workflow. By integrating these AI models into your development process, you can streamline your container management tasks and improve your overall efficiency.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Switching from Docker Desktop to Podman on macOS mostly a straightforward process. And were it wasn&amp;#8217;t for the few hiccups I had, I learned a lot about containers from a new perspective. Podman offers a robust, open-source alternative that aligns well with the needs of developers looking for flexibility and control over their container environments. With its compatibility with Docker CLI commands and support for rootless containers, Podman is a compelling choice for macOS users seeking an open-source solution.&lt;/p&gt;
+
+&lt;p&gt;The Podman AI Lab is an exciting addition, just as ollama and Docker AI - but with a focus on isolation and security.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Enabling Multi-Platform Docker Builds with OrbStack</title><link href="/2025/orbstack-multi-platform-builds/" rel="alternate" type="text/html" title="Enabling Multi-Platform Docker Builds with OrbStack" /><published>2025-10-09T00:00:00+02:00</published><updated>2025-10-09T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2025/2025-10-09-orbstack-multi-platform-builds.md</id><content type="html" xml:base="/2025/orbstack-multi-platform-builds/">&lt;p&gt;OrbStack is a fast, lightweight alternative to Docker Desktop for macOS. One of its powerful features is the ability to build Docker images for multiple architectures (like ARM64 and AMD64) using Docker Buildx. This is essential when you’re developing on Apple Silicon but need to deploy to x86_64 servers or support multiple platforms.&lt;/p&gt;
 
 &lt;h2 id=&quot;why-multi-platform-builds-matter&quot;&gt;Why Multi-Platform Builds Matter&lt;/h2&gt;
 
@@ -656,29 +712,4 @@ firefox
 
 &lt;hr /&gt;
 
-&lt;p&gt;&lt;em&gt;P.S. – Yes, it has dark mode. Of course it has dark mode and yes, it was tedious to implement.&lt;/em&gt;&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">The Ten Commandments of Egoless Programming</title><link href="/2025/senior-engineers/" rel="alternate" type="text/html" title="The Ten Commandments of Egoless Programming" /><published>2025-07-02T00:00:00+02:00</published><updated>2025-07-02T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2025/2025-07-02-senior-engineers.md</id><content type="html" xml:base="/2025/senior-engineers/">&lt;p&gt;The following is a copy of &lt;a href=&quot;https://www.kitchensoap.com/2012/10/25/on-being-a-senior-engineer/&quot;&gt;On Being A Senior Engineer&lt;/a&gt; by John Allspaw aka KitchenSoap&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Appropriate, even if old…&lt;br /&gt;
-I’ve seen it referenced as coming from &lt;a href=&quot;http://www.amazon.com/exec/obidos/ASIN/0932633420&quot;&gt;The Psychology of Computer Programming&lt;/a&gt;, written in 1971, but I don’t actually see it in the text. Regardless, here are The Ten Commandments of Egoless Programming, found on &lt;a href=&quot;https://twitter.com/wyattdanger&quot;&gt;@wyattdanger&lt;/a&gt;‘s blog &lt;a href=&quot;http://blog.stephenwyattbush.com/2012/04/07/dad-and-the-ten-commandments-of-egoless-programming&quot;&gt;post&lt;/a&gt; on receiving advice from his dad:&lt;/p&gt;
-
-  &lt;p&gt;&lt;strong&gt;1. Understand and accept that you will make mistakes.&lt;/strong&gt; The point is to find them early before they make it into production. Fortunately, except for the few of us developing rocket guidance software at JPL, mistakes are rarely fatal in our industry. We can, and should, learn, laugh, and move on.&lt;/p&gt;
-
-  &lt;p&gt;&lt;strong&gt;2. You are not your code.&lt;/strong&gt; Remember that the entire point of a review is to find problems, and problems will be found. Don’t take it personally when one is uncovered. (Allspaw note – related: see below, number #10, and the points Theo made above.)&lt;/p&gt;
-
-  &lt;p&gt;&lt;strong&gt;3. No matter how much “karate” you know, someone else will always know more.&lt;/strong&gt; Such an individual can teach you some new moves if you ask. Seek and accept input from others, especially when you think it’s not needed.&lt;/p&gt;
-
-  &lt;p&gt;&lt;strong&gt;4. Don’t rewrite code without consultation.&lt;/strong&gt; There’s a fine line between “fixing code” and “rewriting code.” Know the difference, and pursue stylistic changes within the framework of a code review, not as a lone enforcer.&lt;/p&gt;
-
-  &lt;p&gt;&lt;strong&gt;5. Treat people who know less than you with respect, deference, and patience.&lt;/strong&gt; Non-technical people who deal with developers on a regular basis almost universally hold the opinion that we are prima donnas at best and crybabies at worst. Don’t reinforce this stereotype with anger and impatience.&lt;/p&gt;
-
-  &lt;p&gt;&lt;strong&gt;6. The only constant in the world is change.&lt;/strong&gt; Be open to it and accept it with a smile. Look at each change to your requirements, platform, or tool as a new challenge, rather than some serious inconvenience to be fought.&lt;/p&gt;
-
-  &lt;p&gt;&lt;strong&gt;7. The only true authority stems from knowledge, not from position.&lt;/strong&gt; Knowledge engenders authority, and authority engenders respect — so if you want respect in an egoless environment, cultivate knowledge.&lt;/p&gt;
-
-  &lt;p&gt;&lt;strong&gt;8. Fight for what you believe, but gracefully accept defeat.&lt;/strong&gt; Understand that sometimes your ideas will be overruled. Even if you are right, don’t take revenge or say “I told you so.” Never make your dearly departed idea a martyr or rallying cry.&lt;/p&gt;
-
-  &lt;p&gt;&lt;strong&gt;9. Don’t be &quot;the coder in the corner.&quot;&lt;/strong&gt; Don’t be the person in the dark office emerging only for soda. The coder in the corner is out of sight, out of touch, and out of control. This person has no voice in an open, collaborative environment. Get involved in conversations, and be a participant in your office community.&lt;/p&gt;
-
-  &lt;p&gt;&lt;strong&gt;10. Critique code instead of people — be kind to the coder, not to the code.&lt;/strong&gt; As much as possible, make all of your comments positive and oriented to improving the code. Relate comments to local standards, program specs, increased performance, etc.&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name></name></author></entry></feed>
+&lt;p&gt;&lt;em&gt;P.S. – Yes, it has dark mode. Of course it has dark mode and yes, it was tedious to implement.&lt;/em&gt;&lt;/p&gt;</content><author><name></name></author></entry></feed>
