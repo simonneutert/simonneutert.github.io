@@ -57,23 +57,21 @@
             |_ 99.jpg
 </code></pre></div></div>
 
-<p>Jekyll runs <a href="http://shopify.github.io/liquid/">Liquid templates</a> and relies on <a href="https://jekyllrb.com/docs/frontmatter/">Front Matter</a>, which is represented by the first block in between the <code class="highlighter-rouge">---</code>. And this is where the gallery&#8217;s path is set. The <em>if-statement</em> in the loop, looks like it doesn&#8217;t belong, but due to the nature of how Jekyll iterates and builds, we have to live with it.</p>
+<p>Jekyll runs <a href="http://shopify.github.io/liquid/">Liquid templates</a> and relies on <a href="https://jekyllrb.com/docs/frontmatter/">Front Matter</a>, which is represented by the first block in between the <code class="highlighter-rouge">---</code>. And this is where the gallery’s path is set. The <em>if-statement</em> in the loop, looks like it doesn’t belong, but due to the nature of how Jekyll iterates and builds, we have to live with it.</p>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
----
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
 layout: post
 title: Origami Festival
 tags: [album, paper]
 gallery_path: "/img/gallery/2018/01/16/origami_festival/"
 ---
 
-{% comment %} file: jekyllroot/_posts/2018-01-16-origami-festival.html {% endcomment %}
-{% for image in site.static_files %}
-  {% if image.path contains page.gallery_path %}
-    <span class="nt">&lt;p&gt;&lt;img</span> <span class="na">src=</span><span class="s">"{{ site.url }}{{ site.baseurl }}{{ image.path }}"</span> <span class="na">alt=</span><span class="s">""</span><span class="nt">&gt;&lt;/p&gt;</span>
-  {% endif %}
-{% endfor %}
-
+<span class="cp">{%</span><span class="w"> </span><span class="nt">comment</span><span class="w"> </span><span class="cp">%}</span><span class="c"> file: jekyllroot/_posts/2018-01-16-origami-festival.html </span><span class="cp">{%</span><span class="w"> </span><span class="nt">endcomment</span><span class="w"> </span><span class="cp">%}</span>
+<span class="cp">{%</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span><span class="nv">image</span><span class="w"> </span><span class="nt">in</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">static_files</span><span class="w"> </span><span class="cp">%}</span>
+  <span class="cp">{%</span><span class="w"> </span><span class="nt">if</span><span class="w"> </span><span class="nv">image</span><span class="p">.</span><span class="nv">path</span><span class="w"> </span><span class="ow">contains</span><span class="w"> </span><span class="nv">page</span><span class="p">.</span><span class="nv">gallery_path</span><span class="w"> </span><span class="cp">%}</span>
+    &lt;p&gt;&lt;img src="<span class="cp">{{</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">url</span><span class="w"> </span><span class="cp">}}{{</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">baseurl</span><span class="w"> </span><span class="cp">}}{{</span><span class="w"> </span><span class="nv">image</span><span class="p">.</span><span class="nv">path</span><span class="w"> </span><span class="cp">}}</span>" alt=""&gt;&lt;/p&gt;
+  <span class="cp">{%</span><span class="w"> </span><span class="nt">endif</span><span class="w"> </span><span class="cp">%}</span>
+<span class="cp">{%</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="cp">%}</span>
 </code></pre></div></div>
 
 <p>You can of course turn this into an <a href="https://jekyllrb.com/docs/includes/"><strong>include</strong> or <strong>jekyll inclusion module</strong></a>, with a little more work.</p>
