@@ -10,7 +10,7 @@ description: Iterate over images in a folder with Jekyll
 
 Please put your images in subfolders under `$jekyllroot/img/` e.g.
 
-``` bash
+```bash
 jekyllroot
 |_ img
   |_ gallery
@@ -26,7 +26,7 @@ jekyllroot
 
 Jekyll runs [Liquid templates](http://shopify.github.io/liquid/) and relies on [Front Matter](https://jekyllrb.com/docs/frontmatter/), which is represented by the first block in between the `---`. And this is where the gallery's path is set. The _if-statement_ in the loop, looks like it doesn't belong, but due to the nature of how Jekyll iterates and builds, we have to live with it.
 
-``` html
+```html
 {% raw %}
 ---
 layout: post
