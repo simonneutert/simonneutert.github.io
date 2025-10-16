@@ -13,9 +13,9 @@ layout: default
 <hr />
 
 {% if resource.previous %}
-<a href="{{resource.previous.absolute_url}}" style="text-decoration:none;">⬅️ Read previous</a>
+<a id="btn-previous" href="{{resource.previous.absolute_url}}" style="text-decoration:none;">⬅️ Read previous</a>
 {% end %}
 
 {% if resource.next %}
-<a href="{{resource.next.absolute_url}}" style="float: right; text-decoration:none;">Read next ➡️</a>
+<a id="btn-next" href="{{resource.next.absolute_url}}" style="float: right; text-decoration:none;">Read next ➡️</a>
 {% end %}

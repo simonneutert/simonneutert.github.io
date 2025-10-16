@@ -12,4 +12,7 @@ import * as Turbo from "@hotwired/turbo";
 // Import all JavaScript & CSS files from src/_components
 import components from "$components/**/*.{js,jsx,js.rb,css}";
 
+// Post navigation with arrow keys
+import "./post_navigation.js";
+
 // console.info("Bridgetown is loaded!")
