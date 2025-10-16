@@ -4,6 +4,7 @@ title: Simple Jekyll Gallery
 categories: [ruby]
 tags: [ruby, jekyll, static]
 description: Iterate over images in a folder with Jekyll
+template_engine: none
 ---
 
 [Jekyllrb.com](https://jekyllrb.com)
@@ -26,8 +27,7 @@ jekyllroot
 
 Jekyll runs [Liquid templates](http://shopify.github.io/liquid/) and relies on [Front Matter](https://jekyllrb.com/docs/frontmatter/), which is represented by the first block in between the `---`. And this is where the gallery's path is set. The _if-statement_ in the loop, looks like it doesn't belong, but due to the nature of how Jekyll iterates and builds, we have to live with it.
 
-```html
-{% raw %}
+```liquid
 ---
 layout: post
 title: Origami Festival
@@ -41,7 +41,6 @@ gallery_path: "/img/gallery/2018/01/16/origami_festival/"
     <p><img src="{{ site.url }}{{ site.baseurl }}{{ image.path }}" alt=""></p>
   {% endif %}
 {% endfor %}
-{% endraw %}
 ```
 
 You can of course turn this into an [__include__ or __jekyll inclusion module__](https://jekyllrb.com/docs/includes/), with a little more work.
