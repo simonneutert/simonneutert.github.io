@@ -1,3 +1,5 @@
+- url: https://blog.headius.com/2025/10/packaging-ruby-apps-with-warbler-jar-files.html
+  content: Packaging Ruby Apps with Warbler & JAR files
 - url: https://marcobambini.substack.com/p/the-secret-life-of-a-local-first
   content: When you see a local-first app that seamlessly syncs with other applications distributed worldwide, it feels like magic. Under the hood, a lot is happening, and it has to happen in the right order for the algorithm to preserve correctness.
 - url: https://www.maria.cloud/
