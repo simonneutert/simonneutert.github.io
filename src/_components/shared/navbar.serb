@@ -1,14 +1,18 @@
-<header>
+<header role="banner">
   <!-- 
   <img src="{{ '/images/logo.svg' | relative_url }}" alt="Logo" />
   -->
 </header>
 
-<nav>
+<nav role="navigation" aria-label="Hauptnavigation">
   <ul>
-    <li><a href="{{ '/' | relative_url }}">Home</a></li>
-    <!-- <li><a href="{{ '/telegram' | relative_url }}">On Telegram</a></li> -->
-    <!-- <li><a href="{{ '/about' | relative_url }}">About</a></li> -->
-    <li><a href="{{ '/posts' | relative_url }}">Blog</a></li>
+    <li>
+      {% home_url = '/' %}
+      <a href="{{ home_url | relative_url }}" {%= current_page?(home_url) ? 'aria-current="page"' : '' %}>Home</a>
+    </li>
+    <li>
+      {% posts_url = '/posts' %}
+      <a href="{{ posts_url | relative_url }}" {%= current_page?(posts_url) ? 'aria-current="page"' : '' %}>Blog</a>
+    </li>
   </ul>
 </nav>
