@@ -6,6 +6,8 @@ layout: default
 
 <hr />
 
+<article>
+
 <h1>{{ resource.data.title }}</h1>
 
 {%= yield %}
@@ -19,3 +21,5 @@ layout: default
 {% if resource.next %}
 <a id="btn-next" href="{{resource.next.absolute_url}}" style="float: right; text-decoration:none;">Read next ➡️</a>
 {% end %}
+
+</article>
