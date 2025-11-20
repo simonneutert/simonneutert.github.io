@@ -17,6 +17,4 @@ My system at the time of writing:
 
 When switching Workspaces, say from "1" to "2" using "super+2" it would spam my input with "twos".
 
-Well the solution was "Settings >> Universal Access >> Typing". Toggle the caret of "Repeat Keys", then slide the `delay` a tiny bit to the right, just enough to make it work for you.
-
-Hope this works for you!
+Nothing ever worked, no fix, no "hack". Turns out, there's a bug! See [mutter issue](https://gitlab.gnome.org/GNOME/mutter/-/issues/4416).
