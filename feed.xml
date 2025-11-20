@@ -1,4 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="2.0.4">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-11-18T21:20:52+01:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Switching from Docker Desktop to Podman on macOS</title><link href="/2025/to-podman/" rel="alternate" type="text/html" title="Switching from Docker Desktop to Podman on macOS" /><published>2025-10-12T00:00:00+02:00</published><updated>2025-10-12T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2025/2025-10-12-to-podman.md</id><content type="html" xml:base="/2025/to-podman/">&lt;p&gt;If you&amp;#8217;re considering moving away from Docker Desktop on macOS, Podman is a great open-source alternative that offers similar functionality without the licensing restrictions. Here&amp;#8217;s a guide to help you transition smoothly.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="2.0.4">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-11-20T17:38:53+01:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Gnome-Terminal keypress gets stuck and repeats forever</title><link href="/2025/gnome-sticky/" rel="alternate" type="text/html" title="Gnome-Terminal keypress gets stuck and repeats forever" /><published>2025-11-20T00:00:00+01:00</published><updated>2025-11-20T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2025-11-20-gnome-sticky.md</id><content type="html" xml:base="/2025/gnome-sticky/">&lt;p&gt;This bug almost made my keyboard shortcuts useless.&lt;/p&gt;
+
+&lt;p&gt;I am not alone with this problem. &lt;a href=&quot;https://unix.stackexchange.com/questions/360898/gnome-terminal-keypress-gets-stuck-and-repeats-forever&quot;&gt;StackExchange&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;My system at the time of writing:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Bazzite (Fedora Silverblue)&lt;/li&gt;
+  &lt;li&gt;Gnome 49.1&lt;/li&gt;
+  &lt;li&gt;Mutter (Wayland)&lt;/li&gt;
+  &lt;li&gt;Linux 6.17.7&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When switching Workspaces, say from &amp;#8220;1&amp;#8221; to &amp;#8220;2&amp;#8221; using &amp;#8220;super+2&amp;#8221; it would spam my input with &amp;#8220;twos&amp;#8221;.&lt;/p&gt;
+
+&lt;p&gt;Well the solution was &amp;#8220;Settings&amp;#160;&amp;#187; Universal Access&amp;#160;&amp;#187; Typing&amp;#8221;. Toggle the caret of &amp;#8220;Repeat Keys&amp;#8221;, then slide the &lt;code class=&quot;highlighter-rouge&quot;&gt;delay&lt;/code&gt; a tiny bit to the right, just enough to make it work for you.&lt;/p&gt;
+
+&lt;p&gt;Hope this works for you!&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Switching from Docker Desktop to Podman on macOS</title><link href="/2025/to-podman/" rel="alternate" type="text/html" title="Switching from Docker Desktop to Podman on macOS" /><published>2025-10-12T00:00:00+02:00</published><updated>2025-10-12T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2025/2025-10-12-to-podman.md</id><content type="html" xml:base="/2025/to-podman/">&lt;p&gt;If you&amp;#8217;re considering moving away from Docker Desktop on macOS, Podman is a great open-source alternative that offers similar functionality without the licensing restrictions. Here&amp;#8217;s a guide to help you transition smoothly.&lt;/p&gt;
 
 &lt;h2 id=&quot;why-switch-to-podman&quot;&gt;Why Switch to Podman?&lt;/h2&gt;
 
@@ -636,87 +653,4 @@ firefox
 
 &lt;p&gt;When you’re done, just exit and remove the container — your browsing session is gone!&lt;/p&gt;
 
-&lt;p&gt;Distrobox makes it easy to experiment, stay secure, and keep your host clean. Give it a try!&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">I Built a Meeting Notes App That Actually Makes Sense</title><link href="/2025/neetings/" rel="alternate" type="text/html" title="I Built a Meeting Notes App That Actually Makes Sense" /><published>2025-07-24T00:00:00+02:00</published><updated>2025-07-24T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2025/2025-07-24-neetings.md</id><content type="html" xml:base="/2025/neetings/">&lt;p&gt;Be warned, this project was 100 % vibe-coded, using mostly Claude Code. It was a fun, yet demanding experience, and I learned a lot about building a web app that actually helps with meeting organization.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: This project isn’t open sourced yet, but I’m planning to release the code soon! In the meantime, you can try the live app and see what I’ve been working on.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;tldr&quot;&gt;TL;DR&lt;/h2&gt;
-&lt;p&gt;I created &lt;strong&gt;&lt;a href=&quot;https://www.neetings.com&quot;&gt;Neetings&lt;/a&gt;&lt;/strong&gt;, a web app that transforms chaotic meeting notes into organized, actionable content using smart block types and Kanban-style organization. It runs 100% in your browser (no backend!), supports 11 different content types, and exports to multiple formats. Perfect for anyone tired of messy meeting notes that go nowhere.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;strong&gt;Fun facts:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;After 2-3 months of evenings and weekends tinkering away, the project is finally at a point where I can show it off and actually use it myself. 🎉&lt;/li&gt;
-  &lt;li&gt;I wouldn’t have been able to tackle this without the help of AI tools like Claude Code - to be honest. Or it would have taken me at least four times as long.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Hey there! 👋&lt;/p&gt;
-
-&lt;p&gt;So, I had this problem. You know the one – sitting in meetings, frantically scribbling notes, trying to capture everything, and then later staring at a wall of text wondering “what did we actually decide?” and “who’s supposed to do what?”&lt;/p&gt;
-
-&lt;p&gt;After one too many meetings where important decisions got lost in my messy notes, I decided to build something better. Enter &lt;strong&gt;Neetings&lt;/strong&gt; – a meeting management app that actually helps you stay organized.&lt;/p&gt;
-
-&lt;h2 id=&quot;what-makes-it-different&quot;&gt;What Makes It Different&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/2025/neetings/neetings_overview.png&quot; alt=&quot;Main overview showing organized meetings&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Instead of throwing everything into a generic text box, Neetings gives you &lt;strong&gt;11 specialized block types&lt;/strong&gt; for different kinds of content. Need to capture a decision? There’s a Decision block. Got an action item? TODO block. Random idea someone threw out? Idea block. You get the picture.&lt;/p&gt;
-
-&lt;p&gt;The magic happens when you switch to Kanban view – suddenly your linear meeting notes transform into organized columns by topic. It’s like having superpowers for meeting organization! ✨&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/2025/neetings/neetings_meeting_view.png&quot; alt=&quot;Meeting view with organized blocks&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;the-features-that-actually-matter&quot;&gt;The Features That Actually Matter&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;Smart Block Types&lt;/strong&gt;: Instead of fighting with one-size-fits-all text boxes, you get purpose-built blocks for Notes, TODOs, Decisions, Issues, Ideas, and more. Each type has its own color and behavior.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Kanban Organization&lt;/strong&gt;: Switch from boring linear notes to visual topic columns. Drag and drop blocks between topics as conversations evolve – because meetings never follow the agenda anyway! 😅&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/2025/neetings/neetings_meeting_block_picker_modal.png&quot; alt=&quot;Block type selection modal&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Attendee Management&lt;/strong&gt;: Keep track of who’s in which meetings with a smart autocomplete system. No more “wait, who said they’d handle that?”&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/2025/neetings/neetings_attendee_management_view.png&quot; alt=&quot;Attendee management interface&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Powerful Search &amp;amp; Filtering&lt;/strong&gt;: Find that decision from three meetings ago in seconds. Filter by content type, completion status, or date ranges.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/2025/neetings/neetings_meeting_filter_view.png&quot; alt=&quot;Advanced filtering options&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;privacy-first-because-your-data-matters&quot;&gt;Privacy First (Because Your Data Matters)&lt;/h2&gt;
-
-&lt;p&gt;Here’s the best part – &lt;strong&gt;everything runs in your browser&lt;/strong&gt;. No servers, no accounts, no “we promise we won’t look at your data” nonsense. Your meeting notes stay on your device, period.&lt;/p&gt;
-
-&lt;p&gt;Want to move your data around? Export to Markdown, RTF, DOCX, or HTML. Want to share with your team? Copy the clean, organized output. Want to back up everything? Full JSON export has you covered.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/2025/neetings/neetings_download_meeting_as_markdown_modal.png&quot; alt=&quot;Export options modal&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;built-for-real-developers&quot;&gt;Built for Real Developers&lt;/h2&gt;
-
-&lt;p&gt;As someone who lives in the terminal and gets annoyed by bloated apps, I made sure Neetings is fast and lightweight. It’s built with:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Preact&lt;/strong&gt; (because 3KB is better than 45KB)&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;TypeScript&lt;/strong&gt; (because bugs are annoying)&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;196+ tests&lt;/strong&gt; (because I actually use this app)&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Drag &amp;amp; drop&lt;/strong&gt; with proper sortKey algorithms (no jank!)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/2025/neetings/neetings_darkmode.png&quot; alt=&quot;Dark mode support&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The whole thing started as a side project to solve my own problem, but I’ve been using it for months now and it’s genuinely changed how I handle meetings. No more post-meeting panic about whether I captured everything important.&lt;/p&gt;
-
-&lt;h2 id=&quot;try-it-yourself&quot;&gt;Try It Yourself&lt;/h2&gt;
-
-&lt;p&gt;The app is live at &lt;a href=&quot;https://www.neetings.com&quot;&gt;neetings.com&lt;/a&gt; – no installation, no signup, just start organizing your first meeting. Or if you’re the “I want to see the code first” type (respect! 🫡), I’ll be open sourcing it soon so you can dive into the implementation.&lt;/p&gt;
-
-&lt;p&gt;I built this because I was tired of meeting chaos, and honestly? It’s been a game-changer for staying on top of what actually matters. Give it a shot next time you’re in a meeting that could have been an email (but wasn’t) – you might be surprised how much clearer everything becomes when it’s properly organized.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;em&gt;P.S. – Yes, it has dark mode. Of course it has dark mode and yes, it was tedious to implement.&lt;/em&gt;&lt;/p&gt;</content><author><name></name></author></entry></feed>
+&lt;p&gt;Distrobox makes it easy to experiment, stay secure, and keep your host clean. Give it a try!&lt;/p&gt;</content><author><name></name></author></entry></feed>

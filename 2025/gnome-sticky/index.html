@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Gnome-Terminal keypress gets stuck and repeats forever | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.XRE2XYFL.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>Gnome-Terminal keypress gets stuck and repeats forever</h1>
+
+<p>This bug almost made my keyboard shortcuts useless.</p>
+
+<p>I am not alone with this problem. <a href="https://unix.stackexchange.com/questions/360898/gnome-terminal-keypress-gets-stuck-and-repeats-forever">StackExchange</a></p>
+
+<p>My system at the time of writing:</p>
+
+<ul>
+  <li>Bazzite (Fedora Silverblue)</li>
+  <li>Gnome 49.1</li>
+  <li>Mutter (Wayland)</li>
+  <li>Linux 6.17.7</li>
+</ul>
+
+<p>When switching Workspaces, say from &#8220;1&#8221; to &#8220;2&#8221; using &#8220;super+2&#8221; it would spam my input with &#8220;twos&#8221;.</p>
+
+<p>Well the solution was &#8220;Settings&#160;&#187; Universal Access&#160;&#187; Typing&#8221;. Toggle the caret of &#8220;Repeat Keys&#8221;, then slide the <code class="highlighter-rouge">delay</code> a tiny bit to the right, just enough to make it work for you.</p>
+
+<p>Hope this works for you!</p>
+
+
+<hr />
+
+
+<a id="btn-next" href="/2025/to-podman/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>
