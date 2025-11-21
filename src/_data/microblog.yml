@@ -1,3 +1,7 @@
+- url: https://github.com/jesseduffield/lazydocker/issues/4#issuecomment-1633219547
+  content: |
+    Add this to your ~/.bashrc for the ultra lazy among us.
+    `alias lazypodman='DOCKER_HOST=unix:///run/user/1000/podman/podman.sock lazydocker'`
 - url: https://blogs.gnome.org/alatiera/2025/11/06/dhh-and-omarchy-midlife-crisis/
   content: |
     Couple weeks ago Cloudflare announced it would be sponsoring some Open Source projects.
@@ -27,7 +31,8 @@
 - url: https://hledger.org/#how-to-get-started
   content: Robust, friendly, fast, plain text accounting software
 - url: https://github.com/stathissideris/dali
-  content: dali is a Clojure library for representing, exporting and manipulating
+  content:
+    dali is a Clojure library for representing, exporting and manipulating
     the SVG graphics format.
 - url: https://deno.com/blog/v2.4#deno-bundle
   content: Deno 2.4 is making the DenoVerse even better!
@@ -51,25 +56,27 @@
 - url: https://blog.headius.com/2025/04/beautiful-charts-with-jruby-and-jfreechart.html
   content: Creating Beautiful Charts with JRuby and JFreeChart
 - url: https://github.com/rafgraph/detect-it
-  content: Detect if a device is mouseOnly, touchOnly, or hybrid, and if the primary
+  content:
+    Detect if a device is mouseOnly, touchOnly, or hybrid, and if the primary
     input is mouse or touch.
 - url: https://www.youtube.com/watch?v=EpUfIrQBJ9E
   content: Single-file executable Node project
 - url: https://github.com/bobschrag/clolog
-  content: | 
+  content: |
     Full-featured logic programming (AKA "Prolog") embedded in/callable from
     and supporting calls to Clojure. In the spirit of LogLisp, Lisp Machine Prolog,
     and Franz Inc.'s Allegro Prolog, with some extra goodies.
 - url: https://github.com/Freika/dawarich
   content: Visualize your location history, track your movements, and analyze your travel patterns with complete privacy and control.
 - url: https://github.com/langgenius/dify
-  content: "Dify is an open-source LLM app development platform. \nDify's intuitive
+  content:
+    "Dify is an open-source LLM app development platform. \nDify's intuitive
     interface combines AI workflow, RAG pipeline, agent capabilities, model management,
     observability features and more, letting you quickly go from prototype to production.\n"
 - url: https://github.com/formbricks/formbricks
   content: Open Source Survey Platform
 - url: https://www.pgrs.net/2025/03/24/pgledger-ledger-implementation-in-postgresql/
-  content: 'pgLedger: Ledger implementation in PostgreSQL'
+  content: "pgLedger: Ledger implementation in PostgreSQL"
 - url: https://mccue.dev/pages/3-11-25-life-altering-postgresql-patterns
   content: Life-Altering PostgreSQL Patterns
 - url: https://github.com/sinclairtarget/git-who
@@ -93,7 +100,7 @@
   content: Run periodic jobs in PostgreSQL
 - url: https://docs.projectdiscovery.io/home
 - url: https://deno.com/blog/v2.2
-  content: 'Deno 2.2: OpenTelemetry, Lint Plugins, node:sqlite'
+  content: "Deno 2.2: OpenTelemetry, Lint Plugins, node:sqlite"
 - url: https://youtu.be/qnlkr3mCqW8
   content: A Database that Follows the Unix Philosophy GNU recutils
 - url: https://youtu.be/qF2PuYnBahw
@@ -248,7 +255,7 @@
 - url: https://stackoverflow.blog/2023/06/26/the-hardest-part-of-building-software-is-not-coding-its-requirements/?utm_source=iterable&amp;utm_medium=email&amp;utm_campaign=the-overflow-newsletter
 - url: https://clojure.org/news/2023/06/30/state-of-clojure-2023
 - url: https://youtu.be/KNHtZt2hku8
-  content: "Babashka Conf 2023: \"Growing an Ecosystem: Lessons Learned (Closing Keynote)\" by Michiel Borkent"
+  content: 'Babashka Conf 2023: "Growing an Ecosystem: Lessons Learned (Closing Keynote)" by Michiel Borkent'
 - url: https://youtu.be/3h0Cgpba_WE
   content: "Ruby Roda Sequel Unveiled: The Ultimate CRUD Operation Tutorial"
 - url: http://blog.phronemophobic.com/mairio.html
