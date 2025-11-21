@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Gnome-Terminal keypress gets stuck and repeats forever"
+title: "Gnome 49 - keypress gets stuck and repeats forever"
 subtitle: "Gnome spams keyboard input 💀"
 ---
 
