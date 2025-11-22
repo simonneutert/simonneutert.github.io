@@ -4,8 +4,7 @@
     The dependency is public during this window, meaning that “supply chain security” vendors can work their magic while the rest of us wait any problems out.
 - url: https://github.com/jesseduffield/lazydocker/issues/4#issuecomment-1633219547
   content: |
-    Add this to your ~/.bashrc for the ultra lazy among us.
-    `alias lazypodman='DOCKER_HOST=unix:///run/user/1000/podman/podman.sock lazydocker'`
+    Make podman work with lazygit.
 - url: https://blogs.gnome.org/alatiera/2025/11/06/dhh-and-omarchy-midlife-crisis/
   content: |
     Couple weeks ago Cloudflare announced it would be sponsoring some Open Source projects.
