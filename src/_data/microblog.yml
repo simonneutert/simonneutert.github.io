@@ -1,3 +1,7 @@
+- url: https://blog.yossarian.net/2025/11/21/We-should-all-be-using-dependency-cooldowns
+  content: |
+    A “cooldown” is exactly what it sounds like: a window of time between when a dependency is published and when it’s considered suitable for use.
+    The dependency is public during this window, meaning that “supply chain security” vendors can work their magic while the rest of us wait any problems out.
 - url: https://github.com/jesseduffield/lazydocker/issues/4#issuecomment-1633219547
   content: |
     Add this to your ~/.bashrc for the ultra lazy among us.
