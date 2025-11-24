@@ -1,4 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="2.0.5">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-11-24T17:10:32+01:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Code Clojure in NeoVim (with LazyVim and Conjure)</title><link href="/2025/conjure-nrepl-nvim-clojure/" rel="alternate" type="text/html" title="Code Clojure in NeoVim (with LazyVim and Conjure)" /><published>2025-11-24T00:00:00+01:00</published><updated>2025-11-24T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2025-11-24-conjure-nrepl-nvim-clojure.md</id><content type="html" xml:base="/2025/conjure-nrepl-nvim-clojure/">&lt;p&gt;Want to develop Clojure with a modern, interactive REPL experience right in NeoVim? This guide will walk you through setting up Conjure with LazyVim for a smooth Clojure development workflow.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="2.0.5">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-11-24T17:28:19+01:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Selecting, Copying, Pasting - not working in Wayland</title><link href="/2025/wayland-clipboard/" rel="alternate" type="text/html" title="Selecting, Copying, Pasting - not working in Wayland" /><published>2025-11-24T00:00:00+01:00</published><updated>2025-11-24T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2025-11-24-wayland-clipboard.md</id><content type="html" xml:base="/2025/wayland-clipboard/">&lt;p&gt;You’re tugging along happily, setting things up, but one thing starts bothering you.&lt;/p&gt;
+
+&lt;p&gt;Let’s say, you have a config file open in (n)vim on your server and want to select parts and paste them somewhere else.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+Shift+C&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl+Shift+V&lt;/code&gt; are not working from inside (n)vim editors 🤔&lt;/p&gt;
+
+&lt;p&gt;You resort to the solution, that always slipped your mind in the past:&lt;/p&gt;
+
+&lt;p&gt;Visually selecting the parts in vim and yanking to clipboard with &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;+y&lt;/code&gt; - well, that’s broken, too.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;vim system register * and + not working&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Neovim should work.&lt;br /&gt;
+But, it does not.&lt;/p&gt;
+
+&lt;p&gt;Googling brought me to: &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo apt install wl-clipboard&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;This works because Wayland uses a different clipboard protocol than X11. The &lt;code class=&quot;highlighter-rouge&quot;&gt;wl-clipboard&lt;/code&gt; package provides the necessary tools (&lt;code class=&quot;highlighter-rouge&quot;&gt;wl-copy&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;wl-paste&lt;/code&gt;) that Neovim uses to interface with Wayland’s clipboard, enabling the &lt;code class=&quot;highlighter-rouge&quot;&gt;+&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt; registers to function properly.&lt;/p&gt;
+
+&lt;p&gt;Some things are just plain hard in Linux.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Code Clojure in NeoVim (with LazyVim and Conjure)</title><link href="/2025/conjure-nrepl-nvim-clojure/" rel="alternate" type="text/html" title="Code Clojure in NeoVim (with LazyVim and Conjure)" /><published>2025-11-24T00:00:00+01:00</published><updated>2025-11-24T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2025-11-24-conjure-nrepl-nvim-clojure.md</id><content type="html" xml:base="/2025/conjure-nrepl-nvim-clojure/">&lt;p&gt;Want to develop Clojure with a modern, interactive REPL experience right in NeoVim? This guide will walk you through setting up Conjure with LazyVim for a smooth Clojure development workflow.&lt;/p&gt;
 
 &lt;h2 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h2&gt;
 
@@ -675,32 +696,4 @@ bb-maid clean-in 7d         &lt;span class=&quot;c&quot;&gt;# Explicit command&l
 
 &lt;h2 id=&quot;project-on-github&quot;&gt;Project on GitHub&lt;/h2&gt;
 
-&lt;p&gt;The project is available on GitHub: &lt;a href=&quot;https://github.com/simonneutert/unreachable_tiles_map_editor&quot;&gt;simonneutert/unreachable_tiles_map_editor&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">sq + jq: The Dynamic Duo for Data Mangling</title><link href="/2025/sq-jq-data-mangling/" rel="alternate" type="text/html" title="sq + jq: The Dynamic Duo for Data Mangling" /><published>2025-09-01T00:00:00+02:00</published><updated>2025-09-01T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2025/2025-09-01-sq-jq-data-mangling.md</id><content type="html" xml:base="/2025/sq-jq-data-mangling/">&lt;p&gt;When it comes to transforming data on the command line, &lt;code class=&quot;highlighter-rouge&quot;&gt;sq&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;jq&lt;/code&gt; make a powerful combination. While &lt;code class=&quot;highlighter-rouge&quot;&gt;jq&lt;/code&gt; is the gold standard for JSON manipulation, &lt;code class=&quot;highlighter-rouge&quot;&gt;sq&lt;/code&gt; brings SQL-like querying to structured data formats.&lt;/p&gt;
-
-&lt;p&gt;Visit &lt;a href=&quot;https://sq.io&quot;&gt;sq.io&lt;/a&gt; to learn more about &lt;code class=&quot;highlighter-rouge&quot;&gt;sq&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;why-this-combo-rocks&quot;&gt;Why This Combo Rocks&lt;/h2&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;sq is a free/libre open-source data wrangling swiss-army knife to inspect, query, join, import, and export data. You could think of sq as jq for databases and documents, facilitating one-liners like:&lt;/p&gt;
-
-  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sq &apos;@postgres_db | .actor | .first_name, .last_name | .[0:5]&apos;&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sq&lt;/code&gt; excels at querying databases and converting between formats, while &lt;code class=&quot;highlighter-rouge&quot;&gt;jq&lt;/code&gt; shines at transforming JSON structures. Together, they form a pipeline that can handle complex data transformations with elegance.&lt;/p&gt;
-
-&lt;h2 id=&quot;the-sweet-spot&quot;&gt;The Sweet Spot&lt;/h2&gt;
-
-&lt;p&gt;The magic happens when you need to:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Extract data from databases/Excel/CSV in specific formats&lt;/li&gt;
-  &lt;li&gt;Transform complex nested structures&lt;/li&gt;
-  &lt;li&gt;Chain operations that leverage each tool’s strengths&lt;/li&gt;
-  &lt;li&gt;Work with mixed data sources (SQL → JSON → processed output)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;real-world-example&quot;&gt;Real-World Example&lt;/h2&gt;
-
-&lt;p&gt;Check out this &lt;a href=&quot;https://gist.github.com/simonneutert/f71a507d67142a2d59152f917bff9654&quot;&gt;gist&lt;/a&gt; for practical examples with a CSV file of &lt;code class=&quot;highlighter-rouge&quot;&gt;sq&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;jq&lt;/code&gt; working together to tackle common data processing tasks.&lt;/p&gt;
-
-&lt;p&gt;The combination transforms what would be complex multi-step processes into concise, readable pipelines.&lt;/p&gt;</content><author><name></name></author></entry></feed>
+&lt;p&gt;The project is available on GitHub: &lt;a href=&quot;https://github.com/simonneutert/unreachable_tiles_map_editor&quot;&gt;simonneutert/unreachable_tiles_map_editor&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author></entry></feed>
