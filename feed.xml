@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="2.0.5">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-11-24T20:04:23+01:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Selecting, Copying, Pasting - not working in Wayland</title><link href="/2025/wayland-clipboard/" rel="alternate" type="text/html" title="Selecting, Copying, Pasting - not working in Wayland" /><published>2025-11-24T00:00:00+01:00</published><updated>2025-11-24T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2025-11-24-wayland-clipboard.md</id><content type="html" xml:base="/2025/wayland-clipboard/">&lt;p&gt;You’re tugging along happily, setting things up, but one thing starts bothering you.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="2.0.5">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-11-24T20:12:50+01:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Selecting, Copying, Pasting - not working in Wayland</title><link href="/2025/wayland-clipboard/" rel="alternate" type="text/html" title="Selecting, Copying, Pasting - not working in Wayland" /><published>2025-11-24T00:00:00+01:00</published><updated>2025-11-24T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2025-11-24-wayland-clipboard.md</id><content type="html" xml:base="/2025/wayland-clipboard/">&lt;p&gt;You’re tugging along happily, setting things up, but one thing starts bothering you.&lt;/p&gt;
 
 &lt;p&gt;Let’s say, you have a config file open in (n)vim on your server and want to select parts and paste them somewhere else.&lt;/p&gt;
 
@@ -21,7 +21,36 @@ But, it does not.&lt;/p&gt;
 
 &lt;p&gt;This works because Wayland uses a different clipboard protocol than X11. The &lt;code class=&quot;highlighter-rouge&quot;&gt;wl-clipboard&lt;/code&gt; package provides the necessary tools (&lt;code class=&quot;highlighter-rouge&quot;&gt;wl-copy&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;wl-paste&lt;/code&gt;) that Neovim uses to interface with Wayland’s clipboard, enabling the &lt;code class=&quot;highlighter-rouge&quot;&gt;+&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt; registers to function properly.&lt;/p&gt;
 
-&lt;p&gt;Some things are just plain hard in Linux.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Type emojis in LazyVim (in a Kitty terminal)</title><link href="/2025/emojis-lazyvim-kitty/" rel="alternate" type="text/html" title="Type emojis in LazyVim (in a Kitty terminal)" /><published>2025-11-24T00:00:00+01:00</published><updated>2025-11-24T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2025-11-24-emojis-lazyvim-kitty.md</id><content type="html" xml:base="/2025/emojis-lazyvim-kitty/">&lt;p&gt;As I’m learning LazyVim, I ran into a surprisingly tricky problem: how do I type emojis from my keyboard? Here’s how I solved it.&lt;/p&gt;
+&lt;p&gt;Some things are just plain hard in Linux.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Setting Up Nerd Fonts for Kitty and LazyVim on Bazzite</title><link href="/2025/lazyvim-nerdfonts-silverblue/" rel="alternate" type="text/html" title="Setting Up Nerd Fonts for Kitty and LazyVim on Bazzite" /><published>2025-11-24T00:00:00+01:00</published><updated>2025-11-24T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2025-11-24-lazyvim-nerdfonts-silverblue.md</id><content type="html" xml:base="/2025/lazyvim-nerdfonts-silverblue/">&lt;p&gt;If you’re new to Linux and just getting started, this guide is for you.&lt;/p&gt;
+
+&lt;p&gt;My setup:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;OS: &lt;a href=&quot;https://bazzite.gg/&quot;&gt;Bazzite&lt;/a&gt; (Gnome)&lt;/li&gt;
+  &lt;li&gt;Terminal Emulator: &lt;a href=&quot;https://sw.kovidgoyal.net/kitty/&quot;&gt;Kitty&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Editor: &lt;a href=&quot;https://www.lazyvim.org/&quot;&gt;LazyVim&lt;/a&gt; (inside a &lt;a href=&quot;https://distrobox.it/&quot;&gt;distrobox&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;After setting up your distrobox with your preferred tools (likely what you were comfortable with before switching to an atomic distribution), it’s time to get coding.&lt;/p&gt;
+
+&lt;p&gt;You install packages via brew, apt, dnf, or pacman, finally open LazyVim, and… the icons are missing. Damn.&lt;/p&gt;
+
+&lt;p&gt;Here’s the fix:&lt;/p&gt;
+
+&lt;p&gt;Download your favorite font from &lt;a href=&quot;https://www.nerdfonts.com/&quot;&gt;nerdfonts.com&lt;/a&gt; and unzip it.&lt;/p&gt;
+
+&lt;p&gt;Copy or move the &lt;code class=&quot;highlighter-rouge&quot;&gt;*.ttf&lt;/code&gt; files into &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.local/share/fonts/&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cp&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.ttf ~/.local/share/fonts/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Close all distroboxes and Kitty windows, then open a fresh Kitty terminal and run:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kitten choose-fonts
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Pick your favorite font 🥳&lt;br /&gt;
+Enjoy!&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Type emojis in LazyVim (in a Kitty terminal)</title><link href="/2025/emojis-lazyvim-kitty/" rel="alternate" type="text/html" title="Type emojis in LazyVim (in a Kitty terminal)" /><published>2025-11-24T00:00:00+01:00</published><updated>2025-11-24T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2025-11-24-emojis-lazyvim-kitty.md</id><content type="html" xml:base="/2025/emojis-lazyvim-kitty/">&lt;p&gt;As I’m learning LazyVim, I ran into a surprisingly tricky problem: how do I type emojis from my keyboard? Here’s how I solved it.&lt;/p&gt;
 
 &lt;h2 id=&quot;my-setup&quot;&gt;My Setup&lt;/h2&gt;
 
@@ -587,58 +616,4 @@ bb-maid clean-in 7d         &lt;span class=&quot;c&quot;&gt;# Explicit command&l
 
 &lt;p&gt;You may need to “forget and reconnect” before a session, but this is nothing that makes me go back to windows.&lt;/p&gt;
 
-&lt;p&gt;Finally, gaming on Linux with an Xbox controller works as it should!&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Force iOS Safari (and other browsers) to download media file</title><link href="/2025/js-safari-media-download/" rel="alternate" type="text/html" title="Force iOS Safari (and other browsers) to download media file" /><published>2025-09-06T00:00:00+02:00</published><updated>2025-09-06T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2025/2025-09-06-js-safari-media-download.md</id><content type="html" xml:base="/2025/js-safari-media-download/">&lt;p&gt;&lt;strong&gt;💡 How to Force File Downloads in Safari Using JavaScript (JS-Only Solution)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Safari has a mind of its own when it comes to downloading media files. Even if your server correctly sets &lt;code class=&quot;highlighter-rouge&quot;&gt;Content-Disposition: attachment&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;Content-Type: application/octet-stream&lt;/code&gt;, Safari might &lt;strong&gt;still display&lt;/strong&gt; files like PDFs, MP4s, or images instead of downloading them.&lt;/p&gt;
-
-&lt;p&gt;If you’re a frontend developer looking for a &lt;strong&gt;JS-only workaround that actually works&lt;/strong&gt;, this post is for you.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;-why-safari-ignores-content-disposition&quot;&gt;🧠 Why Safari Ignores &lt;code class=&quot;highlighter-rouge&quot;&gt;Content-Disposition&lt;/code&gt;&lt;/h2&gt;
-
-&lt;p&gt;Safari uses its own internal logic to decide whether to show or download a file. If it recognizes the MIME type (like &lt;code class=&quot;highlighter-rouge&quot;&gt;video/mp4&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;application/pdf&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;image/jpeg&lt;/code&gt;), it often overrides your server headers and opens the file inline.&lt;/p&gt;
-
-&lt;p&gt;That’s frustrating — especially when all you want is a reliable &lt;strong&gt;download button&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;-the-reliable-javascript-solution&quot;&gt;✅ The Reliable JavaScript Solution&lt;/h2&gt;
-
-&lt;p&gt;By using the &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API&quot;&gt;Fetch API&lt;/a&gt; to grab the file as a &lt;strong&gt;Blob&lt;/strong&gt;, and then simulating a click on a dynamically created &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;a&amp;gt;&lt;/code&gt; element with a &lt;code class=&quot;highlighter-rouge&quot;&gt;download&lt;/code&gt; attribute, you can &lt;strong&gt;bypass Safari’s preview behavior entirely&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;-code-example&quot;&gt;🧪 Code Example&lt;/h3&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;button&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;download-btn&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Download File&lt;span class=&quot;nt&quot;&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;forceDownload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;fetch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ok&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-          &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Network response was not ok&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;blob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;blob&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;blobUrl&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;createObjectURL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;blob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;link&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;createElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;link&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;href&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;blobUrl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;link&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;download&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;appendChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;link&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;link&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-        &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;removeChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;link&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;revokeObjectURL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;blobUrl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Download failed:&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;nf&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Download failed.&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-  &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;download-btn&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// Adjust the URL and filename as needed&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;forceDownload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/download/video.mp4&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;my_video.mp4&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author></entry></feed>
+&lt;p&gt;Finally, gaming on Linux with an Xbox controller works as it should!&lt;/p&gt;</content><author><name></name></author></entry></feed>
