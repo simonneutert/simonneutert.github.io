@@ -1,4 +1,81 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="2.0.5">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-11-22T12:22:16+01:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Gnome 49 - keypress gets stuck and repeats forever</title><link href="/2025/gnome-sticky/" rel="alternate" type="text/html" title="Gnome 49 - keypress gets stuck and repeats forever" /><published>2025-11-20T00:00:00+01:00</published><updated>2025-11-20T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2025-11-20-gnome-sticky.md</id><content type="html" xml:base="/2025/gnome-sticky/">&lt;p&gt;This bug almost made my keyboard shortcuts useless.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="2.0.5">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-11-24T17:10:32+01:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Code Clojure in NeoVim (with LazyVim and Conjure)</title><link href="/2025/conjure-nrepl-nvim-clojure/" rel="alternate" type="text/html" title="Code Clojure in NeoVim (with LazyVim and Conjure)" /><published>2025-11-24T00:00:00+01:00</published><updated>2025-11-24T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2025-11-24-conjure-nrepl-nvim-clojure.md</id><content type="html" xml:base="/2025/conjure-nrepl-nvim-clojure/">&lt;p&gt;Want to develop Clojure with a modern, interactive REPL experience right in NeoVim? This guide will walk you through setting up Conjure with LazyVim for a smooth Clojure development workflow.&lt;/p&gt;
+
+&lt;h2 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h2&gt;
+
+&lt;p&gt;Before we begin, make sure you have the following installed:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Java&lt;/strong&gt; - A modern Java version (I recommend &lt;a href=&quot;https://adoptium.net/&quot;&gt;Temurin 23&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Clojure&lt;/strong&gt; - Get it from &lt;a href=&quot;https://clojure.org/guides/install_clojure&quot;&gt;clojure.org&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;LazyVim&lt;/strong&gt; - If you haven’t set this up yet, check out &lt;a href=&quot;https://www.lazyvim.org/&quot;&gt;LazyVim’s installation guide&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;configure-nrepl&quot;&gt;Configure nREPL&lt;/h2&gt;
+
+&lt;p&gt;First, configure nREPL in your project. Add this to your &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.clojure/deps.edn&lt;/code&gt; file to make nREPL available globally:&lt;/p&gt;
+
+&lt;div class=&quot;language-clojure highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:aliases&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:nREPL&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:extra-deps&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nrepl/nrepl&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:mvn/version&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1.4.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}}}}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Version 1.4.0 is the latest stable release at the time of writing.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;For more configuration options, check the &lt;a href=&quot;https://nrepl.org/nrepl/usage/server.html&quot;&gt;nREPL documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;configure-lazyvim&quot;&gt;Configure LazyVim&lt;/h2&gt;
+
+&lt;p&gt;LazyVim makes this super easy! Simply enable the Clojure/Conjure extras:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Open LazyVim and run &lt;code class=&quot;highlighter-rouge&quot;&gt;:LazyExtras&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Search for and enable the &lt;code class=&quot;highlighter-rouge&quot;&gt;lang.clojure&lt;/code&gt; extra&lt;/li&gt;
+  &lt;li&gt;Restart NeoVim to apply the changes&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;This will automatically install Conjure and configure it for Clojure development.&lt;/p&gt;
+
+&lt;h2 id=&quot;start-coding&quot;&gt;Start Coding&lt;/h2&gt;
+
+&lt;p&gt;Now you’re ready to code! Here’s the workflow:&lt;/p&gt;
+
+&lt;h3 id=&quot;1-start-the-nrepl-server&quot;&gt;1. Start the nREPL Server&lt;/h3&gt;
+
+&lt;p&gt;In a separate terminal at your project root, start the nREPL server:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;clj &lt;span class=&quot;nt&quot;&gt;-M&lt;/span&gt;:nREPL &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; nrepl.cmdline
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You should see output showing the server started on a specific port (but you don’t need to worry about it).&lt;/p&gt;
+
+&lt;h3 id=&quot;2-open-your-project-in-neovim&quot;&gt;2. Open Your Project in NeoVim&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nvim &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;When you open a &lt;code class=&quot;highlighter-rouge&quot;&gt;.clj&lt;/code&gt; file, Conjure will automatically detect and connect to your running nREPL server.&lt;/p&gt;
+
+&lt;h3 id=&quot;3-learn-conjures-keybindings&quot;&gt;3. Learn Conjure’s Keybindings&lt;/h3&gt;
+
+&lt;p&gt;Conjure comes with an interactive tutorial! Run this command in NeoVim:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;:ConjureSchool
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This will teach you all the essential keybindings for evaluating code, managing the REPL, and more.&lt;/p&gt;
+
+&lt;h2 id=&quot;quick-tips&quot;&gt;Quick Tips&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Evaluate current form&lt;/strong&gt;: Place your cursor inside a form and use &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;localleader&amp;gt;ee&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Evaluate file&lt;/strong&gt;: &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;localleader&amp;gt;ef&lt;/code&gt; to evaluate the entire file&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;View documentation&lt;/strong&gt;: &lt;code class=&quot;highlighter-rouge&quot;&gt;K&lt;/code&gt; while hovering over a function&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Open REPL log&lt;/strong&gt;: &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;localleader&amp;gt;ls&lt;/code&gt; to see evaluation results&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Happy Clojure coding! 🎉&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Gnome 49 - keypress gets stuck and repeats forever</title><link href="/2025/gnome-sticky/" rel="alternate" type="text/html" title="Gnome 49 - keypress gets stuck and repeats forever" /><published>2025-11-20T00:00:00+01:00</published><updated>2025-11-20T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2025-11-20-gnome-sticky.md</id><content type="html" xml:base="/2025/gnome-sticky/">&lt;p&gt;This bug almost made my keyboard shortcuts useless.&lt;/p&gt;
 
 &lt;p&gt;I am not alone with this problem. &lt;a href=&quot;https://unix.stackexchange.com/questions/360898/gnome-terminal-keypress-gets-stuck-and-repeats-forever&quot;&gt;StackExchange&lt;/a&gt;&lt;/p&gt;
 
@@ -626,29 +703,4 @@ bb-maid clean-in 7d         &lt;span class=&quot;c&quot;&gt;# Explicit command&l
 
 &lt;p&gt;Check out this &lt;a href=&quot;https://gist.github.com/simonneutert/f71a507d67142a2d59152f917bff9654&quot;&gt;gist&lt;/a&gt; for practical examples with a CSV file of &lt;code class=&quot;highlighter-rouge&quot;&gt;sq&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;jq&lt;/code&gt; working together to tackle common data processing tasks.&lt;/p&gt;
 
-&lt;p&gt;The combination transforms what would be complex multi-step processes into concise, readable pipelines.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Distrobox is freedom - Coding on my current crush Aurora Linux</title><link href="/2025/distrobox/" rel="alternate" type="text/html" title="Distrobox is freedom - Coding on my current crush Aurora Linux" /><published>2025-08-31T00:00:00+02:00</published><updated>2025-08-31T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2025/2025-08-31-distrobox.md</id><content type="html" xml:base="/2025/distrobox/">&lt;p&gt;Distrobox is a fantastic tool for running containerized Linux distributions on your host, giving you the flexibility to use different environments for coding, testing, or just experimenting—without messing up your main system.&lt;/p&gt;
-
-&lt;h3 id=&quot;creating-and-cloning-a-distrobox-with-nvidia-support&quot;&gt;Creating and Cloning a Distrobox with NVIDIA Support&lt;/h3&gt;
-
-&lt;p&gt;If you want GPU acceleration inside your container (for AI, graphics, etc.), just add the &lt;code class=&quot;highlighter-rouge&quot;&gt;--nvidia&lt;/code&gt; flag when creating or cloning a distrobox. Here’s a quick reminder:&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;distrobox create &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; trixie &lt;span class=&quot;nt&quot;&gt;--image&lt;/span&gt; debian:13
-&lt;span class=&quot;c&quot;&gt;# To clone an existing box, this time enabling --nvidia graphics, because you need it to run GUI app like VSCode:&lt;/span&gt;
-distrobox create &lt;span class=&quot;nt&quot;&gt;--clone&lt;/span&gt; trixie &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; devbox &lt;span class=&quot;nt&quot;&gt;--nvidia&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;example-throwaway-firefox-on-arch-with-temporary-home&quot;&gt;Example: Throwaway Firefox on Arch with Temporary Home&lt;/h3&gt;
-
-&lt;p&gt;Need a disposable browser session? You can spin up an Arch container, install Firefox, and set your home to a temporary folder:&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# never forget to add `--nvidia` when you are running on teamgreen and need a GUI&lt;/span&gt;
-distrobox create &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; arch-throwaway &lt;span class=&quot;nt&quot;&gt;--image&lt;/span&gt; archlinux:latest &lt;span class=&quot;nt&quot;&gt;--home&lt;/span&gt; /tmp/arch-home
-distrobox enter arch-throwaway
-&lt;span class=&quot;c&quot;&gt;# then in the distrobox&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;pacman &lt;span class=&quot;nt&quot;&gt;-Sy&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--noconfirm&lt;/span&gt; firefox
-firefox
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;When you’re done, just exit and remove the container — your browsing session is gone!&lt;/p&gt;
-
-&lt;p&gt;Distrobox makes it easy to experiment, stay secure, and keep your host clean. Give it a try!&lt;/p&gt;</content><author><name></name></author></entry></feed>
+&lt;p&gt;The combination transforms what would be complex multi-step processes into concise, readable pipelines.&lt;/p&gt;</content><author><name></name></author></entry></feed>
