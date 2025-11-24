@@ -20,6 +20,8 @@ But, it does not.
 
 Googling brought me to: `sudo apt install wl-clipboard`.
 
+**You need a modern Neovim** (> 0.10.x) build with Wayland clipboard support!
+
 This works because Wayland uses a different clipboard protocol than X11. The `wl-clipboard` package provides the necessary tools (`wl-copy` and `wl-paste`) that Neovim uses to interface with Wayland's clipboard, enabling the `+` and `*` registers to function properly.
 
 Some things are just plain hard in Linux.
