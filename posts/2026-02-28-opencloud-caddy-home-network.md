@@ -1,0 +1,457 @@
+---
+title: "Setting up OpenCloud with Caddy in my home network"
+layout: post
+---
+
+Setting up OpenCloud in my home network was a learning experience. I wanted a
+simple, private installation using local DNS and self-signed certificates.
+Here's how I did it with Pi-hole and Caddy.
+
+## Prerequisites
+
+- Pi-hole (bare-metal) with DNS configuration access
+- Docker and Docker Compose
+- 10+ GB disk space
+- 4-8 GB RAM
+
+## Overview
+
+This setup uses:
+
+- **Pi-hole** for local DNS routing
+- **Caddy** as a reverse proxy handling SSL/TLS on ports 80/443
+- **OpenCloud** running in Docker
+
+## Step 1: Configure Pi-hole
+
+Since Caddy needs ports 80 and 443, move Pi-hole to port 8080.
+
+Edit `/etc/pihole/pihole-FTL.conf`:
+
+```conf
+port = "8080o,[::]:8080o"
+```
+
+Reboot the machine.
+
+## Step 2: Set Up OpenCloud
+
+### Clone and Configure
+
+Clone the repository:
+
+```bash
+git clone https://github.com/opencloud-eu/opencloud-compose.git
+cd opencloud-compose
+cp .env.example .env
+```
+
+### Configure Environment
+
+Edit `.env` and update these critical paths (replace `bedman` with your
+username):
+
+```env
+OC_CONFIG_DIR=/home/bedman/opencloud/config
+OC_DATA_DIR=/home/bedman/opencloud/data
+```
+
+**⚠️ IMPORTANT:** Please change passwords, if this is not a test installation!
+
+Key settings in my `.env`:
+
+```env
+## Basic Settings ##
+# Define the docker compose log driver used.
+# Defaults to local
+LOG_DRIVER=
+# If you're on an internet facing server, comment out following line.
+# It skips certificate validation for various parts of OpenCloud and is
+# needed when self signed certificates are used.
+INSECURE=true
+
+## Features ##
+# The following variable is a convenience variable to enable or disable features of this compose project.
+# Example: if you want to use traefik and letsencrypt, you can set the variable to
+#COMPOSE_FILE=docker-compose.yml:traefik/opencloud.yml
+# This enables you to just run `docker compose up -d` and the compose files will be added to the stack.
+# As alternative approach you can run `docker compose -f docker-compose.yml -f docker-compose.traefik.yml up -d`
+# Default: OpenCloud and Collabora with traefik and letsencypt
+# This needs DNS entries for the domain names used in the .env file.
+#COMPOSE_FILE=docker-compose.yml:weboffice/collabora.yml:traefik/opencloud.yml:traefik/collabora.yml
+# If you want to use the external proxy, you can use the following combination.
+# DNS entries and certificates need to be managed by the external environment.
+# The domain names need to be entered into the .env file.
+COMPOSE_FILE=docker-compose.yml:weboffice/collabora.yml:external-proxy/opencloud.yml:external-proxy/collabora.yml:antivirus/clamav.yml:radicale/radicale.yml:search/tika.yml
+# Keycloak Shared User Directory
+#COMPOSE_FILE=docker-compose.yml:weboffice/collabora.yml:traefik/opencloud.yml:traefik/collabora.yml:idm/ldap-keycloak.yml:traefik/ldap-keycloak.yml
+
+## Traefik Settings ##
+# Note: Traefik is always enabled and can't be disabled.
+# Serve Traefik dashboard.
+# Defaults to "false".
+TRAEFIK_DASHBOARD=
+# Domain of Traefik, where you can find the dashboard.
+# Defaults to "traefik.opencloud.test"
+TRAEFIK_DOMAIN=
+# Basic authentication for the traefik dashboard.
+# Defaults to user "admin" and password "admin" (written as: "admin:$2y$05$KDHu3xq92SPaO3G8Ybkc7edd51pPLJcG1nWk3lmlrIdANQ/B6r5pq").
+# To create user:password pair, it's possible to use this command:
+# echo $(htpasswd -nB user) | sed -e s/\\$/\\$\\$/g
+TRAEFIK_BASIC_AUTH_USERS=
+# Email address for obtaining LetsEncrypt certificates.
+# Needs only be changed if this is a public facing server.
+TRAEFIK_ACME_MAIL=
+# Set to the following for testing to check the certificate process:
+# "https://acme-staging-v02.api.letsencrypt.org/directory"
+# With staging configured, there will be an SSL error in the browser.
+# When certificates are displayed and are emitted by # "Fake LE Intermediate X1",
+# the process went well and the envvar can be reset to empty to get valid certificates.
+TRAEFIK_ACME_CASERVER=
+# Enable the Traefik ACME (Automatic Certificate Management Environment) for automatic SSL certificate management.
+TRAEFIK_SERVICES_TLS_CONFIG="tls.certresolver=letsencrypt"
+# Enable Traefik to use local certificates.
+#TRAEFIK_SERVICES_TLS_CONFIG="tls=true"
+# You also need to provide a config file in ./config/traefik/dynamic/certs.yml
+# Example:
+# cat ./config/traefik/dynamic/certs.yml
+# tls:
+#   certificates:
+#     - certFile: /certs/opencloud.test.crt
+#       keyFile: /certs/opencloud.test.key
+#       stores:
+#         - default
+#
+# The certificates need to be copied into ./certs/, the absolute path inside the container is /certs/.
+# You can also use TRAEFIK_CERTS_DIR=/path/on/host to set the path to the certificates directory.
+# Enable the access log for Traefik by setting the following variable to true.
+TRAEFIK_ACCESS_LOG=
+# Configure the log level for Traefik.
+# Possible values are "TRACE", "DEBUG", "INFO", "WARN", "ERROR", "FATAL" and "PANIC". Default is "ERROR".
+TRAEFIK_LOG_LEVEL=
+
+
+## OpenCloud Settings ##
+# The opencloud container image.
+# For production releases: "opencloudeu/opencloud"
+# For rolling releases:    "opencloudeu/opencloud-rolling"
+# Defaults to production if not set otherwise
+OC_DOCKER_IMAGE=opencloudeu/opencloud-rolling
+# The openCloud container version.
+# Defaults to "latest" and points to the latest stable tag.
+OC_DOCKER_TAG=
+# Domain of openCloud, where you can find the frontend.
+# Defaults to "cloud.opencloud.test"
+OC_DOMAIN=
+# Demo users should not be created on a production instance,
+# because their passwords are public. Defaults to "false".
+# If demo users is set to "true", the following user accounts are created automatically:
+# alan, mary, margaret, dennis and lynn - the password is 'demo' for all.
+DEMO_USERS=
+# Admin Password for the OpenCloud admin user.
+# NOTE: This is only needed when using the built-in LDAP server (idm).
+# If you are using an external LDAP server, the admin password is managed by the LDAP server.
+# NOTE: This variable needs to be set before the first start of OpenCloud. Changes to this variable after the first start will be IGNORED.
+# If not set, opencloud will not work properly. The container will be restarting.
+# After the first initialization, the admin password can only be changed via the OpenCloud User Settings UI or by using the OpenCloud CLI.
+# Documentation: https://docs.opencloud.eu/docs/admin/resources/common-issues#-change-admin-password-set-in-env
+INITIAL_ADMIN_PASSWORD=admin
+# Define the openCloud loglevel used.
+#
+LOG_LEVEL=
+# Define the kind of logging.
+# The default log can be read by machines.
+# Set this to true to make the log human readable.
+# LOG_PRETTY=true
+#
+# Define the openCloud storage location. Set the paths for config and data to a local path.
+# Ensure that the configuration and data directories are owned by the user and group with ID 1000:1000.
+# This matches the default user inside the container and avoids permission issues when accessing files.
+# Note that especially the data directory can grow big.
+# Leaving it default stores data in docker internal volumes.
+OC_CONFIG_DIR=/home/bedman/opencloud/config
+OC_DATA_DIR=/home/bedman/opencloud/data
+# OpenCloud Web can load extensions from a leberwurst directory.
+# The default uses the bind mount to the config/opencloud/apps directory.
+# Example: curl -L https://github.com/opencloud-eu/web-extensions/releases/download/unzip-v1.0.2/unzip-1.0.2.zip | tar -xz -C config/opencloud/apps
+# NOTE: you need to restart the openCloud container to load the new extensions.
+# OC_APPS_DIR=/your/local/opencloud/apps
+
+# Define the ldap-server storage location. Set the paths for config and data to a local path.
+# LDAP_CERTS_DIR=
+# LDAP_DATA_DIR=
+
+# S3 Storage configuration - optional
+# OpenCloud supports S3 storage as primary storage.
+# Per default, S3 storage is disabled and the decomposed storage driver is used.
+# To enable S3 storage, add `storage/decomposeds3.yml` to the COMPOSE_FILE variable or to
+# your startup command (`docker compose -f docker-compose.yml -f storage/decomposeds3.yml up`).
+#
+# Configure the S3 storage endpoint. Defaults to "http://minio:9000" for testing purposes.
+DECOMPOSEDS3_ENDPOINT=
+# S3 region. Defaults to "default".
+DECOMPOSEDS3_REGION=
+# S3 access key. Defaults to "opencloud"
+DECOMPOSEDS3_ACCESS_KEY=
+# S3 secret. Defaults to "opencloud-secret-key"
+DECOMPOSEDS3_SECRET_KEY=
+# S3 bucket. Defaults to "opencloud"
+DECOMPOSEDS3_BUCKET=
+
+
+# Define SMTP settings if you would like to send OpenCloud email notifications.
+# To actually send notifications, you also need to enable the 'notifications' service
+# by adding it to the START_ADDITIONAL_SERVICES variable below.
+#
+# NOTE: when configuring Inbucket, these settings have no effect, see inbucket.yml for details.
+# SMTP host to connect to.
+SMTP_HOST=
+# Port of the SMTP host to connect to.
+SMTP_PORT=
+# An eMail address that is used for sending OpenCloud notification eMails
+# like "opencloud notifications <noreply@yourdomain.com>".
+SMTP_SENDER=
+# Username for the SMTP host to connect to.
+SMTP_USERNAME=
+# Password for the SMTP host to connect to.
+SMTP_PASSWORD=
+# Authentication method for the SMTP communication.
+SMTP_AUTHENTICATION=
+# Encryption method for the SMTP communication. Possible values are 'starttls', 'ssltls' and 'none'
+SMTP_TRANSPORT_ENCRYPTION=
+# Allow insecure connections to the SMTP server. Defaults to false.
+SMTP_INSECURE=
+
+# Additional services to be started on opencloud startup
+# The following list of services is not started automatically and must be
+# manually defined for startup:
+# IMPORTANT: Add any services to the startup list comma separated like "notifications,antivirus" etc.
+START_ADDITIONAL_SERVICES="antivirus,radicale,search"
+
+
+## Default Enabled Services ##
+
+### Apache Tika Content Analysis Toolkit ###
+# Tika (search) is disabled by default due to performance reasons.
+# Tika is used to extract metadata and text from various file formats.
+# Enable it by adding the following to the COMPOSE_FILE variable:
+# search/tika.yml or by using the following command:
+# docker compose -f docker-compose.yml -f search/tika.yml up -d
+# Set the desired docker image tag or digest.
+# Defaults to "apache/tika:latest-full"
+TIKA_IMAGE=
+
+### IMPORTANT Note for Online Office Apps ###
+# To avoid app interlocking issues, you should select only one app to be active/configured.
+# This is due the fact that there is currently no app interlocking for the same file and one
+# has to wait for a lock release to open the file with another app.
+
+### Collabora Settings ###
+# Domain of Collabora, where you can find the frontend.
+# Defaults to "collabora.opencloud.test"
+COLLABORA_DOMAIN=
+# Domain of the wopiserver which handles Collabora.
+# Defaults to "wopiserver.opencloud.test"
+WOPISERVER_DOMAIN=
+# Admin user for Collabora.
+# Defaults to "admin".
+# Collabora Admin Panel URL:
+# https://{COLLABORA_DOMAIN}/browser/dist/admin/admin.html
+COLLABORA_ADMIN_USER=
+# Admin password for Collabora.
+# Defaults to "admin".
+COLLABORA_ADMIN_PASSWORD=
+# Set to true to enable SSL handling in Collabora Online, this is only required if you are not using a reverse proxy.
+# Default is true if not specified.
+COLLABORA_SSL_ENABLE=false
+# If you're on an internet-facing server, enable SSL verification for Collabora Online.
+# Please comment out the following line:
+COLLABORA_SSL_VERIFICATION=false
+# Enable home mode in Collabore Online.
+# Home users can enable this setting, which in turn disables welcome screen and user feedback popups, 
+# but also limits concurrent open connections to 20 and concurrent open documents to 10.
+# Default is false if not specified.
+COLLABORA_HOME_MODE=
+
+
+### Virusscanner Settings ###
+# IMPORTANT: If you enable antivirus, you also MUST configure the START_ADDITIONAL_SERVICES
+# envvar in the OpenCloud Settings above by adding 'antivirus' to the list.
+# The maximum scan size the virus scanner can handle, needs adjustment in the scanner config as well:
+# For ClamAV, set CLAMD_CONF_StreamMaxLength in antivirus/clamav.yml to the same or a higher value.
+# Usable common abbreviations: [KB, KiB, MB, MiB, GB, GiB, TB, TiB, PB, PiB, EB, EiB], example: 2GB.
+# Defaults to "100MB"
+#ANTIVIRUS_MAX_SCAN_SIZE=
+# Usable modes: partial, skip.
+# Defaults to "partial"
+#ANTIVIRUS_MAX_SCAN_SIZE_MODE=
+# Image version of the ClamAV container.
+# Defaults to "latest"
+CLAMAV_DOCKER_TAG=
+
+
+### Inbucket Settings ###
+# Inbucket is a mail catcher tool for testing purposes.
+# DO NOT use in Production.
+# email server (in this case inbucket acts as mail catcher).
+# Domain for Inbucket. Defaults to "mail.opencloud.test".
+INBUCKET_DOMAIN=
+
+
+### Compose Configuration ###
+# Path separator for supplemental compose files specified in COMPOSE_FILE.
+COMPOSE_PATH_SEPARATOR=:
+
+### Ldap Settings ###
+# LDAP is always needed for OpenCloud to store user data as there is no relational database.
+# The built-in LDAP server should used for testing purposes or small installations only.
+# For production installations, it is recommended to use an external LDAP server.
+# We are using OpenLDAP as the default LDAP server because it is proven to be stable and reliable.
+# This LDAP configuration is known to work with OpenCloud and provides a blueprint for
+# configuring an external LDAP server based on other products like Microsoft Active Directory or other LDAP servers.
+#
+# Password of LDAP bind user "cn=admin,dc=opencloud,dc=eu". Defaults to "admin"
+LDAP_BIND_PASSWORD=
+# The LDAP server also creates an openCloud admin user dn: uid=admin,ou=users,dc=opencloud,dc=eu
+# The initial password for this user is "admin"
+# NOTE: This password can only be set once, if you want to change it later, you have to use the OpenCloud User Settings UI.
+# If you changed the password and lost it, you need to execute the following LDAP query to reset it:
+# enter the ldap-server container with `docker compose exec ldap-server sh`
+# and run the following command to change the password:
+# ldappasswd -H ldap://127.0.0.1:1389 -D "cn=admin,dc=opencloud,dc=eu" -W "uid=admin,ou=users,dc=opencloud,dc=eu"
+# You will be prompted for the LDAP bind password.
+# The output should provide you a new password for the admin user.
+
+
+### Keycloak Settings ###
+# Keycloak is an open-source identity and access management solution.
+# We are using Keycloak as the default identity provider on production installations.
+# It can be used to federate authentication with other identity providers like
+# Microsoft Entra ID, ADFS or other SAML/OIDC providers.
+# The use of Keycloak as bridge between OpenCloud and other identity providers creates more control over the
+# authentication process, the allowed clients and the session management.
+# Keycloak also manages the Role Based Access Control (RBAC) for OpenCloud.
+# Keycloak can be used in two different modes:
+# 1. Autoprovisioning: New users are automatically created in openCloud when they log in for the first time.
+# 2. Shared User Directory: Users are created in Keycloak and can be used in OpenCloud immediately
+# because the LDAP server is connected to both Keycloak and OpenCloud.
+# Only use one of the two modes at a time.
+
+## Autoprovisioning Mode ##
+# Use together with idm/external-idp.yml
+# If you want to use a keycloak for local testing, you can use testing/external-keycloak.yml and testing/ldap-manager.yml
+# Domain of your Identity Provider.
+IDP_DOMAIN=
+# IdP Issuer URL, which is used to identify the Identity Provider.
+# We need the complete URL, including the protocol (http or https) and the realm.
+# Example: "https://keycloak.opencloud.test/realms/openCloud"
+IDP_ISSUER_URL=
+# Url of the account edit page from your Identity Provider.
+IDP_ACCOUNT_URL=
+
+## Shared User Directory Mode ##
+# Use together with idm/ldap-keycloak.yml and traefik/ldap-keycloak.yml
+# Domain for Keycloak. Defaults to "keycloak.opencloud.test".
+KEYCLOAK_DOMAIN=
+# Admin user login name. Defaults to "kcadmin".
+KEYCLOAK_ADMIN=
+# Admin user login password. Defaults to "admin".
+KEYCLOAK_ADMIN_PASSWORD=
+# Keycloak Database username. Defaults to "keycloak".
+KC_DB_USERNAME=
+# Keycloak Database password. Defaults to "keycloak".
+KC_DB_PASSWORD=
+
+### Radicale Setting ###
+# Radicale is a small open-source CalDAV (calendars, to-do lists) and CardDAV (contacts) server.
+# When enabled OpenCloud is configured as a reverse proxy for Radicale, providing all authenticated
+# OpenCloud users access to a Personal Calendar and Addressbook
+# Docker image to use for the Radicale Container
+RADICALE_DOCKER_IMAGE=opencloudeu/radicale
+# Docker tag to pull for the Radicale Container
+RADICALE_DOCKER_TAG=latest
+# Define the storage location for the Radicale data. Set the path to a local path.
+# Ensure that the configuration and data directories are owned by the user and group with ID 1000:1000.
+# This matches the default user inside the container and avoids permission issues when accessing files.
+# Leaving it default stores data in docker internal volumes.
+#RADICALE_DATA_DIR=/your/local/radicale/data
+```
+
+### Start OpenCloud
+
+```bash
+docker compose up -d
+docker compose logs -ft  # Follow logs
+```
+
+## Step 3: Set Up Caddy
+
+Create `~/caddy/docker-compose.yml`:
+
+```yaml
+# Caddy Docker Compose setup
+services:
+  caddy:
+    image: caddy:latest
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./conf:/etc/caddy
+      - ./site:/srv
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - opencloud-net # Attach to the OpenCloud network
+
+networks:
+  opencloud-net: # make sure the network name matches your opencloud-compose network
+    external: true
+    name: opencloud-compose_opencloud-net
+
+volumes:
+  caddy_data:
+  caddy_config:
+```
+
+**Note:** The external network connects Caddy to OpenCloud containers.
+
+### Create Caddyfile
+
+Create `~/caddy/conf/Caddyfile`:
+
+```Caddyfile
+pi.hole {
+	tls internal
+	reverse_proxy http://pi.hole:8080
+}
+cloud.opencloud.test {
+	tls internal
+	reverse_proxy opencloud-compose-opencloud-1:9200
+}
+wopiserver.opencloud.test {
+	tls internal
+	reverse_proxy opencloud-compose-collaboration-1:9300
+}
+collabora.opencloud.test {
+	tls internal
+	reverse_proxy opencloud-compose-collabora-1:9980
+}
+```
+
+Verify container names with `docker ps` and adjust accordingly.
+
+### Start Caddy
+
+```bash
+cd ~/caddy
+docker compose up -d
+```
+
+## Resources
+
+- [OpenCloud behind an external proxy](https://docs.opencloud.eu/docs/admin/getting-started/container/docker-compose/external-proxy)
+- [Caddy Docker installation](https://caddyserver.com/docs/install#docker)
+- [🇩🇪 OpenCloud Installationsanleitung](https://www.c-rieger.de/opencloud-installationsanleitung/)
