@@ -1,5 +1,5 @@
 ---
-title: "Selecting, Copying, Pasting - not working in Wayland"
+title: "ssh: Copying, Pasting - not working with Wayland"
 layout: post
 ---
 
