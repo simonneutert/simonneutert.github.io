@@ -25,3 +25,17 @@ Googling brought me to: `sudo apt install wl-clipboard`.
 This works because Wayland uses a different clipboard protocol than X11. The `wl-clipboard` package provides the necessary tools (`wl-copy` and `wl-paste`) that Neovim uses to interface with Wayland's clipboard, enabling the `+` and `*` registers to function properly.
 
 Some things are just plain hard in Linux.
+
+## For copy-pasting with vim
+
+<https://stackoverflow.com/a/61379319>
+
+> Assuming you only want to copy line sections of the file, do shift+v to go into
+> visual mode and only highlight the lines I want to copy. Then do.
+>
+> `:'<,'>w !wl-copy`
+>
+> where
+>
+> `'<,'>` - means you used visual mode to select a range (you don't type this)
+> `w !{cmd}` - write the range to the stdin of cmd, see more at `:help w_c`
