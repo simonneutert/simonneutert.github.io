@@ -1,4 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="2.0.5">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-11-29T12:25:26+01:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">ssh: Copying, Pasting - not working with Wayland</title><link href="/2025/wayland-clipboard/" rel="alternate" type="text/html" title="ssh: Copying, Pasting - not working with Wayland" /><published>2025-11-24T00:00:00+01:00</published><updated>2025-11-24T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2025-11-24-wayland-clipboard.md</id><content type="html" xml:base="/2025/wayland-clipboard/">&lt;p&gt;You’re tugging along happily, setting things up, but one thing starts bothering you.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="2.0.5">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2025-11-29T15:58:11+01:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Speed up Vulkan Shader Compilation on Bazzite</title><link href="/2025/vulkan-shader/" rel="alternate" type="text/html" title="Speed up Vulkan Shader Compilation on Bazzite" /><published>2025-11-29T00:00:00+01:00</published><updated>2025-11-29T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2025-11-29-vulkan-shader.md</id><content type="html" xml:base="/2025/vulkan-shader/">&lt;p&gt;Steam can take ages to precompile the shaders for Vulkan?&lt;/p&gt;
+
+&lt;p&gt;Hard to find, easy to implement:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nvim .local/share/Steam/steam_dev.cfg
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;and edit/add those two lines:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@ShaderBackgroundProcessingThreads 8
+unShaderBackgroundProcessingThreads 8
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Make sure to adjust, the 8 is fine in my case. The number represents the numbers of CPU cores Vulkan can use.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">ssh: Copying, Pasting - not working with Wayland</title><link href="/2025/wayland-clipboard/" rel="alternate" type="text/html" title="ssh: Copying, Pasting - not working with Wayland" /><published>2025-11-24T00:00:00+01:00</published><updated>2025-11-24T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2025-11-24-wayland-clipboard.md</id><content type="html" xml:base="/2025/wayland-clipboard/">&lt;p&gt;You’re tugging along happily, setting things up, but one thing starts bothering you.&lt;/p&gt;
 
 &lt;p&gt;Let’s say, you have a config file open in (n)vim on your server and want to select parts and paste them somewhere else.&lt;/p&gt;
 
@@ -21,7 +34,23 @@ But, it does not.&lt;/p&gt;
 
 &lt;p&gt;This works because Wayland uses a different clipboard protocol than X11. The &lt;code class=&quot;highlighter-rouge&quot;&gt;wl-clipboard&lt;/code&gt; package provides the necessary tools (&lt;code class=&quot;highlighter-rouge&quot;&gt;wl-copy&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;wl-paste&lt;/code&gt;) that Neovim uses to interface with Wayland’s clipboard, enabling the &lt;code class=&quot;highlighter-rouge&quot;&gt;+&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt; registers to function properly.&lt;/p&gt;
 
-&lt;p&gt;Some things are just plain hard in Linux.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Setting Up Nerd Fonts for Kitty and LazyVim on Bazzite</title><link href="/2025/lazyvim-nerdfonts-silverblue/" rel="alternate" type="text/html" title="Setting Up Nerd Fonts for Kitty and LazyVim on Bazzite" /><published>2025-11-24T00:00:00+01:00</published><updated>2025-11-24T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2025-11-24-lazyvim-nerdfonts-silverblue.md</id><content type="html" xml:base="/2025/lazyvim-nerdfonts-silverblue/">&lt;p&gt;If you’re new to Linux and just getting started, this guide is for you.&lt;/p&gt;
+&lt;p&gt;Some things are just plain hard in Linux.&lt;/p&gt;
+
+&lt;h2 id=&quot;for-copy-pasting-with-vim&quot;&gt;For copy-pasting with vim&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/a/61379319&quot;&gt;https://stackoverflow.com/a/61379319&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Assuming you only want to copy line sections of the file, do shift+v to go into
+visual mode and only highlight the lines I want to copy. Then do.&lt;/p&gt;
+
+  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;:&apos;&amp;lt;,&apos;&amp;gt;w !wl-copy&lt;/code&gt;&lt;/p&gt;
+
+  &lt;p&gt;where&lt;/p&gt;
+
+  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&apos;&amp;lt;,&apos;&amp;gt;&lt;/code&gt; - means you used visual mode to select a range (you don’t type this)
+&lt;code class=&quot;highlighter-rouge&quot;&gt;w !{cmd}&lt;/code&gt; - write the range to the stdin of cmd, see more at &lt;code class=&quot;highlighter-rouge&quot;&gt;:help w_c&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name></name></author></entry><entry><title type="html">Setting Up Nerd Fonts for Kitty and LazyVim on Bazzite</title><link href="/2025/lazyvim-nerdfonts-silverblue/" rel="alternate" type="text/html" title="Setting Up Nerd Fonts for Kitty and LazyVim on Bazzite" /><published>2025-11-24T00:00:00+01:00</published><updated>2025-11-24T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2025-11-24-lazyvim-nerdfonts-silverblue.md</id><content type="html" xml:base="/2025/lazyvim-nerdfonts-silverblue/">&lt;p&gt;If you’re new to Linux and just getting started, this guide is for you.&lt;/p&gt;
 
 &lt;p&gt;My setup:&lt;/p&gt;
 
@@ -538,82 +567,4 @@ bb-maid clean-in 7d         &lt;span class=&quot;c&quot;&gt;# Explicit command&l
 
 &lt;p&gt;By working on github-api-monitor, I was able to experiment with various shell features, learn about their differences, and practice writing robust, maintainable scripts. If you’re interested in shell scripting or want to see practical examples, this project might be a good starting point.&lt;/p&gt;
 
-&lt;p&gt;Check out the &lt;a href=&quot;https://github.com/simonneutert/github-api-monitor&quot;&gt;repository&lt;/a&gt;!&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Fixing Xbox Controller Bluetooth Issues on Fedora 42 KDE Plasma</title><link href="/2025/aurora-xbox-nuc11/" rel="alternate" type="text/html" title="Fixing Xbox Controller Bluetooth Issues on Fedora 42 KDE Plasma" /><published>2025-09-07T00:00:00+02:00</published><updated>2025-09-07T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2025/2025-09-07-aurora-xbox-nuc11.md</id><content type="html" xml:base="/2025/aurora-xbox-nuc11/">&lt;p&gt;&lt;em&gt;Finally got my Xbox controller working properly on Linux - here’s how&lt;/em&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;on-a-nuc-11-enthusiast--it-works-on-arch-too-btw-&quot;&gt;On a NUC 11 Enthusiast … it works on Arch, too, btw 😅&lt;/h2&gt;
-
-&lt;p&gt;If you’re running Aurora Linux Fedora 42 with KDE Plasma and struggling with Xbox controller Bluetooth connectivity issues - the endless connect/disconnect loops, blinking LEDs that never stabilize, or controllers that pair but don’t actually work - you’re not alone. &lt;strong&gt;After hours of troubleshooting on my Intel NUC11 Enthusiast&lt;/strong&gt;, I found the solution.&lt;/p&gt;
-
-&lt;h2 id=&quot;the-problem&quot;&gt;The Problem&lt;/h2&gt;
-
-&lt;p&gt;The symptoms were maddening:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Controller would connect, then disconnect OR appear connected in Linux, but blink and is unresponsive&lt;/li&gt;
-  &lt;li&gt;LED kept blinking instead of staying solid&lt;/li&gt;
-  &lt;li&gt;Sometimes it showed as “paired” but wasn’t recognized as an input device&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Turns out this is a perfect storm of Intel AX210 chipset quirks, BlueZ configuration changes, and Xbox controller firmware compatibility issues.&lt;/p&gt;
-
-&lt;h2 id=&quot;the-solution&quot;&gt;The Solution&lt;/h2&gt;
-
-&lt;p&gt;Here’s what actually fixed it for me:&lt;/p&gt;
-
-&lt;h3 id=&quot;1-fix-bluez-main-configuration&quot;&gt;1. Fix BlueZ Main Configuration&lt;/h3&gt;
-
-&lt;p&gt;Edit &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/bluetooth/main.conf&lt;/code&gt; and add these settings:&lt;/p&gt;
-
-&lt;div class=&quot;language-ini highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;[General]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;ControllerMode&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;dual&lt;/span&gt;
-&lt;span class=&quot;py&quot;&gt;Privacy&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;device&lt;/span&gt;
-&lt;span class=&quot;py&quot;&gt;FastConnectable&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;
-&lt;span class=&quot;py&quot;&gt;JustWorksRepairing&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;confirm&lt;/span&gt;
-&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;[LE]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;MinConnectionInterval&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;7&lt;/span&gt;
-&lt;span class=&quot;py&quot;&gt;MaxConnectionInterval&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;9&lt;/span&gt;
-&lt;span class=&quot;py&quot;&gt;ConnectionLatency&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;0&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;2-critical-input-configuration-change&quot;&gt;2. Critical Input Configuration Change&lt;/h3&gt;
-
-&lt;p&gt;This was the game-changer. In &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/bluetooth/input.conf&lt;/code&gt;, set:&lt;/p&gt;
-
-&lt;div class=&quot;language-ini highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;[General]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;UserspaceHID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;false&lt;/span&gt;
-&lt;span class=&quot;py&quot;&gt;ClassicBondedOnly&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;false&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;BlueZ changed the &lt;code class=&quot;highlighter-rouge&quot;&gt;UserspaceHID&lt;/code&gt; default to &lt;code class=&quot;highlighter-rouge&quot;&gt;true&lt;/code&gt; in March 2024, which breaks Xbox controllers completely.&lt;/p&gt;
-
-&lt;h3 id=&quot;3-disable-enhanced-retransmission-mode&quot;&gt;3. Disable Enhanced Retransmission Mode&lt;/h3&gt;
-
-&lt;p&gt;Create &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/modprobe.d/bluetooth.conf&lt;/code&gt; with:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;options bluetooth disable_ertm=1
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;ERTM conflicts with Xbox controller Bluetooth implementation and causes most connection issues.&lt;/p&gt;
-
-&lt;h3 id=&quot;4-apply-changes-and-reboot&quot;&gt;4. Apply Changes and Reboot&lt;/h3&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl restart bluetooth
-&lt;span class=&quot;c&quot;&gt;# Or better yet, just reboot to ensure all changes take effect&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;reboot
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;the-result&quot;&gt;The Result&lt;/h2&gt;
-
-&lt;p&gt;After implementing these changes and rebooting, my Xbox controller finally:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Connects reliably via Bluetooth&lt;/li&gt;
-  &lt;li&gt;Maintains stable connection during gaming&lt;/li&gt;
-  &lt;li&gt;LED stays solid instead of blinking&lt;/li&gt;
-  &lt;li&gt;Works properly as an input device&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;You may need to “forget and reconnect” before a session, but this is nothing that makes me go back to windows.&lt;/p&gt;
-
-&lt;p&gt;Finally, gaming on Linux with an Xbox controller works as it should!&lt;/p&gt;</content><author><name></name></author></entry></feed>
+&lt;p&gt;Check out the &lt;a href=&quot;https://github.com/simonneutert/github-api-monitor&quot;&gt;repository&lt;/a&gt;!&lt;/p&gt;</content><author><name></name></author></entry></feed>

@@ -69,9 +69,26 @@ But, it does not.</p>
 
 <p>Some things are just plain hard in Linux.</p>
 
+<h2 id="for-copy-pasting-with-vim">For copy-pasting with vim</h2>
+
+<p><a href="https://stackoverflow.com/a/61379319">https://stackoverflow.com/a/61379319</a></p>
+
+<blockquote>
+  <p>Assuming you only want to copy line sections of the file, do shift+v to go into
+visual mode and only highlight the lines I want to copy. Then do.</p>
+
+  <p><code class="highlighter-rouge">:'&lt;,'&gt;w !wl-copy</code></p>
+
+  <p>where</p>
+
+  <p><code class="highlighter-rouge">'&lt;,'&gt;</code> - means you used visual mode to select a range (you don’t type this)
+<code class="highlighter-rouge">w !{cmd}</code> - write the range to the stdin of cmd, see more at <code class="highlighter-rouge">:help w_c</code></p>
+</blockquote>
+
 
 <hr />
 
+<a id="btn-previous" href="/2025/vulkan-shader/" style="text-decoration:none;">⬅️ Read previous</a>
 
 <a id="btn-next" href="/2025/lazyvim-nerdfonts-silverblue/" style="float: right; text-decoration:none;">Read next ➡️</a>
 
