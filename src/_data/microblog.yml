@@ -384,6 +384,7 @@
 - url: https://podcasts.apple.com/de/podcast/ruby-for-all/id1636775711?i=1000575002490
 - url: https://podcasts.apple.com/de/podcast/eric-normand-podcast/id1364166414?i=1000576065423
 - url: https://m.youtube.com/watch?v=xbikBoA3Oik
+  content: The Secret Art of Storytelling in Programming by Yehonathan Sharvit
 - url: https://whistlr.info/2022/abortcontroller-is-your-friend/
 - url: https://github.com/blocklistproject/Lists
 - url: https://itnext.io/you-dont-need-microservices-2ad8508b9e27
@@ -394,7 +395,7 @@
 - url: https://youtu.be/mJw3al4Ms2o
   content: "RailsConf 2022 - A Rails Performance Guidebook: from 0 to 1B requests/day by Cristian Planas"
 - url: https://youtu.be/Oiq4dZbXVWA
-  content: "you'll always be inferior"
+  content: 'you''ll always be inferior | Alex Ziskind talks about "Courage to be Disliked" by Fumitake Koga and Ichiro Kishimi and here''s what he''s got from the book as it relates to feelings of inferiority as a software developer.'
 - url: https://www.ruby-toolbox.com/
 - url: https://babashka.org/toolbox/
 - url: https://www.clojure-toolbox.com/
