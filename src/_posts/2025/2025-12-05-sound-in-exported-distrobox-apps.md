@@ -1,5 +1,5 @@
 ---
-title: "Distrobox exported app do not output sound"
+title: "Distrobox exported app no sound output"
 layout: post
 ---
 
