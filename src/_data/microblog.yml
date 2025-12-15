@@ -1,3 +1,5 @@
+- url: https://andyatkinson.com/avoid-uuid-version-4-primary-keys#why-choose-uuids-at-all-generating-values-from-one-or-more-client-applications
+  content: About UUID (and Postgres)
 - url: https://www.youtube.com/watch?v=rmvDxxNubIg
   content: Harness Engineering - 20 minutes speed run talk
 - url: https://m.youtube.com/watch?v=uogB5P0zgM8
