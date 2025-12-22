@@ -1,3 +1,5 @@
+- url: https://it.badykov.com/blog/2022/09/12/simple-and-usefull-postgresql-features/
+  content: Simple and useful postgresql features.
 - url: https://www.depesz.com/2012/12/02/what-is-the-point-of-bouncing/
   content: |
     This blog post is to have a place where I can point people who have question about how it works, why, and when it makes sense to use it (pgBouncer that is).
