@@ -4,7 +4,9 @@
 layout: default
 ---
 
-<h1 class="rotate">👋 Hi, I'm Simon! <img src="https://www.gravatar.com/avatar/9ee19244c2d149385a7f1ca3a4844b6c?s=100" style="border-radius:5px" /></h1>
+<h1 class="rotate">
+  👋 Hi, I'm Simon! <img src="https://www.gravatar.com/avatar/9ee19244c2d149385a7f1ca3a4844b6c?s=100" style="border-radius:5px" />
+</h1>
 
 I share my code on [GitHub](https://github.com/simonneutert) and I
 sometimes [blog](/posts) about what made me smile, stumble, humble, or moan.
@@ -24,7 +26,7 @@ I've been dabbling with Clojure, exploring the [land of LISP and parentheses](ht
 I share my photos on [Flickr](https://www.flickr.com/photos/simonneutert/).
 {:style="text-align:center"}
 
-Get in touch with me on [Telegram](https://t.me/simonneutert) or via [LinkedIn](https://www.linkedin.com/in/simon-neutert/)! 🍻
+Get in touch with me @[LinkedIn](https://www.linkedin.com/in/simon-neutert/)! 🍻
 {:style="text-align:center"}
 
 ## I blog from time to time
