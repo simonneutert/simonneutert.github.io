@@ -1,0 +1,33 @@
+---
+title: Are you missing yazi to show file sizes and dates?
+layout: post
+---
+
+Then you're lucky, because `linemode` is what you need [see the docs](https://yazi-rs.github.io/docs/configuration/yazi#mgr.linemode)
+
+You can also specify any 1 to 20 characters, and extend it within a UI plugin, which means you can implement your own linemode through the plugin system like this:
+
+```toml
+# ~/.config/yazi/yazi.toml
+[mgr]
+linemode = "size_and_mtime"
+```
+
+Then in your init:
+
+```lua
+-- ~/.config/yazi/init.lua
+function Linemode:size_and_mtime()
+	local time = math.floor(self._file.cha.mtime or 0)
+	if time == 0 then
+		time = ""
+	elseif os.date("%Y", time) == os.date("%Y") then
+		time = os.date("%b %d %H:%M", time)
+	else
+		time = os.date("%b %d  %Y", time)
+	end
+
+	local size = self._file:size()
+	return string.format("%s %s", size and ya.readable_size(size) or "-", time)
+end
+```
