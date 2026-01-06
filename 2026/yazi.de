@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Are you missing yazi to show file sizes and dates? | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.DMVSTDIN.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>Are you missing yazi to show file sizes and dates?</h1>
+
+Then you're lucky, because `linemode` is what you need [see the docs](https://yazi-rs.github.io/docs/configuration/yazi#mgr.linemode)
+
+You can also specify any 1 to 20 characters, and extend it within a UI plugin, which means you can implement your own linemode through the plugin system like this:
+
+```toml
+# ~/.config/yazi/yazi.toml
+[mgr]
+linemode = "size_and_mtime"
+```
+
+Then in your init:
+
+```lua
+-- ~/.config/yazi/init.lua
+function Linemode:size_and_mtime()
+	local time = math.floor(self._file.cha.mtime or 0)
+	if time == 0 then
+		time = ""
+	elseif os.date("%Y", time) == os.date("%Y") then
+		time = os.date("%b %d %H:%M", time)
+	else
+		time = os.date("%b %d  %Y", time)
+	end
+
+	local size = self._file:size()
+	return string.format("%s %s", size and ya.readable_size(size) or "-", time)
+end
+```
+
+
+<hr />
+
+
+<a id="btn-next" href="/2025/xmas/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>
