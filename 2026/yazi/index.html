@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Are you missing yazi to show file sizes and dates? | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.DMVSTDIN.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>Are you missing yazi to show file sizes and dates?</h1>
+
+<p>Then you&#8217;re lucky, because <code class="highlighter-rouge">linemode</code> is what you need <a href="https://yazi-rs.github.io/docs/configuration/yazi#mgr.linemode">see the docs</a></p>
+
+<p>You can also specify any 1 to 20 characters, and extend it within a UI plugin, which means you can implement your own linemode through the plugin system like this:</p>
+
+<div class="language-toml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># ~/.config/yazi/yazi.toml</span>
+<span class="k">[</span><span class="n">mgr</span><span class="k">]</span>
+<span class="n">linemode</span> <span class="o">=</span><span class="w"> </span><span class="s">"size_and_mtime"</span>
+</code></pre></div></div>
+
+<p>Then in your init:</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- ~/.config/yazi/init.lua</span>
+<span class="k">function</span> <span class="nf">Linemode</span><span class="p">:</span><span class="n">size_and_mtime</span><span class="p">()</span>
+	<span class="kd">local</span> <span class="n">time</span> <span class="o">=</span> <span class="nb">math.floor</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">_file</span><span class="p">.</span><span class="n">cha</span><span class="p">.</span><span class="n">mtime</span> <span class="ow">or</span> <span class="mi">0</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">time</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">then</span>
+		<span class="n">time</span> <span class="o">=</span> <span class="s2">""</span>
+	<span class="k">elseif</span> <span class="nb">os.date</span><span class="p">(</span><span class="s2">"%Y"</span><span class="p">,</span> <span class="n">time</span><span class="p">)</span> <span class="o">==</span> <span class="nb">os.date</span><span class="p">(</span><span class="s2">"%Y"</span><span class="p">)</span> <span class="k">then</span>
+		<span class="n">time</span> <span class="o">=</span> <span class="nb">os.date</span><span class="p">(</span><span class="s2">"%b %d %H:%M"</span><span class="p">,</span> <span class="n">time</span><span class="p">)</span>
+	<span class="k">else</span>
+		<span class="n">time</span> <span class="o">=</span> <span class="nb">os.date</span><span class="p">(</span><span class="s2">"%b %d  %Y"</span><span class="p">,</span> <span class="n">time</span><span class="p">)</span>
+	<span class="k">end</span>
+
+	<span class="kd">local</span> <span class="n">size</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">_file</span><span class="p">:</span><span class="n">size</span><span class="p">()</span>
+	<span class="k">return</span> <span class="nb">string.format</span><span class="p">(</span><span class="s2">"%s %s"</span><span class="p">,</span> <span class="n">size</span> <span class="ow">and</span> <span class="n">ya</span><span class="p">.</span><span class="n">readable_size</span><span class="p">(</span><span class="n">size</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">"-"</span><span class="p">,</span> <span class="n">time</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+
+<hr />
+
+
+<a id="btn-next" href="/2025/xmas/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

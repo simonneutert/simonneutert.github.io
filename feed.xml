@@ -1,31 +1,29 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="2.1.0">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-01-06T17:54:32+01:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Are you missing yazi to show file sizes and dates?</title><link href="/2026/yazi.de" rel="alternate" type="text/html" title="Are you missing yazi to show file sizes and dates?" /><published>2026-01-06T00:00:00+01:00</published><updated>2026-01-06T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2026-01-06-yazi.de</id><content type="html" xml:base="/2026/yazi.de">Then you&apos;re lucky, because `linemode` is what you need [see the docs](https://yazi-rs.github.io/docs/configuration/yazi#mgr.linemode)
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="2.1.0">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-01-06T17:55:10+01:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Are you missing yazi to show file sizes and dates?</title><link href="/2026/yazi/" rel="alternate" type="text/html" title="Are you missing yazi to show file sizes and dates?" /><published>2026-01-06T00:00:00+01:00</published><updated>2026-01-06T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2026-01-06-yazi.md</id><content type="html" xml:base="/2026/yazi/">&lt;p&gt;Then you&amp;#8217;re lucky, because &lt;code class=&quot;highlighter-rouge&quot;&gt;linemode&lt;/code&gt; is what you need &lt;a href=&quot;https://yazi-rs.github.io/docs/configuration/yazi#mgr.linemode&quot;&gt;see the docs&lt;/a&gt;&lt;/p&gt;
 
-You can also specify any 1 to 20 characters, and extend it within a UI plugin, which means you can implement your own linemode through the plugin system like this:
+&lt;p&gt;You can also specify any 1 to 20 characters, and extend it within a UI plugin, which means you can implement your own linemode through the plugin system like this:&lt;/p&gt;
 
-```toml
-# ~/.config/yazi/yazi.toml
-[mgr]
-linemode = &quot;size_and_mtime&quot;
-```
+&lt;div class=&quot;language-toml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# ~/.config/yazi/yazi.toml&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mgr&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;linemode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;size_and_mtime&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-Then in your init:
+&lt;p&gt;Then in your init:&lt;/p&gt;
 
-```lua
--- ~/.config/yazi/init.lua
-function Linemode:size_and_mtime()
-	local time = math.floor(self._file.cha.mtime or 0)
-	if time == 0 then
-		time = &quot;&quot;
-	elseif os.date(&quot;%Y&quot;, time) == os.date(&quot;%Y&quot;) then
-		time = os.date(&quot;%b %d %H:%M&quot;, time)
-	else
-		time = os.date(&quot;%b %d  %Y&quot;, time)
-	end
+&lt;div class=&quot;language-lua highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;-- ~/.config/yazi/init.lua&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Linemode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size_and_mtime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;local&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;math.floor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cha&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mtime&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;elseif&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;os.date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;%Y&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;os.date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;%Y&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;os.date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;%b %d %H:%M&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;os.date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;%b %d  %Y&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 
-	local size = self._file:size()
-	return string.format(&quot;%s %s&quot;, size and ya.readable_size(size) or &quot;-&quot;, time)
-end
-```</content><author><name></name></author></entry><entry><title type="html">Open Source Isn’t Free—It’s a Gift. Treat It Like One.</title><link href="/2025/xmas/" rel="alternate" type="text/html" title="Open Source Isn’t Free—It’s a Gift. Treat It Like One." /><published>2025-12-27T00:00:00+01:00</published><updated>2025-12-27T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2025-12-27-xmas.md</id><content type="html" xml:base="/2025/xmas/">&lt;h2 id=&quot;tldr&quot;&gt;TL;DR&lt;!-- omit in toc --&gt;&lt;/h2&gt;
+	&lt;span class=&quot;kd&quot;&gt;local&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;string.format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;%s %s&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ya&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;readable_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;-&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author></entry><entry><title type="html">Open Source Isn’t Free—It’s a Gift. Treat It Like One.</title><link href="/2025/xmas/" rel="alternate" type="text/html" title="Open Source Isn’t Free—It’s a Gift. Treat It Like One." /><published>2025-12-27T00:00:00+01:00</published><updated>2025-12-27T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2025-12-27-xmas.md</id><content type="html" xml:base="/2025/xmas/">&lt;h2 id=&quot;tldr&quot;&gt;TL;DR&lt;!-- omit in toc --&gt;&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;Give back&lt;/strong&gt;—with money (even $1 helps), time, or skills.&lt;/li&gt;
