@@ -1,3 +1,5 @@
+- url: https://www.pgedge.com/blog/postgresql-18-returning-enhancements-a-game-changer-for-modern-applications
+  content: The RETURNING clause has been a staple of Postgres for years, allowing INSERT, UPDATE, and DELETE operations to return data about the affected rows. This capability eliminates the need for follow-up SELECT queries, reducing round trips to the database and improving performance.
 - url: https://www.youtube.com/watch?v=qlcVx-k-02E
   content: Quick and Easy Local SSL Certificates for Your Homelab!
 - url: https://m.youtube.com/watch?v=w6xflt7AWvE
