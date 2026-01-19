@@ -1,4 +1,41 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="2.1.1">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-01-18T18:57:42+01:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Are you missing yazi to show file sizes and dates?</title><link href="/2026/yazi/" rel="alternate" type="text/html" title="Are you missing yazi to show file sizes and dates?" /><published>2026-01-06T00:00:00+01:00</published><updated>2026-01-06T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2026-01-06-yazi.md</id><content type="html" xml:base="/2026/yazi/">&lt;p&gt;Then you&amp;#8217;re lucky, because &lt;code class=&quot;highlighter-rouge&quot;&gt;linemode&lt;/code&gt; is what you need &lt;a href=&quot;https://yazi-rs.github.io/docs/configuration/yazi#mgr.linemode&quot;&gt;see the docs&lt;/a&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="2.1.1">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-01-19T20:10:13+01:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Neetings is now open source! 🙈 🤖</title><link href="/2026/neetings/" rel="alternate" type="text/html" title="Neetings is now open source! 🙈 🤖" /><published>2026-01-19T00:00:00+01:00</published><updated>2026-01-19T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2026-01-19-neetings.md</id><content type="html" xml:base="/2026/neetings/">&lt;p&gt;&lt;a href=&quot;https://www.simon-neutert.de/2025/neetings/&quot;&gt;I wanted to open source it one day&lt;/a&gt;,&lt;br /&gt;
+and that day is today! 🎉&lt;br /&gt;
+(I finally found the courage to simply put it out there.)&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;https://www.neetings.com&quot;&gt;neetings&lt;/a&gt; is a meeting notes app I built over the
+last few months to solve my own pain points with chaotic meeting notes. It
+uses smart block types and Kanban-style organization to turn messy notes into
+actionable content.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Everybody and their dog was/is/loves/hates vibe-coding these days.&lt;br /&gt;
+I wanted to know what the fuss was about. And, boy, do I know now.&lt;/p&gt;
+
+&lt;p&gt;The feeling is bittersweet: I’m excited to share the project and see if others
+find it useful — the product likely wouldn’t exist without AI assistance. At
+the same time, I can’t maintain it alone without additional help or more AI.&lt;/p&gt;
+
+&lt;p&gt;Because it’s 99% AI-generated (mostly Claude Code), I don’t feel confident
+supporting it long-term. Maybe someone else will find it useful or build on it
+— let’s do it together! Together, we might truly own the software someday. 🤞&lt;/p&gt;
+
+&lt;p&gt;Being React-based, it should be fairly straightforward to adapt or extend.&lt;/p&gt;
+
+&lt;p&gt;Of course, there are still some improvements I want to make, like:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;“@mentions” for attendees&lt;/li&gt;
+  &lt;li&gt;a few more keyboard shortcuts&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For now, I’m happy to share the code with you all.&lt;br /&gt;
+Time to move on to new things. 🚀&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;You stay classy San Diego.&lt;br /&gt;
+\— Ron Burgundy&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name></name></author></entry><entry><title type="html">Are you missing yazi to show file sizes and dates?</title><link href="/2026/yazi/" rel="alternate" type="text/html" title="Are you missing yazi to show file sizes and dates?" /><published>2026-01-06T00:00:00+01:00</published><updated>2026-01-06T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2026-01-06-yazi.md</id><content type="html" xml:base="/2026/yazi/">&lt;p&gt;Then you&amp;#8217;re lucky, because &lt;code class=&quot;highlighter-rouge&quot;&gt;linemode&lt;/code&gt; is what you need &lt;a href=&quot;https://yazi-rs.github.io/docs/configuration/yazi#mgr.linemode&quot;&gt;see the docs&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;You can also specify any 1 to 20 characters, and extend it within a UI plugin, which means you can implement your own linemode through the plugin system like this:&lt;/p&gt;
 
@@ -400,67 +437,4 @@ map ctrl+alt+u kitten unicode_input
 
 &lt;p&gt;When switching Workspaces, say from &amp;#8220;1&amp;#8221; to &amp;#8220;2&amp;#8221; using &amp;#8220;super+2&amp;#8221; it would spam my input with &amp;#8220;twos&amp;#8221;.&lt;/p&gt;
 
-&lt;p&gt;Nothing ever worked, no fix, no &amp;#8220;hack&amp;#8221;. Turns out, there&amp;#8217;s a bug! See &lt;a href=&quot;https://gitlab.gnome.org/GNOME/mutter/-/issues/4416&quot;&gt;mutter issue&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Switching from Docker Desktop to Podman on macOS</title><link href="/2025/to-podman/" rel="alternate" type="text/html" title="Switching from Docker Desktop to Podman on macOS" /><published>2025-10-12T00:00:00+02:00</published><updated>2025-10-12T00:00:00+02:00</updated><id>repo://posts.collection/_posts/2025/2025-10-12-to-podman.md</id><content type="html" xml:base="/2025/to-podman/">&lt;p&gt;If you&amp;#8217;re considering moving away from Docker Desktop on macOS, Podman is a great open-source alternative that offers similar functionality without the licensing restrictions. Here&amp;#8217;s a guide to help you transition smoothly.&lt;/p&gt;
-
-&lt;h2 id=&quot;why-switch-to-podman&quot;&gt;Why Switch to Podman?&lt;/h2&gt;
-
-&lt;p&gt;Docker Desktop has become a paid product for many users, which has led to increased interest in open-source alternatives. Podman is a daemonless container engine that is compatible with Docker CLI commands, making it easier to switch without changing your workflow significantly.&lt;/p&gt;
-
-&lt;h3 id=&quot;rootless-containers&quot;&gt;Rootless Containers&lt;/h3&gt;
-
-&lt;p&gt;Podman allows you to run containers as a non-root user, enhancing security and reducing the risk of privilege escalation.&lt;/p&gt;
-
-&lt;h3 id=&quot;compatibility-with-docker-cli&quot;&gt;Compatibility with Docker CLI&lt;/h3&gt;
-
-&lt;p&gt;Podman supports many Docker CLI commands, so you can use familiar commands like &lt;code class=&quot;highlighter-rouge&quot;&gt;podman run&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;podman build&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;podman push&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;podman-compose&quot;&gt;Podman Compose&lt;/h3&gt;
-
-&lt;p&gt;Podman Compose is a tool that allows you to use Docker Compose files with Podman, making it easier to manage multi-container applications. Or you can use &lt;code class=&quot;highlighter-rouge&quot;&gt;docker compose&lt;/code&gt; directly with Podman, as a drop-in replacement.&lt;/p&gt;
-
-&lt;h3 id=&quot;podman-ai-lab&quot;&gt;Podman AI Lab&lt;/h3&gt;
-
-&lt;p&gt;Podman AI Lab is an exciting new feature that provides containerized AI tools and models, making it easier to experiment with AI in a containerized environment.&lt;/p&gt;
-
-&lt;h2 id=&quot;installing-podman-on-macos&quot;&gt;Installing Podman on macOS&lt;/h2&gt;
-
-&lt;p&gt;You can install Podman on macOS using Homebrew. Or download it from the &lt;a href=&quot;https://podman.io/&quot;&gt;Podman Desktop website&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;They suggest installing via the installer package, which includes everything you need to get started.&lt;/p&gt;
-
-&lt;h2 id=&quot;common-issues-and-solutions&quot;&gt;Common Issues and Solutions&lt;/h2&gt;
-
-&lt;p&gt;Because I was using Docker/Orbstack for a long time, I had some issues with Podman. Here are some common problems and their solutions:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Publishing Images&lt;/strong&gt;: The &lt;code class=&quot;highlighter-rouge&quot;&gt;--push&lt;/code&gt; flag in &lt;code class=&quot;highlighter-rouge&quot;&gt;podman build&lt;/code&gt; doesn&amp;#8217;t work as expected. Instead, use &lt;code class=&quot;highlighter-rouge&quot;&gt;podman push&lt;/code&gt; after building the image.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Multi-Platform Builds&lt;/strong&gt;: Podman supports multi-platform builds. But it&amp;#8217;s up to you to create a &lt;code class=&quot;highlighter-rouge&quot;&gt;manifest&lt;/code&gt; that includes the different architectures you want to support.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# build and push hello-world
-podman manifest create ghcr.io/simonneutert/hello-world:latest
-
-podman buildx build -f Dockerfile \
-  --manifest ghcr.io/simonneutert/hello-world:latest \
-  --platform linux/amd64,linux/arm64 .
-
-podman manifest push --all ghcr.io/simonneutert/hello-world:latest
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;while for Docker/Orbstack, you can do it in one command:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker buildx build -f Dockerfile \
-  --platform linux/amd64,linux/arm64 \
-  -t ghcr.io/simonneutert/hello-world:latest \
-  --push .
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;using-claudechatgpt&quot;&gt;Using Claude/ChatGPT&lt;/h2&gt;
-
-&lt;p&gt;Claude and ChatGPT can be valuable tools in your transition to Podman. They can help you troubleshoot issues, generate configuration files, and even automate parts of your workflow. By integrating these AI models into your development process, you can streamline your container management tasks and improve your overall efficiency.&lt;/p&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;Switching from Docker Desktop to Podman on macOS is mostly a straightforward process. Despite a few hiccups, I learned a lot about containers from a new perspective. Podman offers a robust, open-source alternative that aligns well with the needs of developers looking for flexibility and control over their container environments. With its compatibility with Docker CLI commands and support for rootless containers, Podman is a compelling choice for macOS users seeking an open-source solution.&lt;/p&gt;
-
-&lt;p&gt;The Podman AI Lab is an exciting addition, just as ollama and Docker AI - but with a focus on isolation and security.&lt;/p&gt;</content><author><name></name></author></entry></feed>
+&lt;p&gt;Nothing ever worked, no fix, no &amp;#8220;hack&amp;#8221;. Turns out, there&amp;#8217;s a bug! See &lt;a href=&quot;https://gitlab.gnome.org/GNOME/mutter/-/issues/4416&quot;&gt;mutter issue&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author></entry></feed>
