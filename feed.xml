@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="2.1.1">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-01-19T20:10:13+01:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Neetings is now open source! 🙈 🤖</title><link href="/2026/neetings/" rel="alternate" type="text/html" title="Neetings is now open source! 🙈 🤖" /><published>2026-01-19T00:00:00+01:00</published><updated>2026-01-19T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2026-01-19-neetings.md</id><content type="html" xml:base="/2026/neetings/">&lt;p&gt;&lt;a href=&quot;https://www.simon-neutert.de/2025/neetings/&quot;&gt;I wanted to open source it one day&lt;/a&gt;,&lt;br /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="2.1.1">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-01-19T21:42:06+01:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Neetings is now open source! 🙈 🤖</title><link href="/2026/neetings/" rel="alternate" type="text/html" title="Neetings is now open source! 🙈 🤖" /><published>2026-01-19T00:00:00+01:00</published><updated>2026-01-19T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2026-01-19-neetings.md</id><content type="html" xml:base="/2026/neetings/">&lt;p&gt;&lt;a href=&quot;https://www.simon-neutert.de/2025/neetings/&quot;&gt;I wanted to open source it one day&lt;/a&gt;,&lt;br /&gt;
 and that day is today! 🎉&lt;br /&gt;
 (I finally found the courage to simply put it out there.)&lt;/p&gt;
 
@@ -12,7 +12,7 @@ actionable content.&lt;/p&gt;
 &lt;p&gt;Everybody and their dog was/is/loves/hates vibe-coding these days.&lt;br /&gt;
 I wanted to know what the fuss was about. And, boy, do I know now.&lt;/p&gt;
 
-&lt;p&gt;The feeling is bittersweet: I’m excited to share the project and see if others
+&lt;p&gt;&lt;strong&gt;The feeling is bittersweet&lt;/strong&gt;: I’m excited to share the project and see if others
 find it useful — the product likely wouldn’t exist without AI assistance. At
 the same time, I can’t maintain it alone without additional help or more AI.&lt;/p&gt;
 
@@ -34,7 +34,7 @@ Time to move on to new things. 🚀&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;You stay classy San Diego.&lt;br /&gt;
-\— Ron Burgundy&lt;/p&gt;
+— Ron Burgundy&lt;/p&gt;
 &lt;/blockquote&gt;</content><author><name></name></author></entry><entry><title type="html">Are you missing yazi to show file sizes and dates?</title><link href="/2026/yazi/" rel="alternate" type="text/html" title="Are you missing yazi to show file sizes and dates?" /><published>2026-01-06T00:00:00+01:00</published><updated>2026-01-06T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2026-01-06-yazi.md</id><content type="html" xml:base="/2026/yazi/">&lt;p&gt;Then you&amp;#8217;re lucky, because &lt;code class=&quot;highlighter-rouge&quot;&gt;linemode&lt;/code&gt; is what you need &lt;a href=&quot;https://yazi-rs.github.io/docs/configuration/yazi#mgr.linemode&quot;&gt;see the docs&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;You can also specify any 1 to 20 characters, and extend it within a UI plugin, which means you can implement your own linemode through the plugin system like this:&lt;/p&gt;
