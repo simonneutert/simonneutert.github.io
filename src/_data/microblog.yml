@@ -1,3 +1,9 @@
+- url: https://hakibenita.com/postgresql-unconventional-optimizations
+  content: |
+    When it comes to database optimization, developers often reach for the same old tools:
+    rewrite the query slightly differently, slap an index on a column, denormalize, analyze, vacuum, cluster, repeat.
+
+    Conventional techniques are effective, but sometimes being creative can really pay off!
 - url: https://adamdrake.com/command-line-tools-can-be-235x-faster-than-your-hadoop-cluster.html
   content: "It is 2014 and 2026: Command-line Tools can be 235x Faster than your Hadoop Cluster" 
 - url: https://rubystacknews.com/2026/01/09/ruby-can-draw-cities-now/
