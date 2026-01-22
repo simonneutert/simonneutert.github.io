@@ -1,3 +1,5 @@
+- url: https://atlas9.dev/blog/soft-delete.html
+  content: The author has run into some trouble with soft delete designs. He'll cover those, and ponder ideas for how he'd build this in the future.
 - url: https://www.ratatui-ruby.dev/
   content: RatatuiRuby is a RubyGem built on Ratatui, a leading TUI library written in Rust. You get native performance with the joy of Ruby.
 - url: https://hakibenita.com/postgresql-unconventional-optimizations
