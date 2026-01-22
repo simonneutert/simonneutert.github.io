@@ -1,3 +1,5 @@
+- url: https://www.ratatui-ruby.dev/
+  content: RatatuiRuby is a RubyGem built on Ratatui, a leading TUI library written in Rust. You get native performance with the joy of Ruby.
 - url: https://hakibenita.com/postgresql-unconventional-optimizations
   content: |
     When it comes to database optimization, developers often reach for the same old tools:
