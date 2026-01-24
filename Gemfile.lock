@@ -108,7 +108,7 @@ GEM
       date
       stringio
     public_suffix (7.0.2)
-    puma (7.1.0)
+    puma (7.2.0)
       nio4r (~> 2.0)
     rack (3.2.4)
     rackup (2.3.1)
@@ -156,7 +156,7 @@ PLATFORMS
 DEPENDENCIES
   bridgetown (~> 2.1.1)
   bridgetown-feed
-  puma (~> 7.1)
+  puma (~> 7.2)
 
 BUNDLED WITH
   4.0.2
