@@ -1,3 +1,5 @@
+- url: https://github.com/chr15m/eucalypt
+  content: Eucalypt is a frontend library for Squint ClojureScript. It replaces Reagent & React with a compatible-ish subset of the Reagent API. It supports form-1 and form-2 Reagent components.
 - url: https://www.ratatui-ruby.dev/
   content: RatatuiRuby is a RubyGem built on Ratatui, a leading TUI library written in Rust. You get native performance with the joy of Ruby.
 - url: https://hakibenita.com/postgresql-unconventional-optimizations
