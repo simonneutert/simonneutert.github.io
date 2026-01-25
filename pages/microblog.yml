@@ -1,3 +1,5 @@
+- url: https://github.com/chr15m/eucalypt
+  content: Eucalypt is a frontend library for Squint ClojureScript. It replaces Reagent & React with a compatible-ish subset of the Reagent API. It supports form-1 and form-2 Reagent components.
 - url: https://david.rothlis.net/declarative-schema-migration-for-sqlite/
   content: Simple declarative schema migration for SQLite
 - url: https://github.com/yuzutech/kroki
