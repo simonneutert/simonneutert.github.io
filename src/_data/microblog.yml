@@ -1,3 +1,5 @@
+- url: https://tuttle.github.io/python-useful/compose-key-cheat-sheet.html
+  content: a nice and clean compose key cheat sheet 
 - url: https://www.ratatui-ruby.dev/
   content: RatatuiRuby is a RubyGem built on Ratatui, a leading TUI library written in Rust. You get native performance with the joy of Ruby.
 - url: https://hakibenita.com/postgresql-unconventional-optimizations
