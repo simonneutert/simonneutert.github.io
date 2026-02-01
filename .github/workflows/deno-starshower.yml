@@ -51,7 +51,7 @@ jobs:
           # Or use a custom PAT for higher rate limits:
           # GITHUB_STARSHOWER: ${{ secrets.GITHUB_PAT }}
         run: |
-          deno run --allow-env --allow-net --allow-write main.ts ${{ vars.GITHUB_USERNAME }}
+          deno run --allow-env --allow-net --allow-write main.ts ${{ github.repository_owner }}
           # Alternative: hardcode username instead of using a variable:
           # deno run --allow-env --allow-net --allow-write main.ts simonneutert
 
