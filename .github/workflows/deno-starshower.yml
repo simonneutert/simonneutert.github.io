@@ -1,4 +1,4 @@
-name: Add deno-starshower Starred Repos to Bridgetown Blog
+name: "deno-starshower: Update My Starred Repos"
 
 on:
   # Run on manual trigger
