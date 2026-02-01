@@ -15,10 +15,10 @@ permissions:
   contents: write
   pull-requests: write
 
-# Allow only one concurrent deployment
+# Prevent multiple runs from updating the same PR simultaneously
 concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  group: update-starred-repos
+  cancel-in-progress: true
 
 jobs:
   build:
