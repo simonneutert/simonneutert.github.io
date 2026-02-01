@@ -65,7 +65,6 @@ jobs:
           ---
           layout: page
           title: My Starred Repositories on GitHub
-          permalink: /starred-github-repos/
           ---
           
           EOF
