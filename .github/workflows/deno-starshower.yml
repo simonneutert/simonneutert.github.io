@@ -1,0 +1,88 @@
+name: Add deno-starshower Starred Repos to Bridgetown Blog
+
+on:
+  # Run on manual trigger
+  workflow_dispatch:
+  # Or run on a schedule (e.g., weekly on Sundays at midnight UTC)
+  schedule:
+    - cron: '0 0 * * 0'
+  # Or run on pushes to main (if you want it to update with every blog post)
+  # push:
+  #   branches: [ main ]
+
+# Grant write permissions for committing changes back to the repository
+permissions:
+  contents: write
+
+# Allow only one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout blog repository
+        uses: actions/checkout@v4
+        # This checks out YOUR blog repository where this workflow file lives
+        # If this workflow is in a different repo than your blog, specify:
+        # with:
+        #   repository: your-username/your-blog-repo
+
+      - name: Checkout deno-starshower
+        uses: actions/checkout@v4
+        with:
+          repository: simonneutert/deno-starshower
+          # Or use your fork: <your-username>/deno-starshower
+          path: .deno-starshower
+          # This checks out deno-starshower into a subdirectory
+
+      - name: Set up Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
+      - name: Generate starred repos markdown
+        working-directory: .deno-starshower
+        env:
+          GITHUB_STARSHOWER: ${{ secrets.GITHUB_TOKEN }}
+          # Or use a custom PAT for higher rate limits:
+          # GITHUB_STARSHOWER: ${{ secrets.GITHUB_PAT }}
+        run: |
+          deno run --allow-env --allow-net --allow-write main.ts ${{ vars.GITHUB_USERNAME }}
+          # Alternative: hardcode username instead of using a variable:
+          # deno run --allow-env --allow-net --allow-write main.ts simonneutert
+
+      - name: Prepare starred repos for Jekyll
+        run: |
+          # Create target directory if it doesn't exist (adjust path as needed)
+          mkdir -p src
+          
+          # Copy the generated markdown and add Jekyll front matter
+          cat > src/starred-repos.md << 'EOF'
+          ---
+          layout: page
+          title: My Starred Repositories on GitHub
+          permalink: /starred-github-repos/
+          ---
+          
+          EOF
+          
+          tail -n +2 .deno-starshower/deno-starshower_output/Starred_Repos.md >> src/starred-repos.md
+          
+          # remove the generated directory of the starshower checkout
+          rm -rf .deno-starshower
+    
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/starred-repos.md
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update starred repositories list [skip ci]"
+            git push
+          fi
+
