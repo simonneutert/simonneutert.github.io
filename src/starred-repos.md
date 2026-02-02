@@ -27,100 +27,148 @@ The data is grouped by the year the repositories were last pushed to.
 
 ## Last pushed to in 2026
 
-### [btop](https://github.com/aristocratos/btop) (30067 🌟)
+### [stacktower](https://github.com/matzehuels/stacktower) (494 🌟)
 
-**Owner:** [aristocratos](https://github.com/aristocratos)\
-**Description:** A monitor of resources\
-**Stars:** 30067\
-**Last Pushed:** 1/31/2026
-
----
-
-### [invoker](https://github.com/filipesilva/invoker) (21 🌟)
-
-**Owner:** [filipesilva](https://github.com/filipesilva)\
-**Description:** Zero config CLI, HTTP, and REPL interface for Clojure.\
-**Stars:** 21\
-**Last Pushed:** 1/28/2026
+**Owner:** [matzehuels](https://github.com/matzehuels)\
+**Description:** Visualize package dependencies as XKCD-style tower diagrams. Supports Python, Rust, JavaScript, Ruby, PHP, Java, and Go.\
+**Topics:** dependencies, golang, graphs\
+**Stars:** 494\
+**Last Pushed:** 2/1/2026
 
 ---
 
-### [postgrest](https://github.com/PostgREST/postgrest) (26416 🌟)
+### [komodo](https://github.com/moghtech/komodo) (10028 🌟)
+
+**Owner:** [moghtech](https://github.com/moghtech)\
+**Description:** 🦎 a tool to build and deploy software on many servers 🦎\
+**Stars:** 10028\
+**Last Pushed:** 2/2/2026
+
+---
+
+### [just](https://github.com/casey/just) (30691 🌟)
+
+**Owner:** [casey](https://github.com/casey)\
+**Description:** 🤖 Just a command runner\
+**Stars:** 30691\
+**Last Pushed:** 2/2/2026
+
+---
+
+### [sqlit](https://github.com/Maxteabag/sqlit) (3493 🌟)
+
+**Owner:** [Maxteabag](https://github.com/Maxteabag)\
+**Description:** A user friendly TUI for SQL databases. Written in python. Supports SQL server, Mysql, PostreSQL, SQLite, Turso and more.\
+**Topics:** cockroachdb, command-line-tool, duckdb, mariadb, mysql, oracle, postgresql, python, sql, sqlite, ssh, tui, turso\
+**Stars:** 3493\
+**Last Pushed:** 2/2/2026
+
+---
+
+### [postgrest](https://github.com/PostgREST/postgrest) (26420 🌟)
 
 **Owner:** [PostgREST](https://github.com/PostgREST)\
 **Description:** REST API for any Postgres database\
 **Topics:** api, automatic-api, database, haskell, http, pg, pgsql, postgres, postgresql, postgrest, rest, server, sql\
-**Stars:** 26416\
-**Last Pushed:** 1/30/2026
+**Stars:** 26420\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [restic](https://github.com/restic/restic) (32005 🌟)
+### [toucan2](https://github.com/camsaul/toucan2) (114 🌟)
+
+**Owner:** [camsaul](https://github.com/camsaul)\
+**Description:** Successor library to Toucan with a modern and more-extensible API, more consistent behavior, and support for different backends including non-JDBC databases and non-HoneySQL queries. Currently in active beta.\
+**Topics:** clojure, sql, toucan\
+**Stars:** 114\
+**Last Pushed:** 1/21/2026
+
+---
+
+### [btop](https://github.com/aristocratos/btop) (30085 🌟)
+
+**Owner:** [aristocratos](https://github.com/aristocratos)\
+**Description:** A monitor of resources\
+**Stars:** 30085\
+**Last Pushed:** 2/2/2026
+
+---
+
+### [invoker](https://github.com/filipesilva/invoker) (24 🌟)
+
+**Owner:** [filipesilva](https://github.com/filipesilva)\
+**Description:** Zero config CLI, HTTP, and REPL interface for Clojure.\
+**Stars:** 24\
+**Last Pushed:** 1/28/2026
+
+---
+
+### [restic](https://github.com/restic/restic) (32034 🌟)
 
 **Owner:** [restic](https://github.com/restic)\
 **Description:** Fast, secure, efficient backup program\
 **Topics:** backup, dedupe, deduplication, go, restic, secure-by-default\
-**Stars:** 32005\
+**Stars:** 32034\
 **Last Pushed:** 2/1/2026
 
 ---
 
-### [worktrunk](https://github.com/max-sixty/worktrunk) (1672 🌟)
+### [worktrunk](https://github.com/max-sixty/worktrunk) (1691 🌟)
 
 **Owner:** [max-sixty](https://github.com/max-sixty)\
 **Description:** Worktrunk is a CLI for Git worktree management, designed for parallel AI agent workflows\
 **Topics:** agents, claude-code, codex, developer-tools, git, worktrees\
-**Stars:** 1672\
-**Last Pushed:** 2/1/2026
+**Stars:** 1691\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [fish-shell](https://github.com/fish-shell/fish-shell) (32215 🌟)
+### [fish-shell](https://github.com/fish-shell/fish-shell) (32226 🌟)
 
 **Owner:** [fish-shell](https://github.com/fish-shell)\
 **Description:** The user-friendly command line shell.\
 **Topics:** fish, rust, shell, terminal\
-**Stars:** 32215\
-**Last Pushed:** 2/1/2026
+**Stars:** 32226\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [yazi](https://github.com/sxyazi/yazi) (32122 🌟)
+### [yazi](https://github.com/sxyazi/yazi) (32146 🌟)
 
 **Owner:** [sxyazi](https://github.com/sxyazi)\
 **Description:** 💥 Blazing fast terminal file manager written in Rust, based on async I/O.\
 **Topics:** android, asyncio, cli, command-line, concurrency, cross-platform, developer-tools, file-explorer, file-manager, filesystem, linux, macos, neovim, productivity, rust, terminal, tui, vim, windows\
-**Stars:** 32122\
-**Last Pushed:** 2/1/2026
+**Stars:** 32146\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [charm.clj](https://github.com/TimoKramer/charm.clj) (11 🌟)
+### [charm.clj](https://github.com/TimoKramer/charm.clj) (12 🌟)
 
 **Owner:** [TimoKramer](https://github.com/TimoKramer)\
 **Description:**  A Clojure TUI (Terminal User Interface) library inspired by Bubble Tea\
-**Stars:** 11\
+**Stars:** 12\
 **Last Pushed:** 1/30/2026
 
 ---
 
-### [Lists](https://github.com/blocklistproject/Lists) (4590 🌟)
+### [Lists](https://github.com/blocklistproject/Lists) (4594 🌟)
 
 **Owner:** [blocklistproject](https://github.com/blocklistproject)\
 **Description:** Primary Block Lists\
 **Topics:** adblock, adblock-list, blocklist, pi-hole-blocklists, pi-hole-lists, pihole, pihole-adblocker-list, pihole-blocklists\
-**Stars:** 4590\
-**Last Pushed:** 1/26/2026
+**Stars:** 4594\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [vis-network](https://github.com/visjs/vis-network) (3506 🌟)
+### [vis-network](https://github.com/visjs/vis-network) (3508 🌟)
 
 **Owner:** [visjs](https://github.com/visjs)\
 **Description:** :dizzy: Display dynamic, automatically organised, customizable network views.\
 **Topics:** diagram, hacktoberfest, network, visjs\
-**Stars:** 3506\
-**Last Pushed:** 1/30/2026
+**Stars:** 3508\
+**Last Pushed:** 2/2/2026
 
 ---
 
@@ -134,40 +182,40 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [kroki](https://github.com/yuzutech/kroki) (3927 🌟)
+### [kroki](https://github.com/yuzutech/kroki) (3931 🌟)
 
 **Owner:** [yuzutech](https://github.com/yuzutech)\
 **Description:** Creates diagrams from textual descriptions!\
 **Topics:** api, blockdiag, bpmn, bytefield, c4, diagrams, ditaa, erd, excalidraw, graphviz, hacktoberfest, images, mermaid, pikchr, plantuml, svgbob, text, uml, umlet, wavedrom\
-**Stars:** 3927\
+**Stars:** 3931\
 **Last Pushed:** 1/31/2026
 
 ---
 
-### [t](https://github.com/alecthomas/t) (238 🌟)
+### [t](https://github.com/alecthomas/t) (241 🌟)
 
 **Owner:** [alecthomas](https://github.com/alecthomas)\
 **Description:** `t` is a concise language for manipulating text, replacing common usage patterns of Unix utilities like grep, sed, cut, awk, sort, and uniq.\
-**Stars:** 238\
+**Stars:** 241\
 **Last Pushed:** 1/31/2026
 
 ---
 
-### [van](https://github.com/vanjs-org/van) (4310 🌟)
+### [van](https://github.com/vanjs-org/van) (4312 🌟)
 
 **Owner:** [vanjs-org](https://github.com/vanjs-org)\
 **Description:** 🍦 VanJS: World's smallest reactive UI framework. Incredibly Powerful, Insanely Small - Everyone can build a useful UI app in an hour.\
 **Topics:** data-binding, dom, dom-manipulation, grab-n-go, lightweight, lightweight-framework, lightweight-javascript-library, minimalist, no-dependencies, no-setup, reactive, reactive-ui, ui-framework, ultra-light, ultra-thin, vanilla-dom-manipulation, vanilla-javascript, vanilla-js, vannilajs\
-**Stars:** 4310\
+**Stars:** 4312\
 **Last Pushed:** 1/27/2026
 
 ---
 
-### [irgo](https://github.com/stukennedy/irgo) (111 🌟)
+### [irgo](https://github.com/stukennedy/irgo) (114 🌟)
 
 **Owner:** [stukennedy](https://github.com/stukennedy)\
-**Description:** Native app development framework for mobile and desktop using Go and HTMX.\
-**Stars:** 111\
+**Description:** Native app development framework for mobile and desktop using Go and Datastar.\
+**Stars:** 114\
 **Last Pushed:** 1/27/2026
 
 ---
@@ -188,114 +236,114 @@ The data is grouped by the year the repositories were last pushed to.
 **Description:** React-based web application that enables users to visualize both property graph and RDF data and explore connections between data without having to write graph queries. \
 **Topics:** amazon-neptune, apache-tinkerpop, graph, graph-database, graph-visualization, opencypher, rdf\
 **Stars:** 436\
-**Last Pushed:** 1/30/2026
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [bentopdf](https://github.com/alam00000/bentopdf) (11034 🌟)
+### [bentopdf](https://github.com/alam00000/bentopdf) (11076 🌟)
 
 **Owner:** [alam00000](https://github.com/alam00000)\
 **Description:** A Privacy First PDF Toolkit\
 **Topics:** adobe-acrobat, docker, hacktoberfest, javascript, jpgtopdf, pdf, pdf-converter, pdf-editor, pdf-generation, pdf-ocr, pdf-tools, pdf-viewer, pdf-viewer-component, pdffiller, pdfjs, privacy, self-hosted, self-hosting, toolkit, typescript\
-**Stars:** 11034\
-**Last Pushed:** 2/1/2026
+**Stars:** 11076\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [fast_resize](https://github.com/tranhuucanh/fast_resize) (58 🌟)
+### [fast_resize](https://github.com/tranhuucanh/fast_resize) (59 🌟)
 
 **Owner:** [tranhuucanh](https://github.com/tranhuucanh)\
 **Description:** The fastest image resizing library on the planet. Resize 1,000 images in 2 seconds.\
-**Stars:** 58\
+**Stars:** 59\
 **Last Pushed:** 1/7/2026
 
 ---
 
-### [grace](https://github.com/Gabriella439/grace) (504 🌟)
+### [grace](https://github.com/Gabriella439/grace) (507 🌟)
 
 **Owner:** [Gabriella439](https://github.com/Gabriella439)\
 **Description:** A prompt engineering functional programming language\
 **Topics:** ai, functional-programming, interpreter, llm, programming-language, prompt-engineering\
-**Stars:** 504\
-**Last Pushed:** 2/1/2026
+**Stars:** 507\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [typescript-book](https://github.com/gibbok/typescript-book) (10066 🌟)
+### [typescript-book](https://github.com/gibbok/typescript-book) (10068 🌟)
 
 **Owner:** [gibbok](https://github.com/gibbok)\
 **Description:** The Concise TypeScript Book: A Concise Guide to Effective Development in TypeScript. Free and Open Source.\
 **Topics:** book, free, javascript, javascript-book, learn-typescript, typescript, typescript-book, typescript-guide, typescript-guidebook, typescript-language, typescript-learning, typescript-tutorials\
-**Stars:** 10066\
+**Stars:** 10068\
 **Last Pushed:** 1/23/2026
 
 ---
 
-### [pygraphistry](https://github.com/graphistry/pygraphistry) (2401 🌟)
+### [pygraphistry](https://github.com/graphistry/pygraphistry) (2402 🌟)
 
 **Owner:** [graphistry](https://github.com/graphistry)\
 **Description:** PyGraphistry is a Python library to quickly load, shape, embed, and explore big graphs with the GPU-accelerated Graphistry visual graph analyzer\
 **Topics:** csv, cudf, cugraph, gpu, graph, graph-visualization, graphistry, igraph, jupyter, neo4j, network-analysis, network-visualization, networkx, pandas, python, rapids, splunk, tigergraph, visualization, webgl\
-**Stars:** 2401\
+**Stars:** 2402\
 **Last Pushed:** 1/29/2026
 
 ---
 
-### [Handy](https://github.com/cjpais/Handy) (13794 🌟)
+### [Handy](https://github.com/cjpais/Handy) (13874 🌟)
 
 **Owner:** [cjpais](https://github.com/cjpais)\
 **Description:** A free, open source, and extensible speech-to-text application that works completely offline.\
 **Topics:** accessibility, cross-platform, speech-to-text, tauri-v2\
-**Stars:** 13794\
+**Stars:** 13874\
 **Last Pushed:** 2/1/2026
 
 ---
 
-### [dns-blocklists](https://github.com/hagezi/dns-blocklists) (19534 🌟)
+### [dns-blocklists](https://github.com/hagezi/dns-blocklists) (19571 🌟)
 
 **Owner:** [hagezi](https://github.com/hagezi)\
 **Description:** DNS-Blocklists: For a better internet - keep the internet clean!\
 **Topics:** adblock, adguard, ads, blacklist, blocklist, coins, dns, domains, fake, filterlist, hosts, malware, metrics, phishing, pi-hole, privacy, scam, telemetry, threat-intelligence-feeds, tracking\
-**Stars:** 19534\
-**Last Pushed:** 2/1/2026
+**Stars:** 19571\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [hosts](https://github.com/StevenBlack/hosts) (29747 🌟)
+### [hosts](https://github.com/StevenBlack/hosts) (29754 🌟)
 
 **Owner:** [StevenBlack](https://github.com/StevenBlack)\
 **Description:** 🔒 Consolidating and extending hosts files from several well-curated sources. Optionally pick extensions for porn, social media, and other categories.\
 **Topics:** ad-blocker, anti-virus, curated-sources, gambling-filter, hosts, malware, porn-filter, pornblocker, privacy, protection, python, ransomware, security, social-media-filter, trojans, unified-hosts\
-**Stars:** 29747\
+**Stars:** 29754\
 **Last Pushed:** 2/1/2026
 
 ---
 
-### [cytoscape.js](https://github.com/cytoscape/cytoscape.js) (10827 🌟)
+### [cytoscape.js](https://github.com/cytoscape/cytoscape.js) (10829 🌟)
 
 **Owner:** [cytoscape](https://github.com/cytoscape)\
 **Description:** Graph theory (network) library for visualisation and analysis\
 **Topics:** analysis, cytoscapejs, graph-theory, javascript, network, visualisation, visualization\
-**Stars:** 10827\
+**Stars:** 10829\
 **Last Pushed:** 1/21/2026
 
 ---
 
-### [llamafile](https://github.com/mozilla-ai/llamafile) (23677 🌟)
+### [llamafile](https://github.com/mozilla-ai/llamafile) (23684 🌟)
 
 **Owner:** [mozilla-ai](https://github.com/mozilla-ai)\
 **Description:** Distribute and run LLMs with a single file.\
-**Stars:** 23677\
+**Stars:** 23684\
 **Last Pushed:** 1/26/2026
 
 ---
 
-### [fresh](https://github.com/sinelaw/fresh) (5549 🌟)
+### [fresh](https://github.com/sinelaw/fresh) (5573 🌟)
 
 **Owner:** [sinelaw](https://github.com/sinelaw)\
 **Description:** Text editor for your terminal: easy, powerful and fast\
-**Stars:** 5549\
-**Last Pushed:** 2/1/2026
+**Stars:** 5573\
+**Last Pushed:** 2/2/2026
 
 ---
 
@@ -309,43 +357,43 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [databasus](https://github.com/databasus/databasus) (5305 🌟)
+### [databasus](https://github.com/databasus/databasus) (5320 🌟)
 
 **Owner:** [databasus](https://github.com/databasus)\
 **Description:** Databases backup tool (PostgreSQL, MySQL, MongoDB)\
 **Topics:** backup, backups, database, database-backup, devops, docker, golang, kubernetes, mariadb, mongodb, mysql, pg, postgres, postgresql, s3, self-hosted, system-administration, tools, web-ui\
-**Stars:** 5305\
-**Last Pushed:** 2/1/2026
+**Stars:** 5320\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [organicmaps](https://github.com/organicmaps/organicmaps) (13180 🌟)
+### [organicmaps](https://github.com/organicmaps/organicmaps) (13190 🌟)
 
 **Owner:** [organicmaps](https://github.com/organicmaps)\
 **Description:** 🍃 Organic Maps is a free Android & iOS offline maps app for travelers, tourists, hikers, and cyclists. It uses crowd-sourced OpenStreetMap data and is developed with love by the community. No ads, no tracking, no data collection, no crapware. Please donate to support the development!\
 **Topics:** android, app, cpp, cyclists, hacktoberfest, hikers, ios, java, maps, mobile, mobile-app, navigation, objective-c, offline, offline-maps, openstreetmap, privacy, routing, tourists, travelers\
-**Stars:** 13180\
-**Last Pushed:** 2/1/2026
+**Stars:** 13190\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [kitty](https://github.com/kovidgoyal/kitty) (31028 🌟)
+### [kitty](https://github.com/kovidgoyal/kitty) (31049 🌟)
 
 **Owner:** [kovidgoyal](https://github.com/kovidgoyal)\
 **Description:** If you live in the terminal, kitty is made for you! Cross-platform, fast, feature-rich, GPU based.\
 **Topics:** c, go, golang, golang-application, kitty, kitty-terminal, opengl, python, terminal, terminal-emulators, terminfo, vt100\
-**Stars:** 31028\
-**Last Pushed:** 2/1/2026
+**Stars:** 31049\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [planetiler](https://github.com/onthegomap/planetiler) (1918 🌟)
+### [planetiler](https://github.com/onthegomap/planetiler) (1920 🌟)
 
 **Owner:** [onthegomap](https://github.com/onthegomap)\
 **Description:** Flexible tool to build planet-scale vector tilesets from OpenStreetMap data fast\
 **Topics:** maps, openstreetmap, osm, overture, vector-tiles\
-**Stars:** 1918\
-**Last Pushed:** 1/30/2026
+**Stars:** 1920\
+**Last Pushed:** 2/2/2026
 
 ---
 
@@ -355,46 +403,46 @@ The data is grouped by the year the repositories were last pushed to.
 **Description:** Graphviz in your browser\
 **Topics:** dot, emscripten, graphviz, javascript\
 **Stars:** 4285\
-**Last Pushed:** 1/25/2026
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [silverbullet](https://github.com/silverbulletmd/silverbullet) (4605 🌟)
+### [silverbullet](https://github.com/silverbulletmd/silverbullet) (4616 🌟)
 
 **Owner:** [silverbulletmd](https://github.com/silverbulletmd)\
 **Description:** An open source personal productivity platform built on Markdown, turbo charged with the scripting power of Lua\
 **Topics:** end-user-programming, knowledge-management, lua, markdown, note-taking, personal-knowledge-management\
-**Stars:** 4605\
-**Last Pushed:** 1/31/2026
+**Stars:** 4616\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [maplibre-gl-js](https://github.com/maplibre/maplibre-gl-js) (9803 🌟)
+### [maplibre-gl-js](https://github.com/maplibre/maplibre-gl-js) (9808 🌟)
 
 **Owner:** [maplibre](https://github.com/maplibre)\
 **Description:** MapLibre GL JS - Interactive vector tile maps in the browser\
 **Topics:** hacktoberfest, maplibre, maplibre-gl, maplibre-gl-js, typescript, webgl2\
-**Stars:** 9803\
-**Last Pushed:** 2/1/2026
+**Stars:** 9808\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [kimuraframework](https://github.com/vifreefly/kimuraframework) (1083 🌟)
+### [kimuraframework](https://github.com/vifreefly/kimuraframework) (1084 🌟)
 
 **Owner:** [vifreefly](https://github.com/vifreefly)\
 **Description:** Write web scrapers in Ruby using a clean, AI-assisted DSL. Kimurai uses AI to figure out where the data lives, then caches the selectors and scrapes with pure Ruby. Get the intelligence of an LLM without the per-request latency or token costs.\
 **Topics:** antidetect-browser, camoufox, crawler, headless-chrome, kimurai, ruby, scraper, scrapy, web-scraping\
-**Stars:** 1083\
+**Stars:** 1084\
 **Last Pushed:** 1/27/2026
 
 ---
 
-### [hashcards](https://github.com/eudoxia0/hashcards) (976 🌟)
+### [hashcards](https://github.com/eudoxia0/hashcards) (978 🌟)
 
 **Owner:** [eudoxia0](https://github.com/eudoxia0)\
 **Description:** A plain text-based spaced repetition system.\
-**Stars:** 976\
-**Last Pushed:** 1/25/2026
+**Stars:** 978\
+**Last Pushed:** 2/2/2026
 
 ---
 
@@ -404,7 +452,7 @@ The data is grouped by the year the repositories were last pushed to.
 **Description:** Simple, beautiful CLI output\
 **Topics:** cli, dsl, functional-programming, scala, tui\
 **Stars:** 221\
-**Last Pushed:** 1/25/2026
+**Last Pushed:** 2/2/2026
 
 ---
 
@@ -413,7 +461,7 @@ The data is grouped by the year the repositories were last pushed to.
 **Owner:** [jefago](https://github.com/jefago)\
 **Description:** TinyMDE: A tiny, dependency-free embeddable HTML/JavaScript Markdown editor.\
 **Stars:** 190\
-**Last Pushed:** 1/22/2026
+**Last Pushed:** 2/1/2026
 
 ---
 
@@ -427,90 +475,90 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [penpot](https://github.com/penpot/penpot) (43993 🌟)
+### [penpot](https://github.com/penpot/penpot) (44007 🌟)
 
 **Owner:** [penpot](https://github.com/penpot)\
 **Description:** Penpot: The open-source design tool for design and code collaboration\
 **Topics:** clojure, clojurescript, design, prototyping, ui, ux-design, ux-experience\
-**Stars:** 43993\
-**Last Pushed:** 1/30/2026
+**Stars:** 44007\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [graphiti](https://github.com/getzep/graphiti) (22460 🌟)
+### [graphiti](https://github.com/getzep/graphiti) (22489 🌟)
 
 **Owner:** [getzep](https://github.com/getzep)\
 **Description:** Build Real-Time Knowledge Graphs for AI Agents\
 **Topics:** agents, graph, llms, rag\
-**Stars:** 22460\
+**Stars:** 22489\
 **Last Pushed:** 1/31/2026
 
 ---
 
-### [Linux-Affinity-Installer](https://github.com/ryzendew/Linux-Affinity-Installer) (1811 🌟)
+### [Linux-Affinity-Installer](https://github.com/ryzendew/Linux-Affinity-Installer) (1818 🌟)
 
 **Owner:** [ryzendew](https://github.com/ryzendew)\
 **Description:** A repository that helps users get affinity software working on GNU/Linux 🐧\
-**Stars:** 1811\
+**Stars:** 1818\
 **Last Pushed:** 1/27/2026
 
 ---
 
-### [docling](https://github.com/docling-project/docling) (51747 🌟)
+### [docling](https://github.com/docling-project/docling) (51894 🌟)
 
 **Owner:** [docling-project](https://github.com/docling-project)\
 **Description:** Get your documents ready for gen AI\
 **Topics:** ai, convert, document-parser, document-parsing, documents, docx, html, markdown, pdf, pdf-converter, pdf-to-json, pdf-to-text, pptx, tables, xlsx\
-**Stars:** 51747\
-**Last Pushed:** 2/1/2026
+**Stars:** 51894\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [anubis](https://github.com/TecharoHQ/anubis) (16565 🌟)
+### [anubis](https://github.com/TecharoHQ/anubis) (16589 🌟)
 
 **Owner:** [TecharoHQ](https://github.com/TecharoHQ)\
 **Description:** Weighs the soul of incoming HTTP requests to stop AI crawlers\
 **Topics:** defense, security\
-**Stars:** 16565\
-**Last Pushed:** 1/28/2026
+**Stars:** 16589\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [bosquet](https://github.com/zmedelis/bosquet) (363 🌟)
+### [bosquet](https://github.com/zmedelis/bosquet) (364 🌟)
 
 **Owner:** [zmedelis](https://github.com/zmedelis)\
 **Description:** Tooling to build LLM applications: prompt templating and composition, agents, LLM memory, and other instruments for builders of AI applications.\
 **Topics:** ai, clojure, gpt, llmops, prompt-engineering\
-**Stars:** 363\
+**Stars:** 364\
 **Last Pushed:** 1/8/2026
 
 ---
 
-### [logseq](https://github.com/logseq/logseq) (40691 🌟)
+### [logseq](https://github.com/logseq/logseq) (40706 🌟)
 
 **Owner:** [logseq](https://github.com/logseq)\
 **Description:** A privacy-first, open-source platform for knowledge management and collaboration. Download link:  http://github.com/logseq/logseq/releases. roadmap: https://discuss.logseq.com/t/logseq-product-roadmap/34267\
 **Topics:** clojure, clojurescript, git, graph, knowledge-base, knowledge-graph, local-first, markdown, note-taking, org-mode, pkm\
-**Stars:** 40691\
-**Last Pushed:** 2/1/2026
+**Stars:** 40706\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [gamescope](https://github.com/ValveSoftware/gamescope) (4460 🌟)
+### [gamescope](https://github.com/ValveSoftware/gamescope) (4465 🌟)
 
 **Owner:** [ValveSoftware](https://github.com/ValveSoftware)\
 **Description:** SteamOS session compositing window manager\
-**Stars:** 4460\
-**Last Pushed:** 1/12/2026
+**Stars:** 4465\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [podman-compose](https://github.com/containers/podman-compose) (5930 🌟)
+### [podman-compose](https://github.com/containers/podman-compose) (5934 🌟)
 
 **Owner:** [containers](https://github.com/containers)\
 **Description:** a script to run docker-compose.yml using podman\
 **Topics:** docker-compose, linux-containers, podman, rootless-containers\
-**Stars:** 5930\
+**Stars:** 5934\
 **Last Pushed:** 1/25/2026
 
 ---
@@ -525,111 +573,111 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [DOMPurify](https://github.com/cure53/DOMPurify) (16572 🌟)
+### [DOMPurify](https://github.com/cure53/DOMPurify) (16575 🌟)
 
 **Owner:** [cure53](https://github.com/cure53)\
 **Description:** DOMPurify - a DOM-only, super-fast, uber-tolerant XSS sanitizer for HTML, MathML and SVG. DOMPurify works with a secure default, but offers a lot of configurability and hooks. Demo:\
 **Topics:** cross-site-scripting, dom, dompurify, html, javascript, mathml, prevent-xss-attacks, sanitizer, security, svg, xss\
-**Stars:** 16572\
+**Stars:** 16575\
 **Last Pushed:** 1/22/2026
 
 ---
 
-### [toolbox](https://github.com/containers/toolbox) (3222 🌟)
+### [toolbox](https://github.com/containers/toolbox) (3223 🌟)
 
 **Owner:** [containers](https://github.com/containers)\
 **Description:** Tool for interactive command line environments on Linux\
 **Topics:** containers, linux\
-**Stars:** 3222\
+**Stars:** 3223\
 **Last Pushed:** 1/29/2026
 
 ---
 
-### [drawdb](https://github.com/drawdb-io/drawdb) (35756 🌟)
+### [drawdb](https://github.com/drawdb-io/drawdb) (35763 🌟)
 
 **Owner:** [drawdb-io](https://github.com/drawdb-io)\
 **Description:** Free, simple, and intuitive online database diagram editor and SQL generator.\
 **Topics:** database-schema, diagram-editor, editor, erd, erdiagram, indexeddb, javascript, mariadb, oracle-database, oracle-db, postgresql, react, sql, sql-server, sqlite, svg, tailwindcss\
-**Stars:** 35756\
+**Stars:** 35763\
 **Last Pushed:** 1/29/2026
 
 ---
 
-### [rustfs](https://github.com/rustfs/rustfs) (20738 🌟)
+### [rustfs](https://github.com/rustfs/rustfs) (20789 🌟)
 
 **Owner:** [rustfs](https://github.com/rustfs)\
 **Description:** 🚀2.3x faster than MinIO for 4KB object payloads. RustFS is an open-source, S3-compatible high-performance object storage system supporting migration and coexistence with other S3-compatible platforms such as MinIO and Ceph.\
 **Topics:** amazon-s3, bigdata, cloud-native, filesystem, minio, object-storage, objectstorage, rust, s3\
-**Stars:** 20738\
-**Last Pushed:** 2/1/2026
+**Stars:** 20789\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [Prompt-Engineering-Guide](https://github.com/dair-ai/Prompt-Engineering-Guide) (69809 🌟)
+### [Prompt-Engineering-Guide](https://github.com/dair-ai/Prompt-Engineering-Guide) (69861 🌟)
 
 **Owner:** [dair-ai](https://github.com/dair-ai)\
 **Description:** 🐙 Guides, papers, lessons, notebooks and resources for prompt engineering, context engineering, RAG, and AI Agents.\
 **Topics:** agent, agents, ai-agents, chatgpt, deep-learning, generative-ai, language-model, llms, openai, prompt-engineering, rag\
-**Stars:** 69809\
-**Last Pushed:** 1/16/2026
+**Stars:** 69861\
+**Last Pushed:** 2/1/2026
 
 ---
 
-### [ezbookkeeping](https://github.com/mayswind/ezbookkeeping) (4083 🌟)
+### [ezbookkeeping](https://github.com/mayswind/ezbookkeeping) (4092 🌟)
 
 **Owner:** [mayswind](https://github.com/mayswind)\
 **Description:** A lightweight, self-hosted personal finance app with a user-friendly interface and powerful bookkeeping features.\
 **Topics:** accounting, app, bookkeeping, docker, expense-manager, expense-tracker, expenses, finance, finance-management, finances, financial, golang, homelab, mobile, money, money-manager, personal-finance, self-hosted, typescript, vue\
-**Stars:** 4083\
-**Last Pushed:** 2/1/2026
+**Stars:** 4092\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [immutable-js](https://github.com/immutable-js/immutable-js) (33098 🌟)
+### [immutable-js](https://github.com/immutable-js/immutable-js) (33097 🌟)
 
 **Owner:** [immutable-js](https://github.com/immutable-js)\
 **Description:** Immutable persistent data collections for Javascript which increase efficiency and simplicity.\
-**Stars:** 33098\
+**Stars:** 33097\
 **Last Pushed:** 1/28/2026
 
 ---
 
-### [wstunnel](https://github.com/erebe/wstunnel) (6304 🌟)
+### [wstunnel](https://github.com/erebe/wstunnel) (6309 🌟)
 
 **Owner:** [erebe](https://github.com/erebe)\
 **Description:** Tunnel all your traffic over Websocket or HTTP2 - Bypass firewalls/DPI - Static binary available \
 **Topics:** http2, reverse-tunnel, socks, socks5, socks5-proxy, tcp-tunnel, transparent-proxy, tunneling, udp-tunnel, websocket, wireguard, wireguard-tunnel\
-**Stars:** 6304\
+**Stars:** 6309\
 **Last Pushed:** 2/1/2026
 
 ---
 
-### [Awesome_Math_Books](https://github.com/valeman/Awesome_Math_Books) (5303 🌟)
+### [Awesome_Math_Books](https://github.com/valeman/Awesome_Math_Books) (5305 🌟)
 
 **Owner:** [valeman](https://github.com/valeman)\
 **Description:** No description provided.\
-**Stars:** 5303\
+**Stars:** 5305\
 **Last Pushed:** 1/10/2026
 
 ---
 
-### [sniffnet](https://github.com/GyulyVGC/sniffnet) (32504 🌟)
+### [sniffnet](https://github.com/GyulyVGC/sniffnet) (32510 🌟)
 
 **Owner:** [GyulyVGC](https://github.com/GyulyVGC)\
 **Description:** Comfortably monitor your Internet traffic 🕵️‍♂️\
 **Topics:** application, gui, iced, linux, macos, network, network-analysis, network-monitoring, networking, packet-analyser, packet-capture, packet-sniffer, pcap, rust, rust-crate, security, tool, utility, windows\
-**Stars:** 32504\
+**Stars:** 32510\
 **Last Pushed:** 2/1/2026
 
 ---
 
-### [ollama](https://github.com/ollama/ollama) (161353 🌟)
+### [ollama](https://github.com/ollama/ollama) (161447 🌟)
 
 **Owner:** [ollama](https://github.com/ollama)\
 **Description:** Get up and running with Kimi-K2.5, GLM-4.7, DeepSeek, gpt-oss, Qwen, Gemma and other models.\
 **Topics:** deepseek, gemma, gemma3, gemma3n, go, golang, gpt-oss, llama, llama2, llama3, llava, llm, llms, mistral, ollama, phi4, qwen\
-**Stars:** 161353\
-**Last Pushed:** 2/1/2026
+**Stars:** 161447\
+**Last Pushed:** 2/2/2026
 
 ---
 
@@ -643,73 +691,73 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [rv](https://github.com/spinel-coop/rv) (1593 🌟)
+### [rv](https://github.com/spinel-coop/rv) (1595 🌟)
 
 **Owner:** [spinel-coop](https://github.com/spinel-coop)\
 **Description:** 💎💨 Extremely fast Ruby version and gem manager\
 **Topics:** bundler, dependency-manager, ruby, rubygems\
-**Stars:** 1593\
-**Last Pushed:** 2/1/2026
+**Stars:** 1595\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [ramalama](https://github.com/containers/ramalama) (2558 🌟)
+### [ramalama](https://github.com/containers/ramalama) (2561 🌟)
 
 **Owner:** [containers](https://github.com/containers)\
 **Description:** RamaLama is an open-source developer tool that simplifies the local serving of AI models from any source and facilitates their use for inference in production, all through the familiar language of containers.\
 **Topics:** ai, containers, cuda, hacktoberfest, hip, inference-server, intel, llamacpp, llm, podman, vllm\
-**Stars:** 2558\
-**Last Pushed:** 1/31/2026
+**Stars:** 2561\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [tldraw](https://github.com/tldraw/tldraw) (44997 🌟)
+### [tldraw](https://github.com/tldraw/tldraw) (45017 🌟)
 
 **Owner:** [tldraw](https://github.com/tldraw)\
 **Description:** very good whiteboard infinite canvas SDK\
 **Topics:** canvas, collaboration, design, diagram, drawing, infinite, multiplayer, react, sdk, sketch, sync, whiteboard\
-**Stars:** 44997\
-**Last Pushed:** 2/1/2026
+**Stars:** 45017\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [open-webui](https://github.com/open-webui/open-webui) (122575 🌟)
+### [open-webui](https://github.com/open-webui/open-webui) (122685 🌟)
 
 **Owner:** [open-webui](https://github.com/open-webui)\
 **Description:** User-friendly AI Interface (Supports Ollama, OpenAI API, ...)\
 **Topics:** ai, llm, llm-ui, llm-webui, llms, mcp, ollama, ollama-webui, open-webui, openai, openapi, rag, self-hosted, ui, webui\
-**Stars:** 122575\
-**Last Pushed:** 2/1/2026
+**Stars:** 122685\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [drawio](https://github.com/jgraph/drawio) (3439 🌟)
+### [drawio](https://github.com/jgraph/drawio) (3448 🌟)
 
 **Owner:** [jgraph](https://github.com/jgraph)\
 **Description:** draw.io is a JavaScript, client-side editor for general diagramming.\
 **Topics:** diagram, javascript, whiteboard\
-**Stars:** 3439\
+**Stars:** 3448\
 **Last Pushed:** 1/28/2026
 
 ---
 
-### [rauthy](https://github.com/sebadob/rauthy) (924 🌟)
+### [rauthy](https://github.com/sebadob/rauthy) (926 🌟)
 
 **Owner:** [sebadob](https://github.com/sebadob)\
 **Description:** Single Sign-On Identity & Access Management via OpenID Connect, OAuth 2.0 and PAM\
 **Topics:** authentication, fido2, jwt, keycloak, mfa, oidc, oidc-provider, openid-connect, pam, passkey, rust, scim, server, single-sign-on, sso, webauthn\
-**Stars:** 924\
-**Last Pushed:** 1/31/2026
+**Stars:** 926\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [katana](https://github.com/projectdiscovery/katana) (15494 🌟)
+### [katana](https://github.com/projectdiscovery/katana) (15503 🌟)
 
 **Owner:** [projectdiscovery](https://github.com/projectdiscovery)\
 **Description:** A next-generation crawling and spidering framework.\
 **Topics:** cli, crawler, gocrawler, hacktoberfest, headless, spider-framework, web-spider\
-**Stars:** 15494\
-**Last Pushed:** 1/26/2026
+**Stars:** 15503\
+**Last Pushed:** 2/2/2026
 
 ---
 
@@ -739,7 +787,7 @@ The data is grouped by the year the repositories were last pushed to.
 **Description:** Markdown to PDF with styles\
 **Topics:** css, markdown, pdf, pdf-generation\
 **Stars:** 401\
-**Last Pushed:** 1/30/2026
+**Last Pushed:** 2/2/2026
 
 ---
 
@@ -753,92 +801,92 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [system-prompts-and-models-of-ai-tools](https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools) (112576 🌟)
+### [system-prompts-and-models-of-ai-tools](https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools) (112810 🌟)
 
 **Owner:** [x1xhlol](https://github.com/x1xhlol)\
 **Description:** FULL Augment Code, Claude Code, Cluely, CodeBuddy, Comet, Cursor, Devin AI, Junie, Kiro, Leap.new, Lovable, Manus, NotionAI, Orchids.app, Perplexity, Poke, Qoder, Replit, Same.dev, Trae, Traycer AI, VSCode Agent, Warp.dev, Windsurf, Xcode, Z.ai Code, Dia & v0. (And other Open Sourced) System Prompts, Internal Tools & AI Models\
 **Topics:** ai, bolt, cluely, copilot, cursor, cursorai, devin, github-copilot, lovable, open-source, perplexity, replit, system-prompts, trae, trae-ai, trae-ide, v0, vscode, windsurf, windsurf-ai\
-**Stars:** 112576\
+**Stars:** 112810\
 **Last Pushed:** 2/1/2026
 
 ---
 
-### [dockge](https://github.com/louislam/dockge) (21787 🌟)
+### [dockge](https://github.com/louislam/dockge) (21797 🌟)
 
 **Owner:** [louislam](https://github.com/louislam)\
 **Description:** A fancy, easy-to-use and reactive self-hosted docker compose.yaml stack-oriented manager\
 **Topics:** docker, docker-compose, docker-deployment, docker-stack, docker-stack-deploy, docker-ui, responsive, self-hosted, selfhosted, single-page-app, socket-io, webapp, websocket\
-**Stars:** 21787\
+**Stars:** 21797\
 **Last Pushed:** 1/21/2026
 
 ---
 
-### [MagicMirror](https://github.com/MagicMirrorOrg/MagicMirror) (23248 🌟)
+### [MagicMirror](https://github.com/MagicMirrorOrg/MagicMirror) (23251 🌟)
 
 **Owner:** [MagicMirrorOrg](https://github.com/MagicMirrorOrg)\
 **Description:** MagicMirror² is an open source modular smart mirror platform. With a growing list of installable modules, the MagicMirror² allows you to convert your hallway or bathroom mirror into your personal assistant.\
 **Topics:** domotics, javascript, magicmirror, mirror, raspberry-pi, smarthome\
-**Stars:** 23248\
+**Stars:** 23251\
 **Last Pushed:** 2/1/2026
 
 ---
 
-### [glow](https://github.com/charmbracelet/glow) (22565 🌟)
+### [glow](https://github.com/charmbracelet/glow) (22576 🌟)
 
 **Owner:** [charmbracelet](https://github.com/charmbracelet)\
 **Description:** Render markdown on the CLI, with pizzazz! 💅🏻\
 **Topics:** cli, excitement, hacktoberfest, markdown\
-**Stars:** 22565\
+**Stars:** 22576\
 **Last Pushed:** 1/12/2026
 
 ---
 
-### [coder](https://github.com/coder/coder) (12121 🌟)
+### [coder](https://github.com/coder/coder) (12136 🌟)
 
 **Owner:** [coder](https://github.com/coder)\
 **Description:** Secure environments for developers and their agents\
 **Topics:** agents, dev-tools, development-environment, go, golang, ide, jetbrains, remote-development, terraform, vscode\
-**Stars:** 12121\
-**Last Pushed:** 2/1/2026
+**Stars:** 12136\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [AppFlowy](https://github.com/AppFlowy-IO/AppFlowy) (67872 🌟)
+### [AppFlowy](https://github.com/AppFlowy-IO/AppFlowy) (67883 🌟)
 
 **Owner:** [AppFlowy-IO](https://github.com/AppFlowy-IO)\
 **Description:** Bring projects, wikis, and teams together with AI. AppFlowy is the AI collaborative workspace where you achieve more without losing control of your data. The leading open source Notion alternative.\
 **Topics:** blog, confluence-alternative, content-management, content-services, documentation, flutter, note-taking, notion-alternative, project-management, task-management, team-collaboration, wiki\
-**Stars:** 67872\
+**Stars:** 67883\
 **Last Pushed:** 1/28/2026
 
 ---
 
-### [opencode](https://github.com/anomalyco/opencode) (94584 🌟)
+### [opencode](https://github.com/anomalyco/opencode) (95596 🌟)
 
 **Owner:** [anomalyco](https://github.com/anomalyco)\
 **Description:** The open source coding agent.\
-**Stars:** 94584\
-**Last Pushed:** 2/1/2026
+**Stars:** 95596\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [signoz](https://github.com/SigNoz/signoz) (25526 🌟)
+### [signoz](https://github.com/SigNoz/signoz) (25540 🌟)
 
 **Owner:** [SigNoz](https://github.com/SigNoz)\
 **Description:** SigNoz is an open-source observability platform native to OpenTelemetry with logs, traces and metrics in a single application. An open-source alternative to DataDog, NewRelic, etc. 🔥 🖥.   👉  Open source Application Performance Monitoring (APM) & Observability tool\
 **Topics:** apm, application-monitoring, distributed-tracing, go, good-first-issue, jaeger, log, logs, metrics, monitoring, nextjs, observability, open-source, opentelemetry, prometheus, react, reactjs, self-hosted, tracing, typescript\
-**Stars:** 25526\
-**Last Pushed:** 2/1/2026
+**Stars:** 25540\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [reveal.js](https://github.com/hakimel/reveal.js) (70502 🌟)
+### [reveal.js](https://github.com/hakimel/reveal.js) (70504 🌟)
 
 **Owner:** [hakimel](https://github.com/hakimel)\
 **Description:** The HTML Presentation Framework\
 **Topics:** presentations, slides, slideshow\
-**Stars:** 70502\
-**Last Pushed:** 1/31/2026
+**Stars:** 70504\
+**Last Pushed:** 2/2/2026
 
 ---
 
@@ -858,16 +906,16 @@ The data is grouped by the year the repositories were last pushed to.
 **Description:** 🔐   Securely share sensitive information with automatic expiration & deletion after a set number of views or duration.  Track who, what and when with full audit logs.\
 **Topics:** communicate-passwords, docker-container, encryption, hacktoberfest, information-technology, netsec, netsec-tools, openshift-templates, password, password-expiration, password-pusher, password-safety, ruby, secret, security, security-tools, self-hosted\
 **Stars:** 2844\
-**Last Pushed:** 1/30/2026
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [copyparty](https://github.com/9001/copyparty) (41843 🌟)
+### [copyparty](https://github.com/9001/copyparty) (41978 🌟)
 
 **Owner:** [9001](https://github.com/9001)\
 **Description:** Portable file server with accelerated resumable uploads, dedup, WebDAV, SFTP, FTP, TFTP, zeroconf, media indexer, thumbnails++ all in one file\
 **Topics:** copyparty, file-server, file-sharing, file-upload-server, ftp-server, nas-frontend, tftp-server, webdav-server\
-**Stars:** 41843\
+**Stars:** 41978\
 **Last Pushed:** 1/31/2026
 
 ---
@@ -882,12 +930,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [pdfcpu](https://github.com/pdfcpu/pdfcpu) (8426 🌟)
+### [pdfcpu](https://github.com/pdfcpu/pdfcpu) (8428 🌟)
 
 **Owner:** [pdfcpu](https://github.com/pdfcpu)\
 **Description:** A PDF processor written in Go.\
 **Topics:** go, golang, golang-library, pdf, pdf-files, pdf-lib, pdf-processor, pdflib, processor\
-**Stars:** 8426\
+**Stars:** 8428\
 **Last Pushed:** 1/29/2026
 
 ---
@@ -901,13 +949,13 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [CyberChef](https://github.com/gchq/CyberChef) (33927 🌟)
+### [CyberChef](https://github.com/gchq/CyberChef) (33934 🌟)
 
 **Owner:** [gchq](https://github.com/gchq)\
 **Description:** The Cyber Swiss Army Knife - a web app for encryption, encoding, compression and data analysis\
 **Topics:** compression, data-analysis, data-manipulation, encoding, encryption, hashing, parsing\
-**Stars:** 33927\
-**Last Pushed:** 1/31/2026
+**Stars:** 33934\
+**Last Pushed:** 2/2/2026
 
 ---
 
@@ -920,52 +968,52 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [ristretto](https://github.com/dgraph-io/ristretto) (6724 🌟)
+### [ristretto](https://github.com/dgraph-io/ristretto) (6729 🌟)
 
 **Owner:** [dgraph-io](https://github.com/dgraph-io)\
 **Description:** A high performance memory-bound Go cache\
 **Topics:** cache, go, golang, library, performance\
-**Stars:** 6724\
+**Stars:** 6729\
 **Last Pushed:** 1/21/2026
 
 ---
 
-### [cloudnative-pg](https://github.com/cloudnative-pg/cloudnative-pg) (7923 🌟)
+### [cloudnative-pg](https://github.com/cloudnative-pg/cloudnative-pg) (7928 🌟)
 
 **Owner:** [cloudnative-pg](https://github.com/cloudnative-pg)\
 **Description:** CloudNativePG is a comprehensive platform designed to seamlessly manage PostgreSQL databases within Kubernetes environments, covering the entire operational lifecycle from initial deployment to ongoing maintenance\
 **Topics:** automated-failover, business-continuity, database, database-management, devops, disaster-recovery, failover, high-availability, json-logging, k8s, kubectl-plugin, kubernetes, operator, postgres, postgresql, prometheus-exporter, replication, self-healing, sql, switchover\
-**Stars:** 7923\
-**Last Pushed:** 2/1/2026
+**Stars:** 7928\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [fleet](https://github.com/fleetdm/fleet) (5985 🌟)
+### [fleet](https://github.com/fleetdm/fleet) (5988 🌟)
 
 **Owner:** [fleetdm](https://github.com/fleetdm)\
 **Description:** Open device management\
 **Topics:** binary-authorization, configuration-management, device-management, gitops, ios, linux, macos, mdm, open-source, orchestration, osquery, patching, powershell, scripting, security, software-management, telemetry, vulnerability-management\
-**Stars:** 5985\
-**Last Pushed:** 2/1/2026
+**Stars:** 5988\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [openbao](https://github.com/openbao/openbao) (5314 🌟)
+### [openbao](https://github.com/openbao/openbao) (5323 🌟)
 
 **Owner:** [openbao](https://github.com/openbao)\
 **Description:** OpenBao exists to provide a software solution to manage, store, and distribute sensitive data including secrets, certificates, and keys.\
 **Topics:** go, secret-management, security\
-**Stars:** 5314\
-**Last Pushed:** 1/31/2026
+**Stars:** 5323\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [server](https://github.com/gotify/server) (14579 🌟)
+### [server](https://github.com/gotify/server) (14580 🌟)
 
 **Owner:** [gotify](https://github.com/gotify)\
 **Description:** A simple server for sending and receiving messages in real-time per WebSocket. (Includes a sleek web-ui)\
 **Topics:** api, cloud, free-software, golang, gotify, hosting, javascript, notifications, privacy, react, self-hosted, self-hosting, selfhosted\
-**Stars:** 14579\
+**Stars:** 14580\
 **Last Pushed:** 1/30/2026
 
 ---
@@ -979,101 +1027,101 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [seaweedfs](https://github.com/seaweedfs/seaweedfs) (29863 🌟)
+### [seaweedfs](https://github.com/seaweedfs/seaweedfs) (29888 🌟)
 
 **Owner:** [seaweedfs](https://github.com/seaweedfs)\
 **Description:** SeaweedFS is a fast distributed storage system for blobs, objects, files, and data lake, for billions of files! Blob store has O(1) disk seek, cloud tiering. Filer supports Cloud Drive, xDC replication, Kubernetes, POSIX FUSE mount, S3 API, S3 Gateway, Hadoop, WebDAV, encryption, Erasure Coding. Enterprise version is at seaweedfs.com.\
 **Topics:** blob-storage, cloud-drive, distributed-file-system, distributed-storage, distributed-systems, erasure-coding, fuse, hadoop-hdfs, hdfs, kubernetes, object-storage, posix, replication, s3, s3-storage, seaweedfs, tiered-file-system\
-**Stars:** 29863\
-**Last Pushed:** 1/31/2026
+**Stars:** 29888\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [Backlog.md](https://github.com/MrLesk/Backlog.md) (4553 🌟)
+### [Backlog.md](https://github.com/MrLesk/Backlog.md) (4563 🌟)
 
 **Owner:** [MrLesk](https://github.com/MrLesk)\
 **Description:** Backlog.md - A tool for managing project collaboration between humans and AI Agents in a git ecosystem\
 **Topics:** agent, agentic-ai, management, markdown, project, task-manager, tasks\
-**Stars:** 4553\
+**Stars:** 4563\
 **Last Pushed:** 1/23/2026
 
 ---
 
-### [LocalAI](https://github.com/mudler/LocalAI) (42526 🌟)
+### [LocalAI](https://github.com/mudler/LocalAI) (42543 🌟)
 
 **Owner:** [mudler](https://github.com/mudler)\
 **Description:** :robot: The free, Open Source alternative to OpenAI, Claude and others. Self-hosted and local-first. Drop-in replacement,  running on consumer-grade hardware. No GPU required. Runs gguf, transformers, diffusers and many more. Features: Generate Text, MCP, Audio, Video, Images, Voice Cloning, Distributed, P2P and decentralized inference\
 **Topics:** ai, api, audio-generation, decentralized, distributed, gemma, image-generation, libp2p, llama, llm, mamba, mcp, mistral, musicgen, object-detection, rerank, rwkv, stable-diffusion, text-generation, tts\
-**Stars:** 42526\
-**Last Pushed:** 2/1/2026
+**Stars:** 42543\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [uppy](https://github.com/transloadit/uppy) (30613 🌟)
+### [uppy](https://github.com/transloadit/uppy) (30614 🌟)
 
 **Owner:** [transloadit](https://github.com/transloadit)\
 **Description:** The next open source file uploader for web browsers :dog: \
 **Topics:** dropbox, encoding, file-uploader, file-uploads, files, instagram, javascript, mit, modular, open-source, pick-files, resumable, transloadit, tus, uploader, uppy, webbrowser\
-**Stars:** 30613\
-**Last Pushed:** 1/31/2026
+**Stars:** 30614\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [pragmatic-drag-and-drop](https://github.com/atlassian/pragmatic-drag-and-drop) (12421 🌟)
+### [pragmatic-drag-and-drop](https://github.com/atlassian/pragmatic-drag-and-drop) (12424 🌟)
 
 **Owner:** [atlassian](https://github.com/atlassian)\
 **Description:** Fast drag and drop for any experience on any tech stack\
 **Topics:** dnd, drag-and-drop, dropzone, sortable\
-**Stars:** 12421\
+**Stars:** 12424\
 **Last Pushed:** 1/20/2026
 
 ---
 
-### [Web-Dev-For-Beginners](https://github.com/microsoft/Web-Dev-For-Beginners) (95207 🌟)
+### [Web-Dev-For-Beginners](https://github.com/microsoft/Web-Dev-For-Beginners) (95211 🌟)
 
 **Owner:** [microsoft](https://github.com/microsoft)\
 **Description:** 24 Lessons, 12 Weeks, Get Started as a Web Developer\
 **Topics:** css, curriculum, education, html, javascript, learning, microsoft-for-beginners, tutorials\
-**Stars:** 95207\
+**Stars:** 95211\
 **Last Pushed:** 1/29/2026
 
 ---
 
-### [replicant](https://github.com/cjohansen/replicant) (474 🌟)
+### [replicant](https://github.com/cjohansen/replicant) (473 🌟)
 
 **Owner:** [cjohansen](https://github.com/cjohansen)\
 **Description:** A data-driven rendering library for Clojure(Script) that renders hiccup to DOM or to strings.\
-**Stars:** 474\
+**Stars:** 473\
 **Last Pushed:** 1/13/2026
 
 ---
 
-### [snapdom](https://github.com/zumerlab/snapdom) (7472 🌟)
+### [snapdom](https://github.com/zumerlab/snapdom) (7482 🌟)
 
 **Owner:** [zumerlab](https://github.com/zumerlab)\
 **Description:** SnapDOM: DOM Capture Engine – Fast and Accurate HTML Conversion\
 **Topics:** capture-screenshots, clone, dom, js, screenshot\
-**Stars:** 7472\
+**Stars:** 7482\
 **Last Pushed:** 1/21/2026
 
 ---
 
-### [shiori](https://github.com/go-shiori/shiori) (11220 🌟)
+### [shiori](https://github.com/go-shiori/shiori) (11229 🌟)
 
 **Owner:** [go-shiori](https://github.com/go-shiori)\
 **Description:** Simple bookmark manager built with Go\
 **Topics:** bookmark-manager, command-line, go, golang, hacktoberfest, web-interface\
-**Stars:** 11220\
+**Stars:** 11229\
 **Last Pushed:** 2/1/2026
 
 ---
 
-### [anime](https://github.com/juliangarnier/anime) (66309 🌟)
+### [anime](https://github.com/juliangarnier/anime) (66319 🌟)
 
 **Owner:** [juliangarnier](https://github.com/juliangarnier)\
 **Description:** JavaScript animation engine\
 **Topics:** animation, anime, canvas, css, javascript, javascript-library, svg\
-**Stars:** 66309\
+**Stars:** 66319\
 **Last Pushed:** 1/29/2026
 
 ---
@@ -1087,31 +1135,31 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [Graphite](https://github.com/GraphiteEditor/Graphite) (23921 🌟)
+### [Graphite](https://github.com/GraphiteEditor/Graphite) (23941 🌟)
 
 **Owner:** [GraphiteEditor](https://github.com/GraphiteEditor)\
 **Description:** Open source comprehensive 2D content creation tool suite for graphic design, digital art, and interactive real-time motion graphics — featuring node-based procedural editing\
 **Topics:** 2d-graphics, animation, art, creative-coding, design, graphic-design, graphics, graphics-editor, image-manipulation, image-processing, motion-design, motion-graphics, node-graph, photo-editor, procedural, procedural-drawing, procedural-generation, svg-editor, vector-graphics\
-**Stars:** 23921\
-**Last Pushed:** 2/1/2026
+**Stars:** 23941\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [pdf-reader](https://github.com/yob/pdf-reader) (1901 🌟)
+### [pdf-reader](https://github.com/yob/pdf-reader) (1902 🌟)
 
 **Owner:** [yob](https://github.com/yob)\
 **Description:** The PDF::Reader library implements a PDF parser conforming as much as possible to the PDF specification from Adobe.\
-**Stars:** 1901\
+**Stars:** 1902\
 **Last Pushed:** 1/22/2026
 
 ---
 
-### [wg-easy](https://github.com/wg-easy/wg-easy) (24271 🌟)
+### [wg-easy](https://github.com/wg-easy/wg-easy) (24279 🌟)
 
 **Owner:** [wg-easy](https://github.com/wg-easy)\
 **Description:** The easiest way to run WireGuard VPN + Web-based Admin UI.\
-**Stars:** 24271\
-**Last Pushed:** 1/28/2026
+**Stars:** 24279\
+**Last Pushed:** 2/2/2026
 
 ---
 
@@ -1125,22 +1173,22 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [it-tools](https://github.com/CorentinTh/it-tools) (36822 🌟)
+### [it-tools](https://github.com/CorentinTh/it-tools) (36836 🌟)
 
 **Owner:** [CorentinTh](https://github.com/CorentinTh)\
 **Description:** Collection of handy online tools for developers, with great UX. \
 **Topics:** converter, developer-productivity, developer-tools, frontend, javascript, productivity, tool, tools, typescript, vuejs, website\
-**Stars:** 36822\
+**Stars:** 36836\
 **Last Pushed:** 1/23/2026
 
 ---
 
-### [pgvector](https://github.com/pgvector/pgvector) (19587 🌟)
+### [pgvector](https://github.com/pgvector/pgvector) (19604 🌟)
 
 **Owner:** [pgvector](https://github.com/pgvector)\
 **Description:** Open-source vector similarity search for Postgres\
 **Topics:** approximate-nearest-neighbor-search, nearest-neighbor-search\
-**Stars:** 19587\
+**Stars:** 19604\
 **Last Pushed:** 1/22/2026
 
 ---
@@ -1155,53 +1203,53 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [cryptpad](https://github.com/cryptpad/cryptpad) (7287 🌟)
+### [cryptpad](https://github.com/cryptpad/cryptpad) (7291 🌟)
 
 **Owner:** [cryptpad](https://github.com/cryptpad)\
 **Description:** Collaborative office suite, end-to-end encrypted and open-source.\
 **Topics:** chainpad, collaboration, collaborative-editing, cryptpad, e2ee, end-to-end-encryption, javascript, real-time\
-**Stars:** 7287\
-**Last Pushed:** 1/30/2026
+**Stars:** 7291\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [openmaptiles](https://github.com/openmaptiles/openmaptiles) (2977 🌟)
+### [openmaptiles](https://github.com/openmaptiles/openmaptiles) (2978 🌟)
 
 **Owner:** [openmaptiles](https://github.com/openmaptiles)\
 **Description:** OpenMapTiles Vector Tile Schema Implementation\
 **Topics:** maps, openstreetmap, openstreetmap-data, tiles, vector-tiles\
-**Stars:** 2977\
+**Stars:** 2978\
 **Last Pushed:** 1/5/2026
 
 ---
 
-### [frp](https://github.com/fatedier/frp) (104078 🌟)
+### [frp](https://github.com/fatedier/frp) (104103 🌟)
 
 **Owner:** [fatedier](https://github.com/fatedier)\
 **Description:** A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet.\
 **Topics:** expose, firewall, frp, go, http-proxy, nat, p2p, proxy, reverse-proxy, tunnel\
-**Stars:** 104078\
+**Stars:** 104103\
 **Last Pushed:** 1/31/2026
 
 ---
 
-### [dawarich](https://github.com/Freika/dawarich) (7924 🌟)
+### [dawarich](https://github.com/Freika/dawarich) (7936 🌟)
 
 **Owner:** [Freika](https://github.com/Freika)\
 **Description:** Your favorite self-hostable alternative to Google Timeline (Google Location History)\
 **Topics:** google-maps, gpslogger, hacktoberfest, homelab, maps, memory, owntracks, self-hosted, timeline\
-**Stars:** 7924\
+**Stars:** 7936\
 **Last Pushed:** 2/1/2026
 
 ---
 
-### [dify](https://github.com/langgenius/dify) (128326 🌟)
+### [dify](https://github.com/langgenius/dify) (128447 🌟)
 
 **Owner:** [langgenius](https://github.com/langgenius)\
 **Description:** Production-ready platform for agentic workflow development.\
 **Topics:** agent, agentic-ai, agentic-framework, agentic-workflow, ai, automation, gemini, genai, gpt, gpt-4, llm, low-code, mcp, nextjs, no-code, openai, orchestration, python, rag, workflow\
-**Stars:** 128326\
-**Last Pushed:** 2/1/2026
+**Stars:** 128447\
+**Last Pushed:** 2/2/2026
 
 ---
 
@@ -1211,183 +1259,183 @@ The data is grouped by the year the repositories were last pushed to.
 **Description:** Open Source Qualtrics Alternative\
 **Topics:** experience-management, form, forms, nextjs, open-source, react, reactjs, survey, survey-analysis, survey-data, survey-form, surveys, tailwindcss, turborepo, typeform, typescript, xm\
 **Stars:** 11793\
-**Last Pushed:** 1/29/2026
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [jira-cli](https://github.com/ankitpokhrel/jira-cli) (5041 🌟)
+### [jira-cli](https://github.com/ankitpokhrel/jira-cli) (5049 🌟)
 
 **Owner:** [ankitpokhrel](https://github.com/ankitpokhrel)\
 **Description:** 🔥 Feature-rich interactive Jira command line.\
 **Topics:** atlassian, cli, cli-app, command-line, command-line-tool, console, go, golang, golang-cli, jira, jira-cli, made-in-nepal, productivity, productivity-tools, terminal, terminal-app, tui\
-**Stars:** 5041\
+**Stars:** 5049\
 **Last Pushed:** 1/20/2026
 
 ---
 
-### [gocryptfs](https://github.com/rfjakob/gocryptfs) (4271 🌟)
+### [gocryptfs](https://github.com/rfjakob/gocryptfs) (4273 🌟)
 
 **Owner:** [rfjakob](https://github.com/rfjakob)\
 **Description:** Encrypted overlay filesystem written in Go\
 **Topics:** encryption, filesystem, fuse, gcm, golang\
-**Stars:** 4271\
+**Stars:** 4273\
 **Last Pushed:** 2/1/2026
 
 ---
 
-### [npm-check-updates](https://github.com/raineorshine/npm-check-updates) (10126 🌟)
+### [npm-check-updates](https://github.com/raineorshine/npm-check-updates) (10127 🌟)
 
 **Owner:** [raineorshine](https://github.com/raineorshine)\
 **Description:** Find newer versions of package dependencies than what your package.json allows\
 **Topics:** npm, npm-check-updates\
-**Stars:** 10126\
+**Stars:** 10127\
 **Last Pushed:** 1/26/2026
 
 ---
 
-### [coreutils](https://github.com/uutils/coreutils) (22625 🌟)
+### [coreutils](https://github.com/uutils/coreutils) (22631 🌟)
 
 **Owner:** [uutils](https://github.com/uutils)\
 **Description:** Cross-platform Rust rewrite of the GNU coreutils\
 **Topics:** busybox, command-line-tool, coreutils, cross-platform, gnu-coreutils, rust\
-**Stars:** 22625\
-**Last Pushed:** 2/1/2026
+**Stars:** 22631\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [git-who](https://github.com/sinclairtarget/git-who) (2657 🌟)
+### [git-who](https://github.com/sinclairtarget/git-who) (2658 🌟)
 
 **Owner:** [sinclairtarget](https://github.com/sinclairtarget)\
 **Description:** Git blame for file trees\
-**Stars:** 2657\
+**Stars:** 2658\
 **Last Pushed:** 1/24/2026
 
 ---
 
-### [ruby_llm](https://github.com/crmne/ruby_llm) (3480 🌟)
+### [ruby_llm](https://github.com/crmne/ruby_llm) (3486 🌟)
 
 **Owner:** [crmne](https://github.com/crmne)\
 **Description:** One beautiful Ruby API for OpenAI, Anthropic, Gemini, Bedrock, OpenRouter, DeepSeek, Ollama, VertexAI, Perplexity, Mistral, xAI, GPUStack & OpenAI compatible APIs. Chat, Vision, Audio, PDF, Images, Embeddings, Tools, Streaming & Rails integration.\
 **Topics:** ai, anthropic, chatgpt, claude, deepseek, embeddings, gemini, gpustack, image-generation, llm, mistral, ollama, openai, openrouter, perplexity, rails, ruby, vertex-ai, xai\
-**Stars:** 3480\
+**Stars:** 3486\
 **Last Pushed:** 1/25/2026
 
 ---
 
-### [filepizza](https://github.com/kern/filepizza) (9885 🌟)
+### [filepizza](https://github.com/kern/filepizza) (9888 🌟)
 
 **Owner:** [kern](https://github.com/kern)\
 **Description:** :pizza: Peer-to-peer file transfers in your browser\
 **Topics:** react, webrtc\
-**Stars:** 9885\
-**Last Pushed:** 1/31/2026
+**Stars:** 9888\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [zitadel](https://github.com/zitadel/zitadel) (12879 🌟)
+### [zitadel](https://github.com/zitadel/zitadel) (12888 🌟)
 
 **Owner:** [zitadel](https://github.com/zitadel)\
 **Description:** ZITADEL - Identity infrastructure, simplified for you.\
 **Topics:** 2fa, authentication, authorization, fido2, identity, login, mfa, multitenancy, oauth2, oidc, openid-connect, passkeys, saml, scim, sso, user\
-**Stars:** 12879\
-**Last Pushed:** 1/31/2026
+**Stars:** 12888\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [tinygo](https://github.com/tinygo-org/tinygo) (17127 🌟)
+### [tinygo](https://github.com/tinygo-org/tinygo) (17129 🌟)
 
 **Owner:** [tinygo-org](https://github.com/tinygo-org)\
 **Description:** Go compiler for small places. Microcontrollers, WebAssembly (WASM/WASI), and command-line tools. Based on LLVM.\
 **Topics:** adafruit, arduino, arm, avr, esp32, gpio, i2c, llvm, microbit, microcontroller, nrf51, nrf52, samd21, spi, stm32, tinygo, wasi, wasm, webassembly\
-**Stars:** 17127\
-**Last Pushed:** 1/24/2026
+**Stars:** 17129\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [git-filter-repo](https://github.com/newren/git-filter-repo) (11605 🌟)
+### [git-filter-repo](https://github.com/newren/git-filter-repo) (11611 🌟)
 
 **Owner:** [newren](https://github.com/newren)\
 **Description:** Quickly rewrite git repository history (filter-branch replacement)\
-**Stars:** 11605\
+**Stars:** 11611\
 **Last Pushed:** 1/1/2026
 
 ---
 
-### [AdGuardHome](https://github.com/AdguardTeam/AdGuardHome) (32355 🌟)
+### [AdGuardHome](https://github.com/AdguardTeam/AdGuardHome) (32371 🌟)
 
 **Owner:** [AdguardTeam](https://github.com/AdguardTeam)\
 **Description:** Network-wide ads & trackers blocking DNS server\
 **Topics:** adblock, adguard, dns, dns-over-https, dns-over-quic, dns-over-tls, dnscrypt, golang, open-source, privacy\
-**Stars:** 32355\
-**Last Pushed:** 1/31/2026
+**Stars:** 32371\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [pglite](https://github.com/electric-sql/pglite) (14567 🌟)
+### [pglite](https://github.com/electric-sql/pglite) (14576 🌟)
 
 **Owner:** [electric-sql](https://github.com/electric-sql)\
 **Description:** Embeddable Postgres with real-time, reactive bindings.\
 **Topics:** database, postgres, wasm\
-**Stars:** 14567\
+**Stars:** 14576\
 **Last Pushed:** 1/30/2026
 
 ---
 
-### [polars](https://github.com/pola-rs/polars) (37261 🌟)
+### [polars](https://github.com/pola-rs/polars) (37276 🌟)
 
 **Owner:** [pola-rs](https://github.com/pola-rs)\
 **Description:** Extremely fast Query Engine for DataFrames, written in Rust\
 **Topics:** arrow, dataframe, dataframe-library, dataframes, out-of-core, polars, python, rust\
-**Stars:** 37261\
-**Last Pushed:** 2/1/2026
+**Stars:** 37276\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [lazydocker](https://github.com/jesseduffield/lazydocker) (49469 🌟)
+### [lazydocker](https://github.com/jesseduffield/lazydocker) (49476 🌟)
 
 **Owner:** [jesseduffield](https://github.com/jesseduffield)\
 **Description:** The lazier way to manage everything docker\
-**Stars:** 49469\
+**Stars:** 49476\
 **Last Pushed:** 1/17/2026
 
 ---
 
-### [goose](https://github.com/pressly/goose) (10112 🌟)
+### [goose](https://github.com/pressly/goose) (10123 🌟)
 
 **Owner:** [pressly](https://github.com/pressly)\
 **Description:** A database migration tool. Supports SQL migrations and Go functions. \
 **Topics:** database, database-migrations, go, golang, migration, migrations, mysql, postgres, postgresql, schema, sql, sqlite\
-**Stars:** 10112\
-**Last Pushed:** 1/31/2026
+**Stars:** 10123\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [mathesar](https://github.com/mathesar-foundation/mathesar) (4780 🌟)
+### [mathesar](https://github.com/mathesar-foundation/mathesar) (4781 🌟)
 
 **Owner:** [mathesar-foundation](https://github.com/mathesar-foundation)\
 **Description:** An intuitive spreadsheet-like interface that lets users of all technical skill levels view, edit, query, and collaborate on Postgres data directly—100% open source and self hosted, with native Postgres access control.\
 **Topics:** airtable-alternative, automatic-api, database-access, database-gui, database-management, db-admin, django, javascript, postgres, postgresql, postgresql-database, python, svelte, sveltejs, typescript\
-**Stars:** 4780\
-**Last Pushed:** 1/31/2026
+**Stars:** 4781\
+**Last Pushed:** 2/1/2026
 
 ---
 
-### [dolt](https://github.com/dolthub/dolt) (19681 🌟)
+### [dolt](https://github.com/dolthub/dolt) (19686 🌟)
 
 **Owner:** [dolthub](https://github.com/dolthub)\
 **Description:** Dolt – Git for Data\
 **Topics:** command-line, data-version-control, data-versioning, database, database-version-control, database-versioning, decentralized-database, git, git-database, git-for-data, git-for-databases, git-sql, golang, immutable-database, mariadb, mysql, sql, version-controlled-database\
-**Stars:** 19681\
-**Last Pushed:** 1/31/2026
+**Stars:** 19686\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [watchexec](https://github.com/watchexec/watchexec) (6698 🌟)
+### [watchexec](https://github.com/watchexec/watchexec) (6703 🌟)
 
 **Owner:** [watchexec](https://github.com/watchexec)\
 **Description:** Executes commands in response to file modifications\
 **Topics:** command-line, developer-tools, file-watchers, linux, macos, rust, windows\
-**Stars:** 6698\
+**Stars:** 6703\
 **Last Pushed:** 1/26/2026
 
 ---
@@ -1401,80 +1449,80 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [overtone](https://github.com/overtone/overtone) (6139 🌟)
+### [overtone](https://github.com/overtone/overtone) (6140 🌟)
 
 **Owner:** [overtone](https://github.com/overtone)\
 **Description:** Collaborative Programmable Music \
-**Stars:** 6139\
+**Stars:** 6140\
 **Last Pushed:** 1/24/2026
 
 ---
 
-### [superfile](https://github.com/yorukot/superfile) (16535 🌟)
+### [superfile](https://github.com/yorukot/superfile) (16548 🌟)
 
 **Owner:** [yorukot](https://github.com/yorukot)\
 **Description:** Pretty fancy and modern terminal file manager\
 **Topics:** bubbletea, cli, file-manager, filemanager, filesystem, golang, hacktoberfest, linux-app, terminal-app, terminal-based, tui\
-**Stars:** 16535\
-**Last Pushed:** 2/1/2026
+**Stars:** 16548\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [rathole](https://github.com/rathole-org/rathole) (12738 🌟)
+### [rathole](https://github.com/rathole-org/rathole) (12745 🌟)
 
 **Owner:** [rathole-org](https://github.com/rathole-org)\
 **Description:** A lightweight and high-performance reverse proxy for NAT traversal, written in Rust. An alternative to frp and ngrok.\
 **Topics:** firewall, frp, http, nat, network, ngrok, noise, noise-protocol, proxy, rust, tunnel\
-**Stars:** 12738\
+**Stars:** 12745\
 **Last Pushed:** 1/26/2026
 
 ---
 
-### [slidev](https://github.com/slidevjs/slidev) (44048 🌟)
+### [slidev](https://github.com/slidevjs/slidev) (44065 🌟)
 
 **Owner:** [slidevjs](https://github.com/slidevjs)\
 **Description:** Presentation Slides for Developers\
 **Topics:** markdown, presentation, slides, vite, vue, vueuse\
-**Stars:** 44048\
+**Stars:** 44065\
 **Last Pushed:** 1/30/2026
 
 ---
 
-### [OpenSign](https://github.com/OpenSignLabs/OpenSign) (5927 🌟)
+### [OpenSign](https://github.com/OpenSignLabs/OpenSign) (5931 🌟)
 
 **Owner:** [OpenSignLabs](https://github.com/OpenSignLabs)\
 **Description:** 🔥 The free & Open Source DocuSign alternative\
 **Topics:** digital-signature, document-signing, docusign-alternative, docusign-free, e-signature, electronic-signature, electronic-signatures, esign, esignature, hacktoberfest, javascript, legaltech, mongodb, nodejs, open-source, pdf-sign, pdf-signature, reactjs, self-hosted, sign-pdf-files\
-**Stars:** 5927\
+**Stars:** 5931\
 **Last Pushed:** 1/22/2026
 
 ---
 
-### [tabler-icons](https://github.com/tabler/tabler-icons) (20119 🌟)
+### [tabler-icons](https://github.com/tabler/tabler-icons) (20123 🌟)
 
 **Owner:** [tabler](https://github.com/tabler)\
 **Description:** A set of over 5900 free MIT-licensed high-quality SVG icons for you to use in your web projects.\
 **Topics:** bootstrap-icons, components, css, icon, icon-pack, icons, icons-pack, iconset, quality-svg-icons, react, svelte, svg, svg-icons, tabler-icons\
-**Stars:** 20119\
-**Last Pushed:** 2/1/2026
+**Stars:** 20123\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [huh](https://github.com/charmbracelet/huh) (6478 🌟)
+### [huh](https://github.com/charmbracelet/huh) (6480 🌟)
 
 **Owner:** [charmbracelet](https://github.com/charmbracelet)\
 **Description:** Build terminal forms and prompts 🤷🏻‍♀️\
-**Stars:** 6478\
-**Last Pushed:** 1/5/2026
+**Stars:** 6480\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [lo](https://github.com/samber/lo) (20890 🌟)
+### [lo](https://github.com/samber/lo) (20897 🌟)
 
 **Owner:** [samber](https://github.com/samber)\
 **Description:** 💥  A Lodash-style Go library based on Go 1.18+ Generics (map, filter, contains, find...)\
 **Topics:** constraints, contract, filterable, foldable, functional, generics, go, golang, lodash, programming, typesafe\
-**Stars:** 20890\
+**Stars:** 20897\
 **Last Pushed:** 1/27/2026
 
 ---
@@ -1489,12 +1537,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [dax](https://github.com/dsherret/dax) (1394 🌟)
+### [dax](https://github.com/dsherret/dax) (1397 🌟)
 
 **Owner:** [dsherret](https://github.com/dsherret)\
 **Description:** Cross-platform shell tools for Deno and Node.js inspired by zx.\
-**Stars:** 1394\
-**Last Pushed:** 2/1/2026
+**Stars:** 1397\
+**Last Pushed:** 2/2/2026
 
 ---
 
@@ -1508,23 +1556,33 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [htmx](https://github.com/bigskysoftware/htmx) (47327 🌟)
+### [martian](https://github.com/oliyh/martian) (585 🌟)
+
+**Owner:** [oliyh](https://github.com/oliyh)\
+**Description:** The HTTP abstraction library for Clojure/script, supporting OpenAPI, Swagger, Schema, re-frame and more\
+**Topics:** cljdoc-badge, clojure, clojurescript, http, http-client, interceptor, interceptors, martian, open-api, openapi, schema, swagger, swagger-api, swagger-spec\
+**Stars:** 585\
+**Last Pushed:** 2/1/2026
+
+---
+
+### [htmx](https://github.com/bigskysoftware/htmx) (47331 🌟)
 
 **Owner:** [bigskysoftware](https://github.com/bigskysoftware)\
 **Description:** </> htmx - high power tools for HTML\
 **Topics:** hateoas, html, htmx, hyperscript, javascript, rest\
-**Stars:** 47327\
+**Stars:** 47331\
 **Last Pushed:** 1/30/2026
 
 ---
 
-### [netbird](https://github.com/netbirdio/netbird) (21625 🌟)
+### [netbird](https://github.com/netbirdio/netbird) (21909 🌟)
 
 **Owner:** [netbirdio](https://github.com/netbirdio)\
 **Description:** Connect your devices into a secure WireGuard®-based overlay network with SSO, MFA and granular access controls.\
 **Topics:** golang, mesh, mesh-networks, nat-traversal, netbird, vpn, wireguard, wireguard-vpn, wiretrustee, zero-trust-network-access\
-**Stars:** 21625\
-**Last Pushed:** 2/1/2026
+**Stars:** 21909\
+**Last Pushed:** 2/2/2026
 
 ---
 
@@ -1538,13 +1596,13 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [shelljs](https://github.com/shelljs/shelljs) (14396 🌟)
+### [shelljs](https://github.com/shelljs/shelljs) (14395 🌟)
 
 **Owner:** [shelljs](https://github.com/shelljs)\
 **Description:** :shell: Portable Unix shell commands for Node.js\
 **Topics:** bash, javascript, node, nodejs, shell, shelljs, unix\
-**Stars:** 14396\
-**Last Pushed:** 1/29/2026
+**Stars:** 14395\
+**Last Pushed:** 2/1/2026
 
 ---
 
@@ -1554,16 +1612,16 @@ The data is grouped by the year the repositories were last pushed to.
 **Description:** GitHub Action to provision clojure's most popular build tools for Linux, Mac OS X and Windows.\
 **Topics:** boot-clj, clojure, clojure-cli, github-action, leiningen\
 **Stars:** 218\
-**Last Pushed:** 1/18/2026
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [automerge](https://github.com/automerge/automerge) (5918 🌟)
+### [automerge](https://github.com/automerge/automerge) (5926 🌟)
 
 **Owner:** [automerge](https://github.com/automerge)\
 **Description:** A JSON-like data structure (a CRDT) that can be modified concurrently by different users, and merged again automatically. \
-**Stars:** 5918\
-**Last Pushed:** 1/28/2026
+**Stars:** 5926\
+**Last Pushed:** 2/2/2026
 
 ---
 
@@ -1602,26 +1660,26 @@ The data is grouped by the year the repositories were last pushed to.
 **Description:** Adds typed jsonb backed fields to your ActiveRecord models.\
 **Topics:** activerecord, jsonb, jsonb-accessor, postgres, query, ruby\
 **Stars:** 1131\
-**Last Pushed:** 1/26/2026
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [quil](https://github.com/quil/quil) (3032 🌟)
+### [quil](https://github.com/quil/quil) (3034 🌟)
 
 **Owner:** [quil](https://github.com/quil)\
 **Description:** Main repo. Quil source code.\
-**Stars:** 3032\
+**Stars:** 3034\
 **Last Pushed:** 1/29/2026
 
 ---
 
-### [fzf](https://github.com/junegunn/fzf) (77439 🌟)
+### [fzf](https://github.com/junegunn/fzf) (77460 🌟)
 
 **Owner:** [junegunn](https://github.com/junegunn)\
 **Description:** :cherry_blossom: A command-line fuzzy finder\
 **Topics:** bash, cli, fish, fzf, go, neovim, tmux, unix, vim, zsh\
-**Stars:** 77439\
-**Last Pushed:** 2/1/2026
+**Stars:** 77460\
+**Last Pushed:** 2/2/2026
 
 ---
 
@@ -1635,52 +1693,52 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [openproject](https://github.com/opf/openproject) (14305 🌟)
+### [openproject](https://github.com/opf/openproject) (14311 🌟)
 
 **Owner:** [opf](https://github.com/opf)\
 **Description:** OpenProject is the leading open source project management software.\
 **Topics:** angular, bcf, boards, bug-tracker, gantt, gantt-chart, ifc, issue-tracker, kanban, openproject, project-management, project-planning, roadmap, ruby, scrum, timeline, workflows\
-**Stars:** 14305\
-**Last Pushed:** 2/1/2026
+**Stars:** 14311\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [FiraCode](https://github.com/tonsky/FiraCode) (81094 🌟)
+### [FiraCode](https://github.com/tonsky/FiraCode) (81105 🌟)
 
 **Owner:** [tonsky](https://github.com/tonsky)\
 **Description:** Free monospaced font with programming ligatures\
 **Topics:** font, ligatures, programming-ligatures\
-**Stars:** 81094\
+**Stars:** 81105\
 **Last Pushed:** 1/28/2026
 
 ---
 
-### [scalar](https://github.com/scalar/scalar) (13675 🌟)
+### [scalar](https://github.com/scalar/scalar) (13703 🌟)
 
 **Owner:** [scalar](https://github.com/scalar)\
 **Description:** Scalar is an open-source API platform:　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　🌐 Modern Rest API Client　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　📖 Beautiful API References　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　✨ 1st-Class OpenAPI/Swagger Support\
 **Topics:** api, api-client, docs, http-client, openapi, openapi3, reference, rest-api, swagger, vue\
-**Stars:** 13675\
-**Last Pushed:** 2/1/2026
+**Stars:** 13703\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [pi-hole](https://github.com/pi-hole/pi-hole) (55506 🌟)
+### [pi-hole](https://github.com/pi-hole/pi-hole) (55518 🌟)
 
 **Owner:** [pi-hole](https://github.com/pi-hole)\
 **Description:** A black hole for Internet advertisements\
 **Topics:** ad-blocker, blocker, cloud, dashboard, dhcp, dhcp-server, dns-server, dnsmasq, pi-hole, raspberry-pi, shell\
-**Stars:** 55506\
+**Stars:** 55518\
 **Last Pushed:** 1/31/2026
 
 ---
 
-### [tigerbeetle](https://github.com/tigerbeetle/tigerbeetle) (15065 🌟)
+### [tigerbeetle](https://github.com/tigerbeetle/tigerbeetle) (15069 🌟)
 
 **Owner:** [tigerbeetle](https://github.com/tigerbeetle)\
 **Description:** The financial transactions database designed for mission critical safety and performance.\
-**Stars:** 15065\
-**Last Pushed:** 1/31/2026
+**Stars:** 15069\
+**Last Pushed:** 2/2/2026
 
 ---
 
@@ -1694,22 +1752,22 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [reviewdog](https://github.com/reviewdog/reviewdog) (9045 🌟)
+### [reviewdog](https://github.com/reviewdog/reviewdog) (9046 🌟)
 
 **Owner:** [reviewdog](https://github.com/reviewdog)\
 **Description:** 🐶 Automated code review tool integrated with any code analysis tools regardless of programming language\
 **Topics:** bitbucket, ci, cli, code-quality, code-review, codereview, github, gitlab, go, lint, linter, static-analysis, static-code-analysis\
-**Stars:** 9045\
-**Last Pushed:** 1/29/2026
+**Stars:** 9046\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [bandwhich](https://github.com/imsnif/bandwhich) (11500 🌟)
+### [bandwhich](https://github.com/imsnif/bandwhich) (11504 🌟)
 
 **Owner:** [imsnif](https://github.com/imsnif)\
 **Description:** Terminal bandwidth utilization tool\
 **Topics:** bandwidth, cli, dashboard, networking\
-**Stars:** 11500\
+**Stars:** 11504\
 **Last Pushed:** 2/1/2026
 
 ---
@@ -1724,62 +1782,62 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [fd](https://github.com/sharkdp/fd) (41419 🌟)
+### [fd](https://github.com/sharkdp/fd) (41433 🌟)
 
 **Owner:** [sharkdp](https://github.com/sharkdp)\
 **Description:** A simple, fast and user-friendly alternative to 'find'\
 **Topics:** cli, command-line, filesystem, hacktoberfest, regex, rust, search, terminal, tool\
-**Stars:** 41419\
-**Last Pushed:** 2/1/2026
+**Stars:** 41433\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [lazygit](https://github.com/jesseduffield/lazygit) (71460 🌟)
+### [lazygit](https://github.com/jesseduffield/lazygit) (71492 🌟)
 
 **Owner:** [jesseduffield](https://github.com/jesseduffield)\
 **Description:** simple terminal UI for git commands\
 **Topics:** cli, git, terminal\
-**Stars:** 71460\
+**Stars:** 71492\
 **Last Pushed:** 1/31/2026
 
 ---
 
-### [jsoncrack.com](https://github.com/AykutSarac/jsoncrack.com) (43201 🌟)
+### [jsoncrack.com](https://github.com/AykutSarac/jsoncrack.com) (43238 🌟)
 
 **Owner:** [AykutSarac](https://github.com/AykutSarac)\
 **Description:** ✨ Innovative and open-source visualization application that transforms various data formats, such as JSON, YAML, XML, CSV and more, into interactive graphs.\
 **Topics:** csv, diagrams, graph, json, nextjs, react, tool, visualization, yaml\
-**Stars:** 43201\
+**Stars:** 43238\
 **Last Pushed:** 1/10/2026
 
 ---
 
-### [eza](https://github.com/eza-community/eza) (19732 🌟)
+### [eza](https://github.com/eza-community/eza) (19745 🌟)
 
 **Owner:** [eza-community](https://github.com/eza-community)\
 **Description:** A modern alternative to ls\
 **Topics:** color, command-line, files, hacktoberfest, icons, ls, nerd-fonts, rust, terminal, tools\
-**Stars:** 19732\
+**Stars:** 19745\
 **Last Pushed:** 2/1/2026
 
 ---
 
-### [zsh-completions](https://github.com/zsh-users/zsh-completions) (7625 🌟)
+### [zsh-completions](https://github.com/zsh-users/zsh-completions) (7624 🌟)
 
 **Owner:** [zsh-users](https://github.com/zsh-users)\
 **Description:** Additional completion definitions for Zsh.\
 **Topics:** completion, shell, zsh, zsh-completions\
-**Stars:** 7625\
-**Last Pushed:** 1/27/2026
+**Stars:** 7624\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [react-pdf](https://github.com/diegomura/react-pdf) (16356 🌟)
+### [react-pdf](https://github.com/diegomura/react-pdf) (16359 🌟)
 
 **Owner:** [diegomura](https://github.com/diegomura)\
 **Description:** 📄  Create PDF files using React\
 **Topics:** flexbox, pdf, react, renderer\
-**Stars:** 16356\
+**Stars:** 16359\
 **Last Pushed:** 1/29/2026
 
 ---
@@ -1794,42 +1852,42 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [croc](https://github.com/schollz/croc) (34041 🌟)
+### [croc](https://github.com/schollz/croc) (34047 🌟)
 
 **Owner:** [schollz](https://github.com/schollz)\
 **Description:** Easily and securely send things from one computer to another :crocodile: :package:\
 **Topics:** data-transfer, file-sharing, golang, pake, peer-to-peer, tcp, transfer\
-**Stars:** 34041\
+**Stars:** 34047\
 **Last Pushed:** 1/16/2026
 
 ---
 
-### [zoxide](https://github.com/ajeetdsouza/zoxide) (33019 🌟)
+### [zoxide](https://github.com/ajeetdsouza/zoxide) (33045 🌟)
 
 **Owner:** [ajeetdsouza](https://github.com/ajeetdsouza)\
 **Description:** A smarter cd command. Supports all major shells.\
 **Topics:** autojump, bash, cli, command-line, command-line-tool, elvish, fasd, fish, fish-shell, fzf, hacktoberfest, jump, nushell, powershell, rust, shell, xonsh, xontrib, z, zsh\
-**Stars:** 33019\
-**Last Pushed:** 1/31/2026
+**Stars:** 33045\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [GitUp](https://github.com/git-up/GitUp) (11862 🌟)
+### [GitUp](https://github.com/git-up/GitUp) (11863 🌟)
 
 **Owner:** [git-up](https://github.com/git-up)\
 **Description:** The Git interface you've been missing all your life has finally arrived.\
-**Stars:** 11862\
+**Stars:** 11863\
 **Last Pushed:** 1/20/2026
 
 ---
 
-### [starship](https://github.com/starship/starship) (53849 🌟)
+### [starship](https://github.com/starship/starship) (53872 🌟)
 
 **Owner:** [starship](https://github.com/starship)\
 **Description:** ☄🌌️  The minimal, blazing-fast, and infinitely customizable prompt for any shell!\
 **Topics:** bash, fish, fish-prompt, fish-theme, oh-my-zsh, powershell, rust, shell-prompt, starship, zsh, zsh-prompt, zsh-theme\
-**Stars:** 53849\
-**Last Pushed:** 2/1/2026
+**Stars:** 53872\
+**Last Pushed:** 2/2/2026
 
 ---
 
@@ -1843,31 +1901,31 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [snappy](https://github.com/google/snappy) (6519 🌟)
+### [snappy](https://github.com/google/snappy) (6520 🌟)
 
 **Owner:** [google](https://github.com/google)\
 **Description:** A fast compressor/decompressor\
-**Stars:** 6519\
+**Stars:** 6520\
 **Last Pushed:** 1/21/2026
 
 ---
 
-### [bat](https://github.com/sharkdp/bat) (56919 🌟)
+### [bat](https://github.com/sharkdp/bat) (56934 🌟)
 
 **Owner:** [sharkdp](https://github.com/sharkdp)\
 **Description:** A cat(1) clone with wings.\
 **Topics:** cli, command-line, git, hacktoberfest, rust, syntax-highlighting, terminal, tool\
-**Stars:** 56919\
+**Stars:** 56934\
 **Last Pushed:** 2/1/2026
 
 ---
 
-### [atuin](https://github.com/atuinsh/atuin) (28122 🌟)
+### [atuin](https://github.com/atuinsh/atuin) (28129 🌟)
 
 **Owner:** [atuinsh](https://github.com/atuinsh)\
 **Description:** ✨ Magical shell history\
 **Topics:** bash, fish, history, rust, shell, zsh\
-**Stars:** 28122\
+**Stars:** 28129\
 **Last Pushed:** 2/1/2026
 
 ---
@@ -1882,12 +1940,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [rack-attack](https://github.com/rack/rack-attack) (5704 🌟)
+### [rack-attack](https://github.com/rack/rack-attack) (5705 🌟)
 
 **Owner:** [rack](https://github.com/rack)\
 **Description:** Rack middleware for blocking & throttling\
 **Topics:** rack, rack-attack, rack-middleware, ruby\
-**Stars:** 5704\
+**Stars:** 5705\
 **Last Pushed:** 1/9/2026
 
 ---
@@ -1902,32 +1960,32 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [jj](https://github.com/jj-vcs/jj) (25367 🌟)
+### [jj](https://github.com/jj-vcs/jj) (25403 🌟)
 
 **Owner:** [jj-vcs](https://github.com/jj-vcs)\
 **Description:** A Git-compatible VCS that is both simple and powerful\
 **Topics:** cli, git, jj, jujutsu, mercurial, vcs\
-**Stars:** 25367\
-**Last Pushed:** 2/1/2026
+**Stars:** 25403\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [preact](https://github.com/preactjs/preact) (38359 🌟)
+### [preact](https://github.com/preactjs/preact) (38361 🌟)
 
 **Owner:** [preactjs](https://github.com/preactjs)\
 **Description:** ⚛️ Fast 3kB React alternative with the same modern API. Components & Virtual DOM.\
 **Topics:** components, dom, jsx, preact, react, vdom, virtual-dom\
-**Stars:** 38359\
-**Last Pushed:** 2/1/2026
+**Stars:** 38361\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [fory](https://github.com/apache/fory) (4199 🌟)
+### [fory](https://github.com/apache/fory) (4202 🌟)
 
 **Owner:** [apache](https://github.com/apache)\
 **Description:** A blazingly fast multi-language serialization framework powered by JIT and zero-copy.\
 **Topics:** compression, cpp, cross-language, encoding, fast, golang, hacktoberfest, java, javascript, jit, lightning, marshalling, multiple-language, persistence, python, rpc, rust, serialization, transfer, zero-copy\
-**Stars:** 4199\
+**Stars:** 4202\
 **Last Pushed:** 1/31/2026
 
 ---
@@ -1961,13 +2019,13 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [nx](https://github.com/nrwl/nx) (28035 🌟)
+### [nx](https://github.com/nrwl/nx) (28042 🌟)
 
 **Owner:** [nrwl](https://github.com/nrwl)\
 **Description:** Get to green PRs in half the time. Nx optimizes your builds, scales your CI, and fixes failed PRs. Built for developers and AI agents.\
 **Topics:** angular, build, build-system, build-tool, building-tool, cli, cypress, hacktoberfest, javascript, monorepo, nextjs, nodejs, nx, nx-workspaces, react, storybook, typescript\
-**Stars:** 28035\
-**Last Pushed:** 1/30/2026
+**Stars:** 28042\
+**Last Pushed:** 2/2/2026
 
 ---
 
@@ -1981,12 +2039,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [spacedrive](https://github.com/spacedriveapp/spacedrive) (36831 🌟)
+### [spacedrive](https://github.com/spacedriveapp/spacedrive) (36846 🌟)
 
 **Owner:** [spacedriveapp](https://github.com/spacedriveapp)\
 **Description:** Spacedrive is an open source cross-platform file explorer, powered by a virtual distributed filesystem written in Rust.\
 **Topics:** cross-platform, distributed-systems, encryption, file-manager, open-source, rust, storage, typescript\
-**Stars:** 36831\
+**Stars:** 36846\
 **Last Pushed:** 1/29/2026
 
 ---
@@ -2001,32 +2059,32 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [caddy](https://github.com/caddyserver/caddy) (69545 🌟)
+### [caddy](https://github.com/caddyserver/caddy) (69571 🌟)
 
 **Owner:** [caddyserver](https://github.com/caddyserver)\
 **Description:** Fast and extensible multi-platform HTTP/1-2-3 web server with automatic HTTPS\
 **Topics:** acme, automatic-https, caddy, caddyfile, go, golang, http, http-server, http3, https, privacy, reverse-proxy, security, tls, web-server\
-**Stars:** 69545\
-**Last Pushed:** 1/30/2026
+**Stars:** 69571\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [public-apis](https://github.com/marcelscruz/public-apis) (7980 🌟)
+### [public-apis](https://github.com/marcelscruz/public-apis) (7999 🌟)
 
 **Owner:** [marcelscruz](https://github.com/marcelscruz)\
 **Description:** A collaborative list of public APIs for developers\
 **Topics:** apis, awesome, awesome-list, hacktoberfest, lists, open-source, public-api, public-apis, resources\
-**Stars:** 7980\
+**Stars:** 7999\
 **Last Pushed:** 1/26/2026
 
 ---
 
-### [bubbletea](https://github.com/charmbracelet/bubbletea) (38989 🌟)
+### [bubbletea](https://github.com/charmbracelet/bubbletea) (39020 🌟)
 
 **Owner:** [charmbracelet](https://github.com/charmbracelet)\
 **Description:** A powerful little TUI framework 🏗\
 **Topics:** cli, elm-architecture, framework, functional, go, golang, hacktoberfest, tui\
-**Stars:** 38989\
+**Stars:** 39020\
 **Last Pushed:** 1/30/2026
 
 ---
@@ -2041,13 +2099,13 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [ntfy](https://github.com/binwiederhier/ntfy) (28538 🌟)
+### [ntfy](https://github.com/binwiederhier/ntfy) (28550 🌟)
 
 **Owner:** [binwiederhier](https://github.com/binwiederhier)\
 **Description:** Send push notifications to your phone or desktop using PUT/POST\
 **Topics:** curl, notifications, ntfy, ntfysh, pubsub, push-notifications, rest-api\
-**Stars:** 28538\
-**Last Pushed:** 2/1/2026
+**Stars:** 28550\
+**Last Pushed:** 2/2/2026
 
 ---
 
@@ -2060,12 +2118,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [eleventy](https://github.com/11ty/eleventy) (19298 🌟)
+### [eleventy](https://github.com/11ty/eleventy) (19305 🌟)
 
 **Owner:** [11ty](https://github.com/11ty)\
 **Description:** A simpler site generator. Transforms a directory of templates (of varying types) into HTML.\
 **Topics:** blog-engine, documentation-tool, eleventy, javascript, static-site-generator, templates\
-**Stars:** 19298\
+**Stars:** 19305\
 **Last Pushed:** 1/30/2026
 
 ---
@@ -2108,13 +2166,13 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [lago](https://github.com/getlago/lago) (9196 🌟)
+### [lago](https://github.com/getlago/lago) (9199 🌟)
 
 **Owner:** [getlago](https://github.com/getlago)\
 **Description:** Open Source Metering and Usage Based Billing API ⭐️ Consumption tracking, Subscription management, Pricing iterations, Payment orchestration & Revenue analytics\
 **Topics:** analytics, billing, clickhouse, events, fintech, go, ingestion, invoices, metering, open-source, payments, pricing, pricing-data-science, react, ruby, self-hosted, subscriptions, usage-based-billing\
-**Stars:** 9196\
-**Last Pushed:** 1/29/2026
+**Stars:** 9199\
+**Last Pushed:** 2/2/2026
 
 ---
 
@@ -2128,32 +2186,32 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [rqrcode](https://github.com/whomwah/rqrcode) (1972 🌟)
+### [rqrcode](https://github.com/whomwah/rqrcode) (1973 🌟)
 
 **Owner:** [whomwah](https://github.com/whomwah)\
 **Description:** A Ruby library that encodes QR Codes\
 **Topics:** qrcode, qrcode-generator, ruby\
-**Stars:** 1972\
+**Stars:** 1973\
 **Last Pushed:** 1/9/2026
 
 ---
 
-### [k9s](https://github.com/derailed/k9s) (32669 🌟)
+### [k9s](https://github.com/derailed/k9s) (32674 🌟)
 
 **Owner:** [derailed](https://github.com/derailed)\
 **Description:** 🐶 Kubernetes CLI To Manage Your Clusters In Style!\
 **Topics:** go, golang, k8s, k8s-cluster, k9s, kubernetes, kubernetes-cli, kubernetes-clusters\
-**Stars:** 32669\
+**Stars:** 32674\
 **Last Pushed:** 1/29/2026
 
 ---
 
-### [YouPlot](https://github.com/red-data-tools/YouPlot) (4630 🌟)
+### [YouPlot](https://github.com/red-data-tools/YouPlot) (4632 🌟)
 
 **Owner:** [red-data-tools](https://github.com/red-data-tools)\
 **Description:** A command line tool that draw plots on the terminal.\
 **Topics:** cli, csv, ruby, terminal, tsv, tui, visualization\
-**Stars:** 4630\
+**Stars:** 4632\
 **Last Pushed:** 1/18/2026
 
 ---
@@ -2177,33 +2235,33 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [pocketbase](https://github.com/pocketbase/pocketbase) (55718 🌟)
+### [pocketbase](https://github.com/pocketbase/pocketbase) (55764 🌟)
 
 **Owner:** [pocketbase](https://github.com/pocketbase)\
 **Description:** Open Source realtime backend in 1 file\
 **Topics:** authentication, backend, golang, realtime\
-**Stars:** 55718\
+**Stars:** 55764\
 **Last Pushed:** 2/1/2026
 
 ---
 
-### [uptime-kuma](https://github.com/louislam/uptime-kuma) (82213 🌟)
+### [uptime-kuma](https://github.com/louislam/uptime-kuma) (82259 🌟)
 
 **Owner:** [louislam](https://github.com/louislam)\
 **Description:** A fancy self-hosted monitoring tool\
 **Topics:** docker, monitor, monitoring, responsive, self-hosted, selfhosted, single-page-app, socket-io, uptime, uptime-monitoring, webapp, websocket\
-**Stars:** 82213\
+**Stars:** 82259\
 **Last Pushed:** 1/30/2026
 
 ---
 
-### [novu](https://github.com/novuhq/novu) (38512 🌟)
+### [novu](https://github.com/novuhq/novu) (38516 🌟)
 
 **Owner:** [novuhq](https://github.com/novuhq)\
 **Description:** The open-source notification Inbox infrastructure. E-mail, SMS, Push and Slack Integrations.\
 **Topics:** alternative, communication, email, hacktoberfest, inbox, javascript, nodejs, notification-center, notifications, novu, push-notifications, react, reactjs, sms, transactional, typescript\
-**Stars:** 38512\
-**Last Pushed:** 2/1/2026
+**Stars:** 38516\
+**Last Pushed:** 2/2/2026
 
 ---
 
@@ -2216,52 +2274,52 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [vhs](https://github.com/charmbracelet/vhs) (18477 🌟)
+### [vhs](https://github.com/charmbracelet/vhs) (18493 🌟)
 
 **Owner:** [charmbracelet](https://github.com/charmbracelet)\
 **Description:** Your CLI home video recorder 📼\
 **Topics:** ascii, cli, command-line, gif, recording, terminal, vhs, video\
-**Stars:** 18477\
+**Stars:** 18493\
 **Last Pushed:** 1/25/2026
 
 ---
 
-### [diagrams](https://github.com/mingrammer/diagrams) (41968 🌟)
+### [diagrams](https://github.com/mingrammer/diagrams) (41971 🌟)
 
 **Owner:** [mingrammer](https://github.com/mingrammer)\
 **Description:** :art: Diagram as Code for prototyping cloud system architectures\
 **Topics:** architecture, diagram, diagram-as-code, graphviz\
-**Stars:** 41968\
+**Stars:** 41971\
 **Last Pushed:** 1/22/2026
 
 ---
 
-### [Linux-Bash-Commands](https://github.com/trinib/Linux-Bash-Commands) (3952 🌟)
+### [Linux-Bash-Commands](https://github.com/trinib/Linux-Bash-Commands) (3953 🌟)
 
 **Owner:** [trinib](https://github.com/trinib)\
 **Description:** :godmode: Ultimate list of Linux bash commands, cheatsheets and resources\
 **Topics:** awesome, awesome-list, bash, cheatsheet, cli, cmd, cmdline, command-line, learning, linux, linux-commands, list, shell, terminal, tools, ultimate, unix\
-**Stars:** 3952\
+**Stars:** 3953\
 **Last Pushed:** 1/7/2026
 
 ---
 
-### [nyxt](https://github.com/atlas-engineer/nyxt) (10808 🌟)
+### [nyxt](https://github.com/atlas-engineer/nyxt) (10809 🌟)
 
 **Owner:** [atlas-engineer](https://github.com/atlas-engineer)\
 **Description:** Nyxt - the hacker's browser.\
 **Topics:** browser, common-lisp, emacs, extensible, hacker, keyboard-driven, lisp, power-user, productivity, vim, web-browser\
-**Stars:** 10808\
+**Stars:** 10809\
 **Last Pushed:** 1/18/2026
 
 ---
 
-### [webauthn-ruby](https://github.com/cedarcode/webauthn-ruby) (747 🌟)
+### [webauthn-ruby](https://github.com/cedarcode/webauthn-ruby) (748 🌟)
 
 **Owner:** [cedarcode](https://github.com/cedarcode)\
 **Description:** WebAuthn ruby server library ― Make your Ruby/Rails web server become a conformant WebAuthn Relying Party\
 **Topics:** 2fa, 2fa-security, authentication, fido2, passkey, passkeys, passwordless, passwordless-login, relying-party, ruby, two-factor-authentication, web-authentication, webauthn, webauthn-library, webauthn-ruby, webauthn-server\
-**Stars:** 747\
+**Stars:** 748\
 **Last Pushed:** 1/15/2026
 
 ---
@@ -2276,33 +2334,33 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [cljfmt](https://github.com/weavejester/cljfmt) (1193 🌟)
+### [cljfmt](https://github.com/weavejester/cljfmt) (1194 🌟)
 
 **Owner:** [weavejester](https://github.com/weavejester)\
 **Description:** A tool for formatting Clojure code\
 **Topics:** clojure, clojurescript, code-formatter\
-**Stars:** 1193\
+**Stars:** 1194\
 **Last Pushed:** 1/28/2026
 
 ---
 
-### [act](https://github.com/nektos/act) (68475 🌟)
+### [act](https://github.com/nektos/act) (68497 🌟)
 
 **Owner:** [nektos](https://github.com/nektos)\
 **Description:** Run your GitHub Actions locally 🚀\
 **Topics:** ci, devops, github-actions, golang\
-**Stars:** 68475\
+**Stars:** 68497\
 **Last Pushed:** 2/1/2026
 
 ---
 
-### [tantivy](https://github.com/quickwit-oss/tantivy) (14452 🌟)
+### [tantivy](https://github.com/quickwit-oss/tantivy) (14458 🌟)
 
 **Owner:** [quickwit-oss](https://github.com/quickwit-oss)\
 **Description:** Tantivy is a full-text search engine library inspired by Apache Lucene and written in Rust\
 **Topics:** rust, search-engine\
-**Stars:** 14452\
-**Last Pushed:** 1/30/2026
+**Stars:** 14458\
+**Last Pushed:** 2/2/2026
 
 ---
 
@@ -2316,13 +2374,13 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [difftastic](https://github.com/Wilfred/difftastic) (24043 🌟)
+### [difftastic](https://github.com/Wilfred/difftastic) (24054 🌟)
 
 **Owner:** [Wilfred](https://github.com/Wilfred)\
 **Description:** a structural diff that understands syntax 🟥🟩\
 **Topics:** diff, tree-sitter\
-**Stars:** 24043\
-**Last Pushed:** 1/30/2026
+**Stars:** 24054\
+**Last Pushed:** 2/2/2026
 
 ---
 
@@ -2346,12 +2404,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [falcon](https://github.com/socketry/falcon) (2931 🌟)
+### [falcon](https://github.com/socketry/falcon) (2932 🌟)
 
 **Owner:** [socketry](https://github.com/socketry)\
 **Description:** A high-performance web server for Ruby, supporting HTTP/1, HTTP/2 and TLS.\
 **Topics:** async, async-http, asynchronous, concurrent, falcon, http-server, ruby, server\
-**Stars:** 2931\
+**Stars:** 2932\
 **Last Pushed:** 1/30/2026
 
 ---
@@ -2396,11 +2454,11 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [dust](https://github.com/bootandy/dust) (11185 🌟)
+### [dust](https://github.com/bootandy/dust) (11190 🌟)
 
 **Owner:** [bootandy](https://github.com/bootandy)\
 **Description:** A more intuitive version of du in rust\
-**Stars:** 11185\
+**Stars:** 11190\
 **Last Pushed:** 1/8/2026
 
 ---
@@ -2425,22 +2483,22 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [gum](https://github.com/charmbracelet/gum) (22461 🌟)
+### [gum](https://github.com/charmbracelet/gum) (22467 🌟)
 
 **Owner:** [charmbracelet](https://github.com/charmbracelet)\
 **Description:** A tool for glamorous shell scripts 🎀\
 **Topics:** bash, shell\
-**Stars:** 22461\
+**Stars:** 22467\
 **Last Pushed:** 1/21/2026
 
 ---
 
-### [cli](https://github.com/cli/cli) (42307 🌟)
+### [cli](https://github.com/cli/cli) (42314 🌟)
 
 **Owner:** [cli](https://github.com/cli)\
 **Description:** GitHub’s official command line tool\
 **Topics:** cli, git, github-api-v4, golang\
-**Stars:** 42307\
+**Stars:** 42314\
 **Last Pushed:** 1/31/2026
 
 ---
@@ -2490,17 +2548,17 @@ The data is grouped by the year the repositories were last pushed to.
 **Description:** Monitoring and instrumentation APIs\
 **Topics:** instrumentation, logging, monitoring, rack, ruby, sql\
 **Stars:** 79\
-**Last Pushed:** 1/30/2026
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [xtdb](https://github.com/xtdb/xtdb) (2909 🌟)
+### [xtdb](https://github.com/xtdb/xtdb) (2910 🌟)
 
 **Owner:** [xtdb](https://github.com/xtdb)\
 **Description:** An immutable SQL database for application development, time-travel reporting and data compliance. Developed by @juxt\
 **Topics:** bitemporal, database, dbms, immutable, sql, temporal\
-**Stars:** 2909\
-**Last Pushed:** 1/30/2026
+**Stars:** 2910\
+**Last Pushed:** 2/2/2026
 
 ---
 
@@ -2513,12 +2571,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [github-readme-stats](https://github.com/anuraghazra/github-readme-stats) (78176 🌟)
+### [github-readme-stats](https://github.com/anuraghazra/github-readme-stats) (78188 🌟)
 
 **Owner:** [anuraghazra](https://github.com/anuraghazra)\
 **Description:** :zap: Dynamically generated stats for your github readmes\
 **Topics:** dynamic, profile-readme, readme-generator, readme-stats, serverless\
-**Stars:** 78176\
+**Stars:** 78188\
 **Last Pushed:** 1/31/2026
 
 ---
@@ -2542,23 +2600,23 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [trix](https://github.com/basecamp/trix) (19900 🌟)
+### [trix](https://github.com/basecamp/trix) (19899 🌟)
 
 **Owner:** [basecamp](https://github.com/basecamp)\
 **Description:** A rich text editor for everyday writing\
 **Topics:** custom-elements, editor, javascript, rich-text-editor, text-editor, wysiwyg, wysiwyg-editor\
-**Stars:** 19900\
+**Stars:** 19899\
 **Last Pushed:** 1/9/2026
 
 ---
 
-### [developer-roadmap](https://github.com/kamranahmedse/developer-roadmap) (348404 🌟)
+### [developer-roadmap](https://github.com/kamranahmedse/developer-roadmap) (348452 🌟)
 
 **Owner:** [kamranahmedse](https://github.com/kamranahmedse)\
 **Description:** Interactive roadmaps, guides and other educational content to help developers grow in their careers.\
 **Topics:** angular-roadmap, backend-roadmap, blockchain-roadmap, computer-science, dba-roadmap, developer-roadmap, devops-roadmap, frontend-roadmap, go-roadmap, java-roadmap, javascript-roadmap, nodejs-roadmap, python-roadmap, qa-roadmap, react-roadmap, roadmap, software-architect-roadmap, vue-roadmap\
-**Stars:** 348404\
-**Last Pushed:** 2/1/2026
+**Stars:** 348452\
+**Last Pushed:** 2/2/2026
 
 ---
 
@@ -2582,32 +2640,32 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [gh-dash](https://github.com/dlvhdr/gh-dash) (10028 🌟)
+### [gh-dash](https://github.com/dlvhdr/gh-dash) (10033 🌟)
 
 **Owner:** [dlvhdr](https://github.com/dlvhdr)\
 **Description:** A rich terminal UI for GitHub that doesn't break your flow.\
 **Topics:** bubbles, bubbletea, cli, cobra, gh-extension, github, glamour, go, golang, lipgloss, terminal, tui\
-**Stars:** 10028\
-**Last Pushed:** 1/30/2026
-
----
-
-### [slate](https://github.com/slatedocs/slate) (36170 🌟)
-
-**Owner:** [slatedocs](https://github.com/slatedocs)\
-**Description:** Beautiful static documentation for your API\
-**Topics:** api, api-documentation, slate, static-site-generator\
-**Stars:** 36170\
+**Stars:** 10033\
 **Last Pushed:** 2/1/2026
 
 ---
 
-### [ink](https://github.com/vadimdemedes/ink) (34548 🌟)
+### [slate](https://github.com/slatedocs/slate) (36173 🌟)
+
+**Owner:** [slatedocs](https://github.com/slatedocs)\
+**Description:** Beautiful static documentation for your API\
+**Topics:** api, api-documentation, slate, static-site-generator\
+**Stars:** 36173\
+**Last Pushed:** 2/1/2026
+
+---
+
+### [ink](https://github.com/vadimdemedes/ink) (34631 🌟)
 
 **Owner:** [vadimdemedes](https://github.com/vadimdemedes)\
 **Description:** 🌈 React for interactive command-line apps\
 **Topics:** cli, command-line, flexbox, interactive, javascript, react\
-**Stars:** 34548\
+**Stars:** 34631\
 **Last Pushed:** 1/27/2026
 
 ---
@@ -2622,42 +2680,42 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [better-sqlite3](https://github.com/WiseLibs/better-sqlite3) (6879 🌟)
+### [better-sqlite3](https://github.com/WiseLibs/better-sqlite3) (6884 🌟)
 
 **Owner:** [WiseLibs](https://github.com/WiseLibs)\
 **Description:** The fastest and simplest library for SQLite3 in Node.js.\
 **Topics:** database, sql, sqlite, sqlite3\
-**Stars:** 6879\
+**Stars:** 6884\
 **Last Pushed:** 1/19/2026
 
 ---
 
-### [filebrowser](https://github.com/filebrowser/filebrowser) (33248 🌟)
+### [filebrowser](https://github.com/filebrowser/filebrowser) (33263 🌟)
 
 **Owner:** [filebrowser](https://github.com/filebrowser)\
 **Description:** 📂 Web File Browser\
 **Topics:** file-browser, file-manager, file-sharing, go, material-design, self-hosted, vue\
-**Stars:** 33248\
+**Stars:** 33263\
 **Last Pushed:** 2/1/2026
 
 ---
 
-### [fx](https://github.com/antonmedv/fx) (20228 🌟)
+### [fx](https://github.com/antonmedv/fx) (20230 🌟)
 
 **Owner:** [antonmedv](https://github.com/antonmedv)\
 **Description:** Terminal JSON viewer & processor\
 **Topics:** cli, command-line, json, tui\
-**Stars:** 20228\
+**Stars:** 20230\
 **Last Pushed:** 1/31/2026
 
 ---
 
-### [hoppscotch](https://github.com/hoppscotch/hoppscotch) (77750 🌟)
+### [hoppscotch](https://github.com/hoppscotch/hoppscotch) (77762 🌟)
 
 **Owner:** [hoppscotch](https://github.com/hoppscotch)\
 **Description:** Open-Source API Development Ecosystem • https://hoppscotch.io • Offline, On-Prem & Cloud • Web, Desktop & CLI • Open-Source Alternative to Postman, Insomnia\
 **Topics:** api, api-client, api-rest, api-testing, developer-tools, graphql, http, http-client, pwa, rest, rest-api, spa, testing, testing-tools, tools, vue, vuejs, websocket\
-**Stars:** 77750\
+**Stars:** 77762\
 **Last Pushed:** 1/29/2026
 
 ---
@@ -2696,7 +2754,7 @@ The data is grouped by the year the repositories were last pushed to.
 **Description:** ⚡️ Moldable Live Programming for Clojure\
 **Topics:** clojure, live-programming, moldable-development, notebook, repl, visualization\
 **Stars:** 2015\
-**Last Pushed:** 1/20/2026
+**Last Pushed:** 2/2/2026
 
 ---
 
@@ -2710,23 +2768,23 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [jruby](https://github.com/jruby/jruby) (3865 🌟)
+### [jruby](https://github.com/jruby/jruby) (3866 🌟)
 
 **Owner:** [jruby](https://github.com/jruby)\
 **Description:** JRuby, an implementation of Ruby on the JVM\
 **Topics:** concurrency, invokedynamic, jruby, jvm, performance, ruby, ruby-language\
-**Stars:** 3865\
-**Last Pushed:** 1/30/2026
+**Stars:** 3866\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [mitmproxy](https://github.com/mitmproxy/mitmproxy) (42141 🌟)
+### [mitmproxy](https://github.com/mitmproxy/mitmproxy) (42150 🌟)
 
 **Owner:** [mitmproxy](https://github.com/mitmproxy)\
 **Description:** An interactive TLS-capable intercepting HTTP proxy for penetration testers and software developers.\
 **Topics:** debugging, http, http2, man-in-the-middle, mitmproxy, proxy, python, security, ssl, tls, websocket\
-**Stars:** 42141\
-**Last Pushed:** 1/31/2026
+**Stars:** 42150\
+**Last Pushed:** 2/2/2026
 
 ---
 
@@ -2740,12 +2798,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [alba](https://github.com/okuramasafumi/alba) (1127 🌟)
+### [alba](https://github.com/okuramasafumi/alba) (1129 🌟)
 
 **Owner:** [okuramasafumi](https://github.com/okuramasafumi)\
 **Description:** Alba is a JSON serializer for Ruby, JRuby and TruffleRuby.\
 **Topics:** hacktoberfest, json, json-serialization, json-serializer, performance, presenter, ruby\
-**Stars:** 1127\
+**Stars:** 1129\
 **Last Pushed:** 1/30/2026
 
 ---
@@ -2760,12 +2818,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [yjs](https://github.com/yjs/yjs) (21125 🌟)
+### [yjs](https://github.com/yjs/yjs) (21135 🌟)
 
 **Owner:** [yjs](https://github.com/yjs)\
 **Description:** Shared data types for building collaborative software\
 **Topics:** collaboration, collaborative-editing, crdt, decentralized, offline-first, p2p, peer-to-peer, realtime, shared-editing, yjs\
-**Stars:** 21125\
+**Stars:** 21135\
 **Last Pushed:** 1/31/2026
 
 ---
@@ -2789,82 +2847,82 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [bridgetown](https://github.com/bridgetownrb/bridgetown) (1325 🌟)
+### [bridgetown](https://github.com/bridgetownrb/bridgetown) (1326 🌟)
 
 **Owner:** [bridgetownrb](https://github.com/bridgetownrb)\
 **Description:** A next-generation progressive site generator & fullstack framework, powered by Ruby\
 **Topics:** blog-engine, bridgetown, documentation-tool, esbuild, jamstack, ruby, static-site-generator\
-**Stars:** 1325\
+**Stars:** 1326\
 **Last Pushed:** 1/13/2026
 
 ---
 
-### [yt-dlp](https://github.com/yt-dlp/yt-dlp) (145303 🌟)
+### [yt-dlp](https://github.com/yt-dlp/yt-dlp) (145459 🌟)
 
 **Owner:** [yt-dlp](https://github.com/yt-dlp)\
 **Description:** A feature-rich command-line audio/video downloader\
 **Topics:** cli, downloader, python, sponsorblock, youtube-dl, youtube-downloader, yt-dlp\
-**Stars:** 145303\
+**Stars:** 145459\
 **Last Pushed:** 2/1/2026
 
 ---
 
-### [yq](https://github.com/mikefarah/yq) (14805 🌟)
+### [yq](https://github.com/mikefarah/yq) (14810 🌟)
 
 **Owner:** [mikefarah](https://github.com/mikefarah)\
 **Description:** yq is a portable command-line YAML, JSON, XML, CSV, TOML, HCL  and properties processor\
 **Topics:** bash, cli, csv, devops-tools, golang, hcl, json, portable, properties, splat, terraform, toml, xml, yaml, yaml-processor\
-**Stars:** 14805\
+**Stars:** 14810\
 **Last Pushed:** 1/31/2026
 
 ---
 
-### [apprise](https://github.com/caronc/apprise) (15727 🌟)
+### [apprise](https://github.com/caronc/apprise) (15736 🌟)
 
 **Owner:** [caronc](https://github.com/caronc)\
 **Description:** Apprise - Push Notifications that work with just about every platform!\
 **Topics:** alerts, apprise, framework, notification-api, notification-hub, notification-service, notifications, notifier, notify, push-notifications, python\
-**Stars:** 15727\
-**Last Pushed:** 2/1/2026
+**Stars:** 15736\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [etcd](https://github.com/etcd-io/etcd) (51435 🌟)
+### [etcd](https://github.com/etcd-io/etcd) (51443 🌟)
 
 **Owner:** [etcd-io](https://github.com/etcd-io)\
 **Description:** Distributed reliable key-value store for the most critical data of a distributed system\
 **Topics:** cncf, consensus, database, distributed-database, distributed-systems, etcd, go, key-value, kubernetes, raft\
-**Stars:** 51435\
-**Last Pushed:** 1/30/2026
+**Stars:** 51443\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [OpenBudgeteer](https://github.com/TheAxelander/OpenBudgeteer) (940 🌟)
+### [OpenBudgeteer](https://github.com/TheAxelander/OpenBudgeteer) (941 🌟)
 
 **Owner:** [TheAxelander](https://github.com/TheAxelander)\
 **Description:** OpenBudgeteer is a budgeting app based on the Bucket Budgeting Principle\
 **Topics:** accounting, blazor, budgeting, csharp, docker, dotnet, financial, money, self-hosted, web-app, web-application\
-**Stars:** 940\
+**Stars:** 941\
 **Last Pushed:** 1/10/2026
 
 ---
 
-### [piku](https://github.com/piku/piku) (6540 🌟)
+### [piku](https://github.com/piku/piku) (6542 🌟)
 
 **Owner:** [piku](https://github.com/piku)\
 **Description:** The tiniest PaaS you've ever seen. Piku allows you to do git push deployments to your own servers.\
 **Topics:** arm, heroku, nodejs, paas, python, raspberry-pi, raspbian, ubuntu\
-**Stars:** 6540\
+**Stars:** 6542\
 **Last Pushed:** 1/31/2026
 
 ---
 
-### [gojq](https://github.com/itchyny/gojq) (3679 🌟)
+### [gojq](https://github.com/itchyny/gojq) (3678 🌟)
 
 **Owner:** [itchyny](https://github.com/itchyny)\
 **Description:** Pure Go implementation of jq\
 **Topics:** cli-tool, cli-utility, go, golang, json\
-**Stars:** 3679\
+**Stars:** 3678\
 **Last Pushed:** 1/31/2026
 
 ---
@@ -2879,33 +2937,33 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [echarts](https://github.com/apache/echarts) (65581 🌟)
+### [echarts](https://github.com/apache/echarts) (65596 🌟)
 
 **Owner:** [apache](https://github.com/apache)\
 **Description:** Apache ECharts is a powerful, interactive charting and data visualization library for browser\
 **Topics:** apache, canvas, charting-library, charts, data-visualization, data-viz, echarts, svg, visualization\
-**Stars:** 65581\
+**Stars:** 65596\
 **Last Pushed:** 1/22/2026
 
 ---
 
-### [jq](https://github.com/jqlang/jq) (33460 🌟)
+### [jq](https://github.com/jqlang/jq) (33467 🌟)
 
 **Owner:** [jqlang](https://github.com/jqlang)\
 **Description:** Command-line JSON processor\
 **Topics:** jq\
-**Stars:** 33460\
+**Stars:** 33467\
 **Last Pushed:** 2/1/2026
 
 ---
 
-### [metabase](https://github.com/metabase/metabase) (45774 🌟)
+### [metabase](https://github.com/metabase/metabase) (45793 🌟)
 
 **Owner:** [metabase](https://github.com/metabase)\
 **Description:** The easy-to-use open source Business Intelligence and Embedded Analytics tool that lets everyone work with data :bar_chart:\
 **Topics:** analytics, bi, business-intelligence, businessintelligence, clojure, dashboard, data, data-analysis, data-visualization, database, metabase, mysql, postgres, postgresql, reporting, slack, sql-editor, visualization\
-**Stars:** 45774\
-**Last Pushed:** 2/1/2026
+**Stars:** 45793\
+**Last Pushed:** 2/2/2026
 
 ---
 
@@ -2915,37 +2973,37 @@ The data is grouped by the year the repositories were last pushed to.
 **Description:** Open-source web platform used to create live reporting dashboards from APIs, MongoDB, Firestore, MySQL, PostgreSQL, and more  📈📊\
 **Topics:** analytics, api, chartjs, charts, dashboard, data-visualization, firebase, firebase-firestore, firestore, mongo, mongodb, mysql, nodejs, postgresql, react, reactjs, realtime-database, redux\
 **Stars:** 3595\
-**Last Pushed:** 1/29/2026
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [zx](https://github.com/google/zx) (45110 🌟)
+### [zx](https://github.com/google/zx) (45114 🌟)
 
 **Owner:** [google](https://github.com/google)\
 **Description:** A tool for writing better scripts\
 **Topics:** bash, child-process, cli, exec, javascript, nodejs, pipe, shell, spawn\
-**Stars:** 45110\
-**Last Pushed:** 2/1/2026
+**Stars:** 45114\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [GarminDB](https://github.com/tcgoetz/GarminDB) (2871 🌟)
+### [GarminDB](https://github.com/tcgoetz/GarminDB) (2872 🌟)
 
 **Owner:** [tcgoetz](https://github.com/tcgoetz)\
 **Description:** Download and parse data from Garmin Connect or a Garmin watch, FitBit CSV, and MS Health CSV files into and analyze data in Sqlite serverless databases with Jupyter notebooks.\
 **Topics:** database, garmin, health, jupyter-notebooks, python, sqlite\
-**Stars:** 2871\
+**Stars:** 2872\
 **Last Pushed:** 1/28/2026
 
 ---
 
-### [babashka](https://github.com/babashka/babashka) (4411 🌟)
+### [babashka](https://github.com/babashka/babashka) (4410 🌟)
 
 **Owner:** [babashka](https://github.com/babashka)\
 **Description:** Native, fast starting Clojure interpreter for scripting\
 **Topics:** babashka, bash, clojure, graalvm, scripting, shell-scripting\
-**Stars:** 4411\
-**Last Pushed:** 2/1/2026
+**Stars:** 4410\
+**Last Pushed:** 2/2/2026
 
 ---
 
@@ -2959,42 +3017,42 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [javascript-algorithms](https://github.com/trekhleb/javascript-algorithms) (195471 🌟)
+### [javascript-algorithms](https://github.com/trekhleb/javascript-algorithms) (195489 🌟)
 
 **Owner:** [trekhleb](https://github.com/trekhleb)\
 **Description:** 📝 Algorithms and data structures implemented in JavaScript with explanations and links to further readings\
 **Topics:** algorithm, algorithms, computer-science, data-structures, interview, interview-preparation, javascript, javascript-algorithms\
-**Stars:** 195471\
+**Stars:** 195489\
 **Last Pushed:** 1/2/2026
 
 ---
 
-### [GildedRose-Refactoring-Kata](https://github.com/emilybache/GildedRose-Refactoring-Kata) (4161 🌟)
+### [GildedRose-Refactoring-Kata](https://github.com/emilybache/GildedRose-Refactoring-Kata) (4160 🌟)
 
 **Owner:** [emilybache](https://github.com/emilybache)\
 **Description:** Starting code for the GildedRose Refactoring Kata in many programming languages.\
-**Stars:** 4161\
-**Last Pushed:** 1/7/2026
+**Stars:** 4160\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [async](https://github.com/socketry/async) (2410 🌟)
+### [async](https://github.com/socketry/async) (2411 🌟)
 
 **Owner:** [socketry](https://github.com/socketry)\
 **Description:** An awesome asynchronous event-driven reactor for Ruby.\
 **Topics:** async, asynchronous, ruby\
-**Stars:** 2410\
+**Stars:** 2411\
 **Last Pushed:** 1/22/2026
 
 ---
 
-### [playwright](https://github.com/microsoft/playwright) (81975 🌟)
+### [playwright](https://github.com/microsoft/playwright) (82029 🌟)
 
 **Owner:** [microsoft](https://github.com/microsoft)\
 **Description:** Playwright is a framework for Web Testing and Automation. It allows testing Chromium, Firefox and WebKit with a single API. \
 **Topics:** automation, chrome, chromium, e2e-testing, electron, end-to-end-testing, firefox, javascript, playwright, test, test-automation, testing, testing-tools, web, webkit\
-**Stars:** 81975\
-**Last Pushed:** 1/31/2026
+**Stars:** 82029\
+**Last Pushed:** 2/2/2026
 
 ---
 
@@ -3008,12 +3066,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [opensnitch](https://github.com/evilsocket/opensnitch) (12800 🌟)
+### [opensnitch](https://github.com/evilsocket/opensnitch) (12806 🌟)
 
 **Owner:** [evilsocket](https://github.com/evilsocket)\
 **Description:** OpenSnitch is a GNU/Linux interactive application firewall inspired by Little Snitch.\
 **Topics:** application-firewall, data-breach, firewall, linux, networking, security\
-**Stars:** 12800\
+**Stars:** 12806\
 **Last Pushed:** 2/1/2026
 
 ---
@@ -3077,43 +3135,43 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [apprise-api](https://github.com/caronc/apprise-api) (1098 🌟)
+### [apprise-api](https://github.com/caronc/apprise-api) (1102 🌟)
 
 **Owner:** [caronc](https://github.com/caronc)\
 **Description:** A lightweight REST framework that wraps the Apprise Notification Library\
 **Topics:** alerts, apprise, docker, notification-api, notification-hub, notification-server, notifications, notify, push-notifications, sidecar-container\
-**Stars:** 1098\
+**Stars:** 1102\
 **Last Pushed:** 1/28/2026
 
 ---
 
-### [changedetection.io](https://github.com/dgtlmoon/changedetection.io) (30078 🌟)
+### [changedetection.io](https://github.com/dgtlmoon/changedetection.io) (30090 🌟)
 
 **Owner:** [dgtlmoon](https://github.com/dgtlmoon)\
 **Description:** Best and simplest tool for website change detection, web page monitoring, and website change alerts. Perfect for tracking content changes, price drops, restock alerts, and website defacement monitoring—all for free or enjoy our SaaS plan!\
 **Topics:** back-in-stock, change-alert, change-detection, change-monitoring, monitoring, notifications, restock-monitor, rss, self-hosted, url-monitor, web-scraping, website-change-detection, website-change-detector, website-change-monitor, website-change-notification, website-change-tracker, website-defacement-monitoring, website-monitor, website-monitoring, website-watcher\
-**Stars:** 30078\
-**Last Pushed:** 2/1/2026
+**Stars:** 30090\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [streetmerchant](https://github.com/jef/streetmerchant) (5393 🌟)
+### [streetmerchant](https://github.com/jef/streetmerchant) (5392 🌟)
 
 **Owner:** [jef](https://github.com/jef)\
 **Description:** 🤖 The world's easiest, most powerful stock checker\
 **Topics:** bot, hacktoberfest, shopping\
-**Stars:** 5393\
+**Stars:** 5392\
 **Last Pushed:** 1/22/2026
 
 ---
 
-### [Leaflet](https://github.com/Leaflet/Leaflet) (44434 🌟)
+### [Leaflet](https://github.com/Leaflet/Leaflet) (44442 🌟)
 
 **Owner:** [Leaflet](https://github.com/Leaflet)\
 **Description:** 🍃 JavaScript library for mobile-friendly interactive maps 🇺🇦\
 **Topics:** javascript, leaflet, maps\
-**Stars:** 44434\
-**Last Pushed:** 1/30/2026
+**Stars:** 44442\
+**Last Pushed:** 2/2/2026
 
 ---
 
@@ -3127,12 +3185,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [ws](https://github.com/websockets/ws) (22642 🌟)
+### [ws](https://github.com/websockets/ws) (22644 🌟)
 
 **Owner:** [websockets](https://github.com/websockets)\
 **Description:** Simple to use, blazing fast and thoroughly tested WebSocket client and server for Node.js\
 **Topics:** javascript, node, nodejs, real-time, rfc-6455, websocket, websocket-client, websocket-compression, websocket-server\
-**Stars:** 22642\
+**Stars:** 22644\
 **Last Pushed:** 1/9/2026
 
 ---
@@ -3147,12 +3205,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [uWebSockets.js](https://github.com/uNetworking/uWebSockets.js) (8988 🌟)
+### [uWebSockets.js](https://github.com/uNetworking/uWebSockets.js) (8989 🌟)
 
 **Owner:** [uNetworking](https://github.com/uNetworking)\
 **Description:** μWebSockets for Node.js back-ends :metal:\
 **Topics:** commercial, http, nodejs, proxy-protocol, pubsub, router, runtime, typescript, websockets\
-**Stars:** 8988\
+**Stars:** 8989\
 **Last Pushed:** 1/15/2026
 
 ---
@@ -3207,12 +3265,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [QGIS](https://github.com/qgis/QGIS) (13219 🌟)
+### [QGIS](https://github.com/qgis/QGIS) (13218 🌟)
 
 **Owner:** [qgis](https://github.com/qgis)\
 **Description:** QGIS is a free, open source, cross platform (lin/win/mac) geographical information system (GIS)\
-**Stars:** 13219\
-**Last Pushed:** 2/1/2026
+**Stars:** 13218\
+**Last Pushed:** 2/2/2026
 
 ---
 
@@ -3226,30 +3284,30 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [view_component](https://github.com/ViewComponent/view_component) (3516 🌟)
+### [view_component](https://github.com/ViewComponent/view_component) (3517 🌟)
 
 **Owner:** [ViewComponent](https://github.com/ViewComponent)\
 **Description:** A framework for building reusable, testable & encapsulated view components in Ruby on Rails.\
-**Stars:** 3516\
+**Stars:** 3517\
 **Last Pushed:** 1/30/2026
 
 ---
 
-### [rodauth](https://github.com/jeremyevans/rodauth) (1871 🌟)
+### [rodauth](https://github.com/jeremyevans/rodauth) (1872 🌟)
 
 **Owner:** [jeremyevans](https://github.com/jeremyevans)\
 **Description:** Ruby's Most Advanced Authentication Framework\
-**Stars:** 1871\
+**Stars:** 1872\
 **Last Pushed:** 1/8/2026
 
 ---
 
-### [awesome-selfhosted](https://github.com/awesome-selfhosted/awesome-selfhosted) (271111 🌟)
+### [awesome-selfhosted](https://github.com/awesome-selfhosted/awesome-selfhosted) (271286 🌟)
 
 **Owner:** [awesome-selfhosted](https://github.com/awesome-selfhosted)\
 **Description:** A list of Free Software network services and web applications which can be hosted on your own servers\
 **Topics:** awesome, awesome-list, cloud, free-software, hosting, privacy, self-hosted, selfhosted\
-**Stars:** 271111\
+**Stars:** 271286\
 **Last Pushed:** 2/1/2026
 
 ---
@@ -3274,33 +3332,33 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [invidious](https://github.com/iv-org/invidious) (18531 🌟)
+### [invidious](https://github.com/iv-org/invidious) (18535 🌟)
 
 **Owner:** [iv-org](https://github.com/iv-org)\
 **Description:** Invidious is an alternative front-end to YouTube\
 **Topics:** agplv3, hacktoberfest, invidious, libre, video, watch, youtube, youtube-video\
-**Stars:** 18531\
+**Stars:** 18535\
 **Last Pushed:** 1/30/2026
 
 ---
 
-### [You-Dont-Know-JS](https://github.com/getify/You-Dont-Know-JS) (184358 🌟)
+### [You-Dont-Know-JS](https://github.com/getify/You-Dont-Know-JS) (184366 🌟)
 
 **Owner:** [getify](https://github.com/getify)\
 **Description:** A book series (2 published editions) on the JS language.\
 **Topics:** async, book, book-series, closures, education, es2015, es6, javascript, learn-to-code, programming, prototypes, training-materials, training-providers\
-**Stars:** 184358\
+**Stars:** 184366\
 **Last Pushed:** 1/18/2026
 
 ---
 
-### [activeadmin](https://github.com/activeadmin/activeadmin) (9672 🌟)
+### [activeadmin](https://github.com/activeadmin/activeadmin) (9671 🌟)
 
 **Owner:** [activeadmin](https://github.com/activeadmin)\
 **Description:** The administration framework for Ruby on Rails applications.\
 **Topics:** activeadmin, admin-ui, arbre, rails, ruby\
-**Stars:** 9672\
-**Last Pushed:** 2/1/2026
+**Stars:** 9671\
+**Last Pushed:** 2/2/2026
 
 ---
 
@@ -3314,13 +3372,13 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [pagy](https://github.com/ddnexus/pagy) (4925 🌟)
+### [pagy](https://github.com/ddnexus/pagy) (4926 🌟)
 
 **Owner:** [ddnexus](https://github.com/ddnexus)\
 **Description:** 🏆 The Best Pagination Ruby Gem 🥇\
 **Topics:** bootstrap, bulma, elasticsearch-rails, foundation, materialize, padrino, rails, ruby, searchkick, semantic-ui, sinatra\
-**Stars:** 4925\
-**Last Pushed:** 1/31/2026
+**Stars:** 4926\
+**Last Pushed:** 2/2/2026
 
 ---
 
@@ -3353,22 +3411,22 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [dokku](https://github.com/dokku/dokku) (31843 🌟)
+### [dokku](https://github.com/dokku/dokku) (31847 🌟)
 
 **Owner:** [dokku](https://github.com/dokku)\
 **Description:** A docker-powered PaaS that helps you build and manage the lifecycle of applications\
 **Topics:** buildpack, containers, devops, docker, dokku, heroku, kubernetes, nomad, paas, self-hosted, selfhosted\
-**Stars:** 31843\
-**Last Pushed:** 1/30/2026
+**Stars:** 31847\
+**Last Pushed:** 2/2/2026
 
 ---
 
-### [awesome-osint](https://github.com/jivoi/awesome-osint) (24595 🌟)
+### [awesome-osint](https://github.com/jivoi/awesome-osint) (24608 🌟)
 
 **Owner:** [jivoi](https://github.com/jivoi)\
 **Description:** :scream: A curated list of amazingly awesome OSINT\
 **Topics:** awesome-list, osint, website\
-**Stars:** 24595\
+**Stars:** 24608\
 **Last Pushed:** 1/27/2026
 
 ---
@@ -3383,32 +3441,32 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [awesome-ruby](https://github.com/markets/awesome-ruby) (14020 🌟)
+### [awesome-ruby](https://github.com/markets/awesome-ruby) (14021 🌟)
 
 **Owner:** [markets](https://github.com/markets)\
 **Description:** 💎 A collection of awesome Ruby libraries, tools, frameworks and software\
 **Topics:** awesome, awesome-list, collection, curated-list, ruby, ruby-libraries\
-**Stars:** 14020\
+**Stars:** 14021\
 **Last Pushed:** 1/13/2026
 
 ---
 
-### [asdf](https://github.com/asdf-vm/asdf) (25008 🌟)
+### [asdf](https://github.com/asdf-vm/asdf) (25016 🌟)
 
 **Owner:** [asdf-vm](https://github.com/asdf-vm)\
 **Description:** Extendable version manager with support for Ruby, Node.js, Elixir, Erlang & more\
 **Topics:** asdf-vm, bash, cli, elixir, elvish, erlang, fish, golang, multiple-languages, node, nushell, powershell, python, ruby, shell, version-manager, zsh\
-**Stars:** 25008\
+**Stars:** 25016\
 **Last Pushed:** 2/1/2026
 
 ---
 
-### [huginn](https://github.com/huginn/huginn) (48613 🌟)
+### [huginn](https://github.com/huginn/huginn) (48621 🌟)
 
 **Owner:** [huginn](https://github.com/huginn)\
 **Description:** Create agents that monitor and act on your behalf.  Your agents are standing by!\
 **Topics:** agent, automation, feed, feedgenerator, huginn, monitoring, notifications, rss, scraper, twitter, twitter-streaming, webscraping\
-**Stars:** 48613\
+**Stars:** 48621\
 **Last Pushed:** 2/1/2026
 
 ---
@@ -3432,13 +3490,13 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [rubocop](https://github.com/rubocop/rubocop) (12841 🌟)
+### [rubocop](https://github.com/rubocop/rubocop) (12842 🌟)
 
 **Owner:** [rubocop](https://github.com/rubocop)\
 **Description:** A Ruby static code analyzer and formatter, based on the community Ruby style guide.\
 **Topics:** code-formatter, hacktoberfest, linter, rubocop, ruby, static-code-analysis\
-**Stars:** 12841\
-**Last Pushed:** 2/1/2026
+**Stars:** 12842\
+**Last Pushed:** 2/2/2026
 
 ---
 
@@ -3452,34 +3510,54 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [free-programming-books](https://github.com/EbookFoundation/free-programming-books) (381692 🌟)
+### [free-programming-books](https://github.com/EbookFoundation/free-programming-books) (381910 🌟)
 
 **Owner:** [EbookFoundation](https://github.com/EbookFoundation)\
 **Description:** :books: Freely available programming books\
 **Topics:** books, education, hacktoberfest, list, resource\
-**Stars:** 381692\
+**Stars:** 381910\
 **Last Pushed:** 2/1/2026
 
 ---
 
 ## Last pushed to in 2025
 
-### [pg_tracing](https://github.com/DataDog/pg_tracing) (269 🌟)
+### [kubegres](https://github.com/reactive-tech/kubegres) (1353 🌟)
+
+**Owner:** [reactive-tech](https://github.com/reactive-tech)\
+**Description:** Kubegres is a Kubernetes operator allowing to deploy one or many clusters of PostgreSql instances and manage databases replication, failover and backup.\
+**Topics:** kubernetes, kubernetes-operator, operator, postgres, postgres-operator, postgresql\
+**Stars:** 1353\
+**Last Pushed:** 1/4/2025
+
+---
+
+### [browsh](https://github.com/browsh-org/browsh) (18435 🌟)
+
+**Owner:** [browsh-org](https://github.com/browsh-org)\
+**Description:** A fully-modern text-based browser, rendering to TTY and browsers\
+**Topics:** bandwidth-saver, http-performance, mosh, ssh, tty, vnc\
+**Stars:** 18435\
+**Last Pushed:** 7/11/2025
+
+---
+
+### [pg_tracing](https://github.com/DataDog/pg_tracing) (315 🌟)
 
 **Owner:** [DataDog](https://github.com/DataDog)\
 **Description:** Distributed Tracing for PostgreSQL\
 **Topics:** distributed-tracing, postgresql, tracing\
-**Stars:** 269\
+**Stars:** 315\
 **Last Pushed:** 6/19/2025
 
 ---
 
-### [LazyVim](https://github.com/LazyVim/LazyVim) (24898 🌟)
+### [LazyVim](https://github.com/LazyVim/LazyVim) (24907 🌟)
 
 **Owner:** [LazyVim](https://github.com/LazyVim)\
 **Description:** Neovim config for the lazy\
 **Topics:** neovim, neovim-conf, neovim-config, neovim-configuration, neovim-plugin, nvim\
-**Stars:** 24898\
+**Stars:** 24907\
 **Last Pushed:** 11/11/2025
 
 ---
@@ -3502,12 +3580,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [draggable](https://github.com/Shopify/draggable) (18441 🌟)
+### [draggable](https://github.com/Shopify/draggable) (18442 🌟)
 
 **Owner:** [Shopify](https://github.com/Shopify)\
 **Description:** The JavaScript Drag & Drop library your grandparents warned you about.\
 **Topics:** drag-and-drop, draggable, es6, javascript\
-**Stars:** 18441\
+**Stars:** 18442\
 **Last Pushed:** 12/1/2025
 
 ---
@@ -3531,21 +3609,21 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [pgvectorscale](https://github.com/timescale/pgvectorscale) (2812 🌟)
+### [pgvectorscale](https://github.com/timescale/pgvectorscale) (2815 🌟)
 
 **Owner:** [timescale](https://github.com/timescale)\
 **Description:** Postgres extension for vector search (DiskANN), complements pgvector for performance and scale. Postgres OSS licensed.\
-**Stars:** 2812\
+**Stars:** 2815\
 **Last Pushed:** 12/11/2025
 
 ---
 
-### [sigma.js](https://github.com/jacomyal/sigma.js) (11874 🌟)
+### [sigma.js](https://github.com/jacomyal/sigma.js) (11878 🌟)
 
 **Owner:** [jacomyal](https://github.com/jacomyal)\
 **Description:** A JavaScript library aimed at visualizing graphs of thousands of nodes and edges\
 **Topics:** data-visualization, graph, graph-drawing, graph-drawing-framework, graphs, javascript, webgl\
-**Stars:** 11874\
+**Stars:** 11878\
 **Last Pushed:** 12/23/2025
 
 ---
@@ -3559,12 +3637,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [openfreemap](https://github.com/hyperknot/openfreemap) (4657 🌟)
+### [openfreemap](https://github.com/hyperknot/openfreemap) (4660 🌟)
 
 **Owner:** [hyperknot](https://github.com/hyperknot)\
 **Description:** Free and open-source map hosting solution with custom styles for websites and apps, using OpenStreetMap data\
 **Topics:** geospatial, gis, maplibre, maplibre-gl-js, mapping, maps, openstreetmap, osm, vector-tiles\
-**Stars:** 4657\
+**Stars:** 4660\
 **Last Pushed:** 10/23/2025
 
 ---
@@ -3579,31 +3657,31 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [gocui](https://github.com/jroimartin/gocui) (10500 🌟)
+### [gocui](https://github.com/jroimartin/gocui) (10501 🌟)
 
 **Owner:** [jroimartin](https://github.com/jroimartin)\
 **Description:** Minimalist Go package aimed at creating Console User Interfaces.\
 **Topics:** cui, go, gocui, gui\
-**Stars:** 10500\
+**Stars:** 10501\
 **Last Pushed:** 5/1/2025
 
 ---
 
-### [posting](https://github.com/darrenburns/posting) (11258 🌟)
+### [posting](https://github.com/darrenburns/posting) (11264 🌟)
 
 **Owner:** [darrenburns](https://github.com/darrenburns)\
 **Description:** The modern API client that lives in your terminal.\
 **Topics:** automation, cli, developer-tools, http, python, rest, rest-api, rest-client, ssh, terminal, textual, tui\
-**Stars:** 11258\
+**Stars:** 11264\
 **Last Pushed:** 10/14/2025
 
 ---
 
-### [absurd](https://github.com/earendil-works/absurd) (909 🌟)
+### [absurd](https://github.com/earendil-works/absurd) (911 🌟)
 
 **Owner:** [earendil-works](https://github.com/earendil-works)\
 **Description:** An experiment in durability\
-**Stars:** 909\
+**Stars:** 911\
 **Last Pushed:** 12/22/2025
 
 ---
@@ -3684,22 +3762,22 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [md-to-pdf](https://github.com/simonhaenisch/md-to-pdf) (1648 🌟)
+### [md-to-pdf](https://github.com/simonhaenisch/md-to-pdf) (1649 🌟)
 
 **Owner:** [simonhaenisch](https://github.com/simonhaenisch)\
 **Description:** Hackable CLI tool for converting Markdown files to PDF using Node.js and headless Chrome.\
 **Topics:** assignments, cli, documentation, headless-chrome, homework, markdown, markdown-to-pdf, md, pdf, pdf-generation, puppeteer\
-**Stars:** 1648\
+**Stars:** 1649\
 **Last Pushed:** 12/3/2025
 
 ---
 
-### [clojure-cli-config](https://github.com/practicalli/clojure-cli-config) (552 🌟)
+### [clojure-cli-config](https://github.com/practicalli/clojure-cli-config) (551 🌟)
 
 **Owner:** [practicalli](https://github.com/practicalli)\
 **Description:** User aliases and Clojure CLI configuration for deps.edn based projects\
 **Topics:** clojure, clojure-cli, deps-edn\
-**Stars:** 552\
+**Stars:** 551\
 **Last Pushed:** 12/29/2025
 
 ---
@@ -3724,42 +3802,42 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [d2](https://github.com/terrastruct/d2) (22965 🌟)
+### [d2](https://github.com/terrastruct/d2) (22972 🌟)
 
 **Owner:** [terrastruct](https://github.com/terrastruct)\
 **Description:** D2 is a modern diagram scripting language that turns text to diagrams.\
 **Topics:** developer-tools, diagramming, diagrams, go, golang, software-architecture, text-to-diagram\
-**Stars:** 22965\
+**Stars:** 22972\
 **Last Pushed:** 10/14/2025
 
 ---
 
-### [gantt](https://github.com/frappe/gantt) (5826 🌟)
+### [gantt](https://github.com/frappe/gantt) (5828 🌟)
 
 **Owner:** [frappe](https://github.com/frappe)\
 **Description:** Open Source Javascript Gantt\
 **Topics:** frappe-gantt, gantt, gantt-chart, ganttjs, javascript-gantt\
-**Stars:** 5826\
+**Stars:** 5828\
 **Last Pushed:** 10/31/2025
 
 ---
 
-### [langextract](https://github.com/google/langextract) (23920 🌟)
+### [langextract](https://github.com/google/langextract) (23974 🌟)
 
 **Owner:** [google](https://github.com/google)\
 **Description:** A Python library for extracting structured information from unstructured text using LLMs with precise source grounding and interactive visualization.\
 **Topics:** gemini, gemini-ai, gemini-api, gemini-flash, gemini-pro, information-extration, large-language-models, llm, nlp, python, structured-data\
-**Stars:** 23920\
+**Stars:** 23974\
 **Last Pushed:** 12/29/2025
 
 ---
 
-### [isolator](https://github.com/palkan/isolator) (1084 🌟)
+### [isolator](https://github.com/palkan/isolator) (1085 🌟)
 
 **Owner:** [palkan](https://github.com/palkan)\
 **Description:** Detect non-atomic interactions within DB transactions\
 **Topics:** activerecord, developer-tools, hacktoberfest, rails, testing-tools\
-**Stars:** 1084\
+**Stars:** 1085\
 **Last Pushed:** 12/9/2025
 
 ---
@@ -3773,12 +3851,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [devpod](https://github.com/loft-sh/devpod) (14628 🌟)
+### [devpod](https://github.com/loft-sh/devpod) (14633 🌟)
 
 **Owner:** [loft-sh](https://github.com/loft-sh)\
 **Description:** Codespaces but open-source, client-only and unopinionated: Works with any IDE and lets you use any cloud, kubernetes or just localhost docker.\
 **Topics:** cloud, devcontainer, devcontainers, developer-tools, development, docker, ide, kubernetes, remote-development, remote-development-environment, vscode\
-**Stars:** 14628\
+**Stars:** 14633\
 **Last Pushed:** 11/14/2025
 
 ---
@@ -3793,11 +3871,11 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [pennybase](https://github.com/zserge/pennybase) (816 🌟)
+### [pennybase](https://github.com/zserge/pennybase) (817 🌟)
 
 **Owner:** [zserge](https://github.com/zserge)\
 **Description:** Poor man's Backend-as-a-Service (BaaS), similar to Firebase/Supabase/Pocketbase\
-**Stars:** 816\
+**Stars:** 817\
 **Last Pushed:** 7/7/2025
 
 ---
@@ -3821,12 +3899,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [marp-cli](https://github.com/marp-team/marp-cli) (3148 🌟)
+### [marp-cli](https://github.com/marp-team/marp-cli) (3150 🌟)
 
 **Owner:** [marp-team](https://github.com/marp-team)\
 **Description:** A CLI interface for Marp and Marpit based converters\
 **Topics:** cli, deck, markdown, marp, marpit, presentation, slides\
-**Stars:** 3148\
+**Stars:** 3150\
 **Last Pushed:** 11/3/2025
 
 ---
@@ -3850,16 +3928,6 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [30-Days-Of-JavaScript](https://github.com/Asabeneh/30-Days-Of-JavaScript) (46012 🌟)
-
-**Owner:** [Asabeneh](https://github.com/Asabeneh)\
-**Description:** 30 days of JavaScript programming challenge is a step-by-step guide to learn JavaScript programming language in 30 days. This challenge may take more than 100 days,  please just follow your own pace. These videos may help too: https://www.youtube.com/channel/UC7PNRuno1rzYPb1xLa4yktw\
-**Topics:** 30daysofjavascript, angular, challenge, css, d3, d3js, html, javascript, javascript-for-everyone, js, json, node, nodejs, programming, react, redux, typescript, vue, webdevelopment, website\
-**Stars:** 46012\
-**Last Pushed:** 12/6/2025
-
----
-
 ### [cljs-shrinkwrap](https://github.com/chr15m/cljs-shrinkwrap) (5 🌟)
 
 **Owner:** [chr15m](https://github.com/chr15m)\
@@ -3869,31 +3937,31 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [theBeamBook](https://github.com/happi/theBeamBook) (3984 🌟)
+### [theBeamBook](https://github.com/happi/theBeamBook) (3985 🌟)
 
 **Owner:** [happi](https://github.com/happi)\
 **Description:** A description of the Erlang Runtime System ERTS and the virtual Machine BEAM.\
-**Stars:** 3984\
+**Stars:** 3985\
 **Last Pushed:** 11/3/2025
 
 ---
 
-### [enchanted](https://github.com/gluonfield/enchanted) (5792 🌟)
+### [enchanted](https://github.com/gluonfield/enchanted) (5795 🌟)
 
 **Owner:** [gluonfield](https://github.com/gluonfield)\
 **Description:** Enchanted is iOS and macOS app for chatting with private self hosted language models such as Llama2, Mistral or Vicuna using Ollama.\
 **Topics:** ios, large-language-model, llama, llama2, llm, mistral, ollama, ollama-app, swift\
-**Stars:** 5792\
+**Stars:** 5795\
 **Last Pushed:** 3/19/2025
 
 ---
 
-### [rfx](https://github.com/factorhouse/rfx) (68 🌟)
+### [rfx](https://github.com/factorhouse/rfx) (69 🌟)
 
 **Owner:** [factorhouse](https://github.com/factorhouse)\
 **Description:** RFX is a modern, API-compatible drop-in replacement for re-frame, designed for use with React 18+ and no dependency on Reagent\
 **Topics:** clojurescript, re-frame, react, reagent\
-**Stars:** 68\
+**Stars:** 69\
 **Last Pushed:** 7/3/2025
 
 ---
@@ -3907,12 +3975,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [PairDrop](https://github.com/schlagmichdoch/PairDrop) (9708 🌟)
+### [PairDrop](https://github.com/schlagmichdoch/PairDrop) (9709 🌟)
 
 **Owner:** [schlagmichdoch](https://github.com/schlagmichdoch)\
 **Description:** PairDrop: Transfer Files Cross-Platform. No Setup, No Signup.\
 **Topics:** file-sharing, indexeddb, nodejs, pwa, webrtc, websockets\
-**Stars:** 9708\
+**Stars:** 9709\
 **Last Pushed:** 2/25/2025
 
 ---
@@ -3946,22 +4014,22 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [erd-editor](https://github.com/dineug/erd-editor) (1588 🌟)
+### [erd-editor](https://github.com/dineug/erd-editor) (1589 🌟)
 
 **Owner:** [dineug](https://github.com/dineug)\
 **Description:** Entity-Relationship Diagram Editor\
 **Topics:** database, db, diagram, draw, editor, entity, erd, relationship, sql, vscode, vuerd\
-**Stars:** 1588\
+**Stars:** 1589\
 **Last Pushed:** 5/7/2025
 
 ---
 
-### [glance](https://github.com/glanceapp/glance) (31550 🌟)
+### [glance](https://github.com/glanceapp/glance) (31573 🌟)
 
 **Owner:** [glanceapp](https://github.com/glanceapp)\
 **Description:** A self-hosted dashboard that puts all your feeds in one place\
 **Topics:** aggregator, dashboard, docker, feed-reader, go, homelab, homepage, monitoring, reddit, rss, rss-reader, self-hosted, startpage, youtube\
-**Stars:** 31550\
+**Stars:** 31573\
 **Last Pushed:** 12/10/2025
 
 ---
@@ -3996,11 +4064,11 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [HumbleUI](https://github.com/HumbleUI/HumbleUI) (1664 🌟)
+### [HumbleUI](https://github.com/HumbleUI/HumbleUI) (1665 🌟)
 
 **Owner:** [HumbleUI](https://github.com/HumbleUI)\
 **Description:** Clojure Desktop UI framework\
-**Stars:** 1664\
+**Stars:** 1665\
 **Last Pushed:** 12/12/2025
 
 ---
@@ -4045,22 +4113,22 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [dice](https://github.com/dicedb/dice) (10671 🌟)
+### [dice](https://github.com/dicedb/dice) (10673 🌟)
 
 **Owner:** [dicedb](https://github.com/dicedb)\
 **Description:** DiceDB is an open-source, fast, reactive, in-memory database optimized for modern hardware.\
 **Topics:** database, golang, hacktoberfest, storage-engine\
-**Stars:** 10671\
+**Stars:** 10673\
 **Last Pushed:** 6/23/2025
 
 ---
 
-### [asynq](https://github.com/hibiken/asynq) (12833 🌟)
+### [asynq](https://github.com/hibiken/asynq) (12840 🌟)
 
 **Owner:** [hibiken](https://github.com/hibiken)\
 **Description:** Simple, reliable, and efficient distributed task queue in Go\
 **Topics:** asynchronous-tasks, background-jobs, go, golang, redis, task-queue, worker-pool\
-**Stars:** 12833\
+**Stars:** 12840\
 **Last Pushed:** 11/10/2025
 
 ---
@@ -4074,12 +4142,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [SafeLine](https://github.com/chaitin/SafeLine) (20440 🌟)
+### [SafeLine](https://github.com/chaitin/SafeLine) (20481 🌟)
 
 **Owner:** [chaitin](https://github.com/chaitin)\
 **Description:** SafeLine is a self-hosted WAF(Web Application Firewall) / reverse proxy to protect your web apps from attacks and exploits.\
 **Topics:** api-gateway, application-security, appsec, blueteam, bruteforce, captcha, cve, cybersecurity, firewall, hackers, http-flood, security, self-hosted, sql-injection, vulnerability, waf, web-application-firewall, web-security, websecurity, xss\
-**Stars:** 20440\
+**Stars:** 20481\
 **Last Pushed:** 11/5/2025
 
 ---
@@ -4103,12 +4171,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [prompts](https://github.com/terkelg/prompts) (9240 🌟)
+### [prompts](https://github.com/terkelg/prompts) (9241 🌟)
 
 **Owner:** [terkelg](https://github.com/terkelg)\
 **Description:** ❯ Lightweight, beautiful and user-friendly interactive prompts\
 **Topics:** choice, cli, command-line, interface, nodejs, prompt, prompter, prompts\
-**Stars:** 9240\
+**Stars:** 9241\
 **Last Pushed:** 5/14/2025
 
 ---
@@ -4123,22 +4191,22 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [astral](https://github.com/lino-levan/astral) (341 🌟)
+### [astral](https://github.com/lino-levan/astral) (342 🌟)
 
 **Owner:** [lino-levan](https://github.com/lino-levan)\
 **Description:** A high-level puppeteer/playwright-like library for Deno\
 **Topics:** astral, deno, playwright, puppeteer\
-**Stars:** 341\
+**Stars:** 342\
 **Last Pushed:** 12/19/2025
 
 ---
 
-### [zerox](https://github.com/getomni-ai/zerox) (12057 🌟)
+### [zerox](https://github.com/getomni-ai/zerox) (12060 🌟)
 
 **Owner:** [getomni-ai](https://github.com/getomni-ai)\
 **Description:** OCR & Document Extraction using vision models\
 **Topics:** ocr, pdf\
-**Stars:** 12057\
+**Stars:** 12060\
 **Last Pushed:** 5/20/2025
 
 ---
@@ -4163,23 +4231,13 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [hyperfine](https://github.com/sharkdp/hyperfine) (27389 🌟)
+### [hyperfine](https://github.com/sharkdp/hyperfine) (27399 🌟)
 
 **Owner:** [sharkdp](https://github.com/sharkdp)\
 **Description:** A command-line benchmarking tool\
 **Topics:** benchmark, cli, command-line, rust, terminal, tool\
-**Stars:** 27389\
+**Stars:** 27399\
 **Last Pushed:** 12/1/2025
-
----
-
-### [martian](https://github.com/oliyh/martian) (585 🌟)
-
-**Owner:** [oliyh](https://github.com/oliyh)\
-**Description:** The HTTP abstraction library for Clojure/script, supporting OpenAPI, Swagger, Schema, re-frame and more\
-**Topics:** cljdoc-badge, clojure, clojurescript, http, http-client, interceptor, interceptors, martian, open-api, openapi, schema, swagger, swagger-api, swagger-spec\
-**Stars:** 585\
-**Last Pushed:** 9/30/2025
 
 ---
 
@@ -4243,73 +4301,63 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [sqlean](https://github.com/nalgeon/sqlean) (4253 🌟)
+### [sqlean](https://github.com/nalgeon/sqlean) (4254 🌟)
 
 **Owner:** [nalgeon](https://github.com/nalgeon)\
 **Description:** The ultimate set of SQLite extensions\
 **Topics:** sqlite, sqlite-extension\
-**Stars:** 4253\
+**Stars:** 4254\
 **Last Pushed:** 10/12/2025
 
 ---
 
-### [schked](https://github.com/bibendi/schked) (132 🌟)
+### [schked](https://github.com/bibendi/schked) (133 🌟)
 
 **Owner:** [bibendi](https://github.com/bibendi)\
 **Description:** Framework agnostic scheduler to run recurring jobs.\
 **Topics:** gem, rails, recurring-jobs, ruby, rufus, schedule, scheduler\
-**Stars:** 132\
+**Stars:** 133\
 **Last Pushed:** 4/21/2025
 
 ---
 
-### [ferret](https://github.com/MontFerret/ferret) (5913 🌟)
+### [ferret](https://github.com/MontFerret/ferret) (5914 🌟)
 
 **Owner:** [MontFerret](https://github.com/MontFerret)\
 **Description:** Declarative web scraping\
 **Topics:** cdp, chrome, cli, crawler, crawling, data-mining, dsl, go, golang, library, query-language, scraper, scraping, scraping-websites, tool\
-**Stars:** 5913\
+**Stars:** 5914\
 **Last Pushed:** 9/11/2025
 
 ---
 
-### [concurrently](https://github.com/open-cli-tools/concurrently) (7646 🌟)
+### [concurrently](https://github.com/open-cli-tools/concurrently) (7648 🌟)
 
 **Owner:** [open-cli-tools](https://github.com/open-cli-tools)\
 **Description:** Run commands concurrently. Like `npm run watch-js & npm run watch-less` but better.\
 **Topics:** cli, command-line, concurrently, parallel, process, spawn\
-**Stars:** 7646\
+**Stars:** 7648\
 **Last Pushed:** 10/17/2025
 
 ---
 
-### [bore](https://github.com/ekzhang/bore) (10700 🌟)
+### [bore](https://github.com/ekzhang/bore) (10710 🌟)
 
 **Owner:** [ekzhang](https://github.com/ekzhang)\
 **Description:** 🕳 bore is a simple CLI tool for making tunnels to localhost\
 **Topics:** cli, localhost, networking, proxy, rust, self-hosted, tcp, tunnel\
-**Stars:** 10700\
+**Stars:** 10710\
 **Last Pushed:** 6/9/2025
 
 ---
 
-### [ripgrep](https://github.com/BurntSushi/ripgrep) (59444 🌟)
+### [ripgrep](https://github.com/BurntSushi/ripgrep) (59471 🌟)
 
 **Owner:** [BurntSushi](https://github.com/BurntSushi)\
 **Description:** ripgrep recursively searches directories for a regex pattern while respecting your gitignore\
 **Topics:** cli, command-line, command-line-tool, gitignore, grep, recursively-search, regex, ripgrep, rust, search\
-**Stars:** 59444\
+**Stars:** 59471\
 **Last Pushed:** 12/17/2025
-
----
-
-### [gtop](https://github.com/aksakalli/gtop) (9900 🌟)
-
-**Owner:** [aksakalli](https://github.com/aksakalli)\
-**Description:** System monitoring dashboard for terminal\
-**Topics:** command-line, monitoring, nodejs, system-monitoring, top, tui\
-**Stars:** 9900\
-**Last Pushed:** 11/6/2025
 
 ---
 
@@ -4323,22 +4371,22 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [sd](https://github.com/chmln/sd) (6877 🌟)
+### [sd](https://github.com/chmln/sd) (6879 🌟)
 
 **Owner:** [chmln](https://github.com/chmln)\
 **Description:** Intuitive find & replace CLI (sed alternative)\
 **Topics:** cli, command-line, regex, rust, terminal, text-processing\
-**Stars:** 6877\
+**Stars:** 6879\
 **Last Pushed:** 12/20/2025
 
 ---
 
-### [devops-exercises](https://github.com/bregman-arie/devops-exercises) (80834 🌟)
+### [devops-exercises](https://github.com/bregman-arie/devops-exercises) (80835 🌟)
 
 **Owner:** [bregman-arie](https://github.com/bregman-arie)\
 **Description:** Linux, Jenkins, AWS, SRE, Prometheus, Docker, Python, Ansible, Git, Kubernetes, Terraform, OpenStack, SQL, NoSQL, Azure, GCP, DNS, Elastic, Network, Virtualization. DevOps Interview Questions\
 **Topics:** ansible, aws, azure, coding, containers, devops, docker, git, interview, interview-questions, kubernetes, linux, openstack, production-engineer, prometheus, python, sql, sre, terraform\
-**Stars:** 80834\
+**Stars:** 80835\
 **Last Pushed:** 12/27/2025
 
 ---
@@ -4353,12 +4401,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [overmind](https://github.com/DarthSim/overmind) (3438 🌟)
+### [overmind](https://github.com/DarthSim/overmind) (3440 🌟)
 
 **Owner:** [DarthSim](https://github.com/DarthSim)\
 **Description:** Process manager for Procfile-based applications and tmux\
 **Topics:** procfile\
-**Stars:** 3438\
+**Stars:** 3440\
 **Last Pushed:** 4/4/2025
 
 ---
@@ -4382,12 +4430,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [driver.js](https://github.com/kamranahmedse/driver.js) (25302 🌟)
+### [driver.js](https://github.com/kamranahmedse/driver.js) (25305 🌟)
 
 **Owner:** [kamranahmedse](https://github.com/kamranahmedse)\
 **Description:** A lightweight, dependency-free JavaScript library for guiding user focus across the page.\
 **Topics:** feature-introductions, overlay, overlays, popover, product-tour, product-tours, spotlight, tour, user-onboarding, walkthrough\
-**Stars:** 25302\
+**Stars:** 25305\
 **Last Pushed:** 11/18/2025
 
 ---
@@ -4432,22 +4480,22 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [scenic](https://github.com/scenic-views/scenic) (3597 🌟)
+### [scenic](https://github.com/scenic-views/scenic) (3598 🌟)
 
 **Owner:** [scenic-views](https://github.com/scenic-views)\
 **Description:** Versioned database views for Rails\
 **Topics:** activerecord, database, database-views, hacktoberfest, postgres, rails, ruby, schema, sql\
-**Stars:** 3597\
+**Stars:** 3598\
 **Last Pushed:** 11/14/2025
 
 ---
 
-### [rehype-pretty-code](https://github.com/rehype-pretty/rehype-pretty-code) (1278 🌟)
+### [rehype-pretty-code](https://github.com/rehype-pretty/rehype-pretty-code) (1279 🌟)
 
 **Owner:** [rehype-pretty](https://github.com/rehype-pretty)\
 **Description:** Beautiful code blocks for Markdown or MDX.\
 **Topics:** markdown, mdx, shiki, syntax-highlighting, vscode\
-**Stars:** 1278\
+**Stars:** 1279\
 **Last Pushed:** 3/14/2025
 
 ---
@@ -4481,12 +4529,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [prosopite](https://github.com/charkost/prosopite) (1805 🌟)
+### [prosopite](https://github.com/charkost/prosopite) (1806 🌟)
 
 **Owner:** [charkost](https://github.com/charkost)\
 **Description:** Rails N+1 queries auto-detection with zero false positives / false negatives\
 **Topics:** performance, rails\
-**Stars:** 1805\
+**Stars:** 1806\
 **Last Pushed:** 11/3/2025
 
 ---
@@ -4604,22 +4652,22 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [Best-websites-a-programmer-should-visit](https://github.com/sdmg15/Best-websites-a-programmer-should-visit) (75477 🌟)
+### [Best-websites-a-programmer-should-visit](https://github.com/sdmg15/Best-websites-a-programmer-should-visit) (75487 🌟)
 
 **Owner:** [sdmg15](https://github.com/sdmg15)\
 **Description:** :link: Some useful websites for programmers.\
 **Topics:** books, cs, hacktoberfest, links, programmer, sites\
-**Stars:** 75477\
+**Stars:** 75487\
 **Last Pushed:** 9/16/2025
 
 ---
 
-### [cheat.sh](https://github.com/chubin/cheat.sh) (40824 🌟)
+### [cheat.sh](https://github.com/chubin/cheat.sh) (40831 🌟)
 
 **Owner:** [chubin](https://github.com/chubin)\
 **Description:** the only cheat sheet you need\
 **Topics:** cheatsheet, cli, command-line, curl, documentation, examples, hacktoberfest2021, help, terminal, tldr\
-**Stars:** 40824\
+**Stars:** 40831\
 **Last Pushed:** 12/23/2025
 
 ---
@@ -4691,12 +4739,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [bbin](https://github.com/babashka/bbin) (168 🌟)
+### [bbin](https://github.com/babashka/bbin) (169 🌟)
 
 **Owner:** [babashka](https://github.com/babashka)\
 **Description:** Install any Babashka script or project with one command\
 **Topics:** babashka, bash, bbin, cli, clojure, clojurescript, linux, macos, package-manager, shell, windows, zsh\
-**Stars:** 168\
+**Stars:** 169\
 **Last Pushed:** 12/21/2025
 
 ---
@@ -4820,11 +4868,11 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [localtunnel](https://github.com/localtunnel/localtunnel) (21956 🌟)
+### [localtunnel](https://github.com/localtunnel/localtunnel) (21963 🌟)
 
 **Owner:** [localtunnel](https://github.com/localtunnel)\
 **Description:** expose yourself\
-**Stars:** 21956\
+**Stars:** 21963\
 **Last Pushed:** 8/29/2025
 
 ---
@@ -4848,12 +4896,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [scientist](https://github.com/github/scientist) (7662 🌟)
+### [scientist](https://github.com/github/scientist) (7664 🌟)
 
 **Owner:** [github](https://github.com/github)\
 **Description:** :microscope: A Ruby library for carefully refactoring critical paths.\
 **Topics:** refactoring, ruby, rubygem, scientist\
-**Stars:** 7662\
+**Stars:** 7664\
 **Last Pushed:** 11/24/2025
 
 ---
@@ -4886,12 +4934,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [wtfjs](https://github.com/denysdovhan/wtfjs) (37619 🌟)
+### [wtfjs](https://github.com/denysdovhan/wtfjs) (37622 🌟)
 
 **Owner:** [denysdovhan](https://github.com/denysdovhan)\
 **Description:** 🤪 A list of funny and tricky JavaScript examples\
 **Topics:** book, handbook, javascript, js, learning, notes, specification, wtf\
-**Stars:** 37619\
+**Stars:** 37622\
 **Last Pushed:** 3/18/2025
 
 ---
@@ -4924,11 +4972,11 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [clj-http](https://github.com/dakrone/clj-http) (1816 🌟)
+### [clj-http](https://github.com/dakrone/clj-http) (1817 🌟)
 
 **Owner:** [dakrone](https://github.com/dakrone)\
 **Description:** An idiomatic clojure http client wrapping the apache client. Officially supported version.\
-**Stars:** 1816\
+**Stars:** 1817\
 **Last Pushed:** 12/2/2025
 
 ---
@@ -4963,12 +5011,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [clojure-style-guide](https://github.com/bbatsov/clojure-style-guide) (4086 🌟)
+### [clojure-style-guide](https://github.com/bbatsov/clojure-style-guide) (4087 🌟)
 
 **Owner:** [bbatsov](https://github.com/bbatsov)\
 **Description:** A community coding style guide for the Clojure programming language\
 **Topics:** clojure, style-guide, styleguide\
-**Stars:** 4086\
+**Stars:** 4087\
 **Last Pushed:** 6/23/2025
 
 ---
@@ -5039,12 +5087,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [datascript](https://github.com/tonsky/datascript) (5704 🌟)
+### [datascript](https://github.com/tonsky/datascript) (5705 🌟)
 
 **Owner:** [tonsky](https://github.com/tonsky)\
 **Description:** Immutable database and Datalog query engine for Clojure, ClojureScript and JS\
 **Topics:** clojure, clojurescript, database, datascript, memory-database\
-**Stars:** 5704\
+**Stars:** 5705\
 **Last Pushed:** 10/11/2025
 
 ---
@@ -5078,12 +5126,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [pg_cron](https://github.com/citusdata/pg_cron) (3643 🌟)
+### [pg_cron](https://github.com/citusdata/pg_cron) (3644 🌟)
 
 **Owner:** [citusdata](https://github.com/citusdata)\
 **Description:** Run periodic jobs in PostgreSQL\
 **Topics:** cron, periodic-jobs, postgresql, scheduler\
-**Stars:** 3643\
+**Stars:** 3644\
 **Last Pushed:** 12/22/2025
 
 ---
@@ -5097,12 +5145,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [formidable](https://github.com/node-formidable/formidable) (7180 🌟)
+### [formidable](https://github.com/node-formidable/formidable) (7182 🌟)
 
 **Owner:** [node-formidable](https://github.com/node-formidable)\
 **Description:** The most used, flexible, fast and streaming parser for multipart form data. Supports uploading to serverless environments, AWS S3, Azure, GCP or the filesystem. Used in production.\
 **Topics:** aws-lambda, aws-s3, azure, azure-storage, file-upload, form, formdata, formidable, incomingform, multipart, multipart-formdata, multipart-parser, querystring-parser, serverless\
-**Stars:** 7180\
+**Stars:** 7182\
 **Last Pushed:** 11/21/2025
 
 ---
@@ -5156,22 +5204,22 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [pm2](https://github.com/Unitech/pm2) (42901 🌟)
+### [pm2](https://github.com/Unitech/pm2) (42905 🌟)
 
 **Owner:** [Unitech](https://github.com/Unitech)\
 **Description:** Node.js Production Process Manager with a built-in Load Balancer.\
 **Topics:** command-line, command-line-tool, deploy, load-balancer, monitoring, node, nodejs, pm2, process-manager, production\
-**Stars:** 42901\
+**Stars:** 42905\
 **Last Pushed:** 11/26/2025
 
 ---
 
-### [fast-ruby](https://github.com/fastruby/fast-ruby) (5730 🌟)
+### [fast-ruby](https://github.com/fastruby/fast-ruby) (5729 🌟)
 
 **Owner:** [fastruby](https://github.com/fastruby)\
 **Description:** :dash: Writing Fast Ruby :heart_eyes: -- Collect Common Ruby idioms.\
 **Topics:** benchmark-ips, hacktoberfest, performance-optimization, ruby\
-**Stars:** 5730\
+**Stars:** 5729\
 **Last Pushed:** 12/29/2025
 
 ---
@@ -5195,12 +5243,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [wttr.in](https://github.com/chubin/wttr.in) (28681 🌟)
+### [wttr.in](https://github.com/chubin/wttr.in) (28686 🌟)
 
 **Owner:** [chubin](https://github.com/chubin)\
 **Description:** :partly_sunny: The right way to check the weather\
 **Topics:** ascii-art, curl, terminal, weather, weather-api, weather-app, weather-information\
-**Stars:** 28681\
+**Stars:** 28686\
 **Last Pushed:** 10/13/2025
 
 ---
@@ -5234,22 +5282,22 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [awesome-cheatsheets](https://github.com/LeCoupa/awesome-cheatsheets) (45264 🌟)
+### [awesome-cheatsheets](https://github.com/LeCoupa/awesome-cheatsheets) (45274 🌟)
 
 **Owner:** [LeCoupa](https://github.com/LeCoupa)\
 **Description:** 👩‍💻👨‍💻 Awesome cheatsheets for popular programming languages, frameworks and development tools. They include everything you should know in one single file.\
 **Topics:** backend, bash, cheatsheet, cheatsheets, database, django, docker, feathersjs, frontend, javascript, kubernetes, language, nodejs, php, programming-language, redis, sailsjs, vim, vuejs, xcode\
-**Stars:** 45264\
+**Stars:** 45274\
 **Last Pushed:** 11/19/2025
 
 ---
 
-### [ferrum](https://github.com/rubycdp/ferrum) (1962 🌟)
+### [ferrum](https://github.com/rubycdp/ferrum) (1964 🌟)
 
 **Owner:** [rubycdp](https://github.com/rubycdp)\
 **Description:** Headless Chrome Ruby API\
 **Topics:** automation, chrome, chromium, developer-tools, headless, headless-chrome, web\
-**Stars:** 1962\
+**Stars:** 1964\
 **Last Pushed:** 12/25/2025
 
 ---
@@ -5273,12 +5321,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [paper_trail](https://github.com/paper-trail-gem/paper_trail) (6968 🌟)
+### [paper_trail](https://github.com/paper-trail-gem/paper_trail) (6970 🌟)
 
 **Owner:** [paper-trail-gem](https://github.com/paper-trail-gem)\
 **Description:** Track changes to your rails models\
 **Topics:** activerecord, audit, log, rails, ruby\
-**Stars:** 6968\
+**Stars:** 6970\
 **Last Pushed:** 10/24/2025
 
 ---
@@ -5381,12 +5429,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [How-To-Secure-A-Linux-Server](https://github.com/imthenachoman/How-To-Secure-A-Linux-Server) (24512 🌟)
+### [How-To-Secure-A-Linux-Server](https://github.com/imthenachoman/How-To-Secure-A-Linux-Server) (24517 🌟)
 
 **Owner:** [imthenachoman](https://github.com/imthenachoman)\
 **Description:** An evolving how-to guide for securing a Linux server.\
 **Topics:** cc-by-sa, hardening, hardening-steps, linux, linux-server, security, security-hardening, server\
-**Stars:** 24512\
+**Stars:** 24517\
 **Last Pushed:** 10/19/2024
 
 ---
@@ -5410,60 +5458,60 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [go-patterns](https://github.com/tmrts/go-patterns) (27304 🌟)
+### [go-patterns](https://github.com/tmrts/go-patterns) (27312 🌟)
 
 **Owner:** [tmrts](https://github.com/tmrts)\
 **Description:** Curated list of Go design patterns, recipes and idioms\
 **Topics:** awesome, design-patterns, design-patterns-for-humans, go, golang, idioms, patterns\
-**Stars:** 27304\
+**Stars:** 27312\
 **Last Pushed:** 5/14/2024
 
 ---
 
-### [css-scope-inline](https://github.com/gnat/css-scope-inline) (676 🌟)
+### [css-scope-inline](https://github.com/gnat/css-scope-inline) (677 🌟)
 
 **Owner:** [gnat](https://github.com/gnat)\
 **Description:** 🌘 Scope your inline style tags in pure vanilla CSS! Only 16 lines. No build. No dependencies.\
 **Topics:** css, dom, frontend, html, htmx, hyperscript, inline, inline-css, inline-style, inline-styles, lob, locality-of-behavior, scoped-css, stylesheet, surreal, tailwind, tailwind-alternative, tailwindcss\
-**Stars:** 676\
+**Stars:** 677\
 **Last Pushed:** 11/30/2024
 
 ---
 
-### [lorca](https://github.com/zserge/lorca) (8196 🌟)
+### [lorca](https://github.com/zserge/lorca) (8197 🌟)
 
 **Owner:** [zserge](https://github.com/zserge)\
 **Description:** Build cross-platform modern desktop apps in Go + HTML5\
-**Stars:** 8196\
+**Stars:** 8197\
 **Last Pushed:** 8/19/2024
 
 ---
 
-### [gost](https://github.com/ginuerzh/gost) (17548 🌟)
+### [gost](https://github.com/ginuerzh/gost) (17554 🌟)
 
 **Owner:** [ginuerzh](https://github.com/ginuerzh)\
 **Description:** GO Simple Tunnel - a simple tunnel written in golang\
 **Topics:** dns, go, golang, http2, kcp, obfs4, quic, shadowsocks, sni, socks5, ssh, tls, tunnel, tuntap, udp\
-**Stars:** 17548\
+**Stars:** 17554\
 **Last Pushed:** 12/31/2024
 
 ---
 
-### [pako](https://github.com/nodeca/pako) (6042 🌟)
+### [pako](https://github.com/nodeca/pako) (6044 🌟)
 
 **Owner:** [nodeca](https://github.com/nodeca)\
 **Description:** high speed zlib port to javascript, works in browser & node.js\
 **Topics:** zlib, zlib-port\
-**Stars:** 6042\
+**Stars:** 6044\
 **Last Pushed:** 6/27/2024
 
 ---
 
-### [csv-to-html-table](https://github.com/derekeder/csv-to-html-table) (1748 🌟)
+### [csv-to-html-table](https://github.com/derekeder/csv-to-html-table) (1749 🌟)
 
 **Owner:** [derekeder](https://github.com/derekeder)\
 **Description:** :arrow_down_small: Display any CSV (comma separated values) file as a searchable, filterable, pretty HTML table\
-**Stars:** 1748\
+**Stars:** 1749\
 **Last Pushed:** 3/8/2024
 
 ---
@@ -5487,22 +5535,22 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [mkcert](https://github.com/FiloSottile/mkcert) (57919 🌟)
+### [mkcert](https://github.com/FiloSottile/mkcert) (57929 🌟)
 
 **Owner:** [FiloSottile](https://github.com/FiloSottile)\
 **Description:** A simple zero-config tool to make locally trusted development certificates with any names you'd like.\
 **Topics:** certificates, chrome, firefox, https, ios, linux, local-development, localhost, macos, root-ca, tls, windows\
-**Stars:** 57919\
+**Stars:** 57929\
 **Last Pushed:** 8/13/2024
 
 ---
 
-### [modern-unix](https://github.com/ibraheemdev/modern-unix) (32736 🌟)
+### [modern-unix](https://github.com/ibraheemdev/modern-unix) (32740 🌟)
 
 **Owner:** [ibraheemdev](https://github.com/ibraheemdev)\
 **Description:** A collection of modern/faster/saner alternatives to common unix commands.\
 **Topics:** cli, command-line, lists, shell, terminal, tools, unix\
-**Stars:** 32736\
+**Stars:** 32740\
 **Last Pushed:** 9/10/2024
 
 ---
@@ -5526,11 +5574,11 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [quickpic](https://github.com/t3dotgg/quickpic) (1260 🌟)
+### [quickpic](https://github.com/t3dotgg/quickpic) (1259 🌟)
 
 **Owner:** [t3dotgg](https://github.com/t3dotgg)\
 **Description:** Turn SVGs into high resolution PNGs in 2 clicks\
-**Stars:** 1260\
+**Stars:** 1259\
 **Last Pushed:** 11/24/2024
 
 ---
@@ -5737,12 +5785,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [cli](https://github.com/httpie/cli) (37450 🌟)
+### [cli](https://github.com/httpie/cli) (37458 🌟)
 
 **Owner:** [httpie](https://github.com/httpie)\
 **Description:** 🥧 HTTPie CLI  — modern, user-friendly command-line HTTP client for the API era. JSON support, colors, sessions, downloads, plugins & more.\
 **Topics:** api, api-client, api-testing, cli, client, curl, debugging, developer-tools, development, devops, http, http-client, httpie, json, python, rest, rest-api, terminal, usability, web\
-**Stars:** 37450\
+**Stars:** 37458\
 **Last Pushed:** 12/17/2024
 
 ---
@@ -5756,12 +5804,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [Rotten-Scripts](https://github.com/HarshCasper/Rotten-Scripts) (1536 🌟)
+### [Rotten-Scripts](https://github.com/HarshCasper/Rotten-Scripts) (1535 🌟)
 
 **Owner:** [HarshCasper](https://github.com/HarshCasper)\
 **Description:** Scripts that will make you go WOW!\
 **Topics:** bash, bash-script, bash-scripting, collaborate, deepsource, github-pages, go-scripts, golang, hacktoberfest, javascript, python, python-scripts, script, scripting, shortcode, student-vscode\
-**Stars:** 1536\
+**Stars:** 1535\
 **Last Pushed:** 5/14/2024
 
 ---
@@ -5842,22 +5890,22 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [github-cheat-sheet](https://github.com/tiimgreen/github-cheat-sheet) (54910 🌟)
+### [github-cheat-sheet](https://github.com/tiimgreen/github-cheat-sheet) (54924 🌟)
 
 **Owner:** [tiimgreen](https://github.com/tiimgreen)\
 **Description:** A list of cool features of Git and GitHub.\
 **Topics:** awesome, awesome-list, git, github, list\
-**Stars:** 54910\
+**Stars:** 54924\
 **Last Pushed:** 4/15/2024
 
 ---
 
-### [the-art-of-command-line](https://github.com/jlevy/the-art-of-command-line) (159704 🌟)
+### [the-art-of-command-line](https://github.com/jlevy/the-art-of-command-line) (159719 🌟)
 
 **Owner:** [jlevy](https://github.com/jlevy)\
 **Description:** Master the command line, in one page\
 **Topics:** bash, documentation, linux, macos, unix, windows\
-**Stars:** 159704\
+**Stars:** 159719\
 **Last Pushed:** 6/25/2024
 
 ---
@@ -5872,12 +5920,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [awesome-vscode](https://github.com/viatsko/awesome-vscode) (28409 🌟)
+### [awesome-vscode](https://github.com/viatsko/awesome-vscode) (28410 🌟)
 
 **Owner:** [viatsko](https://github.com/viatsko)\
 **Description:** 🎨 A curated list of delightful VS Code packages and resources.\
 **Topics:** awesome, awesome-list, list, visual-studio, visual-studio-code, visual-studio-code-extension, visual-studio-code-theme, visualstudio, vscode, vscode-extension, vscode-theme\
-**Stars:** 28409\
+**Stars:** 28410\
 **Last Pushed:** 6/21/2024
 
 ---
@@ -5892,11 +5940,11 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [ruby-warrior](https://github.com/ryanb/ruby-warrior) (3891 🌟)
+### [ruby-warrior](https://github.com/ryanb/ruby-warrior) (3890 🌟)
 
 **Owner:** [ryanb](https://github.com/ryanb)\
 **Description:** Game written in Ruby for learning Ruby.\
-**Stars:** 3891\
+**Stars:** 3890\
 **Last Pushed:** 3/27/2024
 
 ---
@@ -5968,11 +6016,11 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [wrk](https://github.com/wg/wrk) (40032 🌟)
+### [wrk](https://github.com/wg/wrk) (40033 🌟)
 
 **Owner:** [wg](https://github.com/wg)\
 **Description:** Modern HTTP benchmarking tool\
-**Stars:** 40032\
+**Stars:** 40033\
 **Last Pushed:** 12/30/2023
 
 ---
@@ -6024,12 +6072,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [mousetrap](https://github.com/ccampbell/mousetrap) (11798 🌟)
+### [mousetrap](https://github.com/ccampbell/mousetrap) (11799 🌟)
 
 **Owner:** [ccampbell](https://github.com/ccampbell)\
 **Description:** Simple library for handling keyboard shortcuts in Javascript\
 **Topics:** javascript, keyboard, keyboard-shortcuts, mousetrap\
-**Stars:** 11798\
+**Stars:** 11799\
 **Last Pushed:** 3/15/2023
 
 ---
@@ -6061,16 +6109,6 @@ The data is grouped by the year the repositories were last pushed to.
 **Topics:** apache, blood-glucose, docker, eeg, excersize, fit, flask, freestyle-libre, garmin, mechanize, mind-monitor, muse, myfitnesspal, nutrition, pandas, postgresql, python3, sleep, stress\
 **Stars:** 31\
 **Last Pushed:** 3/4/2023
-
----
-
-### [toucan](https://github.com/metabase/toucan) (575 🌟)
-
-**Owner:** [metabase](https://github.com/metabase)\
-**Description:** A classy high-level Clojure library for defining application models and retrieving them from a DB\
-**Topics:** clojure, flexible, honeysql, hydration, metabase, orm, sql, toucan\
-**Stars:** 575\
-**Last Pushed:** 10/4/2023
 
 ---
 
@@ -6114,12 +6152,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [pwndrop](https://github.com/kgretzky/pwndrop) (2232 🌟)
+### [pwndrop](https://github.com/kgretzky/pwndrop) (2233 🌟)
 
 **Owner:** [kgretzky](https://github.com/kgretzky)\
 **Description:** Self-deployable file hosting service for red teamers, allowing to easily upload and share payloads over HTTP and WebDAV.\
 **Topics:** file-manager, file-sharing, http-server, payloads, redteam, self-hosted, webdav-server\
-**Stars:** 2232\
+**Stars:** 2233\
 **Last Pushed:** 2/25/2023
 
 ---
@@ -6152,12 +6190,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [data-science-with-ruby](https://github.com/arbox/data-science-with-ruby) (724 🌟)
+### [data-science-with-ruby](https://github.com/arbox/data-science-with-ruby) (725 🌟)
 
 **Owner:** [arbox](https://github.com/arbox)\
 **Description:** Practical Data Science with Ruby based tools.\
 **Topics:** awesome, awesome-list, data-analysis, data-analytics, data-mining, data-science, data-visualization, list, ruby, rubydatascience, visualization\
-**Stars:** 724\
+**Stars:** 725\
 **Last Pushed:** 7/19/2023
 
 ---
@@ -6171,12 +6209,12 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [pdfkit](https://github.com/pdfkit/pdfkit) (2938 🌟)
+### [pdfkit](https://github.com/pdfkit/pdfkit) (2939 🌟)
 
 **Owner:** [pdfkit](https://github.com/pdfkit)\
 **Description:** A Ruby gem to transform HTML + CSS into PDFs using the command-line utility wkhtmltopdf\
 **Topics:** html-to-pdf, middleware, pdfkit, ruby, wkhtmltopdf\
-**Stars:** 2938\
+**Stars:** 2939\
 **Last Pushed:** 8/22/2023
 
 ---
@@ -6317,11 +6355,11 @@ The data is grouped by the year the repositories were last pushed to.
 
 ---
 
-### [re-posh](https://github.com/denistakeda/re-posh) (395 🌟)
+### [re-posh](https://github.com/denistakeda/re-posh) (396 🌟)
 
 **Owner:** [denistakeda](https://github.com/denistakeda)\
 **Description:** Use your re-frame with DataScript as a data storage\
-**Stars:** 395\
+**Stars:** 396\
 **Last Pushed:** 2/4/2022
 
 ---
