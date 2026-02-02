@@ -12,6 +12,9 @@ I share my code on [GitHub](https://github.com/simonneutert) and I
 sometimes [blog](/posts) about what made me smile, stumble, humble, or moan.
 {:style="text-align:center"}
 
+My GitHub stars can be browsed [here](/starred-repos), they're automatically updated weekly using [deno-starshower](https://github.com/simonneutert/deno-starshower).
+{:style="text-align:center"}
+
 I help maintain [shell-curry](https://shell-curry.simon-neutert.de/), an opinionated list of terminal tools.
 {:style="text-align:center"}
 
