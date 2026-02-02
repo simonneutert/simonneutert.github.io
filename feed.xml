@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="2.1.1">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-02-02T19:44:09+01:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Neetings, my meeting notes app is now open source! 🤖</title><link href="/2026/neetings/" rel="alternate" type="text/html" title="Neetings, my meeting notes app is now open source! 🤖" /><published>2026-01-19T00:00:00+01:00</published><updated>2026-01-19T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2026-01-19-neetings.md</id><content type="html" xml:base="/2026/neetings/">&lt;p&gt;&lt;a href=&quot;https://www.simon-neutert.de/2025/neetings/&quot;&gt;I wanted to open source it one day&lt;/a&gt;,&lt;br /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="2.1.1">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-02-02T19:59:10+01:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Deno Starshower Released</title><link href="/2026/deno-starshower-released/" rel="alternate" type="text/html" title="Deno Starshower Released" /><published>2026-02-02T00:00:00+01:00</published><updated>2026-02-02T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2026/2026-02-02-deno-starshower-released.md</id><content type="html" xml:base="/2026/deno-starshower-released/"></content><author><name></name></author></entry><entry><title type="html">Neetings, my meeting notes app is now open source! 🤖</title><link href="/2026/neetings/" rel="alternate" type="text/html" title="Neetings, my meeting notes app is now open source! 🤖" /><published>2026-01-19T00:00:00+01:00</published><updated>2026-01-19T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2026/2026-01-19-neetings.md</id><content type="html" xml:base="/2026/neetings/">&lt;p&gt;&lt;a href=&quot;https://www.simon-neutert.de/2025/neetings/&quot;&gt;I wanted to open source it one day&lt;/a&gt;,&lt;br /&gt;
 and that day is today! 🎉&lt;br /&gt;
 (I finally found the courage to simply put it out there.)&lt;/p&gt;
 
@@ -35,7 +35,7 @@ Time to move on to new things. 🚀&lt;/p&gt;
 &lt;blockquote&gt;
   &lt;p&gt;You stay classy San Diego.&lt;br /&gt;
 — Ron Burgundy&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name></name></author></entry><entry><title type="html">Are you missing yazi to show file sizes and dates?</title><link href="/2026/yazi/" rel="alternate" type="text/html" title="Are you missing yazi to show file sizes and dates?" /><published>2026-01-06T00:00:00+01:00</published><updated>2026-01-06T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2026-01-06-yazi.md</id><content type="html" xml:base="/2026/yazi/">&lt;p&gt;Then you&amp;#8217;re lucky, because &lt;code class=&quot;highlighter-rouge&quot;&gt;linemode&lt;/code&gt; is what you need &lt;a href=&quot;https://yazi-rs.github.io/docs/configuration/yazi#mgr.linemode&quot;&gt;see the docs&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name></name></author></entry><entry><title type="html">Are you missing yazi to show file sizes and dates?</title><link href="/2026/yazi/" rel="alternate" type="text/html" title="Are you missing yazi to show file sizes and dates?" /><published>2026-01-06T00:00:00+01:00</published><updated>2026-01-06T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2026/2026-01-06-yazi.md</id><content type="html" xml:base="/2026/yazi/">&lt;p&gt;Then you&amp;#8217;re lucky, because &lt;code class=&quot;highlighter-rouge&quot;&gt;linemode&lt;/code&gt; is what you need &lt;a href=&quot;https://yazi-rs.github.io/docs/configuration/yazi#mgr.linemode&quot;&gt;see the docs&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;You can also specify any 1 to 20 characters, and extend it within a UI plugin, which means you can implement your own linemode through the plugin system like this:&lt;/p&gt;
 
@@ -422,19 +422,4 @@ map ctrl+alt+u kitten unicode_input
   &lt;li&gt;&lt;strong&gt;Open REPL log&lt;/strong&gt;: &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;localleader&amp;gt;ls&lt;/code&gt; to see evaluation results&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Happy Clojure coding! 🎉&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Gnome 49 - keypress gets stuck and repeats forever</title><link href="/2025/gnome-sticky/" rel="alternate" type="text/html" title="Gnome 49 - keypress gets stuck and repeats forever" /><published>2025-11-20T00:00:00+01:00</published><updated>2025-11-20T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2025/2025-11-20-gnome-sticky.md</id><content type="html" xml:base="/2025/gnome-sticky/">&lt;p&gt;This bug almost made my keyboard shortcuts useless.&lt;/p&gt;
-
-&lt;p&gt;I am not alone with this problem. &lt;a href=&quot;https://unix.stackexchange.com/questions/360898/gnome-terminal-keypress-gets-stuck-and-repeats-forever&quot;&gt;StackExchange&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;My system at the time of writing:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Bazzite (Fedora Silverblue)&lt;/li&gt;
-  &lt;li&gt;Gnome 49.1&lt;/li&gt;
-  &lt;li&gt;Mutter (Wayland)&lt;/li&gt;
-  &lt;li&gt;Linux 6.17.7&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;When switching Workspaces, say from &amp;#8220;1&amp;#8221; to &amp;#8220;2&amp;#8221; using &amp;#8220;super+2&amp;#8221; it would spam my input with &amp;#8220;twos&amp;#8221;.&lt;/p&gt;
-
-&lt;p&gt;Nothing ever worked, no fix, no &amp;#8220;hack&amp;#8221;. Turns out, there&amp;#8217;s a bug! See &lt;a href=&quot;https://gitlab.gnome.org/GNOME/mutter/-/issues/4416&quot;&gt;mutter issue&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author></entry></feed>
+&lt;p&gt;Happy Clojure coding! 🎉&lt;/p&gt;</content><author><name></name></author></entry></feed>
