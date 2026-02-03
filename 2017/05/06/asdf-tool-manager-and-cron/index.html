@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Setup a Sinatra App on your Raspberry Pi and autostart the app using asdf and cron | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.MGEJV2MU.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>Setup a Sinatra App on your Raspberry Pi and autostart the app using asdf and cron</h1>
+
+<p>This isn&#8217;t a full tutorial-style write up. Please, consult google for help with any of the following steps.</p>
+
+<ol>
+  <li>Grab a fresh copy of <a href="https://www.raspberrypi.org/downloads/raspbian/">Raspbian Lite</a> and <code class="highlighter-rouge">dd</code> it on your SD Card</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo dd </span><span class="nv">bs</span><span class="o">=</span>1m <span class="k">if</span><span class="o">=</span>path/to/raspbian.img <span class="nv">of</span><span class="o">=</span>/dev/rdiskX
+</code></pre></div></div>
+
+<ol>
+  <li>
+    <p>Once the copying is finished add a file named <strong>ssh</strong> (no ending) to the root directory of the created sd card. <a href="https://www.raspberrypi.org/documentation/remote-access/ssh/README.md">Here, see 3rd.</a></p>
+  </li>
+  <li>
+    <p>Now add all the glory goodness a webmachine could dream of ;-)</p>
+  </li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nb">install</span> <span class="nt">-y</span> build-essential autoconf libncurses5-dev libncursesw5-dev libwxgtk2.8-dev libgl1-mesa-dev libglu1-mesa-dev libpng3 libssh-dev unixodbc-dev libpq-dev libcurl4-openssl-dev libreadline-dev gcc automake make libssl-dev libncurses-dev libyaml-dev libxslt-dev libffi-dev libtool git zlib1g-dev libbz2-dev libsqlite3-dev wget curl llvm xz-utils tk-dev m4
+</code></pre></div></div>
+
+<ol>
+  <li>Install <a href="https://github.com/asdf-vm/asdf">asdf</a> with plugins</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/asdf-vm/asdf.git ~/.asdf <span class="nt">--branch</span> v0.3.0
+<span class="nb">echo</span> <span class="nt">-e</span> <span class="s1">'\n. $HOME/.asdf/asdf.sh'</span> <span class="o">&gt;&gt;</span> ~/.bashrc
+<span class="nb">echo</span> <span class="nt">-e</span> <span class="s1">'\n. $HOME/.asdf/completions/asdf.bash'</span> <span class="o">&gt;&gt;</span> ~/.bashrc
+
+asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
+
+asdf plugin-add postgres https://github.com/smashedtoatoms/asdf-postgres.git
+
+asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+</code></pre></div></div>
+
+<ol>
+  <li>install ruby, postgres and node to get rails ready to roll</li>
+</ol>
+
+<p><em>prepare yourself for some loooong running jobs&#8230;</em></p>
+
+<p><em>-&gt; grind coffee, filter water, brew coffee, enjoy your coffee - <strong>but keep that ssh session open!</strong></em></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># choose your versions</span>
+asdf <span class="nb">install </span>ruby 2.3.4
+asdf <span class="nb">install </span>postgres 9.6.1
+asdf <span class="nb">install </span>node 7.9
+
+<span class="c"># set them up</span>
+asdf global ruby 2.3.4
+asdf global postgres 9.6.1
+asdf global node 7.9
+</code></pre></div></div>
+
+<ol>
+  <li>Setup the <code class="highlighter-rouge">pg gem</code> with this command (vary Versions if necessary):</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem <span class="nb">install </span>pg <span class="nt">-v</span> <span class="s1">'0.20.0'</span> <span class="nt">--</span> <span class="nt">--with-pg-config</span><span class="o">=</span>/home/pi/.asdf/installs/postgres/9.6.1/bin/pg_config
+
+</code></pre></div></div>
+
+<p>and start the server in a new ssh session with</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pg_ctl start
+</code></pre></div></div>
+
+<ol>
+  <li>git clone <a href="https://github.com/simonneutert/sinatras-skeleton">Sinatras Skeleton</a> and run the basic setup (bundle and rake tasks)</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># in /home/pi</span>
+<span class="nb">mkdir </span>www
+<span class="nb">cd </span>www
+git clone https://github.com/simonneutert/sinatras-skeleton
+</code></pre></div></div>
+
+<ol>
+  <li>setup a bash startup script and add a cronjob</li>
+</ol>
+
+<p>add this skript named <code class="highlighter-rouge">start_sinatra.sh</code> in <code class="highlighter-rouge">/home/pi/www/sinatras-skeleton</code>:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+<span class="nv">HOME</span><span class="o">=</span>/home/pi
+<span class="nv">LOGNAME</span><span class="o">=</span>pi
+<span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8
+<span class="nv">SHELL</span><span class="o">=</span>/bin/bash
+<span class="nb">source</span> <span class="nv">$HOME</span>/.profile
+<span class="nb">cd</span> /home/pi/www/sinatras-skeleton
+<span class="nv">$HOME</span>/.asdf/shims/pg_ctl start
+<span class="nb">.</span> <span class="nv">$HOME</span>/.asdf/asdf.sh
+thin start
+</code></pre></div></div>
+
+<p>then <code class="highlighter-rouge">chmod +x start_sinatra.sh</code></p>
+
+<ol>
+  <li>start Postgres and Sinatra at reboot of your Raspberry Pi with a cron job:</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>crontab <span class="nt">-e</span>
+</code></pre></div></div>
+
+<p>add this - <strong>do not</strong> forget to add an empty line at the bottom.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">SHELL</span><span class="o">=</span>/bin/sh
+<span class="nv">PATH</span><span class="o">=</span>/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+@reboot /bin/bash /home/pi/www/sinatras-skeleton/start_sinatra.sh &amp;
+
+</code></pre></div></div>
+
+<ol>
+  <li>Reboot your pi and visit the app from your workstation&#8217;s browser: <code class="highlighter-rouge">http://raspberrypi:3000</code></li>
+</ol>
+
+<p>Test on a RPi3 running <code class="highlighter-rouge">2017-04-10-raspbian-jessie-lite</code>. I used the ethernet port, because the built in Wifi didn&#8217;t respond reliably.</p>
+
+
+<hr />
+
+<a id="btn-previous" href="/2017/05/18/rails-hreflang/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a id="btn-next" href="/2017/05/04/programming-idioms/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

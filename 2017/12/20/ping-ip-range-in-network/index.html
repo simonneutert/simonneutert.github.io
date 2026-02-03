@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Find all devices in network | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.MGEJV2MU.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>Find all devices in network</h1>
+
+<p>Do not try, just say hi :)</p>
+
+<p>for linux users</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># ping then show</span>
+<span class="nv">$ </span><span class="k">for </span>i <span class="k">in</span> <span class="o">{</span>1..254<span class="o">}</span> <span class="p">;</span><span class="k">do</span> <span class="o">(</span>ping 192.168.178.<span class="nv">$i</span> <span class="nt">-c</span> 1 <span class="nt">-w</span> 5  <span class="o">&gt;</span>/dev/null <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">"192.168.1.</span><span class="nv">$i</span><span class="s2">"</span> &amp;<span class="o">)</span> <span class="p">;</span><span class="k">done</span>
+<span class="nv">$ </span>arp <span class="nt">-a</span> | <span class="nb">grep</span> <span class="nt">-v</span> <span class="s2">"?"</span>
+</code></pre></div></div>
+
+
+<hr />
+
+<a id="btn-previous" href="/2017/12/28/python3-on-raspberry-pi/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a id="btn-next" href="/2017/12/18/python-2d-array-inception-counter/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Mixed Content Warning in your favourite Web Framework (it&#39;s Rails) | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.MGEJV2MU.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>Mixed Content Warning in your favourite Web Framework (it&#39;s Rails)</h1>
+
+<p>Upgrading to Rails v7 with esbuild wasn’t a real joy.</p>
+
+<p>But when in production everything went off the rails - pun intended - a <code class="highlighter-rouge">mixed active content</code> error had me struggling.</p>
+
+<p>Thankfully it was really easy to fix, by adding:</p>
+
+<p><code class="highlighter-rouge">&lt;meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"&gt;</code></p>
+
+<p>to the <code class="highlighter-rouge">application.html.erb</code> 😅</p>
+
+
+<hr />
+
+<a id="btn-previous" href="/2022/04/09/msgpack/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a id="btn-next" href="/2022/03/15/xcode-select-not-found-copy/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

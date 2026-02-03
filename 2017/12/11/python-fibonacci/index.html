@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Fibonacci in Python | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.MGEJV2MU.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>Fibonacci in Python</h1>
+
+<p>Why not practice some Python?</p>
+
+<p>Calculating Fibonacci numbers should be a perfect grinder :-)</p>
+
+<p>first 5 fib =&gt; 0, 1, 1, 2, 3
+first 10 fib =&gt; 0, 1, 1, 2, 3, 5, 8, 13, 21, 34</p>
+
+<p>A naive implementation would look like this:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">naive_fib</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span><span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+
+    <span class="k">while</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+        <span class="n">x</span> <span class="o">-=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">b</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="nf">naive_fib</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="c1">#=&gt; 3
+</span></code></pre></div></div>
+
+<p>You need a list of the results? No Problem, but watch out for a explosion of memory:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">list_fib</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">fibs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">fibs</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">fibs</span>
+
+    <span class="k">while</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">fibs</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">fibs</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">fibs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">x</span> <span class="o">-=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">fibs</span>
+
+
+<span class="nf">print</span><span class="p">(</span><span class="nf">list_fib</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="c1">#=&gt; [0, 1, 1, 2, 3]
+</span></code></pre></div></div>
+
+<p>Iterating over the results is made easy by Python&#8217;s built-in Generators. This goes easy on your memory and should run quite fast :-)</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">yield_fib</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">1</span>
+
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">yield</span> <span class="n">a</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+
+<span class="p">[</span><span class="nf">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">yield_fib</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>
+<span class="c1">#=&gt; 0
+#=&gt; 1
+#=&gt; 1
+#=&gt; 2
+#=&gt; 3
+</span></code></pre></div></div>
+
+
+<hr />
+
+<a id="btn-previous" href="/2017/12/12/loot-blospot-blog-to-jekyll/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a id="btn-next" href="/2017/12/11/command-line-arguments/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

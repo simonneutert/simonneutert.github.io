@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Find your possible co-authors for your next commit using ripgrep and babashka | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.MGEJV2MU.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>Find your possible co-authors for your next commit using ripgrep and babashka</h1>
+
+<p>When it comes to fairness, acknowledging the help or time your colleagues
+contribute is crucial. One simple way to ensure proper attribution is by adding
+co-authors to your commits.</p>
+
+<p>To add co-authors, include one or more <code class="highlighter-rouge">Co-authored-by</code> trailers at the end of
+your commit message, like this:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Commit message
+
+Co-authored-by: Joel Califa &lt;602352+califa@users.noreply.github.com&gt;
+Co-authored-by: Matt Clark &lt;44023+mclark@users.noreply.github.com&gt;
+</code></pre></div></div>
+
+<h2 id="with-basic-unix-tools">With basic Unix tools</h2>
+
+<p>No fire, no flames, just the basic Unix tools you already have on your system:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">alias </span>git-co-authored-by<span class="o">=</span><span class="s2">"git log &amp;&gt; /dev/null &amp;&amp; git log --shortstat | grep </span><span class="se">\"</span><span class="s2">Author:</span><span class="se">\"</span><span class="s2"> | sed </span><span class="se">\"</span><span class="s2">s/Author: //</span><span class="se">\"</span><span class="s2"> | sort -u | sed </span><span class="se">\"</span><span class="s2">s/^/Co-authored-by: /</span><span class="se">\"</span><span class="s2">"</span>
+</code></pre></div></div>
+
+<h2 id="with-ripgrep-and-babashka-">With ripgrep and babashka 🚀</h2>
+
+<p>Make sure to include these trailers after at least one blank line at the end of
+your commit message.</p>
+
+<p>For added convenience, you can set up a helpful alias in your shell environment
+(e.g., .bash_aliases, .zsh_aliases, or similar). Here’s a quick example:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git log &amp;&gt; /dev/null <span class="o">&amp;&amp;</span> git log <span class="nt">--shortstat</span> | <span class="nb">head</span> <span class="nt">-n</span> 10000 | rg <span class="s2">"Author:"</span> | bb <span class="nt">-i</span> <span class="nt">-o</span> <span class="s1">'(map #(clojure.string/replace % #"Author: " "Co-authored-by: ") (set *input*))'</span>
+</code></pre></div></div>
+
+<h2 id="requirements">Requirements</h2>
+
+<p>Here are the two tools you need to have installed, check out their official
+documentation:</p>
+
+<p><a href="https://babashka.org">babshka</a><br />
+<a href="https://github.com/BurntSushi/ripgrep">ripgrep on Github</a></p>
+
+<h2 id="explanation-of-the-clojure-code">Explanation of the clojure code</h2>
+
+<p>Let’s break down the babashka command
+<code class="highlighter-rouge">bb -i -o '(map #(clojure.string/replace % #"Author: " "Co-authored-by: ") (set *input*))'</code>:</p>
+
+<ol>
+  <li><code class="highlighter-rouge">bb</code> - This is the babashka CLI command</li>
+  <li><code class="highlighter-rouge">-i</code> - Flag that tells babashka to read from standard input</li>
+  <li><code class="highlighter-rouge">-o</code> - Flag that tells babashka to write to standard output</li>
+  <li>The main expression consists of several nested operations:
+    <ul>
+      <li><code class="highlighter-rouge">(set *input*)</code> - Converts the input lines into a set, removing duplicates</li>
+      <li><code class="highlighter-rouge">(map ...)</code> - Applies a function to each element in the set</li>
+      <li>The function <code class="highlighter-rouge">#(clojure.string/replace % #"Author: " "Co-authored-by: ")</code>
+does the following:
+        <ul>
+          <li>Uses <code class="highlighter-rouge">clojure.string/replace</code> to perform string replacement</li>
+          <li><code class="highlighter-rouge">%</code> is a placeholder for each input item</li>
+          <li><code class="highlighter-rouge">#"Author: "</code> is a regex pattern matching “Author: “</li>
+          <li><code class="highlighter-rouge">"Co-authored-by: "</code> replaces for the matched pattern</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<p>In plain English: This command reads lines from standard input, removes
+duplicates, and then removes the text “Author: “ from the beginning of each
+remaining line.</p>
+
+<p>Example usage:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">echo</span> <span class="nt">-e</span> <span class="s2">"Author: John</span><span class="se">\n</span><span class="s2">Author: Jane</span><span class="se">\n</span><span class="s2">Author: John"</span> | bb <span class="nt">-i</span> <span class="nt">-o</span> <span class="s1">'(map #(clojure.string/replace % #"Author: " "Co-authored-by: ") (set *input*)))'</span>
+</code></pre></div></div>
+
+<p>Output:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Co-authored-by: John
+Co-authored-by: Jane
+</code></pre></div></div>
+
+<h2 id="wrapping-the-script-up">Wrapping the script up</h2>
+
+<p>Running <code class="highlighter-rouge">git log &amp;&gt; /dev/null</code> first ensures you avoid system errors when
+executing the command.</p>
+
+<p>To make sure you have the necessary tools, install them using Homebrew or
+Linuxbrew with the following command:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>brew <span class="nb">install </span>borkdude/brew/babashka ripgrep
+</code></pre></div></div>
+
+<p>Happy Pair-Programming!</p>
+
+
+<hr />
+
+<a id="btn-previous" href="/2025/02/09/passwordless-systemd-restarts/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a id="btn-next" href="/2025/01/01/recap/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

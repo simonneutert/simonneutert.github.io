@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Debounce in Vue2 | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.MGEJV2MU.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>Debounce in Vue2</h1>
+
+<p>I found this very easy and indenpendent solution on <a href="https://stackoverflow.com/a/55617228">StackOverflow (here)</a>.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// in your component</span>
+<span class="nf">data</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">timeoutScroll</span><span class="p">:</span> <span class="kc">undefined</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nl">methods</span><span class="p">:</span> <span class="p">{</span>
+  <span class="na">handleScroll</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">timeoutScroll</span><span class="p">)</span> 
+      <span class="nf">clearTimeout</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">timeoutScroll</span><span class="p">);</span> 
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">timeoutScroll</span> <span class="o">=</span> <span class="nf">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="c1">// your action here</span>
+    <span class="p">},</span> <span class="mi">200</span><span class="p">);</span> <span class="c1">// delay</span>
+  <span class="p">}</span>
+<span class="p">},</span>
+
+<span class="nf">destroyed</span><span class="p">()</span> <span class="p">{</span> 
+  <span class="nf">clearInterval</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">timeout</span><span class="p">)</span> 
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>No dependencies and easy to keep in mind - but I know I will get back here once every few weeks 🤫</p>
+
+
+<hr />
+
+<a id="btn-previous" href="/2021/08/18/chess-oop/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a id="btn-next" href="/2021/03/22/ruby-on-rodas/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

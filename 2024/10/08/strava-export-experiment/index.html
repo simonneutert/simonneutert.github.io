@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Adventures in Golang: Organizing My Strava Data 🚴‍♂️ | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.MGEJV2MU.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>Adventures in Golang: Organizing My Strava Data 🚴‍♂️</h1>
+
+<p>I recently dove into an interesting project where I exported my Strava data to do some GPS visualization. I thought I’d share my experience, especially for those who might be new to Go.</p>
+
+<h2 id="tldr-just-show-me-the-product-">tldr; just show me the product 🚀</h2>
+
+<p><a href="https://github.com/simonneutert/strava-export-organizer/">strava-export-organizer</a> on GitHub</p>
+
+<h2 id="the-challenge-">The Challenge 🎯</h2>
+
+<p>I had a directory full of activity files from Strava - mostly <code class="highlighter-rouge">.fit</code> files with some <code class="highlighter-rouge">.gpx</code> mixed in. My goal? Organize these files into a clean directory structure based on activity type (running, cycling, etc.) and year. The activity metadata was tucked away in an <code class="highlighter-rouge">activities.csv</code> file.</p>
+
+<p>This is a part of the export strava.com provides. You can download your data in a zip file.</p>
+
+<h2 id="the-game-plan-">The Game Plan 📋</h2>
+
+<p>Being a Golang newbie, I thought this would be a straightforward project:</p>
+
+<ol>
+  <li>Parse the <code class="highlighter-rouge">activities.csv</code> file</li>
+  <li>Create a fresh directory for the organized files</li>
+  <li>Make subdirectories for each activity type</li>
+  <li>Within those, create year-based subdirectories (prefixed with activity type)</li>
+  <li>Move files to their new homes</li>
+  <li>Optional: <code class="highlighter-rouge">gunzip</code> gzipped files</li>
+</ol>
+
+<p>Simple enough, right? Well… 😅</p>
+
+<h2 id="the-plot-twist-gos-date-parsing-">The Plot Twist: Go’s Date Parsing 🤔</h2>
+
+<p>Here’s where things got interesting. If you’re coming from other programming languages, Go’s approach to date parsing might surprise you. Instead of using traditional format strings like <code class="highlighter-rouge">YYYY-MM-DD</code>, Go uses what I like to call “the magic reference date”:</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">"2006-01-02T15:04:05Z07:00"</span>
+</code></pre></div></div>
+
+<p>You could think of this as Go’s “zero date” - the reference point for parsing and formatting dates. Each part of the string corresponds to a specific date component:</p>
+
+<p>2006 = YYYY<br />
+01 = MM<br />
+02 = DD<br />
+15 = hh (24-hour)<br />
+04 = mm<br />
+05 = ss</p>
+
+<h2 id="a-real-world-example-">A Real-World Example 💡</h2>
+<p>Here’s how I parsed a date like 2022-03-23T07:00:00+01:00:</p>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">s</span> <span class="o">:=</span> <span class="s">"2022-03-23T07:00:00+01:00"</span>
+    <span class="n">loc</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">time</span><span class="o">.</span><span class="n">LoadLocation</span><span class="p">(</span><span class="s">"Europe/Berlin"</span><span class="p">)</span>
+    <span class="n">t</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">time</span><span class="o">.</span><span class="n">ParseInLocation</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">RFC3339</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">loc</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">Fatal</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Pro tip</strong>: While this format might seem quirky at first, Go provides several predefined formats like time.RFC3339 that can save you some headaches!</p>
+
+<h2 id="wrapping-up-">Wrapping Up 🎉</h2>
+
+<p>Despite the initial learning curve, this project turned out to be a fun way to dabble with Go. The date parsing might seem unusual at first, but it’s just one of those Go quirks that makes the language unique.</p>
+
+<h2 id="links--resources-">Links &amp; Resources 📚</h2>
+
+<p>Want to dive deeper into Go’s date formatting? Check out this super helpful cheat sheet: https://gosamples.dev/date-time-format-cheatsheet/</p>
+
+<p>More on Stack Overflow: https://stackoverflow.com/a/20234207</p>
+
+
+<hr />
+
+<a id="btn-previous" href="/2024/10/10/deno-v2-ink/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a id="btn-next" href="/2024/10/07/code-review/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

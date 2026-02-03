@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Install and run Docker on a Raspberry Pi | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.MGEJV2MU.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>Install and run Docker on a Raspberry Pi</h1>
+
+<p>I installed a fresh copy of Raspbian (2018-03-13-raspbian-stretch.img) and added an empty file named <strong>ssh</strong> to the root of the SD to enable ssh by default.</p>
+
+<p>Fire up the Pi connect to your network via cable, then ssh into it and set a new password with</p>
+
+<p><code class="highlighter-rouge">$ sudo raspi-config</code>, config the rest and reboot.</p>
+
+<h2 id="install-docker">Install Docker</h2>
+
+<p><code class="highlighter-rouge">$ sudo apt update &amp;&amp; sudo apt upgrade</code></p>
+
+<p><code class="highlighter-rouge">$ curl -sSL https://get.docker.com | sh</code></p>
+
+<p>After a succesful installation, Docker prints:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>If you would like to use Docker as a non-root user, you should now consider
+adding your user to the "docker" group with something like:
+
+  sudo usermod -aG docker pi
+
+Remember that you will have to log out and back in for this to take effect!
+
+WARNING: Adding a user to the "docker" group will grant the ability to run
+         containers which can be used to obtain root privileges on the
+         docker host.
+         Refer to https://docs.docker.com/engine/security/security/#docker-daemon-attack-surface
+         for more information.
+</code></pre></div></div>
+
+<p>So, you need to <code class="highlighter-rouge">$ sudo usermod -aG docker pi</code> (as long as pi is your current username) and <strong>reboot</strong>.</p>
+
+<p>In my case Docker service starts by default, if your&#8217;s doesn&#8217;t then:</p>
+
+<p><code class="highlighter-rouge">$ sudo systemctl enable docker</code> and cold start Docker daemon</p>
+
+<p><code class="highlighter-rouge">$ sudo systemctl start docker</code>.</p>
+
+<h2 id="install-docker-compose">Install Docker Compose</h2>
+
+<p><code class="highlighter-rouge">$ sudo pip install docker-compose</code> that&#8217;s it, that&#8217;s all :-)</p>
+
+<h2 id="a-word-on-architectures">A word on Architectures</h2>
+
+<p><strong>ARM vs x86</strong></p>
+
+<p>Do not forget to use packages/containers/builds that support both architectures in order to run platform independent.</p>
+
+
+<hr />
+
+<a id="btn-previous" href="/2018/04/08/jquery-list-classes-of-element/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a id="btn-next" href="/2018/03/15/rails-sql-by-date-year-month-day/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

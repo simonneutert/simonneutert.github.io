@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Ruby Telegram bot posting a Corona Heatmap Image for Rheinland-Pfalz, Germany | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.MGEJV2MU.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>Ruby Telegram bot posting a Corona Heatmap Image for Rheinland-Pfalz, Germany</h1>
+
+<p>This is quickly and loveless hacked together, but might give you a helping hand building something useful for your use case.</p>
+
+<p>The bot posts in a private telegram group, helping some friends that otherwise would have to go and check before their first meeting of the day.</p>
+
+<h2 id="code">Code</h2>
+
+<p><code class="highlighter-rouge">$ bundle init</code> a new ruby project using Ruby@2.6.5 (!important, because the underlying docker container with chrome is using 2.6.5), then create a <code class="highlighter-rouge">main.rb</code> and edit the <code class="highlighter-rouge">token</code> and the group&#8217;s id in <code class="highlighter-rouge">group</code>:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'ferrum'</span>
+<span class="nb">require</span> <span class="s1">'telegram/bot'</span>
+
+<span class="n">browser</span> <span class="o">=</span> <span class="no">Ferrum</span><span class="o">::</span><span class="no">Browser</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">window_size: </span><span class="p">[</span><span class="mi">1920</span><span class="p">,</span> <span class="mi">1080</span><span class="p">],</span> <span class="ss">browser_options: </span><span class="p">{</span> <span class="s1">'no-sandbox'</span><span class="p">:</span> <span class="kp">nil</span> <span class="p">})</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://corona.rlp.de/de/aktuelles/corona-warn-und-aktionsplan-rlp/"</span>
+<span class="n">browser</span><span class="p">.</span><span class="nf">goto</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">map_with_corona</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">browser</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="s2">".textpic"</span><span class="p">).</span><span class="nf">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">elem</span><span class="o">|</span>
+  <span class="n">map_with_corona</span> <span class="o">&lt;&lt;</span> <span class="n">elem</span><span class="p">.</span><span class="nf">at_css</span><span class="p">(</span><span class="s2">"a.image-link"</span><span class="p">).</span><span class="nf">attribute</span><span class="p">(</span><span class="ss">:href</span><span class="p">)</span> <span class="k">rescue</span> <span class="kp">nil</span>
+<span class="k">end</span>
+<span class="n">map_with_corona</span><span class="p">.</span><span class="nf">compact!</span>
+
+<span class="n">browser</span><span class="p">.</span><span class="nf">quit</span>
+
+<span class="n">token</span> <span class="o">=</span> <span class="s2">"1337:Go_is_alanguagedevelopedin2020-VEzBUs"</span>
+<span class="n">group</span> <span class="o">=</span> <span class="s2">"-3612313371337"</span>
+
+<span class="n">bot</span> <span class="o">=</span> <span class="no">Telegram</span><span class="o">::</span><span class="no">Bot</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+<span class="n">bot</span><span class="p">.</span><span class="nf">api</span><span class="p">.</span><span class="nf">send_photo</span><span class="p">(</span><span class="ss">chat_id: </span><span class="n">group</span><span class="p">,</span> <span class="ss">photo: </span><span class="s2">"https://corona.rlp.de/"</span> <span class="o">+</span> <span class="n">map_with_corona</span><span class="p">.</span><span class="nf">first</span><span class="p">,</span> <span class="ss">caption: </span><span class="n">url</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>edit the gemfile to contain at least ferrum and telegram-bot-ruby</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># frozen_string_literal: true
+
+source "https://rubygems.org"
+
+git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
+
+# gem "rails"
+
+gem 'ferrum'
+gem 'telegram-bot-ruby'
+</code></pre></div></div>
+
+<p>run <code class="highlighter-rouge">$ bundle install</code> ;-)</p>
+
+<p>and the Dockerfile looks something like this:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FROM simonneutert/ruby-2.6.5-headless-chrome
+
+WORKDIR /app
+
+RUN gem install bundler
+
+COPY Gemfile* ./
+RUN bundle install
+
+COPY . .
+
+CMD ruby main.rb
+</code></pre></div></div>
+
+<p>Build the docker <code class="highlighter-rouge">$ docker build . -t corona_rlp_bot</code> and run it (in a crontask?)<br />
+<code class="highlighter-rouge">$ docker run --rm corona_rlp_bot</code></p>
+
+
+<hr />
+
+<a id="btn-previous" href="/2020/10/21/dynamically-mount-a-gem/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a id="btn-next" href="/2020/10/08/yarn-zsh/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

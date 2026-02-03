@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Crawl MediaMarkts Fundgrube using Babashka (and telegram bots) | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.MGEJV2MU.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>Crawl MediaMarkts Fundgrube using Babashka (and telegram bots)</h1>
+
+<p>While browsing through my GitHub Feed, I stumbled across <a href="https://github.com/RomanNess/fundgrube-crawler">Roman Ness’ fundgrube-crawler</a> and thought this to be a nice little code exercise.</p>
+
+<p>My <a href="https://github.com/simonneutert/fundgrube">fundgrube code on GitHub</a>.</p>
+
+<h2 id="what-is-mediamarktsaturn-fundgube-and-what-is-the-problem-with-it">What is MediaMarkt/Saturn Fundgube and what is the problem with it?</h2>
+
+<p>The Fundgrube is a collection of products in a sub-webshop you can visit in MediaMarkt/Saturn’s main webshop. The products listed there usually are reduced in price, reduced drastically. These products were maybe used for displaying in the shop or may have some cosmetic issues, like scratches. Here’s the twist: customers need to collect the product from the store, shipping is not an option and another customer might be quicker than you.</p>
+
+<p>The “problem” with how the Fundgrube is offered as a webshop is the lack of filters or proper search tools. Just as they want you to come to the store to pick the product up, they want you to check the Fundgrube regularly (I guess).</p>
+
+<p>The data/products API is public and when opening the dev tools in your browser, you will find a custom header, wanting you to send in your resume and apply for a job. Fair play, MediaMarkt and Saturn.</p>
+
+<h2 id="my-script-my-babashka">My script, my babashka</h2>
+
+<p>What I’ve come up with in an adrenalin rush, is not (yet) a script i would show my mother-in-law and brag about it…, but …, well …, it does the job 😅</p>
+
+<p>My script crawls through MediaMarkts public <a href="https://www.mediamarkt.de/de/data/fundgrube">Fundgrube</a> API and posts new products on offer via a <a href="https://core.telegram.org/bots/faq#how-do-i-create-a-bot">telegram bot</a> in a secret channel for me and some friends.</p>
+
+<h4 id="technicals">Technicals</h4>
+
+<p>The tool is parameterised using ENV Vars, to iterate over the local product postings, then collecting unique items, aggregating the results. Before storing the data to disk, the last time created file is being copied and renamed, allowing the tool to detect changes. I decided to use Clojure’s <a href="https://github.com/edn-format/edn">edn data notation</a>.</p>
+
+<p>Here’s an example what a post to telegram of a detected product entry would look like:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Markt: Wiesbaden-Hasengarten
+Produkt: PHILIPS 58PUS8546/12 LED TV (Flat, 58 Zoll / 146 cm, UHD 4K, SMART TV, Ambilight, Android TV™ 10 (Q))
+
+Preis: 700.00 €
+
+Artikel 2734789
+-
+LED TV / 146cm/58Zoll / UHD 4K,
+Ultra Resolution, Dolby Vision, HDR10+, Micro Dimming Pro, ISF-Farbmanagement,
+2 x 10 W Full-Range-Lautsprecher,
+Ausschalt-Timer, Lichtsensor, Bildabschaltung (bei Radiobetrieb), Eco-Modus
+https://assets.mmsrg.com/is/166325/12975367df8e182e57044734f5165e190/c3/-/29336490249241a3925bcb97e235b830
+</code></pre></div></div>
+
+<p>What started as a quick experiment using httpie and jq, escalated quickly to an exercise in Clojure 🥰</p>
+
+
+<hr />
+
+<a id="btn-previous" href="/2023/03/08/rubocop/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a id="btn-next" href="/2022/10/29/labradorite/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

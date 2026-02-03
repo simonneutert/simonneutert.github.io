@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Working with Ruby&#39;s magical Eigenclass | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.MGEJV2MU.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>Working with Ruby&#39;s magical Eigenclass</h1>
+
+<p>I stumbled upon this nice blog article written by <a href="# http://culttt.com/2015/06/10/understanding-class-methods-verses-instance-methods-in-ruby/">Philip Brown on culttt.com</a> and had to check it out for myself.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">God</span>
+    <span class="k">def</span> <span class="nf">hello</span>
+        <span class="nb">puts</span> <span class="s2">"Hello World!"</span>
+    <span class="k">end</span>
+    <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>
+      <span class="c1"># this creates "class methods"</span>
+      <span class="c1"># those can be run without creating an instance first</span>
+      <span class="k">def</span> <span class="nf">hello</span>
+          <span class="nb">puts</span> <span class="s2">"Let's make gods and other stuff, like a universe."</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="no">God</span><span class="p">.</span><span class="nf">hello</span> <span class="c1"># =&gt; "Let's make gods and other stuff, like a universe."</span>
+
+<span class="c1"># vs. hello as an instance method</span>
+
+<span class="n">god</span> <span class="o">=</span> <span class="no">God</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">god</span><span class="p">.</span><span class="nf">hello</span> <span class="c1"># =&gt; "Hello World!"</span>
+</code></pre></div></div>
+
+<p>No instance of a god needed ;-)</p>
+
+
+<hr />
+
+<a id="btn-previous" href="/2017/03/22/debounce-with-coffee/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a id="btn-next" href="/2017/03/18/ruby-using-class_eval-in-service-objects/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

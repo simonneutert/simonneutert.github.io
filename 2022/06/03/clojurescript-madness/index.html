@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>clojurescript for the brave! omg 😳 | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.MGEJV2MU.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>clojurescript for the brave! omg 😳</h1>
+
+<p>tldr: <a href="https://github.com/simonneutert/clojurescript-web-app-demo">Code on GitHub</a><br />
+I WANT MORE BRACKETS!</p>
+
+<hr />
+
+<h4 id="my-friends-say-i-went-mad">My friends say, I went mad.</h4>
+
+<blockquote>
+  <p>A JVM based LISP, that compiles JavaScript for the browser? 🤯<br />
+You sure you’re alright?<br />
+- the whole world except a few brave men and women out there</p>
+</blockquote>
+
+<p>First and foremost, I am feeling fine, thank you very much.</p>
+
+<p>To most JavaScript is nothing they would envy one for.<br />
+Having the brackets surrounding code 🤯<br />
+whoa, this needs to stop!</p>
+
+<h4 id="lisp">LISP</h4>
+
+<p><img src="https://imgs.xkcd.com/comics/lisp_cycles.png" max-width="100%" /><br />
+<a>https://xkcd.com/297/</a></p>
+
+<h4 id="javascript">JavaScript</h4>
+
+<p>And, as the whole web knows, you gotta know your way round types in JavaScript.<br />
+The elephant in the room:</p>
+
+<p><img src="https://imgs.xkcd.com/comics/types.png" max-width="100%" /><br />
+<a>https://xkcd.com/1537</a></p>
+
+<h4 id="so-here-we-are-for-an-experiment-i-went-brackets-all-the-way-which-are-then-compiled-to-js-">So here we are. For an experiment I went brackets all the way. Which are then compiled to JS 🥹</h4>
+
+<p>Who would have guessed, it was both delightful and tough to do.</p>
+
+<p>Clojure excels when it comes to logic, data mangling and ease of development. So this was true for most of what I did.</p>
+
+<p>But what did I do exactly? Well, I wanted to see if I could setup an ugly one-page-app that would show events and lets me filter them.</p>
+
+<ul>
+  <li>firing and receiving a http json request
+    <ul>
+      <li>json extraction</li>
+      <li>process data, extract information</li>
+    </ul>
+  </li>
+  <li>dynamic data binding / state management</li>
+  <li>DOM creation/manipulation</li>
+  <li>state management</li>
+  <li>very basic Browser Event Management
+    <ul>
+      <li>user interaction</li>
+      <li>filtering</li>
+    </ul>
+  </li>
+  <li>parameterized build for dev/prod scenarios</li>
+</ul>
+
+<p>Was it worth it? Absolutely. The data is a real big chunk, so speed was crucial and well, without any optimization (memoization or a lookup table) it turned out usable.</p>
+
+<p>Being all functional, a implemented a basic state engine utilizing clojure’s <a href="https://clojuredocs.org/clojure.core/atom">atom</a>. This was nice. What wasn’t nice was the interactive JS part, but it gave me a nice little practise around event based programming and async promises. I skipped building a more sophisticated bus, it had hurt a little first, but it was absolutely worth it.</p>
+
+<p>I made this little project the most simple way, with the least dependencies possible. Yet, almost everybody else in bracket-land seems to use <a href="https://github.com/thheller/shadow-cljs">shadow-cljs</a> (<a href="https://clojure.org/news/2022/06/02/state-of-clojure-2022">Source</a>)</p>
+
+<h3 id="code">Code</h3>
+
+<p>Go, check out the code. Yes there are brackets, you can grow past that fact, can’t you?</p>
+
+<p><a href="https://github.com/simonneutert/clojurescript-web-app-demo">clojurescript-web-app-demo on GitHub</a></p>
+
+
+<hr />
+
+<a id="btn-previous" href="/2022/07/04/clojure-babashka/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a id="btn-next" href="/2022/05/18/tiler/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

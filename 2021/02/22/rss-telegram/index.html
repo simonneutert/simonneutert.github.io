@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Telegram RSS Feed | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.MGEJV2MU.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>Telegram RSS Feed</h1>
+
+<p>What is the cheapest way to make a bot send me rss feed news on telegram?</p>
+
+<p>If you wonder how to setup bots on telegram. They have @botfather, he will help you.</p>
+
+<h2 id="npm-dependencies">npm dependencies</h2>
+
+<ul>
+  <li>&#8220;rss-parser&#8221;: &#8220;^3.9.0&#8221;,</li>
+  <li>&#8220;sequelize&#8221;: &#8220;^6.3.5&#8221;,</li>
+  <li>&#8220;sqlite3&#8221;: &#8220;^5.0.0&#8221;,</li>
+  <li>&#8220;telegraf&#8221;: &#8220;^3.38.0&#8221;</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">Sequelize</span><span class="p">,</span> <span class="nx">Op</span><span class="p">,</span> <span class="nx">Model</span><span class="p">,</span> <span class="nx">DataTypes</span> <span class="p">}</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">sequelize</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">sequelize</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Sequelize</span><span class="p">({</span>
+  <span class="c1">// The `host` parameter is required for other databases</span>
+  <span class="c1">// host: 'localhost'</span>
+  <span class="na">dialect</span><span class="p">:</span> <span class="dl">"</span><span class="s2">sqlite</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">storage</span><span class="p">:</span> <span class="dl">"</span><span class="s2">./database.sqlite</span><span class="dl">"</span><span class="p">,</span>
+<span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">Article</span> <span class="o">=</span> <span class="nx">sequelize</span><span class="p">.</span><span class="nf">define</span><span class="p">(</span><span class="dl">"</span><span class="s2">Article</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">title</span><span class="p">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
+  <span class="na">content</span><span class="p">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">TEXT</span><span class="p">,</span>
+  <span class="na">contentSnippet</span><span class="p">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">TEXT</span><span class="p">,</span>
+  <span class="na">creator</span><span class="p">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
+  <span class="na">guid</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
+    <span class="na">unique</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">link</span><span class="p">:</span> <span class="nx">DataTypes</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
+<span class="p">});</span>
+
+<span class="c1">// sequelize.sync({ force: true }) will be useful if you need to start from scratch</span>
+<span class="nx">sequelize</span>
+  <span class="p">.</span><span class="nf">sync</span><span class="p">()</span> 
+  <span class="p">.</span><span class="nf">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{});</span>
+
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">Telegraf</span> <span class="p">}</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">telegraf</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">Parser</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">rss-parser</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Telegraf</span><span class="p">(</span><span class="nx">YOUR</span><span class="o">-</span><span class="nx">TELEGRAM</span><span class="o">-</span><span class="nx">BOT</span><span class="o">-</span><span class="nx">KEY</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">parser</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Parser</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">rssUrl</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://www.sensor-magazin.de/feed/</span><span class="dl">"</span>
+<span class="kd">const</span> <span class="nx">telegramChannel</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">@sensormainz_inoffiziell</span><span class="dl">"</span>
+
+<span class="p">(</span><span class="k">async </span><span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">feed</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">parser</span><span class="p">.</span><span class="nf">parseURL</span><span class="p">(</span><span class="nx">rssUrl</span><span class="p">);</span>
+  <span class="nx">feed</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">Article</span><span class="p">.</span><span class="nf">create</span><span class="p">({</span>
+      <span class="na">title</span><span class="p">:</span> <span class="nx">item</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span>
+      <span class="na">content</span><span class="p">:</span> <span class="nx">item</span><span class="p">.</span><span class="nx">content</span><span class="p">,</span>
+      <span class="na">contentSnippet</span><span class="p">:</span> <span class="nx">item</span><span class="p">.</span><span class="nx">contentSnippet</span><span class="p">,</span>
+      <span class="na">creator</span><span class="p">:</span> <span class="nx">item</span><span class="p">.</span><span class="nx">creator</span><span class="p">,</span>
+      <span class="na">guid</span><span class="p">:</span> <span class="nx">item</span><span class="p">.</span><span class="nx">guid</span><span class="p">,</span>
+      <span class="na">link</span><span class="p">:</span> <span class="nx">item</span><span class="p">.</span><span class="nx">link</span><span class="p">,</span>
+    <span class="p">})</span>
+      <span class="p">.</span><span class="nf">then</span><span class="p">(</span><span class="nf">function </span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">bot</span><span class="p">.</span><span class="nx">telegram</span>
+          <span class="p">.</span><span class="nf">sendMessage</span><span class="p">(</span><span class="nx">telegramChannel</span><span class="p">,</span> <span class="nx">item</span><span class="p">.</span><span class="nx">link</span><span class="p">)</span>
+          <span class="p">.</span><span class="nf">then</span><span class="p">((</span><span class="nx">_msg</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">link</span><span class="p">);</span>
+          <span class="p">})</span>
+          <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+          <span class="p">});</span>
+      <span class="p">})</span>
+      <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+      <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">})();</span>
+</code></pre></div></div>
+
+
+<hr />
+
+<a id="btn-previous" href="/2021/03/21/audio-books-plays-on-spotify/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a id="btn-next" href="/2020/10/21/dynamically-mount-a-gem/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

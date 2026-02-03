@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Copy Arrays and Lists | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.MGEJV2MU.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>Copy Arrays and Lists</h1>
+
+<h1 id="this-is-how-you-copy-an-array--a-list-correctly">This is how you copy an Array / a List correctly.</h1>
+<p>Let&#8217;s create an Array / List first:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a = ["Simon", "Laura"]
+</code></pre></div></div>
+<p>Then copy it properly!</p>
+
+<p><strong>in Python</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:]</span>
+</code></pre></div></div>
+
+<p><strong>in Ruby</strong></p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:clone</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h1 id="the-following-example-shows-the-false-friend-declaration">The following example shows the &#8220;false friend declaration&#8221;</h1>
+
+<p>By simply declaring the array variable <strong>a</strong> to a new variable <strong>b</strong>, then <strong>b</strong> points to <strong>a</strong>.
+So every change of <strong>a</strong> means change in <strong>b</strong> and vice versa.</p>
+
+<p>Now add a new value to <strong>a</strong>:</p>
+
+<p><strong>Python</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="sh">"</span><span class="s">Simon</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">Laura</span><span class="sh">"</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="n">a</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="sh">"</span><span class="s">Willi</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</code></pre></div></div>
+<p><strong>Ruby</strong></p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Simon"</span><span class="p">,</span> <span class="s2">"Laura"</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="n">a</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="s2">"Willi"</span><span class="p">)</span>
+<span class="n">put</span> <span class="n">b</span>
+</code></pre></div></div>
+<p>In both cases <strong>b</strong> will return <code class="highlighter-rouge">["Simon", "Laura", "Willi"]</code></p>
+
+
+<hr />
+
+<a id="btn-previous" href="/2017/01/09/list-tables-rails-console/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a id="btn-next" href="/2016/10/24/mechanize-csrf-rails-devise-login/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Save a file (like png or jpg) from web using clojure / babashka | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.MGEJV2MU.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>Save a file (like png or jpg) from web using clojure / babashka</h1>
+
+<p>babashka scripting is the way to go:</p>
+
+<div class="language-clojure highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nf">io/copy</span><span class="w">
+  </span><span class="p">(</span><span class="no">:body</span><span class="w"> </span><span class="p">(</span><span class="nf">curl/get</span><span class="w"> </span><span class="s">"http://your-URL.test"</span><span class="w">
+    </span><span class="p">{</span><span class="no">:as</span><span class="w"> </span><span class="no">:stream</span><span class="p">}))</span><span class="w">
+  </span><span class="p">(</span><span class="nf">io/file</span><span class="w"> </span><span class="s">"icon.png"</span><span class="p">))</span><span class="w">
+</span></code></pre></div></div>
+
+<p>or do it in Clojure, named with current date:</p>
+
+<div class="language-clojure highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nb">import</span><span class="w"> </span><span class="o">'</span><span class="p">(</span><span class="nf">java.time.format</span><span class="w"> </span><span class="n">DateTimeFormatter</span><span class="p">)</span><span class="w"> </span><span class="o">'</span><span class="p">(</span><span class="nf">java.time</span><span class="w"> </span><span class="n">LocalDateTime</span><span class="p">))</span><span class="w"> 
+
+</span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[</span><span class="n">date-str</span><span class="w"> </span><span class="p">(</span><span class="nf">.format</span><span class="w"> </span><span class="p">(</span><span class="nf">DateTimeFormatter/ofPattern</span><span class="w"> </span><span class="s">"yyyy-MM-dd"</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nf">LocalDateTime/now</span><span class="p">))]</span><span class="w">
+    </span><span class="p">(</span><span class="nf">io/copy</span><span class="w">
+        </span><span class="p">(</span><span class="no">:body</span><span class="w"> </span><span class="p">(</span><span class="nf">curl/get</span><span class="w"> </span><span class="p">(</span><span class="nb">str</span><span class="w"> </span><span class="n">*input*</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="no">:as</span><span class="w"> </span><span class="no">:bytes</span><span class="p">}))</span><span class="w">
+        </span><span class="p">(</span><span class="nf">io/file</span><span class="w"> 
+            </span><span class="p">(</span><span class="nb">str</span><span class="w"> </span><span class="s">"date-"</span><span class="w"> </span><span class="n">date-str</span><span class="w"> </span><span class="s">".png"</span><span class="p">))))</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="use-pmap-to-leech-concurrently-">use pmap to leech concurrently 🤓</h4>
+
+<blockquote>
+  <p>for more web-hackiness you can pipe/chain:<br />
+httpie, jq, htmlq, bb, awk</p>
+</blockquote>
+
+
+<hr />
+
+<a id="btn-previous" href="/2022/09/21/clojure-neo4j-error/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a id="btn-next" href="/2022/08/30/leaflet-draw-grid/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

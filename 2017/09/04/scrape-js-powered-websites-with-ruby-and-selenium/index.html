@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Scrape JS Rendered Websites with Ruby and PhantomJS | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.MGEJV2MU.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>Scrape JS Rendered Websites with Ruby and PhantomJS</h1>
+
+<p>Before Angular and its trillions of lookalikes a <em>simple html request</em>™ worked just fine. Nowadays, things have changed. More and more websites unconditionally require a working JavaScript Engine to be rendered readable. This disqualifies a <em>simple html request</em>™ to get what you need.</p>
+
+<h2 id="phantomjs-to-the-recue">PhantomJS to the recue</h2>
+
+<ol>
+  <li>
+    <p>Please <strong>install PhantomJS</strong> first. <a href="http://phantomjs.org/">http://phantomjs.org/</a>.</p>
+  </li>
+  <li>
+    <p><strong>Install Watir</strong>, this allows you to interact with urls, just like your favourite browser would do. <code class="highlighter-rouge">$ gem install watir</code> In our case it will be PhantomJS. Read more about the concept on Watir’s official Website <a href="http://watir.com">http://watir.com</a> and see also <a href="https://github.com/watir/watir">Watir on GitHub</a>.</p>
+  </li>
+  <li>
+    <p><strong>OPTIONAL</strong> Download the binary from <a href="http://phantomjs.org/">http://phantomjs.org/</a> and extract the package. Then copy the <strong>/bin</strong> folder (with the file called <code class="highlighter-rouge">phantomjs</code> in it) into your Rails™ or Sinatra™ project’s <strong>/bin</strong> folder to make this work on <strong>heroku</strong>.</p>
+  </li>
+</ol>
+
+<h2 id="get-your-scrape-on">Get your scrape on</h2>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'watir'</span>
+<span class="nb">require</span> <span class="s1">'nokogiri'</span>
+
+<span class="c1"># go to url</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">'https://www.youtube.com/'</span>
+<span class="nb">puts</span> <span class="s2">"Loading: </span><span class="si">#{</span><span class="n">url</span><span class="si">}</span><span class="s2">"</span>
+
+<span class="c1"># set up a watir browser session with phantomjs</span>
+<span class="n">browser</span> <span class="o">=</span> <span class="no">Watir</span><span class="o">::</span><span class="no">Browser</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:phantomjs</span>
+
+<span class="c1"># make watir visit the url</span>
+<span class="n">browser</span><span class="p">.</span><span class="nf">goto</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="c1"># this is crucial!</span>
+<span class="c1"># give it some time to render :)</span>
+<span class="c1"># 4 seconds might be too long - find your own sweet spot</span>
+<span class="nb">sleep</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># time for some Nokogiri™ magic</span>
+<span class="n">html_doc</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">HTML</span><span class="p">(</span><span class="n">browser</span><span class="p">.</span><span class="nf">html</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="s1">'Received Website\'s rendered HTML'</span>
+<span class="nb">puts</span> <span class="n">html_doc</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="s1">'h1'</span><span class="p">).</span><span class="nf">text</span>
+
+<span class="c1"># close watir session! be kind.</span>
+<span class="n">browser</span><span class="p">.</span><span class="nf">close</span>
+</code></pre></div></div>
+
+
+<hr />
+
+<a id="btn-previous" href="/2017/11/13/jquery-google-maps-places-reviews/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a id="btn-next" href="/2017/08/25/async-http-requests-elixir/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

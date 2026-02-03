@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>sq + jq: The Dynamic Duo for Data Mangling | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.MGEJV2MU.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>sq + jq: The Dynamic Duo for Data Mangling</h1>
+
+<p>When it comes to transforming data on the command line, <code class="highlighter-rouge">sq</code> and <code class="highlighter-rouge">jq</code> make a powerful combination. While <code class="highlighter-rouge">jq</code> is the gold standard for JSON manipulation, <code class="highlighter-rouge">sq</code> brings SQL-like querying to structured data formats.</p>
+
+<p>Visit <a href="https://sq.io">sq.io</a> to learn more about <code class="highlighter-rouge">sq</code>.</p>
+
+<h2 id="why-this-combo-rocks">Why This Combo Rocks</h2>
+
+<blockquote>
+  <p>sq is a free/libre open-source data wrangling swiss-army knife to inspect, query, join, import, and export data. You could think of sq as jq for databases and documents, facilitating one-liners like:</p>
+
+  <p><code class="highlighter-rouge">sq '@postgres_db | .actor | .first_name, .last_name | .[0:5]'</code></p>
+</blockquote>
+
+<p><code class="highlighter-rouge">sq</code> excels at querying databases and converting between formats, while <code class="highlighter-rouge">jq</code> shines at transforming JSON structures. Together, they form a pipeline that can handle complex data transformations with elegance.</p>
+
+<h2 id="the-sweet-spot">The Sweet Spot</h2>
+
+<p>The magic happens when you need to:</p>
+<ul>
+  <li>Extract data from databases/Excel/CSV in specific formats</li>
+  <li>Transform complex nested structures</li>
+  <li>Chain operations that leverage each tool’s strengths</li>
+  <li>Work with mixed data sources (SQL → JSON → processed output)</li>
+</ul>
+
+<h2 id="real-world-example">Real-World Example</h2>
+
+<p>Check out this <a href="https://gist.github.com/simonneutert/f71a507d67142a2d59152f917bff9654">gist</a> for practical examples with a CSV file of <code class="highlighter-rouge">sq</code> and <code class="highlighter-rouge">jq</code> working together to tackle common data processing tasks.</p>
+
+<p>The combination transforms what would be complex multi-step processes into concise, readable pipelines.</p>
+
+
+<hr />
+
+<a id="btn-previous" href="/2025/09/02/deno-handlebars-oak/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a id="btn-next" href="/2025/08/31/distrobox/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

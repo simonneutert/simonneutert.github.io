@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Today I learned about postgres&#39; `with` clause | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.MGEJV2MU.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>Today I learned about postgres&#39; `with` clause</h1>
+
+<p>A <code class="highlighter-rouge">with</code> clause can be used to create a temporary table that can be used in the query. This is useful when you want to use the same subquery multiple times in the main query.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">WITH</span> <span class="n">total_activities</span> <span class="k">AS</span> <span class="p">(</span>
+  <span class="k">SELECT</span> <span class="n">a</span><span class="p">.</span><span class="n">profile_id</span><span class="p">,</span> <span class="k">count</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">id</span><span class="p">)</span> <span class="k">AS</span> <span class="n">activity_count</span> 
+  <span class="k">FROM</span> <span class="n">activities</span> <span class="n">a</span>
+  <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">profile_id</span>
+<span class="p">)</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">total_activities</span> 
+<span class="k">UNION</span> <span class="k">ALL</span>
+<span class="k">SELECT</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sum</span><span class="p">(</span><span class="n">activity_count</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">total_activities</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">profile_id</span>
+</code></pre></div></div>
+
+<p>In the above query, <code class="highlighter-rouge">total_activities</code> is a temporary table that is created using the <code class="highlighter-rouge">with</code> clause. This temporary table is then used in the main query to get the total count of activities for each profile and also the sum of all activities.</p>
+
+
+<hr />
+
+<a id="btn-previous" href="/2024/11/13/bare-metal-ruby-hosting-caddy-puma-systemd/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a id="btn-next" href="/2024/11/09/deno2-sidekicks/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

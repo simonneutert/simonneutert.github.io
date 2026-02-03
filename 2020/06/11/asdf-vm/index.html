@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>I rediscovered &quot;asdf&quot; and what it became is simply awesome | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.MGEJV2MU.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>I rediscovered &quot;asdf&quot; and what it became is simply awesome</h1>
+
+<h2 id="manage-software-language-versions-with-ease">Manage software language versions with ease</h2>
+
+<p>asdf is now known as asdf-vm (asdf version manager) and you can check the <a href="https://asdf-vm.com/#/">website</a> or jump to the <a href="https://github.com/asdf-vm/asdf">code base on GitHub</a>.</p>
+
+<h3 id="asdf-vm-cheatsheet">asdf-vm cheatsheet</h3>
+
+<p>with Ruby as an example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ asdf plugin add ruby
+$ asdf list all ruby
+$ asdf install ruby 2.6.6
+$ asdf list ruby
+
+# Set Current Version
+#
+# global overwrite with this command, but please do this only if you know what consequences it brings.
+# global writes the version to $HOME/.tool-versions.
+# $ asdf global &lt;name&gt; &lt;version&gt; [&lt;version&gt;...]
+# 
+# set the ruby version for a project:
+# local writes the version to $PWD/.tool-versions, creating it if needed.
+$ asdf local &lt;name&gt; &lt;version&gt; [&lt;version&gt;...]
+</code></pre></div></div>
+
+<h2 id="installation-and-system-integration">Installation and system integration</h2>
+
+<p>It is installed really quick and will do all the hustle for you. User of Mac OS Catalina which comes with <code class="highlighter-rouge">zsh</code> as the default shell will most likely use oh-my-zsh and all you need to do is enable the plugin.</p>
+
+<p>But it works just as well with bash or fish.</p>
+
+<p><code class="highlighter-rouge">$ vi ~/.zshrc</code></p>
+
+<p>Here are the plugins I load:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git bundler dotenv osx rake ruby asdf docker docker-compose yarn npm)
+</code></pre></div></div>
+
+<h2 id="asdf-vm-and-nodejs">asdf-vm and nodejs</h2>
+
+<p>when it comes to installing nodejs, there might be an error, which is easily fixed by hacking this into your terminal:</p>
+
+<p><code class="highlighter-rouge">bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring</code></p>
+
+
+<hr />
+
+<a id="btn-previous" href="/2020/06/17/velominati-js/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a id="btn-next" href="/2020/03/30/ferrum-select-dropdown/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

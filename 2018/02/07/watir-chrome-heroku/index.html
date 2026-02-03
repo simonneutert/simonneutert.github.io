@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Ruby, Watir and Chrome on Heroku | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.MGEJV2MU.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>Ruby, Watir and Chrome on Heroku</h1>
+
+<p>Newest <a href="http://watir.com">Watir</a> / <a href="https://rubygems.org/gems/selenium-webdriver/">Selenium</a> Combo had a deprecation warning for PhantomJS. I didn&#8217;t want to get caught, so it was about time to tackle this.</p>
+
+<p>Heroku is a relatively closed and proprietary PaaS, yet my favourite one. In the past, I added a compiled PhantomJS executable in a <code class="highlighter-rouge">bin</code> directory <a href="/blog/2017/scrape-js-powered-websites-with-ruby-and-selenium/">(read more)</a>.</p>
+
+<h2 id="buildpacks-for-your-heroku-project">Buildpacks for your heroku project</h2>
+
+<p>go to your heroku dashboard, select the project and add these buildpacks:</p>
+
+<ul>
+  <li>
+    <p><a href="https://github.com/heroku/heroku-buildpack-google-chrome">https://github.com/heroku/heroku-buildpack-google-chrome</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/heroku/heroku-buildpack-chromedriver">https://github.com/heroku/heroku-buildpack-chromedriver</a></p>
+  </li>
+</ul>
+
+<p>but running Watir still fails:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># runs on local machine just fine</span>
+<span class="n">browser</span> <span class="o">=</span> <span class="no">Watir</span><span class="o">::</span><span class="no">Browser</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:chrome</span>
+</code></pre></div></div>
+
+<h2 id="heroku-bash-to-the-rescue">heroku bash to the rescue</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># in your terminal</span>
+<span class="nv">$ </span><span class="nb">cd</span> /your/project/path
+
+<span class="nv">$ </span>heroku run bash
+
+<span class="c"># on heroku bash</span>
+<span class="c"># save the returned paths for future use</span>
+<span class="nv">$ </span>which google-chrome
+
+<span class="nv">$ </span>which chromedriver
+</code></pre></div></div>
+
+<h2 id="setup-selenium-on-production">Setup Selenium (on production)</h2>
+
+<p><a href="http://seleniumhq.github.io/selenium/docs/api/rb/Selenium/WebDriver/Chrome.html">Selenium Chrome Documentation</a></p>
+
+<p>remember to wrap the Watir code in an if clause, so only your heroku project uses the new Selenium settings. I like to set a custom ENV variable on heroku for such things.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Selenium</span><span class="o">::</span><span class="no">WebDriver</span><span class="o">::</span><span class="no">Chrome</span><span class="p">.</span><span class="nf">path</span> <span class="o">=</span> <span class="s2">"path/to/google-chrome"</span>
+<span class="no">Selenium</span><span class="o">::</span><span class="no">WebDriver</span><span class="o">::</span><span class="no">Chrome</span><span class="p">.</span><span class="nf">driver_path</span> <span class="o">=</span> <span class="s2">"path/to/chromedriver"</span>
+<span class="n">browser</span> <span class="o">=</span> <span class="no">Watir</span><span class="o">::</span><span class="no">Browser</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:chrome</span>
+</code></pre></div></div>
+
+<p>You now have <a href="http://watir.com">Watir</a> / <a href="https://rubygems.org/gems/selenium-webdriver/">Selenium</a> running a headless Chrome browser on heroku.</p>
+
+
+<hr />
+
+<a id="btn-previous" href="/2018/02/09/ruby-2-5-hash-slice/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a id="btn-next" href="/2018/02/06/ruby-yield-scope/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

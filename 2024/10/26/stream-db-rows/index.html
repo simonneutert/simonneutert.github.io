@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Stream Database Rows with sequel_pg | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.MGEJV2MU.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>Stream Database Rows with sequel_pg</h1>
+
+<p>Reading the docs (thoroughly, maybe twice) can be a good thing.</p>
+
+<p>As the haiku goes:</p>
+
+<blockquote>
+  <p>Pages filled with light,<br />
+Guiding hands through code’s maze,<br />
+Errors fade away.</p>
+</blockquote>
+
+<h2 id="til">TIL</h2>
+
+<p>I’ve been using Sequel for a while now. But up until today, I didn’t know that I could stream database rows with <code class="highlighter-rouge">sequel_pg</code>. This will reduce memory usage when working with large datasets and if I understand correctly, it will also speed up the processing of the data.</p>
+
+<p>If your database is postgres, <a href="https://github.com/jeremyevans/sequel_pg">sequel_pg</a> should be already your go-to gem.<br />
+Yet, you might not know that you can stream database rows with it.</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>== Streaming
+
+If you are using PostgreSQL 9.2+ on the client, then sequel_pg
+should enable streaming support.  This allows you to stream returned
+rows one at a time, instead of collecting the entire result set in
+memory (which is how PostgreSQL works by default).  You can check
+if streaming is supported by:
+
+  Sequel::Postgres.supports_streaming?
+
+If streaming is supported, you can load the streaming support into the
+database:
+
+  DB.extension(:pg_streaming)
+
+Then you can call the Dataset#stream method to have the dataset use
+the streaming support:
+
+  DB[:table].stream.each{|row| ...}
+
+If you want to enable streaming for all of a database's datasets, you
+can do the following:
+
+  DB.stream_all_queries = true
+</code></pre></div></div>
+
+<p>In my project, I set up the streaming like this (the most basic way, I guess):</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">DB</span><span class="p">.</span><span class="nf">extension</span><span class="p">(</span><span class="ss">:pg_streaming</span><span class="p">)</span>
+<span class="no">DB</span><span class="p">.</span><span class="nf">stream_all_queries</span> <span class="o">=</span> <span class="kp">true</span>
+</code></pre></div></div>
+
+<p>And voilà, free speed and memory savings. 🚀</p>
+
+<h2 id="side-note">Side Note</h2>
+
+<p>If you were using <code class="highlighter-rouge">use_cursor</code> in your project, make sure to benchmark it against the streaming feature. It can be faster than using a cursor (in a rare circumstance). In my case, streaming was the clear winner.</p>
+
+
+<hr />
+
+<a id="btn-previous" href="/2024/11/08/wilson-on-deno/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a id="btn-next" href="/2024/10/18/deno-v2/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

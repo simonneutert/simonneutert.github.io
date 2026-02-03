@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Login to a CSRF-Token Secured Website Using Mechanize | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.MGEJV2MU.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>Login to a CSRF-Token Secured Website Using Mechanize</h1>
+
+<p>Ruby Ruby Ruby</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># this is what you need to gem install in the first place</span>
+<span class="nb">require</span> <span class="s1">'mechanize'</span>
+<span class="nb">require</span> <span class="s1">'nokogiri'</span>
+<span class="nb">require</span> <span class="s1">'open-uri'</span>
+
+<span class="k">class</span> <span class="nc">EasyLogin</span>
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">email</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+    <span class="vi">@email</span> <span class="o">=</span> <span class="n">email</span>
+    <span class="vi">@password</span> <span class="o">=</span> <span class="n">password</span>
+    <span class="c1"># generate a mechanize agent object for persistent "browsing"</span>
+    <span class="vi">@browser</span> <span class="o">=</span> <span class="no">Mechanize</span><span class="p">.</span><span class="nf">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">agent</span><span class="o">|</span>
+      <span class="n">agent</span><span class="p">.</span><span class="nf">user_agent_alias</span> <span class="o">=</span> <span class="s1">'Mac Safari'</span>
+      <span class="n">agent</span><span class="p">.</span><span class="nf">follow_meta_refresh</span> <span class="o">=</span> <span class="kp">true</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">login</span><span class="p">(</span><span class="n">login_url</span><span class="p">)</span>
+    <span class="c1"># get the desired page with the login form</span>
+    <span class="n">get</span><span class="p">(</span><span class="n">login_url</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">page</span><span class="o">|</span>
+      <span class="c1"># search the current csrf token in the head of the document</span>
+      <span class="n">csrf_token</span> <span class="o">=</span> <span class="n">page</span><span class="p">.</span><span class="nf">search</span><span class="p">(</span><span class="s1">'//meta[@name="csrf-token"]/@content'</span><span class="p">)</span>
+      <span class="c1"># now let's dive into the form (authenticity_token is a hidden field)</span>
+      <span class="n">login_form</span> <span class="o">=</span> <span class="n">page</span><span class="p">.</span><span class="nf">form_with</span><span class="p">(</span><span class="ss">:id</span> <span class="o">=&gt;</span> <span class="s1">'new_admin'</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">login</span><span class="o">|</span>
+        <span class="n">login</span><span class="p">.</span><span class="nf">field_with</span><span class="p">(</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'admin[email]'</span><span class="p">).</span><span class="nf">value</span> <span class="o">=</span> <span class="vi">@email</span>
+        <span class="n">login</span><span class="p">.</span><span class="nf">field_with</span><span class="p">(</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'admin[password]'</span><span class="p">).</span><span class="nf">value</span> <span class="o">=</span> <span class="vi">@password</span>
+        <span class="n">login</span><span class="p">.</span><span class="nf">field_with</span><span class="p">(</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'authenticity_token'</span><span class="p">).</span><span class="nf">value</span> <span class="o">=</span> <span class="n">csrf_token</span>
+        <span class="c1"># check output in console</span>
+        <span class="nb">puts</span> <span class="n">login</span><span class="p">.</span><span class="nf">values</span>
+        <span class="c1"># submit the form</span>
+        <span class="n">login</span><span class="p">.</span><span class="nf">submit</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="n">post_url</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span>
+    <span class="c1"># get the token</span>
+    <span class="n">csrf_token</span> <span class="o">=</span> <span class="vi">@browser</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">post_url</span><span class="p">).</span><span class="nf">search</span><span class="p">(</span><span class="s1">'//meta[@name="csrf-token"]/@content'</span><span class="p">)</span>
+    <span class="c1"># define the data for the form</span>
+    <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">'article[title]'</span> <span class="o">=&gt;</span> <span class="n">title</span><span class="p">,</span> <span class="s1">'article[content]'</span> <span class="o">=&gt;</span> <span class="n">content</span> <span class="p">}</span>
+    <span class="c1"># post to your controller</span>
+    <span class="vi">@browser</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span><span class="n">post_url</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="p">{})</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">shutdown</span>
+    <span class="vi">@browser</span><span class="p">.</span><span class="nf">shutdown</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1"># ready to rock!</span>
+<span class="n">email</span> <span class="o">=</span> <span class="s2">"email@emailprovider.com"</span>
+<span class="n">password</span> <span class="o">=</span> <span class="s2">"your-password"</span>
+<span class="n">easy_login</span> <span class="o">=</span> <span class="no">EasyLogin</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">email</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+
+<span class="n">login_url</span> <span class="o">=</span> <span class="s1">'http://localhost:3000/admins/sign_in'</span>
+<span class="n">easy_login</span><span class="p">.</span><span class="nf">login</span><span class="p">(</span><span class="n">login_url</span><span class="p">)</span>
+
+<span class="n">post_url</span> <span class="o">=</span> <span class="s1">'http://localhost:3000/articles/new'</span>
+<span class="n">title</span> <span class="o">=</span> <span class="s2">"Title of Post"</span>
+<span class="n">content</span> <span class="o">=</span> <span class="o">&lt;&lt;~</span><span class="no">MESSAGE</span><span class="sh">
+            "Lorem ipsum bacon gin tonic"
+</span><span class="no">          MESSAGE</span>
+<span class="n">easy_login</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span><span class="n">post_url</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span>
+
+<span class="n">easy_login</span><span class="p">.</span><span class="nf">shutdown</span>
+
+
+</code></pre></div></div>
+
+
+<hr />
+
+<a id="btn-previous" href="/2016/12/25/copy-array/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a id="btn-next" href="/2016/10/08/turbolinks-5-and-rails-5-lovetrain/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>strftime does not localize | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.MGEJV2MU.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>strftime does not localize</h1>
+
+<p><a href="http://apidock.com/ruby/DateTime/strftime">APIdock: strftime()</a></p>
+
+<p>To make it short: strftime() does not translate or localize at all.</p>
+
+<p>So in order to make things work in Rails, you need to use <a href="http://api.rubyonrails.org/classes/ActionView/Helpers/TranslationHelper.html#method-i-localize">I18n localize</a></p>
+
+<p>I assume you&#8217;ve set your I18n in your rails app properly (<a href="https://github.com/svenfuchs/rails-i18n">e.g. with this gem rails-i18n</a>)
+and the locale is <strong>:de</strong></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">date</span> <span class="o">=</span> <span class="no">Date</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span><span class="mo">01</span><span class="p">,</span><span class="mi">31</span><span class="p">)</span>
+<span class="n">l</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="ss">format: </span><span class="s2">"%B %Y"</span><span class="p">)</span> <span class="c1"># =&gt; Januar 2017</span>
+</code></pre></div></div>
+
+<p><a href="http://apidock.com/rails/ActionView/Helpers/TranslationHelper/localize">read more on APIdock: localize</a></p>
+
+<p><strong>why not read a super detailed blog post from <a href="http://www.stackednotion.com/blog/2015/01/03/formatting-dates-and-times-in-rails-with-i18n-localize/">stackednotion.com</a> on this topic?</strong></p>
+
+
+<hr />
+
+<a id="btn-previous" href="/2017/02/02/obfuscate-email-like-bocss/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a id="btn-next" href="/2017/01/27/basic_array_operations_in_ruby/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

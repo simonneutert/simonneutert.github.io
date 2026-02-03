@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Custom fields in collection_select | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.MGEJV2MU.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>Custom fields in collection_select</h1>
+
+<p>Setup a custom select option text field in collection_select</p>
+
+<p><em>Contact</em> <strong>belongs_to</strong> <em>Company</em></p>
+
+<p>add a public method to your model, in this case <strong>Contact</strong>
+Contact.rb ( Model )</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">name_and_company</span>
+<span class="nb">self</span><span class="p">.</span><span class="nf">name</span> <span class="o">+</span> <span class="s2">" - "</span> <span class="o">+</span> <span class="nb">self</span><span class="p">.</span><span class="nf">company</span><span class="p">.</span><span class="nf">name</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Usage ( note the use of :name_and_company )</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="sx">%= form.collection_select(:contact_id, Contact.all, :id, :name_and_company ) %&gt;
+</span></code></pre></div></div>
+
+
+<hr />
+
+<a id="btn-previous" href="/2017/01/27/basic_array_operations_in_ruby/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a id="btn-next" href="/2017/01/15/update-certbot-credentials/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

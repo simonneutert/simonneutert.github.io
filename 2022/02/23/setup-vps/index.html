@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Setup a VPS with Traefik v2.5 and Docker | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.MGEJV2MU.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>Setup a VPS with Traefik v2.5 and Docker</h1>
+
+<p>This tutorial is targeted for fresh Ubuntu (maybe Debian, too, but I won’t promise 😛)</p>
+
+<p>So, you booked a fresh and clean VPS server instance, now ssh into it and start shelling around:</p>
+
+<p><code class="highlighter-rouge">$ sudo apt update -y &amp;&amp; sudo apt upgrade -y --no-install-recommends</code></p>
+
+<p><code class="highlighter-rouge">$ sudo apt install -y fail2ban ufw</code></p>
+
+<p><code class="highlighter-rouge">$ service apache2 stop</code> - just in case Apache blocks port 80! Having ports 80 and 443 preoccupied will give you a hard time, as a beginner.</p>
+
+<h3 id="lock-your-vps-for-root-and-password-login">Lock your VPS for root and password login</h3>
+
+<p><strong>PLEASE</strong> exchange <code class="highlighter-rouge">your-username</code> in the following lines with your proper chosen username</p>
+
+<ul>
+  <li>generate your custom (main/admin/owner) user account<br />
+<code class="highlighter-rouge">$ adduser your-username</code></li>
+</ul>
+
+<p>(<a href="https://superuser.com/a/547973">adduser vs useradd</a>)</p>
+
+<ul>
+  <li>
+    <p>give this user sudo permissions<br />
+<code class="highlighter-rouge">$ usermod -aG sudo your-username</code></p>
+  </li>
+  <li>
+    <p>switch roles to your-username<br />
+<code class="highlighter-rouge">$ su - your-username</code></p>
+  </li>
+  <li>
+    <p>prepare to ssh only login restrictions<br />
+<code class="highlighter-rouge">$ mkdir ~/.ssh &amp;&amp; chmod 700 ~/.ssh</code>
+<code class="highlighter-rouge">$ touch ~/.ssh/authorized_keys &amp;&amp; chmod 600 ~/.ssh/authorized_keys</code></p>
+  </li>
+  <li>
+    <p>copy the content of your .pub ssh key into the authorized_keys<br />
+<code class="highlighter-rouge">$ nano ~/.ssh/authorized_keys</code></p>
+  </li>
+  <li>
+    <p>restrict ssh settings for session
+<code class="highlighter-rouge">$ sudo nano /etc/ssh/sshd_config</code> and change the permission to “NO” for the following</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># /etc/ssh/sshd_config</span>
+PasswordAuthentication no
+PermitRootLogin no
+</code></pre></div>    </div>
+
+    <p><em>I absolutely recommend reading a little deeper and restrict what you DO NOT need!</em></p>
+  </li>
+  <li>
+    <p>recheck your authorized_keys are set properly and sshd_config is fine, then:<br />
+<code class="highlighter-rouge">$ sudo systemctl restart ssh.service</code></p>
+  </li>
+  <li>
+    <p>in a second terminal you should now be able to login as:<br />
+<code class="highlighter-rouge">$ ssh -A your-username@your-vps-server.ip.com</code></p>
+  </li>
+  <li>
+    <p>another fresh terminal window and verfiy you cannot login as root anymore<br />
+<code class="highlighter-rouge">$ ssh root@your-vps-server.ip.com</code></p>
+  </li>
+</ul>
+
+<h4 id="install-docker">Install Docker</h4>
+
+<p><code class="highlighter-rouge">$ curl -fsSL https://get.docker.com -o get-docker.sh</code></p>
+
+<p><code class="highlighter-rouge">$ sh get-docker.sh</code></p>
+
+<p><code class="highlighter-rouge">$ rm get-docker.sh</code></p>
+
+<p>*Read carefully what docker prints in the end AND read the <a href="https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script">documentation</a></p>
+
+<h4 id="setup-a-basic-firewall-for-security">Setup a basic Firewall for security</h4>
+
+<p>There is a neat blog post with further apps, that help you keep the guards up on <a href="https://www.digitalocean.com/community/tutorials/an-introduction-to-securing-your-linux-vps">Digital Ocean</a>!</p>
+
+<p><code class="highlighter-rouge">$ ufw default deny incoming</code></p>
+
+<p><code class="highlighter-rouge">$ ufw default allow outgoing</code></p>
+
+<p><code class="highlighter-rouge">$ ufw allow 22/tcp</code> this usually is ssh (make sure you allow your chosen ssh key)</p>
+
+<p><code class="highlighter-rouge">$ ufw allow 80/tcp</code> for http requests</p>
+
+<p><code class="highlighter-rouge">$ ufw allow 443/tcp</code> for https requests</p>
+
+<p><code class="highlighter-rouge">$ ufw show added</code> check your settings before enabling</p>
+
+<p><code class="highlighter-rouge">$ ufw enable</code></p>
+
+<p>Read more about UncomplicatedFirewall <a href="https://wiki.ubuntu.com/UncomplicatedFirewall">here</a></p>
+
+<h4 id="keep-in-mind-you-might-need-other-ports-now-or-in-the-future-">Keep in mind, you might need other ports now or in the future 🪲</h4>
+
+<h3 id="whats-fail2ban">What’s Fail2Ban?</h3>
+
+<p>Protect, watch, track, lock suspicious logins using Fail2Ban</p>
+
+<p><a href="https://wiki.ubuntuusers.de/fail2ban/">Read a bit and setup, as much as you need.</a></p>
+
+<h2 id="taken-from-the-traefik-documentation-2019-03-31">Taken from the Traefik Documentation (2019-03-31)</h2>
+
+<blockquote>
+  <p><strong>From this point on, you should make yourself a little familiar about user rights and folder permissions. This is more an inspiration on how you can achieve this yourself.</strong></p>
+</blockquote>
+
+<p>I advise you read it yourself ;-) <a href="https://docs.traefik.io/user-guide/docker-and-lets-encrypt/">Traefik - Let’s Encrypt &amp; Docker</a></p>
+
+<p><code class="highlighter-rouge">$ docker network create web</code></p>
+
+<p><code class="highlighter-rouge">$ mkdir -p /opt/traefik</code></p>
+
+<p><code class="highlighter-rouge">$ touch /opt/traefik/docker-compose.yml</code></p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># /opt/traefik/docker-compose.yml</span>
+<span class="na">version</span><span class="pi">:</span> <span class="s2">"</span><span class="s">3.9"</span>
+
+<span class="na">networks</span><span class="pi">:</span>
+  <span class="na">web</span><span class="pi">:</span>
+    <span class="na">external</span><span class="pi">:</span> <span class="kc">true</span>
+
+<span class="na">services</span><span class="pi">:</span>
+  <span class="na">traefik</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s2">"</span><span class="s">traefik:2.5.3"</span>
+    <span class="na">container_name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">traefik"</span>
+    <span class="na">restart</span><span class="pi">:</span> <span class="s">always</span>
+    <span class="na">networks</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">web</span>
+      <span class="pi">-</span> <span class="s">default</span>
+    <span class="na">command</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">--providers.docker.swarmMode=false"</span>
+      <span class="c1"># - "--providers.docker.constraints=Label(`traefik.constraint-label`, `traefik-public`)"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">--log.level=DEBUG"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">--api.insecure=false"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">--providers.docker=true"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">--providers.docker.exposedbydefault=false"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">--providers.docker.network=web"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">--entrypoints.web.address=:80"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">--entrypoints.websecure.address=:443"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">--certificatesresolvers.myhttpchallenge.acme.httpchallenge=true"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">--certificatesresolvers.myhttpchallenge.acme.httpchallenge.entrypoint=web"</span>
+      <span class="c1"># - "--certificatesresolvers.myhttpchallenge.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">--certificatesresolvers.myhttpchallenge.acme.email=INSERT-YOUR-EMAIL-HERE@test.test"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">--certificatesresolvers.myhttpchallenge.acme.storage=/letsencrypt/acme.json"</span>
+    <span class="na">ports</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">80:80"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">443:443"</span>
+      <span class="c1"># - "8080:8080"</span>
+    <span class="na">volumes</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">traefik-public-certificates:/letsencrypt"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">/var/run/docker.sock:/var/run/docker.sock:ro"</span>
+
+<span class="na">volumes</span><span class="pi">:</span>
+  <span class="c1"># Create a volume to store the certificates, there is a constraint to make sure</span>
+  <span class="c1"># Traefik is always deployed to the same Docker node with the same volume containing</span>
+  <span class="c1"># the HTTPS certificates</span>
+  <span class="na">traefik-public-certificates</span><span class="pi">:</span>
+</code></pre></div></div>
+
+<h2 id="example-docker-compose">Example Docker Compose</h2>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">version</span><span class="pi">:</span> <span class="s2">"</span><span class="s">2.1"</span>
+
+<span class="na">services</span><span class="pi">:</span>
+  <span class="na">app</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">my-docker-registry.com/my-awesome-app/app:latest</span>
+    <span class="na">depends_on</span><span class="pi">:</span>
+      <span class="na">db</span><span class="pi">:</span>
+        <span class="na">condition</span><span class="pi">:</span> <span class="s">service_healthy</span>
+      <span class="na">redis</span><span class="pi">:</span>
+        <span class="na">condition</span><span class="pi">:</span> <span class="s">service_healthy</span>
+    <span class="na">restart</span><span class="pi">:</span> <span class="s">always</span>
+    <span class="na">networks</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">web</span>
+      <span class="pi">-</span> <span class="s">default</span>
+    <span class="na">expose</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">9000"</span>
+    <span class="na">labels</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">traefik.enable=true"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">traefik.docker.network=web"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">traefik.http.routers.my_nice_app.entrypoints=web"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">traefik.http.routers.my_nice_app.rule=Host(`app.test.test`)"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">traefik.http.routers.my_nice_app.middlewares=https_redirect"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">traefik.http.middlewares.https_redirect.redirectscheme.scheme=https"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">traefik.http.routers.my_nice_app_https.entrypoints=websecure"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">traefik.http.routers.my_nice_app_https.tls.certresolver=myhttpchallenge"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">traefik.http.routers.my_nice_app_https.rule=Host(`app.test.test`)"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">traefik.http.services.my_nice_app.loadbalancer.server.port=9000"</span>
+
+  <span class="na">db</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">my-docker-registry.com/back-end/5.7</span>
+    <span class="na">restart</span><span class="pi">:</span> <span class="s">always</span>
+
+  <span class="na">redis</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">my-docker-registry.com/back-end/redis:4-alpine</span>
+    <span class="na">restart</span><span class="pi">:</span> <span class="s">always</span>
+
+  <span class="na">events</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">my-docker-registry.com/my-awesome-app/events:latest</span>
+    <span class="na">depends_on</span><span class="pi">:</span>
+      <span class="na">db</span><span class="pi">:</span>
+        <span class="na">condition</span><span class="pi">:</span> <span class="s">service_healthy</span>
+      <span class="na">redis</span><span class="pi">:</span>
+        <span class="na">condition</span><span class="pi">:</span> <span class="s">service_healthy</span>
+    <span class="na">restart</span><span class="pi">:</span> <span class="s">always</span>
+    <span class="na">networks</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">web</span>
+      <span class="pi">-</span> <span class="s">default</span>
+    <span class="na">expose</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">3000"</span>
+    <span class="na">labels</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">traefik.backend=my-awesome-app-events"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">traefik.docker.network=web"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">traefik.frontend.rule=Host:events.my-awesome-app.org"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">traefik.enable=true"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">traefik.port=3000"</span>
+
+<span class="na">networks</span><span class="pi">:</span>
+  <span class="na">web</span><span class="pi">:</span>
+    <span class="na">external</span><span class="pi">:</span> <span class="kc">true</span>
+</code></pre></div></div>
+
+<h3 id="most-important-tip-in-the-docs">Most Important Tip in the Docs</h3>
+
+<blockquote>
+  <p>Always specify the correct port where the container expects HTTP traffic using traefik.port label.
+If a container exposes multiple ports, Traefik may forward traffic to the wrong port. Even if a container only exposes one port, you should always write configuration defensively and explicitly.</p>
+</blockquote>
+
+
+<hr />
+
+<a id="btn-previous" href="/2022/03/15/xcode-select-not-found-copy/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a id="btn-next" href="/2022/02/15/nbb/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

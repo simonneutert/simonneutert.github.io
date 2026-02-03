@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Setup a VPS with Traefik and Docker | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.MGEJV2MU.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>Setup a VPS with Traefik and Docker</h1>
+
+<h4 id="important">IMPORTANT</h4>
+
+<p>Please check out the 2022 version of the article on how to set up a VPS <a href="https://www.simon-neutert.de/2022/setup-vps/">here</a>.</p>
+
+<p>This article is a short read and may be of some value if you are just starting to explore the topic.</p>
+
+<hr />
+
+<p>So, you have a fresh and clean VPS server instance, wipe it and install a clean slate Ubuntu (LTS preferred) or a modern Debian.</p>
+
+<p>Now ssh into it and start shelling:</p>
+
+<p><code class="highlighter-rouge">$ sudo apt update</code></p>
+
+<p><code class="highlighter-rouge">$ service apache2 stop</code> - just in case you didn&#8217;t clean slate ;-)</p>
+
+<h4 id="install-docker">Install Docker</h4>
+
+<p><code class="highlighter-rouge">$ curl -fsSL https://get.docker.com -o get-docker.sh</code></p>
+
+<p><code class="highlighter-rouge">$ sh get-docker.sh</code></p>
+
+<p><code class="highlighter-rouge">$ rm get-docker.sh</code></p>
+
+<h4 id="install-a-firewall-python-pip-for-docker-compose-fail2ban-for-ssh-security">Install a Firewall, Python Pip for Docker Compose, Fail2Ban for ssh security</h4>
+
+<p><code class="highlighter-rouge">$ sudo apt install ufw python-pip fail2ban</code></p>
+
+<p><code class="highlighter-rouge">$ ufw default deny incoming</code></p>
+
+<p><code class="highlighter-rouge">$ ufw default allow outgoing</code></p>
+
+<p><code class="highlighter-rouge">$ ufw allow 22/tcp</code> this usually is ssh (make sure you allow your chosen ssh key)</p>
+
+<p><code class="highlighter-rouge">$ ufw allow 80/tcp</code> for http requests</p>
+
+<p><code class="highlighter-rouge">$ ufw allow 443/tcp</code> for https requests</p>
+
+<p><code class="highlighter-rouge">$ ufw status</code> check your settings before enabling</p>
+
+<p><code class="highlighter-rouge">$ ufw enable</code></p>
+
+<p>Read more about UncomplicatedFirewall <a href="https://wiki.ubuntu.com/UncomplicatedFirewall">here</a></p>
+
+<h2 id="fail2ban">Fail2Ban</h2>
+
+<p>Protect, watch, track, lock suspicious logins using Fail2Ban</p>
+
+<p><a href="https://wiki.ubuntuusers.de/fail2ban/">Read a bit and setup, as much as you need.</a></p>
+
+<h2 id="ssh-keys">SSH Keys</h2>
+
+<p>Add your local ssh key as an authorized key, usually here (use an editor of your choice, if like vim):</p>
+
+<p><code class="highlighter-rouge">$ vim .ssh/authorized_keys</code></p>
+
+<h2 id="taken-from-the-traefik-documentation-2019-03-31">Taken from the Traefik Documentation (2019-03-31)</h2>
+
+<p>I advise you read it yourself ;-) <a href="https://docs.traefik.io/user-guide/docker-and-lets-encrypt/">Traefik - Let&#8217;s Encrypt &amp; Docker</a></p>
+
+<p><code class="highlighter-rouge">$ docker network create web</code></p>
+
+<p><code class="highlighter-rouge">$ mkdir -p /opt/traefik</code></p>
+
+<p><code class="highlighter-rouge">$ touch /opt/traefik/docker-compose.yml</code>
+<code class="highlighter-rouge">$ touch /opt/traefik/acme.json &amp;&amp; chmod 600 /opt/traefik/acme.json</code>
+<code class="highlighter-rouge">$ touch /opt/traefik/traefik.toml</code></p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># /opt/traefik/docker-compose.yml</span>
+<span class="na">version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">2'</span>
+
+<span class="na">services</span><span class="pi">:</span>
+  <span class="na">traefik</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">traefik:1.5.4</span>
+    <span class="na">restart</span><span class="pi">:</span> <span class="s">always</span>
+    <span class="na">ports</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">80:80</span>
+      <span class="pi">-</span> <span class="s">443:443</span>
+    <span class="na">networks</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">web</span>
+    <span class="na">volumes</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">/var/run/docker.sock:/var/run/docker.sock</span>
+      <span class="pi">-</span> <span class="s">/opt/traefik/traefik.toml:/traefik.toml</span>
+      <span class="pi">-</span> <span class="s">/opt/traefik/acme.json:/acme.json</span>
+    <span class="na">container_name</span><span class="pi">:</span> <span class="s">traefik</span>
+
+<span class="na">networks</span><span class="pi">:</span>
+  <span class="na">web</span><span class="pi">:</span>
+    <span class="na">external</span><span class="pi">:</span> <span class="kc">true</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>debug = false
+
+logLevel = "ERROR"
+defaultEntryPoints = ["https","http"]
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+    [entryPoints.http.redirect]
+    entryPoint = "https"
+  [entryPoints.https]
+  address = ":443"
+  [entryPoints.https.tls]
+
+[retry]
+
+[docker]
+endpoint = "unix:///var/run/docker.sock"
+domain = "my-awesome-app.org"
+watch = true
+exposedByDefault = false
+
+[acme]
+email = "your-email-here@my-awesome-app.org"
+storage = "acme.json"
+entryPoint = "https"
+onHostRule = true
+[acme.httpChallenge]
+entryPoint = "http"
+</code></pre></div></div>
+
+<h2 id="example-docker-compose">Example Docker Compose</h2>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">version</span><span class="pi">:</span> <span class="s2">"</span><span class="s">2.1"</span>
+
+<span class="na">services</span><span class="pi">:</span>
+  <span class="na">app</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">my-docker-registry.com/my-awesome-app/app:latest</span>
+    <span class="na">depends_on</span><span class="pi">:</span>
+      <span class="na">db</span><span class="pi">:</span>
+        <span class="na">condition</span><span class="pi">:</span> <span class="s">service_healthy</span>
+      <span class="na">redis</span><span class="pi">:</span>
+        <span class="na">condition</span><span class="pi">:</span> <span class="s">service_healthy</span>
+    <span class="na">restart</span><span class="pi">:</span> <span class="s">always</span>
+    <span class="na">networks</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">web</span>
+      <span class="pi">-</span> <span class="s">default</span>
+    <span class="na">expose</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">9000"</span>
+    <span class="na">labels</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">traefik.docker.network=web"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">traefik.enable=true"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">traefik.basic.frontend.rule=Host:app.my-awesome-app.org"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">traefik.basic.port=9000"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">traefik.basic.protocol=http"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">traefik.admin.frontend.rule=Host:admin-app.my-awesome-app.org"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">traefik.admin.protocol=https"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">traefik.admin.port=9443"</span>
+
+  <span class="na">db</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">my-docker-registry.com/back-end/5.7</span>
+    <span class="na">restart</span><span class="pi">:</span> <span class="s">always</span>
+
+  <span class="na">redis</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">my-docker-registry.com/back-end/redis:4-alpine</span>
+    <span class="na">restart</span><span class="pi">:</span> <span class="s">always</span>
+
+  <span class="na">events</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">my-docker-registry.com/my-awesome-app/events:latest</span>
+    <span class="na">depends_on</span><span class="pi">:</span>
+      <span class="na">db</span><span class="pi">:</span>
+        <span class="na">condition</span><span class="pi">:</span> <span class="s">service_healthy</span>
+      <span class="na">redis</span><span class="pi">:</span>
+        <span class="na">condition</span><span class="pi">:</span> <span class="s">service_healthy</span>
+    <span class="na">restart</span><span class="pi">:</span> <span class="s">always</span>
+    <span class="na">networks</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">web</span>
+      <span class="pi">-</span> <span class="s">default</span>
+    <span class="na">expose</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">3000"</span>
+    <span class="na">labels</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">traefik.backend=my-awesome-app-events"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">traefik.docker.network=web"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">traefik.frontend.rule=Host:events.my-awesome-app.org"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">traefik.enable=true"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">traefik.port=3000"</span>
+
+<span class="na">networks</span><span class="pi">:</span>
+  <span class="na">web</span><span class="pi">:</span>
+    <span class="na">external</span><span class="pi">:</span> <span class="kc">true</span>
+</code></pre></div></div>
+
+<h3 id="most-important-tip-in-the-docs">Most Important Tip in the Docs</h3>
+
+<blockquote>
+  <p>Always specify the correct port where the container expects HTTP traffic using traefik.port label.
+If a container exposes multiple ports, Traefik may forward traffic to the wrong port. Even if a container only exposes one port, you should always write configuration defensively and explicitly.</p>
+</blockquote>
+
+
+<hr />
+
+<a id="btn-previous" href="/2019/09/11/node-express-ejs/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a id="btn-next" href="/2019/02/10/rails-console-sinatra/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

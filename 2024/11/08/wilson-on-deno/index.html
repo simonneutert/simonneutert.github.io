@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Wilson - CLI for OpenAI&#39;s multistepped assistants | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.MGEJV2MU.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>Wilson - CLI for OpenAI&#39;s multistepped assistants</h1>
+
+<p>Wilson is a prototype CLI for OpenAI’s multisteps assistants.</p>
+
+<p>It is a simple CLI that is built with <a href="https://www.deno.com">Deno</a> and uses <a href="https://github.com/vadimdemedes/ink">ink</a> for the CLI.</p>
+
+<blockquote>
+  <p>Ink provides the same component-based UI building experience that React offers in the browser, but for command-line apps. It uses Yoga to build Flexbox layouts in the terminal, so most CSS-like props are available in Ink as well. If you are already familiar with React, you already know Ink.</p>
+
+  <p>Since Ink is a React renderer, it means that all features of React are supported. Head over to React website for documentation on how to use it. Only Ink’s methods will be documented in this readme.
+- <a href="https://github.com/vadimdemedes/ink">Docs (2024-11-08)</a></p>
+</blockquote>
+
+<h2 id="rationale">Rationale</h2>
+
+<p>Do you find yourself in a situation, where you ask the AI questions in a thread-like manner?<br />
+Are you tired of coming up with the same questions over and over again?<br />
+Or worse, you forget to ask the most important questions?</p>
+
+<p>Give your thoughts a place to live and breathe.<br />
+Store processes as recipes and never forget a question again.</p>
+
+<h2 id="demo">Demo</h2>
+
+<p><img src="/images/2024/wilson-demo.gif" /></p>
+
+<h2 id="data-first-approach">Data first approach</h2>
+
+<p>In order to use Wilson, you need to provide a JSON file that contains the recipe for the assistant.</p>
+
+<p>Here’s the template of a recipe:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"assistant"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Name of the ASSISTANT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"instruction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HERE SHOULD BE THE INSTRUCTION FOR THE ASSISTANT."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"threads"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"REPLACE THIS A LIST OF THREADS THE ASSISTANT SHOULD RUN THROUGH ONE AFTER ANOTHER."</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"recipe"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"attr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uniqueAttributeNameForASelectInput"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"inputType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"select"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"selectOptions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a1"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a1"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b1"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b1"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c1"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"defaultValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IF A DEFAULT VALUE MAKES SENSE, PUT IT HERE, BUT EMPTY STRING IS ABSOLUTELY FINE."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PLACE THE COMMAND FOR THE USER INTERACTION HERE."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"summaryText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"THIS FIELD WILL BE USED TO ADD CONTEXT TO THE USER'S RESPONSE."</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"attr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uniqueAttributeNameForAnInput"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"inputType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"input"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"defaultValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PLACE THE COMMAND FOR THE USER INTERACTION HERE."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"summaryText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"THIS FIELD WILL BE USED TO ADD CONTEXT TO THE USER'S RESPONSE."</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>☝️ this recipe is used to create further assistants using AI itself. Inception, right? 😵‍💫</p>
+
+<h2 id="source-code-on-github">Source Code on GitHub</h2>
+
+<p>The source code is available on GitHub: <a href="https://github.com/simonneutert/wilson">wilson</a>.</p>
+
+
+<hr />
+
+<a id="btn-previous" href="/2024/11/09/deno2-sidekicks/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a id="btn-next" href="/2024/10/26/stream-db-rows/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

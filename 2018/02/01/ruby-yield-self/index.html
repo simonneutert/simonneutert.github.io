@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Ruby&#39;s new yield_self | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.MGEJV2MU.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>Ruby&#39;s new yield_self</h1>
+
+<p>Ever wrote some Elixir and loved what |&gt; a.k.a. “the pipe” does?</p>
+
+<p>Then Ruby 2.5 might be what you alway waited for. <a href="https://github.com/zverok">Victor Shepelev (on GitHub)</a> wrote a <a href="http://zverok.github.io/blog/2018-01-24-yield_self.html">genius blog post about yield_self</a>.</p>
+
+<p><strong><a href="https://mlomnicki.com/yield-self-in-ruby-25/">Michał Łomnicki</a> article is also very good, it helps getting a bit deeper into it.</strong></p>
+
+<p>Check out <a href="https://ruby-doc.org/core-2.5.0/Object.html#method-i-yield_self">yield_self</a> in the official Ruby docs.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Example taken from:</span>
+<span class="c1"># http://zverok.github.io/blog/2018-01-24-yield_self.html</span>
+
+<span class="c1"># before</span>
+<span class="n">url</span> <span class="o">=</span> <span class="n">construct_url</span>
+<span class="n">response</span> <span class="o">=</span> <span class="no">Faraday</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="nf">body</span><span class="p">)</span>
+<span class="nb">id</span> <span class="o">=</span> <span class="n">data</span><span class="p">.</span><span class="nf">dig</span><span class="p">(</span><span class="s1">'object'</span><span class="p">,</span> <span class="s1">'id'</span><span class="p">)</span> <span class="o">||</span> <span class="s1">'&lt;undefined&gt;'</span>
+<span class="k">return</span> <span class="s2">"server:</span><span class="si">#{</span><span class="nb">id</span><span class="si">}</span><span class="s2">"</span>
+<span class="c1"># or, short yet less readable form:</span>
+<span class="k">return</span> <span class="s2">"server:"</span> <span class="o">+</span>
+  <span class="p">(</span><span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="no">Faraday</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">construct_url</span><span class="p">)).</span><span class="nf">dig</span><span class="p">(</span><span class="s1">'object'</span><span class="p">,</span> <span class="s1">'id'</span><span class="p">)</span> <span class="o">||</span> <span class="s1">'&lt;undefined&gt;'</span><span class="p">)</span>
+
+<span class="c1"># after:</span>
+<span class="n">construct_url</span>
+  <span class="p">.</span><span class="nf">yield_self</span> <span class="p">{</span> <span class="o">|</span><span class="n">url</span><span class="o">|</span> <span class="no">Faraday</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="p">}</span>
+  <span class="p">.</span><span class="nf">yield_self</span> <span class="p">{</span> <span class="o">|</span><span class="n">response</span><span class="o">|</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="p">}</span>
+  <span class="p">.</span><span class="nf">dig</span><span class="p">(</span><span class="s1">'object'</span><span class="p">,</span> <span class="s1">'id'</span><span class="p">).</span><span class="nf">yield_self</span> <span class="p">{</span> <span class="o">|</span><span class="nb">id</span><span class="o">|</span> <span class="nb">id</span> <span class="o">||</span> <span class="s1">'&lt;undefined&gt;'</span> <span class="p">}</span>
+  <span class="p">.</span><span class="nf">yield_self</span> <span class="p">{</span> <span class="o">|</span><span class="nb">id</span><span class="o">|</span> <span class="s2">"server:</span><span class="si">#{</span><span class="nb">id</span><span class="si">}</span><span class="s2">"</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p>Of course it takes a while to get used to. But I think this can bring some light in an otherwise complex public API of an Object.</p>
+
+
+<hr />
+
+<a id="btn-previous" href="/2018/02/06/ruby-yield-scope/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a id="btn-next" href="/2018/02/01/python3-pandas-sqlalchemy/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>I Built a Meeting Notes App That Actually Makes Sense | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.MGEJV2MU.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>I Built a Meeting Notes App That Actually Makes Sense</h1>
+
+<p>Be warned, this project was 100 % vibe-coded, using mostly Claude Code. It was a fun, yet demanding experience, and I learned a lot about building a web app that actually helps with meeting organization.</p>
+
+<blockquote>
+  <p><strong>Note</strong>: This project isn’t open sourced yet, but I’m planning to release the code soon! In the meantime, you can try the live app and see what I’ve been working on.</p>
+</blockquote>
+
+<h2 id="tldr">TL;DR</h2>
+<p>I created <strong><a href="https://www.neetings.com">Neetings</a></strong>, a web app that transforms chaotic meeting notes into organized, actionable content using smart block types and Kanban-style organization. It runs 100% in your browser (no backend!), supports 11 different content types, and exports to multiple formats. Perfect for anyone tired of messy meeting notes that go nowhere.</p>
+
+<hr />
+
+<p><strong>Fun facts:</strong></p>
+
+<ul>
+  <li>After 2-3 months of evenings and weekends tinkering away, the project is finally at a point where I can show it off and actually use it myself. 🎉</li>
+  <li>I wouldn’t have been able to tackle this without the help of AI tools like Claude Code - to be honest. Or it would have taken me at least four times as long.</li>
+</ul>
+
+<hr />
+
+<p>Hey there! 👋</p>
+
+<p>So, I had this problem. You know the one – sitting in meetings, frantically scribbling notes, trying to capture everything, and then later staring at a wall of text wondering “what did we actually decide?” and “who’s supposed to do what?”</p>
+
+<p>After one too many meetings where important decisions got lost in my messy notes, I decided to build something better. Enter <strong>Neetings</strong> – a meeting management app that actually helps you stay organized.</p>
+
+<h2 id="what-makes-it-different">What Makes It Different</h2>
+
+<p><img src="/images/2025/neetings/neetings_overview.png" alt="Main overview showing organized meetings" /></p>
+
+<p>Instead of throwing everything into a generic text box, Neetings gives you <strong>11 specialized block types</strong> for different kinds of content. Need to capture a decision? There’s a Decision block. Got an action item? TODO block. Random idea someone threw out? Idea block. You get the picture.</p>
+
+<p>The magic happens when you switch to Kanban view – suddenly your linear meeting notes transform into organized columns by topic. It’s like having superpowers for meeting organization! ✨</p>
+
+<p><img src="/images/2025/neetings/neetings_meeting_view.png" alt="Meeting view with organized blocks" /></p>
+
+<h2 id="the-features-that-actually-matter">The Features That Actually Matter</h2>
+
+<p><strong>Smart Block Types</strong>: Instead of fighting with one-size-fits-all text boxes, you get purpose-built blocks for Notes, TODOs, Decisions, Issues, Ideas, and more. Each type has its own color and behavior.</p>
+
+<p><strong>Kanban Organization</strong>: Switch from boring linear notes to visual topic columns. Drag and drop blocks between topics as conversations evolve – because meetings never follow the agenda anyway! 😅</p>
+
+<p><img src="/images/2025/neetings/neetings_meeting_block_picker_modal.png" alt="Block type selection modal" /></p>
+
+<p><strong>Attendee Management</strong>: Keep track of who’s in which meetings with a smart autocomplete system. No more “wait, who said they’d handle that?”</p>
+
+<p><img src="/images/2025/neetings/neetings_attendee_management_view.png" alt="Attendee management interface" /></p>
+
+<p><strong>Powerful Search &amp; Filtering</strong>: Find that decision from three meetings ago in seconds. Filter by content type, completion status, or date ranges.</p>
+
+<p><img src="/images/2025/neetings/neetings_meeting_filter_view.png" alt="Advanced filtering options" /></p>
+
+<h2 id="privacy-first-because-your-data-matters">Privacy First (Because Your Data Matters)</h2>
+
+<p>Here’s the best part – <strong>everything runs in your browser</strong>. No servers, no accounts, no “we promise we won’t look at your data” nonsense. Your meeting notes stay on your device, period.</p>
+
+<p>Want to move your data around? Export to Markdown, RTF, DOCX, or HTML. Want to share with your team? Copy the clean, organized output. Want to back up everything? Full JSON export has you covered.</p>
+
+<p><img src="/images/2025/neetings/neetings_download_meeting_as_markdown_modal.png" alt="Export options modal" /></p>
+
+<h2 id="built-for-real-developers">Built for Real Developers</h2>
+
+<p>As someone who lives in the terminal and gets annoyed by bloated apps, I made sure Neetings is fast and lightweight. It’s built with:</p>
+
+<ul>
+  <li><strong>Preact</strong> (because 3KB is better than 45KB)</li>
+  <li><strong>TypeScript</strong> (because bugs are annoying)</li>
+  <li><strong>196+ tests</strong> (because I actually use this app)</li>
+  <li><strong>Drag &amp; drop</strong> with proper sortKey algorithms (no jank!)</li>
+</ul>
+
+<p><img src="/images/2025/neetings/neetings_darkmode.png" alt="Dark mode support" /></p>
+
+<p>The whole thing started as a side project to solve my own problem, but I’ve been using it for months now and it’s genuinely changed how I handle meetings. No more post-meeting panic about whether I captured everything important.</p>
+
+<h2 id="try-it-yourself">Try It Yourself</h2>
+
+<p>The app is live at <a href="https://www.neetings.com">neetings.com</a> – no installation, no signup, just start organizing your first meeting. Or if you’re the “I want to see the code first” type (respect! 🫡), I’ll be open sourcing it soon so you can dive into the implementation.</p>
+
+<p>I built this because I was tired of meeting chaos, and honestly? It’s been a game-changer for staying on top of what actually matters. Give it a shot next time you’re in a meeting that could have been an email (but wasn’t) – you might be surprised how much clearer everything becomes when it’s properly organized.</p>
+
+<hr />
+
+<p><em>P.S. – Yes, it has dark mode. Of course it has dark mode and yes, it was tedious to implement.</em></p>
+
+
+<hr />
+
+<a id="btn-previous" href="/2025/08/31/distrobox/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a id="btn-next" href="/2025/07/02/senior-engineers/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

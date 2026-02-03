@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Caching requests in Roda using etags | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.MGEJV2MU.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>Caching requests in Roda using etags</h1>
+
+<p>This short post describes how using SHA1 Hashing for etags can be used.</p>
+
+<blockquote>
+  <p>Both last_modified or etag will immediately halt processing if there have been no modifications since the last time the client requested the resource, assuming the client uses the appropriate HTTP 1.1 request headers.</p>
+</blockquote>
+
+<p><a href="https://roda.jeremyevans.net/rdoc/classes/Roda/RodaPlugins/Caching.html">Roda Plugin: Caching Documentation</a></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">r</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="ss">param!: </span><span class="s1">'filter'</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">filter</span><span class="o">|</span>
+  <span class="k">unless</span> <span class="n">filter</span><span class="p">.</span><span class="nf">nil?</span> <span class="o">||</span> <span class="n">filter</span> <span class="o">==</span> <span class="s1">'startedhome'</span> <span class="o">||</span> <span class="n">filter</span> <span class="o">==</span> <span class="s1">'finishedhome'</span> <span class="o">||</span> <span class="n">filter</span> <span class="o">==</span> <span class="s1">'startedandfinishedhome'</span>
+    <span class="n">r</span><span class="p">.</span><span class="nf">halt</span> <span class="c1"># abort early, stops users from fiddling around</span>
+  <span class="k">end</span>
+
+  <span class="c1"># where the magic happens 🔥 and the cache is set/matched</span>
+  <span class="n">r</span><span class="p">.</span><span class="nf">etag</span> <span class="n">cache_etag</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+
+  <span class="n">polylines</span> <span class="o">=</span> <span class="kp">nil</span>
+  <span class="n">user_db</span><span class="p">.</span><span class="nf">connect</span><span class="p">(</span><span class="ss">:user_strava_activities</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">ds</span><span class="o">|</span>
+    <span class="n">filter_query</span> <span class="o">=</span> 
+      <span class="no">ApiV1Filters</span><span class="o">::</span><span class="no">HomeTileFilterPolyline</span><span class="p">.</span><span class="nf">new</span><span class="p">.</span><span class="nf">apply_home_tile_filter</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">filter</span><span class="p">)</span>
+
+    <span class="n">activity_types</span> <span class="o">=</span> 
+      <span class="no">ApiV1Filters</span><span class="o">::</span><span class="no">ActivityType</span><span class="p">.</span><span class="nf">new</span><span class="p">.</span><span class="nf">identify_activity_type</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="nf">params</span><span class="p">[</span><span class="s1">'activity_type'</span><span class="p">])</span>
+
+    <span class="n">filter_query</span> <span class="o">=</span> <span class="n">get_with_activity_type</span><span class="p">(</span><span class="ss">ds: </span><span class="n">filter_query</span><span class="p">,</span> <span class="n">activity_types</span><span class="p">:)</span>
+    <span class="n">polylines</span> <span class="o">=</span> <span class="n">filter_query</span><span class="p">.</span><span class="nf">all</span>
+  <span class="k">end</span>
+
+  <span class="k">return</span> <span class="n">polylines</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>In the implementation, a user’s gps polylines only change after importing new data. Then, a new leaderboard is being calculated, which touches a user’s <code class="highlighter-rouge">updated_at</code> attribute when finished, resulting in a changed SHA1 Hashing.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">cache_etag</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+  <span class="n">minified_user_data</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">user_id: </span><span class="n">user</span><span class="p">.</span><span class="nf">id</span><span class="p">,</span>
+                          <span class="ss">strava_user_id: </span><span class="n">user</span><span class="p">.</span><span class="nf">strava_user_id</span><span class="p">,</span>
+                          <span class="ss">updated_at: </span><span class="n">user</span><span class="p">.</span><span class="nf">updated_at</span> <span class="p">}</span>
+  
+  <span class="no">Digest</span><span class="o">::</span><span class="no">SHA1</span><span class="p">.</span><span class="nf">hexdigest</span><span class="p">(</span><span class="no">Oj</span><span class="p">.</span><span class="nf">dump</span><span class="p">(</span><span class="n">minified_user_data</span><span class="p">))</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+
+<hr />
+
+<a id="btn-previous" href="/2022/08/03/my-sidekiq-is-a-bunny-with-sneakers/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a id="btn-next" href="/2022/07/08/pascal-triangles-ruby/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

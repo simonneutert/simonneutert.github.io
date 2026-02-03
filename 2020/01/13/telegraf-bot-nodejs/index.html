@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>A simple and easy NodeJS Telegram bot | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.MGEJV2MU.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>A simple and easy NodeJS Telegram bot</h1>
+
+<p>Bots, they are everywhere, right? Why not have a bot, that&#8217;s doing some fancy work for you?</p>
+
+<p>Telegrams &#8216;BotFather&#8217; is the way to get you started: <a href="https://core.telegram.org/bots#6-botfather">see the docs</a></p>
+
+<p>It is as easy as open telegram, search @botfather and send him <code class="highlighter-rouge">/newbot</code> as a message, few more steps like naming aaaand boom - bot is up!</p>
+
+<p><strong>DISCLAIMER</strong> The following code is a quick and dirty solution! It is simply sending me memes from subreddit &#8216;ProgrammerHumor&#8217;.<br />
+Checkout my <a href="https://www.npmjs.com/package/reddit-api-image-getter">reddit-api-image-getter</a> package on npm.</p>
+
+<p>Want to know what <a href="https://github.com/telegraf/telegraf/blob/develop/docs/examples/media-bot.js">telegraf</a> does?<br />
+Telegraf does not explicitely tell, but adding a caption to a photo is added in the code example below.</p>
+
+<p>All what&#8217;s left to do now is create a new Node project:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">mkdir </span>reddit-image-telegraf <span class="o">&amp;&amp;</span> <span class="nb">cd </span>reddit-image-telegraf
+<span class="nv">$ </span>yarn init
+<span class="nv">$ </span>yarn add telegraf reddit-api-image-getter@1.0.5 <span class="k">select</span><span class="nt">-random-file</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// content of your entrypoint file, usually index.js</span>
+
+<span class="kd">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">fs</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">path</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">randomFile</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">select-random-file</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">Telegraf</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">telegraf</span><span class="dl">'</span><span class="p">)</span>
+
+<span class="c1">// use the key Botfather gave you here</span>
+<span class="kd">const</span> <span class="nx">bot</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Telegraf</span><span class="p">(</span><span class="dl">'</span><span class="s1">YOUR-SECRET-TOKEN</span><span class="dl">'</span><span class="p">)</span>
+
+<span class="kd">const</span> <span class="nx">redditApiImageGetter</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">reddit-api-image-getter</span><span class="dl">'</span><span class="p">)</span>
+<span class="nx">getter</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">redditApiImageGetter</span><span class="p">()</span>
+
+<span class="nx">bot</span><span class="p">.</span><span class="nf">start</span><span class="p">((</span><span class="nx">ctx</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">ctx</span><span class="p">.</span><span class="nf">reply</span><span class="p">(</span><span class="dl">'</span><span class="s1">This is here to make me happy.</span><span class="dl">'</span><span class="p">))</span>
+
+<span class="nx">bot</span><span class="p">.</span><span class="nf">command</span><span class="p">(</span><span class="dl">'</span><span class="s1">makemehappy</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">ctx</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// limit to your own chat.id </span>
+  <span class="c1">// (you can get it by using a debugger and inspecting ctx object)</span>
+  <span class="c1">// use a telegraf middleware for limiting if you are really fancy</span>
+  <span class="c1">//</span>
+  <span class="c1">// if you do not need limitation, drop the conditional!</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">chat</span><span class="p">.</span><span class="nx">id</span> <span class="o">!=</span> <span class="mi">00013370001</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nf">reply</span><span class="p">(</span><span class="dl">'</span><span class="s1">Your ID is not whitelisted, I am sorry. Not sorry!</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">channelOrders</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">hot</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">top</span><span class="dl">'</span><span class="p">]</span>
+    <span class="kd">const</span> <span class="nx">hotOrTop</span> <span class="o">=</span> <span class="nx">channelOrders</span><span class="p">[</span><span class="nb">Math</span><span class="p">.</span><span class="nf">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nf">random</span><span class="p">()</span> <span class="o">*</span> <span class="nx">channelOrders</span><span class="p">.</span><span class="nx">length</span><span class="p">)];</span>
+    <span class="kd">const</span> <span class="nx">dir</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nf">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">images</span><span class="dl">'</span><span class="p">,</span> <span class="nx">hotOrTop</span><span class="p">,</span> <span class="dl">'</span><span class="s1">ProgrammerHumor</span><span class="dl">'</span><span class="p">)</span>
+    <span class="nf">randomFile</span><span class="p">(</span><span class="nx">dir</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">file</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`The random file is: </span><span class="p">${</span><span class="nx">file</span><span class="p">}</span><span class="s2">.`</span><span class="p">)</span>
+      <span class="kd">const</span> <span class="nx">pathToFile</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nf">resolve</span><span class="p">(</span><span class="nx">dir</span><span class="p">,</span> <span class="nx">file</span><span class="p">)</span>
+      <span class="nx">ctx</span><span class="p">.</span><span class="nf">replyWithPhoto</span><span class="p">({</span>
+        <span class="na">source</span><span class="p">:</span> <span class="nx">fs</span><span class="p">.</span><span class="nf">readFileSync</span><span class="p">(</span><span class="nx">pathToFile</span><span class="p">)</span>
+      <span class="p">},</span>
+      <span class="p">{</span><span class="na">caption</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Send with telegraf bot</span><span class="dl">'</span><span class="p">})</span> <span class="c1">// add a caption/text to your media (&lt; 1024 signs)</span>
+    <span class="p">})</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+
+<span class="nx">bot</span><span class="p">.</span><span class="nf">command</span><span class="p">(</span><span class="dl">'</span><span class="s1">refresh</span><span class="dl">'</span><span class="p">,</span> <span class="nf">function </span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// limit to your own chat.id </span>
+  <span class="c1">// (you can get it by using a debugger and inspecting ctx object)</span>
+  <span class="c1">// use a telegraf middleware for limiting if you are really fancy</span>
+  <span class="c1">//</span>
+  <span class="c1">// if you do not need limitation, drop the conditional!</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">chat</span><span class="p">.</span><span class="nx">id</span> <span class="o">!=</span> <span class="mi">00013370001</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nf">reply</span><span class="p">(</span><span class="dl">'</span><span class="s1">Your ID is not whitelisted, I am sorry. Not sorry!</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// gets hot images</span>
+    <span class="nx">getter</span><span class="p">.</span><span class="nf">getHotImagesOfSubReddit</span><span class="p">(</span><span class="dl">'</span><span class="s1">ProgrammerHumor</span><span class="dl">'</span><span class="p">).</span><span class="nf">then</span><span class="p">(</span><span class="nf">function </span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">for </span><span class="p">(</span><span class="kd">let</span> <span class="nx">imageEntry</span> <span class="k">of</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`top </span><span class="p">${</span><span class="nx">imageEntry</span><span class="p">.</span><span class="nx">formattedFilename</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+        <span class="nx">getter</span><span class="p">.</span><span class="nf">saveRedditImageEntryToDisk</span><span class="p">(</span><span class="nx">imageEntry</span><span class="p">,</span> <span class="nx">path</span><span class="p">.</span><span class="nf">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">images</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">hot</span><span class="dl">'</span><span class="p">))</span>
+      <span class="p">}</span>
+      <span class="nx">ctx</span><span class="p">.</span><span class="nf">reply</span><span class="p">(</span><span class="dl">'</span><span class="s1">refreshed hot images</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nf">function </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+    <span class="p">})</span>
+    <span class="c1">// gets top images</span>
+    <span class="nx">getter</span><span class="p">.</span><span class="nf">getTopImagesOfSubReddit</span><span class="p">(</span><span class="dl">'</span><span class="s1">ProgrammerHumor</span><span class="dl">'</span><span class="p">).</span><span class="nf">then</span><span class="p">(</span><span class="nf">function </span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">for </span><span class="p">(</span><span class="kd">let</span> <span class="nx">imageEntry</span> <span class="k">of</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s2">`top </span><span class="p">${</span><span class="nx">imageEntry</span><span class="p">.</span><span class="nx">formattedFilename</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+        <span class="nx">getter</span><span class="p">.</span><span class="nf">saveRedditImageEntryToDisk</span><span class="p">(</span><span class="nx">imageEntry</span><span class="p">,</span> <span class="nx">path</span><span class="p">.</span><span class="nf">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">images</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">top</span><span class="dl">'</span><span class="p">))</span>
+      <span class="p">}</span>
+      <span class="nx">ctx</span><span class="p">.</span><span class="nf">reply</span><span class="p">(</span><span class="dl">'</span><span class="s1">refreshed top images</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nf">function </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+    <span class="p">})</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+
+<span class="nx">bot</span><span class="p">.</span><span class="nf">launch</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="run">Run</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>node index.js
+</code></pre></div></div>
+
+<p>Grab your phone, start your bot and send <code class="highlighter-rouge">/refresh</code> watch the picture pop up on your filesystem, then send <code class="highlighter-rouge">/makemehappy</code> and have a laugh.</p>
+
+<p>Send me a message on telegram and chat with me, best let me know what kind of bot you brought to life: <a href="https://t.me/simonneutert">https://t.me/simonneutert</a></p>
+
+
+<hr />
+
+<a id="btn-previous" href="/2020/03/30/ferrum-select-dropdown/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a id="btn-next" href="/2019/09/25/pizza-pi-vue-js/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

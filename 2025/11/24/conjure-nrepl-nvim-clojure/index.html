@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Code Clojure in NeoVim (with LazyVim and Conjure) | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.MGEJV2MU.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>Code Clojure in NeoVim (with LazyVim and Conjure)</h1>
+
+<p>Want to develop Clojure with a modern, interactive REPL experience right in NeoVim? This guide will walk you through setting up Conjure with LazyVim for a smooth Clojure development workflow.</p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<p>Before we begin, make sure you have the following installed:</p>
+
+<ol>
+  <li><strong>Java</strong> - A modern Java version (I recommend <a href="https://adoptium.net/">Temurin 23</a>)</li>
+  <li><strong>Clojure</strong> - Get it from <a href="https://clojure.org/guides/install_clojure">clojure.org</a></li>
+  <li><strong>LazyVim</strong> - If you haven’t set this up yet, check out <a href="https://www.lazyvim.org/">LazyVim’s installation guide</a></li>
+</ol>
+
+<h2 id="configure-nrepl">Configure nREPL</h2>
+
+<p>First, configure nREPL in your project. Add this to your <code class="highlighter-rouge">~/.clojure/deps.edn</code> file to make nREPL available globally:</p>
+
+<div class="language-clojure highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="no">:aliases</span><span class="w">
+ </span><span class="p">{</span><span class="no">:nREPL</span><span class="w">
+  </span><span class="p">{</span><span class="no">:extra-deps</span><span class="w"> </span><span class="p">{</span><span class="n">nrepl/nrepl</span><span class="w"> </span><span class="p">{</span><span class="no">:mvn/version</span><span class="w"> </span><span class="s">"1.4.0"</span><span class="p">}}}}}</span><span class="w">
+</span></code></pre></div></div>
+
+<blockquote>
+  <p>Version 1.4.0 is the latest stable release at the time of writing.</p>
+</blockquote>
+
+<p>For more configuration options, check the <a href="https://nrepl.org/nrepl/usage/server.html">nREPL documentation</a>.</p>
+
+<h2 id="configure-lazyvim">Configure LazyVim</h2>
+
+<p>LazyVim makes this super easy! Simply enable the Clojure/Conjure extras:</p>
+
+<ol>
+  <li>Open LazyVim and run <code class="highlighter-rouge">:LazyExtras</code></li>
+  <li>Search for and enable the <code class="highlighter-rouge">lang.clojure</code> extra</li>
+  <li>Restart NeoVim to apply the changes</li>
+</ol>
+
+<p>This will automatically install Conjure and configure it for Clojure development.</p>
+
+<h2 id="start-coding">Start Coding</h2>
+
+<p>Now you’re ready to code! Here’s the workflow:</p>
+
+<h3 id="1-start-the-nrepl-server">1. Start the nREPL Server</h3>
+
+<p>In a separate terminal at your project root, start the nREPL server:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>clj <span class="nt">-M</span>:nREPL <span class="nt">-m</span> nrepl.cmdline
+</code></pre></div></div>
+
+<p>You should see output showing the server started on a specific port (but you don’t need to worry about it).</p>
+
+<h3 id="2-open-your-project-in-neovim">2. Open Your Project in NeoVim</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nvim <span class="nb">.</span>
+</code></pre></div></div>
+
+<p>When you open a <code class="highlighter-rouge">.clj</code> file, Conjure will automatically detect and connect to your running nREPL server.</p>
+
+<h3 id="3-learn-conjures-keybindings">3. Learn Conjure’s Keybindings</h3>
+
+<p>Conjure comes with an interactive tutorial! Run this command in NeoVim:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>:ConjureSchool
+</code></pre></div></div>
+
+<p>This will teach you all the essential keybindings for evaluating code, managing the REPL, and more.</p>
+
+<h2 id="quick-tips">Quick Tips</h2>
+
+<ul>
+  <li><strong>Evaluate current form</strong>: Place your cursor inside a form and use <code class="highlighter-rouge">&lt;localleader&gt;ee</code></li>
+  <li><strong>Evaluate file</strong>: <code class="highlighter-rouge">&lt;localleader&gt;ef</code> to evaluate the entire file</li>
+  <li><strong>View documentation</strong>: <code class="highlighter-rouge">K</code> while hovering over a function</li>
+  <li><strong>Open REPL log</strong>: <code class="highlighter-rouge">&lt;localleader&gt;ls</code> to see evaluation results</li>
+</ul>
+
+<p>Happy Clojure coding! 🎉</p>
+
+
+<hr />
+
+<a id="btn-previous" href="/2025/11/24/emojis-lazyvim-kitty/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a id="btn-next" href="/2025/11/20/gnome-sticky/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

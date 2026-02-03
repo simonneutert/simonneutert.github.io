@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Type emojis in LazyVim (in a Kitty terminal) | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.MGEJV2MU.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>Type emojis in LazyVim (in a Kitty terminal)</h1>
+
+<p>As I’m learning LazyVim, I ran into a surprisingly tricky problem: how do I type emojis from my keyboard? Here’s how I solved it.</p>
+
+<h2 id="my-setup">My Setup</h2>
+
+<ul>
+  <li>OS: Bazzite (Gnome)</li>
+  <li>Terminal Emulator: Kitty</li>
+</ul>
+
+<h2 id="the-problem">The Problem</h2>
+
+<p>When you’re trying to stay keyboard-focused in LazyVim, reaching for the mouse to insert an emoji feels wrong. Gnome has a built-in emoji picker (accessible via mouse), but there has to be a better way.</p>
+
+<h2 id="solution-1-external-emoji-picker">Solution #1: External Emoji Picker</h2>
+
+<p>I use <a href="https://github.com/mijorus/smile/">smile</a> (the Flatpak version) combined with <a href="https://github.com/daniellandau/switcher">switcher</a> to quickly launch an emoji picker and paste the selection. This works, but it still requires switching windows.</p>
+
+<h2 id="solution-2-kittys-built-in-unicode-input">Solution #2: Kitty’s Built-in Unicode Input</h2>
+
+<p>Kitty has a fantastic built-in <a href="https://sw.kovidgoyal.net/kitty/kittens/unicode_input/">Unicode input kitten</a> that lets you search and insert emojis directly from your keyboard. When triggered, it opens a searchable interface right in your terminal.</p>
+
+<p>According to the docs, <code class="highlighter-rouge">ctrl+shift+u</code> should activate it. Unfortunately, this keybinding didn’t work for me—likely conflicting with LazyVim or Gnome keybindings.</p>
+
+<h3 id="the-fix-remap-the-keybinding">The Fix: Remap the Keybinding</h3>
+
+<p>Edit your <code class="highlighter-rouge">~/.config/kitty/kitty.conf</code> and add a custom keybinding:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#: Unicode input
+
+# Default keybindings (commented out if they don't work)
+# map kitty_mod+u    kitten unicode_input
+# map ctrl+cmd+space kitten unicode_input
+
+# Custom keybinding - use something that doesn't conflict
+map ctrl+alt+u kitten unicode_input
+</code></pre></div></div>
+
+<p><strong>Note:</strong> I initially tried <code class="highlighter-rouge">ctrl+u</code>, but that conflicts with Vim’s “scroll up half page” command. <code class="highlighter-rouge">ctrl+alt+u</code> is a safer choice that won’t interfere with your editing workflow.</p>
+
+<h3 id="how-to-use-it">How to Use It</h3>
+
+<ol>
+  <li>Press your mapped keybinding (e.g., <code class="highlighter-rouge">ctrl+alt+u</code>)</li>
+  <li>A searchable emoji picker appears in your terminal</li>
+  <li>Type to search (e.g., “smile”, “rocket”, “fire”)</li>
+  <li>Use arrow keys to navigate, press <code class="highlighter-rouge">Enter</code> to insert</li>
+</ol>
+
+<p>Now go on and smash that 😼</p>
+
+
+<hr />
+
+<a id="btn-previous" href="/2025/11/24/lazyvim-nerdfonts-silverblue/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a id="btn-next" href="/2025/11/24/conjure-nrepl-nvim-clojure/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

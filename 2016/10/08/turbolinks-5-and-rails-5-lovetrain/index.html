@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Turbolinks is misunderstood | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.MGEJV2MU.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>Turbolinks is misunderstood</h1>
+
+<p>Take a lunch break and watch this beautiful talk about why Turbolinks is good for you. And how you can build a hybrid app with less than 50 lines of code with it.</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/SWEts0rlezA" frameborder="0" allowfullscreen=""></iframe>
+
+<h1 id="so-please-look-up-their-documentation-it-is-very-good">So please, look up their documentation, it is very good</h1>
+<h2 id="unbreak-your-jquery-documentready">Unbreak your jQuery document.ready:</h2>
+<p><strong><em>I guess this can&#8217;t be repeated often enough :-)</em></strong></p>
+
+<p>To unbreak your jQuery code in an rails app with Turbolinks simply change your faulty document.ready functions:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// this does not work with Turbolinks</span>
+<span class="nf">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nf">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// do something  </span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// BUT THIS DOES WORK:</span>
+<span class="nf">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">turbolinks:load</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// do something</span>
+<span class="p">});</span>
+</code></pre></div></div>
+<p>and for your Coffeescript + Turbolinks use this:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span> <span class="dl">'</span><span class="s1">turbolinks:load</span><span class="dl">'</span><span class="p">,</span> <span class="o">-&gt;</span>
+</code></pre></div></div>
+
+
+<hr />
+
+<a id="btn-previous" href="/2016/10/24/mechanize-csrf-rails-devise-login/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a id="btn-next" href="/2016/09/27/sitemap-for-rails-without-gem/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

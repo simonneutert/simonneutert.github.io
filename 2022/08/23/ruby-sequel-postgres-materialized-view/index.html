@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Manage Postgres Materialized Views with sequel 🚀 | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.MGEJV2MU.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>Manage Postgres Materialized Views with sequel 🚀</h1>
+
+<p>Rails/ActiveRecord needs something like <a href="https://github.com/scenic-views/scenic">Scenic</a>.</p>
+
+<p>Save the following code to files in a directory:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># filename:</span>
+<span class="c1"># main.rb</span>
+
+<span class="nb">require</span> <span class="s1">'rubygems'</span>
+<span class="nb">require</span> <span class="s1">'bundler'</span>
+<span class="no">Bundler</span><span class="p">.</span><span class="nf">require</span>
+
+<span class="n">db_connection</span> <span class="o">=</span> <span class="s1">'postgres://postgres:postgres@localhost/mat_view_local_test'</span>
+<span class="no">DB</span> <span class="o">=</span> <span class="no">Sequel</span><span class="p">.</span><span class="nf">connect</span><span class="p">(</span><span class="n">db_connection</span><span class="p">)</span>
+
+<span class="k">begin</span>
+  <span class="c1"># doing it once is enough 🤭</span>
+  <span class="no">DB</span><span class="p">.</span><span class="nf">create_table</span> <span class="ss">:items</span> <span class="k">do</span>
+    <span class="n">primary_key</span> <span class="ss">:id</span>
+    <span class="no">String</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">unique: </span><span class="kp">true</span><span class="p">,</span> <span class="ss">null: </span><span class="kp">false</span>
+    <span class="no">TrueClass</span> <span class="ss">:active</span><span class="p">,</span> <span class="ss">default: </span><span class="kp">true</span>
+    <span class="no">DateTime</span> <span class="ss">:created_at</span><span class="p">,</span> <span class="ss">default: </span><span class="no">Sequel</span><span class="o">::</span><span class="no">CURRENT_TIMESTAMP</span><span class="p">,</span> <span class="ss">index: </span><span class="kp">true</span>
+    <span class="no">DateTime</span> <span class="ss">:updated_at</span><span class="p">,</span> <span class="ss">default: </span><span class="no">Sequel</span><span class="o">::</span><span class="no">CURRENT_TIMESTAMP</span><span class="p">,</span> <span class="ss">index: </span><span class="kp">true</span>
+
+    <span class="n">index</span> <span class="p">[</span><span class="ss">:active</span><span class="p">]</span>
+  <span class="k">end</span>
+<span class="k">rescue</span> <span class="no">StandardError</span> <span class="o">=&gt;</span> <span class="n">e</span>
+  <span class="nb">puts</span> <span class="s2">"READ THIS ☟"</span>
+  <span class="nb">puts</span> <span class="n">e</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">Item</span> <span class="o">&lt;</span> <span class="no">Sequel</span><span class="o">::</span><span class="no">Model</span>
+  <span class="c1"># more on models in sequel:</span>
+  <span class="c1"># https://sequel.jeremyevans.net/rdoc/files/doc/object_model_rdoc.html#label-Sequel-3A-3AModel</span>
+<span class="k">end</span>
+
+<span class="c1"># uses timestamps plugin</span>
+<span class="c1"># http://sequel.jeremyevans.net/rdoc-plugins/classes/Sequel/Plugins/Timestamps.html</span>
+<span class="no">Item</span><span class="p">.</span><span class="nf">plugin</span> <span class="ss">:timestamps</span><span class="p">,</span> <span class="ss">update_on_create: </span><span class="kp">true</span>
+
+
+<span class="k">def</span> <span class="nf">create_materialized_view</span>
+  <span class="k">begin</span>
+    <span class="no">DB</span><span class="p">.</span><span class="nf">create_view</span><span class="p">(</span><span class="ss">:active_items</span><span class="p">,</span> <span class="no">DB</span><span class="p">[</span><span class="ss">:items</span><span class="p">].</span><span class="nf">where</span><span class="p">(</span><span class="ss">active: </span><span class="kp">true</span><span class="p">),</span> <span class="ss">materialized: </span><span class="kp">true</span><span class="p">)</span>
+    <span class="no">DB</span><span class="p">.</span><span class="nf">add_index</span><span class="p">(</span><span class="ss">:active_items</span><span class="p">,</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">unique: </span><span class="kp">true</span><span class="p">)</span>
+  <span class="k">rescue</span> <span class="no">StandardError</span> <span class="o">=&gt;</span> <span class="n">e</span>
+    <span class="nb">puts</span> <span class="n">e</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">drop_materialized_view</span>
+  <span class="no">DB</span><span class="p">.</span><span class="nf">drop_view</span><span class="p">(</span><span class="ss">:active_items</span><span class="p">,</span> <span class="ss">materialized: </span><span class="kp">true</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">refresh_materialized_view</span><span class="p">(</span><span class="n">concurrently</span> <span class="o">=</span> <span class="kp">true</span><span class="p">)</span>
+  <span class="no">DB</span><span class="p">.</span><span class="nf">refresh_view</span><span class="p">(</span><span class="ss">:active_items</span><span class="p">,</span> <span class="n">concurrently</span><span class="p">:)</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<h3 id="dependencies">Dependencies</h3>
+
+<p>Here’s your <code class="highlighter-rouge">Gemfile</code>:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># filename:</span>
+<span class="c1"># Gemfile</span>
+
+<span class="n">source</span> <span class="s1">'https://rubygems.org'</span>
+
+<span class="n">gem</span> <span class="s1">'sequel_pg'</span><span class="p">,</span> <span class="s1">'~&gt; 1.15'</span><span class="p">,</span> <span class="ss">require: </span><span class="s1">'sequel'</span>
+
+<span class="n">group</span> <span class="ss">:development</span> <span class="k">do</span>
+  <span class="n">gem</span> <span class="s1">'debug'</span><span class="p">,</span> <span class="s1">'~&gt; 1.6'</span>
+  <span class="n">gem</span> <span class="s1">'reek'</span><span class="p">,</span> <span class="s1">'~&gt; 6.1'</span>
+  <span class="n">gem</span> <span class="s1">'rubocop'</span><span class="p">,</span> <span class="s1">'~&gt; 1.35'</span>
+  <span class="n">gem</span> <span class="s1">'solargraph'</span><span class="p">,</span> <span class="s1">'~&gt; 0.45.0'</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<h2 id="howto">Howto</h2>
+
+<p>Save the given files, then <code class="highlighter-rouge">bundle install</code> and</p>
+
+<p><code class="highlighter-rouge">$ pry -I . -r main.rb</code></p>
+
+<p>and try with what you have 🥳<br />
+(it’s <code class="highlighter-rouge">DB</code>, the Sequel Docs, the methods around <code class="highlighter-rouge">..._materialized_view</code>)</p>
+
+<p>🤫 you need to have Postgres running!<br />
+With a Database called <code class="highlighter-rouge">mat_view_local_test</code> 🤫</p>
+
+<h3 id="problems-installing-pg-related-stuff-on-a-mac">Problems installing pg related stuff on a Mac?</h3>
+
+<p>Use <a href="https://postgresapp.com">Postgres.app</a> and then:</p>
+
+<p><code class="highlighter-rouge">$ gem install pg -v '1.4.3' -- --with-pg-config=/Applications/Postgres.app/Contents/Versions/latest/bin/pg_config </code></p>
+
+<p><code class="highlighter-rouge">$ gem install sequel_pg -v '1.15.0' -- --with-pg-dir=/Applications/Postgres.app/Contents/Versions/latest/</code></p>
+
+<p>‼️ Edit the path with something that makes sense on your machine, then:<br />
+<code class="highlighter-rouge">$ bundle install</code> AGAIN!</p>
+
+
+<hr />
+
+<a id="btn-previous" href="/2022/08/29/clojure-core-async-hotdiggitydogs/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a id="btn-next" href="/2022/08/22/truffleruby-goes-brrrr/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>

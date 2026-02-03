@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+<title>Clean up your branch, before submitting a Pull Request | Simon Neutert</title>
+
+<meta name="description" content="I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main)." />
+
+<link rel="stylesheet" href="/_bridgetown/static/index.IEH6LJYO.css" data-turbo-track="reload" />
+
+<script src="/_bridgetown/static/index.MGEJV2MU.js" data-turbo-track="reload" defer></script>
+
+
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Simon Neutert" />
+  </head>
+  <body class="post ">
+    <header role="banner">
+  <!-- 
+  <img src="/images/logo.svg" alt="Logo" />
+  -->
+</header>
+
+<nav role="navigation" aria-label="Hauptnavigation">
+  <ul>
+    <li>
+      <a href="/" >Home</a>
+    </li>
+    <li>
+      <a href="/posts" >Blog</a>
+    </li>
+  </ul>
+</nav>
+
+
+    <main>
+      <a href="/posts" style="text-decoration:none; text-align=center;">↖️ Show all posts</a>
+
+<hr />
+
+<article>
+
+<h1>Clean up your branch, before submitting a Pull Request</h1>
+
+<p>When working on a difficult issue it can happen, that you generate loads of commits. Some of them may be a complete waste of time reading, while other might contain useful information for your future team or reviewer.</p>
+
+<p><strong>There must be a better way!</strong></p>
+
+<ol>
+  <li>You do not need to alter your workflow.</li>
+  <li>Commit as much as you like and what makes sense to you - and just you.</li>
+</ol>
+
+<h2 id="retell-your-commit-story">Retell your commit story</h2>
+
+<p><strong>When finished, shift your perspective.</strong> What information would make your reviewer(s) happy?</p>
+
+<p>Your reviewer can work best through your code base, when the commit history tells a concise story about the steps it took to build the solution.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Open a new branch based on master or develop</span>
+<span class="nv">$ </span>git checkout <span class="nt">-b</span> new_clean_branch
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git merge old_mumble_branch <span class="nt">--squash</span>
+</code></pre></div></div>
+
+<h2 id="cut-off-old-branches">Cut off old branches</h2>
+
+<p>You can now stage and commit files or code samples and write a clean, logical commit message.</p>
+
+<p>When finished push the clean branch and delete the <em>old_mumble_branch</em>.</p>
+
+<p>Enjoy Zen.</p>
+
+
+<hr />
+
+<a id="btn-previous" href="/2018/06/10/rails-where-not-null-or-empty/" style="text-decoration:none;">⬅️ Read previous</a>
+
+<a id="btn-next" href="/2018/04/13/ruby-safe-navigation/" style="float: right; text-decoration:none;">Read next ➡️</a>
+
+</article>
+
+    </main>
+
+    <footer>
+  <p style="text-align:center"><strong>
+    <a href="/feed.xml">Feed</a>
+  </strong></p>
+
+  <hr />
+
+  <h6>Imprint</h6>
+  <p>
+    <strong>Simon Neutert</strong><br />
+    <span id="imprint-address">
+      Postfach 1120, 55258 Ingelheim
+    </span>
+  </p>
+  <p style="text-align:center"><strong>
+    Generated using <a href="https://www.bridgetownrb.com">Bridgetown</a>
+  </strong></p>
+</footer>
+
+  </body>
+</html>
