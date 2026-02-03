@@ -1,19 +1,41 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="2.1.1">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-02-03T06:40:10+01:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Deno Starshower Released: Browse you GitHub Stars prettily formatted in Markdown</title><link href="/2026/02/02/deno-starshower-released/" rel="alternate" type="text/html" title="Deno Starshower Released: Browse you GitHub Stars prettily formatted in Markdown" /><published>2026-02-02T00:00:00+01:00</published><updated>2026-02-02T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2026/2026-02-02-deno-starshower-released.md</id><content type="html" xml:base="/2026/02/02/deno-starshower-released/">&lt;p&gt;I am super excited about the release of &lt;a href=&quot;https://github.com/simonneutert/deno-starshower&quot;&gt;Deno Starshower&lt;/a&gt;, a Deno-based CLI tool that allows you to browse your GitHub stars in a beautifully formatted Markdown style.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://bridgetownrb.com/" version="2.1.1">Bridgetown</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-02-03T06:44:48+01:00</updated><id>/feed.xml</id><title type="html">Simon Neutert</title><subtitle>I am a Ruby (on Rails) developer and open source enthusiast. Super interest in Clojure. Based in Ingelheim, next to Mainz and Wiesbaden (Rhein-Main).</subtitle><entry><title type="html">Deno Starshower Released: Browse you GitHub Stars prettily formatted in Markdown</title><link href="/2026/02/02/deno-starshower-released/" rel="alternate" type="text/html" title="Deno Starshower Released: Browse you GitHub Stars prettily formatted in Markdown" /><published>2026-02-02T00:00:00+01:00</published><updated>2026-02-02T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2026/2026-02-02-deno-starshower-released.md</id><content type="html" xml:base="/2026/02/02/deno-starshower-released/">&lt;p&gt;I am super excited about the release of
+&lt;a href=&quot;https://github.com/simonneutert/deno-starshower&quot;&gt;Deno Starshower&lt;/a&gt;, a Deno-based
+CLI tool that allows you to browse your GitHub stars in a beautifully formatted
+Markdown style.&lt;/p&gt;
 
-&lt;p&gt;This project was born out of my personal need to have a better way to view and manage my starred repositories on GitHub.&lt;/p&gt;
+&lt;p&gt;This project was born out of my personal need to have a better way to view and
+manage my starred repositories on GitHub.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;I am a star hoarder!&lt;/strong&gt; I have starred over 600 repositories, and finding specific ones or just browsing through them on GitHub&amp;#8217;s web interface was not the best experience. With Starshower, you can easily generate a Markdown file that lists all your starred repositories with relevant details like description, language, stars, and last updated date. After all, I hooked it up to this blog via a GitHub Action. As a bonus, the stars are now versioned in Git, so I can track changes over time.&lt;br /&gt;
+&lt;p&gt;&lt;strong&gt;I am a star hoarder!&lt;/strong&gt; I have starred over 600 repositories, and finding
+specific ones or just browsing through them on GitHub&amp;#8217;s web interface was not
+the best experience. With Starshower, you can easily generate a Markdown file
+that lists all your starred repositories with relevant details like description,
+language, stars, and last updated date. After all, I hooked it up to this blog
+via a GitHub Action. As a bonus, the stars are now versioned in Git, so I can
+track changes over time.&lt;br /&gt;
 And maybe, &lt;strong&gt;just maybe&lt;/strong&gt;, I will finally unstar some repos I no longer need.&lt;/p&gt;
 
 &lt;h2 id=&quot;technical-bits&quot;&gt;Technical Bits&lt;/h2&gt;
 
-&lt;p&gt;For the communication with GitHub, Starshower uses the official client: &lt;a href=&quot;https://github.com/octokit/rest.js&quot;&gt;@octokit/rest&lt;/a&gt;, ensuring reliable and efficient API interactions.&lt;/p&gt;
+&lt;p&gt;For the communication with GitHub, Starshower uses the official client:
+&lt;a href=&quot;https://github.com/octokit/rest.js&quot;&gt;@octokit/rest&lt;/a&gt;, ensuring reliable and
+efficient API interactions.&lt;/p&gt;
 
-&lt;p&gt;It uses Deno&amp;#8217;s powerful features, including TypeScript support, built-in tooling, and a robust standard library, making it a modern and efficient choice for CLI development.&lt;/p&gt;
+&lt;p&gt;It uses Deno&amp;#8217;s powerful features, including TypeScript support, built-in
+tooling, and a robust standard library, making it a modern and efficient choice
+for CLI development.&lt;/p&gt;
 
-&lt;p&gt;And &lt;a href=&quot;https://zod.dev/&quot;&gt;zod&lt;/a&gt; is used for schema validation, ensuring that the data fetched from GitHub is correctly structured and validated before processing.&lt;/p&gt;
+&lt;p&gt;And &lt;a href=&quot;https://zod.dev/&quot;&gt;zod&lt;/a&gt; is used for schema validation, ensuring that the
+data fetched from GitHub is correctly structured and validated before
+processing.&lt;/p&gt;
 
-&lt;p&gt;All is packaged into a single executable using Deno&amp;#8217;s &lt;code class=&quot;highlighter-rouge&quot;&gt;deno compile&lt;/code&gt; feature, making it easy to distribute and run without requiring users to have Deno installed.&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Neetings, my meeting notes app is now open source! 🤖</title><link href="/2026/01/19/neetings/" rel="alternate" type="text/html" title="Neetings, my meeting notes app is now open source! 🤖" /><published>2026-01-19T00:00:00+01:00</published><updated>2026-01-19T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2026/2026-01-19-neetings.md</id><content type="html" xml:base="/2026/01/19/neetings/">&lt;p&gt;&lt;a href=&quot;https://www.simon-neutert.de/2025/neetings/&quot;&gt;I wanted to open source it one day&lt;/a&gt;,&lt;br /&gt;
+&lt;p&gt;All is packaged into a single executable using Deno&amp;#8217;s &lt;code class=&quot;highlighter-rouge&quot;&gt;deno compile&lt;/code&gt; feature,
+making it easy to distribute and run without requiring users to have Deno
+installed.&lt;/p&gt;
+
+&lt;h2 id=&quot;see-for-yourself&quot;&gt;See for Yourself&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;/starred-repos/&quot;&gt;My starred repositories on this blog.&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author></entry><entry><title type="html">Neetings, my meeting notes app is now open source! 🤖</title><link href="/2026/01/19/neetings/" rel="alternate" type="text/html" title="Neetings, my meeting notes app is now open source! 🤖" /><published>2026-01-19T00:00:00+01:00</published><updated>2026-01-19T00:00:00+01:00</updated><id>repo://posts.collection/_posts/2026/2026-01-19-neetings.md</id><content type="html" xml:base="/2026/01/19/neetings/">&lt;p&gt;&lt;a href=&quot;https://www.simon-neutert.de/2025/neetings/&quot;&gt;I wanted to open source it one day&lt;/a&gt;,&lt;br /&gt;
 and that day is today! 🎉&lt;br /&gt;
 (I finally found the courage to simply put it out there.)&lt;/p&gt;
 
