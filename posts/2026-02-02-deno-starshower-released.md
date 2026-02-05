@@ -40,4 +40,4 @@ installed.
 
 ## See for Yourself
 
-[My starred repositories on this blog.](/starred-repos/)
+[My starred repositories on this blog.](/starred-repos.html)
