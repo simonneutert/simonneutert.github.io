@@ -9,26 +9,21 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
+      - name: Setup Deno
+        uses: denoland/setup-deno@v2
         with:
-          ruby-version: "3.4"
-          bundler-cache: true
+          deno-version: v2.x
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "24"
-          cache: "npm"
-      - run: npm install
+      - name: Install dependencies
+        run: deno install
 
       - name: Build
-        run: bin/bridgetown deploy
+        run: deno run publish-blog
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./output
+          publish_dir: ./dist
