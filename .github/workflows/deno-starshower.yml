@@ -58,17 +58,17 @@ jobs:
       - name: Prepare starred repos for the blog
         run: |
           # Create target directory if it doesn't exist (adjust path as needed)
-          mkdir -p public
+          mkdir -p pages
 
           # Copy the generated markdown and add the blog front matter (but TOML format)
-          cat > public/starred-repos.md << 'EOF'
+          cat > pages/starred-repos.md << 'EOF'
           +++
           title = "My Starred Repositories on GitHub"
           +++
 
           EOF
 
-          tail -n +2 .deno-starshower/deno-starshower_output/Starred_Repos.md >> public/starred-repos.md
+          tail -n +2 .deno-starshower/deno-starshower_output/Starred_Repos.md >> pages/starred-repos.md
 
           # remove the generated directory of the starshower checkout
           rm -rf .deno-starshower
@@ -91,7 +91,7 @@ jobs:
             - Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
             **Changes:**
-            - Updated `public/starred-repos.md` with latest starred repositories
+            - Updated `pages/starred-repos.md` with latest starred repositories
 
             ---
             *This is an automated PR. Review and merge if the changes look correct.*
