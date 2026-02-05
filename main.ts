@@ -1,3 +1,4 @@
+
 import { extractToml } from "@std/front-matter";
 import { CSS, render } from "@deno/gfm";
 
@@ -36,7 +37,7 @@ import "prismjs/components/prism-log.js";
 import "prismjs/components/prism-jsx.js";
 import { renderToString } from "preact-render-to-string";
 
-type PostInfo = [string, string, string, string | null, string | null];
+type PostInfo = [string, string, string, string, string | null, string | null];
 
 function checkLangSupport(): string {
   const lang = Deno.env.get("DENO_QUICKBLOG_LANG") ?? "en";
@@ -320,8 +321,9 @@ function createPostList(content: string, posts: PostInfo[]) {
     // if a number is specified, the number of posts listed will be limited to that number
     posts = limitPostList(content, postsListRegex, posts);
     let postList = "";
-    for (const [_postKey, title, url] of posts) {
-      postList += `- [${title}](${url})\n`;
+    // deno-lint-ignore no-unused-vars
+    for (const [postKey, postDate, title, url] of posts) {
+      postList += `- <small>${postDate}</small> [${title}](${url})\n`;
     }
     fullContent = content.replace(postsListRegex, postList);
   } else {
@@ -347,6 +349,7 @@ export function createPosts() {
       const title: string = extractTitle(frontMatter);
 
       const postKey = [year, month, day].map(String).join("");
+      const postDate = `${year}-${month}-${day}`;
       const currentIndex = postsList.findIndex(([k]) => k === postKey);
       const nextUrl = postsList[currentIndex - 1]?.[1] ?? null;
       const prevUrl = postsList[currentIndex + 1]?.[1] ?? null;
@@ -364,7 +367,7 @@ export function createPosts() {
           prevUrl,
         ),
       );
-      posts.push([postKey, title, url, nextUrl, prevUrl]);
+      posts.push([postKey, postDate, title, url, nextUrl, prevUrl]);
     }
   }
   return posts;
