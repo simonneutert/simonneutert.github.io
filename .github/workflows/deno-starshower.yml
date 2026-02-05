@@ -55,12 +55,12 @@ jobs:
           # Alternative: hardcode username instead of using a variable:
           # deno run --allow-env --allow-net --allow-write main.ts simonneutert
 
-      - name: Prepare starred repos for Jekyll
+      - name: Prepare starred repos for the blog
         run: |
           # Create target directory if it doesn't exist (adjust path as needed)
           mkdir -p public
 
-          # Copy the generated markdown and add Jekyll front matter (but TOML format)
+          # Copy the generated markdown and add the blog front matter (but TOML format)
           cat > public/starred-repos.md << 'EOF'
           +++
           title = "My Starred Repositories on GitHub"
@@ -72,6 +72,7 @@ jobs:
 
           # remove the generated directory of the starshower checkout
           rm -rf .deno-starshower
+          deno fmt
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v8
