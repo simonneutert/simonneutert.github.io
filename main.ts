@@ -66,6 +66,15 @@ function htmlBodyTemplate(
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="build-version" content="${buildVersion}">
+    <script>
+      // Apply saved theme immediately to prevent flicker
+      (function() {
+        const savedMode = localStorage.getItem('colorMode');
+        if (savedMode) {
+          document.documentElement.setAttribute('data-color-mode-override', savedMode);
+        }
+      })();
+    </script>
     <style>
       main {
         max-width: 800px;
@@ -89,7 +98,7 @@ function htmlBodyTemplate(
       const body = document.body;
       const darkModeToggle = document.getElementById("dark-mode-toggle");
         
-      // Load saved preference
+      // Apply saved preference (already set in head, now sync with body)
       const savedMode = localStorage.getItem('colorMode');
       if (savedMode) {
         body.setAttribute("data-color-mode", savedMode);
