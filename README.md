@@ -1,6 +1,8 @@
 # Bridgetown Website README
 
-Welcome to your new Bridgetown website! You can update this README file to provide additional context and setup information for yourself or other contributors.
+Welcome to your new Bridgetown website! You can update this README file to
+provide additional context and setup information for yourself or other
+contributors.
 
 ## Table of Contents
 
@@ -30,13 +32,17 @@ Welcome to your new Bridgetown website! You can update this README file to provi
 cd bridgetown-site-folder
 bundle install && npm install
 ```
-> Learn more: [Bridgetown Getting Started Documentation](https://www.bridgetownrb.com/docs/).
+
+> Learn more:
+> [Bridgetown Getting Started Documentation](https://www.bridgetownrb.com/docs/).
 
 ## Development
 
-To start your site in development mode, run `bin/bridgetown start` and navigate to [localhost:4000](https://localhost:4000/)!
+To start your site in development mode, run `bin/bridgetown start` and navigate
+to [localhost:4000](https://localhost:4000/)!
 
-Use a [theme](https://github.com/topics/bridgetown-theme) or add some [plugins](https://www.bridgetownrb.com/plugins/) to get started quickly.
+Use a [theme](https://github.com/topics/bridgetown-theme) or add some
+[plugins](https://www.bridgetownrb.com/plugins/) to get started quickly.
 
 ### Commands
 
@@ -51,13 +57,18 @@ bin/bridgetown deploy
 bin/bridgetown console
 ```
 
-> Learn more: [Bridgetown CLI Documentation](https://www.bridgetownrb.com/docs/command-line-usage)
+> Learn more:
+> [Bridgetown CLI Documentation](https://www.bridgetownrb.com/docs/command-line-usage)
 
 ## Deployment
 
-You can deploy Bridgetown sites on hosts like Render or Vercel as well as traditional web servers by simply building and copying the output folder to your HTML root.
+You can deploy Bridgetown sites on hosts like Render or Vercel as well as
+traditional web servers by simply building and copying the output folder to your
+HTML root.
 
-> Read the [Bridgetown Deployment Documentation](https://www.bridgetownrb.com/docs/deployment) for more information.
+> Read the
+> [Bridgetown Deployment Documentation](https://www.bridgetownrb.com/docs/deployment)
+> for more information.
 
 ## Contributing
 
