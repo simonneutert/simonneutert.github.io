@@ -71,7 +71,7 @@ function htmlBodyTemplate(
       (function() {
         const savedMode = localStorage.getItem('colorMode');
         if (savedMode) {
-          document.documentElement.setAttribute('data-color-mode-override', savedMode);
+          document.documentElement.setAttribute('data-color-mode', savedMode);
         }
       })();
     </script>
@@ -84,6 +84,12 @@ function htmlBodyTemplate(
     </style>
   </head>
   <body data-color-mode="auto" data-light-theme="light" data-dark-theme="dark" class="markdown-body">
+  <script>
+    // Sync body with documentElement immediately
+    if (document.documentElement.hasAttribute('data-color-mode')) {
+      document.body.setAttribute('data-color-mode', document.documentElement.getAttribute('data-color-mode'));
+    }
+  </script>
   <main>
   <nav style="text-align: right; margin-top: 20px; margin-bottom: 20px;">
   ${renderNav()}
