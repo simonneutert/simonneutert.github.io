@@ -1,3 +1,5 @@
+- url: https://theprogrammersparadox.blogspot.com/2026/02/systems-thinking.html
+  content: Systems Thinking - There are two main schools of thought in software development about how to build really big, complicated stuff.
 - url: https://atlas9.dev/blog/soft-delete.html
   content: The author has run into some trouble with soft delete designs. He'll cover those, and ponder ideas for how he'd build this in the future.
 - url: https://github.com/chr15m/eucalypt
