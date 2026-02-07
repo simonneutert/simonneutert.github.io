@@ -2,15 +2,18 @@
 
 👋 Glad you found me!
 
-This project is run using
-[deno-quickblog](https://github.com/simonneutert/deno-quickblog) on a GitHub
-Action and GitHub Deploy.
+This is made with:
+[deno-quickblog](https://github.com/simonneutert/deno-quickblog).
 
 [deno-quickblog](https://github.com/simonneutert/deno-quickblog) is a tiny
-static site generator I coded.
+static site generator I spun up for bits and giggles.
 
-The blog integrated
-[deno-starshower](https://github.com/simonneutert/deno-starshower) to render out
-my GitHub Stars.
+A GitHub Action auto-builds this project and then hosts it on GitHub Deploy.
+
+As a bonus [deno-starshower](https://github.com/simonneutert/deno-starshower) is
+integrated. Again, run periodically in a GitHub Actions, updating the blog
+content automagically.
+
+---
 
 It is not much, but it is honest work 🧑‍🌾 🤖
