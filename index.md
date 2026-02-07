@@ -6,10 +6,7 @@ title = "Hi, I'm Simon! ðŸ‘‹ "
 </p>
 
 This blog is about my journey as a software developer, sharing insights, tips,
-and experiences from the world of coding and technology. I run this blog using
-my custom static site generator I wrote in TypeScript on
-[Deno](https://deno.land/). The source code is available on
-[GitHub](https://github.com/simonneutert/deno-quickblog).
+and experiences from the world of coding and technology.
 
 I share my code on [GitHub](https://github.com/simonneutert) and I sometimes
 [blog](/posts.html) about what made me smile, stumble, humble, or moan.
@@ -37,6 +34,11 @@ Get in touch with me @[LinkedIn](https://www.linkedin.com/in/simon-neutert/)! ðŸ
 
 Mostly about code I've written, sometimes pet projects, or things that should
 never slow me down again.
+
+I run website/blog with my custom static site generator, written mostly in
+TypeScript with [Deno](https://deno.land/) as the runtime/ecosystem.\
+The source code is available on GitHub:
+[@simonneutert/deno-quickblog](https://github.com/simonneutert/deno-quickblog).
 
 ## My Latest 10 Posts
 
