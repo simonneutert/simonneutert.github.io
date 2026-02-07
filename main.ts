@@ -1,4 +1,4 @@
-import { extractToml } from "@std/front-matter";
+import { extractToml, extractYaml } from "@std/front-matter";
 import { CSS, render } from "@deno/gfm";
 
 import "prismjs/components/prism-clojure.js";
@@ -36,20 +36,50 @@ import "prismjs/components/prism-log.js";
 import "prismjs/components/prism-jsx.js";
 import { renderToString } from "preact-render-to-string";
 
+type PostIDUrl = [string, string];
 type PostInfo = [string, string, string, string, string | null, string | null];
+type ExtractedMarkdownWithFrontMatter = {
+  frontMatter?: unknown;
+  body: string;
+  attrs?: Record<string, unknown>;
+};
 
-function checkLangSupport(): string {
+const dictionary: Record<string, { previous: string; next: string }> = {
+  cz: { previous: "Předchozí Příspěvek", next: "Následující Příspěvek" },
+  de: { previous: "Vorheriger Beitrag", next: "Nächster Beitrag" },
+  en: { previous: "Previous Post", next: "Next Post" },
+  es: { previous: "Publicación Anterior", next: "Siguiente Publicación" },
+  fi: { previous: "Edellinen Postaus", next: "Seuraava Postaus" },
+  fr: { previous: "Article Précédent", next: "Article Suivant" },
+  it: { previous: "Post Precedente", next: "Post Successivo" },
+  ja: { previous: "前の記事", next: "次の記事" },
+  lb: { previous: "Virdrunge Post", next: "Nächste Post" },
+  lt: { previous: "Ankstesnis Įrašas", next: "Kitas Įrašas" },
+  nl: { previous: "Vorige Post", next: "Volgende Post" },
+  no: { previous: "Forrige Post", next: "Neste Post" },
+  pl: { previous: "Poprzedni Post", next: "Następny Post" },
+  pt: { previous: "Post Anterior", next: "Próximo Post" },
+  ro: { previous: "Postare Anterioară", next: "Postare Următoare" },
+  ru: { previous: "Предыдущая Статья", next: "Следующая Статья" },
+  sk: { previous: "Předchozí Příspěvek", next: "Následující Příspěvek" },
+  sv: { previous: "Föregående Inlägg", next: "Nästa Inlägg" },
+  tr: { previous: "Önceki Gönderi", next: "Sonraki Gönderi" },
+  uk: { previous: "Попередня Стаття", next: "Наступна Стаття" },
+  vi: { previous: "Bài Trước", next: "Bài Tiếp Theo" },
+  zh: { previous: "上一篇", next: "下一篇" },
+};
+
+function i18n(
+  dict: Record<string, { previous: string; next: string }> = dictionary,
+): { previous: string; next: string } {
   const lang = Deno.env.get("DENO_QUICKBLOG_LANG") ?? "en";
-  const supportedLangs = Object.keys(i18n());
-  if (!supportedLangs.includes(lang)) {
-    console.warn(
-      `Warning: Language "${lang}" is not officially supported. Defaulting to English for navigation links. Supported languages are: ${
-        supportedLangs.join(", ")
-      }.`,
-    );
-    return "en";
-  }
-  return lang;
+
+  const translated = {
+    previous: dict[lang]?.previous ?? dict["en"].previous,
+    next: dict[lang]?.next ?? dict["en"].next,
+  };
+
+  return translated;
 }
 
 function htmlBodyTemplate(
@@ -77,8 +107,8 @@ function htmlBodyTemplate(
     </script>
     <style>
       main {
-        max-width: 800px;
-        margin: 0 auto;
+        max-width: 920px;
+        margin: 2rem auto;
       }
       ${CSS}
     </style>
@@ -137,6 +167,20 @@ function htmlBodyTemplate(
 `;
 }
 
+function checkLangSupport(): string {
+  const lang = Deno.env.get("DENO_QUICKBLOG_LANG") ?? "en";
+  const supportedLangs = Object.keys(dictionary);
+  if (!supportedLangs.includes(lang)) {
+    console.warn(
+      `Warning: Language "${lang}" is not officially supported. Defaulting to English for navigation links. Supported languages are: ${
+        supportedLangs.join(", ")
+      }.`,
+    );
+    return "en";
+  }
+  return lang;
+}
+
 function renderMarkdownFileToHtml(filePath: string): string {
   if (Deno.readFileSync(filePath)) {
     return render(Deno.readTextFileSync(filePath), {
@@ -151,6 +195,59 @@ function renderNav(): string {
   return renderMarkdownFileToHtml("nav.md");
 }
 
+function renderFooter(): string {
+  const markdown = renderMarkdownFileToHtml("footer.md");
+  if (Deno.env.get("DENO_QUICKBLOG_HIDE_FOOTER") === "true") {
+    return "";
+  }
+  return `<footer>
+  ${markdown}
+</footer>
+`;
+}
+
+function copyDirRecursive(src: string, dest: string) {
+  for (const dirEntry of Deno.readDirSync(src)) {
+    const srcPath = `${src}/${dirEntry.name}`;
+    const destPath = `${dest}/${dirEntry.name}`;
+
+    if (dirEntry.isFile) {
+      Deno.copyFileSync(srcPath, destPath);
+    } else if (dirEntry.isDirectory) {
+      Deno.mkdirSync(destPath, { recursive: true });
+      copyDirRecursive(srcPath, destPath);
+    }
+  }
+}
+
+function createNewPost() {
+  if (Deno.args.includes("new-post")) {
+    const now = new Date();
+    const year = `${now.getFullYear()}`;
+    const month = String(now.getMonth() + 1).padStart(2, "0");
+    const day = String(now.getDate()).padStart(2, "0");
+    const slug = "new-post";
+    const fileName = `posts/${formatDateString(year, month, day)}-${slug}.md`;
+    try {
+      Deno.statSync(fileName);
+      console.error(`Error: Post "${fileName}" already exists.`);
+      Deno.exit(1);
+    } catch {
+      // File does not exist, continue
+    }
+    Deno.writeTextFileSync(
+      fileName,
+      `+++
+title = "New Post"
++++
+
+Write your post content here!`,
+    );
+    console.log(`New post created: ${fileName}`);
+    Deno.exit(0);
+  }
+}
+
 function createHtmlPageFromMarkdown(
   title: string,
   markdown: string,
@@ -158,44 +255,18 @@ function createHtmlPageFromMarkdown(
   const body = render(markdown, {
     baseUrl: Deno.env.get("BASE_URL") ?? "",
   });
-
   const content = `<h1>${title}</h1>  
 ${body}`;
   return htmlBodyTemplate(title, content, renderFooter());
 }
 
-function i18n(): { previous: string; next: string } {
-  const lang = Deno.env.get("DENO_QUICKBLOG_LANG") ?? "en";
-  const translations: Record<string, { previous: string; next: string }> = {
-    cz: { previous: "Předchozí Příspěvek", next: "Následující Příspěvek" },
-    de: { previous: "Vorheriger Beitrag", next: "Nächster Beitrag" },
-    en: { previous: "Previous Post", next: "Next Post" },
-    es: { previous: "Publicación Anterior", next: "Siguiente Publicación" },
-    fi: { previous: "Edellinen Postaus", next: "Seuraava Postaus" },
-    fr: { previous: "Article Précédent", next: "Article Suivant" },
-    it: { previous: "Post Precedente", next: "Post Successivo" },
-    ja: { previous: "前の記事", next: "次の記事" },
-    lb: { previous: "Virdrunge Post", next: "Nächste Post" },
-    lt: { previous: "Ankstesnis Įrašas", next: "Kitas Įrašas" },
-    nl: { previous: "Vorige Post", next: "Volgende Post" },
-    no: { previous: "Forrige Post", next: "Neste Post" },
-    pl: { previous: "Poprzedni Post", next: "Następny Post" },
-    pt: { previous: "Post Anterior", next: "Próximo Post" },
-    ro: { previous: "Postare Anterioară", next: "Postare Următoare" },
-    ru: { previous: "Предыдущая Статья", next: "Следующая Статья" },
-    sk: { previous: "Předchozí Příspěvek", next: "Následující Příspěvek" },
-    sv: { previous: "Föregående Inlägg", next: "Nästa Inlägg" },
-    tr: { previous: "Önceki Gönderi", next: "Sonraki Gönderi" },
-    uk: { previous: "Попередня Стаття", next: "Наступна Стаття" },
-    vi: { previous: "Bài Trước", next: "Bài Tiếp Theo" },
-    zh: { previous: "上一篇", next: "下一篇" },
-  };
-  const translated = {
-    previous: translations[lang]?.previous ?? translations["en"].previous,
-    next: translations[lang]?.next ?? translations["en"].next,
-  };
-
-  return translated;
+function formatDateString(
+  year: string,
+  month: string,
+  day: string,
+  joiner = "-",
+): string {
+  return [year, month, day].join(joiner);
 }
 
 function createHtmlPostFromMarkdown(
@@ -210,8 +281,7 @@ function createHtmlPostFromMarkdown(
   const body = render(markdown, {
     baseUrl: Deno.env.get("BASE_URL") ?? "",
   });
-
-  const content = `<p><em>${year}-${month}-${day}</em></p>
+  const content = `<p><em>${formatDateString(year, month, day)}</em></p>
     <h1>${title}</h1>  
     ${body}
     <hr>
@@ -222,32 +292,63 @@ function createHtmlPostFromMarkdown(
   return htmlBodyTemplate(title, content, renderFooter());
 }
 
-function renderFooter(): string {
-  const markdown = renderMarkdownFileToHtml("footer.md");
-  if (Deno.env.get("DENO_QUICKBLOG_HIDE_FOOTER") === "true") {
-    return "";
-  }
-
-  return `<footer>
-  ${markdown}
-</footer>
-`;
-}
-
 function readContentAndFrontMatter(filePath: string) {
   try {
     const fileContent = Deno.readTextFileSync(filePath);
-    // deno-lint-ignore no-unused-vars
-    const { frontMatter, body, attrs } = extractToml(fileContent) as {
-      frontMatter?: unknown;
-      body: string;
-      attrs?: Record<string, unknown>;
-    };
-    return { content: body, frontMatter: attrs };
+    if (fileContent.trim().startsWith("---")) {
+      // deno-lint-ignore no-unused-vars
+      const { frontMatter, body, attrs } = extractYaml(
+        fileContent,
+      ) as ExtractedMarkdownWithFrontMatter;
+      return { content: body, frontMatter: attrs };
+    } else if (fileContent.trim().startsWith("+++")) {
+      // deno-lint-ignore no-unused-vars
+      const { frontMatter, body, attrs } = extractToml(
+        fileContent,
+      ) as ExtractedMarkdownWithFrontMatter;
+      return { content: body, frontMatter: attrs };
+    } else {
+      return fallbackTitleNoFrontMatter(fileContent);
+    }
   } catch (e) {
     console.error(`Error reading file "${filePath}":`, e);
     return { content: "", frontMatter: undefined };
   }
+}
+
+function fallbackTitleNoFrontMatter(fileContent: string) {
+  // grab either first "# string ..." or first "## string ..." or first "### string ..." as title if front matter is not provided or as a fallback first line trimmed to 80 characters, and return content as is
+  const lines = fileContent.split("\n");
+  let title = "Untitled Post";
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (trimmed.match(/^#{1,3}\s+(.+)$/)) {
+      // Extract text after # (1-3 hashes)
+      title = trimmed.replace(/^#{1,3}\s+/, "");
+      break;
+    }
+  }
+
+  // Fallback to first line with text if no heading found
+  if (title === "Untitled Post" && lines.length > 0) {
+    // find first non-empty line and use it as title, trimmed to a specified number of characters
+    // if the line is longer than the specified number of characters, it will be truncated and "..." will be added to the end
+    const firstNonEmptyLine = lines.find((line) => line.trim().length > 0);
+    if (firstNonEmptyLine) {
+      const maxLength = Deno.env.get("DENO_QUICKBLOG_TITLE_MAX_LENGTH")
+        ? parseInt(Deno.env.get("DENO_QUICKBLOG_TITLE_MAX_LENGTH")!)
+        : 40;
+      title = firstNonEmptyLine.trim().length > maxLength
+        ? firstNonEmptyLine.trim().slice(0, maxLength) + "..."
+        : firstNonEmptyLine.trim();
+    }
+  }
+
+  return {
+    content: fileContent,
+    frontMatter: { title, noFrontmatter: true },
+  };
 }
 
 function extractTitle(
@@ -260,51 +361,106 @@ function extractTitle(
   return title;
 }
 
-function postList() {
-  const postsList: Array<[string, string]> = [];
-  for (const dirEntry of Deno.readDirSync("posts")) {
+function findMarkdownFiles(dir: string, relativePath = ""): Array<string> {
+  const files: string[] = [];
+  for (const dirEntry of Deno.readDirSync(dir)) {
+    const fullPath = `${dir}/${dirEntry.name}`;
+    const relPath = relativePath
+      ? `${relativePath}/${dirEntry.name}`
+      : dirEntry.name;
+
     if (dirEntry.isFile && dirEntry.name.endsWith(".md")) {
-      const [year, month, day, ...slugParts] = dirEntry.name.split("-");
-      const slug = slugParts.join("-").replace(".md", "");
-      const url = `/posts/${year}/${month}/${day}/${slug}/`;
-      const k = [year, month, day].map(String).join("");
-      postsList.push([k, url]);
+      files.push(relPath);
+    } else if (dirEntry.isDirectory) {
+      files.push(...findMarkdownFiles(fullPath, relPath));
     }
+  }
+  return files;
+}
+
+function postList(): PostIDUrl[] {
+  const postsList: Array<[string, string]> = [];
+  const postFiles = findMarkdownFiles("posts");
+
+  for (const filePath of postFiles) {
+    const fileName = filePath.split("/").pop()!;
+    const [year, month, day, ...slugParts] = fileName.split("-");
+    const slug = slugParts.join("-").replace(".md", "");
+    const url = `/posts/${year}/${month}/${day}/${slug}/`;
+    const postKey = [year, month, day].map(String).join("");
+    postsList.push([postKey, url]);
   }
   postsList.sort((a, b) => b[0].localeCompare(a[0]));
   return postsList;
 }
 
 export async function createPages(posts: PostInfo[]) {
-  const pages = Deno.readDirSync("pages");
-  for (const dirEntry of pages) {
-    if (dirEntry.isFile && dirEntry.name.endsWith(".md")) {
-      const pageName = dirEntry.name.replace(".md", "");
-      const { content, frontMatter } = readContentAndFrontMatter(
-        `pages/${dirEntry.name}`,
-      );
-      const fullContent = createPostList(content, posts);
-      const title: string = extractTitle(frontMatter);
-      Deno.mkdirSync("dist", { recursive: true });
-      Deno.writeTextFileSync(
-        `dist/${pageName}.html`,
-        createHtmlPageFromMarkdown(title, fullContent),
-      );
+  await processPageDirectory("pages", "", posts);
+}
+function writePageFromMarkdown(
+  sourcePath: string,
+  dirEntry: Deno.DirEntry,
+  relativePath: string,
+  posts: PostInfo[],
+) {
+  const pageName = dirEntry.name.replace(".md", "");
+  const { content, frontMatter } = readContentAndFrontMatter(sourcePath);
+  const fullContent = includePostListPartial(content, posts);
+  const title: string = extractTitle(frontMatter);
+
+  const outputDir = relativePath ? `dist/${relativePath}` : "dist";
+  Deno.mkdirSync(outputDir, { recursive: true });
+  Deno.writeTextFileSync(
+    `${outputDir}/${pageName}.html`,
+    createHtmlPageFromMarkdown(title, fullContent),
+  );
+}
+
+async function writePageFromJSX(
+  sourcePath: string,
+  dirEntry: Deno.DirEntry,
+  relativePath: string,
+  posts: PostInfo[],
+) {
+  const pageName = dirEntry.name.replace(".jsx", "");
+  const module = await import(`./${sourcePath}`);
+  const PageComponent = module.default;
+  const pageJsx = PageComponent({ posts });
+  const pageHtml = renderToString(pageJsx);
+
+  const outputDir = relativePath ? `dist/${relativePath}` : "dist";
+  Deno.mkdirSync(outputDir, { recursive: true });
+  Deno.writeTextFileSync(
+    `${outputDir}/${pageName}.html`,
+    htmlBodyTemplate(
+      pageName,
+      pageHtml,
+      renderFooter(),
+    ),
+  );
+}
+
+async function processPageDirectory(
+  sourceDir: string,
+  relativePath: string,
+  posts: PostInfo[],
+) {
+  for (const dirEntry of Deno.readDirSync(sourceDir)) {
+    const sourcePath = `${sourceDir}/${dirEntry.name}`;
+    const newRelativePath = relativePath
+      ? `${relativePath}/${dirEntry.name}`
+      : dirEntry.name;
+
+    // Skip posts directory
+    if (dirEntry.name === "posts") continue;
+    // Process directories and markdown/jsx files, ignore others
+    if (dirEntry.isDirectory) {
+      // Recursively process subdirectories
+      await processPageDirectory(sourcePath, newRelativePath, posts);
+    } else if (dirEntry.isFile && dirEntry.name.endsWith(".md")) {
+      writePageFromMarkdown(sourcePath, dirEntry, relativePath, posts);
     } else if (dirEntry.isFile && dirEntry.name.endsWith(".jsx")) {
-      const pageName = dirEntry.name.replace(".jsx", "");
-      const module = await import(`./pages/${dirEntry.name}`);
-      const PageComponent = module.default;
-      const pageJsx = PageComponent({ posts });
-      const pageHtml = renderToString(pageJsx);
-      Deno.mkdirSync("dist", { recursive: true });
-      Deno.writeTextFileSync(
-        `dist/${pageName}.html`,
-        htmlBodyTemplate(
-          pageName,
-          pageHtml,
-          renderFooter(),
-        ),
-      );
+      await writePageFromJSX(sourcePath, dirEntry, relativePath, posts);
     }
   }
 }
@@ -328,18 +484,24 @@ function limitPostList(
   return posts;
 }
 
-function createPostList(content: string, posts: PostInfo[]) {
+function createPostListMarkdown(posts: PostInfo[]): string {
+  let postList = "";
+  for (const [_postKey, postDate, title, url] of posts) {
+    postList += `- <small>${postDate}</small> [${title}](${url})\n`;
+  }
+  return postList;
+}
+
+function includePostListPartial(content: string, posts: PostInfo[]): string {
   let fullContent = "";
   const postsListRegex = /\{\{\s*POSTS_LIST(?:\(\d{1,3}\))?\s*\}\}/;
   if (postsListRegex.test(content)) {
     // if a number is specified, the number of posts listed will be limited to that number
     posts = limitPostList(content, postsListRegex, posts);
-    let postList = "";
-    // deno-lint-ignore no-unused-vars
-    for (const [postKey, postDate, title, url] of posts) {
-      postList += `- <small>${postDate}</small> [${title}](${url})\n`;
-    }
-    fullContent = content.replace(postsListRegex, postList);
+    fullContent = content.replace(
+      postsListRegex,
+      createPostListMarkdown(posts),
+    );
   } else {
     fullContent = content;
   }
@@ -349,144 +511,139 @@ function createPostList(content: string, posts: PostInfo[]) {
 export function createPosts() {
   const postsList = postList(); // for navigation links
   const posts: PostInfo[] = [];
-  for (const dirEntry of Deno.readDirSync("posts")) {
-    if (dirEntry.isFile && dirEntry.name.endsWith(".md")) {
-      const [year, month, day, ...slugParts] = dirEntry.name.split("-");
-      const slug = slugParts.join("-").replace(".md", "");
-      const url = `/posts/${year}/${month}/${day}/${slug}/`;
-      const outputDir = `dist/posts/${year}/${month}/${day}/${slug}`;
-      Deno.mkdirSync(outputDir, { recursive: true });
+  const postFiles = findMarkdownFiles("posts");
+  // posts must be in the format YYYY-MM-DD-title.md to be properly parsed,
+  // and the URL will be generated based on that
+  for (const filePath of postFiles) {
+    const fileName = filePath.split("/").pop()!;
+    const [year, month, day, ...slugParts] = fileName.split("-");
+    const slug = slugParts.join("-").replace(".md", "");
+    const url = `/posts/${year}/${month}/${day}/${slug}/`;
+    const outputDir = `dist/posts/${year}/${month}/${day}/${slug}`;
+    const { content, frontMatter } = readContentAndFrontMatter(
+      `posts/${filePath}`,
+    );
+    const title: string = extractTitle(frontMatter);
+    const postKey = [year, month, day].map(String).join("");
+    const postDate = formatDateString(year, month, day);
+    const currentIndex = postsList.findIndex(([k]) => k === postKey);
+    const nextUrl = postsList[currentIndex - 1]?.[1] ?? null;
+    const prevUrl = postsList[currentIndex + 1]?.[1] ?? null;
 
-      const { content, frontMatter } = readContentAndFrontMatter(
-        `posts/${dirEntry.name}`,
-      );
-      const title: string = extractTitle(frontMatter);
-
-      const postKey = [year, month, day].map(String).join("");
-      const postDate = `${year}-${month}-${day}`;
-      const currentIndex = postsList.findIndex(([k]) => k === postKey);
-      const nextUrl = postsList[currentIndex - 1]?.[1] ?? null;
-      const prevUrl = postsList[currentIndex + 1]?.[1] ?? null;
-
-      // write content to output file
-      Deno.writeTextFileSync(
-        `${outputDir}/index.html`,
-        createHtmlPostFromMarkdown(
-          title,
-          content,
-          year,
-          month,
-          day,
-          nextUrl,
-          prevUrl,
-        ),
-      );
-      posts.push([postKey, postDate, title, url, nextUrl, prevUrl]);
-    }
+    // write content to output file
+    Deno.mkdirSync(outputDir, { recursive: true });
+    Deno.writeTextFileSync(
+      `${outputDir}/index.html`,
+      createHtmlPostFromMarkdown(
+        frontMatter?.noFrontmatter ? "" : title,
+        content,
+        year,
+        month,
+        day,
+        nextUrl,
+        prevUrl,
+      ),
+    );
+    posts.push([postKey, postDate, title, url, nextUrl, prevUrl]);
   }
   return posts;
 }
 
 function writeIndex(posts: PostInfo[]) {
   let indexContent = Deno.readTextFileSync("index.md");
-  Deno.mkdirSync("dist", { recursive: true });
   // deno-lint-ignore no-unused-vars
-  const { frontMatter, body, attrs } = extractToml(indexContent) as {
-    frontMatter?: unknown;
-    body: string;
-    attrs?: Record<string, unknown>;
-  };
+  const { frontMatter, body, attrs } = extractToml(
+    indexContent,
+  ) as ExtractedMarkdownWithFrontMatter;
   const title: string = extractTitle(attrs);
   indexContent = body;
-  indexContent = createPostList(indexContent, posts);
+  indexContent = includePostListPartial(indexContent, posts);
   Deno.writeTextFileSync(
     "dist/index.html",
     createHtmlPageFromMarkdown(title, indexContent),
   );
 }
 
-function copyPublicFolder() {
+function copyPublicFolderToDist() {
   try {
-    Deno.mkdirSync("dist", { recursive: true });
     copyDirRecursive("public", "dist");
   } catch (e) {
     console.error("Error copying public folder:", e);
   }
 }
 
-function copyDirRecursive(src: string, dest: string) {
-  for (const dirEntry of Deno.readDirSync(src)) {
-    const srcPath = `${src}/${dirEntry.name}`;
-    const destPath = `${dest}/${dirEntry.name}`;
-
-    if (dirEntry.isFile) {
-      Deno.copyFileSync(srcPath, destPath);
-    } else if (dirEntry.isDirectory) {
-      Deno.mkdirSync(destPath, { recursive: true });
-      copyDirRecursive(srcPath, destPath);
-    }
-  }
-}
-
-function cleanUpDirectories() {
-  [
-    "dist/posts",
-    "dist/pages",
-    "dist/public",
-  ].forEach((dir) => {
-    try {
-      Deno.removeSync(dir, { recursive: true });
-    } catch (_e) {
-      // ignore error
-    }
-  });
-  // this removes any remaining html files in dist/
+function cleanUpDistDirectory() {
   try {
     for (const dirEntry of Deno.readDirSync("dist")) {
-      if (dirEntry.isFile && dirEntry.name.endsWith(".html")) {
-        Deno.removeSync(`dist/${dirEntry.name}`);
-      }
+      Deno.removeSync(`dist/${dirEntry.name}`, { recursive: true });
     }
   } catch (_e) {
-    // ignore error
+    // ignore error if dist/ doesn't exist
   }
 }
 
-function createNewPost() {
-  if (Deno.args.includes("new-post")) {
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = String(now.getMonth() + 1).padStart(2, "0");
-    const day = String(now.getDate()).padStart(2, "0");
-    const slug = "new-post";
-    const fileName = `posts/${year}-${month}-${day}-${slug}.md`;
-    try {
-      Deno.statSync(fileName);
-      console.error(`Error: Post "${fileName}" already exists.`);
+function checkCollisionsBetweenPublicAndPages(
+  publicNames: Set<string>,
+  pageNames: Set<string>,
+) {
+  for (const name of publicNames) {
+    if (pageNames.has(name)) {
+      console.error(
+        `Error: Naming collision detected for "${name}" in "public" and "pages" directories. Please rename one of the files to avoid conflicts.`,
+      );
       Deno.exit(1);
-    } catch {
-      // File does not exist, continue
     }
-    Deno.writeTextFileSync(
-      fileName,
-      `+++
-title = "New Post"
-+++
+  }
+}
 
-Write your post content here!`,
-    );
-    console.log(`New post created: ${fileName}`);
-    Deno.exit(0);
+function checkReservedPostsName(
+  entries: Deno.DirEntry[],
+  directoryName: string,
+) {
+  for (const entry of entries) {
+    if (entry.name === "posts") {
+      console.error(
+        `Error: Reserved name "${entry.name}" found in "${directoryName}" directory. The "posts" name pattern is reserved for blog posts. Please rename this file/directory.`,
+      );
+      Deno.exit(1);
+    }
+  }
+}
+
+function checkNamingCollisionsPublicAndPages() {
+  try {
+    const publicEntries = Array.from(Deno.readDirSync("public"));
+    const pageEntries = Array.from(Deno.readDirSync("pages"));
+
+    const publicNames = new Set(publicEntries.map((e) => e.name));
+    const pageNames = new Set(pageEntries.map((e) => e.name));
+    const allowedFiles = new Set([".gitkeep"]);
+    allowedFiles.forEach((name) => {
+      publicNames.delete(name);
+      pageNames.delete(name);
+    });
+    // Check for naming collisions between public/ and pages/
+    checkCollisionsBetweenPublicAndPages(publicNames, pageNames);
+    // Check for "posts" pattern in public/ and pages/ directories
+    checkReservedPostsName(publicEntries, "public");
+    checkReservedPostsName(pageEntries, "pages");
+  } catch (e) {
+    // If directories don't exist, that's okay
+    if (!(e instanceof Deno.errors.NotFound)) {
+      throw e;
+    }
   }
 }
 
 // Learn more at https://docs.deno.com/runtime/manual/examples/module_metadata#concepts
 if (import.meta.main) {
   createNewPost();
+  checkNamingCollisionsPublicAndPages();
   console.log("Deno-QuickBlog - Building blog...\n");
   checkLangSupport();
-  cleanUpDirectories();
+  cleanUpDistDirectory();
   console.log("Cleaned up files.");
+  Deno.mkdirSync("dist", { recursive: true });
   const posts = createPosts();
   posts.sort((a, b) => b[0].localeCompare(a[0]));
   console.log("Read posts.");
@@ -495,7 +652,7 @@ if (import.meta.main) {
   console.log("Writing pages.");
   writeIndex(posts);
   console.log("Writing index page.");
-  copyPublicFolder();
+  copyPublicFolderToDist();
   console.log("Copied public folder.");
   console.log("\nBlog build complete!");
 }
