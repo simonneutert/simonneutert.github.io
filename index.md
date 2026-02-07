@@ -36,7 +36,7 @@ I check my inbox almost quarterly 😅 🤞
 Mostly about code I've written, sometimes pet projects, or things that should
 never slow me down again.
 
-I run website/blog with my custom static site generator, written mostly in
+I run this website/blog using my custom static site generator, written mostly in
 TypeScript with [Deno](https://deno.land/) as the runtime/ecosystem.\
 The source code is available on GitHub:
 [@simonneutert/deno-quickblog](https://github.com/simonneutert/deno-quickblog).
