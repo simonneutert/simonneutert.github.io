@@ -2,10 +2,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Base64 image encoding / decoding in ruby</title>
+    <title>Fish Shell: A friendly interactive shell.</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="build-version" content="1770557174188">
+    <meta name="build-version" content="1770557174023">
     <script>
       // Apply saved theme immediately to prevent flicker
       (function() {
@@ -42,41 +42,140 @@
 </small>
 
   </nav>
-    <p><em>2018-01-17</em></p>
-    <h1>Base64 image encoding / decoding in ruby</h1>  
-    <p><strong>convert an image to Base64 data:</strong></p>
-<div class="highlight highlight-source-ruby notranslate"><pre><span class="token keyword">require</span> <span class="token"><span class="token string">"base64"</span></span>
+    <p><em>2026-02-08</em></p>
+    <h1>Fish Shell: A friendly interactive shell.</h1>  
+    <p>Let me describe you my current terminal/shell setup.</p>
+<p>To me kitty is my preferred terminal emulator, and I have been using it for a
+while now. It is fast, feature-rich, and highly customizable.</p>
+<p>It comes with a built-in GPU rendering engine, which makes it incredibly fast
+and responsive. You can extend it (though I haven't had the need to do so).</p>
+<p>Changing your theme (from inside a kitty window) is as simple as:
+<code>kitten themes</code>.</p>
+<h2 id="how-i-run-my-desktop"><a class="anchor" aria-hidden="true" tabindex="-1" href="#how-i-run-my-desktop"><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>How I run my desktop</h2>
+<p>The main thing and only thing I changed in my OS was the default terminal, which
+I set to kitty.</p>
+<p>Hitting <code>Ctrl+Alt+T</code> opens a new kitty window, and I am good to go.</p>
+<h2 id="dont-change-your-system-shell"><a class="anchor" aria-hidden="true" tabindex="-1" href="#dont-change-your-system-shell"><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Don't change your system shell!</h2>
+<p>I let me underlying system shell be bash/zsh or whatever the OS has as its
+default.<br />Why? Because I don't want to mess with my system shell, and I don't want to have
+to worry about breaking things.</p>
+<p><em>So, how do I run fish without changing my system shell? I make kitty run fish
+as ITS shell, without changing the system shell.</em></p>
+<p>To configure kitty to use <a href="https://fishshell.com/" rel="noopener noreferrer">fish</a>, I configure a kitty
+start-up session in my <code>kitty.conf</code> file:</p>
+<pre><code># i use nvim to edit my kitty config:
+nvim .config/kitty/launch.kitty-session</code></pre><p>and my <code>launch.kitty-session</code> file looks like this:</p>
+<pre><code>cd ~
 
-base64_image <span class="token operator">=</span>
-  <span class="token">File</span><span class="token punctuation">.</span>open<span class="token punctuation">(</span><span class="token"><span class="token string">"path/to/file.jpg"</span></span><span class="token punctuation">,</span> <span class="token"><span class="token string">"rb"</span></span><span class="token punctuation">)</span> <span class="token keyword">do</span> <span class="token operator">|</span>file<span class="token operator">|</span>
-    <span class="token comment"># why strict_encode64</span>
-    <span class="token comment"># https://ruby-doc.org/stdlib-2.3.1/libdoc/base64/rdoc/Base64.html#method-i-strict_encode64</span>
-    Base64<span class="token punctuation">.</span>strict_encode64<span class="token punctuation">(</span>file<span class="token punctuation">.</span>read<span class="token punctuation">)</span>
-  <span class="token keyword">end</span>
+launch fish</code></pre><p><code>cd ~</code> is optional, but I like to start in my home directory when I open a new
+terminal.</p>
+<p>Never change without a backup, so I always make a backup of my <code>kitty.conf</code> file
+before making any changes, just in case I mess something up.
+<code>cp .config/kitty/kitty.conf .config/kitty/kitty.conf.bak</code> is my go-to command
+for that.</p>
+<p>One more step to take, edit <code>.config/kitty/kitty.conf</code> and search for
+"startup_session" and set it to the path of your session file:</p>
+<pre><code># in my case, it was around line 1856, where I changed 
+# (or added, it depends) the following line:
+startup_session ~/.config/kitty/launch.kitty-session</code></pre><p>This will get you started with <code>fish</code> for/in <code>kitty</code>, and you can customize it
+further to your liking.</p>
+<h2 id="make-it-perfect-useset-your-keyboard-shortcuts"><a class="anchor" aria-hidden="true" tabindex="-1" href="#make-it-perfect-useset-your-keyboard-shortcuts"><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Make it perfect, use/set your keyboard shortcuts</h2>
+<p>I advise to skim the official kitty documentation and read the file itself a
+little bit to get a feel for how it works and what you can do with it. It is
+very well documented and has a lot of features, so it is worth taking the time
+to explore it.</p>
+<p>Though it may be daunting at first, it is worth it to know what is possible and
+how it works.</p>
+<p>Here's a snippet from my <code>kitty.conf</code> (it's very long, I felt overwhelmed at
+first, too) file that defines some keyboard shortcuts to launch new kitty
+windows or tabs with fish as the shell:</p>
+<pre><code>#: Keyboard shortcuts {{{
 
-<span class="token comment"># now save to db or whatever you wish :)</span></pre></div><p><strong>convert Base64 image data to an image file:</strong></p>
-<div class="highlight highlight-source-ruby notranslate"><pre><span class="token keyword">require</span> <span class="token"><span class="token string">"base64"</span></span>
+#: Keys are identified simply by their lowercase Unicode characters.
+#: For example: a for the A key, [ for the left square bracket key,
+#: etc. For functional keys, such as Enter or Escape, the names are
+#: present at Functional key definitions
+#: &lt;https://sw.kovidgoyal.net/kitty/keyboard-protocol/#functional&gt;.
+#: For modifier keys, the names are ctrl (control, ⌃), shift (⇧), alt
+#: (opt, option, ⌥), super (cmd, command, ⌘).
 
-<span class="token comment"># decode64</span>
-img_from_base64 <span class="token operator">=</span> Base64<span class="token punctuation">.</span>decode64<span class="token punctuation">(</span>base64_image<span class="token punctuation">)</span>
-<span class="token comment"># =&gt; "\x89PNG\r\n\x1A\n\x00\x00\x00\rIHDR\x00\x00\x00\xAA\x00\x00\x00\xAA\b\x06\x00\x00\x00=v\xD4\x82\x00\x00\x00IDATx\x9C\xEC\xBDi\x98%Wy\xE7\xF9;[D\xDC-3++k\xDF\xF7U\xA2T\x92J*\xAD\xA5}A`\ff\xB1\xB11\ ..."</span>
+#: Simple shortcut mapping is done with the map directive. For full
+#: details on advanced mapping including modal and per application
+#: maps, see mapping &lt;https://sw.kovidgoyal.net/kitty/mapping/&gt;. Some
+#: quick examples to illustrate common tasks::
 
-<span class="token comment"># cut the data where it seems to hold the filetype</span>
-img_from_base64<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">]</span>
-<span class="token comment"># =&gt; "\x89PNG\r\n\x1A\n"</span>
+#:     # unmap a keyboard shortcut, passing it to the program running in kitty
+#:     map kitty_mod+space
+#:     # completely ignore a keyboard event
+#:     map ctrl+alt+f1 discard_event
+#:     # combine multiple actions
+#:     map kitty_mod+e combine : new_window : next_layout
+#:     # multi-key shortcuts
+#:     map ctrl+x&gt;ctrl+y&gt;z action
 
-<span class="token comment"># find file type</span>
-filetype <span class="token operator">=</span> <span class="token"><span class="token regex">/(png|jpg|jpeg|gif|PNG|JPG|JPEG|GIF)/</span></span><span class="token punctuation">.</span>match<span class="token punctuation">(</span>img_from_base64<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">16</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
-<span class="token comment"># name the file</span>
-filename <span class="token operator">=</span> <span class="token"><span class="token string">"image_name"</span></span>
+map ctrl+shift+t new_tab_with_cwd fish
 
-<span class="token comment"># write file</span>
-file <span class="token operator">=</span> filename <span class="token operator">&lt;&lt;</span> <span class="token"><span class="token string">'.'</span></span> <span class="token operator">&lt;&lt;</span> filetype
-<span class="token">File</span><span class="token punctuation">.</span>open<span class="token punctuation">(</span>file<span class="token punctuation">,</span> <span class="token"><span class="token string">'wb'</span></span><span class="token punctuation">)</span> <span class="token keyword">do</span><span class="token operator">|</span>f<span class="token operator">|</span>
-  f<span class="token punctuation">.</span>write<span class="token punctuation">(</span>img_from_base64<span class="token punctuation">)</span>
-<span class="token keyword">end</span></pre></div>
+#: The full list of actions that can be mapped to key presses is
+#: available here &lt;https://sw.kovidgoyal.net/kitty/actions/&gt;.
+
+# kitty_mod ctrl+shift
+
+#: Special modifier key alias for default shortcuts. You can change
+#: the value of this option to alter all default shortcuts that use
+#: kitty_mod.
+
+# clear_all_shortcuts no
+
+#: Remove all shortcut definitions up to this point. Useful, for
+#: instance, to remove the default shortcuts.
+
+# action_alias
+
+#: E.g. action_alias launch_tab launch --type=tab --cwd=current
+
+action_alias new_window_fish launch --type=window --cwd=current fish
+action_alias new_tab_fish launch --type=tab --cwd=current fish
+
+#: Define action aliases to avoid repeating the same options in
+#: multiple mappings. Aliases can be defined for any action and will
+#: be expanded recursively. For example, the above alias allows you to
+#: create mappings to launch a new tab in the current working
+#: directory without duplication::</code></pre><p>This will allow you to open a new tab with <code>Ctrl+Shift+T</code> and a new window with
+<code>Cmd+Enter</code> or <code>Kitty_Mod+Enter</code> (which is usually <code>Ctrl+Shift+Enter</code> by
+default).</p>
+<pre><code>map ctrl+shift+t new_tab_with_cwd fish</code></pre><p>and:</p>
+<pre><code>map kitty_mod+enter new_window_fish
+map cmd+enter new_window_fish</code></pre><p>This setup allows me to quickly open new tabs or windows with fish as the shell,
+and I can customize it further to my liking.</p>
+<h2 id="more-shortcuts-i-use-daily"><a class="anchor" aria-hidden="true" tabindex="-1" href="#more-shortcuts-i-use-daily"><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>More shortcuts I use daily</h2>
+<p>Here are some more shortcuts I use daily in my kitty configuration.</p>
+<h3 id="window-control"><a class="anchor" aria-hidden="true" tabindex="-1" href="#window-control"><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Window Control</h3>
+<p>Windows in kitty are more like panes in a tiling window manager, and they are
+great for multitasking and organizing your workflow.</p>
+<ul>
+<li><code>ctrl+d</code> to close the current tab or window (when there no tool running)</li>
+<li><code>ctrl+shift+w</code> to close the current window</li>
+<li><code>ctrl+shift+enter</code> to open a new window (windows are closest to what you'd
+expect when thinking of a tiling window manager, while tabs are more like
+browser tabs)</li>
+<li><code>ctrl+shift+[</code> and <code>ctrl+shift+]</code> to switch between windows</li>
+<li><code>ctrl+shift+l</code> to switch the window layout (in a tab, you can have multiple
+windows)</li>
+<li><code>ctrl+shift+b</code> to move the current window around in the layout (useful for
+rearranging windows in a tab)</li>
+</ul>
+<h3 id="tabs"><a class="anchor" aria-hidden="true" tabindex="-1" href="#tabs"><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Tabs</h3>
+<p>Tabs are more like browser tabs, and they are great for grouping related tasks
+together.</p>
+<ul>
+<li><code>ctrl+shift+t</code> to open a new tab with the current working directory</li>
+<li><code>ctrl+shift+left</code> and <code>ctrl+shift+right</code> to switch between tabs</li>
+</ul>
+<h2 id="screenshot"><a class="anchor" aria-hidden="true" tabindex="-1" href="#screenshot"><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Screenshot</h2>
+<p><img src="/public/images/2026/20260208-kitty.webp" alt="kitty with fish shell" /></p>
+
     <hr>
-    <a href="/posts/2018/01/16/Simple-Jekyll-Gallery/">&#8592; Previous Post</a> | <a href="/posts/2018/01/18/upload-static-files-to-webhoster/">Next Post &#8594;</a>
+    <a href="/posts/2026/02/02/deno-starshower-released/">&#8592; Previous Post</a>
     <hr>
     <footer>
   <div>
