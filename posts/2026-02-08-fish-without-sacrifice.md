@@ -13,6 +13,10 @@ and responsive. You can extend it (though I haven't had the need to do so).
 Changing your theme (from inside a kitty window) is as simple as:
 `kitten themes`.
 
+## Screenshot
+
+![kitty with fish shell](/images/2026/20260208-kitty.webp)
+
 ## How I run my desktop
 
 The main thing and only thing I changed in my OS was the default terminal, which
@@ -180,7 +184,3 @@ together.
 
 - `ctrl+shift+t` to open a new tab with the current working directory
 - `ctrl+shift+left` and `ctrl+shift+right` to switch between tabs
-
-## Screenshot
-
-![kitty with fish shell](/images/2026/20260208-kitty.webp)
