@@ -183,4 +183,4 @@ together.
 
 ## Screenshot
 
-![kitty with fish shell](/public/images/2026/20260208-kitty.webp)
+![kitty with fish shell](/images/2026/20260208-kitty.webp)
