@@ -12,8 +12,10 @@ If you want to learn more about precompiled JSX in Deno, you can check out the o
 https://docs.deno.com/runtime/reference/jsx/#using-preact-with-rendertostring
 */
 
-import { render } from "@deno/gfm";
-import { parse } from "@std/yaml";
+// deno-lint-ignore-file verbatim-module-syntax no-import-prefix no-unversioned-import
+import React from "npm:@preact/compat";
+import { render } from "jsr:@deno/gfm";
+import { parse } from "jsr:@std/yaml";
 
 // in the yaml file, we have a list of artists with their name and description.
 // no parent key was used, so we can directly parse the file and get the list of artists as an array.

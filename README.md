@@ -14,6 +14,12 @@ As a bonus [deno-starshower](https://github.com/simonneutert/deno-starshower) is
 integrated. Again, run periodically in a GitHub Actions, updating the blog
 content automagically.
 
+## Run / Build
+
+```bash
+deno run -A jsr:@simonneutert/quickblog build
+```
+
 ---
 
 It is not much, but it is honest work 🧑‍🌾 🤖

@@ -25,14 +25,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout blog repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         # This checks out YOUR blog repository where this workflow file lives
         # If this workflow is in a different repo than your blog, specify:
         # with:
         #   repository: your-username/your-blog-repo
 
       - name: Checkout deno-starshower
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: simonneutert/deno-starshower
           # Or use your fork: <your-username>/deno-starshower
@@ -53,7 +53,7 @@ jobs:
         run: |
           deno run --allow-env --allow-net --allow-write main.ts ${{ github.repository_owner }}
           # Alternative: hardcode username instead of using a variable:
-          # deno run --allow-env --allow-net --allow-write main.ts simonneutert
+          # deno run --A jsr:@simonneutert/quickblog build
 
       - name: Prepare starred repos for the blog
         run: |
