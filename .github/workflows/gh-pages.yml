@@ -16,11 +16,8 @@ jobs:
         with:
           deno-version: v2.x
 
-      - name: Install dependencies
-        run: deno install
-
       - name: Build
-        run: deno run publish-blog
+        run: deno run -A jsr:@simonneutert/quickblog build
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
