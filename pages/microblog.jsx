@@ -33,7 +33,7 @@ export default function Microblog() {
           type="text"
           id="link-search"
           placeholder="Search link collection..."
-          style="width: 95%; max-width: 500px; padding: 8px 12px; font-size: 16px; border: 1px solid #ccc; border-radius: 4px;"
+          style="width: 93%; max-width: 500px; padding: 8px 12px; font-size: 16px; border: 1px solid #ccc; border-radius: 4px;"
         />
       </div>
 
