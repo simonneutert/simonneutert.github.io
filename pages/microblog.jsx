@@ -8,8 +8,8 @@ import { parse } from "jsr:@std/yaml";
 const collection = parse(Deno.readTextFileSync("./pages/microblog.yml"));
 
 export const config = {
-  title: "My MicroBlog - a collection of weblinks"
-}
+  title: "My MicroBlog - a collection of weblinks",
+};
 
 // this is a helper function that accepts the links and formats them in markdown
 function formatItem(item) {
