@@ -23,3 +23,7 @@ deno run -A jsr:@simonneutert/quickblog build
 ---
 
 It is not much, but it is honest work 🧑‍🌾 🤖
+
+## Else
+
+the `CNAME` file needs to be in `public/` for GitHub to pick it up.
