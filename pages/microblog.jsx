@@ -7,6 +7,10 @@ import { parse } from "jsr:@std/yaml";
 // no parent key was used, so we can directly parse the file and get the list of links as an array.
 const collection = parse(Deno.readTextFileSync("./pages/microblog.yml"));
 
+export const config = {
+  title: "My MicroBlog - a collection of weblinks"
+}
+
 // this is a helper function that accepts the links and formats them in markdown
 function formatItem(item) {
   // format properly and with care for markdown B-)
