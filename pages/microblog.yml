@@ -1,3 +1,8 @@
+- url: https://www.youtube.com/watch?v=4qfsmE11Ejo
+  content: |
+    Monoliths vs. microservices? Wrong question. 
+    Messy code is the enemy. Master modularity—boundaries, cohesion, trade-offs—and build systems that last. 
+    Watch to learn why history repeats itself (and how to break the cycle).
 - url: https://www.jamesdrandall.com/posts/the_thing_i_loved_has_changed/
   content: "In this article, the transformation of programming—and what it means to build in the age of AI—is explored with raw honesty. A 40-year journey from wonder to uncertainty, and the quiet grief of watching the craft you loved change beyond recognition."
 - url: https://theprogrammersparadox.blogspot.com/2026/02/systems-thinking.html
