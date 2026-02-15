@@ -72,7 +72,7 @@ jobs:
 
           # remove the generated directory of the starshower checkout
           rm -rf .deno-starshower
-          deno fmt
+          deno fmt pages/
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v8
