@@ -494,12 +494,12 @@ network views.\
 
 ---
 
-### [prek](https://github.com/j178/prek) (6195 🌟)
+### [prek](https://github.com/j178/prek) (6196 🌟)
 
 **Owner:** [j178](https://github.com/j178)\
 **Description:** ⚡ Better `pre-commit`, re-engineered in Rust\
 **Topics:** git, git-hooks, pre-commit\
-**Stars:** 6195\
+**Stars:** 6196\
 **Last Pushed:** 2026-02-15
 
 ---
@@ -516,13 +516,13 @@ training-providers\
 
 ---
 
-### [open-webui](https://github.com/open-webui/open-webui) (123971 🌟)
+### [open-webui](https://github.com/open-webui/open-webui) (123972 🌟)
 
 **Owner:** [open-webui](https://github.com/open-webui)\
 **Description:** User-friendly AI Interface (Supports Ollama, OpenAI API, ...)\
 **Topics:** ai, llm, llm-ui, llm-webui, llms, mcp, ollama, ollama-webui,
 open-webui, openai, openapi, rag, self-hosted, ui, webui\
-**Stars:** 123971\
+**Stars:** 123972\
 **Last Pushed:** 2026-02-15
 
 ---
@@ -1120,12 +1120,12 @@ nomad, paas, self-hosted, selfhosted\
 
 ---
 
-### [Leaflet](https://github.com/Leaflet/Leaflet) (44495 🌟)
+### [Leaflet](https://github.com/Leaflet/Leaflet) (44494 🌟)
 
 **Owner:** [Leaflet](https://github.com/Leaflet)\
 **Description:** 🍃 JavaScript library for mobile-friendly interactive maps 🇺🇦\
 **Topics:** javascript, leaflet, maps\
-**Stars:** 44495\
+**Stars:** 44494\
 **Last Pushed:** 2026-02-14
 
 ---
@@ -2029,13 +2029,13 @@ OpenStreetMap data fast\
 
 ---
 
-### [yt-dlp](https://github.com/yt-dlp/yt-dlp) (147167 🌟)
+### [yt-dlp](https://github.com/yt-dlp/yt-dlp) (147169 🌟)
 
 **Owner:** [yt-dlp](https://github.com/yt-dlp)\
 **Description:** A feature-rich command-line audio/video downloader\
 **Topics:** cli, downloader, python, sponsorblock, youtube-dl,
 youtube-downloader, yt-dlp\
-**Stars:** 147167\
+**Stars:** 147169\
 **Last Pushed:** 2026-02-12
 
 ---
