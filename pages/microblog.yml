@@ -2,7 +2,7 @@
   content: Know Postgres. Use Postgres. Postgres is your friend.
 - url: https://hypha.pub/back-to-freebsd-part-1
   content: |
-    FreeBSD is worth a brief aside here, because it differs from Linux in a fundamental way. 
+    FreeBSD is worth a brief aside here, because it differs from Linux in a fundamental way.
     Linux is a kernel. What most people call "Linux" is actually that kernel combined with a GNU userland, a package ecosystem, and a set of choices that vary from distro to distro — Ubuntu, Fedora, and Arch are all running the same kernel but are meaningfully different systems underneath.
 - url: https://blog.michielborkent.nl/babashka-1.12.215.html
   content: Babashka now bundles JLine3, a Java library for building interactive terminal applications. You get terminals, line readers with history and tab completion, styled output, keyboard bindings, and the ability to reify custom completers, parsers, and widgets — all from bb scripts.
