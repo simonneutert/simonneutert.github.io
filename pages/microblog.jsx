@@ -14,8 +14,9 @@ export const config = {
 // this is a helper function that accepts the links and formats them in markdown
 function formatItem(item) {
   // format properly and with care for markdown B-)
-  return `### ${item.url}  
-${item.content || ""}
+  return `${item.content || ""}
+
+${item.url}
 
 ---`;
 }
@@ -40,6 +41,8 @@ export default function Microblog() {
           style="width: 93%; max-width: 500px; padding: 8px 12px; font-size: 16px; border: 1px solid #ccc; border-radius: 4px;"
         />
       </div>
+
+      <hr />
 
       {/* Render all items with data attributes for filtering */}
       <div id="search-container">
