@@ -1,3 +1,8 @@
+- url: https://www.youtube.com/watch?v=T4Upf_B9RLQ
+  content: |
+    Digital products and services keep getting worse. 
+    In the new report Breaking Free: Pathways to a fair technological future, the Norwegian Consumer Council has delved into enshittification and how to resist it. 
+    The report shows how this phenomenon affects both consumers and society at large, but that it is possible to turn the tide.
 - url: https://github.com/dynamic-alpha/hyper
   content: Reactive server-rendered web framework for Clojure
 - url: https://hypha.pub/postgres-is-your-friend-orm-is-not
