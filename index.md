@@ -18,8 +18,7 @@ automatically updated weekly using
 I help maintain [shell-curry](https://shell-curry.simon-neutert.de/), an
 opinionated list of terminal tools.
 
-Check out my [MicroBlog, here on the website](/microblog.html),\
-where I collect and share links I find interesting.
+Check out my [link collection](/microblog.html).
 
 My passion is Ruby, yet I enjoy exploring what other languages bring to the
 table. I've been dabbling with Clojure, exploring the
