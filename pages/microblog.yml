@@ -1,14 +1,14 @@
 - url: https://nesbitt.io/2026/02/05/git-magic-files.html
   content: |
-    Git looks for several special files in your repository that control its behavior. 
+    Git looks for several special files in your repository that control its behavior.
     These aren’t configuration files in .git/, they’re committed files that travel with your code and affect how git treats your files.
 - url: https://nesbitt.io/2025/11/26/extending-git-functionality.html
   content: |
     The author shows seven distinct patterns that he collected to add functionality to git without modifying git itself.
 - url: https://www.markround.com/blog/2026/03/05/returning-to-rails-in-2026/
   content: |
-    Quote: I know, right? Rails. That old thing? 
-    People still use that ? But as I was doing this purely for fun, I decided to forgo the usual stacks-du-jour at $DAYJOB, and go back to my “first love” of Ruby. 
+    Quote: I know, right? Rails. That old thing?
+    People still use that ? But as I was doing this purely for fun, I decided to forgo the usual stacks-du-jour at $DAYJOB, and go back to my “first love” of Ruby.
     I also figured it would be a great opportunity to get re-acquainted with the framework that shook things up so much in the early 2000s.
 - url: https://piechowski.io/post/git-commands-before-reading-code/
   content: Five git commands that tell you where a codebase hurts before you open a single file. Churn hotspots, bus factor, bug clusters, and crisis patterns.
