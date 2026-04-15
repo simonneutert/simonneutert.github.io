@@ -1,3 +1,5 @@
+- url: https://hypirion.com/musings/understanding-persistent-vector-pt-1
+  content: You may or may not heard about Clojure’s persistent vectors. It is a data structure invented by Rich Hickey (influenced by Phil Bagwell’s paper on Ideal Hash Trees) for Clojure, which gives practically O(1) runtime for appends, updates, lookups and subvec. As they are persistent, every modification creates a new vector instead of changing the old one.
 - url: https://nesbitt.io/2026/02/05/git-magic-files.html
   content: |
     Git looks for several special files in your repository that control its behavior.
