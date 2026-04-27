@@ -8,6 +8,11 @@ title = "Hi, I'm Simon! 👋 "
 This blog is about my journey as a software developer, sharing insights, tips,
 and experiences from the world of coding and technology.
 
+See what I see (my public photo album 📸) on
+[Flickr](https://www.flickr.com/photos/simonneutert/) and get in touch with me
+@[LinkedIn](https://www.linkedin.com/in/simon-neutert/)! 🍻\
+I check my inbox almost quarterly 😅 🤞
+
 I share my code on [GitHub](https://github.com/simonneutert) and I sometimes
 [blog](/posts.html) about what made me smile, stumble, humble, or moan.
 
@@ -24,11 +29,6 @@ My passion is Ruby, yet I enjoy exploring what other languages bring to the
 table. I've been dabbling with Clojure, exploring the
 [land of LISP and parentheses](https://www.youtube.com/watch?v=HM1Zb3xmvMc&t=64s)
 whenever I find the time 🥰
-
-See what I see (my public photo album) on
-[Flickr](https://www.flickr.com/photos/simonneutert/) and get in touch with me
-@[LinkedIn](https://www.linkedin.com/in/simon-neutert/)! 🍻\
-I check my inbox almost quarterly 😅 🤞
 
 ## I blog from time to time
 
