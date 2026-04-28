@@ -1,3 +1,7 @@
+- url: https://gitperf.com/index.html
+  content: |
+    This book is about those layers and the performance costs of each one.
+    It starts with objects, refs, the index, and history traversal, then moves outward into packfiles, maintenance, sparse working trees, partial clone, transport, repository scale, diagnosis, configuration, and recovery.
 - url: https://sleepingrobots.com/dreams/stop-using-ollama/
   content: Friends don't let friends use Ollama
 - url: https://www.youtube.com/watch?v=BeE00vGC36E
