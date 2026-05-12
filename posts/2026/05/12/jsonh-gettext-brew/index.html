@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>ActiveRecord Find By Year, Day or Month on a Date field</title>
+    <title>Fixing json.h in gettext v1.0.0 with Homebrew</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="build-version" content="1778599203998">
+    <meta name="build-version" content="1778599204030">
     <script>
       // Apply saved theme immediately to prevent flicker
       (function() {
@@ -44,20 +44,45 @@
   </nav>
     
 <article>
-  <p><em>2018-03-15</em></p>
-  <h1>ActiveRecord Find By Year, Day or Month on a Date field</h1>
-  <p><a href="https://stackoverflow.com/a/9625690" rel="noopener noreferrer">Copied from StackOverflow:</a></p>
-<p>Assuming that your "date attribute" is a date (rather than a full timestamp)
-then a simple where will give you your "find by date":</p>
-<p>Model.where(:date_column =&gt; date) You don't want find_by_date_column as that
-will give at most one result.</p>
-<p>For the year, month, and day queries you'd want to use the extract SQL function:</p>
-<div class="highlight highlight-source-ruby notranslate"><pre>Model<span class="token punctuation">.</span>where<span class="token punctuation">(</span><span class="token"><span class="token string">'extract(year  from date_column) = ?'</span></span><span class="token punctuation">,</span> desired_year<span class="token punctuation">)</span>
-Model<span class="token punctuation">.</span>where<span class="token punctuation">(</span><span class="token"><span class="token string">'extract(month from date_column) = ?'</span></span><span class="token punctuation">,</span> desired_month<span class="token punctuation">)</span>
-Model<span class="token punctuation">.</span>where<span class="token punctuation">(</span><span class="token"><span class="token string">'extract(day   from date_column) = ?'</span></span><span class="token punctuation">,</span> desired_day_of_month<span class="token punctuation">)</span></pre></div><p>Column need to be type of date and SQLite has its own rules.</p>
+  <p><em>2026-05-12</em></p>
+  <h1>Fixing json.h in gettext v1.0.0 with Homebrew</h1>
+  <p>First of all, here's the link to the discussion on GitHub:
+<a href="https://github.com/orgs/Homebrew/discussions/6693" rel="noopener noreferrer">gettext 1.0 build fails from source when json-c is present #6693</a>.</p>
+<p>I decided to go with this proposed solution.</p>
+<h2 id="brew-doctor"><a class="anchor" aria-hidden="true" tabindex="-1" href="#brew-doctor"><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>brew doctor</h2>
+<p>First, please run <code>brew doctor</code> to check for any issues with your Homebrew
+installation.</p>
+<p>I had to add a path to my fish shell configuration to ensure that Homebrew's
+sbin directory is included in my PATH.</p>
+<p><code>brew doctor</code> will guide you a little in the right direction if there are any
+issues.</p>
+<h2 id="brew-edit"><a class="anchor" aria-hidden="true" tabindex="-1" href="#brew-edit"><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>brew edit</h2>
+<p>Next, I ran <code>brew edit gettext</code> to open the formula in my default text editor.</p>
+<p>(You may need to edit $EDITOR environment variable if your default editor is
+broken due to gettext's json.h conflict. In my case vscode opened the file,
+because $EDITOR was not set at all, but YMMVV.)</p>
+<blockquote>
+<p>Proposed Solutions Option A: Explicitly support the C version of spit
+(recommended for feature completeness)</p>
+<pre><code>depends_on "json-c"
+
+# In the install method:
+ENV.append "CPPFLAGS", "-I#{Formula["json-c"].opt_include}/json-c"
+ENV.append "LDFLAGS", "-L#{Formula["json-c"].opt_lib}"</code></pre></blockquote>
+<p>After editing the formula, I saved the file and closed the editor.</p>
+<h2 id="installing-the-patched-formula"><a class="anchor" aria-hidden="true" tabindex="-1" href="#installing-the-patched-formula"><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Installing the Patched Formula</h2>
+<p>After editing the formula, brew will render some warnings and hints.</p>
+<p>Closed all terminals, started fresh and ran the following command to install
+gettext from source with the new changes:</p>
+<div class="highlight highlight-source-sh notranslate"><pre><span class="token">HOMEBREW_NO_INSTALL_FROM_API</span><span class="token operator">=</span><span class="token number">1</span> brew <span class="token function">install</span> --build-from-source <span class="token">--verbose</span> <span class="token">--debug</span> gettext</pre></div><h2 id="verification"><a class="anchor" aria-hidden="true" tabindex="-1" href="#verification"><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Verification</h2>
+<p>After the installation is complete, I was able to run my brew update and upgrade
+commands without any issues.</p>
+<h2 id="thanks"><a class="anchor" aria-hidden="true" tabindex="-1" href="#thanks"><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Thanks</h2>
+<p>Big thanks to <a href="https://github.com/OldCrow" rel="noopener noreferrer">@OldCrow</a>, without whom I would not
+have been able to fix this issue. ❤️</p>
 </article>
 <hr>
-    <a href="/posts/2018/03/03/pg-gem-with-postgres-app-on-mac/">&#8592; Previous Post</a> | <a href="/posts/2018/03/24/docker-on-pi/">Next Post &#8594;</a>
+    <a href="/posts/2026/05/09/creating_and_using_value_objects_in_ruby/">&#8592; Previous Post</a>
     <hr>
     <footer>
   <div>
