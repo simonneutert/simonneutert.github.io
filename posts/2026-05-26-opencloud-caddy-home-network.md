@@ -56,7 +56,7 @@ OC_CONFIG_DIR=/home/bedman/opencloud/config
 OC_DATA_DIR=/home/bedman/opencloud/data
 ```
 
-**⚠️ IMPORTANT:** Please change passwords, if this is not a test installation!
+**⚠️ IMPORTANT:** Please change passwords if this is not a test installation.
 
 Key settings in my `.env`:
 
@@ -76,7 +76,7 @@ INSECURE=true
 #COMPOSE_FILE=docker-compose.yml:traefik/opencloud.yml
 # This enables you to just run `docker compose up -d` and the compose files will be added to the stack.
 # As alternative approach you can run `docker compose -f docker-compose.yml -f docker-compose.traefik.yml up -d`
-# Default: OpenCloud and Collabora with traefik and letsencypt
+# Default: OpenCloud and Collabora with traefik and letsencrypt
 # This needs DNS entries for the domain names used in the .env file.
 #COMPOSE_FILE=docker-compose.yml:weboffice/collabora.yml:traefik/opencloud.yml:traefik/collabora.yml
 # If you want to use the external proxy, you can use the following combination.
@@ -132,7 +132,7 @@ TRAEFIK_LOG_LEVEL=
 
 
 ## OpenCloud Settings ##
-# The opencloud container image.
+# The OpenCloud container image.
 # For production releases: "opencloudeu/opencloud"
 # For rolling releases:    "opencloudeu/opencloud-rolling"
 # Defaults to production if not set otherwise
@@ -267,8 +267,8 @@ COLLABORA_SSL_ENABLE=false
 # If you're on an internet-facing server, enable SSL verification for Collabora Online.
 # Please comment out the following line:
 COLLABORA_SSL_VERIFICATION=false
-# Enable home mode in Collabore Online.
-# Home users can enable this setting, which in turn disables welcome screen and user feedback popups, 
+# Enable home mode in Collabora Online.
+# Home users can enable this setting, which in turn disables the welcome screen and user feedback popups,
 # but also limits concurrent open connections to 20 and concurrent open documents to 10.
 # Default is false if not specified.
 COLLABORA_HOME_MODE=
