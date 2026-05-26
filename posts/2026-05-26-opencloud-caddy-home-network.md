@@ -450,6 +450,14 @@ cd ~/caddy
 docker compose up -d
 ```
 
+## Problems and Solutions
+
+### Collabora not loading correctly?
+
+Make sure to visit `https://collabora.opencloud.test` and allow the browser to
+accept the self-signed certificate. This is required for the first visit to load
+Collabora correctly.
+
 ## Resources
 
 - [OpenCloud behind an external proxy](https://docs.opencloud.eu/docs/admin/getting-started/container/docker-compose/external-proxy)
