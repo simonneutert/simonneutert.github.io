@@ -1,3 +1,5 @@
+- url: https://www.abgeo.dev/blog/cli-authentication-the-right-way/
+  content: The OAuth 2.0 Device Authorization Grant, RFC 8628, was published in 2019 for what the spec calls “input-constrained devices”. TVs, consoles, and yes, CLIs. The whole point is to decouple the device asking for the token from the device the user authenticates on.
 - url: https://learnbyexample.github.io/learn_ruby_oneliners/one-liner-introduction.html
   content: You'll see examples to understand what kind of problems are typically suited for one-liners.
 - url: https://caio.ca/blog/why-ruby-still-feels-like-home
