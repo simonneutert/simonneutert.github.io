@@ -1,3 +1,5 @@
+- url: https://m.youtube.com/watch?v=h4PZ9bA8yJ4
+  content: A video showcasing browser native drag-and-drop.
 - url: https://www.abgeo.dev/blog/cli-authentication-the-right-way/
   content: The OAuth 2.0 Device Authorization Grant, RFC 8628, was published in 2019 for what the spec calls “input-constrained devices”. TVs, consoles, and yes, CLIs. The whole point is to decouple the device asking for the token from the device the user authenticates on.
 - url: https://learnbyexample.github.io/learn_ruby_oneliners/one-liner-introduction.html
