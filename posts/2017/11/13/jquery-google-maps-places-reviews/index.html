@@ -4,7 +4,7 @@
     <title>jQuery Plugin for showing google places reviews</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="build-version" content="1782546474826">
+    <meta name="build-version" content="1782547592816">
     <script>
       // Apply saved theme immediately to prevent flicker
       (function() {
@@ -79,36 +79,36 @@ the reviews should show up. In this case:</p>
 <h2 id="call-the-plugin"><a class="anchor" aria-hidden="true" tabindex="-1" href="#call-the-plugin"><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Call the Plugin</h2>
 <p><a href="https://developers.google.com/places/place-id" rel="noopener noreferrer">Grab your place's ID (https://developers.google.com/places/place-id) and call it as <em><strong>placeId</strong></em> parameter, when calling the plugin.</a></p>
 <div class="highlight highlight-source-html notranslate"><pre><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token">
-  <span class="token function">jQuery</span><span class="token punctuation">(</span>document<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ready</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token">$</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#google-reviews"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>length <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token comment">// Find a placeID via https://developers.google.com/places/place-id</span>
-    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#google-reviews"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">googlePlaces</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-      <span class="token property">placeId</span><span class="token operator">:</span> <span class="token string">"ChIJZa6ezJa8j4AR1p1nTSaRtuQ"</span><span class="token punctuation">,</span>
-      <span class="token comment">// the following params are optional (default values)</span>
-      <span class="token property">header</span><span class="token operator">:</span> <span class="token string">"&lt;h3&gt;Google Reviews&lt;/h3&gt;"</span><span class="token punctuation">,</span> <span class="token comment">// html/text over Reviews</span>
-      <span class="token property">footer</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment">// html/text under Reviews block</span>
-      <span class="token property">max_rows</span><span class="token operator">:</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token comment">// max rows of reviews to be displayed</span>
-      <span class="token property">min_rating</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token comment">// minimum rating of reviews to be displayed</span>
-      <span class="token property">months</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-        <span class="token string">"Jan"</span><span class="token punctuation">,</span>
-        <span class="token string">"Feb"</span><span class="token punctuation">,</span>
-        <span class="token string">"Mär"</span><span class="token punctuation">,</span>
-        <span class="token string">"Apr"</span><span class="token punctuation">,</span>
-        <span class="token string">"Mai"</span><span class="token punctuation">,</span>
-        <span class="token string">"Jun"</span><span class="token punctuation">,</span>
-        <span class="token string">"Jul"</span><span class="token punctuation">,</span>
-        <span class="token string">"Aug"</span><span class="token punctuation">,</span>
-        <span class="token string">"Sep"</span><span class="token punctuation">,</span>
-        <span class="token string">"Okt"</span><span class="token punctuation">,</span>
-        <span class="token string">"Nov"</span><span class="token punctuation">,</span>
-        <span class="token string">"Dez"</span><span class="token punctuation">,</span>
-      <span class="token punctuation">]</span><span class="token punctuation">,</span>
-      <span class="token property">text_break_length</span><span class="token operator">:</span> <span class="token string">"90"</span><span class="token punctuation">,</span> <span class="token comment">// length before a review box is set to max width</span>
-      <span class="token property">shorten_names</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// example: "Max Mustermann" -&gt; "Max M.""</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">jQuery</span><span class="token punctuation">(</span>document<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ready</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token">$</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#google-reviews"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>length <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// Find a placeID via https://developers.google.com/places/place-id</span>
+  <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#google-reviews"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">googlePlaces</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token property">placeId</span><span class="token operator">:</span> <span class="token string">"ChIJZa6ezJa8j4AR1p1nTSaRtuQ"</span><span class="token punctuation">,</span>
+    <span class="token comment">// the following params are optional (default values)</span>
+    <span class="token property">header</span><span class="token operator">:</span> <span class="token string">"&lt;h3&gt;Google Reviews&lt;/h3&gt;"</span><span class="token punctuation">,</span> <span class="token comment">// html/text over Reviews</span>
+    <span class="token property">footer</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token comment">// html/text under Reviews block</span>
+    <span class="token property">max_rows</span><span class="token operator">:</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token comment">// max rows of reviews to be displayed</span>
+    <span class="token property">min_rating</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token comment">// minimum rating of reviews to be displayed</span>
+    <span class="token property">months</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token string">"Jan"</span><span class="token punctuation">,</span>
+      <span class="token string">"Feb"</span><span class="token punctuation">,</span>
+      <span class="token string">"Mär"</span><span class="token punctuation">,</span>
+      <span class="token string">"Apr"</span><span class="token punctuation">,</span>
+      <span class="token string">"Mai"</span><span class="token punctuation">,</span>
+      <span class="token string">"Jun"</span><span class="token punctuation">,</span>
+      <span class="token string">"Jul"</span><span class="token punctuation">,</span>
+      <span class="token string">"Aug"</span><span class="token punctuation">,</span>
+      <span class="token string">"Sep"</span><span class="token punctuation">,</span>
+      <span class="token string">"Okt"</span><span class="token punctuation">,</span>
+      <span class="token string">"Nov"</span><span class="token punctuation">,</span>
+      <span class="token string">"Dez"</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">text_break_length</span><span class="token operator">:</span> <span class="token string">"90"</span><span class="token punctuation">,</span> <span class="token comment">// length before a review box is set to max width</span>
+    <span class="token property">shorten_names</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// example: "Max Mustermann" -&gt; "Max M.""</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></pre></div></article>
 <hr>
     <a href="/posts/2017/09/04/scrape-js-powered-websites-with-ruby-and-selenium/">&#8592; Previous Post</a> | <a href="/posts/2017/11/17/work-with-large-datasets-python-sqlalchemy/">Next Post &#8594;</a>

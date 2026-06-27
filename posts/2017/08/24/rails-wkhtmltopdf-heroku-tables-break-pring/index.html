@@ -4,7 +4,7 @@
     <title>Generate PDFs with wkhtmltopdf, wicked_pdf in Rails without breaking your layout (tables)</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="build-version" content="1782546474541">
+    <meta name="build-version" content="1782547592543">
     <script>
       // Apply saved theme immediately to prevent flicker
       (function() {
@@ -104,7 +104,13 @@ instructions:</p>
   <span class="token property">break-inside</span><span class="token punctuation">:</span> avoid<span class="token punctuation">;</span>
   <span class="token property">page-break-inside</span><span class="token punctuation">:</span> avoid<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-<span class="token">table<span class="token punctuation">,</span> tbody<span class="token punctuation">,</span> td<span class="token punctuation">,</span> tfoot<span class="token punctuation">,</span> th<span class="token punctuation">,</span> thead<span class="token punctuation">,</span> tr</span> <span class="token punctuation">{</span>
+<span class="token">table<span class="token punctuation">,</span>
+tbody<span class="token punctuation">,</span>
+td<span class="token punctuation">,</span>
+tfoot<span class="token punctuation">,</span>
+th<span class="token punctuation">,</span>
+thead<span class="token punctuation">,</span>
+tr</span> <span class="token punctuation">{</span>
   <span class="token property">break-inside</span><span class="token punctuation">:</span> avoid <span class="token">!important</span><span class="token punctuation">;</span>
   <span class="token property">page-break-inside</span><span class="token punctuation">:</span> avoid <span class="token">!important</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></pre></div><p>Read all about, what the <strong>wicked_pdf gem</strong> can do for you:
