@@ -89,7 +89,13 @@ div.nobreak {
   break-inside: avoid;
   page-break-inside: avoid;
 }
-table, tbody, td, tfoot, th, thead, tr {
+table,
+tbody,
+td,
+tfoot,
+th,
+thead,
+tr {
   break-inside: avoid !important;
   page-break-inside: avoid !important;
 }
