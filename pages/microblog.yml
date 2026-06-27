@@ -5,8 +5,8 @@
     position-anchor (point the floating element at it)
     position-area (place it: above/below/aside)
     @position-try (flip when there's no room).
-    
-    Shipping in Chrome & Edge 125+ today, wrap it in @supports and keep a fallback for Firefox/Safari. 
+
+    Shipping in Chrome & Edge 125+ today, wrap it in @supports and keep a fallback for Firefox/Safari.
 - url: https://m.youtube.com/watch?v=h4PZ9bA8yJ4
   content: A video showcasing browser native drag-and-drop.
 - url: https://www.abgeo.dev/blog/cli-authentication-the-right-way/

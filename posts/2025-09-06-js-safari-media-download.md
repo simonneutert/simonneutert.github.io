@@ -40,33 +40,33 @@ behavior entirely**.
 <button id="download-btn">Download File</button>
 
 <script>
-  function forceDownload(url, filename) {
-    fetch(url)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.blob();
-      })
-      .then((blob) => {
-        const blobUrl = URL.createObjectURL(blob);
-        const link = document.createElement("a");
-        link.href = blobUrl;
-        link.download = filename;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        URL.revokeObjectURL(blobUrl);
-      })
-      .catch((error) => {
-        console.error("Download failed:", error);
-        alert("Download failed.");
-      });
-  }
+function forceDownload(url, filename) {
+  fetch(url)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.blob();
+    })
+    .then((blob) => {
+      const blobUrl = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = blobUrl;
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(blobUrl);
+    })
+    .catch((error) => {
+      console.error("Download failed:", error);
+      alert("Download failed.");
+    });
+}
 
-  document.getElementById("download-btn").addEventListener("click", () => {
-    // Adjust the URL and filename as needed
-    forceDownload("/download/video.mp4", "my_video.mp4");
-  });
+document.getElementById("download-btn").addEventListener("click", () => {
+  // Adjust the URL and filename as needed
+  forceDownload("/download/video.mp4", "my_video.mp4");
+});
 </script>
 ```
