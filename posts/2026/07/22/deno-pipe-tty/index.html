@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Building a Simple interactive CLI Counter with Deno v2 and Ink</title>
+    <title>DenoJS - Read from stdin and detect a TTY Jump to heading</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="build-version" content="1784715656184">
+    <meta name="build-version" content="1784715656230">
     <script>
       // Apply saved theme immediately to prevent flicker
       (function() {
@@ -44,49 +44,28 @@
   </nav>
     
 <article>
-  <p><em>2024-10-10</em></p>
-  <h1>Building a Simple interactive CLI Counter with Deno v2 and Ink</h1>
-  <p>Deno v2 has been released! 🎉</p>
-<p>The promo video is a must-watch:
-<a href="https://www.youtube.com/watch?v=swXWUfufu2w" rel="noopener noreferrer">"Deno - Programming should be simple"
-on Youtube</a></p>
-<p>No wonder, I immediately wanted to try out Deno's new support for npm packages.
-I decided to create a simple counter component using Ink, a React-like library
-for building CLI apps.</p>
-<p>Here's the code (main**.jsx**):</p>
-<div class="highlight highlight-source-jsx notranslate"><pre><span class="token comment">// main.jsx</span>
-<span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> useEffect<span class="token punctuation">,</span> useState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"npm:react"</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span> render<span class="token punctuation">,</span> Text <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"npm:ink"</span><span class="token punctuation">;</span>
+  <p><em>2026-07-22</em></p>
+  <h1>DenoJS - Read from stdin and detect a TTY Jump to heading</h1>
+  <p>This single file, is great to understand the underlying concept.</p>
+<p>Run code when something is piped in, and run another branch to consume input another way.</p>
+<div class="highlight highlight-source-typescript notranslate"><pre><span class="token comment">// run this, when the file containing this code is the entrypoint </span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">import</span><span class="token punctuation">.</span>meta<span class="token punctuation">.</span>main<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> input<span class="token operator">:</span> <span class="token">string</span><span class="token punctuation">;</span>
 
-<span class="token keyword">const</span> <span class="token function">Counter</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> <span class="token punctuation">[</span>counter<span class="token punctuation">,</span> setCounter<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>Deno<span class="token punctuation">.</span>stdin<span class="token punctuation">.</span><span class="token function">isTerminal</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// prompts the user for input/interaction</span>
+    input <span class="token operator">=</span> <span class="token function">prompt</span><span class="token punctuation">(</span><span class="token string">"Enter some text:"</span><span class="token punctuation">)</span> <span class="token operator">??</span> <span class="token string">""</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    input <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token keyword">new</span> <span class="token class-name">Response</span><span class="token punctuation">(</span>Deno<span class="token punctuation">.</span>stdin<span class="token punctuation">.</span>readable<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
 
-  <span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> timer <span class="token operator">=</span> <span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-      <span class="token function">setCounter</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token">previousCounter</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> previousCounter <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-      <span class="token function">clearInterval</span><span class="token punctuation">(</span>timer<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-  <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Text</span></span> <span class="token attr-name">color</span><span class="token"><span class="token punctuation">=</span><span class="token punctuation">"</span>green<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token punctuation">{</span>counter<span class="token punctuation">}</span><span class="token plain-text"> tests passed</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Text</span></span><span class="token punctuation">&gt;</span></span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-
-<span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Counter</span></span> <span class="token punctuation">/&gt;</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></div><p>Run the code using <a href="mailto:deno@v2.x" rel="noopener noreferrer">deno@v2.x</a> (<code>Ctrl+C</code> to stop it 😅):</p>
-<div class="highlight highlight-source-bash notranslate"><pre><span class="token comment"># Run the code (the first time to check permissions)</span>
-$ deno run main.jsx
-
-<span class="token comment"># if you're fine with the permissions needed, run it again and again</span>
-$ deno run --allow-read --allow-env --allow-run main.jsx
-
-<span class="token comment"># or compile it even 🤷‍♂️</span>
-<span class="token comment"># deno packs its runtime and the dependencies into a single executable</span>
-$ deno compile --allow-read --allow-env --allow-run main.jsx</pre></div><p>Super sweet! 🍬🦕</p>
+  <span class="token">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token"><span class="token string">`</span><span class="token string">Got </span><span class="token"><span class="token punctuation">${</span>input<span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>length<span class="token punctuation">}</span></span><span class="token string"> characters</span><span class="token string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></pre></div><p>Code on GitHub: <a href="https://github.com/simonneutert/deno-pipe-tty-example" rel="noopener noreferrer">https://github.com/simonneutert/deno-pipe-tty-example</a></p>
+<p>On GitHub, you will find detailed instructions. An example to compile this into a single executable binary and to even containerize it (with podman, but docker will work, too).</p>
+<p>Deno Docs: <a href="https://docs.deno.com/runtime/cli_apps/#read-from-stdin-and-detect-a-tty" rel="noopener noreferrer">https://docs.deno.com/runtime/cli_apps/#read-from-stdin-and-detect-a-tty</a></p>
 </article>
 <hr>
-    <a href="/posts/2024/10/08/strava-export-experiment/">&#8592; Previous Post</a> | <a href="/posts/2024/10/18/deno-v2/">Next Post &#8594;</a>
+    <a href="/posts/2026/05/12/jsonh-gettext-brew/">&#8592; Previous Post</a>
     <hr>
     <footer>
   <div>
