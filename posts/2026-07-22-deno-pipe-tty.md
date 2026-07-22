@@ -1,5 +1,5 @@
 ---
-title: DenoJS - Read from stdin and detect a TTY Jump to heading
+title: DenoJS - Read from stdin and detect a TTY
 layout: post
 ---
 
