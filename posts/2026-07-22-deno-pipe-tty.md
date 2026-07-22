@@ -5,11 +5,11 @@ layout: post
 
 This single file, is great to understand the underlying concept.
 
-Run code when something is piped in, and run another branch to consume input another way.
-
+Run code when something is piped in, and run another branch to consume input
+another way.
 
 ```typescript
-// run this, when the file containing this code is the entrypoint 
+// run this, when the file containing this code is the entrypoint
 if (import.meta.main) {
   let input: string;
 
@@ -26,6 +26,9 @@ if (import.meta.main) {
 
 Code on GitHub: https://github.com/simonneutert/deno-pipe-tty-example
 
-On GitHub, you will find detailed instructions. An example to compile this into a single executable binary and to even containerize it (with podman, but docker will work, too).
+On GitHub, you will find detailed instructions. An example to compile this into
+a single executable binary and to even containerize it (with podman, but docker
+will work, too).
 
-Deno Docs: https://docs.deno.com/runtime/cli_apps/#read-from-stdin-and-detect-a-tty
+Deno Docs:
+https://docs.deno.com/runtime/cli_apps/#read-from-stdin-and-detect-a-tty
