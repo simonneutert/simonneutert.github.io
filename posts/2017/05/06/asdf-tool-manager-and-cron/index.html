@@ -4,7 +4,7 @@
     <title>Setup a Sinatra App on your Raspberry Pi and autostart the app using asdf and cron</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="build-version" content="1788670587939">
+    <meta name="build-version" content="1789279096945">
     <script>
       // Apply saved theme immediately to prevent flicker
       (function() {
@@ -53,7 +53,7 @@ any of the following steps.</p>
 <a href="https://www.raspberrypi.org/downloads/raspbian/" rel="noopener noreferrer">Raspbian Lite</a> and <code>dd</code> it
 on your SD Card</li>
 </ol>
-<div class="highlight highlight-source-bash notranslate"><pre><span class="token function">sudo</span> <span class="token function">dd</span> <span class="token">bs</span><span class="token operator">=</span>1m <span class="token">if</span><span class="token operator">=</span>path/to/raspbian.img <span class="token">of</span><span class="token operator">=</span>/dev/rdiskX</pre></div><ol>
+<div class="highlight highlight-source-bash notranslate"><pre><span class="token function">sudo</span> <span class="token function">dd</span> <span class="token">bs</span><span class="token operator">=</span>1m <span class="token">if</span><span class="token operator">=</span>path/to/raspbian.img <span class="token">of</span><span class="token operator">=</span>/dev/rdiskX</pre></div><ol start="2">
 <li><p>Once the copying is finished add a file named <strong>ssh</strong> (no ending) to the root
 directory of the created sd card.
 <a href="https://www.raspberrypi.org/documentation/remote-access/ssh/README.md" rel="noopener noreferrer">Here, see 3rd.</a></p>
@@ -61,7 +61,7 @@ directory of the created sd card.
 <li><p>Now add all the glory goodness a webmachine could dream of ;-)</p>
 </li>
 </ol>
-<div class="highlight highlight-source-bash notranslate"><pre><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> <span class="token">-y</span> build-essential autoconf libncurses5-dev libncursesw5-dev libwxgtk2.8-dev libgl1-mesa-dev libglu1-mesa-dev libpng3 libssh-dev unixodbc-dev libpq-dev libcurl4-openssl-dev libreadline-dev gcc automake <span class="token function">make</span> libssl-dev libncurses-dev libyaml-dev libxslt-dev libffi-dev libtool <span class="token function">git</span> zlib1g-dev libbz2-dev libsqlite3-dev <span class="token function">wget</span> <span class="token function">curl</span> llvm xz-utils tk-dev m4</pre></div><ol>
+<div class="highlight highlight-source-bash notranslate"><pre><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> <span class="token">-y</span> build-essential autoconf libncurses5-dev libncursesw5-dev libwxgtk2.8-dev libgl1-mesa-dev libglu1-mesa-dev libpng3 libssh-dev unixodbc-dev libpq-dev libcurl4-openssl-dev libreadline-dev gcc automake <span class="token function">make</span> libssl-dev libncurses-dev libyaml-dev libxslt-dev libffi-dev libtool <span class="token function">git</span> zlib1g-dev libbz2-dev libsqlite3-dev <span class="token function">wget</span> <span class="token function">curl</span> llvm xz-utils tk-dev m4</pre></div><ol start="4">
 <li>Install <a href="https://github.com/asdf-vm/asdf" rel="noopener noreferrer">asdf</a> with plugins</li>
 </ol>
 <div class="highlight highlight-source-bash notranslate"><pre><span class="token function">git</span> clone https://github.com/asdf-vm/asdf.git ~/.asdf <span class="token">--branch</span> v0.3.0
@@ -73,7 +73,7 @@ asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
 asdf plugin-add postgres https://github.com/smashedtoatoms/asdf-postgres.git
 
 asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
-<span class="token function">bash</span> ~/.asdf/plugins/nodejs/bin/import-release-team-keyring</pre></div><ol>
+<span class="token function">bash</span> ~/.asdf/plugins/nodejs/bin/import-release-team-keyring</pre></div><ol start="5">
 <li>install ruby, postgres and node to get rails ready to roll</li>
 </ol>
 <p><em>prepare yourself for some loooong running jobs...</em></p>
@@ -87,11 +87,11 @@ asdf <span class="token function">install</span> <span class="token function">no
 <span class="token comment"># set them up</span>
 asdf global ruby <span class="token number">2.3</span>.4
 asdf global postgres <span class="token number">9.6</span>.1
-asdf global <span class="token function">node</span> <span class="token number">7.9</span></pre></div><ol>
+asdf global <span class="token function">node</span> <span class="token number">7.9</span></pre></div><ol start="6">
 <li>Setup the <code>pg gem</code> with this command (vary Versions if necessary):</li>
 </ol>
 <div class="highlight highlight-source-bash notranslate"><pre>gem <span class="token function">install</span> pg <span class="token">-v</span> <span class="token string">'0.20.0'</span> -- --with-pg-config<span class="token operator">=</span>/home/pi/.asdf/installs/postgres/9.6.1/bin/pg_config</pre></div><p>and start the server in a new ssh session with</p>
-<div class="highlight highlight-source-bash notranslate"><pre>pg_ctl start</pre></div><ol>
+<div class="highlight highlight-source-bash notranslate"><pre>pg_ctl start</pre></div><ol start="7">
 <li>git clone
 <a href="https://github.com/simonneutert/sinatras-skeleton" rel="noopener noreferrer">Sinatras Skeleton</a> and
 run the basic setup (bundle and rake tasks)</li>
@@ -99,7 +99,7 @@ run the basic setup (bundle and rake tasks)</li>
 <div class="highlight highlight-source-bash notranslate"><pre><span class="token comment"># in /home/pi</span>
 <span class="token function">mkdir</span> www
 <span class="token class-name">cd</span> www
-<span class="token function">git</span> clone https://github.com/simonneutert/sinatras-skeleton</pre></div><ol>
+<span class="token function">git</span> clone https://github.com/simonneutert/sinatras-skeleton</pre></div><ol start="8">
 <li>setup a bash startup script and add a cronjob</li>
 </ol>
 <p>add this skript named <code>start_sinatra.sh</code> in <code>/home/pi/www/sinatras-skeleton</code>:</p>
@@ -113,14 +113,14 @@ run the basic setup (bundle and rake tasks)</li>
 <span class="token">$HOME</span>/.asdf/shims/pg_ctl start
 <span class="token class-name">.</span> <span class="token">$HOME</span>/.asdf/asdf.sh
 thin start</pre></div><p>then <code>chmod +x start_sinatra.sh</code></p>
-<ol>
+<ol start="9">
 <li>start Postgres and Sinatra at reboot of your Raspberry Pi with a cron job:</li>
 </ol>
 <div class="highlight highlight-source-bash notranslate"><pre><span class="token function">crontab</span> <span class="token">-e</span></pre></div><p>add this - <strong>do not</strong> forget to add an empty line at the bottom.</p>
 <div class="highlight highlight-source-bash notranslate"><pre><span class="token"><span class="token">SHELL</span></span><span class="token operator">=</span>/bin/sh
 <span class="token"><span class="token">PATH</span></span><span class="token operator">=</span>/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
-@reboot /bin/bash /home/pi/www/sinatras-skeleton/start_sinatra.sh <span class="token operator">&amp;</span></pre></div><ol>
+@reboot /bin/bash /home/pi/www/sinatras-skeleton/start_sinatra.sh <span class="token operator">&amp;</span></pre></div><ol start="10">
 <li>Reboot your pi and visit the app from your workstation's browser:
 <code>http://raspberrypi:3000</code></li>
 </ol>
