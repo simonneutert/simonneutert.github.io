@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Roman Numerals with Ruby</title>
+    <title></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="build-version" content="1790422736202">
+    <meta name="build-version" content="1790422735972">
     <script>
       // Apply saved theme immediately to prevent flicker
       (function() {
@@ -44,56 +44,72 @@
   </nav>
     
 <article>
-  <p><em>2018-02-10</em></p>
-  <h1>Roman Numerals with Ruby</h1>
-  <p>Another coding excercise.</p>
-<p>See all details on:
-<a href="http://exercism.io/exercises/ruby/roman-numerals/readme" rel="noopener noreferrer">excercism.io</a></p>
-<p>My solution:</p>
-<div class="highlight highlight-source-ruby notranslate"><pre><span class="token keyword">class</span> <span class="token class-name">Integer</span>
-  <span class="token keyword">def</span> <span class="token"><span class="token function">to_roman</span></span>
-    <span class="token comment"># 1993.to_roman</span>
-    <span class="token comment"># target == ["1000", "900", "90", "3"]</span>
-    <span class="token comment"># =&gt; ["M", "CM", "XC", "III"].join =&gt; "MCMXCIII"</span>
-    target <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    to_s<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token"><span class="token string">''</span></span><span class="token punctuation">)</span><span class="token punctuation">.</span>reverse<span class="token punctuation">.</span>each_with_index <span class="token punctuation">{</span> <span class="token operator">|</span>e<span class="token punctuation">,</span> i<span class="token operator">|</span> target <span class="token operator">&lt;&lt;</span> e <span class="token operator">+</span> <span class="token"><span class="token string">'0'</span></span> <span class="token operator">*</span> i <span class="token punctuation">}</span>
-    target<span class="token punctuation">.</span>reverse<span class="token punctuation">.</span>map <span class="token punctuation">{</span> <span class="token operator">|</span>e<span class="token operator">|</span> roman_string<span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">.</span>join
-  <span class="token keyword">end</span>
-
-  <span class="token keyword">private</span>
-
-  <span class="token keyword">def</span> <span class="token"><span class="token function">roman_string</span></span><span class="token punctuation">(</span>number_in<span class="token punctuation">)</span>
-    num <span class="token operator">=</span> number_in<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>to_i
-    number <span class="token operator">=</span> number_in<span class="token punctuation">.</span>to_i
-    <span class="token comment"># set boundaries for roman counting</span>
-    lower<span class="token punctuation">,</span> middle<span class="token punctuation">,</span> upper <span class="token operator">=</span>
-      <span class="token keyword">if</span> number <span class="token operator">&gt;=</span> <span class="token number">1000</span>
-        <span class="token"><span class="token string">%w[M M M]</span></span>
-      <span class="token keyword">elsif</span> number <span class="token operator">&gt;=</span> <span class="token number">100</span>
-        <span class="token"><span class="token string">%w[C D M]</span></span>
-      <span class="token keyword">elsif</span> number <span class="token operator">&gt;=</span> <span class="token number">10</span>
-        <span class="token"><span class="token string">%w[X L C]</span></span>
-      <span class="token keyword">else</span>
-        <span class="token"><span class="token string">%w[I V X]</span></span>
-      <span class="token keyword">end</span>
-
-    roman_string <span class="token operator">=</span> <span class="token"><span class="token string">''</span></span>
-    <span class="token keyword">if</span> num <span class="token operator">&gt;=</span> <span class="token number">5</span>
-      roman_string <span class="token operator">&lt;&lt;</span> middle
-      roman_string <span class="token operator">&lt;&lt;</span> lower <span class="token operator">*</span> <span class="token punctuation">(</span>num <span class="token operator">%</span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token keyword">if</span> num <span class="token operator">%</span> <span class="token number">5</span> <span class="token operator">&gt;</span> <span class="token number">0</span>
-    <span class="token keyword">else</span>
-      roman_string <span class="token operator">&lt;&lt;</span> lower <span class="token operator">*</span> num
-    <span class="token keyword">end</span>
-
-    <span class="token comment"># computationally substitues:</span>
-    <span class="token comment"># "IIII" with "IV" and "VIIII" with "IX", etc.</span>
-    roman_string<span class="token punctuation">.</span>gsub<span class="token operator">!</span><span class="token punctuation">(</span>middle <span class="token operator">+</span> lower <span class="token operator">*</span> <span class="token number">4</span><span class="token punctuation">,</span> lower <span class="token operator">+</span> upper<span class="token punctuation">)</span>
-    roman_string<span class="token punctuation">.</span>gsub<span class="token operator">!</span><span class="token punctuation">(</span>lower <span class="token operator">*</span> <span class="token number">4</span><span class="token punctuation">,</span> lower <span class="token operator">+</span> middle<span class="token punctuation">)</span>
-    roman_string
-  <span class="token keyword">end</span>
-<span class="token keyword">end</span></pre></div></article>
+  <p><em>2026-09-26</em></p>
+  <h1></h1>
+  <h1 id="silverbullet-upload-documents-larger-than-10-mib"><a class="anchor" aria-hidden="true" tabindex="-1" href="#silverbullet-upload-documents-larger-than-10-mib"><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>SilverBullet: Upload Documents Larger Than 10 MiB</h1>
+<p>I recently stumbled over a slightly confusing limitation in
+<a href="https://silverbullet.md/" rel="noopener noreferrer">SilverBullet</a>: uploading larger documents worked
+using the <strong>Upload: File</strong> command, but dragging and dropping the very same file
+into the editor resulted in:</p>
+<div class="highlight highlight-source-text notranslate"><pre>Document is too large, maximum is 10MiB</pre></div><p>Turns out: this wasn't my configuration. It was a bug. 🤓</p>
+<h4 id="tldr"><a class="anchor" aria-hidden="true" tabindex="-1" href="#tldr"><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>TLDR</h4>
+<p>To allow e.g. documents up to <strong>100 MiB</strong>, add this to your SilverBullet
+<code>CONFIG</code> page:</p>
+<pre><code>config.set("maximumDocumentSize", 100)</code></pre><p>And make sure you're running a SilverBullet version containing the fix from
+<code>silverbulletmd/silverbullet#2159</code>.</p>
+<p>At the time of writing, that means using the <code>edge</code> Docker image.</p>
+<h2 id="the-problem"><a class="anchor" aria-hidden="true" tabindex="-1" href="#the-problem"><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>The Problem</h2>
+<p>SilverBullet has a <code>maximumDocumentSize</code> configuration option.</p>
+<p>For example:</p>
+<pre><code>config.set("maximumDocumentSize", 100)</code></pre><p>The number is in <strong>MiB</strong>, so <code>100</code> means 100 MiB.</p>
+<p>This is an important little detail. Do <strong>not</strong> use something like:</p>
+<pre><code>config.set("maximumDocumentSize", 100000000)</code></pre><p>SilverBullet itself converts the configured value to bytes internally.</p>
+<p>The confusing part was that the setting worked when using the <strong>Upload: File</strong>
+command, but not when pasting or dragging a document into the editor.</p>
+<p>That behavior was reported in <code>silverbulletmd/silverbullet#1621</code>: the regular
+upload path read <code>maximumDocumentSize</code> from the configuration, while
+drag-and-drop and paste still used a hard-coded 10 MiB limit.</p>
+<h2 id="the-fix"><a class="anchor" aria-hidden="true" tabindex="-1" href="#the-fix"><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>The Fix</h2>
+<p>PR <code>silverbulletmd/silverbullet#2159</code> fixes exactly this.</p>
+<p>Drag-and-drop and paste now query <code>maximumDocumentSize</code> from the SilverBullet
+configuration as well, falling back to the default limit when it isn't
+configured. The PR was merged on September 24, 2026.</p>
+<p>There's one small catch.</p>
+<p>The current stable release while I'm writing this is <strong>2.11.1</strong>, released on
+September 22, 2026 — two days before the fix was merged.</p>
+<p>So, temporarily, I'm running the <code>edge</code> image.</p>
+<h2 id="docker-compose"><a class="anchor" aria-hidden="true" tabindex="-1" href="#docker-compose"><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Docker Compose</h2>
+<p>My minimal setup looks roughly like this:</p>
+<div class="highlight highlight-source-yaml notranslate"><pre><span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">silverbullet</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> ghcr.io/silverbulletmd/silverbullet<span class="token punctuation">:</span>edge
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> unless<span class="token punctuation">-</span>stopped
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> ./data<span class="token punctuation">:</span>/data
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">"3000:3000"</span></pre></div><p>SilverBullet officially provides both <code>latest</code> and <code>edge</code>: <code>latest</code> tracks
+stable releases, while <code>edge</code> tracks the current <code>main</code> branch.</p>
+<p>After changing the image:</p>
+<div class="highlight highlight-source-bash notranslate"><pre><span class="token function">docker</span> compose pull
+<span class="token function">docker</span> compose up <span class="token">-d</span></pre></div><p>Then open the <code>CONFIG</code> page in SilverBullet and add:</p>
+<pre><code>config.set("maximumDocumentSize", 100)</code></pre><p>Reload SilverBullet and dragging a document larger than 10 MiB should now work.</p>
+<h2 id="back-to-stable"><a class="anchor" aria-hidden="true" tabindex="-1" href="#back-to-stable"><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Back to Stable</h2>
+<p>I wouldn't necessarily recommend staying on <code>edge</code> forever.</p>
+<p>Once a stable release newer than 2.11.1 contains <code>#2159</code>, I'll simply change:</p>
+<div class="highlight highlight-source-yaml notranslate"><pre><span class="token key atrule">image</span><span class="token punctuation">:</span> ghcr.io/silverbulletmd/silverbullet<span class="token punctuation">:</span>edge</pre></div><p>back to:</p>
+<div class="highlight highlight-source-yaml notranslate"><pre><span class="token key atrule">image</span><span class="token punctuation">:</span> ghcr.io/silverbulletmd/silverbullet<span class="token punctuation">:</span>latest</pre></div><p>and update again.</p>
+<h2 id="one-more-thing"><a class="anchor" aria-hidden="true" tabindex="-1" href="#one-more-thing"><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>One More Thing</h2>
+<p><code>maximumDocumentSize</code> controls SilverBullet's limit.</p>
+<p>If SilverBullet sits behind a reverse proxy, that proxy may have its <strong>own
+upload/body-size limit</strong>. So if the SilverBullet 10 MiB message disappears but
+you're suddenly greeted by an HTTP <code>413 Request Entity Too Large</code>, that's a
+different layer you'll have to configure.</p>
+<p>But for the mysterious:</p>
+<div class="highlight highlight-source-text notranslate"><pre>Document is too large, maximum is 10MiB</pre></div><p>despite having configured a higher <code>maximumDocumentSize</code>:</p>
+<p>It wasn't you. It was that hard-coded <code>10</code>. 😬</p>
+</article>
 <hr>
-    <a href="/posts/2018/02/09/ruby-refactor-like-sandi-metz/">&#8592; Previous Post</a> | <a href="/posts/2018/02/11/visualize-algorithms/">Next Post &#8594;</a>
+    <a href="/posts/2026/08/24/jsdom-deno/">&#8592; Previous Post</a>
     <hr>
     <footer>
   <div>
