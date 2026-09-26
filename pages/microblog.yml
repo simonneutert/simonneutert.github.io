@@ -1,3 +1,5 @@
+- url: https://flaviocopes.com/node-builtins/
+  content: Twelve Node.js built-ins that replace axios, nodemon, dotenv, jest, chalk, glob and more, with their stability in Node 24 and one gotcha each.
 - url: https://youtu.be/KwM1c7vb-fg
   content: Intro to Clojure Workshop (Sept 2026)
 - url: https://evilmartians.com/chronicles/fair-by-design-orchestrating-background-jobs-in-ruby
