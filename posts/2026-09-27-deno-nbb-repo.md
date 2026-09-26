@@ -7,8 +7,8 @@ A few weeks ago I pushed [deno-nbb](https://github.com/simonneutert/deno-nbb) to
 GitHub. It was a small experiment with a simple question: **what if nbb ran on
 Deno instead of Node?**
 
-It was mostly a process of wrapping my head nbb and Deno, and figuring out how
-to make them work together. I dabbled with
+It was mostly a process of wrapping my head around nbb and Deno, and figuring
+out how to make them work together. I dabbled with
 [borkdude/bebo](https://github.com/borkdude/bebo) some time ago, and I wanted to
 see if I could leverage Deno's built-in tooling to make a tiny, self-contained
 binary that runs ClojureScript. Most importantly, I wanted to see if I could
@@ -58,7 +58,7 @@ Two rules guided me all the way:
 2. **Re-use what nbb brings to the table.** If nbb can do it, my tool
    doesn't/shouldn't reimplement it.
 
-## One file to rule them all: `dbb.edn` (nbb -> dbb (maybe?))
+## One file to rule them all: `dbb.edn`
 
 If you know `bb.edn`, you will feel right at home:
 
@@ -91,7 +91,8 @@ You get **one file** with nbb, your code, your `:deps` libraries, your npm/JSR
 modules and any data files you include. Your users need nothing. No Deno, no
 Node, no `bb`.
 
-The executable only gets the permissions you list in `:compile :permissions`.
+For development, commands run with `--allow-all`; only compiled executables are
+restricted to the permissions you list in `:compile :permissions`.
 Cross-compiling for another OS is a Deno flag away:
 
 ```sh
@@ -100,11 +101,13 @@ dbb compile -- --target x86_64-unknown-linux-gnu
 
 ## Single executable as a release artifact
 
-It ships the Deno runtime and nbb, for every platform Deno supports: macOS
-(Intel and Apple Silicon), Linux (x86_64 and arm64) and Windows (x64 and arm64).
+The release binaries bundle the Deno runtime and nbb, and are available for
+every platform Deno supports: macOS (Intel and Apple Silicon), Linux (x86_64 and
+arm64), and Windows (x64 and arm64).
 
-Let's say you installed the executable on your machine, and named it `dbb`. You
-can now run scripts and REPLs with nothing else installed:
+Grab the `dbb` binary for your platform. Scripts and REPLs can run without Deno,
+unless they use `:deno :imports` or npm-backed nbb libraries such as `reagent`;
+projects using `:deps` also need `bb`:
 
 ```sh
 dbb hello.cljs Ada
@@ -169,8 +172,9 @@ ways, or both at once in one package:
 - **Lib style:** the entry point starts nbb, looks up the vars you listed and
   exports them under their JavaScript names. With the `.d.ts` file next to it,
   TypeScript folks `import { greet } from "jsr:@your-scope/greet/lib"` as if it
-  were written in TypeScript. Just make sure your exported functions take and
-  return plain JavaScript values.
+  were written in TypeScript. Because nbb probes the filesystem on load,
+  consumers need `--allow-read` or `--ignore-read`. Just make sure your exported
+  functions take and return plain JavaScript values.
 
 If this reminds you of shadow-cljs's `:esm` target, that is on purpose. Then it
 is only `deno publish` away from JSR.
@@ -178,8 +182,9 @@ is only `deno publish` away from JSR.
 ## And and and …
 
 - **`dbb test`** runs your `js/Deno.test`s through `deno test`
-- **`dbb task`** runs Clojure functions as tasks (bb-like), while `:deno :tasks`
-  stays plain `deno task` (syntax sugar for Deno users)
+- **`dbb task`** runs qualified Clojure functions as bb-style function tasks,
+  not through Babashka's task engine; `:deno :tasks` stays plain `deno task`
+  (syntax sugar for Deno users)
 - **`dbb deps outdated`** tells you what to bump
 - **`dbb sync`** keeps `deno.json` and `deno.lock` in line with `dbb.edn`
 - **`dbb sync --from-deno`** updates `dbb.edn` from `deno.json` and `deno.lock`
@@ -192,13 +197,11 @@ Right now I'm polishing the rough edges for an open source release. The docs are
 being written, the example project is growing, and dbb will land on JSR as
 `@simonneutert/dbb`, so Deno users can install it with a one-liner.
 
-Huge thanks to [borkdude](https://github.com/borkdude) for nbb and Babashka.
-Once I release, whether this will be really useful or not, it will be because of
-the work he has done.
+Huge thanks to [borkdude](https://github.com/borkdude) for nbb and Babashka. If
+dbb turns out to be useful, it's because of the work he has done.
 
 Fun fact: when experimenting, I tried to pull `weavejester/medley` in. But it
 threw an error, because `array-list` was not part of nbb's ClojureScript
-runtime. We added it, and now it is
-[(PR #424 in babashka/nbb)](https://github.com/babashka/nbb/pull/424).
+runtime. We added it in [PR #424](https://github.com/babashka/nbb/pull/424).
 
 Stay tuned!
