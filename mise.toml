@@ -1,0 +1,10 @@
+[tools]
+deno = "latest"
+
+[tasks.new_post]
+shell = 'sh -c'
+usage = '''
+arg "<filename>" help="Name of the new post, like 'my-new-post'" default="my-new-post"
+'''
+description = "Create a new post"
+run = "touch posts/$(date +%Y-%m-%d)-${usage_filename}.md"
