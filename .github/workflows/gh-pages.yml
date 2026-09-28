@@ -19,6 +19,9 @@ jobs:
       - name: Build
         run: deno run -A jsr:@simonneutert/quickblog build # pin the version of quickblog to avoid breaking changes
 
+      - name: Check links
+        run: deno run -R --allow-run=git jsr:@simonneutert/md-links-checker@0.2.0 --root dist posts pages index.md
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
