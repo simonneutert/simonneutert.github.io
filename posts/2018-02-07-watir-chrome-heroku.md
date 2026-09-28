@@ -14,7 +14,7 @@ time to tackle this.
 
 Heroku is a relatively closed and proprietary PaaS, yet my favourite one. In the
 past, I added a compiled PhantomJS executable in a `bin` directory
-[(read more)](/blog/2017/scrape-js-powered-websites-with-ruby-and-selenium/).
+[(read more)](/posts/2017/09/04/scrape-js-powered-websites-with-ruby-and-selenium/).
 
 ## Buildpacks for your heroku project
 
