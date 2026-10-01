@@ -22,8 +22,11 @@ jobs:
       - name: Deno Install Dependencies
         run: deno install
 
-      - name: Check links
-        run: deno run -R --allow-run=git jsr:@simonneutert/md-links-checker --root dist posts pages index.md
-
       - name: Run tests
         run: deno fmt --check && deno lint && deno check
+
+      - name: build
+        run: deno run -A jsr:@simonneutert/quickblog build
+
+      - name: Check links
+        run: deno deno run -R --allow-run=git jsr:@simonneutert/md-links-checker --root dist posts pages index.md
