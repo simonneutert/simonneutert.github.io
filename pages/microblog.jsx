@@ -1,5 +1,5 @@
 // deno-lint-ignore-file verbatim-module-syntax no-import-prefix no-unversioned-import
-import * as React from "npm:preact@10.29.8";
+import * as React from "npm:preact";
 import { render } from "jsr:@deno/gfm";
 import { parse } from "jsr:@std/yaml";
 
