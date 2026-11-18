@@ -26,7 +26,7 @@ jobs:
         run: deno fmt --check && deno lint && deno check
 
       - name: build
-        run: deno run -A jsr:@simonneutert/quickblog build
+        run: deno run -A jsr:@simonneutert/quickblog@0.0.5 build
 
       - name: Check links
         run: deno run -R --allow-run=git jsr:@simonneutert/md-links-checker --root dist posts pages index.md
