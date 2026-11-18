@@ -17,7 +17,7 @@ content automagically.
 ## Run / Build
 
 ```bash
-deno run -A jsr:@simonneutert/quickblog build
+deno run --reload -A jsr:@simonneutert/quickblog build
 ```
 
 ---

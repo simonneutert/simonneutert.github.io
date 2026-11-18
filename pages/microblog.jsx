@@ -1,5 +1,5 @@
 // deno-lint-ignore-file verbatim-module-syntax no-import-prefix no-unversioned-import
-import * as React from "npm:preact";
+import * as React from "jsr:@simonneutert/quickblog/compat"; // this uses the pinned @preact/compat from quickblog
 import { render } from "jsr:@deno/gfm";
 import { parse } from "jsr:@std/yaml";
 
