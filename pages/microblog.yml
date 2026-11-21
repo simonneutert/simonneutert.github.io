@@ -1,3 +1,5 @@
+- url: https://www.iwillig.me/agentic-engineering-with-clojure/repl-development.html
+  content: This article explores REPL-based development in Clojure and how it enhances agentic engineering workflows.
 - url: https://youtu.be/hhCmj9Yxt_w
   content: "Datastar's answer to web-components 🙏"
 - url: https://hugovk.dev/blog/2026/lock-github-actions/
